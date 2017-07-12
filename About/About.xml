@@ -3,7 +3,7 @@
 	<name>Prison Labor (Alpha)</name>
 	<author>Avius</author>
 	<targetVersion>0.17.0</targetVersion>
-	<description>Version 0.3
+	<description>Version 0.3a
 
 This mod force prisoners to work if Prisoner Interaction is set to "Work".
 Prisoner must be fed, and rested, or he(she) will refuse to work. Currently prisoners can only cook, mine, cut plants, craft, haul, and clean.
@@ -22,6 +22,8 @@ To make prisoners work you must meet these conditions:
 - Prisoner interaction is set to "Work" (no "Chat and Recruit", or "Friendly Chat").
 
 Changelog:
+		0.3a
+			- wardens no longer watch over hungry or tired prisoners
 		0.3
 			- added work of Warden type that supervise prisoners
 			- prisoners will get lazy
