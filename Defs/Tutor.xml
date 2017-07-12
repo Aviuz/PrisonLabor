@@ -8,6 +8,13 @@
       <highlightTags>
         <li>ITab-Prisoner-Closed</li>
       </highlightTags>
-      <helpText>You can force your prisoners to labor.\n\nTo do so you must select "No Interaction" option from "Prisoner" pane\n\nAlso, you must ensure your prisoners are fed and rested. You can check this in 'Needs' tab.\n\nPrisoners will work on orders and bills that are in allowed area.\nThey can only cook, mine, cut plants, haul and clean.\n\nHINT: If you put a stove in a prison cell make sure they can reach raw food.\n\nHINT: You can let prioners moving through doors by leaving them open.</helpText>
+      <helpText>You can force your prisoners to labor.\n\nTo do so you must select "Work" option from "Prisoner" pane\n\nAlso, you must ensure your prisoners are fed and rested. You can check this in 'Needs' tab.\n\nPrisoners will work on orders and bills that are in allowed area.\nThey can only cook, mine, cut plants, haul and clean.\n\nHINT: If you put a stove in a prison cell make sure they can reach raw food.\n\nHINT: You can let prioners moving through doors by leaving them open.</helpText>
     </ConceptDef>
+    <ConceptDef>
+        <defName>LazyPrisoner</defName>
+        <label>Lazy Prisoner</label>
+        <priority>100</priority>
+        <needsOpportunity>True</needsOpportunity>
+        <helpText>One of yours prisoners got lazy.\nHe won't work any longer, unless he get motivated.\nMake sure you have enough wardens (check "Work" tab), or draft one of your colonist and order him to stand around your prisoners.</helpText>
+      </ConceptDef>
 </Defs>

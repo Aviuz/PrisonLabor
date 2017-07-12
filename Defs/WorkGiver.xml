@@ -12,4 +12,29 @@
       <li>Talking</li>
     </requiredCapacities>
   </WorkGiverDef>
+  <!--WorkGiverDef>
+    <defName>DeliverFoodToPrisonerTweak</defName>
+    <label>deliver food to prisoners</label>
+    <giverClass>PrisonLabor.WorkGiver_Warden_DeliverFood_Tweak</giverClass>
+    <workType>Warden</workType>
+    <verb>deliver food for</verb>
+    <gerund>delivering food for</gerund>
+    <priorityInType>69</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef-->
+  <WorkGiverDef>
+    <defName>PrisonLabor.Mine_Tweak</defName>
+    <label>mine</label>
+    <giverClass>PrisonLabor.WorkGiver_Miner_Tweak</giverClass>
+    <workType>Mining</workType>
+    <priorityInType>101</priorityInType>
+    <verb>mine</verb>
+    <gerund>mining</gerund>
+    <tagToGive>Fieldwork</tagToGive>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
 </WorkGivers>
