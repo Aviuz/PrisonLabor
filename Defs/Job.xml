@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+      <defName>PrisonerSupervise</defName>
+      <driverClass>PrisonLabor.JobDriver_Supervise</driverClass>
+      <reportString>watching prisoner TargetA.</reportString>
+      <alwaysShowWeapon>true</alwaysShowWeapon>
+    </JobDef>
+</Defs>

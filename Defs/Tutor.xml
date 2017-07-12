@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ConceptDef Class="PrisonLabor.ConceptDef_PrisonLaborInstruction">
+      <defName>PrisonLabor</defName>
+      <label>Prison labor</label>
+      <priority>45</priority>
+      <needsOpportunity>True</needsOpportunity>
+      <highlightTags>
+        <li>ITab-Prisoner-Closed</li>
+      </highlightTags>
+      <helpText>You can force your prisoners to labor.\n\nTo do so you must select "No Interaction" option from "Prisoner" pane\n\nAlso, you must ensure your prisoners are fed and rested. You can check this in 'Needs' tab.\n\nPrisoners will work on orders and bills that are in allowed area.\nThey can only cook, mine, cut plants, haul and clean.\n\nHINT: If you put a stove in a prison cell make sure they can reach raw food.\n\nHINT: You can let prioners moving through doors by leaving them open.</helpText>
+    </ConceptDef>
+</Defs>
