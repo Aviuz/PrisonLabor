@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <NeedDef>
+    <DefName>PrisonLabor_Laziness</DefName>
+    <needClass>PrisonLabor.Need_Laziness</needClass>
+    <label>laziness</label>
+    <description>Work In Progress</description>
+    <listPriority>90</listPriority>
+    <major>false</major>
+    <showForCaravanMembers>false</showForCaravanMembers>
+  </NeedDef>
+</Defs>

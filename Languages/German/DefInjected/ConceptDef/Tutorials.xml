@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <PrisonLabor.label>Gefängnisarbeit</PrisonLabor.label>
+  <PrisonLabor.helpText>Du kannst deine Gefangenen zum Arbeiten zwingen.\n\n Um dies zu tun, musst du die Option "Zum arbeiten zwingen" vom Reiter "Gefangener" auswählen.\n\nDu musst auserdem darauf achten, dass deine Gefangenen genährt und ausgeruht sind. Du kannst das im Reiter "Bedürfnisse" nachschauen.\n\nGefangene werden Befehle ausführen und Aufgaben erfüllen, die sich in der erlaubten Zone befinden.\nGefangene können nur kochen, Gestein und Erze abbauen, Pflanzen schneiden, Gegenstände herstellen, transportieren und Reinigen.\n\HINWEIS: Wenn du einen Herd in einer Gefängniszelle plazierst, achte darauf, dass sie auch rohes Essen erreichen können.</PrisonLabor.helpText>
+  <LazyPrisoner.label>Faule Gefangene</LazyPrisoner.label>
+  <LazyPrisoner.helpText>Einer deiner Gefangenen ist faul geworden.\nEr wird nicht länger arbeiten, solange er nicht motiviert wird.\nAchte darauf, dass du genug Aufseher hast (schau im Reite "Arbeit" nach) oder ernenne einen deiner Kolonisten und befiehl ihn neben deinen Gefangenen zu stehen.</LazyPrisoner.helpText>
+</LanguageData>

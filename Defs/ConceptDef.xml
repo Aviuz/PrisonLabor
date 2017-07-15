@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <ConceptDef Class="PrisonLabor.ConceptDef_PrisonLaborInstruction">
+  <ConceptDef>
       <defName>PrisonLabor</defName>
       <label>Prison labor</label>
       <priority>45</priority>
