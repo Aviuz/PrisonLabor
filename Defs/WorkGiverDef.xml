@@ -12,18 +12,18 @@
       <li>Talking</li>
     </requiredCapacities>
   </WorkGiverDef>
-  <!--WorkGiverDef>
-    <defName>DeliverFoodToPrisonerTweak</defName>
+  <WorkGiverDef>
+    <defName>PrisonLabor_DeliverFoodToPrisoner_Tweak</defName>
     <label>deliver food to prisoners</label>
     <giverClass>PrisonLabor.WorkGiver_Warden_DeliverFood_Tweak</giverClass>
     <workType>Warden</workType>
     <verb>deliver food for</verb>
     <gerund>delivering food for</gerund>
-    <priorityInType>69</priorityInType>
+    <priorityInType>71</priorityInType>
     <requiredCapacities>
       <li>Manipulation</li>
     </requiredCapacities>
-  </WorkGiverDef-->
+  </WorkGiverDef>
   <WorkGiverDef>
     <defName>PrisonLabor_Mine_Tweak</defName>
     <label>mine</label>
@@ -57,6 +57,20 @@
     <priorityInType>101</priorityInType>
     <verb>harvest</verb>
     <gerund>harvesting</gerund>
+    <scanThings>false</scanThings>
+    <scanCells>true</scanCells>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+  <WorkGiverDef>
+    <defName>PrisonLabor_GrowerSow_Tweak</defName>
+    <label>sow crops</label>
+    <giverClass>PrisonLabor.WorkGiver_GrowerSow_Tweak</giverClass>
+    <workType>Growing</workType>
+    <priorityInType>49</priorityInType>
+    <verb>sow</verb>
+    <gerund>sowing</gerund>
     <scanThings>false</scanThings>
     <scanCells>true</scanCells>
     <requiredCapacities>

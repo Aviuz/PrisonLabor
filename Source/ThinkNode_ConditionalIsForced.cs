@@ -36,6 +36,7 @@ namespace PrisonLabor
                             }
                         }
                     }
+                    pawn.needs.TryGetNeed<Need_Laziness>().Enabled = false;
                 }
             }
             return false;

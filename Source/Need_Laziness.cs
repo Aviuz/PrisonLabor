@@ -17,12 +17,25 @@ namespace PrisonLabor
         private static PrisonerInteractionModeDef pimDef;
         private static NeedDef def;
 
+        private bool enabled;
         private bool needToBeInspired;
         private bool isLazy;
         private int wardensCount;
         private int prisonersCount;
 
         private int slowDown;
+
+        public bool Enabled
+        {
+            get
+            {
+                return enabled;
+            }
+            set
+            {
+                enabled = value;
+            }
+        }
 
         public bool NeedToBeInspired
         {
@@ -69,12 +82,22 @@ namespace PrisonLabor
         {
             get
             {
-                if (wardensCount * WardenCapacity < prisonersCount)
-                    return 1;
-                else if (wardensCount * WardenCapacity > prisonersCount)
-                    return -1;
+                if (enabled && pawn.guest.interactionMode == PimDef)
+                {
+                    if (wardensCount * WardenCapacity < prisonersCount)
+                        return 1;
+                    else if (wardensCount * WardenCapacity > prisonersCount)
+                        return -1;
+                    else
+                        return 0;
+                }
                 else
-                    return 0;
+                {
+                    if (wardensCount > 0)
+                        return -1;
+                    else
+                        return 0;
+                }
             }
         }
 
@@ -126,7 +149,7 @@ namespace PrisonLabor
                                 prisonersCount++;
                         }
 
-                        if (pawn.guest.interactionMode == PimDef)
+                        if (pawn.guest.interactionMode == PimDef && enabled)
                             return LazyRate - wardensCount * InspireRate / prisonersCount;
                         else
                             return -wardensCount * InspireRate / (prisonersCount + 1);
@@ -186,6 +209,7 @@ namespace PrisonLabor
         public override void SetInitialLevel()
         {
             CurLevel = 0.0f;
+            enabled = false;
         }
 
         public override string GetTipString()

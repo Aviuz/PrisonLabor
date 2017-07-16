@@ -3,10 +3,10 @@
 	<name>Prison Labor (Alpha)</name>
 	<author>Avius</author>
 	<targetVersion>0.17.0</targetVersion>
-	<description>Version 0.4
+	<description>Version 0.5
 
 This mod force prisoners to work if Prisoner Interaction is set to "Force to work".
-Prisoner must be fed, and rested, or he(she) will refuse to work. Currently prisoners can only cook, mine, cut plants, craft, haul, and clean.
+Prisoner must be fed, and rested, or he(she) will refuse to work. Currently prisoners can only cook, mine, cut plants, craft, haul, clean and grow low-skilled plants.
 Attention! He can run away if he mine a way out.
 
 Prisoners need to be watched by wardens, or they will get lazy.

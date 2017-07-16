@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using Verse;
+using Verse.AI;
 
 namespace PrisonLabor
 {
@@ -134,6 +135,148 @@ namespace PrisonLabor
         public static void Postfix2(Pawn_CarryTracker __instance, int count, IntVec3 dropLoc, ThingPlaceMode mode, Thing resultingThing, Action<Thing, int> placedAction = null)
         {
             Postfix(__instance, dropLoc, mode, resultingThing, placedAction);
+        }
+    }
+
+    [HarmonyPatch(typeof(Verse.AI.HaulAIUtility))]
+    [HarmonyPatch("PawnCanAutomaticallyHaulBasicChecks")]
+    [HarmonyPatch(new Type[] { typeof(Pawn), typeof(Thing), typeof(bool) })]
+    class ReservedByPrisonerPatch
+    {
+        static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instr)
+        {
+            //Load arguments onto stack
+            yield return new CodeInstruction(OpCodes.Ldarg_0);
+            yield return new CodeInstruction(OpCodes.Ldarg_1);
+            yield return new CodeInstruction(OpCodes.Ldarg_2);
+            //Call function
+            yield return new CodeInstruction(OpCodes.Call, typeof(ReservedByPrisonerPatch).GetMethod("CanHaulAndInPrisonCell"));
+            //Return
+            yield return new CodeInstruction(OpCodes.Ret);
+        }
+
+
+        public static bool CanHaulAndInPrisonCell(Pawn p, Thing t, bool forced)
+        {
+            UnfinishedThing unfinishedThing = t as UnfinishedThing;
+            if (unfinishedThing != null && unfinishedThing.BoundBill != null)
+            {
+                return false;
+            }
+            if (!p.CanReach(t, PathEndMode.ClosestTouch, p.NormalMaxDanger(), false, TraverseMode.ByPawn))
+            {
+                return false;
+            }
+            if (!p.CanReserve(t, 1, -1, null, forced))
+            {
+                return false;
+            }
+            if (t.def.IsNutritionGivingIngestible && t.def.ingestible.HumanEdible && !t.IsSociallyProper(p, false, true))
+            {
+                if (PrisonerFoodReservation.isReserved(t))
+                {
+                    JobFailReason.Is("ReservedForPrisoners".Translate());
+                    return false;
+                }
+            }
+            if (t.IsBurning())
+            {
+                JobFailReason.Is("BurningLower".Translate());
+                return false;
+            }
+            return true;
+        }
+    }
+
+    [HarmonyPatch(typeof(MainTabWindow_Work))]
+    [HarmonyPatch("get_Pawns")]
+    class WorkAssigmentsPatch
+    {
+        static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instr)
+        {
+                    yield return new CodeInstruction(OpCodes.Ldarg_0);
+                    yield return new CodeInstruction(OpCodes.Call, typeof(WorkAssigmentsPatch).GetMethod("Pawns"));
+                    yield return new CodeInstruction(OpCodes.Ret);
+        }
+
+        public static IEnumerable<Pawn> Pawns(MainTabWindow mainTabWindow)
+        {
+            foreach (Pawn p in Find.VisibleMap.mapPawns.FreeColonists)
+                yield return p;
+            if (mainTabWindow is MainTabWindow_Work)
+            {
+                foreach (Pawn pawn in Find.VisibleMap.mapPawns.PrisonersOfColony)
+                    if (pawn.guest.interactionMode == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption"))
+                    {
+                        if (!pawn.workSettings.EverWork)
+                            pawn.workSettings.EnableAndInitialize();
+                        foreach(WorkTypeDef def in PrisonerWorkDisabledUtility.DisabledWorks)
+                            pawn.workSettings.Disable(def);
+                        yield return pawn;
+                    }
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(WidgetsWork))]
+    [HarmonyPatch("DrawWorkBoxFor")]
+    [HarmonyPatch(new Type[] { typeof(float), typeof(float), typeof(Pawn), typeof(WorkTypeDef), typeof(bool) })]
+    class WorkDisablePatch
+    {
+        static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instr)
+        {
+            // Define label to the begining of the original code
+            Label jumpTo = gen.DefineLabel();
+            yield return new CodeInstruction(OpCodes.Ldarg_2);
+            yield return new CodeInstruction(OpCodes.Ldarg_3);
+            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonerWorkDisabledUtility).GetMethod("Disabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
+            //If false continue
+            yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
+            //Return
+            yield return new CodeInstruction(OpCodes.Ret);
+
+            bool first = true;
+            foreach (CodeInstruction ci in instr)
+            {
+                if (first)
+                {
+                    first = false;
+                    ci.labels.Add(jumpTo);
+                }
+                yield return ci;
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(WidgetsWork))]
+    [HarmonyPatch("TipForPawnWorker")]
+    [HarmonyPatch(new Type[] { typeof(Pawn), typeof(WorkTypeDef), typeof(bool) })]
+    class WorkDisablePatch2
+    {
+        static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instr)
+        {
+            // Define label to the begining of the original code
+            Label jumpTo = gen.DefineLabel();
+            yield return new CodeInstruction(OpCodes.Ldarg_0);
+            yield return new CodeInstruction(OpCodes.Ldarg_1);
+            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonerWorkDisabledUtility).GetMethod("Disabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
+            //If false continue
+            yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
+            //Load string TODO translate
+            yield return new CodeInstruction(OpCodes.Ldstr, "Work type disabled by prisoners");
+            //Return
+            yield return new CodeInstruction(OpCodes.Ret);
+
+            bool first = true;
+            foreach (CodeInstruction ci in instr)
+            {
+                if (first)
+                {
+                    first = false;
+                    ci.labels.Add(jumpTo);
+                }
+                yield return ci;
+            }
         }
     }
 }

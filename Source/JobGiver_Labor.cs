@@ -68,25 +68,9 @@ namespace PrisonLabor
                 pawn.mindState.priorityWork.Clear();
             }
             //Work prisoners will do
-            List<String> typeNameList = new List<String> { "Cooking", "Mining", "PlantCutting", "Crafting", "Hauling", "Cleaning" };
-            List<WorkTypeDef> typeList = new List<WorkTypeDef>();
-            List<WorkGiver> workList = new List<WorkGiver>();
-            foreach (String workTypeName in typeNameList)
-                typeList.Add(DefDatabase<WorkTypeDef>.GetNamed(workTypeName, true));
-            foreach (WorkTypeDef workType in typeList.OrderBy(type => -pawn.skills.AverageOfRelevantSkillsFor(type)))
-            {
-                if (!pawn.story.WorkTypeIsDisabled(workType))
-                {
-                    for (int m = 0; m < workType.workGiversByPriority.Count; m++)
-                    {
-                        WorkGiver worker = workType.workGiversByPriority[m].Worker;
-                        if (!worker.def.emergency)
-                        {
-                            workList.Add(worker);
-                        }
-                    }
-                }
-            }
+            List<WorkGiver> workList = pawn.workSettings.WorkGiversInOrderNormal;
+            workList.RemoveAll(workGiver => workGiver.def.defName == "GrowerSow");
+            pawn.needs.TryGetNeed<Need_Laziness>().Enabled = false;
 
             int num = -999;
             TargetInfo targetInfo = TargetInfo.Invalid;
@@ -105,6 +89,7 @@ namespace PrisonLabor
                         Job job2 = workGiver.NonScanJob(pawn);
                         if (job2 != null)
                         {
+                            pawn.needs.TryGetNeed<Need_Laziness>().Enabled = true;
                             return new ThinkResult(job2, this, new JobTag?(workList[j].def.tagToGive));
                         }
                         WorkGiver_Scanner scanner = workGiver as WorkGiver_Scanner;
@@ -201,6 +186,7 @@ namespace PrisonLabor
                         }
                         if (job3 != null)
                         {
+                            pawn.needs.TryGetNeed<Need_Laziness>().Enabled = true;
                             return new ThinkResult(job3, this, new JobTag?(workList[j].def.tagToGive));
                         }
                         Log.ErrorOnce(string.Concat(new object[]

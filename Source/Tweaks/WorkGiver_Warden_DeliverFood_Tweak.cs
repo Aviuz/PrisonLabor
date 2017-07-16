@@ -14,50 +14,37 @@ namespace PrisonLabor
         {
             if (!base.ShouldTakeCareOfPrisoner(pawn, t))
             {
-                Messages.Message("one", MessageSound.Negative);
                 return null;
             }
             Pawn pawn2 = (Pawn)t;
             if (!pawn2.guest.CanBeBroughtFood)
             {
-                Messages.Message("two", MessageSound.Negative);
                 return null;
             }
-            //TODO test this condition
-            IntVec3 c;
             //if (pawn2.Position.IsInPrisonCell(pawn2.Map) || RCellFinder.TryFindBestExitSpot((Pawn)t, out c, TraverseMode.ByPawn))
-            if(false)
-            {
-                return null;
-            }
             if (pawn2.needs.food.CurLevelPercentage >= pawn2.needs.food.PercentageThreshHungry + 0.02f)
             {
-                Messages.Message("three", MessageSound.Negative);
                 return null;
             }
             if (WardenFeedUtility.ShouldBeFed(pawn2))
             {
-                Messages.Message("four", MessageSound.Negative);
                 return null;
             }
             Thing thing;
             ThingDef def;
             if (!FoodUtility.TryFindBestFoodSourceFor(pawn, pawn2, pawn2.needs.food.CurCategory == HungerCategory.Starving, out thing, out def, false, true, false, false, false))
             {
-                Messages.Message("five", MessageSound.Negative);
                 return null;
             }
             if (thing.GetRoom(RegionType.Set_Passable) == pawn2.GetRoom(RegionType.Set_Passable))
             {
-                Messages.Message("six", MessageSound.Negative);
                 return null;
             }
             if (WorkGiver_Warden_DeliverFood_Tweak.FoodAvailableInRoomTo(pawn2))
             {
-                Messages.Message("seven", MessageSound.Negative);
                 return null;
             }
-            return new Job(JobDefOf.DeliverFood, thing, pawn2)
+            return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_DeliverFood_Tweak"), thing, pawn2)
             {
                 count = FoodUtility.WillIngestStackCountOf(pawn2, def),
                 targetC = RCellFinder.SpotToChewStandingNear(pawn2, thing)

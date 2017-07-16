@@ -55,6 +55,9 @@
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="InfoDialog.cs" />
     <Compile Include="Need_Laziness.cs" />
+    <Compile Include="PrisonerFoodReservation.cs" />
+    <Compile Include="PrisonerWorkDisabledUtility.cs" />
+    <Compile Include="Tweaks\JobDriver_FoodDeliver_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_Mine_Tweak.cs" />
     <Compile Include="JobDriver_Supervise.cs" />
     <Compile Include="Prefs.cs" />
@@ -68,6 +71,7 @@
     <Compile Include="Tweaks\JobDriver_PlantHarvest_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_PlantWork_Tweak.cs" />
     <Compile Include="Tweaks\WorkGiver_GrowerHarvest_Tweak.cs" />
+    <Compile Include="Tweaks\WorkGiver_GrowerSow_Tweak.cs" />
     <Compile Include="Tweaks\WorkGiver_Miner_Tweak.cs" />
     <Compile Include="Tweaks\WorkGiver_PlantsCut_Tweak.cs" />
     <Compile Include="WorkGiver_Supervise.cs" />

@@ -14,8 +14,7 @@ namespace PrisonLabor
     [StaticConstructorOnStartup]
     class Initialization
     {
-        public static int version = 4;
-        public static bool oldPlayerNotification = false;
+        public static int version = 5;
 
         static Initialization()
         {
@@ -32,14 +31,17 @@ namespace PrisonLabor
                 if (PlayerKnowledgeDatabase.IsComplete(DefDatabase<ConceptDef>.GetNamed("PrisonLabor")))
                 {
                     Log.Message("Detected older version of PrisonLabor");
-                    oldPlayerNotification = true;
+                    Tutorials.msgShowVersion0_3 = true;
                 }
             }
-            else
+            if(PrisonLaborPrefs.Version < 5)
             {
-                Log.Message("Detected PrisonLabor v" + PrisonLaborPrefs.Version);
+                Log.Message("Detected older version of PrisonLabor");
+                Tutorials.msgShowVersion0_5 = true;
             }
-            //PrisonLaborPrefs.Version = version;
+
+            Log.Message("Loaded PrisonLabor v" + PrisonLaborPrefs.Version);
+            PrisonLaborPrefs.Version = version;
             PrisonLaborPrefs.Save();
         }
     }
