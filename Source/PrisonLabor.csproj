@@ -57,6 +57,7 @@
     <Compile Include="Need_Laziness.cs" />
     <Compile Include="PrisonerFoodReservation.cs" />
     <Compile Include="PrisonerWorkDisabledUtility.cs" />
+    <Compile Include="Tweaks\FoodUtility_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_FoodDeliver_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_Mine_Tweak.cs" />
     <Compile Include="JobDriver_Supervise.cs" />

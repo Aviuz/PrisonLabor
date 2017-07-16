@@ -1,23 +1,33 @@
 Changelog:
-    0.5
-      - added growing to available jobs
-      - added prisoner work priorities to "Work" tab
-      - food is no longer reserved in prison cell unless is brought by warden
-      - food is now delivered by Wardens even if prisoner get out of his prison cell
-      - disabled passive "Laziness" when prisoner have no work to do
-    0.4
-      - added "Laziness" bar in "Needs" tab
-      - fixed plant cut / harvest result being forbidden
-      - added German translation
-		0.3b
-			- fixed "Forbidden" bug
-		0.3a
-			- wardens no longer watch over hungry or tired prisoners
-		0.3
-			- added work of Warden type that supervise prisoners
-			- prisoners will get lazy
-			- added version checker
-			- added stat laziness
-			- added "Work" prisoner interaction mode
-		0.2a
-			- added tutorial in "LearningHelper"
+0.5a
+- fixed that new subscribers see all "old player" messages
+- fixed reserving food for prisoners
+- fixed "work settings not initialized" error
+
+0.5
+- added growing to available jobs
+- added prisoner work priorities to "Work" tab
+- food is no longer reserved in prison cell unless is brought by warden
+- food is now delivered by Wardens even if prisoner get out of his prison cell
+- disabled passive "Laziness" when prisoner have no work to do
+
+0.4
+- added "Laziness" bar in "Needs" tab
+- fixed plant cut / harvest result being forbidden
+- added German translation
+
+0.3b
+- fixed "Forbidden" bug
+
+0.3a
+- wardens no longer watch over hungry or tired prisoners
+
+0.3
+- added work of Warden type that supervise prisoners
+- prisoners will get lazy
+- added version checker
+- added stat laziness
+- added "Work" prisoner interaction mode
+
+0.2a
+- added tutorial in "LearningHelper"

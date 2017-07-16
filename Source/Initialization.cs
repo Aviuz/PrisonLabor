@@ -25,6 +25,8 @@ namespace PrisonLabor
 
         private static void checkVersion()
         {
+            if (PrisonLaborPrefs.Version == 0)
+                PrisonLaborPrefs.Version = version;
             if (PrisonLaborPrefs.Version < 3)
             {
                 // only way to check if mod was installed before

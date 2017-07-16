@@ -49,5 +49,13 @@ namespace PrisonLabor
             else
                 return false;
         }
+
+        public static void initWorkSettings(Pawn pawn)
+        {
+            if (!pawn.workSettings.EverWork)
+                pawn.workSettings.EnableAndInitialize();
+            foreach (WorkTypeDef def in PrisonerWorkDisabledUtility.DisabledWorks)
+                pawn.workSettings.Disable(def);
+        }
     }
 }

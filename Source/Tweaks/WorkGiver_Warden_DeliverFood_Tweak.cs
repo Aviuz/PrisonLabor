@@ -32,7 +32,8 @@ namespace PrisonLabor
             }
             Thing thing;
             ThingDef def;
-            if (!FoodUtility.TryFindBestFoodSourceFor(pawn, pawn2, pawn2.needs.food.CurCategory == HungerCategory.Starving, out thing, out def, false, true, false, false, false))
+            //Tweak: changes way of finding food
+            if (!FoodUtility_Tweak.TryFindBestFoodSourceFor(pawn, pawn2, pawn2.needs.food.CurCategory == HungerCategory.Starving, out thing, out def, false, true, false, false, false))
             {
                 return null;
             }
@@ -46,7 +47,7 @@ namespace PrisonLabor
             }
             return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_DeliverFood_Tweak"), thing, pawn2)
             {
-                count = FoodUtility.WillIngestStackCountOf(pawn2, def),
+                count = FoodUtility_Tweak.WillIngestStackCountOf(pawn2, def),
                 targetC = RCellFinder.SpotToChewStandingNear(pawn2, thing)
             };
         }

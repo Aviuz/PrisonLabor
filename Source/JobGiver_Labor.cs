@@ -68,6 +68,7 @@ namespace PrisonLabor
                 pawn.mindState.priorityWork.Clear();
             }
             //Work prisoners will do
+            PrisonerWorkDisabledUtility.initWorkSettings(pawn);
             List<WorkGiver> workList = pawn.workSettings.WorkGiversInOrderNormal;
             workList.RemoveAll(workGiver => workGiver.def.defName == "GrowerSow");
             pawn.needs.TryGetNeed<Need_Laziness>().Enabled = false;

@@ -208,10 +208,7 @@ namespace PrisonLabor
                 foreach (Pawn pawn in Find.VisibleMap.mapPawns.PrisonersOfColony)
                     if (pawn.guest.interactionMode == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption"))
                     {
-                        if (!pawn.workSettings.EverWork)
-                            pawn.workSettings.EnableAndInitialize();
-                        foreach(WorkTypeDef def in PrisonerWorkDisabledUtility.DisabledWorks)
-                            pawn.workSettings.Disable(def);
+                        PrisonerWorkDisabledUtility.initWorkSettings(pawn);
                         yield return pawn;
                     }
             }

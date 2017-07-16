@@ -1,7 +1,7 @@
 # PrisonLabor
 Prison Labor mod for "RimWorld" game
 
-## Version 0.5
+## Version 0.5a
 
 ## Description
 This mod force prisoners to work if Prisoner Interaction is set to "Work".
