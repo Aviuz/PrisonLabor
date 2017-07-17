@@ -1,7 +1,15 @@
-# PrisonLabor
-Prison Labor mod for "RimWorld" game
+<p align="center">
+    <img src="https://raw.githubusercontent.com/Aviuz/PrisonLabor/master/Logo.png" alt="Prison Labor" />
+</p>
+<p align="center">
+  <a href="https://github.com/Aviuz/PrisonLabor/releases">
+    <img src="https://img.shields.io/badge/version-0.5a-orange.svg?style=flat" alt="v0.5a" />
+  </a>
+</p>
 
-## Version 0.5a
+<p align="center">
+  Prison Labor mod for RimWorld
+</p>
 
 ## Description
 This mod force prisoners to work if Prisoner Interaction is set to "Work".
