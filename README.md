@@ -8,7 +8,7 @@ This mod force prisoners to work if Prisoner Interaction is set to "Work".
 Prisoner must be fed, and rested, or he(she) will refuse to work. Currently prisoners can only cook, mine, cut plants, craft, haul, and clean.
 Attention! He can run away if he mine a way out.
 
-Prisoners need to be watched by wardens, or they will get lazy.
+Prisoners need to be watched by wardens, or they will stop working.
 
 This is early alpha version, and it can be buggy.
 
