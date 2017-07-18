@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -273,6 +274,22 @@ namespace PrisonLabor
                     ci.labels.Add(jumpTo);
                 }
                 yield return ci;
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(PawnColumnWorker_Label))]
+    [HarmonyPatch("DoCell")]
+    [HarmonyPatch(new Type[] { typeof(Rect), typeof(Pawn), typeof(PawnTable) })]
+    //(Rect rect, Pawn pawn, PawnTable table)
+    class changeWorkTabPrisonerLabelColor
+    {
+        private static void Prefix(Rect rect, Pawn pawn, PawnTable table)
+        {
+            if (pawn.IsPrisonerOfColony)
+            {
+                // Log.Message("Pawn " + pawn.LabelCap + " detected as a prisoner");
+                GUI.color = new Color32(0xB8, 0x9C, 0x73, 0xFF); // Color32(R,G,B,A), here is prisoner color
             }
         }
     }
