@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
     <PrisonLabor_PrisonerWork>Zum arbeiten zwingen</PrisonLabor_PrisonerWork>
-    <PrisonLabor_LazyPrisonerMessage>Dein Gefangener wurde faul!</PrisonLabor_LazyPrisonerMessage>
+    <PrisonLabor_LazyPrisonerMessage>Dein Gefangener hat aufgehört zu arbeiten!</PrisonLabor_LazyPrisonerMessage>
+    <WardenResponseThreshold>Warnungsansprechschwelle</WardenResponseThreshold>
+    <StoppingWorkThreshold>Stoppen der Arbeitsgrenze</StoppingWorkThreshold>
 </LanguageData>

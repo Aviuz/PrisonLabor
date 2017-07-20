@@ -25,6 +25,12 @@ namespace PrisonLabor
 
         private static void checkVersion()
         {
+            //delete later
+            if(PrisonLaborPrefs.Version > 2 && PrisonLaborPrefs.Version < 6)
+            {
+                PrisonLaborPrefs.LastVersion = PrisonLaborPrefs.Version;
+            }
+
             // Update actual version
             if (PrisonLaborPrefs.Version <= 0)
             {

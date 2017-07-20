@@ -10,7 +10,7 @@
     <DefName>PrisonLabor_Motivation</DefName>
     <needClass>PrisonLabor.Need_Motivation</needClass>
     <label>Motivation</label>
-    <description>Work In Progress</description>
+    <description>Motivation represents how motivated to work is prisoner. Motivation can be improved by colonists standing nearby.</description>
     <listPriority>90</listPriority>
     <major>false</major>
     <showForCaravanMembers>false</showForCaravanMembers>

@@ -12,15 +12,5 @@ This mod force prisoners to work. To enable this feature prisoners must have "Fo
 - Prison area - prisoners in order to work need to reach target. You can check "Hold open" option on doors. Be aware, they will try to run if they see opportunity.
 - "Prisoners only" tools - You can mark orders and bills by tools that exclude colonist from work. (Not available now)
 
-This is early alpha version! Some features can be changed, and there are many that will be added. There can be bugs or compatibility collisions.
-
-Currently to make prisoners work you must meet these conditions
-- Prisoner is safe, and don't need medical assistance.
-- Prisoner don't need to recover from injury/sickness in bed.
-- Prisoner can't escape.
-- Prisoner can reach work (best way to do that is leaving open doors to work area).
-- Prisoner is fed, and rested.
-- Prisoner interaction is set to "Work" (no "Chat and Recruit", or "Friendly Chat").
-- Laziness bar in "Needs" tab is below 80%.
-- Work type is enabled in "Work" tab.</description>
+This is early alpha version! Some features can be changed, and there are many that will be added. There can be bugs or compatibility collisions.</description>
 </ModMetaData>

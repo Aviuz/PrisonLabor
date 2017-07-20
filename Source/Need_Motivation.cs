@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using Verse;
 
@@ -223,24 +224,16 @@ namespace PrisonLabor
             CurLevelPercentage = 1.0f;
             enabled = false;
         }
-
-        /* Left for debugging purposes
+       
         public override string GetTipString()
         {
-            return string.Concat(new string[]
-            {
-                base.LabelCap,
-                ": ",
-                base.CurLevelPercentage.ToStringPercent(),
-                " (",
-                CurLevel.ToString("0.##"),
-                " / ",
-                MaxLevel.ToString("0.##"),
-                ")\n",
-                Def.description
-            });
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine(base.GetTipString());
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine("WardenResponseThreshold".Translate() + ": " + PercentageThreshNeedInsipration.ToStringPercent());
+            stringBuilder.AppendLine("StoppingWorkThreshold".Translate() + ": " + PercentageThreshLazy.ToStringPercent());
+            return stringBuilder.ToString();
         }
-        */
 
         public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true)
         {
