@@ -7,7 +7,7 @@ using Verse;
 
 namespace PrisonLabor
 {
-    class PrisonerWorkDisabledUtility
+    class WorkAssignmentsUtility
     {
 
         private static List<WorkTypeDef> disabledWorks;
@@ -52,10 +52,18 @@ namespace PrisonLabor
 
         public static void initWorkSettings(Pawn pawn)
         {
+            //Work Types
             if (!pawn.workSettings.EverWork)
                 pawn.workSettings.EnableAndInitialize();
-            foreach (WorkTypeDef def in PrisonerWorkDisabledUtility.DisabledWorks)
+            foreach (WorkTypeDef def in WorkAssignmentsUtility.DisabledWorks)
                 pawn.workSettings.Disable(def);
+
+            //Timetables
+            if(pawn.timetable == null)
+                pawn.timetable = new Pawn_TimetableTracker(pawn);
+
+            //Restrict areas
+            pawn.playerSettings.AreaRestriction = null;
         }
     }
 }

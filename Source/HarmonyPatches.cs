@@ -117,7 +117,7 @@ namespace PrisonLabor
 
         public static bool ShouldHaveNeedPrisoner(NeedDef nd, Pawn pawn)
         {
-            if (nd.defName == "PrisonLabor_Laziness" && !pawn.IsPrisoner)
+            if (nd.defName == "PrisonLabor_Motivation" && !pawn.IsPrisoner)
             {
                 return false;
             }
@@ -204,12 +204,12 @@ namespace PrisonLabor
         {
             foreach (Pawn p in Find.VisibleMap.mapPawns.FreeColonists)
                 yield return p;
-            if (mainTabWindow is MainTabWindow_Work || mainTabWindow.GetType().ToString().Contains("MainTabWindow_WorkTab"))
+            if (mainTabWindow is MainTabWindow_Work || mainTabWindow is MainTabWindow_Restrict || mainTabWindow.GetType().ToString().Contains("MainTabWindow_WorkTab"))
             {
                 foreach (Pawn pawn in Find.VisibleMap.mapPawns.PrisonersOfColony)
                     if (pawn.guest.interactionMode == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption"))
                     {
-                        PrisonerWorkDisabledUtility.initWorkSettings(pawn);
+                        WorkAssignmentsUtility.initWorkSettings(pawn);
                         yield return pawn;
                     }
             }
@@ -227,7 +227,7 @@ namespace PrisonLabor
             Label jumpTo = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_2);
             yield return new CodeInstruction(OpCodes.Ldarg_3);
-            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonerWorkDisabledUtility).GetMethod("Disabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
+            yield return new CodeInstruction(OpCodes.Call, typeof(WorkAssignmentsUtility).GetMethod("Disabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             //Return
@@ -257,7 +257,7 @@ namespace PrisonLabor
             Label jumpTo = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_0);
             yield return new CodeInstruction(OpCodes.Ldarg_1);
-            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonerWorkDisabledUtility).GetMethod("Disabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
+            yield return new CodeInstruction(OpCodes.Call, typeof(WorkAssignmentsUtility).GetMethod("Disabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             //Load string TODO translate
@@ -291,6 +291,40 @@ namespace PrisonLabor
                 // Log.Message("Pawn " + pawn.LabelCap + " detected as a prisoner");
                 GUI.color = new Color32(0xB8, 0x9C, 0x73, 0xFF); // Color32(R,G,B,A), here is prisoner color
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(PawnColumnWorker_AllowedArea))]
+    [HarmonyPatch("DoCell")]
+    [HarmonyPatch(new Type[] { typeof(Rect), typeof(Pawn), typeof(PawnTable) })]
+    //(Rect rect, Pawn pawn, PawnTable table)
+    class disableAreaRestrictionsForPrisoners
+    {
+        private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instr)
+        {
+            Label jumpTo = gen.DefineLabel();
+            yield return new CodeInstruction(OpCodes.Ldarg_2);
+            yield return new CodeInstruction(OpCodes.Call, typeof(disableAreaRestrictionsForPrisoners).GetMethod("isPrisoner"));
+            yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
+            yield return new CodeInstruction(OpCodes.Ret);
+
+            bool first = true;
+            foreach (CodeInstruction ci in instr)
+            {
+                if (first)
+                {
+                    first = false;
+                    ci.labels.Add(jumpTo);
+                }
+                yield return ci;
+            }
+        }
+
+        public static bool isPrisoner(Pawn pawn)
+        {
+            if (pawn.IsPrisoner)
+                return true;
+            return false;
         }
     }
 }

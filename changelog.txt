@@ -1,4 +1,9 @@
 Changelog:
+0.6
+- changed mechanics of getting food by prisoners
+- added time restrictions
+- changed "Laziness" to "Motivation" and inverted
+- added WorkTab by Fluffy compatibility
 0.5a
 - fixed that new subscribers see all "old player" messages
 - fixed reserving food for prisoners

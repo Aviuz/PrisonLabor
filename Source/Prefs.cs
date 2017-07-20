@@ -25,6 +25,19 @@ namespace PrisonLabor
             }
         }
 
+        public static int LastVersion
+        {
+            get
+            {
+                return PrisonLaborPrefs.data.last_version;
+            }
+            set
+            {
+                PrisonLaborPrefs.data.last_version = value;
+                PrisonLaborPrefs.Apply();
+            }
+        }
+
         public static void Init()
         {
             bool flag = !new FileInfo(prefsFilePath).Exists;

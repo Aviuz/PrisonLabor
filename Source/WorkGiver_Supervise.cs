@@ -12,7 +12,7 @@ namespace PrisonLabor
     {
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
-            if (!base.ShouldTakeCareOfPrisoner(pawn, t) || ((Pawn)t).needs.TryGetNeed<Need_Laziness>() == null || !((Pawn)t).needs.TryGetNeed<Need_Laziness>().NeedToBeInspired)
+            if (!base.ShouldTakeCareOfPrisoner(pawn, t) || ((Pawn)t).needs.TryGetNeed<Need_Motivation>() == null || !((Pawn)t).needs.TryGetNeed<Need_Motivation>().NeedToBeInspired)
             {
                 return null;
             }

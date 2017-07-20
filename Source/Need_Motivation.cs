@@ -6,11 +6,15 @@ using Verse;
 
 namespace PrisonLabor
 {
-    public class Need_Laziness : Need
+    public class Need_Motivation : Need
     {
-        private const float LazyLevel = 0.8f;
+        private const float LazyLevel = 0.2f;
         private const float NeedInspirationLevel = 0.5f;
         private const float LazyRate = 0.003f;
+        private const float HungryRate = 0.006f;
+        private const float TiredRate = 0.006f;
+        private const float HealthRate = 0.006f;
+        private const float JoyRate = 0.006f;
         private const float InspireRate = 0.015f;
         public const int WardenCapacity = (int)(InspireRate / LazyRate);
 
@@ -24,6 +28,7 @@ namespace PrisonLabor
         private int prisonersCount;
 
         private int slowDown;
+        private int guiArrow;
 
         public bool Enabled
         {
@@ -82,22 +87,7 @@ namespace PrisonLabor
         {
             get
             {
-                if (enabled && pawn.guest.interactionMode == PimDef)
-                {
-                    if (wardensCount * WardenCapacity < prisonersCount)
-                        return 1;
-                    else if (wardensCount * WardenCapacity > prisonersCount)
-                        return -1;
-                    else
-                        return 0;
-                }
-                else
-                {
-                    if (wardensCount > 0)
-                        return -1;
-                    else
-                        return 0;
-                }
+                return guiArrow;
             }
         }
 
@@ -106,7 +96,7 @@ namespace PrisonLabor
             get
             {
                 if (def == null)
-                    def = DefDatabase<NeedDef>.GetNamed("PrisonLabor_Laziness");
+                    def = DefDatabase<NeedDef>.GetNamed("PrisonLabor_Motivation");
                 return def;
             }
         }
@@ -149,24 +139,46 @@ namespace PrisonLabor
                                 prisonersCount++;
                         }
 
-                        if (pawn.guest.interactionMode == PimDef && enabled)
-                            return LazyRate - wardensCount * InspireRate / prisonersCount;
+                        if (pawn.guest.interactionMode == PimDef)
+                        {
+                            float value = wardensCount * InspireRate / prisonersCount;
+                            if (enabled)
+                            {
+                                value -= LazyRate;
+                                if (HealthAIUtility.ShouldSeekMedicalRest(pawn))
+                                    value -= HealthRate;
+                                value -= (int)pawn.needs.food.CurCategory * HungryRate;
+                                value -= (int)pawn.needs.rest.CurCategory * TiredRate;
+                            }
+                            else if (pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy)
+                            {
+                                value += JoyRate;
+                            }
+                            guiArrow = value.CompareTo(0.0f);
+                            return value;
+                        }
                         else
-                            return -wardensCount * InspireRate / (prisonersCount + 1);
+                        {
+                            float value = wardensCount * InspireRate / (prisonersCount + 1);
+                            guiArrow = value.CompareTo(0.0f);
+                            return value;
+                        }
                     }
                     else
                     {
+                        guiArrow = 0;
                         return 0.0f;
                     }
                 }
                 else
                 {
-                    return -0.01f;
+                    guiArrow = 1;
+                    return +0.01f;
                 }
             }
         }
 
-        public Need_Laziness(Pawn pawn) : base(pawn)
+        public Need_Motivation(Pawn pawn) : base(pawn)
         {
         }
 
@@ -183,15 +195,15 @@ namespace PrisonLabor
             {
                 CurLevel += LazinessRate;
 
-                if (CurLevel == 0)
+                if (CurLevel == MaxLevel)
                     needToBeInspired = false;
-                if (CurLevel >= NeedInspirationLevel && !needToBeInspired)
+                if (CurLevel <= NeedInspirationLevel && !needToBeInspired)
                     needToBeInspired = true;
-                if (CurLevel >= LazyLevel && !isLazy && wardensCount == 0)
+                if (CurLevel <= LazyLevel && !isLazy && wardensCount == 0)
                 {
                     isLazy = true;
                     Messages.Message("PrisonLabor_LazyPrisonerMessage".Translate(), pawn, MessageSound.Standard);
-                    Tutorials.LazyPrisoner();
+                    Tutorials.Motivation();
                 }
                 else if (isLazy && wardensCount > 0)
                 {
@@ -208,10 +220,11 @@ namespace PrisonLabor
 
         public override void SetInitialLevel()
         {
-            CurLevel = 0.0f;
+            CurLevelPercentage = 1.0f;
             enabled = false;
         }
 
+        /* Left for debugging purposes
         public override string GetTipString()
         {
             return string.Concat(new string[]
@@ -227,6 +240,7 @@ namespace PrisonLabor
                 Def.description
             });
         }
+        */
 
         public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true)
         {

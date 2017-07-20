@@ -14,7 +14,7 @@ namespace PrisonLabor
     [StaticConstructorOnStartup]
     class Initialization
     {
-        public static int version = 5;
+        public static int version = 6;
 
         static Initialization()
         {
@@ -25,21 +25,27 @@ namespace PrisonLabor
 
         private static void checkVersion()
         {
-            if (PrisonLaborPrefs.Version == 0)
+            // Update actual version
+            if (PrisonLaborPrefs.Version <= 0)
+            {
                 PrisonLaborPrefs.Version = version;
-            if (PrisonLaborPrefs.Version < 3)
-            {
-                // only way to check if mod was installed before
-                if (PlayerKnowledgeDatabase.IsComplete(DefDatabase<ConceptDef>.GetNamed("PrisonLabor")))
-                {
-                    Log.Message("Detected older version of PrisonLabor");
-                    Tutorials.msgShowVersion0_3 = true;
-                }
+                PrisonLaborPrefs.LastVersion = version;
             }
-            if(PrisonLaborPrefs.Version < 5)
+            else if(PrisonLaborPrefs.Version != version)
             {
-                Log.Message("Detected older version of PrisonLabor");
+                PrisonLaborPrefs.Version = version;
+            }
+
+            // Check for news
+            if (PrisonLaborPrefs.LastVersion < 5)
+            {
+                Log.Message("Detected older version of PrisonLabor than 0.5");
                 Tutorials.msgShowVersion0_5 = true;
+            }
+            if (PrisonLaborPrefs.LastVersion < 6)
+            {
+                Log.Message("Detected older version of PrisonLabor than 0.6");
+                Tutorials.msgShowVersion0_6 = true;
             }
 
             Log.Message("Loaded PrisonLabor v" + PrisonLaborPrefs.Version);

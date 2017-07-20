@@ -181,7 +181,7 @@ namespace PrisonLabor
                 return null;
             }
             FoodPreferability minPref;
-            if (!eater.RaceProps.Humanlike)
+            if (!eater.RaceProps.Humanlike || (eater == getter && eater.IsPrisoner))
             {
                 minPref = FoodPreferability.NeverForNutrition;
             }
@@ -195,7 +195,7 @@ namespace PrisonLabor
             }
             Predicate<Thing> foodValidator = delegate (Thing t)
             {
-                if (PrisonerFoodReservation.isReserved(t))
+                if (PrisonerFoodReservation.isReserved(t) && !eater.IsPrisoner && !desperate)
                 {
                     return false;
                 }
@@ -281,7 +281,7 @@ namespace PrisonLabor
             if (!allowSociallyImproper)
             {
                 bool animalsCare = !getter.RaceProps.Animal;
-                if (!t.IsSociallyProper(getter) && !t.IsSociallyProper(eater, eater.IsPrisonerOfColony, animalsCare))
+                if (!t.IsSociallyProper(getter) && !t.IsSociallyProper(eater, false, animalsCare))
                 {
                     return false;
                 }

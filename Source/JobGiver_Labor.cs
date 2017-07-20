@@ -21,57 +21,42 @@ namespace PrisonLabor
 
         public override float GetPriority(Pawn pawn)
         {
-            if (pawn.workSettings == null || !pawn.workSettings.EverWork)
-            {
-                return 0f;
-            }
-            TimeAssignmentDef timeAssignmentDef = (pawn.timetable != null) ? pawn.timetable.CurrentAssignment : TimeAssignmentDefOf.Anything;
-            if (timeAssignmentDef == TimeAssignmentDefOf.Anything)
-            {
-                return 5.5f;
-            }
-            if (timeAssignmentDef == TimeAssignmentDefOf.Work)
-            {
-                return 9f;
-            }
-            if (timeAssignmentDef == TimeAssignmentDefOf.Sleep)
-            {
-                return 2f;
-            }
-            if (timeAssignmentDef == TimeAssignmentDefOf.Joy)
-            {
-                return 2f;
-            }
-            throw new NotImplementedException();
+            if (pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Work)
+                return 10f;
+            else
+                return 8f;
         }
 
         public override ThinkResult TryIssueJobPackage(Pawn pawn, JobIssueParams jobParams)
         {
+            if(pawn.timetable == null)
+            {
+                WorkAssignmentsUtility.initWorkSettings(pawn);
+            }
+            if(pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy || pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Sleep)
+            {
+                pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
+                return ThinkResult.NoJob;
+            }
+            //Check medical assistance, fed, and rest if not override
+            if(pawn.timetable.CurrentAssignment != TimeAssignmentDefOf.Work)
+            {
+                if (HealthAIUtility.ShouldSeekMedicalRest(pawn) || pawn.needs.food.CurCategory != HungerCategory.Fed || pawn.needs.rest.CurCategory != RestCategory.Rested)
+                {
+                    pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
+                    return ThinkResult.NoJob;
+                }
+            }
             //Check laziness
-            if (pawn.needs.TryGetNeed<Need_Laziness>().IsLazy)
+            if (pawn.needs.TryGetNeed<Need_Motivation>().IsLazy)
             {
                 return ThinkResult.NoJob;
             }
-            if (this.emergency && pawn.mindState.priorityWork.IsPrioritized)
-            {
-                List<WorkGiverDef> workGiversByPriority = pawn.mindState.priorityWork.WorkType.workGiversByPriority;
-                for (int i = 0; i < workGiversByPriority.Count; i++)
-                {
-                    WorkGiver worker = workGiversByPriority[i].Worker;
-                    Job job = this.GiverTryGiveJobPrioritized(pawn, worker, pawn.mindState.priorityWork.Cell);
-                    if (job != null)
-                    {
-                        job.playerForced = true;
-                        return new ThinkResult(job, this, new JobTag?(workGiversByPriority[i].tagToGive));
-                    }
-                }
-                pawn.mindState.priorityWork.Clear();
-            }
             //Work prisoners will do
-            PrisonerWorkDisabledUtility.initWorkSettings(pawn);
+            WorkAssignmentsUtility.initWorkSettings(pawn);
             List<WorkGiver> workList = pawn.workSettings.WorkGiversInOrderNormal;
             workList.RemoveAll(workGiver => workGiver.def.defName == "GrowerSow");
-            pawn.needs.TryGetNeed<Need_Laziness>().Enabled = false;
+            pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
 
             int num = -999;
             TargetInfo targetInfo = TargetInfo.Invalid;
@@ -90,7 +75,7 @@ namespace PrisonLabor
                         Job job2 = workGiver.NonScanJob(pawn);
                         if (job2 != null)
                         {
-                            pawn.needs.TryGetNeed<Need_Laziness>().Enabled = true;
+                            pawn.needs.TryGetNeed<Need_Motivation>().Enabled = true;
                             return new ThinkResult(job2, this, new JobTag?(workList[j].def.tagToGive));
                         }
                         WorkGiver_Scanner scanner = workGiver as WorkGiver_Scanner;
@@ -187,7 +172,7 @@ namespace PrisonLabor
                         }
                         if (job3 != null)
                         {
-                            pawn.needs.TryGetNeed<Need_Laziness>().Enabled = true;
+                            pawn.needs.TryGetNeed<Need_Motivation>().Enabled = true;
                             return new ThinkResult(job3, this, new JobTag?(workList[j].def.tagToGive));
                         }
                         Log.ErrorOnce(string.Concat(new object[]
