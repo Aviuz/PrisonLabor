@@ -12,13 +12,15 @@
 </p>
 
 ## Description
-This mod force prisoners to work if Prisoner Interaction is set to "Work".
-Prisoner must be fed, and rested, or he(she) will refuse to work. Currently prisoners can only cook, mine, cut plants, craft, haul, and clean.
-Attention! He can run away if he mine a way out.
+This mod force prisoners to work. To enable this feature prisoners must have "Force to work" option checked ("Prisoner" tab). Prison labor needs management that consist:
+* Motivation - prisoners need to be motivated by presence of colonists. Wardens have new job - supervising prisoners. Low motivation can lead to revolts. Revolts are not available yet.
+* Work assignment - prisoners that have option "Force to work" are added to "Work" tab.
+* Time restrictions - prisoners that have option "Force to work" are added to "Restrict" tab.
+* Prison area - prisoners in order to work need to reach target. You can check "Hold open" option on doors. Be aware, they will try to run if they see opportunity.
+* "Prisoners only" tools - You can mark orders and bills by tools that exclude colonist from work.
 
-Prisoners need to be watched by wardens, or they will stop working.
-
-This is early alpha version, and it can be buggy.
+## Alpha
+This is early alpha version! Some features can be changed, and there are many that will be added. There can be bugs or compatibility collisions.
 
 ## Compatibility
 * Works with mods that add Jobs of type cook/mine/craft/haul/clean like Quarry, or Haulers Can Haul To Blueprints
@@ -28,13 +30,15 @@ Works with saves.
 
 ## [To-do list](https://github.com/Aviuz/PrisonLabor/projects/1)
 
-## To make prisoners work you must meet these conditions
+## Currently to make prisoners work you must meet these conditions
 * Prisoner is safe, and don't need medical assistance.
 * Prisoner don't need to recover from injury/sickness in bed.
 * Prisoner can't escape.
 * Prisoner can reach work (best way to do that is leaving open doors to work area).
 * Prisoner is fed, and rested.
 * Prisoner interaction is set to "Force to work" (no "Chat and Recruit", or "Friendly Chat").
+* Laziness bar in "Needs" tab is below 80%.
+* Work type is enabled in "Work" tab.
 
 ## Translations
 Please contact me if you want help me writing translations. It will take you a few minutes to translate few sentences, and you will help making the mod even better. Thank you in advance!
