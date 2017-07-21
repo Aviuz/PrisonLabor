@@ -20,13 +20,14 @@ namespace PrisonLabor
         {
             HarmonyPatches.run();
             PrisonLaborPrefs.Init();
+            PrisonLaborMod.Init();
             checkVersion();
         }
 
         private static void checkVersion()
         {
             //delete later
-            if(PrisonLaborPrefs.Version > 2 && PrisonLaborPrefs.Version < 6)
+            if (PrisonLaborPrefs.Version > 2 && PrisonLaborPrefs.Version < 6)
             {
                 PrisonLaborPrefs.LastVersion = PrisonLaborPrefs.Version;
             }
@@ -37,7 +38,7 @@ namespace PrisonLabor
                 PrisonLaborPrefs.Version = version;
                 PrisonLaborPrefs.LastVersion = version;
             }
-            else if(PrisonLaborPrefs.Version != version)
+            else if (PrisonLaborPrefs.Version != version)
             {
                 PrisonLaborPrefs.Version = version;
             }
