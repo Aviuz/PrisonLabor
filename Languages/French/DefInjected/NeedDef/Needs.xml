@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <PrisonLabor_Motivation.label>Motivation</PrisonLabor_Motivation.label>
+  <PrisonLabor_Motivation.description>Indique le taux de motivation au travail d'un prisonnier. La motivation peut être augmentée par la présence de colons à proximité.</PrisonLabor_Motivation.description>
+</LanguageData>
