@@ -38,6 +38,58 @@ namespace PrisonLabor
             }
         }
 
+        public static bool ShowNews
+        {
+            get
+            {
+                return PrisonLaborPrefs.data.show_news;
+            }
+            set
+            {
+                PrisonLaborPrefs.data.show_news = value;
+                PrisonLaborPrefs.Apply();
+            }
+        }
+
+        public static bool AllowAllWorktypes
+        {
+            get
+            {
+                return PrisonLaborPrefs.data.allow_all_worktypes;
+            }
+            set
+            {
+                PrisonLaborPrefs.data.allow_all_worktypes = value;
+                PrisonLaborPrefs.Apply();
+            }
+        }
+
+        public static bool EnableMotivationMechanics
+        {
+            get
+            {
+                return PrisonLaborPrefs.data.enable_motivation_mechanics;
+            }
+            set
+            {
+                PrisonLaborPrefs.data.enable_motivation_mechanics = value;
+                PrisonLaborPrefs.Apply();
+            }
+        }
+
+        public static bool DisableMod
+        {
+            get
+            {
+                return PrisonLaborPrefs.data.disable_mod;
+            }
+            set
+            {
+                PrisonLaborPrefs.data.disable_mod = value;
+                PrisonLaborPrefs.Apply();
+            }
+        }
+
         public static void Init()
         {
             bool flag = !new FileInfo(prefsFilePath).Exists;
