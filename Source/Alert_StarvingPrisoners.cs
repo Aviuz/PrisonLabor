@@ -7,15 +7,15 @@ using Verse;
 
 namespace PrisonLabor
 {
-    class Alert_LazyPrisoners : Alert
+    class Alert_StarvingPrisoners : Alert
     {
-        public Alert_LazyPrisoners()
+        public Alert_StarvingPrisoners()
         {
-            this.defaultLabel = "Prisoners aren't working";
+            this.defaultLabel = "Prisoners are starving";
             this.defaultExplanation = "Work in progress";
         }
 
-        private IEnumerable<Pawn> LazyPrisoners
+        private IEnumerable<Pawn> StarvingPrisoners
         {
             get
             {
@@ -24,7 +24,7 @@ namespace PrisonLabor
                 {
                     foreach (Pawn pawn in maps[i].mapPawns.AllPawns)
                     {
-                        if (PrisonLaborUtility.LaborEnabled(pawn) && pawn.needs.TryGetNeed<Need_Motivation>().IsLazy)
+                        if (PrisonLaborUtility.LaborEnabled(pawn) && pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Anything)
                             yield return pawn;
                     }
                 }
@@ -34,17 +34,16 @@ namespace PrisonLabor
         public override string GetExplanation()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            foreach (Pawn current in LazyPrisoners)
+            foreach (Pawn current in StarvingPrisoners)
             {
                 stringBuilder.AppendLine("    " + current.NameStringShort);
             }
-            return string.Format("Those prisoners are lazy:\n\n{0}\nTry to motivate them.", stringBuilder.ToString());
+            return string.Format("Those prisoners are starving and won't work:\n\n{0}", stringBuilder.ToString());
         }
 
         public override AlertReport GetReport()
         {
-            return AlertReport.CulpritIs(LazyPrisoners.FirstOrDefault());
+            return AlertReport.CulpritIs(StarvingPrisoners.FirstOrDefault());
         }
-
     }
 }

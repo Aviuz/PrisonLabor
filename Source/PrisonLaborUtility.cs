@@ -12,12 +12,26 @@ namespace PrisonLabor
 
         private static PrisonerInteractionModeDef pimDef;
 
+        private static List<WorkTypeDef> enabledWorks;
         private static List<WorkTypeDef> disabledWorks;
 
         public static List<WorkTypeDef> DisabledWorks
         {
             get
             {
+                if(enabledWorks == null)
+                {
+                    enabledWorks = new List<WorkTypeDef>();
+                    enabledWorks.Add(WorkTypeDefOf.Growing);
+                    enabledWorks.Add(WorkTypeDefOf.Mining);
+                    enabledWorks.Add(WorkTypeDefOf.Hauling);
+                    enabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("Cooking"));
+                    enabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("PlantCutting"));
+                    enabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("Crafting"));
+                    enabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("Cleaning"));
+
+                    enabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("HaulingUrgent", false));
+                }
                 if(disabledWorks == null)
                 {
                     disabledWorks = new List<WorkTypeDef>();
@@ -41,13 +55,16 @@ namespace PrisonLabor
 
         public static bool WorkDisabled(WorkTypeDef wt)
         {
-            return DisabledWorks.Contains(wt);
+            if (wt != null)
+                return DisabledWorks.Contains(wt);
+            else
+                return false;
         }
 
         public static bool WorkDisabled(Pawn p, WorkTypeDef wt)
         {
-            if (p.IsPrisonerOfColony)
-                return DisabledWorks.Contains(wt);
+            if (p.IsPrisoner)
+                return WorkDisabled(wt);
             else
                 return false;
         }
@@ -68,14 +85,14 @@ namespace PrisonLabor
             pawn.playerSettings.AreaRestriction = null;
         }
 
-        public static PrisonerInteractionModeDef PIM_Def
+        public static bool LaborEnabled(Pawn pawn)
         {
-            get
-            {
-                if (pimDef == null)
-                    pimDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption");
-                return pimDef;
-            }
+            if (pimDef == null)
+                pimDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption");
+            if (pawn.IsPrisoner && pawn.guest.interactionMode == pimDef)
+                return true;
+            else
+                return false;
         }
     }
 }

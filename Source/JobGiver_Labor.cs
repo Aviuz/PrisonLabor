@@ -41,7 +41,7 @@ namespace PrisonLabor
             //Check medical assistance, fed, and rest if not override
             if(pawn.timetable.CurrentAssignment != TimeAssignmentDefOf.Work)
             {
-                if (HealthAIUtility.ShouldSeekMedicalRest(pawn) || pawn.needs.food.CurCategory != HungerCategory.Fed || pawn.needs.rest.CurCategory != RestCategory.Rested)
+                if (HealthAIUtility.ShouldSeekMedicalRest(pawn) || pawn.needs.food.CurCategory <= HungerCategory.Hungry || pawn.needs.rest.CurCategory != RestCategory.Rested)
                 {
                     pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
                     return ThinkResult.NoJob;

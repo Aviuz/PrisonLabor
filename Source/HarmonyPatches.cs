@@ -210,7 +210,7 @@ namespace PrisonLabor
             if (mainTabWindow is MainTabWindow_Work || mainTabWindow is MainTabWindow_Restrict || mainTabWindow.GetType().ToString().Contains("MainTabWindow_WorkTab"))
             {
                 foreach (Pawn pawn in Find.VisibleMap.mapPawns.PrisonersOfColony)
-                    if (pawn.guest.interactionMode == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption"))
+                    if (PrisonLaborUtility.LaborEnabled(pawn))
                     {
                         PrisonLaborUtility.InitWorkSettings(pawn);
                         yield return pawn;
@@ -230,7 +230,7 @@ namespace PrisonLabor
             Label jumpTo = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_2);
             yield return new CodeInstruction(OpCodes.Ldarg_3);
-            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod("Disabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
+            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod("WorkDisabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             //Return
@@ -260,7 +260,7 @@ namespace PrisonLabor
             Label jumpTo = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_0);
             yield return new CodeInstruction(OpCodes.Ldarg_1);
-            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod("Disabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
+            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod("WorkDisabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             //Load string TODO translate

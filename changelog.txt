@@ -1,4 +1,9 @@
 Changelog:
+0.7
+- fixed bug preventing prisoners from cleaning
+- added "starving prisoners" alert
+- added settings
+- changed "Your prisoner stopped working" message to "Your prisoners are not working" alert
 0.6a
 - fixed some bugs
 0.6

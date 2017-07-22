@@ -15,13 +15,13 @@ namespace PrisonLabor
             {
                 //show tutorial
                 Tutorials.Introduction();
-                if (pawn.guest.interactionMode == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption"))
+                if (PrisonLaborUtility.LaborEnabled(pawn))
                 {
                     //can't escape
                     IntVec3 c;
                     if (pawn.guest.PrisonerIsSecure && !RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
                     {
-                                    return true;
+                        return true;
                     }
                     pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
                 }

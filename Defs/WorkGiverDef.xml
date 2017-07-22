@@ -77,4 +77,16 @@
       <li>Manipulation</li>
     </requiredCapacities>
   </WorkGiverDef>
+  <WorkGiverDef>
+    <defName>PrisonLabor_CleanFilth_Tweak</defName>
+    <label>clean filth</label>
+    <giverClass>PrisonLabor.WorkGiver_CleanFilth_Tweak</giverClass>
+    <workType>Cleaning</workType>
+    <priorityInType>6</priorityInType>
+    <verb>clean</verb>
+    <gerund>cleaning</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
 </WorkGivers>

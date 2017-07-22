@@ -21,7 +21,7 @@ namespace PrisonLabor
                 return null;
             }
             Pawn pawn2 = (Pawn)t;
-            if (pawn2.guest.interactionMode == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption") && (!pawn2.Downed || pawn2.InBed()) && pawn.CanReserve(t, 1, -1, null, false) && pawn2.Awake())
+            if (PrisonLaborUtility.LaborEnabled(pawn2) && (!pawn2.Downed || pawn2.InBed()) && pawn.CanReserve(t, 1, -1, null, false) && pawn2.Awake())
             {
                     return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerSupervise"), t);
             }
