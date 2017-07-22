@@ -7,8 +7,10 @@ using Verse;
 
 namespace PrisonLabor
 {
-    class WorkAssignmentsUtility
+    class PrisonLaborUtility
     {
+
+        private static PrisonerInteractionModeDef pimDef;
 
         private static List<WorkTypeDef> disabledWorks;
 
@@ -37,12 +39,12 @@ namespace PrisonLabor
             }
         }
 
-        public static bool Disabled(WorkTypeDef wt)
+        public static bool WorkDisabled(WorkTypeDef wt)
         {
             return DisabledWorks.Contains(wt);
         }
 
-        public static bool Disabled(Pawn p, WorkTypeDef wt)
+        public static bool WorkDisabled(Pawn p, WorkTypeDef wt)
         {
             if (p.IsPrisonerOfColony)
                 return DisabledWorks.Contains(wt);
@@ -50,12 +52,12 @@ namespace PrisonLabor
                 return false;
         }
 
-        public static void initWorkSettings(Pawn pawn)
+        public static void InitWorkSettings(Pawn pawn)
         {
             //Work Types
             if (!pawn.workSettings.EverWork)
                 pawn.workSettings.EnableAndInitialize();
-            foreach (WorkTypeDef def in WorkAssignmentsUtility.DisabledWorks)
+            foreach (WorkTypeDef def in PrisonLaborUtility.DisabledWorks)
                 pawn.workSettings.Disable(def);
 
             //Timetables
@@ -64,6 +66,16 @@ namespace PrisonLabor
 
             //Restrict areas
             pawn.playerSettings.AreaRestriction = null;
+        }
+
+        public static PrisonerInteractionModeDef PIM_Def
+        {
+            get
+            {
+                if (pimDef == null)
+                    pimDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption");
+                return pimDef;
+            }
         }
     }
 }

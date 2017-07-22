@@ -31,7 +31,7 @@ namespace PrisonLabor
         {
             if(pawn.timetable == null)
             {
-                WorkAssignmentsUtility.initWorkSettings(pawn);
+                PrisonLaborUtility.InitWorkSettings(pawn);
             }
             if(pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy || pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Sleep)
             {
@@ -53,7 +53,7 @@ namespace PrisonLabor
                 return ThinkResult.NoJob;
             }
             //Work prisoners will do
-            WorkAssignmentsUtility.initWorkSettings(pawn);
+            PrisonLaborUtility.InitWorkSettings(pawn);
             List<WorkGiver> workList = pawn.workSettings.WorkGiversInOrderNormal;
             workList.RemoveAll(workGiver => workGiver.def.defName == "GrowerSow");
             pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;

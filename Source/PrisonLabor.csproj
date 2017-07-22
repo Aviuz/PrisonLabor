@@ -52,13 +52,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alert_LazyPrisoners.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="JobGiver_BedTime.cs" />
     <Compile Include="JobGiver_Diet.cs" />
     <Compile Include="Need_Laziness - OLD.cs" />
     <Compile Include="Need_Motivation.cs" />
     <Compile Include="PrisonerFoodReservation.cs" />
-    <Compile Include="PrisonerWorkDisabledUtility.cs" />
+    <Compile Include="PrisonLaborUtility.cs" />
     <Compile Include="PrisonLaborMod.cs" />
     <Compile Include="Tweaks\FoodUtility_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_FoodDeliver_Tweak.cs" />
