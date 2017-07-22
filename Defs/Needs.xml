@@ -2,6 +2,7 @@
 <Defs>
   <NeedDef>
     <DefName>PrisonLabor_Laziness</DefName>
+    <needClass>PrisonLabor.Need_Laziness</needClass>
     <label>Motivation</label>
     <description>Work In Progress</description>
     <onlyIfCausedByHediff>true</onlyIfCausedByHediff>
