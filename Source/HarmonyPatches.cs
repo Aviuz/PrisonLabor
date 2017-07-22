@@ -117,6 +117,9 @@ namespace PrisonLabor
 
         public static bool ShouldHaveNeedPrisoner(NeedDef nd, Pawn pawn)
         {
+            //delete later
+            if (nd.defName == "PrisonLabor_Laziness" || nd is Need_Laziness)
+                return false;
             if (nd.defName == "PrisonLabor_Motivation" && !pawn.IsPrisoner)
             {
                 return false;

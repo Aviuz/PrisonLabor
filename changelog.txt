@@ -1,4 +1,6 @@
 Changelog:
+0.6a
+- fixed some bugs
 0.6
 - changed mechanics of getting food by prisoners
 - added time restrictions
