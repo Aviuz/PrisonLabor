@@ -33,19 +33,15 @@ namespace PrisonLabor
             {
                 PrisonLaborUtility.InitWorkSettings(pawn);
             }
-            if(pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy || pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Sleep)
+            if(HealthAIUtility.ShouldHaveSurgeryDoneNow(pawn))
             {
-                pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
                 return ThinkResult.NoJob;
             }
             //Check medical assistance, fed, and rest if not override
-            if(pawn.timetable.CurrentAssignment != TimeAssignmentDefOf.Work)
+            if(!PrisonLaborUtility.WorkTime(pawn))
             {
-                if (HealthAIUtility.ShouldSeekMedicalRest(pawn) || pawn.needs.food.CurCategory <= HungerCategory.Hungry || pawn.needs.rest.CurCategory != RestCategory.Rested)
-                {
-                    pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
-                    return ThinkResult.NoJob;
-                }
+                pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
+                return ThinkResult.NoJob;
             }
             //Check laziness
             if (pawn.needs.TryGetNeed<Need_Motivation>().IsLazy)

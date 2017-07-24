@@ -24,7 +24,7 @@ namespace PrisonLabor
                 {
                     foreach (Pawn pawn in maps[i].mapPawns.AllPawns)
                     {
-                        if (PrisonLaborUtility.LaborEnabled(pawn) && pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Anything)
+                        if (PrisonLaborUtility.LaborEnabled(pawn) && PrisonLaborUtility.WorkTime(pawn) && !pawn.needs.TryGetNeed<Need_Motivation>().IsLazy && pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Anything && pawn.needs.food.Starving)
                             yield return pawn;
                     }
                 }

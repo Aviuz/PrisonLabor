@@ -94,5 +94,25 @@ namespace PrisonLabor
             else
                 return false;
         }
+
+        public static bool WorkTime(Pawn pawn)
+        {
+            if (pawn.timetable == null)
+                return true;
+            if (pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Work)
+                return true;
+            if(pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Anything)
+            {
+                if (HealthAIUtility.ShouldSeekMedicalRest(pawn) || pawn.needs.food.CurCategory > HungerCategory.Hungry || pawn.needs.rest.CurCategory != RestCategory.Rested)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace PrisonLabor
                 {
                     foreach (Pawn pawn in maps[i].mapPawns.AllPawns)
                     {
-                        if (PrisonLaborUtility.LaborEnabled(pawn) && pawn.needs.TryGetNeed<Need_Motivation>().IsLazy)
+                        if (PrisonLaborUtility.LaborEnabled(pawn) && PrisonLaborUtility.WorkTime(pawn) && pawn.needs.TryGetNeed<Need_Motivation>().IsLazy)
                             yield return pawn;
                     }
                 }
