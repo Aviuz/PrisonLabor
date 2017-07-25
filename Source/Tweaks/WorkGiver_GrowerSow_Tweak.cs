@@ -100,7 +100,7 @@ namespace PrisonLabor
                     }
                     return null;
                 }
-                if (WorkGiver_Grower.wantedPlantDef.plant.sowMinSkill > 0)
+                if (WorkGiver_Grower.wantedPlantDef.plant.sowMinSkill > 0 && !PrisonLaborPrefs.AdvancedGrowing)
                 {
                     return null;
                 }

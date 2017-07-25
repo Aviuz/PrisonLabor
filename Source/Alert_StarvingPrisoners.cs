@@ -24,7 +24,7 @@ namespace PrisonLabor
                 {
                     foreach (Pawn pawn in maps[i].mapPawns.AllPawns)
                     {
-                        if (PrisonLaborUtility.LaborEnabled(pawn) && PrisonLaborUtility.WorkTime(pawn) && !pawn.needs.TryGetNeed<Need_Motivation>().IsLazy && pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Anything && pawn.needs.food.Starving)
+                        if (PrisonLaborUtility.LaborEnabled(pawn) && PrisonLaborUtility.WorkTime(pawn) && (!PrisonLaborPrefs.EnableMotivationMechanics || !pawn.needs.TryGetNeed<Need_Motivation>().IsLazy) && pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Anything && pawn.needs.food.Starving)
                             yield return pawn;
                     }
                 }
@@ -43,7 +43,14 @@ namespace PrisonLabor
 
         public override AlertReport GetReport()
         {
-            return AlertReport.CulpritIs(StarvingPrisoners.FirstOrDefault());
+            if (!PrisonLaborPrefs.DisableMod)
+            {
+                return AlertReport.CulpritIs(StarvingPrisoners.FirstOrDefault());
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

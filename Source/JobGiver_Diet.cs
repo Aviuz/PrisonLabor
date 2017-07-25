@@ -53,7 +53,8 @@ namespace PrisonLabor
             {
                 return null;
             }
-            pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
+            if(pawn.needs.TryGetNeed<Need_Motivation>() != null)
+                pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
             bool flag;
             if (pawn.RaceProps.Animal)
             {

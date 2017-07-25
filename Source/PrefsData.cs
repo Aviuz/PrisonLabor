@@ -12,10 +12,13 @@ namespace PrisonLabor
         public bool allow_all_worktypes = false;
         public bool enable_motivation_mechanics = true;
         public bool disable_mod = false;
+        public bool advanced_growing = false;
+
+        public string allowed_works = "";
 
         public PrisonLaborPrefsData()
         {
-            
+
         }
 
         public void Apply()

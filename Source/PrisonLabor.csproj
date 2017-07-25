@@ -62,6 +62,8 @@
     <Compile Include="PrisonerFoodReservation.cs" />
     <Compile Include="PrisonLaborUtility.cs" />
     <Compile Include="PrisonLaborMod.cs" />
+    <Compile Include="SelectWorkTypesDialog.cs" />
+    <Compile Include="NewsDialog.cs" />
     <Compile Include="Tweaks\FoodUtility_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_FoodDeliver_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_Mine_Tweak.cs" />

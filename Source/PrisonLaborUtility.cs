@@ -12,51 +12,84 @@ namespace PrisonLabor
 
         private static PrisonerInteractionModeDef pimDef;
 
-        private static List<WorkTypeDef> enabledWorks;
-        private static List<WorkTypeDef> disabledWorks;
+        private static List<WorkTypeDef> defaultWorkTypes;
+        private static List<WorkTypeDef> allowedWorkTypes;
 
-        public static List<WorkTypeDef> DisabledWorks
+        private static List<WorkTypeDef> DefaultWorkTypes
         {
             get
             {
-                if(enabledWorks == null)
+                if(defaultWorkTypes == null)
                 {
-                    enabledWorks = new List<WorkTypeDef>();
-                    enabledWorks.Add(WorkTypeDefOf.Growing);
-                    enabledWorks.Add(WorkTypeDefOf.Mining);
-                    enabledWorks.Add(WorkTypeDefOf.Hauling);
-                    enabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("Cooking"));
-                    enabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("PlantCutting"));
-                    enabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("Crafting"));
-                    enabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("Cleaning"));
+                    defaultWorkTypes = new List<WorkTypeDef>();
+                    defaultWorkTypes.Add(WorkTypeDefOf.Growing);
+                    defaultWorkTypes.Add(WorkTypeDefOf.Mining);
+                    defaultWorkTypes.Add(WorkTypeDefOf.Hauling);
+                    defaultWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed("Cooking"));
+                    defaultWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed("PlantCutting"));
+                    defaultWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed("Crafting"));
+                    defaultWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed("Cleaning"));
 
-                    enabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("HaulingUrgent", false));
+                    defaultWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed("HaulingUrgent", false));
                 }
-                if(disabledWorks == null)
+                return defaultWorkTypes;
+            }
+        }
+
+        private static List<WorkTypeDef> AllowedWorkTypes
+        {
+            get
+            {
+                if (allowedWorkTypes == null)
                 {
-                    disabledWorks = new List<WorkTypeDef>();
-                    disabledWorks.Add(WorkTypeDefOf.Construction);
-                    disabledWorks.Add(WorkTypeDefOf.Doctor);
-                    disabledWorks.Add(WorkTypeDefOf.Firefighter);
-                    disabledWorks.Add(WorkTypeDefOf.Handling);
-                    disabledWorks.Add(WorkTypeDefOf.Hunting);
-                    disabledWorks.Add(WorkTypeDefOf.Warden);
-                    disabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("Art"));
-                    disabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("PatientEmergency"));
-                    disabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("PatientBedRest"));
-                    disabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("Flicker"));
-                    disabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("Research"));
-                    disabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("Smithing"));
-                    disabledWorks.Add(DefDatabase<WorkTypeDef>.GetNamed("Tailoring"));
+                    return DefaultWorkTypes;
                 }
-                return disabledWorks;
+                else
+                {
+                    return allowedWorkTypes;
+                }
+            }
+        }
+
+        public static string AllowedWorkTypesData
+        {
+            get
+            {
+                if (allowedWorkTypes == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    string data = "";
+                    foreach(WorkTypeDef workDef in allowedWorkTypes)
+                    {
+                        data += workDef.defName + ";";
+                    }
+                    return data;
+                }
+            }
+
+            set
+            {
+                if(value.NullOrEmpty())
+                {
+                    allowedWorkTypes = null;
+                }
+                else
+                {
+                    allowedWorkTypes = new List<WorkTypeDef>();
+                    string[] subs = value.Split(';');
+                    foreach (string s in subs)
+                        allowedWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed(s, false));
+                }
             }
         }
 
         public static bool WorkDisabled(WorkTypeDef wt)
         {
-            if (wt != null)
-                return DisabledWorks.Contains(wt);
+            if (wt != null && !PrisonLaborPrefs.AllowAllWorkTypes)
+                return !AllowedWorkTypes.Contains(wt);
             else
                 return false;
         }
@@ -69,13 +102,23 @@ namespace PrisonLabor
                 return false;
         }
 
+        public static void SetAllowedWorkTypes(IEnumerable<WorkTypeDef> newList)
+        {
+            allowedWorkTypes = new List<WorkTypeDef>();
+            foreach(WorkTypeDef workDef in newList)
+            {
+                allowedWorkTypes.Add(workDef);
+            }
+        }
+
         public static void InitWorkSettings(Pawn pawn)
         {
             //Work Types
             if (!pawn.workSettings.EverWork)
                 pawn.workSettings.EnableAndInitialize();
-            foreach (WorkTypeDef def in PrisonLaborUtility.DisabledWorks)
-                pawn.workSettings.Disable(def);
+            foreach (WorkTypeDef def in DefDatabase<WorkTypeDef>.AllDefs)
+                if(WorkDisabled(def))
+                    pawn.workSettings.Disable(def);
 
             //Timetables
             if(pawn.timetable == null)
@@ -89,7 +132,7 @@ namespace PrisonLabor
         {
             if (pimDef == null)
                 pimDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption");
-            if (pawn.IsPrisoner && pawn.guest.interactionMode == pimDef)
+            if (pawn.IsPrisoner && pawn.guest.interactionMode == pimDef && !PrisonLaborPrefs.DisableMod)
                 return true;
             else
                 return false;

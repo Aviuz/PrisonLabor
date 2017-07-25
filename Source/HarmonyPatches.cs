@@ -120,7 +120,7 @@ namespace PrisonLabor
             //delete later
             if (nd.defName == "PrisonLabor_Laziness" || nd is Need_Laziness)
                 return false;
-            if (nd.defName == "PrisonLabor_Motivation" && !pawn.IsPrisoner)
+            if (nd.defName == "PrisonLabor_Motivation" && !(pawn.IsPrisoner && PrisonLaborPrefs.EnableMotivationMechanics))
             {
                 return false;
             }
@@ -328,6 +328,36 @@ namespace PrisonLabor
             if (pawn.IsPrisoner)
                 return true;
             return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(ForbidUtility))]
+    [HarmonyPatch("IsForbidden")]
+    [HarmonyPatch(new Type[] { typeof(Thing), typeof(Pawn) })]
+    class FoodReservingPatch
+    {
+        private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instr)
+        {
+            Label jumpTo = gen.DefineLabel();
+            yield return new CodeInstruction(OpCodes.Ldarg_0);
+            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonerFoodReservation).GetMethod("isReserved"));
+            yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
+            yield return new CodeInstruction(OpCodes.Ldarg_1);
+            yield return new CodeInstruction(OpCodes.Call, typeof(Pawn).GetMethod("get_IsPrisoner"));
+            yield return new CodeInstruction(OpCodes.Brtrue, jumpTo);
+            yield return new CodeInstruction(OpCodes.Ldc_I4_1);
+            yield return new CodeInstruction(OpCodes.Ret);
+
+            bool first = true;
+            foreach (CodeInstruction ci in instr)
+            {
+                if (first)
+                {
+                    first = false;
+                    ci.labels.Add(jumpTo);
+                }
+                yield return ci;
+            }
         }
     }
 }

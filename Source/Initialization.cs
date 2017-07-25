@@ -14,7 +14,7 @@ namespace PrisonLabor
     [StaticConstructorOnStartup]
     class Initialization
     {
-        public static int version = 6;
+        public static int version = PrisonLaborMod.versionNumber;
 
         static Initialization()
         {
@@ -47,12 +47,17 @@ namespace PrisonLabor
             if (PrisonLaborPrefs.LastVersion < 5)
             {
                 Log.Message("Detected older version of PrisonLabor than 0.5");
-                Tutorials.msgShowVersion0_5 = true;
+                NewsDialog.news_0_5 = true;
             }
             if (PrisonLaborPrefs.LastVersion < 6)
             {
                 Log.Message("Detected older version of PrisonLabor than 0.6");
-                Tutorials.msgShowVersion0_6 = true;
+                NewsDialog.news_0_6 = true;
+            }
+            if (PrisonLaborPrefs.LastVersion < 7)
+            {
+                Log.Message("Detected older version of PrisonLabor than 0.7");
+                NewsDialog.news_0_7 = true;
             }
 
             Log.Message("Loaded PrisonLabor v" + PrisonLaborPrefs.Version);

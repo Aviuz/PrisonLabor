@@ -43,7 +43,14 @@ namespace PrisonLabor
 
         public override AlertReport GetReport()
         {
-            return AlertReport.CulpritIs(LazyPrisoners.FirstOrDefault());
+            if (PrisonLaborPrefs.EnableMotivationMechanics)
+            {
+                return AlertReport.CulpritIs(LazyPrisoners.FirstOrDefault());
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }

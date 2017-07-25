@@ -23,7 +23,8 @@ namespace PrisonLabor
                     {
                         return true;
                     }
-                    pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
+                    if(pawn.needs.TryGetNeed<Need_Motivation>() != null)
+                        pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
                 }
             }
             return false;
