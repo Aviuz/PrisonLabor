@@ -48,16 +48,19 @@ namespace PrisonLabor
             {
                 Log.Message("Detected older version of PrisonLabor than 0.5");
                 NewsDialog.news_0_5 = true;
+                NewsDialog.autoShow = true;
             }
             if (PrisonLaborPrefs.LastVersion < 6)
             {
                 Log.Message("Detected older version of PrisonLabor than 0.6");
                 NewsDialog.news_0_6 = true;
+                NewsDialog.autoShow = true;
             }
             if (PrisonLaborPrefs.LastVersion < 7)
             {
                 Log.Message("Detected older version of PrisonLabor than 0.7");
                 NewsDialog.news_0_7 = true;
+                NewsDialog.autoShow = true;
             }
 
             Log.Message("Loaded PrisonLabor v" + PrisonLaborPrefs.Version);

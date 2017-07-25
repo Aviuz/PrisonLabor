@@ -9,7 +9,7 @@ namespace PrisonLabor
 {
     class NewsDialog : Window
     {
-        private static bool autoShow = true;
+        public static bool autoShow = false;
 
         public static bool showAll = false;
 
