@@ -51,6 +51,7 @@ namespace PrisonLabor
         [DebuggerHidden]
         protected override IEnumerable<Toil> MakeNewToils()
         {
+            this.FailOn(() => PrisonerFoodReservation.isReserved(TargetA.Thing));
             yield return Toils_Reserve.Reserve(TargetIndex.B, 1, -1, null);
             if (this.eatingFromInventory)
             {
@@ -88,7 +89,7 @@ namespace PrisonLabor
                 {
                     Thing thing;
                     pawn.carryTracker.TryDropCarriedThing(toil.actor.jobs.curJob.targetC.Cell, ThingPlaceMode.Direct, out thing, null);
-                    PrisonerFoodReservation.reserve(thing);
+                    PrisonerFoodReservation.reserve(thing, (Pawn)toil.actor.jobs.curJob.targetB.Thing);
                 },
                 defaultCompleteMode = ToilCompleteMode.Instant
             };

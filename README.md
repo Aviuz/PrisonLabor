@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="https://github.com/Aviuz/PrisonLabor/releases">
-    <img src="https://img.shields.io/badge/version-0.6-orange.svg?style=flat" alt="v0.6" />
+    <img src="https://img.shields.io/badge/version-0.7-orange.svg?style=flat" alt="v0.7" />
   </a>
 </p>
 
@@ -24,21 +24,12 @@ This is early alpha version! Some features can be changed, and there are many th
 
 ## Compatibility
 * Works with mods that add Jobs of type cook/mine/craft/haul/clean like Quarry, or Haulers Can Haul To Blueprints
-Works with saves.
-* You can enable, re-enable, disable this mod to all saves. (However disabling mod can throw errors, but they just saying they can't find tutorials, no harm)
-* No collisions with other mods detected yet. Only mods that changes thinking of humanlike should be considered (Humanlike_PostDuty handle).
+* Works with old saves.
+* Disabling this mod to saves causes prisoners to disappear. In 0.7 I've planned tool to safely disable this mod.
+* Now works with WorkTab (by Fluffy)
+* There are some collisions that causes prisoners to fail to reserve target of their jobs. They will work on same thing or stealing resources from benches. If you experiencing this issue please le me know what mods are you using. I need to identify which mod causes that.
 
 ## [To-do list](https://github.com/Aviuz/PrisonLabor/projects/1)
-
-## Currently to make prisoners work you must meet these conditions
-* Prisoner is safe, and don't need medical assistance.
-* Prisoner don't need to recover from injury/sickness in bed.
-* Prisoner can't escape.
-* Prisoner can reach work (best way to do that is leaving open doors to work area).
-* Prisoner is fed, and rested.
-* Prisoner interaction is set to "Force to work" (no "Chat and Recruit", or "Friendly Chat").
-* Laziness bar in "Needs" tab is below 80%.
-* Work type is enabled in "Work" tab.
 
 ## Translations
 Please contact me if you want help me writing translations. It will take you a few minutes to translate few sentences, and you will help making the mod even better. Thank you in advance!

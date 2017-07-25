@@ -16,12 +16,12 @@ namespace PrisonLabor
             {
                 return null;
             }
-            if (((Pawn)t).needs.food.CurCategory != HungerCategory.Fed && ((Pawn)t).needs.rest.CurCategory != RestCategory.Rested)
+            if (!PrisonLaborUtility.LaborEnabled((Pawn)t) || !PrisonLaborUtility.WorkTime((Pawn)t))
             {
                 return null;
             }
             Pawn pawn2 = (Pawn)t;
-            if (pawn2.guest.interactionMode == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption") && (!pawn2.Downed || pawn2.InBed()) && pawn.CanReserve(t, 1, -1, null, false) && pawn2.Awake())
+            if (!pawn2.Downed && pawn.CanReserve(t, 1, -1, null, false) && pawn2.Awake())
             {
                     return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerSupervise"), t);
             }

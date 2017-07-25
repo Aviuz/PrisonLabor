@@ -102,16 +102,6 @@ namespace PrisonLabor
             }
         }
 
-        public static PrisonerInteractionModeDef PimDef
-        {
-            get
-            {
-                if (pimDef == null)
-                    pimDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption");
-                return pimDef;
-            }
-        }
-
         private float LazinessRate
         {
             get
@@ -136,11 +126,11 @@ namespace PrisonLabor
                             // colonist nearby
                             if (p.IsFreeColonist)
                                 wardensCount++;
-                            if (p.IsPrisoner && p.guest.interactionMode == PimDef)
+                            if (PrisonLaborUtility.LaborEnabled(p))
                                 prisonersCount++;
                         }
 
-                        if (pawn.guest.interactionMode == PimDef)
+                        if (PrisonLaborUtility.LaborEnabled(pawn))
                         {
                             float value = wardensCount * InspireRate / prisonersCount;
                             if (enabled)
@@ -203,7 +193,6 @@ namespace PrisonLabor
                 if (CurLevel <= LazyLevel && !isLazy && wardensCount == 0)
                 {
                     isLazy = true;
-                    Messages.Message("PrisonLabor_LazyPrisonerMessage".Translate(), pawn, MessageSound.Standard);
                     Tutorials.Motivation();
                 }
                 else if (isLazy && wardensCount > 0)

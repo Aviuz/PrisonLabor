@@ -120,7 +120,7 @@ namespace PrisonLabor
             //delete later
             if (nd.defName == "PrisonLabor_Laziness" || nd is Need_Laziness)
                 return false;
-            if (nd.defName == "PrisonLabor_Motivation" && !pawn.IsPrisoner)
+            if (nd.defName == "PrisonLabor_Motivation" && !(pawn.IsPrisoner && PrisonLaborPrefs.EnableMotivationMechanics))
             {
                 return false;
             }
@@ -210,9 +210,9 @@ namespace PrisonLabor
             if (mainTabWindow is MainTabWindow_Work || mainTabWindow is MainTabWindow_Restrict || mainTabWindow.GetType().ToString().Contains("MainTabWindow_WorkTab"))
             {
                 foreach (Pawn pawn in Find.VisibleMap.mapPawns.PrisonersOfColony)
-                    if (pawn.guest.interactionMode == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption"))
+                    if (PrisonLaborUtility.LaborEnabled(pawn))
                     {
-                        WorkAssignmentsUtility.initWorkSettings(pawn);
+                        PrisonLaborUtility.InitWorkSettings(pawn);
                         yield return pawn;
                     }
             }
@@ -230,7 +230,7 @@ namespace PrisonLabor
             Label jumpTo = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_2);
             yield return new CodeInstruction(OpCodes.Ldarg_3);
-            yield return new CodeInstruction(OpCodes.Call, typeof(WorkAssignmentsUtility).GetMethod("Disabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
+            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod("WorkDisabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             //Return
@@ -260,7 +260,7 @@ namespace PrisonLabor
             Label jumpTo = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_0);
             yield return new CodeInstruction(OpCodes.Ldarg_1);
-            yield return new CodeInstruction(OpCodes.Call, typeof(WorkAssignmentsUtility).GetMethod("Disabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
+            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod("WorkDisabled", new Type[] { typeof(Pawn), typeof(WorkTypeDef) }));
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             //Load string TODO translate
@@ -328,6 +328,36 @@ namespace PrisonLabor
             if (pawn.IsPrisoner)
                 return true;
             return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(ForbidUtility))]
+    [HarmonyPatch("IsForbidden")]
+    [HarmonyPatch(new Type[] { typeof(Thing), typeof(Pawn) })]
+    class FoodReservingPatch
+    {
+        private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instr)
+        {
+            Label jumpTo = gen.DefineLabel();
+            yield return new CodeInstruction(OpCodes.Ldarg_0);
+            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonerFoodReservation).GetMethod("isReserved"));
+            yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
+            yield return new CodeInstruction(OpCodes.Ldarg_1);
+            yield return new CodeInstruction(OpCodes.Call, typeof(Pawn).GetMethod("get_IsPrisoner"));
+            yield return new CodeInstruction(OpCodes.Brtrue, jumpTo);
+            yield return new CodeInstruction(OpCodes.Ldc_I4_1);
+            yield return new CodeInstruction(OpCodes.Ret);
+
+            bool first = true;
+            foreach (CodeInstruction ci in instr)
+            {
+                if (first)
+                {
+                    first = false;
+                    ci.labels.Add(jumpTo);
+                }
+                yield return ci;
+            }
         }
     }
 }

@@ -1,4 +1,13 @@
 Changelog:
+0.7
+- fixed "failing to reserve food" bug (that one with circling warden around food)
+- prisoners now stop working (while "anything" time) while starving instead of hungry. They will still get minor debuff
+- wardens will no longer watch over not working prisoners
+- prisoners will no longer work if waiting for operation
+- fixed bug preventing prisoners from cleaning
+- added "starving prisoners" alert
+- added settings
+- changed "Your prisoner stopped working" message to "Prisoners aren't working" alert
 0.6a
 - fixed some bugs
 0.6

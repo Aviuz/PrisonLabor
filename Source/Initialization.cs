@@ -14,19 +14,20 @@ namespace PrisonLabor
     [StaticConstructorOnStartup]
     class Initialization
     {
-        public static int version = 6;
+        public static int version = PrisonLaborMod.versionNumber;
 
         static Initialization()
         {
             HarmonyPatches.run();
             PrisonLaborPrefs.Init();
+            PrisonLaborMod.Init();
             checkVersion();
         }
 
         private static void checkVersion()
         {
             //delete later
-            if(PrisonLaborPrefs.Version > 2 && PrisonLaborPrefs.Version < 6)
+            if (PrisonLaborPrefs.Version > 2 && PrisonLaborPrefs.Version < 6)
             {
                 PrisonLaborPrefs.LastVersion = PrisonLaborPrefs.Version;
             }
@@ -37,7 +38,7 @@ namespace PrisonLabor
                 PrisonLaborPrefs.Version = version;
                 PrisonLaborPrefs.LastVersion = version;
             }
-            else if(PrisonLaborPrefs.Version != version)
+            else if (PrisonLaborPrefs.Version != version)
             {
                 PrisonLaborPrefs.Version = version;
             }
@@ -46,12 +47,17 @@ namespace PrisonLabor
             if (PrisonLaborPrefs.LastVersion < 5)
             {
                 Log.Message("Detected older version of PrisonLabor than 0.5");
-                Tutorials.msgShowVersion0_5 = true;
+                NewsDialog.news_0_5 = true;
             }
             if (PrisonLaborPrefs.LastVersion < 6)
             {
                 Log.Message("Detected older version of PrisonLabor than 0.6");
-                Tutorials.msgShowVersion0_6 = true;
+                NewsDialog.news_0_6 = true;
+            }
+            if (PrisonLaborPrefs.LastVersion < 7)
+            {
+                Log.Message("Detected older version of PrisonLabor than 0.7");
+                NewsDialog.news_0_7 = true;
             }
 
             Log.Message("Loaded PrisonLabor v" + PrisonLaborPrefs.Version);

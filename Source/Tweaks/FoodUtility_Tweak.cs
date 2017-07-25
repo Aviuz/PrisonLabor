@@ -160,6 +160,7 @@ namespace PrisonLabor
                         return thing;
                     }
                 }
+
             }
             return null;
         }
@@ -195,7 +196,7 @@ namespace PrisonLabor
             }
             Predicate<Thing> foodValidator = delegate (Thing t)
             {
-                if (PrisonerFoodReservation.isReserved(t) && !eater.IsPrisoner && !desperate)
+                if (PrisonerFoodReservation.isReserved(t) && (eater != getter || !eater.IsPrisoner) && !desperate)
                 {
                     return false;
                 }
