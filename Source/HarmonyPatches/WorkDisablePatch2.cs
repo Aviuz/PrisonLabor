@@ -5,24 +5,26 @@ using Harmony;
 using RimWorld;
 using Verse;
 
-namespace PrisonLabor.HarmonyPatches
+namespace PrisonLabor.Harmony
 {
     [HarmonyPatch(typeof(WidgetsWork))]
-    [HarmonyPatch("DrawWorkBoxFor")]
-    [HarmonyPatch(new[] {typeof(float), typeof(float), typeof(Pawn), typeof(WorkTypeDef), typeof(bool)})]
-    internal class WorkDisablePatch
+    [HarmonyPatch("TipForPawnWorker")]
+    [HarmonyPatch(new[] {typeof(Pawn), typeof(WorkTypeDef), typeof(bool)})]
+    internal class WorkDisablePatch2
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
             // Define label to the begining of the original code
             var jumpTo = gen.DefineLabel();
-            yield return new CodeInstruction(OpCodes.Ldarg_2);
-            yield return new CodeInstruction(OpCodes.Ldarg_3);
+            yield return new CodeInstruction(OpCodes.Ldarg_0);
+            yield return new CodeInstruction(OpCodes.Ldarg_1);
             yield return new CodeInstruction(OpCodes.Call,
                 typeof(PrisonLaborUtility).GetMethod("WorkDisabled", new[] {typeof(Pawn), typeof(WorkTypeDef)}));
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
+            //Load string TODO translate
+            yield return new CodeInstruction(OpCodes.Ldstr, "Work type disabled by prisoners");
             //Return
             yield return new CodeInstruction(OpCodes.Ret);
 

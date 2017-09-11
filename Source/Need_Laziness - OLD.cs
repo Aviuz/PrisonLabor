@@ -1,7 +1,4 @@
 ﻿using RimWorld;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 using Verse;
 
 namespace PrisonLabor
@@ -12,27 +9,25 @@ namespace PrisonLabor
         private const float NeedInspirationLevel = 0.5f;
         private const float LazyRate = 0.003f;
         private const float InspireRate = 0.015f;
-        public const int WardenCapacity = (int)(InspireRate / LazyRate);
+        public const int WardenCapacity = (int) (InspireRate / LazyRate);
 
         private static PrisonerInteractionModeDef pimDef;
         private static NeedDef def;
 
         private bool enabled;
-        private bool needToBeInspired;
         private bool isLazy;
-        private int wardensCount;
+        private bool needToBeInspired;
         private int prisonersCount;
 
         private int slowDown;
-        
+        private int wardensCount;
+
         public Need_Laziness(Pawn pawn) : base(pawn)
         {
-
         }
 
         public override void NeedInterval()
         {
-            
         }
     }
 }

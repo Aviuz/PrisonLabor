@@ -1,57 +1,45 @@
-﻿using RimWorld;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RimWorld;
 using Verse;
 
 namespace PrisonLabor
 {
-    class Alert_LazyPrisoners : Alert
+    internal class Alert_LazyPrisoners : Alert
     {
         public Alert_LazyPrisoners()
         {
-            this.defaultLabel = "Prisoners aren't working";
-            this.defaultExplanation = "Work in progress";
+            defaultLabel = "Prisoners aren't working";
+            defaultExplanation = "Work in progress";
         }
 
         private IEnumerable<Pawn> LazyPrisoners
         {
             get
             {
-                List<Map> maps = Find.Maps;
-                for (int i = 0; i < maps.Count; i++)
-                {
-                    foreach (Pawn pawn in maps[i].mapPawns.AllPawns)
-                    {
-                        if (PrisonLaborUtility.LaborEnabled(pawn) && PrisonLaborUtility.WorkTime(pawn) && pawn.needs.TryGetNeed<Need_Motivation>().IsLazy)
+                var maps = Find.Maps;
+                for (var i = 0; i < maps.Count; i++)
+                    foreach (var pawn in maps[i].mapPawns.AllPawns)
+                        if (PrisonLaborUtility.LaborEnabled(pawn) && PrisonLaborUtility.WorkTime(pawn) &&
+                            pawn.needs.TryGetNeed<Need_Motivation>().IsLazy)
                             yield return pawn;
-                    }
-                }
             }
         }
 
         public override string GetExplanation()
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            foreach (Pawn current in LazyPrisoners)
-            {
+            var stringBuilder = new StringBuilder();
+            foreach (var current in LazyPrisoners)
                 stringBuilder.AppendLine("    " + current.NameStringShort);
-            }
-            return string.Format("Those prisoners are lazy:\n\n{0}\nTry to motivate them.", stringBuilder.ToString());
+            return string.Format("Those prisoners are lazy:\n\n{0}\nTry to motivate them.", stringBuilder);
         }
 
         public override AlertReport GetReport()
         {
             if (PrisonLaborPrefs.EnableMotivationMechanics)
-            {
                 return AlertReport.CulpritIs(LazyPrisoners.FirstOrDefault());
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
-
     }
 }

@@ -1,32 +1,28 @@
-﻿using RimWorld;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
 
 namespace PrisonLabor
 {
-    class SelectWorkTypesDialog : Window
+    internal class SelectWorkTypesDialog : Window
     {
-        Dictionary<WorkTypeDef, bool> workTypes;
-
-        float maxH;
-        Vector2 position;
-        bool temp;
+        private float maxH;
+        private Vector2 position;
+        private readonly Dictionary<WorkTypeDef, bool> workTypes;
 
         public SelectWorkTypesDialog()
         {
-            this.absorbInputAroundWindow = true;
-            this.closeOnEscapeKey = true;
-            this.doCloseX = true;
-            this.doCloseButton = true;
+            absorbInputAroundWindow = true;
+            closeOnEscapeKey = true;
+            doCloseX = true;
+            doCloseButton = true;
 
             workTypes = new Dictionary<WorkTypeDef, bool>();
 
-            foreach (WorkTypeDef workType in DefDatabase<WorkTypeDef>.AllDefs)
+            foreach (var workType in DefDatabase<WorkTypeDef>.AllDefs)
                 if (!PrisonLaborUtility.WorkDisabled(workType))
                     workTypes.Add(workType, true);
                 else
@@ -35,55 +31,44 @@ namespace PrisonLabor
 
         public override void DoWindowContents(Rect inRect)
         {
-
-            Rect listRect = new Rect(inRect.x, inRect.y + 10f, inRect.width, inRect.height - 50f);
-            Rect contentRect = new Rect(0f, 0f, inRect.width - 20f, 24f * workTypes.Count());
+            var listRect = new Rect(inRect.x, inRect.y + 10f, inRect.width, inRect.height - 50f);
+            var contentRect = new Rect(0f, 0f, inRect.width - 20f, 24f * workTypes.Count());
             Widgets.BeginScrollView(listRect, ref this.position, contentRect, true);
-            Listing_Standard listing_Standard = new Listing_Standard();
+            var listing_Standard = new Listing_Standard();
             listing_Standard.Begin(contentRect);
 
             WorkTypeDef workTypeClicked = null;
-            foreach (WorkTypeDef workDef in workTypes.Keys)
+            foreach (var workDef in workTypes.Keys)
             {
-                String label = workDef.labelShort, tooltip = workDef.description;
-                float lineHeight = Text.LineHeight;
-                bool checkOn = workTypes[workDef];
+                string label = workDef.labelShort, tooltip = workDef.description;
+                var lineHeight = Text.LineHeight;
+                var checkOn = workTypes[workDef];
                 //workTypes.TryGetValue(workDef, out checkOn);
-                Rect rect = listing_Standard.GetRect(lineHeight);
+                var rect = listing_Standard.GetRect(lineHeight);
                 if (!tooltip.NullOrEmpty())
                 {
                     if (Mouse.IsOver(rect))
-                    {
                         Widgets.DrawHighlight(rect);
-                    }
                     TooltipHandler.TipRegion(rect, tooltip);
                 }
-                TextAnchor anchor = Text.Anchor;
+                var anchor = Text.Anchor;
                 Text.Anchor = TextAnchor.MiddleLeft;
                 Widgets.Label(rect, label);
                 if (Widgets.ButtonInvisible(rect, false))
                 {
                     workTypeClicked = workDef;
                     if (checkOn)
-                    {
                         SoundDefOf.CheckboxTurnedOn.PlayOneShotOnCamera(null);
-                    }
                     else
-                    {
                         SoundDefOf.CheckboxTurnedOff.PlayOneShotOnCamera(null);
-                    }
                 }
-                Color color = GUI.color;
+                var color = GUI.color;
                 Texture2D image;
                 if (checkOn)
-                {
                     image = Widgets.CheckboxOnTex;
-                }
                 else
-                {
                     image = Widgets.CheckboxOffTex;
-                }
-                Rect position = new Rect(rect.x + rect.width - 24f, rect.y, 24f, 24f);
+                var position = new Rect(rect.x + rect.width - 24f, rect.y, 24f, 24f);
                 GUI.DrawTexture(position, image);
                 Text.Anchor = anchor;
                 listing_Standard.Gap(listing_Standard.verticalSpacing);
@@ -103,14 +88,10 @@ namespace PrisonLabor
 
         private static void Apply(Dictionary<WorkTypeDef, bool> workTypes)
         {
-            List<WorkTypeDef> list = new List<WorkTypeDef>();
-            foreach (WorkTypeDef workDef in workTypes.Keys)
-            {
-                if(workTypes[workDef] == true)
-                {
+            var list = new List<WorkTypeDef>();
+            foreach (var workDef in workTypes.Keys)
+                if (workTypes[workDef])
                     list.Add(workDef);
-                }
-            }
             PrisonLaborUtility.SetAllowedWorkTypes(list);
             PrisonLaborPrefs.AllowedWorkTypes = PrisonLaborUtility.AllowedWorkTypesData;
         }

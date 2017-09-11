@@ -1,7 +1,5 @@
-﻿using RimWorld;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
+using RimWorld;
 using Verse.AI;
 
 namespace PrisonLabor
@@ -10,15 +8,13 @@ namespace PrisonLabor
     {
         protected override void Init()
         {
-            this.xpPerTick = 0.11f;
+            xpPerTick = 0.11f;
         }
-        
+
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            foreach (Toil toil in base.MakeNewToils())
-            {
+            foreach (var toil in base.MakeNewToils())
                 yield return toil;
-            }
             yield return Toils_General.RemoveDesignationsOnThing(TargetIndex.A, DesignationDefOf.HarvestPlant);
         }
     }

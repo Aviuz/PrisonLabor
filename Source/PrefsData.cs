@@ -1,27 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace PrisonLabor
 {
     public class PrisonLaborPrefsData
     {
-        public Version version = Version.v0_0;
-        public Version last_version = Version.v0_0;
-        public bool show_news = true;
-        public bool allow_all_worktypes = false;
-        public bool enable_motivation_mechanics = true;
-        public bool disable_mod = false;
         public bool advanced_growing = false;
+        public bool allow_all_worktypes = false;
 
         public string allowed_works = "";
+        public bool disable_mod = false;
+        public bool enable_motivation_mechanics = true;
+        public Version last_version = Version.v0_0;
+        public bool show_news = true;
 
         public TutorialFlag tutorials_flags = TutorialFlag.None;
-
-        public PrisonLaborPrefsData()
-        {
-
-        }
+        public Version version = Version.v0_0;
 
         public void Apply()
         {
@@ -38,6 +31,7 @@ namespace PrisonLabor
         v0_5,
         v0_6,
         v0_7,
+        v0_7_dev1
     }
 
     [Flags]

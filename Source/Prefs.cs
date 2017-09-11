@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Xml.Linq;
 using Verse;
 
@@ -10,59 +8,51 @@ namespace PrisonLabor
     public static class PrisonLaborPrefs
     {
         private static PrisonLaborPrefsData data;
+
         //TODO OLD DELETE WHEN BETA
-        private static string oldFilePath = Path.Combine(GenFilePaths.ConfigFolderPath, "PrisonData_Prefs.xml");
-        private static string prefsFilePath = Path.Combine(GenFilePaths.ConfigFolderPath, "PrisonLabor_Prefs.xml");
+        private static readonly string oldFilePath = Path.Combine(GenFilePaths.ConfigFolderPath, "PrisonData_Prefs.xml")
+            ;
+
+        private static readonly string prefsFilePath =
+            Path.Combine(GenFilePaths.ConfigFolderPath, "PrisonLabor_Prefs.xml");
 
         public static Version Version
         {
-            get
-            {
-                return PrisonLaborPrefs.data.version;
-            }
+            get { return data.version; }
             set
             {
-                PrisonLaborPrefs.data.version = value;
-                PrisonLaborPrefs.Apply();
+                data.version = value;
+                Apply();
             }
         }
 
         public static Version LastVersion
         {
-            get
-            {
-                return PrisonLaborPrefs.data.last_version;
-            }
+            get { return data.last_version; }
             set
             {
-                PrisonLaborPrefs.data.last_version = value;
-                PrisonLaborPrefs.Apply();
+                data.last_version = value;
+                Apply();
             }
         }
 
         public static bool ShowNews
         {
-            get
-            {
-                return PrisonLaborPrefs.data.show_news;
-            }
+            get { return data.show_news; }
             set
             {
-                PrisonLaborPrefs.data.show_news = value;
-                PrisonLaborPrefs.Apply();
+                data.show_news = value;
+                Apply();
             }
         }
 
         public static bool AllowAllWorkTypes
         {
-            get
-            {
-                return PrisonLaborPrefs.data.allow_all_worktypes;
-            }
+            get { return data.allow_all_worktypes; }
             set
             {
-                PrisonLaborPrefs.data.allow_all_worktypes = value;
-                PrisonLaborPrefs.Apply();
+                data.allow_all_worktypes = value;
+                Apply();
             }
         }
 
@@ -72,34 +62,28 @@ namespace PrisonLabor
             {
                 if (data.disable_mod)
                     return false;
-                return PrisonLaborPrefs.data.enable_motivation_mechanics;
+                return data.enable_motivation_mechanics;
             }
             set
             {
-                PrisonLaborPrefs.data.enable_motivation_mechanics = value;
-                PrisonLaborPrefs.Apply();
+                data.enable_motivation_mechanics = value;
+                Apply();
             }
         }
 
         public static bool DisableMod
         {
-            get
-            {
-                return PrisonLaborPrefs.data.disable_mod;
-            }
+            get { return data.disable_mod; }
             set
             {
-                PrisonLaborPrefs.data.disable_mod = value;
-                PrisonLaborPrefs.Apply();
+                data.disable_mod = value;
+                Apply();
             }
         }
 
         public static bool AdvancedGrowing
         {
-            get
-            {
-                return data.advanced_growing;
-            }
+            get { return data.advanced_growing; }
             set
             {
                 data.advanced_growing = value;
@@ -109,14 +93,11 @@ namespace PrisonLabor
 
         public static string AllowedWorkTypes
         {
-            get
-            {
-                return PrisonLaborPrefs.data.allowed_works;
-            }
+            get { return data.allowed_works; }
             set
             {
-                PrisonLaborPrefs.data.allowed_works = value;
-                PrisonLaborPrefs.Apply();
+                data.allowed_works = value;
+                Apply();
             }
         }
 
@@ -124,12 +105,10 @@ namespace PrisonLabor
         {
             // TODO delete after beta
             if (new FileInfo(oldFilePath).Exists)
-            {
-                System.IO.File.Move(oldFilePath, prefsFilePath);
-            }
-            bool flag = !new FileInfo(prefsFilePath).Exists;
-            PrisonLaborPrefs.data = new PrisonLaborPrefsData();
-            PrisonLaborPrefs.data = DirectXmlLoader.ItemFromXmlFile<PrisonLaborPrefsData>(prefsFilePath, true);
+                File.Move(oldFilePath, prefsFilePath);
+            var flag = !new FileInfo(prefsFilePath).Exists;
+            data = new PrisonLaborPrefsData();
+            data = DirectXmlLoader.ItemFromXmlFile<PrisonLaborPrefsData>(prefsFilePath, true);
             Apply();
         }
 
@@ -138,18 +117,14 @@ namespace PrisonLabor
             Tutorials.UpdateTutorialFlags();
             try
             {
-                XDocument xDocument = new XDocument();
-                XElement content = DirectXmlSaver.XElementFromObject(PrisonLaborPrefs.data, typeof(PrisonLaborPrefsData));
+                var xDocument = new XDocument();
+                var content = DirectXmlSaver.XElementFromObject(data, typeof(PrisonLaborPrefsData));
                 xDocument.Add(content);
                 xDocument.Save(prefsFilePath);
             }
             catch (Exception ex)
             {
-                GenUI.ErrorDialog("ProblemSavingFile".Translate(new object[]
-                {
-                    prefsFilePath,
-                    ex.ToString()
-                }));
+                GenUI.ErrorDialog("ProblemSavingFile".Translate(prefsFilePath, ex.ToString()));
                 Log.Error("Exception saving prefs: " + ex);
             }
         }
@@ -163,9 +138,9 @@ namespace PrisonLabor
 
         public static void RestoreToDefault()
         {
-            Version version = data.version;
-            Version last_version = data.last_version;
-            TutorialFlag tutorials = data.tutorials_flags;
+            var version = data.version;
+            var last_version = data.last_version;
+            var tutorials = data.tutorials_flags;
 
             data = new PrisonLaborPrefsData();
 
@@ -185,8 +160,7 @@ namespace PrisonLabor
         {
             if ((data.tutorials_flags & flag) != 0)
                 return true;
-            else
-                return false;
+            return false;
         }
 
         public static void ResetTutorials()

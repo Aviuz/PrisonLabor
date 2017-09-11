@@ -1,25 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RimWorld;
-using Verse;
-using Harmony;
-using System.Reflection;
-using System.Reflection.Emit;
-using Verse.AI;
-using UnityEngine;
+﻿using Verse;
 
 namespace PrisonLabor
 {
     [StaticConstructorOnStartup]
-    class Initialization
+    internal class Initialization
     {
         public static Version version = PrisonLaborMod.versionNumber;
 
         static Initialization()
         {
-            Harmony.Initialization.Run();
+            HarmonyPatches.Initialization.Run();
             PrisonLaborPrefs.Init();
             PrisonLaborMod.Init();
             checkVersion();
@@ -31,9 +21,7 @@ namespace PrisonLabor
         {
             //delete later
             if (PrisonLaborPrefs.Version > Version.v0_2 && PrisonLaborPrefs.Version < Version.v0_6)
-            {
                 PrisonLaborPrefs.LastVersion = PrisonLaborPrefs.Version;
-            }
 
             // Update actual version
             if (PrisonLaborPrefs.Version == Version.v0_0)

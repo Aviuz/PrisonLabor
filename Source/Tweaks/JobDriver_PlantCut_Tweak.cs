@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using RimWorld;
-using Verse.AI;
+﻿using System.Collections.Generic;
 using Verse;
+using Verse.AI;
 
 namespace PrisonLabor
 {
@@ -11,31 +8,23 @@ namespace PrisonLabor
     {
         protected override void Init()
         {
-            if (base.Plant.def.plant.harvestedThingDef != null && base.Plant.YieldNow() > 0)
-            {
-                this.xpPerTick = 0.11f;
-            }
+            if (Plant.def.plant.harvestedThingDef != null && Plant.YieldNow() > 0)
+                xpPerTick = 0.11f;
             else
-            {
-                this.xpPerTick = 0f;
-            }
+                xpPerTick = 0f;
         }
-        
+
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            foreach (Toil toil in base.MakeNewToils())
-            {
+            foreach (var toil in base.MakeNewToils())
                 yield return toil;
-            }
-            Toil toil2 = new Toil();
+            var toil2 = new Toil();
             toil2.initAction = delegate
             {
-                Pawn actor = toil2.actor;
-                Thing thing = actor.jobs.curJob.GetTarget(TargetIndex.A).Thing;
+                var actor = toil2.actor;
+                var thing = actor.jobs.curJob.GetTarget(TargetIndex.A).Thing;
                 if (!thing.Destroyed)
-                {
                     thing.Destroy(DestroyMode.Vanish);
-                }
             };
             yield return toil2;
         }

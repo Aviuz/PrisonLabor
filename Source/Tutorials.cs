@@ -1,8 +1,5 @@
-﻿using RimWorld;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -10,14 +7,22 @@ namespace PrisonLabor
 {
     public class Tutorials
     {
-        private static ConceptDef introductionDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Indroduction", true);
-        private static ConceptDef motivationDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Motivation", true);
-        private static ConceptDef growingDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Growing", true);
-        private static ConceptDef managementDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Management", true);
-        private static ConceptDef timetableDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Timetable", true);
+        private static readonly ConceptDef introductionDef =
+            DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Indroduction", true);
 
-        private static List<ConceptDef> triggeredTutorials = new List<ConceptDef>();
-        private static float lastTutorTime = 0;
+        private static readonly ConceptDef motivationDef =
+            DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Motivation", true);
+
+        private static readonly ConceptDef growingDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Growing", true);
+
+        private static readonly ConceptDef managementDef =
+            DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Management", true);
+
+        private static readonly ConceptDef timetableDef =
+            DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Timetable", true);
+
+        private static readonly List<ConceptDef> triggeredTutorials = new List<ConceptDef>();
+        private static float lastTutorTime;
 
         public static void Apply()
         {
@@ -61,7 +66,6 @@ namespace PrisonLabor
         private static void TryActivateTutorial(ConceptDef def, OpportunityType opr)
         {
             if (!triggeredTutorials.Contains(def))
-            {
                 if (opr >= OpportunityType.Important || IsReady())
                 {
                     lastTutorTime = Time.time;
@@ -69,15 +73,12 @@ namespace PrisonLabor
                     LessonAutoActivator.TeachOpportunity(def, opr);
                     triggeredTutorials.Add(def);
                 }
-            }
         }
 
         private static bool IsReady()
         {
             if (Time.time - lastTutorTime >= 60f)
-            {
                 return true;
-            }
             return false;
         }
 

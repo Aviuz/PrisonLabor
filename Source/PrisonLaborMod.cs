@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
 namespace PrisonLabor
 {
     [StaticConstructorOnStartup]
-    class PrisonLaborMod : Mod
+    internal class PrisonLaborMod : Mod
     {
-        public const Version versionNumber = Version.v0_7;
-        public const string versionString = "0.7";
+        public const Version versionNumber = Version.v0_7_dev1;
+        public const string versionString = "0.7 dev 1";
 
         private static string difficulty = "";
 
@@ -35,14 +31,16 @@ namespace PrisonLabor
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Rect leftRect = new Rect(inRect.x, inRect.y, inRect.width * 0.65f, inRect.height);
-            Rect rightRect = new Rect(inRect.x + inRect.width * 0.65f + 30f, inRect.y, inRect.width * 0.35f - 30f, inRect.height);
+            var leftRect = new Rect(inRect.x, inRect.y, inRect.width * 0.65f, inRect.height);
+            var rightRect = new Rect(inRect.x + inRect.width * 0.65f + 30f, inRect.y, inRect.width * 0.35f - 30f,
+                inRect.height);
 
-            Listing_Standard listing_options = new Listing_Standard();
+            var listing_options = new Listing_Standard();
 
             listing_options.Begin(leftRect);
 
-            listing_options.CheckboxLabeled("Show news", ref showNews, "Showing news about changes in mod when prisoners detected.");
+            listing_options.CheckboxLabeled("Show news", ref showNews,
+                "Showing news about changes in mod when prisoners detected.");
 
             listing_options.GapLine();
 
@@ -62,12 +60,13 @@ namespace PrisonLabor
 
                 listing_options.GapLine();
 
-                listing_options.CheckboxLabeled("Motivation mechanics (!)", ref enableMotivationMechanics, "When checked prisoners need to be motivated.\n\nWARINING: Needs reloading save.");
+                listing_options.CheckboxLabeled("Motivation mechanics (!)", ref enableMotivationMechanics,
+                    "When checked prisoners need to be motivated.\n\nWARINING: Needs reloading save.");
 
                 listing_options.GapLine();
 
-                listing_options.CheckboxLabeled("Prisoners can grow advanced plants", ref advanceGrowing, "When disabled prisoners can only grow plants that not require any skills.");
-
+                listing_options.CheckboxLabeled("Prisoners can grow advanced plants", ref advanceGrowing,
+                    "When disabled prisoners can only grow plants that not require any skills.");
             }
             else
             {
@@ -84,15 +83,16 @@ namespace PrisonLabor
             listing_options.Gap();
             listing_options.Gap();
 
-            listing_options.CheckboxLabeled("Disable mod", ref disableMod, "When enabled, worlds that are saved are transferred to 'safe mode', and can be played without mod.");
-            
+            listing_options.CheckboxLabeled("Disable mod", ref disableMod,
+                "When enabled, worlds that are saved are transferred to 'safe Mode', and can be played without mod.");
+
             listing_options.End();
 
-            Listing_Standard listing_panel = new Listing_Standard();
+            var listing_panel = new Listing_Standard();
 
             listing_panel.Begin(rightRect);
 
-            float heigh_temp = rightRect.width * 0.56f;
+            var heigh_temp = rightRect.width * 0.56f;
             GUI.DrawTexture(new Rect(0, 0, rightRect.width, heigh_temp), ContentFinder<Texture2D>.Get("Preview", true));
             listing_panel.Gap(heigh_temp);
             listing_panel.Label("Prison Labor Alpha", -1f);
@@ -131,7 +131,7 @@ namespace PrisonLabor
             Log.Message("saved");
             PrisonLaborPrefs.ShowNews = showNews;
             PrisonLaborPrefs.AllowAllWorkTypes = allowAllWorktypes;
-            if(!disableMod)
+            if (!disableMod)
                 PrisonLaborPrefs.EnableMotivationMechanics = enableMotivationMechanics;
             PrisonLaborPrefs.AdvancedGrowing = advanceGrowing;
             PrisonLaborPrefs.DisableMod = disableMod;
@@ -146,34 +146,32 @@ namespace PrisonLabor
 
         private static void CalculateDifficulty()
         {
-            int value = 1000;
+            var value = 1000;
             if (!enableMotivationMechanics)
                 value -= 300;
             if (advanceGrowing)
                 value -= 50;
             value -= 500;
-            if(!allowAllWorktypes)
+            if (!allowAllWorktypes)
             {
-                int delta = 500 + 7 * 50 + (DefDatabase<WorkTypeDef>.DefCount - 20) * 25;
-                foreach (WorkTypeDef wtd in DefDatabase<WorkTypeDef>.AllDefs)
-                {
+                var delta = 500 + 7 * 50 + (DefDatabase<WorkTypeDef>.DefCount - 20) * 25;
+                foreach (var wtd in DefDatabase<WorkTypeDef>.AllDefs)
                     if (!PrisonLaborUtility.WorkDisabled(wtd))
                         delta -= 50;
-                }
                 if (delta > 0)
                     value += delta;
             }
 
             if (value >= 1000)
-                difficulty = (int)(value / 10) + " (Normal)";
+                difficulty = value / 10 + " (Normal)";
             else if (value >= 800)
-                difficulty = (int)(value / 10) + " (Casual)";
+                difficulty = value / 10 + " (Casual)";
             else if (value >= 500)
-                difficulty = (int)(value / 10) + " (Easy)";
+                difficulty = value / 10 + " (Easy)";
             else if (value >= 300)
-                difficulty = (int)(value / 10) + " (Peaceful)";
+                difficulty = value / 10 + " (Peaceful)";
             else
-                difficulty = (int)(value / 10) + " (A joke)";
+                difficulty = value / 10 + " (A joke)";
         }
     }
 }

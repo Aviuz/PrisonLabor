@@ -1,15 +1,12 @@
-﻿using RimWorld;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using RimWorld;
 using Verse;
 
 namespace PrisonLabor
 {
-    class PrisonerFoodReservation
+    internal class PrisonerFoodReservation
     {
-        private static Dictionary<Thing, Pawn> reservation = new Dictionary<Thing, Pawn>();
+        private static readonly Dictionary<Thing, Pawn> reservation = new Dictionary<Thing, Pawn>();
 
         public static bool isReserved(Thing t)
         {
@@ -17,8 +14,7 @@ namespace PrisonLabor
             reservation.TryGetValue(t, out p);
             if (p != null && p.GetRoom() == t.GetRoom() && p.needs.food.CurCategory != HungerCategory.Fed)
                 return true;
-            else
-                return false;
+            return false;
         }
 
         public static void reserve(Thing t, Pawn p)
@@ -34,16 +30,12 @@ namespace PrisonLabor
 
         private static void clearEatenFood()
         {
-            List<Thing> removeList = new List<Thing>();
-            foreach(Thing t in reservation.Keys)
-            {
+            var removeList = new List<Thing>();
+            foreach (var t in reservation.Keys)
                 if (t == null || t.GetRoom() == null || !isReserved(t))
                     removeList.Add(t);
-            }
-            foreach(Thing t in removeList)
-            {
+            foreach (var t in removeList)
                 reservation.Remove(t);
-            }
         }
     }
 }

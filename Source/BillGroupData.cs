@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Verse;
+﻿using Verse;
 
 namespace PrisonLabor
 {
@@ -13,18 +9,18 @@ namespace PrisonLabor
         ColonistsOnly
     }
 
-    class BillGroupData : IExposable
+    internal class BillGroupData : IExposable
     {
-        public GroupMode mode;
+        public GroupMode Mode { get; set; }
 
         public BillGroupData()
         {
-            mode = GroupMode.ColonyOnly;
+            Mode = GroupMode.ColonyOnly;
         }
 
         public void ExposeData()
         {
-            Scribe_Values.Look<GroupMode>(ref this.mode, "PrisonLabor_BillGroup", GroupMode.ColonyOnly, false);
+            Scribe_Values.Look(ref Mode, "PrisonLabor_BillGroup", GroupMode.ColonyOnly, false);
         }
     }
 }

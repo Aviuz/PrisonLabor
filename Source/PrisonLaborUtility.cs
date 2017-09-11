@@ -1,15 +1,11 @@
-﻿using RimWorld;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using RimWorld;
 using Verse;
 
 namespace PrisonLabor
 {
-    class PrisonLaborUtility
+    internal class PrisonLaborUtility
     {
-
         private static PrisonerInteractionModeDef pimDef;
 
         private static List<WorkTypeDef> defaultWorkTypes;
@@ -19,7 +15,7 @@ namespace PrisonLabor
         {
             get
             {
-                if(defaultWorkTypes == null)
+                if (defaultWorkTypes == null)
                 {
                     defaultWorkTypes = new List<WorkTypeDef>();
                     defaultWorkTypes.Add(WorkTypeDefOf.Growing);
@@ -41,13 +37,8 @@ namespace PrisonLabor
             get
             {
                 if (allowedWorkTypes == null)
-                {
                     return DefaultWorkTypes;
-                }
-                else
-                {
-                    return allowedWorkTypes;
-                }
+                return allowedWorkTypes;
             }
         }
 
@@ -56,31 +47,24 @@ namespace PrisonLabor
             get
             {
                 if (allowedWorkTypes == null)
-                {
                     return "";
-                }
-                else
-                {
-                    string data = "";
-                    foreach(WorkTypeDef workDef in allowedWorkTypes)
-                    {
-                        data += workDef.defName + ";";
-                    }
-                    return data;
-                }
+                var data = "";
+                foreach (var workDef in allowedWorkTypes)
+                    data += workDef.defName + ";";
+                return data;
             }
 
             set
             {
-                if(value.NullOrEmpty())
+                if (value.NullOrEmpty())
                 {
                     allowedWorkTypes = null;
                 }
                 else
                 {
                     allowedWorkTypes = new List<WorkTypeDef>();
-                    string[] subs = value.Split(';');
-                    foreach (string s in subs)
+                    var subs = value.Split(';');
+                    foreach (var s in subs)
                         allowedWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed(s, false));
                 }
             }
@@ -90,25 +74,21 @@ namespace PrisonLabor
         {
             if (wt != null && !PrisonLaborPrefs.AllowAllWorkTypes)
                 return !AllowedWorkTypes.Contains(wt);
-            else
-                return false;
+            return false;
         }
 
         public static bool WorkDisabled(Pawn p, WorkTypeDef wt)
         {
             if (p.IsPrisoner)
                 return WorkDisabled(wt);
-            else
-                return false;
+            return false;
         }
 
         public static void SetAllowedWorkTypes(IEnumerable<WorkTypeDef> newList)
         {
             allowedWorkTypes = new List<WorkTypeDef>();
-            foreach(WorkTypeDef workDef in newList)
-            {
+            foreach (var workDef in newList)
                 allowedWorkTypes.Add(workDef);
-            }
         }
 
         public static void InitWorkSettings(Pawn pawn)
@@ -116,12 +96,12 @@ namespace PrisonLabor
             //Work Types
             if (!pawn.workSettings.EverWork)
                 pawn.workSettings.EnableAndInitialize();
-            foreach (WorkTypeDef def in DefDatabase<WorkTypeDef>.AllDefs)
-                if(WorkDisabled(def))
+            foreach (var def in DefDatabase<WorkTypeDef>.AllDefs)
+                if (WorkDisabled(def))
                     pawn.workSettings.Disable(def);
 
             //Timetables
-            if(pawn.timetable == null)
+            if (pawn.timetable == null)
                 pawn.timetable = new Pawn_TimetableTracker(pawn);
 
             //Restrict areas
@@ -134,8 +114,7 @@ namespace PrisonLabor
                 pimDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption");
             if (pawn.IsPrisoner && pawn.guest.interactionMode == pimDef && !PrisonLaborPrefs.DisableMod)
                 return true;
-            else
-                return false;
+            return false;
         }
 
         public static bool WorkTime(Pawn pawn)
@@ -144,17 +123,13 @@ namespace PrisonLabor
                 return true;
             if (pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Work)
                 return true;
-            if(pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Anything)
-            {
-                if (HealthAIUtility.ShouldSeekMedicalRest(pawn) || pawn.needs.food.CurCategory > HungerCategory.Hungry || pawn.needs.rest.CurCategory != RestCategory.Rested)
-                {
+            if (pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Anything)
+                if (HealthAIUtility.ShouldSeekMedicalRest(pawn) ||
+                    pawn.needs.food.CurCategory > HungerCategory.Hungry ||
+                    pawn.needs.rest.CurCategory != RestCategory.Rested)
                     return false;
-                }
                 else
-                {
                     return true;
-                }
-            }
             return false;
         }
     }

@@ -1,40 +1,34 @@
-﻿using RimWorld;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Verse;
+﻿using System.Collections.Generic;
+using RimWorld;
 
 namespace PrisonLabor
 {
-
-    class BillUtility
+    internal class BillUtility
     {
-        private static Dictionary<Bill, BillGroupData> map = new Dictionary<Bill, BillGroupData>();
+        private static readonly Dictionary<Bill, BillGroupData> Map = new Dictionary<Bill, BillGroupData>();
 
         public static GroupMode IsFor(Bill key)
         {
-            if (!map.ContainsKey(key))
-                map[key] = new BillGroupData();
-            return map[key].mode;
+            if (!Map.ContainsKey(key))
+                Map[key] = new BillGroupData();
+            return Map[key].Mode;
         }
 
         public static void SetFor(Bill key, GroupMode value)
         {
-            map[key].mode = value;
-
+            Map[key].Mode = value;
         }
 
         public static BillGroupData GetData(Bill key)
         {
-            if (!map.ContainsKey(key))
-                map[key] = new BillGroupData();
-            return map[key];
+            if (!Map.ContainsKey(key))
+                Map[key] = new BillGroupData();
+            return Map[key];
         }
 
         public static void Remove(Bill bill)
         {
-            map.Remove(bill);
+            Map.Remove(bill);
         }
     }
 }

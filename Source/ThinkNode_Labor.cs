@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
-using UnityEngine;
 
 namespace PrisonLabor
 {
-    class ThinkNode_Labor : ThinkNode_Conditional
+    internal class ThinkNode_Labor : ThinkNode_Conditional
     {
         protected override bool Satisfied(Pawn pawn)
         {
@@ -22,22 +17,16 @@ namespace PrisonLabor
                 {
                     // can't escape
                     IntVec3 c;
-                    if (pawn.guest.PrisonerIsSecure && !RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
-                    {
+                    if (pawn.guest.PrisonerIsSecure &&
+                        !RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
                         return true;
-                    }
                     // can escape but won't nearby guards
-                    else
-                    {
-                        var need = pawn.needs.TryGetNeed<Need_Motivation>();
-                        if (need != null)
-                        {
-                            if (need.Motivated)
-                                return true;
-                            else
-                                need.Enabled = false;
-                        }
-                    }
+                    var need = pawn.needs.TryGetNeed<Need_Motivation>();
+                    if (need != null)
+                        if (need.Motivated)
+                            return true;
+                        else
+                            need.Enabled = false;
                 }
             }
             return false;
