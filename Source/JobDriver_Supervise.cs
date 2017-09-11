@@ -10,6 +10,8 @@ namespace PrisonLabor
 {
     class JobDriver_Supervise : JobDriver
     {
+        private static float GapLengh = 3.0f;
+
         protected Pawn Prisoner
         {
             get
@@ -43,8 +45,8 @@ namespace PrisonLabor
             {
                 Pawn actor = toil.actor;
                 IntVec3 ind;
-                if (Prisoner.GetRoom().Cells.Any(cell => cell.DistanceTo(Prisoner.InteractionCell) < 7 && cell.DistanceTo(Prisoner.InteractionCell) > 4))
-                    ind = prisoner.GetRoom().Cells.Where(cell => cell.DistanceTo(prisoner.InteractionCell) < 7 && cell.DistanceTo(prisoner.InteractionCell) > 4).RandomElement();
+                if (Prisoner.GetRoom().Cells.Any(cell => cell.DistanceTo(Prisoner.InteractionCell) < Need_Motivation.InpirationRange - GapLengh && cell.DistanceTo(Prisoner.InteractionCell) > GapLengh))
+                    ind = prisoner.GetRoom().Cells.Where(cell => cell.DistanceTo(prisoner.InteractionCell) < Need_Motivation.InpirationRange - GapLengh && cell.DistanceTo(prisoner.InteractionCell) > GapLengh).RandomElement();
                 else
                     ind = prisoner.GetRoom().Cells.RandomElement();
                 actor.pather.StartPath(ind, PathEndMode.OnCell);

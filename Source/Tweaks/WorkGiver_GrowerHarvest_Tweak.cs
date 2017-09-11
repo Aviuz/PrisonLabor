@@ -17,7 +17,7 @@ namespace PrisonLabor
 
         public override bool HasJobOnCell(Pawn pawn, IntVec3 c)
         {
-            if (!pawn.IsPrisoner || !pawn.IsPrisonerOfColony)
+            if (!pawn.IsPrisoner)
             {
                 return false;
             }
@@ -27,7 +27,7 @@ namespace PrisonLabor
 
         public override Job JobOnCell(Pawn pawn, IntVec3 c)
         {
-            Job job = new Job(JobDefOf.Harvest);
+            Job job = new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_Harvest_Tweak"));
             Map map = pawn.Map;
             Room room = c.GetRoom(map, RegionType.Set_Passable);
             float num = 0f;

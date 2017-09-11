@@ -102,6 +102,7 @@ namespace PrisonLabor
                 }
                 if (WorkGiver_Grower.wantedPlantDef.plant.sowMinSkill > 0 && !PrisonLaborPrefs.AdvancedGrowing)
                 {
+                    Tutorials.Growing();
                     return null;
                 }
                 int j = 0;

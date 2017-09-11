@@ -10,11 +10,11 @@ namespace PrisonLabor
     public static class PrisonLaborPrefs
     {
         private static PrisonLaborPrefsData data;
-        //OLD DELETE WHEN BETA
+        //TODO OLD DELETE WHEN BETA
         private static string oldFilePath = Path.Combine(GenFilePaths.ConfigFolderPath, "PrisonData_Prefs.xml");
         private static string prefsFilePath = Path.Combine(GenFilePaths.ConfigFolderPath, "PrisonLabor_Prefs.xml");
 
-        public static int Version
+        public static Version Version
         {
             get
             {
@@ -27,7 +27,7 @@ namespace PrisonLabor
             }
         }
 
-        public static int LastVersion
+        public static Version LastVersion
         {
             get
             {
@@ -122,7 +122,7 @@ namespace PrisonLabor
 
         public static void Init()
         {
-            //delete after beta
+            // TODO delete after beta
             if (new FileInfo(oldFilePath).Exists)
             {
                 System.IO.File.Move(oldFilePath, prefsFilePath);
@@ -135,6 +135,7 @@ namespace PrisonLabor
 
         public static void Save()
         {
+            Tutorials.UpdateTutorialFlags();
             try
             {
                 XDocument xDocument = new XDocument();
@@ -157,16 +158,41 @@ namespace PrisonLabor
         {
             data.Apply();
             PrisonLaborUtility.AllowedWorkTypesData = AllowedWorkTypes;
+            Tutorials.Apply();
         }
 
         public static void RestoreToDefault()
         {
-            int version = data.version;
-            int last_version = data.last_version;
+            Version version = data.version;
+            Version last_version = data.last_version;
+            TutorialFlag tutorials = data.tutorials_flags;
+
             data = new PrisonLaborPrefsData();
+
             data.version = version;
             data.last_version = last_version;
+            data.tutorials_flags = tutorials;
+
             Apply();
+        }
+
+        public static void AddTutorialFlag(TutorialFlag flag)
+        {
+            data.tutorials_flags = data.tutorials_flags | flag;
+        }
+
+        public static bool HasTutorialFlag(TutorialFlag flag)
+        {
+            if ((data.tutorials_flags & flag) != 0)
+                return true;
+            else
+                return false;
+        }
+
+        public static void ResetTutorials()
+        {
+            data.tutorials_flags = TutorialFlag.None;
+            Tutorials.Reset();
         }
     }
 }

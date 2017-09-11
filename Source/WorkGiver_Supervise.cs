@@ -20,6 +20,10 @@ namespace PrisonLabor
             {
                 return null;
             }
+            if(pawn.IsPrisoner)
+            {
+                return null;
+            }
             Pawn pawn2 = (Pawn)t;
             if (!pawn2.Downed && pawn.CanReserve(t, 1, -1, null, false) && pawn2.Awake())
             {

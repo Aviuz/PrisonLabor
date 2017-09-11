@@ -47,10 +47,11 @@ namespace PrisonLabor
 
         public override void DoWindowContents(Rect inRect)
         {
-            if(cRect == null)
-                cRect = inRect;
+            cRect.width = inRect.width - 16f;
+            if (cRect.height == 0)
+                cRect.height = inRect.height;
 
-            Rect viewRect = new Rect(inRect.x, inRect.y, inRect.width, inRect.height - 50);
+            Rect viewRect = new Rect(inRect.x, inRect.y, inRect.width, inRect.height - 50f);
 
             Widgets.BeginScrollView(viewRect, ref this.position, cRect, true);
 
@@ -106,7 +107,7 @@ namespace PrisonLabor
 
             Widgets.EndScrollView();
 
-            cRect = new Rect(inRect.x, inRect.y, inRect.width - 50f, CurHeight + 50f);
+            cRect.height = CurHeight;
         }
     }
 }

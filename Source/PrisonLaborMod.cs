@@ -10,7 +10,7 @@ namespace PrisonLabor
     [StaticConstructorOnStartup]
     class PrisonLaborMod : Mod
     {
-        public const int versionNumber = 7;
+        public const Version versionNumber = Version.v0_7;
         public const string versionString = "0.7";
 
         private static string difficulty = "";
@@ -35,8 +35,8 @@ namespace PrisonLabor
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Rect leftRect = new Rect(inRect.x, inRect.y, inRect.width * 0.75f, inRect.height);
-            Rect rightRect = new Rect(inRect.x + inRect.width * 0.75f + 30f, inRect.y, inRect.width * 0.25f - 30f, inRect.height);
+            Rect leftRect = new Rect(inRect.x, inRect.y, inRect.width * 0.65f, inRect.height);
+            Rect rightRect = new Rect(inRect.x + inRect.width * 0.65f + 30f, inRect.y, inRect.width * 0.35f - 30f, inRect.height);
 
             Listing_Standard listing_options = new Listing_Standard();
 
@@ -92,6 +92,9 @@ namespace PrisonLabor
 
             listing_panel.Begin(rightRect);
 
+            float heigh_temp = rightRect.width * 0.56f;
+            GUI.DrawTexture(new Rect(0, 0, rightRect.width, heigh_temp), ContentFinder<Texture2D>.Get("Preview", true));
+            listing_panel.Gap(heigh_temp);
             listing_panel.Label("Prison Labor Alpha", -1f);
             listing_panel.Label("Version: " + versionString, -1f);
 
@@ -101,23 +104,17 @@ namespace PrisonLabor
 
             listing_panel.GapLine();
 
-            Listing_Standard listing_buttons = new Listing_Standard();
-
-            listing_buttons.Begin(new Rect(rightRect.width * 0.25f, listing_panel.CurHeight, rightRect.width * 0.5f, rightRect.height - listing_panel.CurHeight));
-
-            if (listing_buttons.ButtonText("Defaults"))
+            if (listing_panel.ButtonText("Defaults"))
             {
                 PrisonLaborPrefs.RestoreToDefault();
                 Init();
             }
 
-            if (listing_buttons.ButtonText("ShowNews"))
+            if (listing_panel.ButtonText("ShowNews"))
             {
                 NewsDialog.showAll = true;
                 NewsDialog.ForceShow();
             }
-
-            listing_buttons.End();
 
             listing_panel.End();
 

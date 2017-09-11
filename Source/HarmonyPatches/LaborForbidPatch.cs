@@ -1,91 +1,73 @@
-﻿using System;
+﻿using Harmony;
+using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Reflection.Emit;
 using System.Text;
-using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace PrisonLabor
+namespace PrisonLabor.HarmonyPatches
 {
-    public class JobGiver_Labor : ThinkNode
+    [HarmonyPatch(typeof(JobGiver_Work))]
+    [HarmonyPatch("TryIssueJobPackage")]
+    [HarmonyPatch(new Type[] { typeof(Pawn), typeof(JobIssueParams) })]
+    class LaborForbidPatch
     {
-        public bool emergency;
-
-        public override ThinkNode DeepCopy(bool resolve = true)
+        private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instr)
         {
-            JobGiver_Labor jobGiver_Work = (JobGiver_Labor)base.DeepCopy(resolve);
-            jobGiver_Work.emergency = this.emergency;
-            return jobGiver_Work;
+            yield return new CodeInstruction(OpCodes.Ldarg_0);
+            yield return new CodeInstruction(OpCodes.Ldarg_1);
+            yield return new CodeInstruction(OpCodes.Ldarg_2);
+            yield return new CodeInstruction(OpCodes.Call, typeof(LaborForbidPatch).GetMethod("TryIssueJobPackage"));
+            yield return new CodeInstruction(OpCodes.Ret);
         }
 
-        public override float GetPriority(Pawn pawn)
+        public static ThinkResult TryIssueJobPackage(JobGiver_Work jobGiver, Pawn pawn, JobIssueParams jobParams)
         {
-            if (pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Work)
-                return 10f;
-            else
-                return 8f;
-        }
-
-        public override ThinkResult TryIssueJobPackage(Pawn pawn, JobIssueParams jobParams)
-        {
-            var need = pawn.needs.TryGetNeed<Need_Motivation>();
-
-            if (pawn.timetable == null)
+            if (jobGiver.emergency && pawn.mindState.priorityWork.IsPrioritized)
             {
-                PrisonLaborUtility.InitWorkSettings(pawn);
+                List<WorkGiverDef> workGiversByPriority = pawn.mindState.priorityWork.WorkType.workGiversByPriority;
+                for (int i = 0; i < workGiversByPriority.Count; i++)
+                {
+                    WorkGiver worker = workGiversByPriority[i].Worker;
+                    Job job = GiverTryGiveJobPrioritized(jobGiver, pawn, worker, pawn.mindState.priorityWork.Cell);
+                    if (job != null)
+                    {
+                        job.playerForced = true;
+                        return new ThinkResult(job, jobGiver, new JobTag?(workGiversByPriority[i].tagToGive));
+                    }
+                }
+                pawn.mindState.priorityWork.Clear();
             }
-            if (HealthAIUtility.ShouldHaveSurgeryDoneNow(pawn))
-            {
-                return ThinkResult.NoJob;
-            }
-            //Check medical assistance, fed, and rest if not override
-            if (!PrisonLaborUtility.WorkTime(pawn))
-            {
-                Tutorials.Timetable();
-                if (need != null)
-                    need.Enabled = false;
-                return ThinkResult.NoJob;
-            }
-            //Check laziness
-            if (PrisonLaborPrefs.EnableMotivationMechanics && need.IsLazy)
-            {
-                return ThinkResult.NoJob;
-            }
-            //Work prisoners will do
-            PrisonLaborUtility.InitWorkSettings(pawn);
-            List<WorkGiver> workList = pawn.workSettings.WorkGiversInOrderNormal;
-            workList.RemoveAll(workGiver => workGiver.def.defName == "GrowerSow");
-            if (need != null)
-                need.Enabled = false;
-
+            List<WorkGiver> list = jobGiver.emergency ? pawn.workSettings.WorkGiversInOrderEmergency : pawn.workSettings.WorkGiversInOrderNormal;
             int num = -999;
             TargetInfo targetInfo = TargetInfo.Invalid;
             WorkGiver_Scanner workGiver_Scanner = null;
-            for (int j = 0; j < workList.Count; j++)
+            for (int j = 0; j < list.Count; j++)
             {
-                WorkGiver workGiver = workList[j];
+                WorkGiver workGiver = list[j];
                 if (workGiver.def.priorityInType != num && targetInfo.IsValid)
                 {
                     break;
                 }
-                if (this.PawnCanUseWorkGiver(pawn, workGiver))
+                if (!workGiver.ShouldSkip(pawn) && (workGiver.def.canBeDoneByNonColonists || pawn.IsColonist) && (pawn.story == null || !pawn.story.WorkTagIsDisabled(workGiver.def.workTags)) && workGiver.MissingRequiredCapacity(pawn) == null)
                 {
                     try
                     {
                         Job job2 = workGiver.NonScanJob(pawn);
                         if (job2 != null)
                         {
-                            if (need != null)
-                                need.Enabled = true;
-                            return new ThinkResult(job2, this, new JobTag?(workList[j].def.tagToGive));
+                            return new ThinkResult(job2, jobGiver, new JobTag?(list[j].def.tagToGive));
                         }
                         WorkGiver_Scanner scanner = workGiver as WorkGiver_Scanner;
                         if (scanner != null)
                         {
                             if (workGiver.def.scanThings)
                             {
-                                Predicate<Thing> predicate = (Thing t) => !t.IsForbidden(pawn) && scanner.HasJobOnThing(pawn, t, false);
+                                Predicate<Thing> predicate = (Thing t) => !t.IsForbidden(pawn) && scanner.HasJobOnThing(pawn, t, false) && !LaborExclusionUtility.IsDisabledByLabor(t.Position, pawn, scanner.def.workType);
                                 IEnumerable<Thing> enumerable = scanner.PotentialWorkThingsGlobal(pawn);
                                 Thing thing;
                                 if (scanner.Prioritized)
@@ -132,7 +114,7 @@ namespace PrisonLabor
                                             }
                                         }
                                     }
-                                    else if (num4 < num2 && !current.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, current))
+                                    else if (num4 < num2 && !current.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, current) && !LaborExclusionUtility.IsDisabledByLabor(current, pawn, scanner.def.workType))
                                     {
                                         flag = true;
                                     }
@@ -150,11 +132,11 @@ namespace PrisonLabor
                     {
                         Log.Error(string.Concat(new object[]
                         {
-                            pawn,
-                            " threw exception in WorkGiver ",
-                            workGiver.def.defName,
-                            ": ",
-                            ex.ToString()
+                    pawn,
+                    " threw exception in WorkGiver ",
+                    workGiver.def.defName,
+                    ": ",
+                    ex.ToString()
                         }));
                     }
                     finally
@@ -174,18 +156,16 @@ namespace PrisonLabor
                         }
                         if (job3 != null)
                         {
-                            if (need != null)
-                                need.Enabled = true;
-                            return new ThinkResult(job3, this, new JobTag?(workList[j].def.tagToGive));
+                            return new ThinkResult(job3, jobGiver, new JobTag?(list[j].def.tagToGive));
                         }
                         Log.ErrorOnce(string.Concat(new object[]
                         {
-                            workGiver_Scanner,
-                            " provided target ",
-                            targetInfo,
-                            " but yielded no actual job for pawn ",
-                            pawn,
-                            ". The CanGiveJob and JobOnX methods may not be synchronized."
+                    workGiver_Scanner,
+                    " provided target ",
+                    targetInfo,
+                    " but yielded no actual job for pawn ",
+                    pawn,
+                    ". The CanGiveJob and JobOnX methods may not be synchronized."
                         }), 6112651);
                     }
                     num = workGiver.def.priorityInType;
@@ -194,14 +174,9 @@ namespace PrisonLabor
             return ThinkResult.NoJob;
         }
 
-        private bool PawnCanUseWorkGiver(Pawn pawn, WorkGiver giver)
+        private static Job GiverTryGiveJobPrioritized(JobGiver_Work jobGiver, Pawn pawn, WorkGiver giver, IntVec3 cell)
         {
-            return !giver.ShouldSkip(pawn) && (giver.def.canBeDoneByNonColonists || pawn.IsPrisoner) && (pawn.story == null || !pawn.story.WorkTagIsDisabled(giver.def.workTags)) && giver.MissingRequiredCapacity(pawn) == null;
-        }
-
-        private Job GiverTryGiveJobPrioritized(Pawn pawn, WorkGiver giver, IntVec3 cell)
-        {
-            if (!this.PawnCanUseWorkGiver(pawn, giver))
+            if (!giver.ShouldSkip(pawn) && (giver.def.canBeDoneByNonColonists || pawn.IsColonist) && (pawn.story == null || !pawn.story.WorkTagIsDisabled(giver.def.workTags)) && giver.MissingRequiredCapacity(pawn) == null)
             {
                 return null;
             }
@@ -218,7 +193,7 @@ namespace PrisonLabor
                 {
                     if (giver.def.scanThings)
                     {
-                        Predicate<Thing> predicate = (Thing t) => !t.IsForbidden(pawn) && scanner.HasJobOnThing(pawn, t, false);
+                        Predicate<Thing> predicate = (Thing t) => !t.IsForbidden(pawn) && scanner.HasJobOnThing(pawn, t, false) && !LaborExclusionUtility.IsDisabledByLabor(t.Position, pawn, scanner.def.workType);
                         List<Thing> thingList = cell.GetThingList(pawn.Map);
                         for (int i = 0; i < thingList.Count; i++)
                         {
@@ -231,7 +206,7 @@ namespace PrisonLabor
                             }
                         }
                     }
-                    if (giver.def.scanCells && !cell.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, cell))
+                    if (giver.def.scanCells && !cell.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, cell) && !LaborExclusionUtility.IsDisabledByLabor(cell, pawn, scanner.def.workType))
                     {
                         pawn.mindState.lastGivenWorkType = giver.def.workType;
                         Job result = scanner.JobOnCell(pawn, cell);
@@ -243,11 +218,11 @@ namespace PrisonLabor
             {
                 Log.Error(string.Concat(new object[]
                 {
-                    pawn,
-                    " threw exception in GiverTryGiveJobTargeted on WorkGiver ",
-                    giver.def.defName,
-                    ": ",
-                    ex.ToString()
+            pawn,
+            " threw exception in GiverTryGiveJobTargeted on WorkGiver ",
+            giver.def.defName,
+            ": ",
+            ex.ToString()
                 }));
             }
             return null;

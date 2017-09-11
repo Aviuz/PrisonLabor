@@ -16,20 +16,17 @@ namespace PrisonLabor
         private const float TiredRate = 0.006f;
         private const float HealthRate = 0.006f;
         private const float JoyRate = 0.006f;
-        private const float InspireRate = 0.015f;
+        public const float InspireRate = 0.015f;
         public const int WardenCapacity = (int)(InspireRate / LazyRate);
-
-        private static PrisonerInteractionModeDef pimDef;
+        public const float InpirationRange = 10.0f;
+        
         private static NeedDef def;
 
         private bool enabled;
         private bool needToBeInspired;
         private bool isLazy;
-        private int wardensCount;
-        private int prisonersCount;
-
-        private int slowDown;
-        private int guiArrow;
+        
+        private int delta;
 
         public bool Enabled
         {
@@ -88,7 +85,18 @@ namespace PrisonLabor
         {
             get
             {
-                return guiArrow;
+                return delta;
+            }
+        }
+
+        public bool Motivated
+        {
+            get
+            {
+                if (delta > 0)
+                    return true;
+                else
+                    return false;
             }
         }
 
@@ -110,6 +118,7 @@ namespace PrisonLabor
                 {
                     if (pawn.GetRoomGroup() != null)
                     {
+                        /*
                         List<Pawn> pawnsInRoom = new List<Pawn>();
                         prisonersCount = 0;
                         wardensCount = 0;
@@ -129,10 +138,11 @@ namespace PrisonLabor
                             if (PrisonLaborUtility.LaborEnabled(p))
                                 prisonersCount++;
                         }
+                        */
 
                         if (PrisonLaborUtility.LaborEnabled(pawn))
                         {
-                            float value = wardensCount * InspireRate / prisonersCount;
+                            float value = MotivationUtility.GetMotivationDif(pawn);
                             if (enabled)
                             {
                                 value -= LazyRate;
@@ -145,25 +155,25 @@ namespace PrisonLabor
                             {
                                 value += JoyRate;
                             }
-                            guiArrow = value.CompareTo(0.0f);
+                            delta = value.CompareTo(0.0f);
                             return value;
                         }
                         else
                         {
-                            float value = wardensCount * InspireRate / (prisonersCount + 1);
-                            guiArrow = value.CompareTo(0.0f);
+                            float value = MotivationUtility.GetMotivationDif(pawn);
+                            delta = value.CompareTo(0.0f);
                             return value;
                         }
                     }
                     else
                     {
-                        guiArrow = 0;
+                        delta = 0;
                         return 0.0f;
                     }
                 }
                 else
                 {
-                    guiArrow = 1;
+                    delta = 1;
                     return +0.01f;
                 }
             }
@@ -181,31 +191,21 @@ namespace PrisonLabor
 
         public override void NeedInterval()
         {
-            //for perfomance purposes
-            if (slowDown < 5)
-            {
                 CurLevel += LazinessRate;
 
                 if (CurLevel == MaxLevel)
                     needToBeInspired = false;
                 if (CurLevel <= NeedInspirationLevel && !needToBeInspired)
                     needToBeInspired = true;
-                if (CurLevel <= LazyLevel && !isLazy && wardensCount == 0)
+                if (CurLevel <= LazyLevel && !isLazy && delta <= 0)
                 {
                     isLazy = true;
                     Tutorials.Motivation();
                 }
-                else if (isLazy && wardensCount > 0)
+                else if (isLazy && delta > 0)
                 {
                     isLazy = false;
                 }
-
-                slowDown = 0;
-            }
-            else
-            {
-                slowDown++;
-            }
         }
 
         public override void SetInitialLevel()
