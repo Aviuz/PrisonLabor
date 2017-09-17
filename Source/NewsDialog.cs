@@ -12,6 +12,8 @@ namespace PrisonLabor
         public static bool news_0_5 = false;
         public static bool news_0_6 = false;
         public static bool news_0_7 = false;
+        //TODO delete dev versions (news only, do not delete from enum!!!!)
+        public static bool news_0_7_dev2 = true;
         private Rect cRect;
 
         private Vector2 position;
@@ -55,6 +57,24 @@ namespace PrisonLabor
 
             var ls_title = new Listing_Standard(GameFont.Medium);
             var ls_desc = new Listing_Standard(GameFont.Small);
+            if(news_0_7_dev2 || showAll)
+            {
+                ls_title.Begin(new Rect(cRect.x, cRect.y + CurHeight, cRect.width, cRect.height - CurHeight));
+                ls_title.Label("Prison Labor Alpha v0.7 dev2");
+                ls_title.GapLine();
+                ls_title.End();
+                CurHeight += ls_title.CurHeight;
+                ls_desc.Begin(new Rect(cRect.x, cRect.y + CurHeight, cRect.width, cRect.height - CurHeight));
+                ls_desc.Label(
+                    " - Added Seeds Please compatibilty (but enables the forbidden bug when harvesting crops, when SP mod is activated - TODO)");
+                ls_desc.Label(
+                    " - Changed insiration mechanics, now prisoners will run after shor delay if left unwatched");
+                ls_desc.Label(
+                    " - Added watching prisoners that can escape (and will after delay) to supervise job");
+                ls_desc.Gap();
+                ls_desc.End();
+                CurHeight += ls_desc.CurHeight;
+            }
             if (news_0_7 || showAll)
             {
                 ls_title.Begin(new Rect(cRect.x, cRect.y + CurHeight, cRect.width, cRect.height - CurHeight));

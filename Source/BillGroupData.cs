@@ -11,7 +11,7 @@ namespace PrisonLabor
 
     internal class BillGroupData : IExposable
     {
-        public GroupMode Mode { get; set; }
+        public GroupMode Mode;
 
         public BillGroupData()
         {

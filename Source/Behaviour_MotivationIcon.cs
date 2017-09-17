@@ -46,7 +46,7 @@ namespace PrisonLabor
                     {
                         var need = pawn.needs.TryGetNeed<Need_Motivation>();
                         if (need != null && need.Motivated)
-                            if (PrisonLaborUtility.WorkTime(pawn))
+                            if (need.Insipred)
                                 DrawIcon(inspiredTexture, pawn.DrawPos);
                             else
                                 DrawIcon(motivatedTexture, pawn.DrawPos);

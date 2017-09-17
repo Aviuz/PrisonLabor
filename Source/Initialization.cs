@@ -15,6 +15,7 @@ namespace PrisonLabor
             checkVersion();
             Designator_AreaLabor.Initialization();
             Behaviour_MotivationIcon.Initialization();
+            CompatibilityPatches.Initialization.Run();
         }
 
         private static void checkVersion()
@@ -51,6 +52,13 @@ namespace PrisonLabor
             {
                 Log.Message("Detected older version of PrisonLabor than 0.7");
                 NewsDialog.news_0_7 = true;
+                NewsDialog.autoShow = true;
+            }
+            //TODO delete on full-release
+            if (PrisonLaborPrefs.LastVersion <= Version.v0_7_dev2)
+            {
+                Log.Message("Detected dev version");
+                NewsDialog.news_0_7_dev2 = true;
                 NewsDialog.autoShow = true;
             }
 

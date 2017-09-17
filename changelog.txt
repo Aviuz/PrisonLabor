@@ -1,6 +1,6 @@
 Changelog:
 0.8
-- 
+-
 0.7
 - fixed "failing to reserve food" bug (that one with circling warden around food)
 - prisoners now stop working (while "anything" time) while starving instead of hungry. They will still get minor debuff

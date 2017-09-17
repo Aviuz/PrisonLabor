@@ -3,12 +3,12 @@ using Verse;
 
 namespace PrisonLabor
 {
-    internal class MotivationUtility
+    internal class InspirationUtility
     {
         public static Dictionary<Map, Dictionary<Pawn, float>> calculatedValues =
             new Dictionary<Map, Dictionary<Pawn, float>>();
 
-        public static float GetMotivationDif(Pawn pawn)
+        public static float GetInsiprationValue(Pawn pawn)
         {
             var map = pawn.Map;
             if (!calculatedValues.ContainsKey(map) || !calculatedValues[map].ContainsKey(pawn))

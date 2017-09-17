@@ -8,6 +8,10 @@ namespace PrisonLabor
 {
     public class Need_Motivation : Need
     {
+        public const float InspireRate = 0.015f;
+        public const int WardenCapacity = (int)(InspireRate / LazyRate);
+        public const float InpirationRange = 10.0f;
+
         private const float LazyLevel = 0.2f;
         private const float NeedInspirationLevel = 0.5f;
         private const float LazyRate = 0.003f;
@@ -15,16 +19,19 @@ namespace PrisonLabor
         private const float TiredRate = 0.006f;
         private const float HealthRate = 0.006f;
         private const float JoyRate = 0.006f;
-        public const float InspireRate = 0.015f;
-        public const int WardenCapacity = (int) (InspireRate / LazyRate);
-        public const float InpirationRange = 10.0f;
+        private const int ReadyToRunLevel = 100;
 
         private static NeedDef def;
 
         private int delta;
+        private int impatient;
 
         public Need_Motivation(Pawn pawn) : base(pawn)
         {
+            delta = 0;
+            impatient = 0;
+            ReadyToRun = false;
+            Insipred = false;
         }
 
         public bool Enabled { get; set; }
@@ -32,6 +39,12 @@ namespace PrisonLabor
         public bool NeedToBeInspired { get; private set; }
 
         public bool IsLazy { get; private set; }
+
+        public bool ReadyToRun { get; private set; }
+
+        public bool Insipred { get; private set; }
+
+        public bool CanEscape { get; set; }
 
         public float PercentageThreshNeedInsipration => NeedInspirationLevel;
 
@@ -46,7 +59,7 @@ namespace PrisonLabor
         {
             get
             {
-                if (delta > 0)
+                if (delta == 1)
                     return true;
                 return false;
             }
@@ -69,50 +82,48 @@ namespace PrisonLabor
                 if (pawn.IsPrisoner && pawn.IsPrisonerOfColony)
                     if (pawn.GetRoomGroup() != null)
                     {
-                        /*
-                        List<Pawn> pawnsInRoom = new List<Pawn>();
-                        prisonersCount = 0;
-                        wardensCount = 0;
-                        foreach (IntVec3 cell in pawn.GetRoomGroup().Cells)
-                        {
-                            foreach (Thing thing in cell.GetThingList(pawn.Map))
-                            {
-                                if (thing is Pawn)
-                                    pawnsInRoom.Add((Pawn)thing);
-                            }
-                        }
-                        foreach (Pawn p in pawnsInRoom)
-                        {
-                            // colonist nearby
-                            if (p.IsFreeColonist)
-                                wardensCount++;
-                            if (PrisonLaborUtility.LaborEnabled(p))
-                                prisonersCount++;
-                        }
-                        */
+                        var value = InspirationUtility.GetInsiprationValue(pawn);
 
                         if (PrisonLaborUtility.LaborEnabled(pawn))
                         {
-                            var value = MotivationUtility.GetMotivationDif(pawn);
                             if (Enabled)
                             {
                                 value -= LazyRate;
                                 if (HealthAIUtility.ShouldSeekMedicalRest(pawn))
                                     value -= HealthRate;
-                                value -= (int) pawn.needs.food.CurCategory * HungryRate;
-                                value -= (int) pawn.needs.rest.CurCategory * TiredRate;
+                                value -= (int)pawn.needs.food.CurCategory * HungryRate;
+                                value -= (int)pawn.needs.rest.CurCategory * TiredRate;
+                                if (value >= 0)
+                                    Insipred = true;
+                                else
+                                    Insipred = false;
                             }
                             else if (pawn.timetable != null &&
                                      pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy)
                             {
+                                if (value != 0)
+                                    Insipred = true;
+                                else
+                                    Insipred = false;
                                 value += JoyRate;
+                            }
+                            else
+                            {
+                                if (value != 0)
+                                    Insipred = true;
+                                else
+                                    Insipred = false;
                             }
                             delta = value.CompareTo(0.0f);
                             return value;
                         }
                         else
                         {
-                            var value = MotivationUtility.GetMotivationDif(pawn);
+                            if (value != 0)
+                                Insipred = true;
+                            else
+                                Insipred = false;
+
                             delta = value.CompareTo(0.0f);
                             return value;
                         }
@@ -150,6 +161,8 @@ namespace PrisonLabor
             {
                 IsLazy = false;
             }
+
+            ImpatientTick();
         }
 
         public override void SetInitialLevel()
@@ -179,6 +192,27 @@ namespace PrisonLabor
             threshPercents.Add(PercentageThreshLazy);
             threshPercents.Add(PercentageThreshNeedInsipration);
             base.DrawOnGUI(rect, maxThresholdMarkers, customMargin, drawArrows, doTooltip);
+        }
+
+        private void ImpatientTick()
+        {
+            if (Insipred || !CanEscape)
+            {
+                if (impatient != 0)
+                {
+                    impatient = 0;
+                    ReadyToRun = false;
+                }
+            }
+            else if (!ReadyToRun)
+            {
+                impatient++;
+                Messages.Message("Prisoner " + pawn.NameStringShort + " grow impatiend to " + impatient, MessageSound.SeriousAlert);
+                if (impatient >= ReadyToRunLevel)
+                {
+                    ReadyToRun = true;
+                }
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using Verse;
 
 namespace PrisonLabor.HarmonyPatches
 {
-    internal class Initialization
+    internal static class Initialization
     {
         public static void Run()
         {
@@ -37,11 +37,12 @@ namespace PrisonLabor.HarmonyPatches
 // Set a variable to the Desktop path.
 string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-// Write the string array to a new file named "WriteLines.txt".
-using (StreamWriter outputFile = new StreamWriter(mydocpath + @"\X.txt"))
+// Write the string array to a new file.
+string fileName = "debug";
+using (StreamWriter outputFile = new StreamWriter(mydocpath + @"\" + fileName + ".txt"))
 {
     outputFile.WriteLine("==========");
-    outputFile.WriteLine("Body of %s method", "X");
+    outputFile.WriteLine("Body of %s method", fileName);
     outputFile.WriteLine("==========");
     foreach (CodeInstruction instruction in instr)
     {
