@@ -42,7 +42,7 @@ string fileName = "debug";
 using (StreamWriter outputFile = new StreamWriter(mydocpath + @"\" + fileName + ".txt"))
 {
     outputFile.WriteLine("==========");
-    outputFile.WriteLine("Body of %s method", fileName);
+    outputFile.WriteLine("Body of " + fileName + " method", fileName);
     outputFile.WriteLine("==========");
     foreach (CodeInstruction instruction in instr)
     {

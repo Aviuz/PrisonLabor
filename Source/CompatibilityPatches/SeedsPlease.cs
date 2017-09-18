@@ -11,13 +11,20 @@ namespace PrisonLabor.CompatibilityPatches
     {
         static public void Init()
         {
-            if(DefDatabase<JobDef>.GetNamed("SowWithSeeds", false) != null)
+            if (DefDatabase<JobDef>.GetNamed("SowWithSeeds", false) != null)
             {
-                WorkGiverDef seedsPleaseDef = DefDatabase<WorkGiverDef>.GetNamed("PrisonLabor_GrowerSow_Tweak");
-                seedsPleaseDef.giverClass = typeof(SeedsPlease_WorkGiver);
-                JobDef prisonLaborDef = DefDatabase<JobDef>.GetNamed("PrisonLabor_Harvest_Tweak");
-                //SeedsPlease_WorkDriver_Patch.Run();
-                prisonLaborDef.driverClass = DefDatabase<JobDef>.GetNamed("Harvest").driverClass;
+                try
+                {
+                    WorkGiverDef seedsPleaseDef = DefDatabase<WorkGiverDef>.GetNamed("PrisonLabor_GrowerSow_Tweak");
+                    seedsPleaseDef.giverClass = typeof(SeedsPlease_WorkGiver);
+                    JobDef prisonLaborDef = DefDatabase<JobDef>.GetNamed("PrisonLabor_Harvest_Tweak");
+                    SeedsPlease_WorkDriver_Patch.Run();
+                    prisonLaborDef.driverClass = DefDatabase<JobDef>.GetNamed("Harvest").driverClass;
+                }
+                catch (Exception e)
+                {
+                    Log.Error("Prison Labor encountered problem with SeedsPlease mod. Failed to patch. Error message:\n" + e.ToString());
+                }
             }
         }
     }
