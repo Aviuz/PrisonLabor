@@ -16,7 +16,7 @@ namespace PrisonLabor.CompatibilityPatches
                 WorkGiverDef seedsPleaseDef = DefDatabase<WorkGiverDef>.GetNamed("PrisonLabor_GrowerSow_Tweak");
                 seedsPleaseDef.giverClass = typeof(SeedsPlease_WorkGiver);
                 JobDef prisonLaborDef = DefDatabase<JobDef>.GetNamed("PrisonLabor_Harvest_Tweak");
-                Log.Message(DefDatabase<JobDef>.GetNamed("Harvest").driverClass.Name);
+                //SeedsPlease_WorkDriver_Patch.Run();
                 prisonLaborDef.driverClass = DefDatabase<JobDef>.GetNamed("Harvest").driverClass;
             }
         }
