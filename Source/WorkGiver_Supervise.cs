@@ -19,9 +19,12 @@ namespace PrisonLabor
                 return null;
             if (pawn.IsPrisoner)
                 return null;
-            if (!PrisonLaborUtility.LaborEnabled(prisoner) || !PrisonLaborUtility.WorkTime(prisoner) || !need.NeedToBeInspired)
-                if(!need.CanEscape)
-                    return null;
+            if (!PrisonLaborUtility.LaborEnabled(prisoner) && !need.CanEscape)
+                return null;
+            if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))
+                return new Job(JobDefOf.PrisonerAttemptRecruit, t);
+            if ((!PrisonLaborUtility.WorkTime(prisoner) || !need.NeedToBeInspired) && !need.CanEscape)
+                return null;
 
             return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerSupervise"), prisoner);
         }

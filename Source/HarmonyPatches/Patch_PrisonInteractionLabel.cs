@@ -10,7 +10,7 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(PrisonerInteractionModeUtility))]
     [HarmonyPatch("GetLabel")]
     [HarmonyPatch(new[] {typeof(PrisonerInteractionModeDef)})]
-    internal class PrisonInteractionPatch
+    internal class Patch_PrisonInteractionLabel
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
@@ -18,11 +18,10 @@ namespace PrisonLabor.HarmonyPatches
             // create our WORK label
             var jumpTo = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_0);
-            yield return new CodeInstruction(OpCodes.Call, typeof(PrisonInteractionPatch).GetMethod("getLabelWork"));
-            //yield return new CodeInstruction(OpCodes.Dup);
-            yield return new CodeInstruction(OpCodes.Ldstr, "Work");
-            yield return new CodeInstruction(OpCodes.Bne_Un, jumpTo);
-            yield return new CodeInstruction(OpCodes.Ldstr, "PrisonLabor_PrisonerWork".Translate());
+            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_PrisonInteractionLabel).GetMethod("getLabelWork"));
+            yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
+            yield return new CodeInstruction(OpCodes.Ldarg_0);
+            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_PrisonInteractionLabel).GetMethod("getLabelWork"));
             yield return new CodeInstruction(OpCodes.Ret);
 
             var first = true;
@@ -41,9 +40,12 @@ namespace PrisonLabor.HarmonyPatches
 
         public static string getLabelWork(PrisonerInteractionModeDef def)
         {
+            //TODO add translation to work and recruit
             if (def == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption"))
-                return "Work";
-            return "";
+                return "PrisonLabor_PrisonerWork".Translate();
+            else if (def == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workAndRecruitOption"))
+                return "Work and recruit";
+            return null;
         }
     }
 }

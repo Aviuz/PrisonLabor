@@ -6,8 +6,8 @@ namespace PrisonLabor
     [StaticConstructorOnStartup]
     internal class PrisonLaborMod : Mod
     {
-        public const Version versionNumber = Version.v0_7_dev2;
-        public const string versionString = "0.7 dev 2";
+        public const Version versionNumber = Version.v0_7_dev3;
+        public const string versionString = "0.7 dev 3";
 
         private static string difficulty = "";
 

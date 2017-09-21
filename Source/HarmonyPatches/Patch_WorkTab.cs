@@ -9,13 +9,13 @@ namespace PrisonLabor.HarmonyPatches
 {
     [HarmonyPatch(typeof(MainTabWindow_Work))]
     [HarmonyPatch("get_Pawns")]
-    internal class WorkTabPatch
+    internal class Patch_WorkTab
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
             yield return new CodeInstruction(OpCodes.Ldarg_0);
-            yield return new CodeInstruction(OpCodes.Call, typeof(WorkTabPatch).GetMethod("Pawns"));
+            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_WorkTab).GetMethod("Pawns"));
             yield return new CodeInstruction(OpCodes.Ret);
         }
 

@@ -13,7 +13,7 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(Dialog_BillConfig))]
     [HarmonyPatch("DoWindowContents")]
     [HarmonyPatch(new[] {typeof(Rect)})]
-    internal class BillCheckboxPatch
+    internal class Patch_BillCheckbox
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
@@ -52,7 +52,7 @@ namespace PrisonLabor.HarmonyPatches
                         yield return new CodeInstruction(OpCodes.Ldarg_0);
                         yield return new CodeInstruction(loadBillInstr);
                         yield return new CodeInstruction(OpCodes.Call,
-                            typeof(BillCheckboxPatch).GetMethod("GroupExclusionButton"));
+                            typeof(Patch_BillCheckbox).GetMethod("GroupExclusionButton"));
                         instruction.labels.Remove(label);
                     }
                 }

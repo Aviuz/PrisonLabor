@@ -12,14 +12,14 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(JobGiver_PrisonerEscape))]
     [HarmonyPatch("TryGiveJob")]
     [HarmonyPatch(new[] { typeof(Pawn) })]
-    public class EscapingPrisonerPatch
+    public class Patch_EscapingPrisoner
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
             Label restOfMethod = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_1);
-            yield return new CodeInstruction(OpCodes.Call, typeof(EscapingPrisonerPatch).GetMethod("IsReadyToEscape"));
+            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_EscapingPrisoner).GetMethod("IsReadyToEscape"));
             yield return new CodeInstruction(OpCodes.Brtrue, restOfMethod);
             yield return new CodeInstruction(OpCodes.Ldnull);
             yield return new CodeInstruction(OpCodes.Ret);

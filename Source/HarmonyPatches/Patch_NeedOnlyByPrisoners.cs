@@ -10,7 +10,7 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(Pawn_NeedsTracker))]
     [HarmonyPatch("ShouldHaveNeed")]
     [HarmonyPatch(new[] {typeof(NeedDef)})]
-    internal class NeedOnlyByPrisonersPatch
+    internal class Patch_NeedOnlyByPrisoners
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
@@ -33,7 +33,7 @@ namespace PrisonLabor.HarmonyPatches
             yield return loadFieldPawn;
             //Call function
             yield return new CodeInstruction(OpCodes.Call,
-                typeof(NeedOnlyByPrisonersPatch).GetMethod("ShouldHaveNeedPrisoner"));
+                typeof(Patch_NeedOnlyByPrisoners).GetMethod("ShouldHaveNeedPrisoner"));
             //If true continue
             yield return new CodeInstruction(OpCodes.Brtrue, jumpTo);
             //Load false to stack

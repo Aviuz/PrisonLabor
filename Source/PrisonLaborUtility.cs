@@ -6,7 +6,8 @@ namespace PrisonLabor
 {
     internal class PrisonLaborUtility
     {
-        private static PrisonerInteractionModeDef pimDef;
+        private static PrisonerInteractionModeDef workDef;
+        private static PrisonerInteractionModeDef workAndRecruitDef;
 
         private static List<WorkTypeDef> defaultWorkTypes;
         private static List<WorkTypeDef> allowedWorkTypes;
@@ -110,10 +111,28 @@ namespace PrisonLabor
 
         public static bool LaborEnabled(Pawn pawn)
         {
-            if (pimDef == null)
-                pimDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption");
-            if (pawn.IsPrisoner && pawn.guest.interactionMode == pimDef && !PrisonLaborPrefs.DisableMod)
+            if (workDef == null || workAndRecruitDef == null)
+            {
+                workDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption");
+                workAndRecruitDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workAndRecruitOption");
+            }
+            if (pawn.IsPrisoner && !PrisonLaborPrefs.DisableMod)
+                if (pawn.guest.interactionMode == workDef || pawn.guest.interactionMode == workAndRecruitDef)
+                    return true;
+
+            return false;
+        }
+
+        public static bool RecruitInLaborEnabled(Pawn pawn)
+        {
+            if (workDef == null || workAndRecruitDef == null)
+            {
+                workDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption");
+                workAndRecruitDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workAndRecruitOption");
+            }
+            if (pawn.guest.interactionMode == workAndRecruitDef && pawn.guest.ScheduledForInteraction && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
                 return true;
+
             return false;
         }
 

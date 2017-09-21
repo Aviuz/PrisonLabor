@@ -9,7 +9,7 @@ namespace PrisonLabor.Harmony
     [HarmonyPatch("DoCell")]
     [HarmonyPatch(new[] {typeof(Rect), typeof(Pawn), typeof(PawnTable)})]
     //(Rect rect, Pawn pawn, PawnTable table)
-    internal class changeWorkTabPrisonerLabelColor
+    internal class ChangeWorkTabPrisonerLabelColor
     {
         private static void Prefix(Rect rect, Pawn pawn, PawnTable table)
         {

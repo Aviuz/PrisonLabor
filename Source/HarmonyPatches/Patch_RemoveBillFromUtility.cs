@@ -6,7 +6,7 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(BillStack))]
     [HarmonyPatch("Delete")]
     [HarmonyPatch(new[] {typeof(Bill)})]
-    internal class RemoveBillFromUtilityPatch
+    internal class Patch_RemoveBillFromUtility
     {
         public static void Postfix(Bill bill)
         {

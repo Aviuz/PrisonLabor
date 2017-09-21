@@ -13,7 +13,7 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(ForbidUtility))]
     [HarmonyPatch("IsForbidden")]
     [HarmonyPatch(new[] {typeof(Thing), typeof(Pawn)})]
-    internal class ItemIsForbiddenPatch
+    internal class Patch_ItemIsForbidden
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)

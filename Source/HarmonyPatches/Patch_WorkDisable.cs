@@ -10,7 +10,7 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(WidgetsWork))]
     [HarmonyPatch("DrawWorkBoxFor")]
     [HarmonyPatch(new[] {typeof(float), typeof(float), typeof(Pawn), typeof(WorkTypeDef), typeof(bool)})]
-    internal class WorkDisablePatch
+    internal class Patch_WorkDisable
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)

@@ -11,23 +11,32 @@ namespace PrisonLabor.HarmonyPatches
         public static void Run()
         {
             var harmony = HarmonyInstance.Create("Harmony_PrisonLabor");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
-            harmony.Patch(
-                typeof(Pawn_CarryTracker).GetMethod("TryDropCarriedThing",
-                    new[]
-                    {
+            try
+            {
+                harmony.PatchAll(Assembly.GetExecutingAssembly());
+
+                // TODO move it to seperate files. Why I did this ??? I have no clue ...
+                harmony.Patch(
+                    typeof(Pawn_CarryTracker).GetMethod("TryDropCarriedThing",
+                        new[]
+                        {
                         typeof(IntVec3), typeof(ThingPlaceMode), typeof(Thing).MakeByRefType(),
                         typeof(Action<Thing, int>)
-                    }),
-                new HarmonyMethod(null), new HarmonyMethod(typeof(ForibiddenDropPatch).GetMethod("Postfix")));
-            harmony.Patch(
-                typeof(Pawn_CarryTracker).GetMethod("TryDropCarriedThing",
-                    new[]
-                    {
+                        }),
+                    new HarmonyMethod(null), new HarmonyMethod(typeof(ForibiddenDropPatch).GetMethod("Postfix")));
+                harmony.Patch(
+                    typeof(Pawn_CarryTracker).GetMethod("TryDropCarriedThing",
+                        new[]
+                        {
                         typeof(IntVec3), typeof(int), typeof(ThingPlaceMode), typeof(Thing).MakeByRefType(),
                         typeof(Action<Thing, int>)
-                    }),
-                new HarmonyMethod(null), new HarmonyMethod(typeof(ForibiddenDropPatch).GetMethod("Postfix2")));
+                        }),
+                    new HarmonyMethod(null), new HarmonyMethod(typeof(ForibiddenDropPatch).GetMethod("Postfix2")));
+            }
+            catch(Exception e)
+            {
+                Log.Error($"Prison Labor Exception, failed to proceed harmony patches: {e.Message}");
+            }
         }
     }
 }

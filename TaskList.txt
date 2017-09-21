@@ -1,0 +1,29 @@
+==========================
+Task List for Prison Labor
+==========================
+Agenda:
+  + Completed
+  - Scheduled
+  * Considered
+==========================
++prisoners only tool
+  + growing bug
+  + exlude non-prisoner work
++exlude 'supervising' from labor
++'prisoner only' checkbox in bills
+  +logic
+- bad hugiene mod (http://steamcommunity.com/sharedfiles/filedetails/?id=836762505&searchtext=Dubs+Bad+Hygiene)
+*prisoners joy
++tutorials attach to events etc.
++tutorials watched
++motivation around
++escape prevented when guarded
+TODO: manipulation reduced
++icon above heads
+  +clean up code
+  - make icons more personalized
++reservation bug
+-revolts
++seeds please
++rewritten news dialog
++work and recruit

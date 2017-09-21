@@ -22,7 +22,6 @@ namespace PrisonLabor
             var rangeCondition = new System.Func<Toil, bool>(RangeCondition);
 
             yield return Toils_Reserve.Reserve(TargetIndex.A, 1, -1, null);
-            //yield return Toils_Interpersonal.GotoPrisoner(this.pawn, this.Prisoner, this.Prisoner.guest.interactionMode);
             yield return MakeWatchToil(Prisoner);
             for (var i = 0; i < 80; i++)
                 yield return Toils_General.Wait(10).FailOn(rangeCondition);

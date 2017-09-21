@@ -7,7 +7,7 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(Bill))]
     [HarmonyPatch("ExposeData")]
     [HarmonyPatch(new Type[] { })]
-    internal class ExposeBillGroupPatch
+    internal class Patch_ExposeBillGroup
     {
         private static void Postfix(Bill __instance)
         {

@@ -5,8 +5,6 @@ namespace PrisonLabor
     [StaticConstructorOnStartup]
     internal class Initialization
     {
-        public static Version version = PrisonLaborMod.versionNumber;
-
         static Initialization()
         {
             HarmonyPatches.Initialization.Run();
@@ -20,50 +18,47 @@ namespace PrisonLabor
 
         private static void checkVersion()
         {
-            //delete later
-            if (PrisonLaborPrefs.Version > Version.v0_2 && PrisonLaborPrefs.Version < Version.v0_6)
-                PrisonLaborPrefs.LastVersion = PrisonLaborPrefs.Version;
-
             // Update actual version
             if (PrisonLaborPrefs.Version == Version.v0_0)
             {
-                PrisonLaborPrefs.Version = version;
-                PrisonLaborPrefs.LastVersion = version;
+                PrisonLaborPrefs.Version = PrisonLaborMod.versionNumber;
+                PrisonLaborPrefs.LastVersion = PrisonLaborMod.versionNumber;
             }
-            else if (PrisonLaborPrefs.Version != version)
+            else if (PrisonLaborPrefs.Version != PrisonLaborMod.versionNumber)
             {
-                PrisonLaborPrefs.Version = version;
+                PrisonLaborPrefs.Version = PrisonLaborMod.versionNumber;
             }
 
             // Check for news
             if (PrisonLaborPrefs.LastVersion < Version.v0_5)
             {
-                Log.Message("Detected older version of PrisonLabor than 0.5");
                 NewsDialog.news_0_5 = true;
                 NewsDialog.autoShow = true;
             }
             if (PrisonLaborPrefs.LastVersion < Version.v0_6)
             {
-                Log.Message("Detected older version of PrisonLabor than 0.6");
                 NewsDialog.news_0_6 = true;
                 NewsDialog.autoShow = true;
             }
             if (PrisonLaborPrefs.LastVersion < Version.v0_7)
             {
-                Log.Message("Detected older version of PrisonLabor than 0.7");
                 NewsDialog.news_0_7 = true;
                 NewsDialog.autoShow = true;
             }
-            //TODO delete on full-release
-            if (PrisonLaborPrefs.LastVersion <= Version.v0_7_dev2)
+            //TODO delete dev version on full-release
+            if (PrisonLaborPrefs.LastVersion < Version.v0_7_dev2)
             {
-                Log.Message("Detected dev version");
                 NewsDialog.news_0_7_dev2 = true;
                 NewsDialog.autoShow = true;
             }
+            if (PrisonLaborPrefs.LastVersion < Version.v0_7_dev3)
+            {
+                NewsDialog.news_0_7_dev3 = true;
+                NewsDialog.autoShow = true;
+            }
 
-            Log.Message("Loaded PrisonLabor v" + PrisonLaborPrefs.Version);
-            PrisonLaborPrefs.Version = version;
+            Log.Message($"Enabled Prison Labor v{PrisonLaborMod.versionString}");
+            PrisonLaborPrefs.Version = PrisonLaborMod.versionNumber;
             PrisonLaborPrefs.Save();
         }
     }

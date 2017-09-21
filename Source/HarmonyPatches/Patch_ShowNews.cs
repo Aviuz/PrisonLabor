@@ -7,7 +7,7 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(Map))]
     [HarmonyPatch("FinalizeInit")]
     [HarmonyPatch(new Type[] { })]
-    internal class ShowNewsPatch
+    internal class Patch_ShowNews
     {
         private static void Postfix()
         {

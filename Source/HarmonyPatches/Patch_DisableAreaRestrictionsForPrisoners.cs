@@ -12,7 +12,7 @@ namespace PrisonLabor.Harmony
     [HarmonyPatch("DoCell")]
     [HarmonyPatch(new[] {typeof(Rect), typeof(Pawn), typeof(PawnTable)})]
     //(Rect rect, Pawn pawn, PawnTable table)
-    internal class disableAreaRestrictionsForPrisoners
+    internal class DisableAreaRestrictionsForPrisoners
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
@@ -20,7 +20,7 @@ namespace PrisonLabor.Harmony
             var jumpTo = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_2);
             yield return new CodeInstruction(OpCodes.Call,
-                typeof(disableAreaRestrictionsForPrisoners).GetMethod("isPrisoner"));
+                typeof(DisableAreaRestrictionsForPrisoners).GetMethod("isPrisoner"));
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             yield return new CodeInstruction(OpCodes.Ret);
 

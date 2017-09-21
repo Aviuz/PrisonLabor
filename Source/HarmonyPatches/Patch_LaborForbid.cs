@@ -12,7 +12,7 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(JobGiver_Work))]
     [HarmonyPatch("TryIssueJobPackage")]
     [HarmonyPatch(new[] {typeof(Pawn), typeof(JobIssueParams)})]
-    internal class LaborForbidPatch
+    internal class Patch_LaborForbid
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
@@ -20,7 +20,7 @@ namespace PrisonLabor.HarmonyPatches
             yield return new CodeInstruction(OpCodes.Ldarg_0);
             yield return new CodeInstruction(OpCodes.Ldarg_1);
             yield return new CodeInstruction(OpCodes.Ldarg_2);
-            yield return new CodeInstruction(OpCodes.Call, typeof(LaborForbidPatch).GetMethod("TryIssueJobPackage"));
+            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_LaborForbid).GetMethod("TryIssueJobPackage"));
             yield return new CodeInstruction(OpCodes.Ret);
         }
 

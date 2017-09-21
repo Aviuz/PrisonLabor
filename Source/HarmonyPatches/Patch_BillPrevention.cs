@@ -10,7 +10,7 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(WorkGiver_DoBill))]
     [HarmonyPatch("StartOrResumeBillJob")]
     [HarmonyPatch(new[] {typeof(Pawn), typeof(IBillGiver)})]
-    internal class BillPreventionPatch
+    internal class Patch_BillPrevention
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
@@ -31,7 +31,7 @@ namespace PrisonLabor.HarmonyPatches
                     yield return new CodeInstruction(OpCodes.Ldarg_1);
                     yield return new CodeInstruction(OpCodes.Ldloc_1);
                     yield return new CodeInstruction(OpCodes.Call,
-                        typeof(BillPreventionPatch).GetMethod("IsForCertainGroup"));
+                        typeof(Patch_BillPrevention).GetMethod("IsForCertainGroup"));
                     yield return new CodeInstruction(OpCodes.Brtrue, label);
                     yield return new CodeInstruction(OpCodes.Ldc_I4_0);
                     yield return new CodeInstruction(OpCodes.Ret);

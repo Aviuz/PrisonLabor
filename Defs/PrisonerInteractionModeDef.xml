@@ -4,4 +4,8 @@
     <defName>PrisonLabor_workOption</defName>
     <listOrder>5</listOrder>
   </PrisonerInteractionModeDef>
+    <PrisonerInteractionModeDef>
+      <defName>PrisonLabor_workAndRecruitOption</defName>
+      <listOrder>6</listOrder>
+    </PrisonerInteractionModeDef>
 </PrisonerInteractionModes>

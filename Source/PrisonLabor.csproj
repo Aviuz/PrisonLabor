@@ -64,25 +64,27 @@
     <Compile Include="Designator_AreaLaborClear.cs" />
     <Compile Include="Designator_AreaLabor.cs" />
     <Compile Include="Designator_AreaLaborExpand.cs" />
-    <Compile Include="HarmonyPatches\AddLaborAreaPatch.cs" />
-    <Compile Include="HarmonyPatches\BillCheckboxPatch.cs" />
-    <Compile Include="HarmonyPatches\BillPreventionPatch.cs" />
-    <Compile Include="HarmonyPatches\changeWorkTabPrisonerLabelColor.cs" />
-    <Compile Include="HarmonyPatches\disableAreaRestrictionsForPrisoners.cs" />
-    <Compile Include="HarmonyPatches\EscapingPrisonerPatch.cs" />
-    <Compile Include="HarmonyPatches\ExposeBillGroupPatch.cs" />
-    <Compile Include="HarmonyPatches\ForibiddenDropPatch.cs" />
-    <Compile Include="HarmonyPatches\ItemIsForbiddenPatch.cs" />
+    <Compile Include="HarmonyPatches\Patch_AddLaborArea.cs" />
+    <Compile Include="HarmonyPatches\Patch_BillCheckbox.cs" />
+    <Compile Include="HarmonyPatches\Patch_BillPrevention.cs" />
+    <Compile Include="HarmonyPatches\Patch_ChangeWorkTabPrisonerLabelColor.cs" />
+    <Compile Include="HarmonyPatches\Patch_DisableAreaRestrictionsForPrisoners.cs" />
+    <Compile Include="HarmonyPatches\Patch_EscapingPrisoner.cs" />
+    <Compile Include="HarmonyPatches\Patch_ExposeBillGroup.cs" />
+    <Compile Include="HarmonyPatches\Patch_ExtendVistorRect.cs" />
+    <Compile Include="HarmonyPatches\Patch_ForibiddenDrop.cs" />
+    <Compile Include="HarmonyPatches\Patch_ItemIsForbidden.cs" />
     <Compile Include="HarmonyPatches\Initialization.cs" />
-    <Compile Include="HarmonyPatches\LaborForbidPatch.cs" />
-    <Compile Include="HarmonyPatches\NeedOnlyByPrisonersPatch.cs" />
-    <Compile Include="HarmonyPatches\PrisonInteractionPatch.cs" />
-    <Compile Include="HarmonyPatches\RemoveBillFromUtilityPatch.cs" />
-    <Compile Include="HarmonyPatches\ReservedByPrisonerPatch.cs" />
-    <Compile Include="HarmonyPatches\ShowNewsPatch.cs" />
-    <Compile Include="HarmonyPatches\WorkDisablePatch.cs" />
-    <Compile Include="HarmonyPatches\WorkDisablePatch2.cs" />
-    <Compile Include="HarmonyPatches\WorkTabPatch.cs" />
+    <Compile Include="HarmonyPatches\Patch_LaborForbid.cs" />
+    <Compile Include="HarmonyPatches\Patch_NeedOnlyByPrisoners.cs" />
+    <Compile Include="HarmonyPatches\Patch_PrisonInteractionLabel.cs" />
+    <Compile Include="HarmonyPatches\Patch_RemoveBillFromUtility.cs" />
+    <Compile Include="HarmonyPatches\Patch_ReservedByPrisoner.cs" />
+    <Compile Include="HarmonyPatches\Patch_RespectReservation.cs" />
+    <Compile Include="HarmonyPatches\Patch_ShowNews.cs" />
+    <Compile Include="HarmonyPatches\Patch_WorkDisable.cs" />
+    <Compile Include="HarmonyPatches\Patch_WorkDisable2.cs" />
+    <Compile Include="HarmonyPatches\Patch_WorkTab.cs" />
     <Compile Include="JobGiver_Joy.cs" />
     <Compile Include="JobGiver_BedTime.cs" />
     <Compile Include="JobGiver_Diet.cs" />
@@ -117,6 +119,14 @@
     <Compile Include="Initialization.cs" />
     <Compile Include="WorkGiver_Supervise.cs" />
     <Compile Include="Tweaks\WorkGiver_Warden_DeliverFood_Tweak.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\changelog.txt">
+      <Link>Organizer\changelog.txt</Link>
+    </Content>
+    <Content Include="..\TaskList.txt">
+      <Link>Organizer\TaskList.txt</Link>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
