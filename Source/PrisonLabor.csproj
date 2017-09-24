@@ -85,6 +85,8 @@
     <Compile Include="HarmonyPatches\Patch_WorkDisable.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable2.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkTab.cs" />
+    <Compile Include="HediffGiver_PrisonersChains.cs" />
+    <Compile Include="IncidentWorker_Revolt.cs" />
     <Compile Include="JobGiver_Joy.cs" />
     <Compile Include="JobGiver_BedTime.cs" />
     <Compile Include="JobGiver_Diet.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="Tweaks\WorkGiver_Miner_Tweak.cs" />
     <Compile Include="Tweaks\WorkGiver_PlantsCut_Tweak.cs" />
     <Compile Include="Initialization.cs" />
+    <Compile Include="VersionUtility.cs" />
     <Compile Include="WorkGiver_Supervise.cs" />
     <Compile Include="Tweaks\WorkGiver_Warden_DeliverFood_Tweak.cs" />
   </ItemGroup>

@@ -1,0 +1,16 @@
+<Defs>
+  <IncidentDef>
+      <defName>PrisonLabor_Revolt</defName>
+      <label>revolt</label>
+      <targetType>MapPlayerHome</targetType>
+      <workerClass>PrisonLabor.IncidentWorker_Revolt</workerClass>
+      <letterLabel>Revolt</letterLabel>
+      <letterText>Work in progress.</letterText>
+      <letterDef>BadUrgent</letterDef>
+      <baseChance>2.7</baseChance>
+      <minRefireDays>20</minRefireDays>
+      <category>ThreatBig</category>
+      <pointsScaleable>true</pointsScaleable>
+      <minThreatPoints>400</minThreatPoints>
+    </IncidentDef>
+</Defs>

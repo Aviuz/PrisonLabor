@@ -6,11 +6,7 @@ namespace PrisonLabor
     [StaticConstructorOnStartup]
     internal class PrisonLaborMod : Mod
     {
-        public const Version versionNumber = Version.v0_7_dev3;
-        public const string versionString = "0.7 dev 3";
-
         private static string difficulty = "";
-
         private static bool showNews;
         private static bool allowAllWorktypes;
         private static bool enableMotivationMechanics;
@@ -96,7 +92,7 @@ namespace PrisonLabor
             GUI.DrawTexture(new Rect(0, 0, rightRect.width, heigh_temp), ContentFinder<Texture2D>.Get("Preview", true));
             listing_panel.Gap(heigh_temp);
             listing_panel.Label("Prison Labor Alpha", -1f);
-            listing_panel.Label("Version: " + versionString, -1f);
+            listing_panel.Label("Version: " + VersionUtility.versionString, -1f);
 
             listing_panel.GapLine();
 

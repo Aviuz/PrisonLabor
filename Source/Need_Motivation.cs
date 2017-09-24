@@ -207,7 +207,6 @@ namespace PrisonLabor
             else if (!ReadyToRun)
             {
                 impatient++;
-                Messages.Message("Prisoner " + pawn.NameStringShort + " grow impatiend to " + impatient, MessageSound.SeriousAlert);
                 if (impatient >= ReadyToRunLevel)
                 {
                     ReadyToRun = true;

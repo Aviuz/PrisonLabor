@@ -25,6 +25,7 @@ namespace PrisonLabor
         //TODO delete dev versions (news only, do not delete from enum!!!!)
         public static bool news_0_7_dev2 = true;
         public static bool news_0_7_dev3 = true;
+        public static bool news_0_7_dev4 = true;
 
         // Fields
         private string[] titles;
@@ -44,6 +45,17 @@ namespace PrisonLabor
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
 
+            if (news_0_7_dev4 || showAll)
+            {
+                titlesList.Add("Prison Labor Alpha v0.7 dev4");
+                string[] itemsArray =
+                {
+                    "Added revolts - to trigger revolt you can use dev mode (in options) and click \"Execute incident\" -> \"PrisonLabor_Revolt\" (first gear icon)",
+                    "Reduced manipulation for prisoners, now they will have 80% of normal value (instead of 100%)",
+                    "Removed debug message when prisoner is outside colony",
+                };
+                itemsList.Add(itemsArray);
+            }
             if (news_0_7_dev3 || showAll)
             {
                 titlesList.Add("Prison Labor Alpha v0.7 dev3");

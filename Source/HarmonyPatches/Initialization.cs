@@ -44,11 +44,11 @@ namespace PrisonLabor.HarmonyPatches
 /* CIL Debugging method
 ===============
 // Set a variable to the Desktop path.
-string mydocpath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+string myDesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
 // Write the string array to a new file.
 string fileName = "debug";
-using (StreamWriter outputFile = new StreamWriter(mydocpath + @"\" + fileName + ".txt"))
+using (StreamWriter outputFile = new StreamWriter(myDesktopPath + @"\" + fileName + ".txt"))
 {
     outputFile.WriteLine("==========");
     outputFile.WriteLine("Body of " + fileName + " method", fileName);
