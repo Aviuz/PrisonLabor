@@ -9,10 +9,3 @@ Agenda:
 revolts
   - add different weapons depending on points
   - rewrite all numbers
-- rewrite all text and "Work in progress" strings
-  - options menu
-  - prisoner interaction mode
-  - work types
-  - motivation
-  - ...
-- add images to news

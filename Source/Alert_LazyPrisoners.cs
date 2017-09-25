@@ -10,8 +10,8 @@ namespace PrisonLabor
     {
         public Alert_LazyPrisoners()
         {
-            defaultLabel = "Prisoners aren't working";
-            defaultExplanation = "Work in progress";
+            defaultLabel = "PrisonLabor_LazyPrisonerAlert".Translate();
+            defaultExplanation = "PrisonLabor_LazyPrisonerExplanationDef".Translate();
         }
 
         private IEnumerable<Pawn> LazyPrisoners
@@ -32,7 +32,7 @@ namespace PrisonLabor
             var stringBuilder = new StringBuilder();
             foreach (var current in LazyPrisoners)
                 stringBuilder.AppendLine("    " + current.NameStringShort);
-            return string.Format("Those prisoners are lazy:\n\n{0}\nTry to motivate them.", stringBuilder);
+            return string.Format("PrisonLabor_LazyPrisonerExplanation".Translate(), stringBuilder);
         }
 
         public override AlertReport GetReport()

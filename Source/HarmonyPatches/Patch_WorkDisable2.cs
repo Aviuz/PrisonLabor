@@ -24,7 +24,7 @@ namespace PrisonLabor.Harmony
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             //Load string TODO translate
-            yield return new CodeInstruction(OpCodes.Ldstr, "Work type disabled by prisoners");
+            yield return new CodeInstruction(OpCodes.Ldstr, "PrisonLabor_WorkTypeDisabled".Translate());
             //Return
             yield return new CodeInstruction(OpCodes.Ret);
 

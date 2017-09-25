@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>Prison Labor - dev</name>
+	<name>Prison Labor</name>
 	<author>Avius</author>
 	<targetVersion>0.17.0</targetVersion>
-	<description>Version 0.7 dev 5
+	<description>Version 0.8.0
 
 This mod force prisoners to work. To enable this feature prisoners must have "Force to work" option checked ("Prisoner" tab). Prison labor needs management that consist:
-- Motivation - prisoners need to be motivated by presence of colonists. Wardens have new job - supervising prisoners. Low motivation can lead to revolts. Revolts are not available yet.
+- Motivation - prisoners need to be motivated by presence of colonists. Wardens have new job - supervising prisoners. Low motivation can lead to revolts.
 - Work assignment - prisoners that have option "Force to work" are added to "Work" tab.
 - Time restrictions - prisoners that have option "Force to work" are added to "Restrict" tab.
 - Prison area - prisoners in order to work need to reach target. You can check "Hold open" option on doors. Be aware, they will try to run if they see opportunity.
 - "Prisoners only" tools - You can mark orders and bills by tools that exclude colonist from work.
 
-This is early alpha version! Some features can be changed, and there are many that will be added. There can be bugs or compatibility collisions.</description>
+This is beta version. Some ascpects of mod still need to be balanced (like motivation). There can be still some bugs.</description>
 </ModMetaData>

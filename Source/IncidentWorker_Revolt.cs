@@ -13,7 +13,6 @@ namespace PrisonLabor
 
         protected override bool CanFireNowSub(IIncidentTarget target)
         {
-            //TODO check if prisoners have low motivation
             Map map = (Map)target;
 
             bool enemyFaction = false;
@@ -46,6 +45,7 @@ namespace PrisonLabor
                 if (pawn.Faction.HostileTo(Faction.OfPlayer))
                 {
                     parms.faction = pawn.Faction;
+                    t = pawn;
                     break;
                 }
             }
@@ -55,11 +55,9 @@ namespace PrisonLabor
                 pawn.guest.SetGuestStatus(null, false);
                 pawn.SetFaction(parms.faction);
                 pawn.equipment.AddEquipment(ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("MeleeWeapon_Shiv"), ThingDefOf.WoodLog) as ThingWithComps);
-
-                t = pawn;
             }
             LordMaker.MakeNewLord(parms.faction, (new RaidStrategyWorker_ImmediateAttackSmart()).MakeLordJob(parms, map), map, affectedPawns);
-            base.SendStandardLetter(t, new string[0]);
+            base.SendStandardLetter(t, new string[] { t.NameStringShort, t.Faction.Name });
             Find.TickManager.slower.SignalForceNormalSpeedShort();
             return true;
         }

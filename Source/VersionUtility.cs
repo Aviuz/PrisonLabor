@@ -8,8 +8,8 @@ namespace PrisonLabor
 {
     class VersionUtility
     {
-        public const Version versionNumber = Version.v0_7_dev5;
-        public const string versionString = "0.7 dev 5";
+        public const Version versionNumber = Version.v0_8_0;
+        public const string versionString = "0.8.0";
 
         public static void CheckVersion()
         {
@@ -40,25 +40,9 @@ namespace PrisonLabor
                 NewsDialog.news_0_7 = true;
                 NewsDialog.autoShow = true;
             }
-            //TODO delete dev version on full-release
-            if (PrisonLaborPrefs.LastVersion < Version.v0_7_dev2)
+            if (PrisonLaborPrefs.LastVersion < Version.v0_8_0)
             {
-                NewsDialog.news_0_7_dev2 = true;
-                NewsDialog.autoShow = true;
-            }
-            if (PrisonLaborPrefs.LastVersion < Version.v0_7_dev3)
-            {
-                NewsDialog.news_0_7_dev3 = true;
-                NewsDialog.autoShow = true;
-            }
-            if (PrisonLaborPrefs.LastVersion < Version.v0_7_dev4)
-            {
-                NewsDialog.news_0_7_dev4 = true;
-                NewsDialog.autoShow = true;
-            }
-            if (PrisonLaborPrefs.LastVersion < Version.v0_7_dev5)
-            {
-                NewsDialog.news_0_7_dev5 = true;
+                NewsDialog.news_0_8_0 = true;
                 NewsDialog.autoShow = true;
             }
 

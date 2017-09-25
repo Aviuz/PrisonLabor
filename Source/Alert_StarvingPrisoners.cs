@@ -10,8 +10,8 @@ namespace PrisonLabor
     {
         public Alert_StarvingPrisoners()
         {
-            defaultLabel = "Prisoners are starving";
-            defaultExplanation = "Work in progress";
+            defaultLabel = "PrisonLabor_StarvingPrisonerAlert".Translate();
+            defaultExplanation = "PrisonLabor_StarvingPrisonerExplanationDef".Translate();
         }
 
         private IEnumerable<Pawn> StarvingPrisoners
@@ -35,7 +35,7 @@ namespace PrisonLabor
             var stringBuilder = new StringBuilder();
             foreach (var current in StarvingPrisoners)
                 stringBuilder.AppendLine("    " + current.NameStringShort);
-            return string.Format("Those prisoners are starving and won't work:\n\n{0}", stringBuilder);
+            return string.Format("PrisonLabor_StarvingPrisonerExplanation".Translate(), stringBuilder);
         }
 
         public override AlertReport GetReport()

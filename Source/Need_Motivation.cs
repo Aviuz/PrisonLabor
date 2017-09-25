@@ -178,10 +178,10 @@ namespace PrisonLabor
             var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine(base.GetTipString());
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine("WardenResponseThreshold".Translate() + ": " +
+            stringBuilder.AppendLine("PrisonLabor_WardenResponseThreshold".Translate() + ": " +
                                      PercentageThreshNeedInsipration.ToStringPercent());
             stringBuilder.AppendLine(
-                "StoppingWorkThreshold".Translate() + ": " + PercentageThreshLazy.ToStringPercent());
+                "PrisonLabor_StoppingWorkThreshold".Translate() + ": " + PercentageThreshLazy.ToStringPercent());
             return stringBuilder.ToString();
         }
 

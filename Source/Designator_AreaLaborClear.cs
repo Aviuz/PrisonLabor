@@ -8,8 +8,8 @@ namespace PrisonLabor
     {
         public Designator_AreaLaborClear() : base(DesignateMode.Remove)
         {
-            defaultLabel = "Clear Labor Area";
-            defaultDesc = "work in progress";
+            defaultLabel = "PrisonLabor_ClearLaborArea".Translate();
+            defaultDesc = "PrisonLabor_LaborAreaDesc".Translate();
             icon = ContentFinder<Texture2D>.Get("LaborAreaClear", true);
             //this.hotKey = KeyBindingDefOf.Misc6;
             soundDragSustain = SoundDefOf.DesignateDragAreaDelete;

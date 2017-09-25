@@ -94,7 +94,6 @@
     <Compile Include="LaborExclusionUtility.cs" />
     <Compile Include="Behaviour_MotivationIcon.cs" />
     <Compile Include="MotivationUtility.cs" />
-    <Compile Include="Need_Laziness - OLD.cs" />
     <Compile Include="Need_Motivation.cs" />
     <Compile Include="PrisonerFoodReservation.cs" />
     <Compile Include="PrisonLaborUtility.cs" />
@@ -127,6 +126,9 @@
   <ItemGroup>
     <Content Include="..\changelog.txt">
       <Link>Organizer\changelog.txt</Link>
+    </Content>
+    <Content Include="..\Languages\English\Keyed\Keys.xml">
+      <Link>Language\Keys.xml</Link>
     </Content>
     <Content Include="..\TaskList.txt">
       <Link>Organizer\TaskList.txt</Link>

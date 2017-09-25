@@ -18,7 +18,6 @@ namespace PrisonLabor.HarmonyPatches
         {
             foreach (var ci in instr)
             {
-                // TODO scale properly, its ugly fix now
                 if (ci.operand is float && (float)ci.operand == 200f)
                     ci.operand = 30f * DefDatabase<PrisonerInteractionModeDef>.DefCount + 10;
                 yield return ci;

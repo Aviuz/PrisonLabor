@@ -58,9 +58,6 @@ namespace PrisonLabor.HarmonyPatches
 
         public static bool ShouldHaveNeedPrisoner(NeedDef nd, Pawn pawn)
         {
-            //delete later
-            if (nd.defName == "PrisonLabor_Laziness" || nd is Need_Laziness)
-                return false;
             if (nd.defName == "PrisonLabor_Motivation" &&
                 !(pawn.IsPrisoner && PrisonLaborPrefs.EnableMotivationMechanics))
                 return false;
@@ -122,9 +119,6 @@ namespace PrisonLabor.Harmony
 
         public static bool ShouldHaveNeedPrisoner(NeedDef nd, Pawn pawn)
         {
-            //delete later
-            if (nd.defName == "PrisonLabor_Laziness" || nd is Need_Laziness)
-                return false;
             if (nd.defName == "PrisonLabor_Motivation" &&
                 !(pawn.IsPrisoner && PrisonLaborPrefs.EnableMotivationMechanics))
                 return false;

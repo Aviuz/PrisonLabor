@@ -64,17 +64,17 @@ namespace PrisonLabor.HarmonyPatches
         {
             if (BillUtility.IsFor(bill) == GroupMode.ColonistsOnly)
             {
-                if (listing.ButtonText("Colonists only"))
+                if (listing.ButtonText("PrisonLabor_ColonistsOnly".Translate()))
                     BillUtility.SetFor(bill, GroupMode.PrisonersOnly);
             }
             else if (BillUtility.IsFor(bill) == GroupMode.PrisonersOnly)
             {
-                if (listing.ButtonText("Prisoners only"))
+                if (listing.ButtonText("PrisonLabor_PrisonersOnly".Translate()))
                     BillUtility.SetFor(bill, GroupMode.ColonyOnly);
             }
             else
             {
-                if (listing.ButtonText("Colony only"))
+                if (listing.ButtonText("PrisonLabor_ColonyOnly".Translate()))
                     BillUtility.SetFor(bill, GroupMode.ColonistsOnly);
             }
             listing.Gap(12f);

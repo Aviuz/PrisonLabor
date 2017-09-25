@@ -22,11 +22,7 @@ namespace PrisonLabor
         public static bool news_0_5 = false;
         public static bool news_0_6 = false;
         public static bool news_0_7 = false;
-        //TODO delete dev versions (news only, do not delete from enum!!!!)
-        public static bool news_0_7_dev2 = true;
-        public static bool news_0_7_dev3 = true;
-        public static bool news_0_7_dev4 = true;
-        public static bool news_0_7_dev5 = true;
+        public static bool news_0_8_0 = false;
 
         // Fields
         private string[] titles;
@@ -46,46 +42,36 @@ namespace PrisonLabor
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
 
-            if (news_0_7_dev5 || showAll)
+            if (news_0_8_0 || showAll)
             {
-                titlesList.Add("Prison Labor Alpha v0.7 dev5");
+                titlesList.Add("Prison Labor Beta v0.8.0");
                 string[] itemsArray =
                 {
-                    "Added default prisoner interaction mode to settings",
-                    "Added compatibility with Dubs Hygiene Mod",
-                };
-                itemsList.Add(itemsArray);
-            }
-            if (news_0_7_dev4 || showAll)
-            {
-                titlesList.Add("Prison Labor Alpha v0.7 dev4");
-                string[] itemsArray =
-                {
-                    "Added revolts - to trigger revolt you can use dev mode (in options) and click \"Execute incident\" -> \"PrisonLabor_Revolt\" (first gear icon)",
-                    "Reduced manipulation for prisoners, now they will have 80% of normal value (instead of 100%)",
-                    "Removed debug message when prisoner is outside colony",
-                };
-                itemsList.Add(itemsArray);
-            }
-            if (news_0_7_dev3 || showAll)
-            {
-                titlesList.Add("Prison Labor Alpha v0.7 dev3");
-                string[] itemsArray =
-                {
-                    "Fixed SeedsPlease + Forbidden bug",
-                    "Rewritten news dialog",
-                    "Added \"Work and recruit\" option",
-                };
-                itemsList.Add(itemsArray);
-            }
-            if (news_0_7_dev2 || showAll)
-            {
-                titlesList.Add("Prison Labor Alpha v0.7 dev2");
-                string[] itemsArray =
-                {
-                    "Added Seeds Please compatibilty (but enables the forbidden bug when harvesting crops, when SP mod is activated - TODO)",
-                    "Changed insiration mechanics, now prisoners will run after shor delay if left unwatched",
-                    "Added watching prisoners that can escape (and will after delay) to supervise job",
+                    "[subtitle]<b>Now in Beta!</b> I would no longer add any more features. Instead I will focus on improving existing ones.",
+                    "[gap]",
+                    "[subtitle]<b>Main changes:</b>",
+                    "[img]NewsElement_Revolt[/img]<b>Revolts:</b>\nPrisoners will now form organized group under self-elected leader if motivation of prisoners is low. They will try to inflict damage to your colony or they will attemp running to elected enemy faction",
+                    "[img]NewsElement_InspirationReworked[/img]<b>Insiration reworked:</b>\nQuicker, better and more intuitive.\nYou can now send your prisoners to work outside your walls, but be carefull: they will try to escape if left alone. Prisoners will start thinking about escape after being left for some time.",
+                    "[img]LaborAreaExpand[/img]<b>Labor area:</b>\nYou can now select area for labor only. Your colonists will no longer go mine with peasants.\nTo access this tool look into \"Architect->Zones\" panel.",
+                    "[img]NewsElement_PrisonersOnly[/img]<b>Prisoners Only button</b>\nGo to Bill details to mark bills for prisoners only!",
+                    "[img]NewsElement_WorkAndRecruit[/img]<b>Work and recruit:</b>\nThis feature has been mostly requested by community. I hope it will be well received.",
+                    "[gap]",
+                    "[subtitle]<b>Other changes:</b>",
+                    "added default prisoner interaction mode option to settings menu",
+                    "added icons above prisoners indicating whenever he's being motivated/inspired",
+                    "reduced manipulation capability of prisoners (now they have 80% of normal manipulation, down from 100%)",
+                    "added tutorials triggers (now all tutorials will be shown)",
+                    "added watched tutorials to properties (tutorials will no longer be shown after reenabling mod)",
+                    "fixed forbidden bug with harvesting plants (again)",
+                    "fixed Toil reservation bug (not respecting prisoners' job)",
+                    "fixed compatibility with Dubs Hygiene Mod",
+                    "fixed SeedsPlease compatibility",
+                    "excluded supervising from labor",
+                    "rewritten news dialog - now with images and stuff",
+                    "perfomance and code improvements",
+                    "translation improvements",
+                    "[gap]",
+                    "[subtitle]Also I want to annouce that I will start new mod called <b>Prison Expansion</b> that would be PrisonExtensions remake.The aim of this mod would be improving Prison Labor experience, especially cell doors and fences.",
                 };
                 itemsList.Add(itemsArray);
             }
@@ -189,16 +175,49 @@ namespace PrisonLabor
 
                 // Draw items
                 Text.Font = ItemFont;
-                viewRect.width -= MarginWidth;
                 for (int j = 0; j < items[i].Length; j++)
                 {
-                    Widgets.Label(viewRect, MarginText);
-                    viewRect.x += MarginWidth;
-                    Widgets.Label(viewRect, items[i][j]);
-                    viewRect.x -= MarginWidth;
-                    viewRect.y += Text.CalcHeight(items[i][j], viewRect.width) + Spacing;
+                    // Draw Image with Text
+                    if (items[i][j].StartsWith("[img]"))
+                    {
+                        int imgLength = items[i][j].IndexOf("[/img]");
+                        var imageString = items[i][j].Substring(5, imgLength - 5);
+                        var textToDraw = items[i][j].Substring(imgLength + 6);
+
+                        var content = new GUIContent();
+                        content.image = ContentFinder<Texture2D>.Get(imageString, false);
+                        content.text = textToDraw;
+                        Widgets.Label(viewRect, content);
+
+                        viewRect.y += GuiStyle(Text.Font).CalcHeight(content, viewRect.width);
+                    }
+                    // Draw Gap
+                    else if (items[i][j].StartsWith("[gap]"))
+                    {
+                        color = GUI.color;
+                        GUI.color = GUI.color * new Color(1f, 1f, 1f, 0.4f);
+                        Widgets.DrawLineHorizontal(viewRect.x, viewRect.y + +GapHeight * 0.5f, viewRect.width);
+                        GUI.color = color;
+                        viewRect.y += GapHeight;
+                    }
+                    // Draw Subtitle (without margin)
+                    else if (items[i][j].StartsWith("[subtitle]"))
+                    {
+                        Widgets.Label(viewRect, items[i][j].Substring(10));
+                        viewRect.y += Text.CalcHeight(items[i][j], viewRect.width) + Spacing;
+                    }
+                    // Draw Text
+                    else
+                    {
+                        viewRect.width -= MarginWidth;
+                        Widgets.Label(viewRect, MarginText);
+                        viewRect.x += MarginWidth;
+                        Widgets.Label(viewRect, items[i][j]);
+                        viewRect.x -= MarginWidth;
+                        viewRect.y += Text.CalcHeight(items[i][j], viewRect.width) + Spacing;
+                        viewRect.width += MarginWidth;
+                    }
                 }
-                viewRect.width += MarginWidth;
 
                 // Make gap
                 viewRect.y += GapHeight;
@@ -210,12 +229,68 @@ namespace PrisonLabor
         private float CalculateHeight(float width)
         {
             float height = 0;
+            Text.Font = TitleFont;
             foreach (var item in titles)
+            {
                 height += Text.CalcHeight(item, width) + Spacing + GapHeight;
+            }
+            Text.Font = ItemFont;
             foreach (var array in items)
                 foreach (var item in array)
-                    height += Text.CalcHeight(item, width - MarginWidth) + Spacing;
+                {
+                    // Image with Text
+                    if (item.StartsWith("[img]"))
+                    {
+                        int imgLength = item.IndexOf("[/img]");
+                        var imageString = item.Substring(5, imgLength - 5);
+                        var textToDraw = item.Substring(imgLength + 6);
+
+                        var content = new GUIContent();
+                        content.image = ContentFinder<Texture2D>.Get(imageString, false);
+                        content.text = textToDraw;
+
+
+                        height += GuiStyle(Text.Font).CalcHeight(content, width);
+                    }
+                    // Gap
+                    else if (item.StartsWith("[gap]"))
+                    {
+                        height += GapHeight;
+                    }
+                    else if(item.StartsWith("[subtitle]"))
+                    {
+                        height += Text.CalcHeight(item, width) + Spacing;
+                    }
+                    // Only Text
+                    else
+                    {
+                        height += Text.CalcHeight(item, width - MarginWidth) + Spacing;
+                    }
+                }
             return height;
         }
+
+        private static GUIStyle GuiStyle(GameFont font)
+        {
+            GUIStyle gUIStyle;
+            switch (font)
+            {
+                case GameFont.Tiny:
+                    gUIStyle = Text.fontStyles[0];
+                    break;
+                case GameFont.Small:
+                    gUIStyle = Text.fontStyles[1];
+                    break;
+                case GameFont.Medium:
+                    gUIStyle = Text.fontStyles[2];
+                    break;
+                default:
+                    return null;
+            }
+            gUIStyle.alignment = Text.Anchor;
+            gUIStyle.wordWrap = Text.WordWrap;
+            return gUIStyle;
+        }
+
     }
 }

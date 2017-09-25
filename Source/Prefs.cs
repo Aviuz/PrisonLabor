@@ -9,10 +9,6 @@ namespace PrisonLabor
     {
         private static PrisonLaborPrefsData data;
 
-        //TODO OLD DELETE WHEN BETA
-        private static readonly string oldFilePath = Path.Combine(GenFilePaths.ConfigFolderPath, "PrisonData_Prefs.xml")
-            ;
-
         private static readonly string prefsFilePath =
             Path.Combine(GenFilePaths.ConfigFolderPath, "PrisonLabor_Prefs.xml");
 
@@ -117,9 +113,6 @@ namespace PrisonLabor
 
         public static void Init()
         {
-            // TODO delete after beta
-            if (new FileInfo(oldFilePath).Exists)
-                File.Move(oldFilePath, prefsFilePath);
             var flag = !new FileInfo(prefsFilePath).Exists;
             data = new PrisonLaborPrefsData();
             data = DirectXmlLoader.ItemFromXmlFile<PrisonLaborPrefsData>(prefsFilePath, true);

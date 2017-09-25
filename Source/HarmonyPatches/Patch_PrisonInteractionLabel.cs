@@ -44,7 +44,7 @@ namespace PrisonLabor.HarmonyPatches
             if (def == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption"))
                 return "PrisonLabor_PrisonerWork".Translate();
             else if (def == DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workAndRecruitOption"))
-                return "Work and recruit";
+                return "PrisonLabor_WorkAndRecruit".Translate();
             return null;
         }
     }

@@ -5,7 +5,7 @@
       <targetType>MapPlayerHome</targetType>
       <workerClass>PrisonLabor.IncidentWorker_Revolt</workerClass>
       <letterLabel>Revolt</letterLabel>
-      <letterText>Work in progress.</letterText>
+      <letterText>Revolt has been started by {0}. The prisoners united under faction {1}, and began uprising with self-made weapons</letterText>
       <letterDef>BadUrgent</letterDef>
       <baseChance>2.7</baseChance>
       <minRefireDays>20</minRefireDays>
