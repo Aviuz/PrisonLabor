@@ -22,7 +22,6 @@ namespace PrisonLabor
             soundDragChanged = SoundDefOf.DesignateDragStandardChanged;
             useMouseIcon = true;
             defaultLabel = "PrisonLabor_LaborArea".Translate();
-            icon = ContentFinder<Texture2D>.Get("extendLabor", true);
             //Initialization();
         }
 
