@@ -1,0 +1,11 @@
+==========================
+Task List for Prison Labor
+==========================
+Agenda:
+  + Completed and not added to changelog
+  - Scheduled for implementation
+  * Considered
+==========================
+revolts
+  - add different weapons depending on points
+  - rewrite all numbers

@@ -1,7 +1,6 @@
-﻿using RimWorld;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -9,6 +8,10 @@ namespace PrisonLabor
 {
     public class Need_Motivation : Need
     {
+        public const float InspireRate = 0.015f;
+        public const int WardenCapacity = (int)(InspireRate / LazyRate);
+        public const float InpirationRange = 10.0f;
+
         private const float LazyLevel = 0.2f;
         private const float NeedInspirationLevel = 0.5f;
         private const float LazyRate = 0.003f;
@@ -16,79 +19,49 @@ namespace PrisonLabor
         private const float TiredRate = 0.006f;
         private const float HealthRate = 0.006f;
         private const float JoyRate = 0.006f;
-        private const float InspireRate = 0.015f;
-        public const int WardenCapacity = (int)(InspireRate / LazyRate);
+        private const int ReadyToRunLevel = 100;
 
-        private static PrisonerInteractionModeDef pimDef;
         private static NeedDef def;
 
-        private bool enabled;
-        private bool needToBeInspired;
-        private bool isLazy;
-        private int wardensCount;
-        private int prisonersCount;
+        private int delta;
+        private int impatient;
 
-        private int slowDown;
-        private int guiArrow;
-
-        public bool Enabled
+        public Need_Motivation(Pawn pawn) : base(pawn)
         {
-            get
-            {
-                return enabled;
-            }
-            set
-            {
-                enabled = value;
-            }
+            delta = 0;
+            impatient = 0;
+            ReadyToRun = false;
+            Insipred = false;
         }
 
-        public bool NeedToBeInspired
-        {
-            get
-            {
-                return needToBeInspired;
-            }
-        }
+        public bool Enabled { get; set; }
 
-        public bool IsLazy
-        {
-            get
-            {
-                return isLazy;
-            }
-        }
+        public bool NeedToBeInspired { get; private set; }
 
-        public float PercentageThreshNeedInsipration
-        {
-            get
-            {
-                return NeedInspirationLevel;
-            }
-        }
+        public bool IsLazy { get; private set; }
 
-        public float PercentageThreshLazy
-        {
-            get
-            {
-                return LazyLevel;
-            }
-        }
+        public bool ReadyToRun { get; private set; }
+
+        public bool Insipred { get; private set; }
+
+        public bool CanEscape { get; set; }
+
+        public float PercentageThreshNeedInsipration => NeedInspirationLevel;
+
+        public float PercentageThreshLazy => LazyLevel;
 
         //TODO change to lazy category?
-        public HungerCategory CurCategory
-        {
-            get
-            {
-                return 0;
-            }
-        }
+        public HungerCategory CurCategory => 0;
 
-        public override int GUIChangeArrow
+        public override int GUIChangeArrow => delta;
+
+        public bool Motivated
         {
             get
             {
-                return guiArrow;
+                if (delta == 1)
+                    return true;
+                return false;
             }
         }
 
@@ -110,67 +83,61 @@ namespace PrisonLabor
                 {
                     if (pawn.GetRoomGroup() != null)
                     {
-                        List<Pawn> pawnsInRoom = new List<Pawn>();
-                        prisonersCount = 0;
-                        wardensCount = 0;
-                        foreach (IntVec3 cell in pawn.GetRoomGroup().Cells)
-                        {
-                            foreach (Thing thing in cell.GetThingList(pawn.Map))
-                            {
-                                if (thing is Pawn)
-                                    pawnsInRoom.Add((Pawn)thing);
-                            }
-                        }
-                        foreach (Pawn p in pawnsInRoom)
-                        {
-                            // colonist nearby
-                            if (p.IsFreeColonist)
-                                wardensCount++;
-                            if (PrisonLaborUtility.LaborEnabled(p))
-                                prisonersCount++;
-                        }
+                        var value = InspirationUtility.GetInsiprationValue(pawn);
 
                         if (PrisonLaborUtility.LaborEnabled(pawn))
                         {
-                            float value = wardensCount * InspireRate / prisonersCount;
-                            if (enabled)
+                            if (Enabled)
                             {
                                 value -= LazyRate;
                                 if (HealthAIUtility.ShouldSeekMedicalRest(pawn))
                                     value -= HealthRate;
                                 value -= (int)pawn.needs.food.CurCategory * HungryRate;
                                 value -= (int)pawn.needs.rest.CurCategory * TiredRate;
+                                if (value >= 0)
+                                    Insipred = true;
+                                else
+                                    Insipred = false;
                             }
-                            else if (pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy)
+                            else if (pawn.timetable != null &&
+                                     pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy)
                             {
+                                if (value != 0)
+                                    Insipred = true;
+                                else
+                                    Insipred = false;
                                 value += JoyRate;
                             }
-                            guiArrow = value.CompareTo(0.0f);
+                            else
+                            {
+                                if (value != 0)
+                                    Insipred = true;
+                                else
+                                    Insipred = false;
+                            }
+                            delta = value.CompareTo(0.0f);
                             return value;
                         }
                         else
                         {
-                            float value = wardensCount * InspireRate / (prisonersCount + 1);
-                            guiArrow = value.CompareTo(0.0f);
+                            if (value != 0)
+                                Insipred = true;
+                            else
+                                Insipred = false;
+
+                            delta = value.CompareTo(0.0f);
                             return value;
                         }
                     }
                     else
                     {
-                        guiArrow = 0;
+                        delta = 0;
                         return 0.0f;
                     }
                 }
-                else
-                {
-                    guiArrow = 1;
-                    return +0.01f;
-                }
+                delta = 1;
+                return +0.01f;
             }
-        }
-
-        public Need_Motivation(Pawn pawn) : base(pawn)
-        {
         }
 
         public override void ExposeData()
@@ -181,59 +148,72 @@ namespace PrisonLabor
 
         public override void NeedInterval()
         {
-            //for perfomance purposes
-            if (slowDown < 5)
-            {
-                CurLevel += LazinessRate;
+            CurLevel += LazinessRate;
 
-                if (CurLevel == MaxLevel)
-                    needToBeInspired = false;
-                if (CurLevel <= NeedInspirationLevel && !needToBeInspired)
-                    needToBeInspired = true;
-                if (CurLevel <= LazyLevel && !isLazy && wardensCount == 0)
-                {
-                    isLazy = true;
-                    Tutorials.Motivation();
-                }
-                else if (isLazy && wardensCount > 0)
-                {
-                    isLazy = false;
-                }
-
-                slowDown = 0;
-            }
-            else
+            if (CurLevel == MaxLevel)
+                NeedToBeInspired = false;
+            if (CurLevel <= NeedInspirationLevel && !NeedToBeInspired)
+                NeedToBeInspired = true;
+            if (CurLevel <= LazyLevel && !IsLazy && delta <= 0)
             {
-                slowDown++;
+                IsLazy = true;
+                Tutorials.Motivation();
             }
+            else if (IsLazy && delta > 0)
+            {
+                IsLazy = false;
+            }
+
+            ImpatientTick();
         }
 
         public override void SetInitialLevel()
         {
             CurLevelPercentage = 1.0f;
-            enabled = false;
+            Enabled = false;
         }
-       
+
         public override string GetTipString()
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine(base.GetTipString());
             stringBuilder.AppendLine();
-            stringBuilder.AppendLine("WardenResponseThreshold".Translate() + ": " + PercentageThreshNeedInsipration.ToStringPercent());
-            stringBuilder.AppendLine("StoppingWorkThreshold".Translate() + ": " + PercentageThreshLazy.ToStringPercent());
+            stringBuilder.AppendLine("PrisonLabor_WardenResponseThreshold".Translate() + ": " +
+                                     PercentageThreshNeedInsipration.ToStringPercent());
+            stringBuilder.AppendLine(
+                "PrisonLabor_StoppingWorkThreshold".Translate() + ": " + PercentageThreshLazy.ToStringPercent());
             return stringBuilder.ToString();
         }
 
-        public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true)
+        public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f,
+            bool drawArrows = true, bool doTooltip = true)
         {
-            if (this.threshPercents == null)
-            {
-                this.threshPercents = new List<float>();
-            }
-            this.threshPercents.Clear();
-            this.threshPercents.Add(this.PercentageThreshLazy);
-            this.threshPercents.Add(this.PercentageThreshNeedInsipration);
+            if (threshPercents == null)
+                threshPercents = new List<float>();
+            threshPercents.Clear();
+            threshPercents.Add(PercentageThreshLazy);
+            threshPercents.Add(PercentageThreshNeedInsipration);
             base.DrawOnGUI(rect, maxThresholdMarkers, customMargin, drawArrows, doTooltip);
+        }
+
+        private void ImpatientTick()
+        {
+            if (Insipred || !CanEscape)
+            {
+                if (impatient != 0)
+                {
+                    impatient = 0;
+                    ReadyToRun = false;
+                }
+            }
+            else if (!ReadyToRun)
+            {
+                impatient++;
+                if (impatient >= ReadyToRunLevel)
+                {
+                    ReadyToRun = true;
+                }
+            }
         }
     }
 }

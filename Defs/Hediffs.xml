@@ -1,0 +1,24 @@
+<Defs>
+  <HediffDef>
+    <defName>PrisonLabor_PrisonerChains</defName>
+    <label>prisoners chains</label>
+    <stages>
+      <li>
+        <label>not active</label>
+        <everVisible>false</everVisible>
+        <minSeverity>0.0</minSeverity>
+      </li>
+        <li>
+          <label>active</label>
+          <everVisible>false</everVisible>
+          <minSeverity>1.0</minSeverity>
+          <capMods>
+            <li>
+              <capacity>Manipulation</capacity>
+              <offset>-0.2</offset>
+            </li>
+          </capMods>
+        </li>
+    </stages>
+  </HediffDef>
+</Defs>

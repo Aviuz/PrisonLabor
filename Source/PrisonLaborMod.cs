@@ -1,25 +1,22 @@
-﻿using System;
+﻿using RimWorld;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 using Verse;
 
 namespace PrisonLabor
 {
     [StaticConstructorOnStartup]
-    class PrisonLaborMod : Mod
+    internal class PrisonLaborMod : Mod
     {
-        public const int versionNumber = 7;
-        public const string versionString = "0.7";
-
         private static string difficulty = "";
-
         private static bool showNews;
         private static bool allowAllWorktypes;
         private static bool enableMotivationMechanics;
         private static bool advanceGrowing;
         private static bool disableMod;
+        private static int defaultInteractionMode;
+
+        private static List<PrisonerInteractionModeDef> interactionModeList;
 
         public PrisonLaborMod(ModContentPack content) : base(content)
         {
@@ -31,28 +28,38 @@ namespace PrisonLabor
             allowAllWorktypes = PrisonLaborPrefs.AllowAllWorkTypes;
             enableMotivationMechanics = PrisonLaborPrefs.EnableMotivationMechanics;
             disableMod = PrisonLaborPrefs.DisableMod;
+
+            interactionModeList = new List<PrisonerInteractionModeDef>(DefDatabase<PrisonerInteractionModeDef>.AllDefs);
+            defaultInteractionMode = interactionModeList.IndexOf(DefDatabase<PrisonerInteractionModeDef>.GetNamed(PrisonLaborPrefs.DefaultInteractionMode));
         }
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Rect leftRect = new Rect(inRect.x, inRect.y, inRect.width * 0.75f, inRect.height);
-            Rect rightRect = new Rect(inRect.x + inRect.width * 0.75f + 30f, inRect.y, inRect.width * 0.25f - 30f, inRect.height);
+            var leftRect = new Rect(inRect.x, inRect.y, inRect.width * 0.65f, inRect.height);
+            var rightRect = new Rect(inRect.x + inRect.width * 0.65f + 30f, inRect.y, inRect.width * 0.35f - 30f,
+                inRect.height);
 
-            Listing_Standard listing_options = new Listing_Standard();
+            var listing_options = new Listing_Standard();
 
             listing_options.Begin(leftRect);
 
-            listing_options.CheckboxLabeled("Show news", ref showNews, "Showing news about changes in mod when prisoners detected.");
+            listing_options.CheckboxLabeled("PrisonLabor_ShowNews".Translate(), ref showNews,
+                "PrisonLabor_ShowNewsDesc".Translate());
+
+            listing_options.GapLine();
+
+            if (listing_options.ButtonTextLabeled("PrisonLabor_DefaultInterMode".Translate(), PrisonerInteractionModeUtility.GetLabel(interactionModeList[defaultInteractionMode])))
+                defaultInteractionMode = defaultInteractionMode < interactionModeList.Count - 1 ? defaultInteractionMode + 1 : 0;
 
             listing_options.GapLine();
 
             if (!disableMod)
             {
-                listing_options.Label("Allowed work types:", -1f);
-                listing_options.CheckboxLabeled("   allow all", ref allowAllWorktypes, "allow all work types");
+                listing_options.Label("PrisonLabor_AllowedWorkTypes".Translate(), -1f);
+                listing_options.CheckboxLabeled("   " + "PrisonLabor_AllowAll".Translate(), ref allowAllWorktypes, "PrisonLabor_AllowAllWorkTypes".Translate());
                 if (!allowAllWorktypes)
                 {
-                    if (listing_options.ButtonTextLabeled("   allowed work types:", "browse"))
+                    if (listing_options.ButtonTextLabeled("   " + "PrisonLabor_AllowedWorkTypesL".Translate(), "PrisonLabor_Browse".Translate()))
                         Find.WindowStack.Add(new SelectWorkTypesDialog());
                 }
                 else
@@ -62,19 +69,20 @@ namespace PrisonLabor
 
                 listing_options.GapLine();
 
-                listing_options.CheckboxLabeled("Motivation mechanics (!)", ref enableMotivationMechanics, "When checked prisoners need to be motivated.\n\nWARINING: Needs reloading save.");
+                listing_options.CheckboxLabeled("PrisonLabor_MotivationMechanics".Translate(), ref enableMotivationMechanics,
+                    "PrisonLabor_MotivationWarning".Translate());
 
                 listing_options.GapLine();
 
-                listing_options.CheckboxLabeled("Prisoners can grow advanced plants", ref advanceGrowing, "When disabled prisoners can only grow plants that not require any skills.");
-
+                listing_options.CheckboxLabeled("PrisonLabor_CanGrowAdvanced".Translate(), ref advanceGrowing,
+                    "PrisonLabor_CanGrowAdvancedDesc".Translate());
             }
             else
             {
                 listing_options.Gap();
                 listing_options.Gap();
-                listing_options.Label("Restart then re-save your game.", -1f);
-                listing_options.Label("After this steps you can safely disable this mod.", -1f);
+                listing_options.Label("PrisonLabor_RestartInfo".Translate(), -1f);
+                listing_options.Label("PrisonLabor_RestartInfo2".Translate(), -1f);
                 listing_options.Gap();
                 listing_options.Gap();
                 listing_options.Gap();
@@ -84,40 +92,38 @@ namespace PrisonLabor
             listing_options.Gap();
             listing_options.Gap();
 
-            listing_options.CheckboxLabeled("Disable mod", ref disableMod, "When enabled, worlds that are saved are transferred to 'safe mode', and can be played without mod.");
-            
+            listing_options.CheckboxLabeled("PrisonLabor_DisableMod".Translate(), ref disableMod,
+                "PrisonLabor_DisableModDesc".Translate());
+
             listing_options.End();
 
-            Listing_Standard listing_panel = new Listing_Standard();
+            var listing_panel = new Listing_Standard();
 
             listing_panel.Begin(rightRect);
 
-            listing_panel.Label("Prison Labor Alpha", -1f);
-            listing_panel.Label("Version: " + versionString, -1f);
+            var heigh_temp = rightRect.width * 0.56f;
+            GUI.DrawTexture(new Rect(0, 0, rightRect.width, heigh_temp), ContentFinder<Texture2D>.Get("Preview", true));
+            listing_panel.Gap(heigh_temp);
+            listing_panel.Label("Prison Labor", -1f);
+            listing_panel.Label("PrisonLabor_Version".Translate() + VersionUtility.versionString, -1f);
 
             listing_panel.GapLine();
 
-            listing_panel.Label("Difficulty: " + difficulty, -1f);
+            listing_panel.Label("PrisonLabor_Difficulty".Translate() + difficulty, -1f);
 
             listing_panel.GapLine();
 
-            Listing_Standard listing_buttons = new Listing_Standard();
-
-            listing_buttons.Begin(new Rect(rightRect.width * 0.25f, listing_panel.CurHeight, rightRect.width * 0.5f, rightRect.height - listing_panel.CurHeight));
-
-            if (listing_buttons.ButtonText("Defaults"))
+            if (listing_panel.ButtonText("PrisonLabor_Defaults".Translate()))
             {
                 PrisonLaborPrefs.RestoreToDefault();
                 Init();
             }
 
-            if (listing_buttons.ButtonText("ShowNews"))
+            if (listing_panel.ButtonText("PrisonLabor_ShowNews".Translate()))
             {
                 NewsDialog.showAll = true;
                 NewsDialog.ForceShow();
             }
-
-            listing_buttons.End();
 
             listing_panel.End();
 
@@ -131,14 +137,15 @@ namespace PrisonLabor
 
         public override void WriteSettings()
         {
-            Log.Message("saved");
             PrisonLaborPrefs.ShowNews = showNews;
             PrisonLaborPrefs.AllowAllWorkTypes = allowAllWorktypes;
-            if(!disableMod)
+            if (!disableMod)
                 PrisonLaborPrefs.EnableMotivationMechanics = enableMotivationMechanics;
             PrisonLaborPrefs.AdvancedGrowing = advanceGrowing;
             PrisonLaborPrefs.DisableMod = disableMod;
+            PrisonLaborPrefs.DefaultInteractionMode = interactionModeList[defaultInteractionMode].defName;
             PrisonLaborPrefs.Save();
+            Log.Message("Prison Labor settings saved");
         }
 
         private static void Apply()
@@ -149,34 +156,32 @@ namespace PrisonLabor
 
         private static void CalculateDifficulty()
         {
-            int value = 1000;
+            var value = 1000;
             if (!enableMotivationMechanics)
                 value -= 300;
             if (advanceGrowing)
                 value -= 50;
             value -= 500;
-            if(!allowAllWorktypes)
+            if (!allowAllWorktypes)
             {
-                int delta = 500 + 7 * 50 + (DefDatabase<WorkTypeDef>.DefCount - 20) * 25;
-                foreach (WorkTypeDef wtd in DefDatabase<WorkTypeDef>.AllDefs)
-                {
+                var delta = 500 + 7 * 50 + (DefDatabase<WorkTypeDef>.DefCount - 20) * 25;
+                foreach (var wtd in DefDatabase<WorkTypeDef>.AllDefs)
                     if (!PrisonLaborUtility.WorkDisabled(wtd))
                         delta -= 50;
-                }
                 if (delta > 0)
                     value += delta;
             }
 
             if (value >= 1000)
-                difficulty = (int)(value / 10) + " (Normal)";
+                difficulty = value / 10 + " (" + "PrisonLabor_DifficultyNormal".Translate() + ")";
             else if (value >= 800)
-                difficulty = (int)(value / 10) + " (Casual)";
+                difficulty = value / 10 + " (" + "PrisonLabor_DifficultyCasual".Translate() + ")";
             else if (value >= 500)
-                difficulty = (int)(value / 10) + " (Easy)";
+                difficulty = value / 10 + " (" + "PrisonLabor_DifficultyEasy".Translate() + ")";
             else if (value >= 300)
-                difficulty = (int)(value / 10) + " (Peaceful)";
+                difficulty = value / 10 + " (" + "PrisonLabor_DifficultyPeaceful".Translate() + ")";
             else
-                difficulty = (int)(value / 10) + " (A joke)";
+                difficulty = value / 10 + " (" + "PrisonLabor_DifficultyJoke".Translate() + ")";
         }
     }
 }

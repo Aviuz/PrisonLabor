@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using UnityEngine;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -17,71 +15,63 @@ namespace PrisonLabor
 
         protected float xpPerTick;
 
-        protected Plant Plant
-        {
-            get
-            {
-                return (Plant)base.CurJob.targetA.Thing;
-            }
-        }
+        protected Plant Plant => (Plant) CurJob.targetA.Thing;
 
         [DebuggerHidden]
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.Init();
+            Init();
             yield return Toils_JobTransforms.MoveCurrentTargetIntoQueue(TargetIndex.A);
             yield return Toils_Reserve.ReserveQueue(TargetIndex.A, 1, -1, null);
-            Toil initExtractTargetFromQueue = Toils_JobTransforms.ClearDespawnedNullOrForbiddenQueuedTargets(TargetIndex.A);
+            var initExtractTargetFromQueue =
+                Toils_JobTransforms.ClearDespawnedNullOrForbiddenQueuedTargets(TargetIndex.A);
             yield return initExtractTargetFromQueue;
             yield return Toils_JobTransforms.ExtractNextTargetFromQueue(TargetIndex.A);
-            Toil checkNextQueuedTarget = Toils_JobTransforms.ClearDespawnedNullOrForbiddenQueuedTargets(TargetIndex.A);
-            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch).JumpIfDespawnedOrNullOrForbidden(TargetIndex.A, checkNextQueuedTarget);
-            Toil cut = new Toil();
+            var checkNextQueuedTarget = Toils_JobTransforms.ClearDespawnedNullOrForbiddenQueuedTargets(TargetIndex.A);
+            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch)
+                .JumpIfDespawnedOrNullOrForbidden(TargetIndex.A, checkNextQueuedTarget);
+            var cut = new Toil();
             cut.tickAction = delegate
             {
-                Pawn actor = cut.actor;
+                var actor = cut.actor;
                 if (actor.skills != null)
-                {
-                    actor.skills.Learn(SkillDefOf.Growing, this.xpPerTick, false);
-                }
-                float statValue = actor.GetStatValue(StatDefOf.PlantWorkSpeed, true);
-                float num = statValue;
-                Plant plant = this.Plant;
-                this.workDone += num;
-                if (this.workDone >= plant.def.plant.harvestWork)
+                    actor.skills.Learn(SkillDefOf.Growing, xpPerTick, false);
+                var statValue = actor.GetStatValue(StatDefOf.PlantWorkSpeed, true);
+                var num = statValue;
+                var plant = Plant;
+                workDone += num;
+                if (workDone >= plant.def.plant.harvestWork)
                 {
                     if (plant.def.plant.harvestedThingDef != null)
-                    {
-                        if (actor.RaceProps.Humanlike && plant.def.plant.harvestFailable && Rand.Value > actor.GetStatValue(StatDefOf.PlantHarvestYield, true))
+                        if (actor.RaceProps.Humanlike && plant.def.plant.harvestFailable &&
+                            Rand.Value > actor.GetStatValue(StatDefOf.PlantHarvestYield, true))
                         {
-                            Vector3 loc = (this.pawn.DrawPos + plant.DrawPos) / 2f;
-                            MoteMaker.ThrowText(loc, this.Map, "TextMote_HarvestFailed".Translate(), 3.65f);
+                            var loc = (pawn.DrawPos + plant.DrawPos) / 2f;
+                            MoteMaker.ThrowText(loc, Map, "TextMote_HarvestFailed".Translate(), 3.65f);
                         }
                         else
                         {
-                            int num2 = plant.YieldNow();
+                            var num2 = plant.YieldNow();
                             if (num2 > 0)
                             {
-                                Thing thing = ThingMaker.MakeThing(plant.def.plant.harvestedThingDef, null);
+                                var thing = ThingMaker.MakeThing(plant.def.plant.harvestedThingDef, null);
                                 thing.stackCount = num2;
-                                GenPlace.TryPlaceThing(thing, actor.Position, this.Map, ThingPlaceMode.Near, null);
+                                GenPlace.TryPlaceThing(thing, actor.Position, Map, ThingPlaceMode.Near, null);
                                 actor.records.Increment(RecordDefOf.PlantsHarvested);
                             }
                         }
-                    }
                     plant.def.plant.soundHarvestFinish.PlayOneShot(actor);
                     plant.PlantCollected();
-                    this.workDone = 0f;
-                    this.ReadyForNextToil();
-                    return;
+                    workDone = 0f;
+                    ReadyForNextToil();
                 }
             };
             cut.FailOnDespawnedNullOrForbidden(TargetIndex.A);
             cut.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
             cut.defaultCompleteMode = ToilCompleteMode.Never;
             cut.WithEffect(EffecterDefOf.Harvest, TargetIndex.A);
-            cut.WithProgressBar(TargetIndex.A, () => this.workDone / this.Plant.def.plant.harvestWork, true, -0.5f);
-            cut.PlaySustainerOrSound(() => this.Plant.def.plant.soundHarvesting);
+            cut.WithProgressBar(TargetIndex.A, () => workDone / Plant.def.plant.harvestWork, true, -0.5f);
+            cut.PlaySustainerOrSound(() => Plant.def.plant.soundHarvesting);
             yield return cut;
             yield return checkNextQueuedTarget;
             yield return Toils_Jump.JumpIfHaveTargetInQueue(TargetIndex.A, initExtractTargetFromQueue);
@@ -90,7 +80,7 @@ namespace PrisonLabor
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look<float>(ref this.workDone, "workDone", 0f, false);
+            Scribe_Values.Look(ref workDone, "workDone", 0f, false);
         }
 
         protected virtual void Init()

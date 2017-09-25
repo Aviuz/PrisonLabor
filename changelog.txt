@@ -1,4 +1,22 @@
 Changelog:
+0.8
+- added revolts
+- reduced manipulation capability of prisoners (now they have 80% of normal manipulation, down from 100%)
+- added default prisoner interaction mode option to settings menu
+- fixed comatibility issues with Dubs Hygiene and Central Heating Mod (prisoners now use toilets and showers)
+- added "Labor area" tool in "Zones" category
+- added "Prisoner only"("Colony only", "Colonists only") button in bill menu
+- fixed forbidden bug with harvesting plants (again)
+- added SeedsPlease compatibility
+- added tutorials triggers (now all tutorials will be shown)
+- added watched tutorials to properties (tutorials will no longer be shown after reenabling mod)
+- excluded supervising from labor
+- reworked inspiration: Now insiration is AOE around warden, and will prevent prisoners from escaping.
+- added icons above prisoners indicating whenever he's being motivated/inspired
+- fixed Toil reservation bug (not respecting prisoners' job)
+- rewritten news dialog
+- perfomance and code improvements
+- added "Work and recruit" option
 0.7
 - fixed "failing to reserve food" bug (that one with circling warden around food)
 - prisoners now stop working (while "anything" time) while starving instead of hungry. They will still get minor debuff

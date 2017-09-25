@@ -8,7 +8,7 @@
       <highlightTags>
         <li>ITab-Prisoner-Closed</li>
       </highlightTags>
-      <helpText>You can force your prisoners to labor.\n\nTo do so you must select "Force to work" option from "Prisoner" pane\n\nPrisoners will work on orders and bills that are in allowed area. Make sure prisoners can reach their work.\n\nThey can only cook, mine, cut plants, haul, clean, or grow plants, that not require special skills.\n\nPrisoner sometimes refuses to work. Reasons can be different. He can be injured, hungry, tired, or not motivated enough.\n\nHINT: You can assign work types in "Work" pane.\n\nHINT: If you put a stove in a prison cell make sure they can reach raw food.\n\nHINT: You can let prioners moving through doors by leaving them open.</helpText>
+      <helpText>You can force your prisoners to do labor.\n\nTo do so you must select "Force to work" option from "Prisoner" pane\n\nPrisoners will work on orders and bills that are in allowed area. Make sure prisoners can reach their work.\n\nThey can only cook, mine, cut plants, haul, clean, or grow plants, that do not require special skills.\n\nPrisoner sometimes refuses to work. Reasons can be different. He can be injured, hungry, tired, or not motivated enough.\n\nHINT: You can assign work types in "Work" pane.\n\nHINT: If you put a stove in a prison cell make sure they can reach raw food.\n\nHINT: You can let prioners moving through doors by leaving them open.</helpText>
     </ConceptDef>
     <ConceptDef>
       <defName>PrisonLabor_Motivation</defName>
