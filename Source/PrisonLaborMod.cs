@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using RimWorld;
+using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace PrisonLabor
@@ -12,6 +14,9 @@ namespace PrisonLabor
         private static bool enableMotivationMechanics;
         private static bool advanceGrowing;
         private static bool disableMod;
+        private static int defaultInteractionMode;
+
+        private static List<PrisonerInteractionModeDef> interactionModeList;
 
         public PrisonLaborMod(ModContentPack content) : base(content)
         {
@@ -23,6 +28,9 @@ namespace PrisonLabor
             allowAllWorktypes = PrisonLaborPrefs.AllowAllWorkTypes;
             enableMotivationMechanics = PrisonLaborPrefs.EnableMotivationMechanics;
             disableMod = PrisonLaborPrefs.DisableMod;
+
+            interactionModeList = new List<PrisonerInteractionModeDef>(DefDatabase<PrisonerInteractionModeDef>.AllDefs);
+            defaultInteractionMode = interactionModeList.IndexOf(DefDatabase<PrisonerInteractionModeDef>.GetNamed(PrisonLaborPrefs.DefaultInteractionMode));
         }
 
         public override void DoSettingsWindowContents(Rect inRect)
@@ -37,6 +45,11 @@ namespace PrisonLabor
 
             listing_options.CheckboxLabeled("Show news", ref showNews,
                 "Showing news about changes in mod when prisoners detected.");
+
+            listing_options.GapLine();
+
+            if (listing_options.ButtonTextLabeled("Default prisoner interaction mode", PrisonerInteractionModeUtility.GetLabel(interactionModeList[defaultInteractionMode])))
+                defaultInteractionMode = defaultInteractionMode < interactionModeList.Count - 1 ? defaultInteractionMode + 1 : 0;
 
             listing_options.GapLine();
 
@@ -131,6 +144,7 @@ namespace PrisonLabor
                 PrisonLaborPrefs.EnableMotivationMechanics = enableMotivationMechanics;
             PrisonLaborPrefs.AdvancedGrowing = advanceGrowing;
             PrisonLaborPrefs.DisableMod = disableMod;
+            PrisonLaborPrefs.DefaultInteractionMode = interactionModeList[defaultInteractionMode].defName;
             PrisonLaborPrefs.Save();
         }
 

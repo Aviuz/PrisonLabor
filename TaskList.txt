@@ -6,10 +6,13 @@ Agenda:
   - Scheduled for implementation
   * Considered
 ==========================
-- bad hugiene mod (http://steamcommunity.com/sharedfiles/filedetails/?id=836762505&searchtext=Dubs+Bad+Hygiene)
-* prisoners joy
-+ manipulation reduced
-+ revolts
+revolts
   - add different weapons depending on points
   - rewrite all numbers
-- Rewrite all text and "Work in progress" strings
+- rewrite all text and "Work in progress" strings
+  - options menu
+  - prisoner interaction mode
+  - work types
+  - motivation
+  - ...
+- add images to news

@@ -68,6 +68,7 @@
     <Compile Include="HarmonyPatches\Patch_BillCheckbox.cs" />
     <Compile Include="HarmonyPatches\Patch_BillPrevention.cs" />
     <Compile Include="HarmonyPatches\Patch_ChangeWorkTabPrisonerLabelColor.cs" />
+    <Compile Include="HarmonyPatches\Patch_DefaultInteractionMode.cs" />
     <Compile Include="HarmonyPatches\Patch_DisableAreaRestrictionsForPrisoners.cs" />
     <Compile Include="HarmonyPatches\Patch_EscapingPrisoner.cs" />
     <Compile Include="HarmonyPatches\Patch_ExposeBillGroup.cs" />

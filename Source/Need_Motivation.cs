@@ -80,6 +80,7 @@ namespace PrisonLabor
             get
             {
                 if (pawn.IsPrisoner && pawn.IsPrisonerOfColony)
+                {
                     if (pawn.GetRoomGroup() != null)
                     {
                         var value = InspirationUtility.GetInsiprationValue(pawn);
@@ -133,6 +134,7 @@ namespace PrisonLabor
                         delta = 0;
                         return 0.0f;
                     }
+                }
                 delta = 1;
                 return +0.01f;
             }

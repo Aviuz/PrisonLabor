@@ -7,6 +7,8 @@ namespace PrisonLabor
         public bool advanced_growing = false;
         public bool allow_all_worktypes = false;
 
+        public string defaultInteraction = "PrisonLabor_workOption";
+
         public string allowed_works = "";
         public bool disable_mod = false;
         public bool enable_motivation_mechanics = true;
@@ -34,7 +36,8 @@ namespace PrisonLabor
         v0_7_dev1,
         v0_7_dev2,
         v0_7_dev3,
-        v0_7_dev4
+        v0_7_dev4,
+        v0_7_dev5
     }
 
     [Flags]

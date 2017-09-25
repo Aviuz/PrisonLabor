@@ -56,6 +56,20 @@ namespace PrisonLabor
             }
         }
 
+        public static string DefaultInteractionMode
+        {
+            get
+            {
+                return data.defaultInteraction;
+            }
+
+            set
+            {
+                data.defaultInteraction = value;
+                Apply();
+            }
+        }
+
         public static bool EnableMotivationMechanics
         {
             get

@@ -26,6 +26,7 @@ namespace PrisonLabor
         public static bool news_0_7_dev2 = true;
         public static bool news_0_7_dev3 = true;
         public static bool news_0_7_dev4 = true;
+        public static bool news_0_7_dev5 = true;
 
         // Fields
         private string[] titles;
@@ -45,6 +46,16 @@ namespace PrisonLabor
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
 
+            if (news_0_7_dev5 || showAll)
+            {
+                titlesList.Add("Prison Labor Alpha v0.7 dev5");
+                string[] itemsArray =
+                {
+                    "Added default prisoner interaction mode to settings",
+                    "Added compatibility with Dubs Hygiene Mod",
+                };
+                itemsList.Add(itemsArray);
+            }
             if (news_0_7_dev4 || showAll)
             {
                 titlesList.Add("Prison Labor Alpha v0.7 dev4");

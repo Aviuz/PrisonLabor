@@ -1,5 +1,9 @@
 Changelog:
 0.8
+- added revolts
+- reduced manipulation capability of prisoners (now they have 80% of normal manipulation, down from 100%)
+- added default prisoner interaction mode option to settings menu
+- fixed comatibility issues with Dubs Hygiene and Central Heating Mod (prisoners now use toilets and showers)
 - added "Labor area" tool in "Zones" category
 - added "Prisoner only"("Colony only", "Colonists only") button in bill menu
 - fixed forbidden bug with harvesting plants (again)
