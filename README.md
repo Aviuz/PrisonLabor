@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="https://github.com/Aviuz/PrisonLabor/releases">
-    <img src="https://img.shields.io/badge/version-0.7-orange.svg?style=flat" alt="v0.7" />
+    <img src="https://img.shields.io/badge/version-0.8.0-orange.svg?style=flat" alt="v0.7" />
   </a>
 </p>
 
@@ -19,8 +19,8 @@ This mod force prisoners to work. To enable this feature prisoners must have "Fo
 * Prison area - prisoners in order to work need to reach target. You can check "Hold open" option on doors. Be aware, they will try to run if they see opportunity.
 * "Prisoners only" tools - You can mark orders and bills by tools that exclude colonist from work.
 
-## Alpha
-This is early alpha version! Some features can be changed, and there are many that will be added. There can be bugs or compatibility collisions.
+## Beta
+This is beta version. Some ascpects of mod still need to be balanced (like motivation). There can be still some bugs.
 
 ## Compatibility
 * Works with mods that add Jobs of type cook/mine/craft/haul/clean like Quarry, or Haulers Can Haul To Blueprints
