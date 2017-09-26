@@ -23,6 +23,7 @@ namespace PrisonLabor
         public static bool news_0_6 = false;
         public static bool news_0_7 = false;
         public static bool news_0_8_0 = false;
+        public static bool news_0_8_1 = false;
 
         // Fields
         private string[] titles;
@@ -41,7 +42,22 @@ namespace PrisonLabor
         {
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
-
+            if (news_0_8_1 || showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.8.1");
+                string[] itemsArray =
+                {
+                    "[subtitle] Sorry for any inconvenience caused by 0.8.0 update. Some part of mod are very vulnerable to any mods installed",
+                    "[subtitle] If you encouter any bugs <b>please report it on github</b>. I'm fixing most important ones every day. This is (recently) beta version and it has to consist some bugs. Thank you for understaning.",
+                    "[subtitle] Also you can always <b>download old version</b> via github, but I think this was last big update",
+                    "re-enabled button in Bills detail panel",
+                    "added slider to Bills (temporary fix)",
+                    "fixed Bill \"Prisoner only\" button (I think, let me know if you still experience errors)",
+                    "fixed prisoners aren't working when Motivation is disabled (via Settings)",
+                    "fixed null-reference error on some revolts incidents",
+                };
+                itemsList.Add(itemsArray);
+            }
             if (news_0_8_0 || showAll)
             {
                 titlesList.Add("Prison Labor Beta v0.8.0");

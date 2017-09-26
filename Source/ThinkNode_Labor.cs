@@ -13,13 +13,21 @@ namespace PrisonLabor
                 Tutorials.Introduction();
                 Tutorials.Management();
 
+                IntVec3 c;
+
                 var need = pawn.needs.TryGetNeed<Need_Motivation>();
                 if (need == null)
-                    return false;
+                {
+                    if (!pawn.guest.PrisonerIsSecure || RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
+                        return false;
+                    else if (PrisonLaborUtility.LaborEnabled(pawn))
+                        return true;
+                    else
+                        return false;
+                }
 
                 // Prisoner will escape if get ready to run.
                 // If he can run he will start ticking impatient, once complete he will get ready.
-                IntVec3 c;
                 if (!pawn.guest.PrisonerIsSecure ||
                         RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
                 {

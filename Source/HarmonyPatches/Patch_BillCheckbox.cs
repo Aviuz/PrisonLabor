@@ -5,6 +5,8 @@ using Harmony;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using System;
+using System.IO;
 
 #pragma warning disable CS0252
 
@@ -12,52 +14,111 @@ namespace PrisonLabor.HarmonyPatches
 {
     [HarmonyPatch(typeof(Dialog_BillConfig))]
     [HarmonyPatch("DoWindowContents")]
-    [HarmonyPatch(new[] {typeof(Rect)})]
+    [HarmonyPatch(new[] { typeof(Rect) })]
     internal class Patch_BillCheckbox
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
-            var step = 0;
-            CodeInstruction loadBillInstr = null;
-            var label = new Label();
-            foreach (var instruction in instr)
+            // Find operands
+            OpCode[] opCodes0 =
             {
-                if (step == 0)
-                    if (instruction.opcode == OpCodes.Ldfld)
-                    {
-                        loadBillInstr = instruction;
-                        step++;
-                    }
-                if (step == 1)
+                OpCodes.Ldfld,
+            };
+            String[] operands0 =
+            {
+                "RimWorld.Bill_Production bill",
+            };
+            var billField = HarmonyPatches.FindOperandAfter(opCodes0, operands0, instr);
+            OpCode[] opCodes1 =
+            {
+                OpCodes.Ldloc_S,
+                OpCodes.Ldloc_S,
+                OpCodes.Ldnull,
+                OpCodes.Callvirt,
+                OpCodes.Brfalse
+            };
+            String[] operands1 =
+            {
+                "Verse.Listing_Standard (4)",
+                "System.String (5)",
+                "",
+                "Boolean ButtonText(System.String, System.String)",
+                "System.Reflection.Emit.Label",
+            };
+            var label = HarmonyPatches.FindOperandAfter(opCodes1, operands1, instr);
+
+            // Begin rect - start of scrollable view
+            int step2 = 0;
+            int step4 = 0;
+            OpCode[] opCodes2 =
+            {
+                OpCodes.Ldloc_S,
+                OpCodes.Ldloc_2,
+                OpCodes.Callvirt,
+            };
+            String[] operands2 =
+            {
+                "Verse.Listing_Standard (4)",
+                "",
+                "Void Begin(Rect)",
+            };
+            // End rect - end of scrollable view
+            int step3 = 0;
+            OpCode[] opCodes3 =
+            {
+                OpCodes.Call,
+                OpCodes.Stfld,
+                OpCodes.Ldloc_S,
+            };
+            String[] operands3 =
+            {
+                "Int32 RoundToInt(Single)",
+                "System.Int32 unpauseWhenYouHave",
+                "Verse.Listing_Standard (4)",
+            };
+
+
+            // Transpiller
+            if (billField != null && label != null)
+            {
+                foreach (var ci in instr)
                 {
-                    if (instruction.opcode == OpCodes.Ldstr && instruction.operand == "BillStoreMode_")
-                        step++;
-                }
-                else if (step == 2)
-                {
-                    if (instruction.opcode == OpCodes.Brfalse)
+                    if (ci.labels.Contains((Label)label))
                     {
-                        label = (Label) instruction.operand;
-                        step++;
-                    }
-                }
-                else if (step == 3)
-                {
-                    if (instruction.labels.Count != 0 && instruction.labels.Contains(label))
-                    {
-                        var injectedInstruction = new CodeInstruction(OpCodes.Ldloc_S, instruction.operand);
-                        injectedInstruction.labels.Add(label);
+                        var injectedInstruction = new CodeInstruction(OpCodes.Ldloc_S, ci.operand);
+                        injectedInstruction.labels.Add((Label)label);
                         yield return injectedInstruction;
                         yield return new CodeInstruction(OpCodes.Ldarg_0);
-                        yield return new CodeInstruction(loadBillInstr);
+                        yield return new CodeInstruction(OpCodes.Ldfld, billField);
                         yield return new CodeInstruction(OpCodes.Call,
                             typeof(Patch_BillCheckbox).GetMethod("GroupExclusionButton"));
-                        instruction.labels.Remove(label);
+                        ci.labels.Remove((Label)label);
+                    }
+                    if(HarmonyPatches.IsFragment(opCodes3, operands3, ci, ref step3))
+                    {
+                        var instruction = new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StopScrolling"));
+                        instruction.labels.AddRange(ci.labels);
+                        ci.labels.Clear();
+                        yield return instruction;
+                    }
+                    if (HarmonyPatches.IsFragment(opCodes2, operands2, ci, ref step4))
+                    {
+                        yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("SetRect"));
+                    }
+                    yield return ci;
+                    if(HarmonyPatches.IsFragment(opCodes2, operands2, ci, ref step2))
+                    {
+                        yield return new CodeInstruction(OpCodes.Ldloc_2);
+                        yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StartScrolling"));
                     }
                 }
-                yield return instruction;
             }
+            else
+            {
+                throw new Exception($"Failed to get operands for harmony patch Patch_BillPrevention: billField: {billField != null}, label: {label != null}");
+            }
+
         }
 
         public static void GroupExclusionButton(Listing_Standard listing, Bill bill)
@@ -78,6 +139,26 @@ namespace PrisonLabor.HarmonyPatches
                     BillUtility.SetFor(bill, GroupMode.ColonistsOnly);
             }
             listing.Gap(12f);
+        }
+
+        public static Rect SetRect(Rect rect)
+        {
+            rect.height += 32;
+            rect.width -= 16;
+            return rect;
+        }
+
+        public static Vector2 position;
+        public static void StartScrolling(Rect rect)
+        {
+            Rect viewRect = new Rect(0, 0, rect.width - 16, rect.height + 32);
+            Rect outRect = new Rect(0, 0, rect.width, rect.height);
+            Widgets.BeginScrollView(outRect, ref position, viewRect, true);
+        }
+
+        public static void StopScrolling()
+        {
+            Widgets.EndScrollView();
         }
     }
 }

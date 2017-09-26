@@ -75,7 +75,7 @@
     <Compile Include="HarmonyPatches\Patch_ExtendVistorRect.cs" />
     <Compile Include="HarmonyPatches\Patch_ForibiddenDrop.cs" />
     <Compile Include="HarmonyPatches\Patch_ItemIsForbidden.cs" />
-    <Compile Include="HarmonyPatches\Initialization.cs" />
+    <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
     <Compile Include="HarmonyPatches\Patch_LaborForbid.cs" />
     <Compile Include="HarmonyPatches\Patch_NeedOnlyByPrisoners.cs" />
     <Compile Include="HarmonyPatches\Patch_PrisonInteractionLabel.cs" />

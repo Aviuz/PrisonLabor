@@ -7,7 +7,7 @@ namespace PrisonLabor
     {
         static Initialization()
         {
-            HarmonyPatches.Initialization.Run();
+            HarmonyPatches.HarmonyPatches.Init();
             PrisonLaborPrefs.Init();
             PrisonLaborMod.Init();
             VersionUtility.CheckVersion();

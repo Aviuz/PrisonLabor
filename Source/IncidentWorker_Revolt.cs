@@ -24,7 +24,10 @@ namespace PrisonLabor
                 if (pawn.Faction.HostileTo(Faction.OfPlayer))
                     enemyFaction = true;
 
-                accumulatedMotivation += pawn.needs.TryGetNeed<Need_Motivation>().CurLevel;
+                var need = pawn.needs.TryGetNeed<Need_Motivation>();
+                if (need == null)
+                    continue;
+                accumulatedMotivation += need.CurLevel;
                 prisonersCount++;
             }
 

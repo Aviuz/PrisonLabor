@@ -1,5 +1,10 @@
 Changelog:
-0.8
+0.8.1
+- added slider to Bills (temporary fix)
+- fixed Bill "Prisoner only" button (I think, let me know if you still experience errors)
+- fixed prisoners aren't working when Motivation is disabled (via Settings)
+- fixed null-reference error on some revolts incidents
+0.8.0
 - added revolts
 - reduced manipulation capability of prisoners (now they have 80% of normal manipulation, down from 100%)
 - added default prisoner interaction mode option to settings menu
