@@ -1,4 +1,6 @@
 Changelog:
+0.8.2
+- fixed drawing icons on world
 0.8.1
 - added slider to Bills (temporary fix)
 - fixed Bill "Prisoner only" button (I think, let me know if you still experience errors)

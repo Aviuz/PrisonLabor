@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RimWorld.Planet;
+using UnityEngine;
 using Verse;
 
 namespace PrisonLabor
@@ -34,7 +35,7 @@ namespace PrisonLabor
         {
             //TODO add icons enabled
             var iconsEnabled = true;
-            var inGame = Find.GameInfo != null;
+            var inGame = Find.GameInfo != null && !WorldRendererUtility.WorldRenderedNow;
 
             if (iconsEnabled && inGame)
                 foreach (var pawn in Find.VisibleMap.mapPawns.AllPawns)
