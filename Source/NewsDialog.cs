@@ -48,7 +48,7 @@ namespace PrisonLabor
                 titlesList.Add("Prison Labor Beta v0.8.1");
                 string[] itemsArray =
                 {
-                    "fixed bugs with disabling mod(now you can safetly disable mod again)",
+                    "fixed bugs with disabling mod(now you can safely disable mod again)",
                     "fixed bug with prioritizing work",
                     "fixed bug with rendering icons on world map",
                 };
