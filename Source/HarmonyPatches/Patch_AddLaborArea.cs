@@ -8,7 +8,7 @@ namespace PrisonLabor.Harmony
     [HarmonyPatch]
     internal class AddLaborAreaPatch
     {
-        public static void Postfix(AreaManager __instance)
+        private static void Postfix(AreaManager __instance)
         {
             __instance.AllAreas.Add(new Area_Labor(__instance));
         }

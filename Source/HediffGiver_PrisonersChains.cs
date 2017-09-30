@@ -11,18 +11,19 @@ namespace PrisonLabor
     {
         public override void OnIntervalPassed(Pawn pawn, Hediff cause)
         {
+            Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(this.hediff, false);
+
             float value;
             if (pawn.IsPrisoner)
                 value = 1.0f;
             else
                 value = 0.0f;
 
-            Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(this.hediff, false);
             if (hediff != null)
             {
                 hediff.Severity = value;
             }
-            else if(value != 0)
+            else if (value != 0)
             {
                 hediff = HediffMaker.MakeHediff(this.hediff, pawn, null);
                 hediff.Severity = value;

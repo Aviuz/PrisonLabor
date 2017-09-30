@@ -24,6 +24,7 @@ namespace PrisonLabor
         public static bool news_0_7 = false;
         public static bool news_0_8_0 = false;
         public static bool news_0_8_1 = false;
+        public static bool news_0_8_3 = false;
 
         // Fields
         private string[] titles;
@@ -42,6 +43,17 @@ namespace PrisonLabor
         {
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
+            if (news_0_8_3 || showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.8.1");
+                string[] itemsArray =
+                {
+                    "fixed bugs with disabling mod(now you can safetly disable mod again)",
+                    "fixed bug with prioritizing work",
+                    "fixed bug with rendering icons on world map",
+                };
+                itemsList.Add(itemsArray);
+            }
             if (news_0_8_1 || showAll)
             {
                 titlesList.Add("Prison Labor Beta v0.8.1");
@@ -273,7 +285,7 @@ namespace PrisonLabor
                     {
                         height += GapHeight;
                     }
-                    else if(item.StartsWith("[subtitle]"))
+                    else if (item.StartsWith("[subtitle]"))
                     {
                         height += Text.CalcHeight(item, width) + Spacing;
                     }

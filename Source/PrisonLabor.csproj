@@ -80,6 +80,8 @@
     <Compile Include="HarmonyPatches\Patch_NeedOnlyByPrisoners.cs" />
     <Compile Include="HarmonyPatches\Patch_PrisonInteractionLabel.cs" />
     <Compile Include="HarmonyPatches\Patch_RemoveBillFromUtility.cs" />
+    <Compile Include="HarmonyPatches\Patch_RemoveHediffIfDisabled.cs" />
+    <Compile Include="HarmonyPatches\Patch_RemoveLaborAreaIfDisabled.cs" />
     <Compile Include="HarmonyPatches\Patch_ReservedByPrisoner.cs" />
     <Compile Include="HarmonyPatches\Patch_RespectReservation.cs" />
     <Compile Include="HarmonyPatches\Patch_ShowNews.cs" />

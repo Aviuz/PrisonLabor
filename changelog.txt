@@ -1,4 +1,7 @@
 Changelog:
+0.8.3
+- fixed bugs with disabling mod (now you can safetly disable mod again)
+- fixed bug with prioritizing work
 0.8.2
 - fixed drawing icons on world
 0.8.1

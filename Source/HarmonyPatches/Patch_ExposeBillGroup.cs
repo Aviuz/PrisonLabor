@@ -11,6 +11,9 @@ namespace PrisonLabor.HarmonyPatches
     {
         private static void Postfix(Bill __instance)
         {
+            if (PrisonLaborPrefs.DisableMod)
+                return;
+
             BillUtility.GetData(__instance).ExposeData();
         }
     }

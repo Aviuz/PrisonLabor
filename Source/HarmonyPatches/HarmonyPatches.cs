@@ -55,9 +55,9 @@ namespace PrisonLabor.HarmonyPatches
             // Write the string array to a new file.
             using (StreamWriter outputFile = new StreamWriter(myDesktopPath + @"\" + fileName + ".txt"))
             {
-                outputFile.WriteLine("==========");
+                outputFile.WriteLine("================");
                 outputFile.WriteLine("Body of " + fileName + " method", fileName);
-                outputFile.WriteLine("==========");
+                outputFile.WriteLine("================");
                 foreach (CodeInstruction instruction in instr)
                 {
                     var instructionString = instruction.opcode.ToString();
@@ -70,39 +70,6 @@ namespace PrisonLabor.HarmonyPatches
                     else
                         instructionString += "no labels";
                     outputFile.WriteLine(instructionString);
-                }
-            }
-        }
-
-        /// <summary>
-        /// CIL Debugging method. Creates debug file on desktop that list all CIL code instructions in the method. Also returns original code.
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <param name="withReturn"></param>
-        public static IEnumerable<CodeInstruction> CreateDebugFileOnDesktopWithReturn(string fileName, IEnumerable<CodeInstruction> instr)
-        {
-            // Set a variable to the Desktop path.
-            string myDesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-            // Write the string array to a new file.
-            using (StreamWriter outputFile = new StreamWriter(myDesktopPath + @"\" + fileName + ".txt"))
-            {
-                outputFile.WriteLine("==========");
-                outputFile.WriteLine("Body of " + fileName + " method", fileName);
-                outputFile.WriteLine("==========");
-                foreach (CodeInstruction instruction in instr)
-                {
-                    var instructionString = instruction.opcode.ToString();
-                    instructionString += " | ";
-                    instructionString += instruction.operand is Label ? $"Label {instruction.operand.GetHashCode()}" : instruction.operand;
-                    instructionString += " | ";
-                    if (instruction.labels.Count > 0)
-                        foreach (var label in instruction.labels)
-                            instructionString += $"Label {label.GetHashCode()}";
-                    else
-                        instructionString += "no labels";
-                    outputFile.WriteLine(instructionString);
-                    yield return instruction;
                 }
             }
         }

@@ -11,7 +11,7 @@ namespace PrisonLabor
 
         public override ThinkNode DeepCopy(bool resolve = true)
         {
-            var jobGiver_Work = (JobGiver_Labor) base.DeepCopy(resolve);
+            var jobGiver_Work = (JobGiver_Labor)base.DeepCopy(resolve);
             jobGiver_Work.emergency = emergency;
             return jobGiver_Work;
         }
@@ -39,8 +39,8 @@ namespace PrisonLabor
                     need.Enabled = false;
                 return ThinkResult.NoJob;
             }
-            //Check laziness
-            if (PrisonLaborPrefs.EnableMotivationMechanics && need.IsLazy)
+            //Check motivation
+            if (PrisonLaborPrefs.EnableMotivationMechanics && (need == null || need.IsLazy))
                 return ThinkResult.NoJob;
             //Work prisoners will do
             PrisonLaborUtility.InitWorkSettings(pawn);

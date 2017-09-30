@@ -40,7 +40,8 @@ namespace PrisonLabor
         v0_7_dev5,
         v0_8_0,
         v0_8_1,
-        v0_8_2
+        v0_8_2,
+        v0_8_3
     }
 
     [Flags]
