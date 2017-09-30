@@ -23,11 +23,13 @@ This mod force prisoners to work. To enable this feature prisoners must have "Fo
 This is beta version. Some ascpects of mod still need to be balanced (like motivation). There can be still some bugs.
 
 ## Compatibility
-* Works with mods that add Jobs of type cook/mine/craft/haul/clean like Quarry, or Haulers Can Haul To Blueprints
+* Works with mods that add Jobs of type cook/mine/craft/haul/clean like Quarry, Haulers Can Haul To Blueprints, or Industrial Rollers
 * Works with old saves.
-* Disabling this mod to saves causes prisoners to disappear. In 0.7 I've planned tool to safely disable this mod.
+* To disable mod from existing saves check "Disable mod" in settings and follow instructions.
 * Now works with WorkTab (by Fluffy)
-* There are some collisions that causes prisoners to fail to reserve target of their jobs. They will work on same thing or stealing resources from benches. If you experiencing this issue please le me know what mods are you using. I need to identify which mod causes that.
+* Now works with Seeds Please
+* Now works with Dubs Hygiene and Central Heating Mod
+* http://steamcommunity.com/sharedfiles/filedetails/?id=784327493&searchtext=industrials+rollers
 
 ## [To-do list](https://github.com/Aviuz/PrisonLabor/projects/1)
 
