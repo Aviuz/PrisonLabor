@@ -126,6 +126,9 @@
     <Compile Include="Tweaks\WorkGiver_Warden_DeliverFood_Tweak.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\About\About.xml">
+      <Link>Organizer\About.xml</Link>
+    </Content>
     <Content Include="..\changelog.txt">
       <Link>Organizer\changelog.txt</Link>
     </Content>
@@ -135,6 +138,11 @@
     <Content Include="..\TaskList.txt">
       <Link>Organizer\TaskList.txt</Link>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Link>Organizer\README.md</Link>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -35,7 +35,7 @@ namespace PrisonLabor
         {
             //TODO add icons enabled
             var iconsEnabled = true;
-            var inGame = Find.GameInfo != null && !WorldRendererUtility.WorldRenderedNow;
+            var inGame = Find.GameInfo != null && Find.World != null && Find.World.renderer != null && !WorldRendererUtility.WorldRenderedNow;
 
             if (iconsEnabled && inGame)
                 foreach (var pawn in Find.VisibleMap.mapPawns.AllPawns)
