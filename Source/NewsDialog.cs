@@ -45,7 +45,7 @@ namespace PrisonLabor
             List<string[]> itemsList = new List<string[]>();
             if (news_0_8_3 || showAll)
             {
-                titlesList.Add("Prison Labor Beta v0.8.1");
+                titlesList.Add("Prison Labor Beta v0.8.3");
                 string[] itemsArray =
                 {
                     "fixed bugs with disabling mod(now you can safely disable mod again)",
