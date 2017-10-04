@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <PrisonLabor_Indroduction.label>监狱劳力</PrisonLabor_Indroduction.label>
+  <PrisonLabor_Indroduction.helpText>你可以强迫你的囚犯为你干活。\n\n为了达到这一目的，你必须先在囚犯的面板上选择“强迫工作”选项。\n\n囚犯将在允许的区域内工作。请确保囚犯能够到达工作区域。\n\n他们只能做烹调，挖矿，切割植物，收获，打扫或种植等不需要特殊技能的工作。\n\n囚犯有时会拒绝工作，理由可能是受伤，饥饿疲劳或单纯的不想干而已。\n\n提示：你可以在“工作”面板指定工作的种类。\n\n提示：如果你在监狱里放了一个炉子，请确保囚犯能够拿到生食来做饭。\n\n提示：你可以通过永久开启门来让囚犯通过。</PrisonLabor_Indroduction.helpText>
+
+  <PrisonLabor_Motivation.label>激励囚犯Motivating prisoners</PrisonLabor_Motivation.label>
+  <PrisonLabor_Motivation.helpText>你的一个囚犯停止工作了。\n他在变得更有动力之前将不会工作。\n\n你可以在“需求”面板里查看他的积极性。\n\n请确保你有足够的监视者（可在工作面板中查看），或是命令你的殖民者站在囚犯旁边。\n\n若囚犯保持低积极性，可能会发生反叛。</PrisonLabor_Motivation.helpText>
+
+  <PrisonLabor_Growing.label>囚犯种植</PrisonLabor_Growing.label>
+  <PrisonLabor_Growing.helpText>囚犯只可以种植土豆或棉花等不需要特殊技能的作物。然而他们仍然能够收获任意作物。</PrisonLabor_Growing.helpText>
+
+  <PrisonLabor_Management.label>监狱劳力管理</PrisonLabor_Management.label>
+  <PrisonLabor_Management.helpText>你可以在数日内管理你的监狱劳力。\n\n你可以在“工作”面板中管理工作类型。\n\n你可以在“限制”栏里设置囚犯何时工作，休息和睡觉。\n\n你可以限制某项工作为“只允许囚犯”。你可以用建筑栏内的“工作区域”来设置囚犯行动范围。\n工作现在有“只允许囚犯”的选项。</PrisonLabor_Management.helpText>
+
+  <PrisonLabor_Timetable.label>囚犯时间管制</PrisonLabor_Timetable.label>
+  <PrisonLabor_Timetable.helpText>你可以给囚犯们设置时间限制。\n\n“工作”时间将会强迫囚犯去工作，即使他们还处于饥饿或疲劳状态。\n\n“娱乐”时间会让囚犯从工作中解脱，并且给他们一些积极性加成。\n\n“睡眠”时间将会强迫囚犯待在监狱里。\n\n“任何事”是默认设置。</PrisonLabor_Timetable.helpText>
+
+
+</LanguageData>

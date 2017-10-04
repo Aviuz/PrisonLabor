@@ -16,6 +16,8 @@ namespace PrisonLabor
 
         public static void SetFor(Bill key, GroupMode value)
         {
+            if (!Map.ContainsKey(key))
+                Map[key] = new BillGroupData();
             Map[key].Mode = value;
         }
 

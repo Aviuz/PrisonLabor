@@ -1,4 +1,12 @@
 Changelog:
+0.8.6
+- fixed bug that Sowing job do not comply to Labor Area
+- removed JoyGiver debris
+0.8.5
+- reduced number of null reference errors with OnGui() method.
+- single warden will be able to maintain 7 prisoners, instead of 5 (because of laziness rate reduction)
+- decreased laziness rate to 0.002, instead of 0.003 (prisoners will get lazy 1.5x slower)
+- decreased manipulation to 70% (instead of 80%)
 0.8.4
 - fixed null reference exception at loading game
 0.8.3

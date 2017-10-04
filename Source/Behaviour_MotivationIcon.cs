@@ -1,4 +1,5 @@
 ﻿using RimWorld.Planet;
+using System;
 using UnityEngine;
 using Verse;
 
@@ -6,6 +7,9 @@ namespace PrisonLabor
 {
     internal class Behaviour_MotivationIcon : MonoBehaviour
     {
+        // TODO delete later
+        private static bool displayedError = false;
+
         private static readonly Texture2D inspiredTexture = ContentFinder<Texture2D>.Get("InspireIcon", false);
         private static readonly Texture2D motivatedTexture = ContentFinder<Texture2D>.Get("MotivateIcon", false);
         private static readonly Vector3 iconPos = new Vector3(0f, 0f, 1.3f);
@@ -33,26 +37,37 @@ namespace PrisonLabor
 
         public virtual void OnGUI()
         {
-            //TODO add icons enabled
-            var iconsEnabled = true;
-            var inGame = Find.GameInfo != null && Find.World != null && Find.World.renderer != null && !WorldRendererUtility.WorldRenderedNow;
+            try
+            {
+                //TODO add icons enabled
+                var iconsEnabled = true;
+                var inGame = Find.GameInfo != null && Find.World != null && Find.World.renderer != null && !WorldRendererUtility.WorldRenderedNow;
 
-            if (iconsEnabled && inGame)
-                foreach (var pawn in Find.VisibleMap.mapPawns.AllPawns)
-                {
-                    if (pawn == null) continue;
-                    if (pawn.RaceProps == null) continue;
-
-                    if (pawn.IsPrisonerOfColony)
+                if (iconsEnabled && inGame)
+                    foreach (var pawn in Find.VisibleMap.mapPawns.AllPawns)
                     {
-                        var need = pawn.needs.TryGetNeed<Need_Motivation>();
-                        if (need != null && need.Motivated)
-                            if (need.Insipred)
-                                DrawIcon(inspiredTexture, pawn.DrawPos);
-                            else
-                                DrawIcon(motivatedTexture, pawn.DrawPos);
+                        if (pawn == null) continue;
+                        if (pawn.RaceProps == null) continue;
+
+                        if (pawn.IsPrisonerOfColony)
+                        {
+                            var need = pawn.needs.TryGetNeed<Need_Motivation>();
+                            if (need != null && need.Motivated)
+                                if (need.Insipred)
+                                    DrawIcon(inspiredTexture, pawn.DrawPos);
+                                else
+                                    DrawIcon(motivatedTexture, pawn.DrawPos);
+                        }
                     }
+            }
+            catch (NullReferenceException e)
+            {
+                if (!displayedError)
+                {
+                    Log.Message("[Debug] (Ignore that) Prison labor null reference in OnGui() : " + e.Message);
+                    displayedError = true;
                 }
+            }
         }
 
 

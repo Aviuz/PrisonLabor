@@ -29,7 +29,7 @@ namespace PrisonLabor.HarmonyPatches
             {
                 "RimWorld.Bill_Production bill",
             };
-            var billField = HarmonyPatches.FindOperandAfter(opCodes0, operands0, instr);
+            var billField = HPatcher.FindOperandAfter(opCodes0, operands0, instr);
             OpCode[] opCodes1 =
             {
                 OpCodes.Ldloc_S,
@@ -46,7 +46,7 @@ namespace PrisonLabor.HarmonyPatches
                 "Boolean ButtonText(System.String, System.String)",
                 "System.Reflection.Emit.Label",
             };
-            var label = HarmonyPatches.FindOperandAfter(opCodes1, operands1, instr);
+            var label = HPatcher.FindOperandAfter(opCodes1, operands1, instr);
 
             // Begin rect - start of scrollable view
             int step2 = 0;
@@ -95,19 +95,19 @@ namespace PrisonLabor.HarmonyPatches
                             typeof(Patch_BillCheckbox).GetMethod("GroupExclusionButton"));
                         ci.labels.Remove((Label)label);
                     }
-                    if(HarmonyPatches.IsFragment(opCodes3, operands3, ci, ref step3))
+                    if(HPatcher.IsFragment(opCodes3, operands3, ci, ref step3))
                     {
                         var instruction = new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StopScrolling"));
                         instruction.labels.AddRange(ci.labels);
                         ci.labels.Clear();
                         yield return instruction;
                     }
-                    if (HarmonyPatches.IsFragment(opCodes2, operands2, ci, ref step4))
+                    if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step4))
                     {
                         yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("SetRect"));
                     }
                     yield return ci;
-                    if(HarmonyPatches.IsFragment(opCodes2, operands2, ci, ref step2))
+                    if(HPatcher.IsFragment(opCodes2, operands2, ci, ref step2))
                     {
                         yield return new CodeInstruction(OpCodes.Ldloc_2);
                         yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StartScrolling"));

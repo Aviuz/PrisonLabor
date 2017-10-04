@@ -75,7 +75,7 @@
     <Compile Include="HarmonyPatches\Patch_ExtendVistorRect.cs" />
     <Compile Include="HarmonyPatches\Patch_ForibiddenDrop.cs" />
     <Compile Include="HarmonyPatches\Patch_ItemIsForbidden.cs" />
-    <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
+    <Compile Include="HarmonyPatches\HPatcher.cs" />
     <Compile Include="HarmonyPatches\Patch_LaborForbid.cs" />
     <Compile Include="HarmonyPatches\Patch_NeedOnlyByPrisoners.cs" />
     <Compile Include="HarmonyPatches\Patch_PrisonInteractionLabel.cs" />
@@ -90,7 +90,6 @@
     <Compile Include="HarmonyPatches\Patch_WorkTab.cs" />
     <Compile Include="HediffGiver_PrisonersChains.cs" />
     <Compile Include="IncidentWorker_Revolt.cs" />
-    <Compile Include="JobGiver_Joy.cs" />
     <Compile Include="JobGiver_BedTime.cs" />
     <Compile Include="JobGiver_Diet.cs" />
     <Compile Include="LaborExclusionUtility.cs" />
@@ -132,6 +131,30 @@
     <Content Include="..\changelog.txt">
       <Link>Organizer\changelog.txt</Link>
     </Content>
+    <Content Include="..\Defs\ConceptDef.xml">
+      <Link>Defs\ConceptDef.xml</Link>
+    </Content>
+    <Content Include="..\Defs\Hediffs.xml">
+      <Link>Defs\Hediffs.xml</Link>
+    </Content>
+    <Content Include="..\Defs\Incidents.xml">
+      <Link>Defs\Incidents.xml</Link>
+    </Content>
+    <Content Include="..\Defs\JobDef.xml">
+      <Link>Defs\JobDef.xml</Link>
+    </Content>
+    <Content Include="..\Defs\Needs.xml">
+      <Link>Defs\Needs.xml</Link>
+    </Content>
+    <Content Include="..\Defs\PrisonerInteractionModeDef.xml">
+      <Link>Defs\PrisonerInteractionModeDef.xml</Link>
+    </Content>
+    <Content Include="..\Defs\ThinkTreeDef.xml">
+      <Link>Defs\ThinkTreeDef.xml</Link>
+    </Content>
+    <Content Include="..\Defs\WorkGiverDef.xml">
+      <Link>Defs\WorkGiverDef.xml</Link>
+    </Content>
     <Content Include="..\Languages\English\Keyed\Keys.xml">
       <Link>Language\Keys.xml</Link>
     </Content>
@@ -140,6 +163,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\credits.md">
+      <Link>Organizer\credits.md</Link>
+    </None>
     <None Include="..\README.md">
       <Link>Organizer\README.md</Link>
     </None>

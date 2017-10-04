@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <PrisonLabor_Revolt.label>反叛</PrisonLabor_Revolt.label>
+  <PrisonLabor_Revolt.letterText>{0}开始了一场反叛行动。囚犯在 {1} 派系周围团结起来，拿起了自制武器开始反抗。</PrisonLabor_Revolt.letterText>
+  <PrisonLabor_Revolt.letterLabel>反叛</PrisonLabor_Revolt.letterLabel>
+
+
+</LanguageData>

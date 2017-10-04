@@ -9,3 +9,7 @@ Agenda:
 revolts
   - add different weapons depending on points
   - rewrite all numbers
+  - inspire lowest/closest motivation
+  - try to inspire most of prisoners at once
+  - add buff to mood if motivation is low
+  - add buff to mood for free time

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <PrisonLabor_PrisonerSupervise.reportString>监视囚犯 TargetA.</PrisonLabor_PrisonerSupervise.reportString>
+  <PrisonLabor_DeliverFood_Tweak.reportString>喂 TargetA 给 TargetB.</PrisonLabor_DeliverFood_Tweak.reportString>
+  <PrisonLabor_Mine_Tweak.reportString>挖掘 TargetA.</PrisonLabor_Mine_Tweak.reportString>
+  <PrisonLabor_Harvest_Tweak.reportString>收获 TargetA.</PrisonLabor_Harvest_Tweak.reportString>
+  <PrisonLabor_CutPlant_Tweak.reportString>割除 TargetA.</PrisonLabor_CutPlant_Tweak.reportString>
+
+
+</LanguageData>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <PrisonLabor_SupervisePrisonLabor.label>监视囚犯</PrisonLabor_SupervisePrisonLabor.label>
+  <PrisonLabor_SupervisePrisonLabor.verb>监视囚犯</PrisonLabor_SupervisePrisonLabor.verb>
+  <PrisonLabor_SupervisePrisonLabor.gerund>监视囚犯中</PrisonLabor_SupervisePrisonLabor.gerund>
+
+  <PrisonLabor_DeliverFoodToPrisoner_Tweak.label>为囚犯送餐</PrisonLabor_DeliverFoodToPrisoner_Tweak.label>
+  <PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>为囚犯送餐</PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>
+  <PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>送餐给</PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>
+
+  <PrisonLabor_Mine_Tweak.label>挖掘</PrisonLabor_Mine_Tweak.label>
+  <PrisonLabor_Mine_Tweak.verb>挖掘</PrisonLabor_Mine_Tweak.verb>
+  <PrisonLabor_Mine_Tweak.gerund>挖掘中</PrisonLabor_Mine_Tweak.gerund>
+
+  <PrisonLabor_PlantsCut_Tweak.label>切割植物</PrisonLabor_PlantsCut_Tweak.label>
+  <PrisonLabor_PlantsCut_Tweak.verb>切割</PrisonLabor_PlantsCut_Tweak.verb>
+  <PrisonLabor_PlantsCut_Tweak.gerund>切割植物中</PrisonLabor_PlantsCut_Tweak.gerund>
+
+  <PrisonLabor_GrowerHarvest_Tweak.label>收获作物</PrisonLabor_GrowerHarvest_Tweak.label>
+  <PrisonLabor_GrowerHarvest_Tweak.verb>收获</PrisonLabor_GrowerHarvest_Tweak.verb>
+  <PrisonLabor_GrowerHarvest_Tweak.gerund>收获作物中</PrisonLabor_GrowerHarvest_Tweak.gerund>
+
+  <PrisonLabor_GrowerSow_Tweak.label>播种作物</PrisonLabor_GrowerSow_Tweak.label>
+  <PrisonLabor_GrowerSow_Tweak.verb>播种</PrisonLabor_GrowerSow_Tweak.verb>
+  <PrisonLabor_GrowerSow_Tweak.gerund>播种作物中</PrisonLabor_GrowerSow_Tweak.gerund>
+
+  <PrisonLabor_CleanFilth_Tweak.label>打扫卫生</PrisonLabor_CleanFilth_Tweak.label>
+  <PrisonLabor_CleanFilth_Tweak.verb>打扫</PrisonLabor_CleanFilth_Tweak.verb>
+  <PrisonLabor_CleanFilth_Tweak.gerund>打扫中</PrisonLabor_CleanFilth_Tweak.gerund>
+
+
+</LanguageData>

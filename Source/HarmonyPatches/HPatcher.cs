@@ -9,7 +9,7 @@ using System.Reflection.Emit;
 
 namespace PrisonLabor.HarmonyPatches
 {
-    internal static class HarmonyPatches
+    internal static class HPatcher
     {
         public static void Init()
         {

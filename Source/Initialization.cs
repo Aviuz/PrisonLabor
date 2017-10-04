@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using PrisonLabor.HarmonyPatches;
+using Verse;
 
 namespace PrisonLabor
 {
@@ -7,7 +8,7 @@ namespace PrisonLabor
     {
         static Initialization()
         {
-            HarmonyPatches.HarmonyPatches.Init();
+            HPatcher.Init();
             PrisonLaborPrefs.Init();
             PrisonLaborMod.Init();
             VersionUtility.CheckVersion();

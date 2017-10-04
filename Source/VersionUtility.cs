@@ -8,8 +8,8 @@ namespace PrisonLabor
 {
     class VersionUtility
     {
-        public const Version versionNumber = Version.v0_8_4;
-        public const string versionString = "0.8.4";
+        public const Version versionNumber = Version.v0_8_6;
+        public const string versionString = "0.8.6";
 
         public static void CheckVersion()
         {
@@ -53,6 +53,11 @@ namespace PrisonLabor
             if (PrisonLaborPrefs.LastVersion < Version.v0_8_3)
             {
                 NewsDialog.news_0_8_3 = true;
+                NewsDialog.autoShow = true;
+            }
+            if (PrisonLaborPrefs.LastVersion < Version.v0_8_6)
+            {
+                NewsDialog.news_0_8_6 = true;
                 NewsDialog.autoShow = true;
             }
 

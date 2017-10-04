@@ -14,7 +14,7 @@ namespace PrisonLabor
 
         private const float LazyLevel = 0.2f;
         private const float NeedInspirationLevel = 0.5f;
-        private const float LazyRate = 0.003f;
+        private const float LazyRate = 0.002f;
         private const float HungryRate = 0.006f;
         private const float TiredRate = 0.006f;
         private const float HealthRate = 0.006f;

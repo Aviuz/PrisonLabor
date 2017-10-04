@@ -31,7 +31,7 @@ namespace PrisonLabor.HarmonyPatches
                 "System.Reflection.Emit.Label",
                 "System.Reflection.Emit.Label",
             };
-            var label = (Label)HarmonyPatches.FindOperandAfter(opCodes, operands, instr);
+            var label = (Label)HPatcher.FindOperandAfter(opCodes, operands, instr);
 
             OpCode[] opCodes2 =
             {
@@ -59,7 +59,7 @@ namespace PrisonLabor.HarmonyPatches
             foreach (var ci in instr)
             {
                 yield return ci;
-                if (HarmonyPatches.IsFragment(opCodes2, operands2, ci, ref step))
+                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step))
                 {
                     yield return new CodeInstruction(OpCodes.Ldarg_1);
                     yield return new CodeInstruction(OpCodes.Ldloc_1);

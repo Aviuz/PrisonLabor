@@ -25,6 +25,7 @@ namespace PrisonLabor
         public static bool news_0_8_0 = false;
         public static bool news_0_8_1 = false;
         public static bool news_0_8_3 = false;
+        public static bool news_0_8_6 = false;
 
         // Fields
         private string[] titles;
@@ -43,6 +44,23 @@ namespace PrisonLabor
         {
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
+            if (news_0_8_6 || showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.8.6");
+                string[] itemsArray =
+                {
+                    "[img]NewsElement_Locks[/img]<b>Locks mod:</b>\nIf you want to allow prisoners to pass by closed doors, please check out my other mod called <b>Locks</b>",
+                    "[gap]",
+                    "fixed bug that Sowing job do not comply to Labor Area",
+                    "fixed bug with JoyGiver debris (sorry about that)",
+                    "reduced number of null reference errors with OnGui() method (fixed in v 0.8.5)",
+                    "single warden will be able to maintain 7 prisoners, instead of 5 (because of laziness rate reduction) (changed in v 0.8.5)",
+                    "decreased laziness rate to 0.002, instead of 0.003 (prisoners will get lazy 1.5x slower) (changed in v 0.8.5)",
+                    "decreased manipulation to 70% (instead of 80%) (changed in v 0.8.5)",
+                    "fixed null reference exception at loading game (fixed in v 0.8.4)",
+                };
+                itemsList.Add(itemsArray);
+            }
             if (news_0_8_3 || showAll)
             {
                 titlesList.Add("Prison Labor Beta v0.8.3");
