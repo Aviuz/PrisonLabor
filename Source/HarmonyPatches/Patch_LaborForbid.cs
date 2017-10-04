@@ -72,8 +72,6 @@ namespace PrisonLabor.HarmonyPatches
 
             foreach (var ci in instr)
             {
-                HPatcher.CreateDebugFileOnDesktop("grow", instr);
-
                 yield return ci;
 
                 if (HPatcher.IsFragment(opcodes1, operands1, ci, ref step1))
