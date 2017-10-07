@@ -44,6 +44,24 @@ namespace PrisonLabor
         {
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
+
+            // 0.8.7 (silent)
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.8.7");
+                string[] itemsArray =
+                {
+                    "fixed bug with dropping motivation while in bed",
+                    "prisoners will now get different weapons when revolt triggers (molotovs, bows, or clubs)",
+                    "replaced orginal jobs with \"tweak\" jobs (instead of overriding them, this fix is for users who use \"WorkTab\" by Fluffy)",
+                    "removed warning message from logs",
+                    "prisoners will now have 50% of normal speed in chains (instead of 35%)",
+                    "prisoners will now break chains after some period of time instead of immadiately(matter in incidents, breakouts etc.)",
+                    "wardens will now try to motivate most prisoners at once, but with priority to motivate lowest motivation first",
+                    "fixed bug with animals do not respect reservations (and vice versa)",
+                };
+            }
+            // 0.8.6
             if (news_0_8_6 || showAll)
             {
                 titlesList.Add("Prison Labor Beta v0.8.6");
@@ -61,6 +79,7 @@ namespace PrisonLabor
                 };
                 itemsList.Add(itemsArray);
             }
+            // 0.8.3
             if (news_0_8_3 || showAll)
             {
                 titlesList.Add("Prison Labor Beta v0.8.3");
@@ -72,6 +91,7 @@ namespace PrisonLabor
                 };
                 itemsList.Add(itemsArray);
             }
+            // 0.8.1
             if (news_0_8_1 || showAll)
             {
                 titlesList.Add("Prison Labor Beta v0.8.1");
@@ -88,6 +108,7 @@ namespace PrisonLabor
                 };
                 itemsList.Add(itemsArray);
             }
+            // 0.8.0
             if (news_0_8_0 || showAll)
             {
                 titlesList.Add("Prison Labor Beta v0.8.0");
@@ -121,6 +142,7 @@ namespace PrisonLabor
                 };
                 itemsList.Add(itemsArray);
             }
+            // 0.7
             if (news_0_7 || showAll)
             {
                 titlesList.Add("Prison Labor Alpha v0.7");
@@ -136,6 +158,7 @@ namespace PrisonLabor
                 };
                 itemsList.Add(itemsArray);
             }
+            // 0.6
             if (news_0_6 || showAll)
             {
                 titlesList.Add("Prison Labor Alpha v0.6");
@@ -147,6 +170,7 @@ namespace PrisonLabor
                 };
                 itemsList.Add(itemsArray);
             }
+            // 0.5
             if (news_0_5 || showAll)
             {
                 titlesList.Add("Prison Labor Alpha v0.5");

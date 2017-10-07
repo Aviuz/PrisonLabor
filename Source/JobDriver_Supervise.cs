@@ -37,15 +37,36 @@ namespace PrisonLabor
             toil.initAction = delegate
             {
                 var actor = toil.actor;
-                IntVec3 ind;
-                if (Prisoner.GetRoom().Cells.Any(cell =>
-                    cell.DistanceTo(Prisoner.InteractionCell) < Need_Motivation.InpirationRange - GapLengh &&
-                    cell.DistanceTo(Prisoner.InteractionCell) > GapLengh))
-                    ind = prisoner.GetRoom().Cells.Where(cell =>
-                        cell.DistanceTo(prisoner.InteractionCell) < Need_Motivation.InpirationRange - GapLengh &&
-                        cell.DistanceTo(prisoner.InteractionCell) > GapLengh).RandomElement();
-                else
+                var prisonersInRoom = PrisonersInRoom(prisoner.GetRoom());
+                IntVec3 ind = new IntVec3();
+                int score = 0;
+                int curScore = 0;
+                bool found = false;
+                foreach(var cell in prisoner.GetRoom().Cells)
+                {
+                    float distance = cell.DistanceTo(prisoner.InteractionCell);
+                    if (distance < Need_Motivation.InpirationRange)
+                    {
+                        if (distance < GapLengh)
+                            curScore = (int)distance;
+                        else
+                            curScore = (int)(Need_Motivation.InpirationRange - distance);
+
+                        foreach (var pawn in prisonersInRoom)
+                            if (cell.DistanceTo(pawn.Position) < Need_Motivation.InpirationRange)
+                                curScore += 100;
+
+                        if (curScore > score)
+                        {
+                            ind = cell;
+                            score = curScore;
+                            found = true;
+                        }
+                    }
+                }
+                if (!found)
                     ind = prisoner.GetRoom().Cells.RandomElement();
+
                 actor.pather.StartPath(ind, PathEndMode.OnCell);
             };
             toil.defaultCompleteMode = ToilCompleteMode.PatherArrival;
@@ -55,6 +76,15 @@ namespace PrisonLabor
         private bool RangeCondition(Toil toil)
         {
             return toil.actor.Position.DistanceTo(Prisoner.Position) > Need_Motivation.InpirationRange;
+        }
+
+        private IEnumerable<Pawn> PrisonersInRoom(Room room)
+        {
+            foreach(var pawn in room.Map.mapPawns.PrisonersOfColony)
+            {
+                if (pawn.GetRoom() == room)
+                    yield return pawn;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using PrisonLabor.HarmonyPatches;
+using PrisonLabor.Tweaks;
 using Verse;
 
 namespace PrisonLabor
@@ -9,13 +10,14 @@ namespace PrisonLabor
         static Initialization()
         {
             HPatcher.Init();
+            ClassInjector.Init();
             PrisonLaborPrefs.Init();
             PrisonLaborMod.Init();
             VersionUtility.CheckVersion();
             Designator_AreaLabor.Initialization();
             Behaviour_MotivationIcon.Initialization();
             CompatibilityPatches.Initialization.Run();
-            HediffGiver_PrisonersChains.Init();
+            HediffManager.Init();
         }
     }
 }

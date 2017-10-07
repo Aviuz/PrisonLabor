@@ -49,8 +49,6 @@ namespace PrisonLabor.HarmonyPatches
                     first = false;
                     ci.labels.Add(jumpTo);
                 }
-                //debug
-                //Log.Message("CODE: ToString():" + ci.ToString() + " || labels:" + ci.labels.Any());
                 yield return ci;
             }
         }
@@ -110,8 +108,6 @@ namespace PrisonLabor.Harmony
                     first = false;
                     ci.labels.Add(jumpTo);
                 }
-                //debug
-                //Log.Message("CODE: ToString():" + ci.ToString() + " || labels:" + ci.labels.Any());
                 yield return ci;
             }
         }

@@ -5,16 +5,15 @@ namespace PrisonLabor
 {
     internal class InspirationUtility
     {
-        public static Dictionary<Map, Dictionary<Pawn, float>> calculatedValues =
-            new Dictionary<Map, Dictionary<Pawn, float>>();
+        public static Dictionary<Map, Dictionary<Pawn, float>> inspirationValues = new Dictionary<Map, Dictionary<Pawn, float>>();
 
         public static float GetInsiprationValue(Pawn pawn)
         {
             var map = pawn.Map;
-            if (!calculatedValues.ContainsKey(map) || !calculatedValues[map].ContainsKey(pawn))
+            if (!inspirationValues.ContainsKey(map) || !inspirationValues[map].ContainsKey(pawn))
                 Calculate(map);
-            var value = calculatedValues[map][pawn];
-            calculatedValues[map].Remove(pawn);
+            var value = inspirationValues[map][pawn];
+            inspirationValues[map].Remove(pawn);
             return value;
         }
 
@@ -25,9 +24,9 @@ namespace PrisonLabor
             var prisoners = new List<Pawn>();
             prisoners.AddRange(map.mapPawns.PrisonersOfColony);
 
-            calculatedValues[map] = new Dictionary<Pawn, float>();
+            inspirationValues[map] = new Dictionary<Pawn, float>();
             foreach (var prisoner in prisoners)
-                calculatedValues[map][prisoner] = 0f;
+                inspirationValues[map][prisoner] = 0f;
 
             var prisonersInRange = new List<Pawn>();
             foreach (var warden in wardens)
@@ -41,7 +40,7 @@ namespace PrisonLabor
                 var delta = Need_Motivation.InspireRate / prisonersInRange.Count;
 
                 foreach (var prisoner in prisonersInRange)
-                    calculatedValues[map][prisoner] += delta;
+                    inspirationValues[map][prisoner] += delta;
             }
         }
     }

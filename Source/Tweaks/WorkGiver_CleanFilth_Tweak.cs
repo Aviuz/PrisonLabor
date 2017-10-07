@@ -22,7 +22,7 @@ namespace PrisonLabor
 
         public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
-            if (!pawn.IsPrisoner)
+            if (pawn.Faction != Faction.OfPlayer && !pawn.IsPrisoner)
                 return false;
             var filth = t as Filth;
             return filth != null && filth.Map.areaManager.Home[filth.Position] &&

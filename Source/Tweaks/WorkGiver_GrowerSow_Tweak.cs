@@ -30,8 +30,8 @@ namespace PrisonLabor
 
         public override Job JobOnCell(Pawn pawn, IntVec3 c)
         {
-            if (!pawn.IsPrisoner)
-                return null;
+            //if (!pawn.IsPrisoner)
+            //    return null;
             if (c.IsForbidden(pawn))
                 return null;
             if (!GenPlant.GrowthSeasonNow(c, pawn.Map))
@@ -70,7 +70,11 @@ namespace PrisonLabor
                 }
                 return null;
             }
-            if (wantedPlantDef.plant.sowMinSkill > 0 && !PrisonLaborPrefs.AdvancedGrowing)
+            if (wantedPlantDef.plant.sowMinSkill > 0 && pawn.skills != null && pawn.skills.GetSkill(SkillDefOf.Growing).Level < wantedPlantDef.plant.sowMinSkill)
+            {
+                return null;
+            }
+            if (pawn.IsPrisoner && wantedPlantDef.plant.sowMinSkill > 0 && !PrisonLaborPrefs.AdvancedGrowing)
             {
                 Tutorials.Growing();
                 return null;

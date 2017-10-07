@@ -29,6 +29,9 @@ namespace PrisonLabor
                 return null;
             if (RestUtility.DisturbancePreventsLyingDown(pawn))
                 return null;
+            var need = pawn.needs.TryGetNeed<Need_Motivation>();
+            if (need != null)
+                need.Enabled = false;
             var lord = pawn.GetLord();
             Building_Bed building_Bed;
             if (lord != null && lord.CurLordToil != null && !lord.CurLordToil.AllowRestingInBed)

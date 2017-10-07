@@ -1,4 +1,5 @@
 ﻿using Harmony;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,9 +38,9 @@ namespace PrisonLabor.HarmonyPatches
 
         public static bool RespectPrisoners(Pawn newClaimant, Pawn oldClaimant)
         {
-            if (newClaimant.IsColonist && oldClaimant.IsPrisonerOfColony)
+            if (newClaimant.Faction == Faction.OfPlayer && oldClaimant.IsPrisonerOfColony)
                 return true;
-            if (oldClaimant.IsColonist && newClaimant.IsPrisonerOfColony)
+            if (oldClaimant.Faction == Faction.OfPlayer && newClaimant.IsPrisonerOfColony)
                 return true;
             return false;
         }

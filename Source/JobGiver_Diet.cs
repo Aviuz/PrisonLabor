@@ -37,8 +37,9 @@ namespace PrisonLabor
             var food = pawn.needs.food;
             if (food == null || food.CurCategory < minCategory)
                 return null;
-            if (pawn.needs.TryGetNeed<Need_Motivation>() != null)
-                pawn.needs.TryGetNeed<Need_Motivation>().Enabled = false;
+            var need = pawn.needs.TryGetNeed<Need_Motivation>();
+            if (need != null)
+                need.Enabled = false;
             bool flag;
             if (pawn.RaceProps.Animal)
             {

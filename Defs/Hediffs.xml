@@ -6,16 +6,19 @@
       <li>
         <label>not active</label>
         <everVisible>false</everVisible>
-        <minSeverity>0.0</minSeverity>
       </li>
         <li>
           <label>active</label>
           <everVisible>false</everVisible>
-          <minSeverity>1.0</minSeverity>
+          <minSeverity>0.01</minSeverity>
           <capMods>
             <li>
               <capacity>Manipulation</capacity>
               <offset>-0.3</offset>
+            </li>
+            <li>
+              <capacity>Moving</capacity>
+              <offset>-0.5</offset>
             </li>
           </capMods>
         </li>

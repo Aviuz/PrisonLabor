@@ -45,7 +45,8 @@ namespace PrisonLabor
             //Work prisoners will do
             PrisonLaborUtility.InitWorkSettings(pawn);
             var workList = pawn.workSettings.WorkGiversInOrderNormal;
-            workList.RemoveAll(workGiver => workGiver.def.defName == "GrowerSow");
+            //TODO check this
+            //workList.RemoveAll(workGiver => workGiver.def.defName == "GrowerSow");
             if (need != null)
                 need.Enabled = false;
 

@@ -5,16 +5,24 @@ using Verse;
 
 namespace PrisonLabor
 {
+    [StaticConstructorOnStartup]
     internal class Behaviour_MotivationIcon : MonoBehaviour
     {
         // TODO delete later
         private static bool displayedError = false;
 
-        private static readonly Texture2D inspiredTexture = ContentFinder<Texture2D>.Get("InspireIcon", false);
-        private static readonly Texture2D motivatedTexture = ContentFinder<Texture2D>.Get("MotivateIcon", false);
-        private static readonly Vector3 iconPos = new Vector3(0f, 0f, 1.3f);
+        private static readonly Texture2D inspiredTexture;
+        private static readonly Texture2D motivatedTexture;
+        private static readonly Vector3 iconPos;
 
         private float worldScale;
+
+        static Behaviour_MotivationIcon()
+        {
+            inspiredTexture = ContentFinder<Texture2D>.Get("InspireIcon", false);
+            motivatedTexture = ContentFinder<Texture2D>.Get("MotivateIcon", false);
+            iconPos = new Vector3(0f, 0f, 1.3f);
+        }
 
         private void DrawIcon(Texture2D texture, Vector3 pawnPos)
         {
@@ -64,7 +72,7 @@ namespace PrisonLabor
             {
                 if (!displayedError)
                 {
-                    Log.Message("[Debug] (Ignore that) Prison labor null reference in OnGui() : " + e.Message);
+                    Log.Message("[Debug] (Ignore that) Prison labor null reference in OnGui() : " + e.Message + " trace: " + e.StackTrace);
                     displayedError = true;
                 }
             }

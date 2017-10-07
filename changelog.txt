@@ -1,4 +1,13 @@
 Changelog:
+0.8.7
+- fixed bug with dropping motivation while in bed
+- prisoners will now get different weapons when revolt triggers (molotovs, bows, or clubs)
+- replaced orginal jobs with "tweak" jobs (instead of overriding them, this fix is for users who use "WorkTab" by Fluffy)
+- removed warning message from logs
+- prisoners will now have 50% of normal speed in chains (instead of 35%)
+- prisoners will now break chains after some period of time instead of immadiately (matter in incidents, breakouts etc.)
+- wardens will now try to motivate most prisoners at once, but with priority to motivate lowest motivation first
+- fixed bug with animals do not respect reservations (and vice versa)
 0.8.6
 - fixed bug that Sowing job do not comply to Labor Area
 - removed JoyGiver debris

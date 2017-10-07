@@ -11,6 +11,6 @@
       <minRefireDays>20</minRefireDays>
       <category>ThreatBig</category>
       <pointsScaleable>true</pointsScaleable>
-      <minThreatPoints>400</minThreatPoints>
+      <minThreatPoints>200</minThreatPoints>
     </IncidentDef>
 </Defs>

@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="https://github.com/Aviuz/PrisonLabor/releases">
-    <img src="https://img.shields.io/badge/version-0.8.6-orange.svg?style=flat" alt="v0.7" />
+    <img src="https://img.shields.io/badge/version-0.8.7-orange.svg?style=flat" alt="v0.8.7" />
   </a>
 </p>
 
@@ -32,6 +32,7 @@ This is beta version. Some ascpects of mod still need to be balanced (like motiv
 * http://steamcommunity.com/sharedfiles/filedetails/?id=784327493&searchtext=industrials+rollers
 
 ## [To-do list](https://github.com/Aviuz/PrisonLabor/projects/1)
+## [Credits](credits.md)
 
 ## Translations
 Please contact me if you want help me writing translations. It will take you a few minutes to translate few sentences, and you will help making the mod even better. Thank you in advance!

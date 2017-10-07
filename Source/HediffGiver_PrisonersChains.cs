@@ -14,8 +14,10 @@ namespace PrisonLabor
             Hediff hediff = pawn.health.hediffSet.GetFirstHediffOfDef(this.hediff, false);
 
             float value;
-            if (pawn.IsPrisoner)
+            if (RestraintsUtility.InRestraints(pawn))
                 value = 1.0f;
+            else if(hediff != null && pawn.Faction != Faction.OfPlayer)
+                value = hediff.Severity - 0.01f;
             else
                 value = 0.0f;
 
@@ -29,13 +31,6 @@ namespace PrisonLabor
                 hediff.Severity = value;
                 pawn.health.AddHediff(hediff, null, null);
             }
-        }
-
-        public static void Init()
-        {
-            var giver = new HediffGiver_PrisonersChains();
-            giver.hediff = DefDatabase<HediffDef>.GetNamed("PrisonLabor_PrisonerChains");
-            DefDatabase<HediffGiverSetDef>.GetNamed("OrganicStandard").hediffGivers.Add(giver);
         }
     }
 }
