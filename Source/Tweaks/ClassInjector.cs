@@ -24,8 +24,11 @@ namespace PrisonLabor.Tweaks
             cutPlantJob.driverClass = typeof(JobDriver_PlantCut_Tweak);
 
             // Harvest
-            var harvestJob = JobDefOf.Harvest;
-            harvestJob.driverClass = typeof(JobDriver_PlantHarvest_Tweak);
+            if (CompatibilityPatches.SeedsPlease.CanOverrideHarvest())
+            {
+                var harvestJob = JobDefOf.Harvest;
+                harvestJob.driverClass = typeof(JobDriver_PlantHarvest_Tweak);
+            }
 
             // Grow
             var growWorkGiver = DefDatabase<WorkGiverDef>.GetNamed("GrowerSow");

@@ -45,6 +45,16 @@ namespace PrisonLabor
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
 
+            // 0.8.8 (silent)
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.8.8");
+                string[] itemsArray =
+                {
+                    "changed slow from prisoners chains to act as factor instead offset",
+                    "fixed compatibility issues with Seeds Please(again)",
+                };
+            }
             // 0.8.7 (silent)
             if (showAll)
             {

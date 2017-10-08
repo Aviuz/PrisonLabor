@@ -22,7 +22,7 @@ namespace PrisonLabor.CompatibilityPatches
         public static void Run()
         {
             var harmony = HarmonyInstance.Create("Harmony_PrisonLabor_SeedsPlease");
-            var harvestDriverClass = DefDatabase<JobDef>.GetNamed("Harvest").driverClass;
+            var harvestDriverClass = JobDefOf.Harvest.driverClass;
             harmony.Patch(
                 harvestDriverClass.GetMethod("HarvestSeedsToil", BindingFlags.NonPublic | BindingFlags.Instance),
                 new HarmonyMethod(null), new HarmonyMethod(null), new HarmonyMethod(typeof(SeedsPlease_WorkDriver_Patch).GetMethod("MethodFinder")));
