@@ -1,4 +1,6 @@
 Changelog:
+0.8.9.2
+- disabled bill button
 0.8.9.1
 - fixed harmony patches (work tab should appear now)
 0.8.9

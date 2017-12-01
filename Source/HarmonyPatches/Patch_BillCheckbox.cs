@@ -12,9 +12,9 @@ using System.IO;
 
 namespace PrisonLabor.HarmonyPatches
 {
-    [HarmonyPatch(typeof(Dialog_BillConfig))]
-    [HarmonyPatch("DoWindowContents")]
-    [HarmonyPatch(new[] { typeof(Rect) })]
+    //[HarmonyPatch(typeof(Dialog_BillConfig))]
+    //[HarmonyPatch("DoWindowContents")]
+    //[HarmonyPatch(new[] { typeof(Rect) })]
     internal class Patch_BillCheckbox
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
