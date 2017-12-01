@@ -17,5 +17,10 @@ namespace PrisonLabor
                 yield return toil;
             yield return Toils_General.RemoveDesignationsOnThing(TargetIndex.A, DesignationDefOf.HarvestPlant);
         }
+
+        public override bool TryMakePreToilReservations()
+        {
+            return true;
+        }
     }
 }

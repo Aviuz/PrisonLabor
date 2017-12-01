@@ -5,11 +5,11 @@
     <stages>
       <li>
         <label>not active</label>
-        <everVisible>false</everVisible>
+        <becomeVisible>false</becomeVisible>
       </li>
         <li>
           <label>active</label>
-          <everVisible>false</everVisible>
+          <becomeVisible>false</becomeVisible>
           <minSeverity>0.01</minSeverity>
           <capMods>
             <li>

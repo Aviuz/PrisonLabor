@@ -7,9 +7,9 @@ using Verse;
 
 namespace PrisonLabor.HarmonyPatches
 {
-    [HarmonyPatch(typeof(PrisonerInteractionModeUtility))]
-    [HarmonyPatch("GetLabel")]
-    [HarmonyPatch(new[] {typeof(PrisonerInteractionModeDef)})]
+    //[HarmonyPatch(typeof(PrisonerInteractionModeUtility))]
+    //[HarmonyPatch("GetLabel")]
+    //[HarmonyPatch(new[] {typeof(PrisonerInteractionModeDef)})]
     internal class Patch_PrisonInteractionLabel
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,

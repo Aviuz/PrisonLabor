@@ -28,5 +28,10 @@ namespace PrisonLabor
             };
             yield return toil2;
         }
+
+        public override bool TryMakePreToilReservations()
+        {
+            return true;
+        }
     }
 }

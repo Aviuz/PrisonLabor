@@ -1,4 +1,6 @@
 Changelog:
+0.8.9
+- updated to RimWorld b18
 0.8.8
 - changed slow from prisoners chains to act as factor instead offset
 - fixed compatibility issues with Seeds Please (again)

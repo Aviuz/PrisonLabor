@@ -312,7 +312,14 @@ namespace PrisonLabor
                         num += FoodOptimalityEffectFromMoodCurve.Evaluate(list[i].stages[0].baseMoodEffect);
                 }
                 if (thingDef.ingestible != null)
-                    num += thingDef.ingestible.optimalityOffset;
+                    if (eater.RaceProps.Humanlike)
+                    {
+                        num += thingDef.ingestible.optimalityOffsetHumanlikes;
+                    }
+                    else if (eater.RaceProps.Animal)
+                    {
+                        num += thingDef.ingestible.optimalityOffsetFeedingAnimals;
+                    }
                 return num;
             }
             return -9999999f;
@@ -570,7 +577,7 @@ namespace PrisonLabor
             if (PawnUtility.ShouldSendNotificationAbout(pawn))
                 Messages.Message(
                     "MessageFoodPoisoning".Translate(pawn.LabelShort, ingestible.LabelCapNoCount).CapitalizeFirst(),
-                    pawn, MessageSound.Negative);
+                    pawn, MessageTypeDefOf.NegativeEvent);
         }
     }
 }

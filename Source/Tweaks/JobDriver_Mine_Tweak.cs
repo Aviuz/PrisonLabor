@@ -18,7 +18,7 @@ namespace PrisonLabor
 
         private int ticksToPickHit = -1000;
 
-        private Thing MineTarget => CurJob.GetTarget(TargetIndex.A).Thing;
+        private Thing MineTarget => job.GetTarget(TargetIndex.A).Thing;
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
@@ -84,6 +84,11 @@ namespace PrisonLabor
         {
             base.ExposeData();
             Scribe_Values.Look(ref ticksToPickHit, "ticksToPickHit", 0, false);
+        }
+
+        public override bool TryMakePreToilReservations()
+        {
+            return true;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace PrisonLabor
             return enemyFaction;
         }
 
-        public override bool TryExecute(IncidentParms parms)
+        protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
             Pawn t = null;

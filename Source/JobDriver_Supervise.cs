@@ -10,7 +10,7 @@ namespace PrisonLabor
     {
         private static readonly float GapLengh = 3.0f;
 
-        protected Pawn Prisoner => (Pawn) CurJob.targetA.Thing;
+        protected Pawn Prisoner => (Pawn) job.targetA.Thing;
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
@@ -85,6 +85,11 @@ namespace PrisonLabor
                 if (pawn.GetRoom() == room)
                     yield return pawn;
             }
+        }
+
+        public override bool TryMakePreToilReservations()
+        {
+            return true;
         }
     }
 }

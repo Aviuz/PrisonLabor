@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ThinkTrees>
+<Defs>
   <ThinkTreeDef>
       <defName>PrisonLabor_WorkThinkTree</defName>
       <insertTag>Humanlike_PostDuty</insertTag>
@@ -17,4 +17,4 @@
       	</subNodes>
       </thinkRoot>
   </ThinkTreeDef>
-</ThinkTrees>
+</Defs>

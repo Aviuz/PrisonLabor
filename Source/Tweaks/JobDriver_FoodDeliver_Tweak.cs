@@ -16,7 +16,7 @@ namespace PrisonLabor
 
         private bool usingNutrientPasteDispenser;
 
-        private Pawn Deliveree => (Pawn) CurJob.targetB.Thing;
+        private Pawn Deliveree => (Pawn) job.targetB.Thing;
 
         public override void ExposeData()
         {
@@ -27,9 +27,9 @@ namespace PrisonLabor
 
         public override string GetReport()
         {
-            if (CurJob.GetTarget(TargetIndex.A).Thing is Building_NutrientPasteDispenser)
-                return CurJob.def.reportString.Replace("TargetA", ThingDefOf.MealNutrientPaste.label)
-                    .Replace("TargetB", ((Pawn) (Thing) CurJob.targetB).LabelShort);
+            if (job.GetTarget(TargetIndex.A).Thing is Building_NutrientPasteDispenser)
+                return job.def.reportString.Replace("TargetA", ThingDefOf.MealNutrientPaste.label)
+                    .Replace("TargetB", ((Pawn) (Thing) job.targetB).LabelShort);
             return base.GetReport();
         }
 
@@ -38,6 +38,11 @@ namespace PrisonLabor
             base.Notify_Starting();
             usingNutrientPasteDispenser = TargetThingA is Building_NutrientPasteDispenser;
             eatingFromInventory = pawn.inventory != null && pawn.inventory.Contains(TargetThingA);
+        }
+
+        public override bool TryMakePreToilReservations()
+        {
+            return true;
         }
 
         [DebuggerHidden]

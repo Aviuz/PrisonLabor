@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WorkGivers>
+<Defs>
   <WorkGiverDef>
     <defName>PrisonLabor_SupervisePrisonLabor</defName>
     <label>watch prisoner</label>
@@ -12,4 +12,4 @@
       <li>Talking</li>
     </requiredCapacities>
   </WorkGiverDef>
-</WorkGivers>
+</Defs>

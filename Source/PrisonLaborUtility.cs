@@ -21,7 +21,7 @@ namespace PrisonLabor
                     defaultWorkTypes = new List<WorkTypeDef>();
                     defaultWorkTypes.Add(WorkTypeDefOf.Growing);
                     defaultWorkTypes.Add(WorkTypeDefOf.Mining);
-                    defaultWorkTypes.Add(WorkTypeDefOf.Hauling);
+                    defaultWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed("Hauling"));
                     defaultWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed("Cooking"));
                     defaultWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed("PlantCutting"));
                     defaultWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed("Crafting"));

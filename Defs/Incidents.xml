@@ -2,11 +2,13 @@
   <IncidentDef>
       <defName>PrisonLabor_Revolt</defName>
       <label>revolt</label>
-      <targetType>MapPlayerHome</targetType>
+      <targetTypes>
+        <li>MapPlayerHome</li>
+      </targetTypes>
       <workerClass>PrisonLabor.IncidentWorker_Revolt</workerClass>
       <letterLabel>Revolt</letterLabel>
       <letterText>Revolt has been started by {0}. The prisoners united under faction {1}, and began uprising with self-made weapons</letterText>
-      <letterDef>BadUrgent</letterDef>
+      <letterDef>ThreatBig</letterDef>
       <baseChance>2.7</baseChance>
       <minRefireDays>20</minRefireDays>
       <category>ThreatBig</category>

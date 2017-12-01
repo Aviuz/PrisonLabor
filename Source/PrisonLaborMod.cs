@@ -48,7 +48,7 @@ namespace PrisonLabor
 
             listing_options.GapLine();
 
-            if (listing_options.ButtonTextLabeled("PrisonLabor_DefaultInterMode".Translate(), PrisonerInteractionModeUtility.GetLabel(interactionModeList[defaultInteractionMode])))
+            if (listing_options.ButtonTextLabeled("PrisonLabor_DefaultInterMode".Translate(), interactionModeList[defaultInteractionMode].label))
                 defaultInteractionMode = defaultInteractionMode < interactionModeList.Count - 1 ? defaultInteractionMode + 1 : 0;
 
             listing_options.GapLine();

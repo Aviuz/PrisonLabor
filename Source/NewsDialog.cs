@@ -45,6 +45,15 @@ namespace PrisonLabor
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
 
+            // 0.8.9 (silent)
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.8.9 unstable");
+                string[] itemsArray =
+                {
+                    "updated to beta 18",
+                };
+            }
             // 0.8.8 (silent)
             if (showAll)
             {
