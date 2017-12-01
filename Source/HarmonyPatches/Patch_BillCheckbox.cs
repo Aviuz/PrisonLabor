@@ -116,7 +116,8 @@ namespace PrisonLabor.HarmonyPatches
             }
             else
             {
-                throw new Exception($"Failed to get operands for harmony patch Patch_BillPrevention: billField: {billField != null}, label: {label != null}");
+                // TODO repair
+                //throw new Exception($"Failed to get operands for harmony patch Patch_BillCheckbox: billField: {billField != null}, label: {label != null}");
             }
 
         }

@@ -7,7 +7,7 @@ using Verse;
 
 namespace PrisonLabor.HarmonyPatches
 {
-    [HarmonyPatch(typeof(MainTabWindow_Work))]
+    [HarmonyPatch(typeof(MainTabWindow_PawnTable))]
     [HarmonyPatch("get_Pawns")]
     internal class Patch_WorkTab
     {

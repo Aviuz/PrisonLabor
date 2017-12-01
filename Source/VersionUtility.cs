@@ -8,8 +8,8 @@ namespace PrisonLabor
 {
     class VersionUtility
     {
-        public const Version versionNumber = Version.v0_8_9;
-        public const string versionString = "0.8.9 unstable";
+        public const Version versionNumber = Version.v0_8_9_1;
+        public const string versionString = "0.8.9.1 unstable";
 
         public static void CheckVersion()
         {

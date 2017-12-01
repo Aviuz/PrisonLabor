@@ -44,7 +44,16 @@ namespace PrisonLabor
         {
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
-
+            
+            // 0.8.9.1 (silent)
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.8.9.1 unstable");
+                string[] itemsArray =
+                {
+                    "fixed harmony patches (work tab should appear now)",
+                };
+            }
             // 0.8.9 (silent)
             if (showAll)
             {

@@ -1,4 +1,6 @@
 Changelog:
+0.8.9.1
+- fixed harmony patches (work tab should appear now)
 0.8.9
 - updated to RimWorld b18
 0.8.8
