@@ -6,16 +6,23 @@ using Verse;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection.Emit;
+using System.Diagnostics;
 
 namespace PrisonLabor.HarmonyPatches
 {
     internal static class HPatcher
     {
+        // For logging purposes, it stores whenever each fragment was completed
+        private static Dictionary<string, bool> fragments;
+
         public static void Init()
         {
             var harmony = HarmonyInstance.Create("Harmony_PrisonLabor");
             try
             {
+                // Clear old data, to avoid misleading info
+                fragments = new Dictionary<string, bool>();
+
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
 
                 // TODO move it to seperate files. Why I did this ??? I have no clue ...
@@ -35,10 +42,17 @@ namespace PrisonLabor.HarmonyPatches
                         typeof(Action<Thing, int>)
                         }),
                     new HarmonyMethod(null), new HarmonyMethod(typeof(ForibiddenDropPatch).GetMethod("Postfix2")));
+
+                // Print out not completed methods
+                foreach(var f in fragments.Keys)
+                {
+                    if(!fragments[f])
+                        Log.Warning($"PrisonLaborWarning: Harmony patch failed to find \"{f}\" fragment.");
+                }
             }
             catch (Exception e)
             {
-                Log.Error($"Prison Labor Exception, failed to proceed harmony patches: {e.Message}");
+                Log.Error($"PrisonLaborException: failed to proceed harmony patches: {e.Message}");
             }
         }
 
@@ -83,10 +97,16 @@ namespace PrisonLabor.HarmonyPatches
         /// <param name="instr"></param>
         /// <param name="step"></param>
         /// <returns></returns>
-        public static bool IsFragment(OpCode[] opCodes, String[] operands, CodeInstruction instr, ref int step)
+        public static bool IsFragment(OpCode[] opCodes, String[] operands, CodeInstruction instr, ref int step, string fragmentName)
         {
             if (opCodes.Length != operands.Length)
+            {
+                Log.Error("PrisonLaborException: IsFragment() arguments does not match requirments. Trace:" + new StackTrace());
                 return false;
+            }
+
+            if (!fragments.ContainsKey(fragmentName))
+                fragments.Add(fragmentName, false);
             if (step < 0 || step >= opCodes.Length)
                 return false;
 
@@ -100,6 +120,7 @@ namespace PrisonLabor.HarmonyPatches
             if (step == finalStep)
             {
                 step++;
+                fragments[fragmentName] = true;
                 return true;
             }
             return false;
@@ -116,7 +137,10 @@ namespace PrisonLabor.HarmonyPatches
         public static object FindOperandAfter(OpCode[] opCodes, String[] operands, IEnumerable<CodeInstruction> instr)
         {
             if (opCodes.Length != operands.Length)
+            {
+                Log.Error("PrisonLaborException: FindOperandAfter() arguments does not match requirments. Trace:" + new StackTrace());
                 return null;
+            }
 
             var finalStep = opCodes.Length;
 
@@ -132,6 +156,7 @@ namespace PrisonLabor.HarmonyPatches
                     return ci.operand;
             }
 
+            Log.Error("PrisonLaborException: FindOperandAfter() didn't find any lines. Trace:" + new StackTrace());
             return null;
         }
     }

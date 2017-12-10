@@ -1,4 +1,8 @@
 Changelog:
+0.8.9.3
+- fixed prison labor area bug
+- fixed watching sleeping prisoners
+- fixed forbidden bug
 0.8.9.2
 - disabled bill button
 0.8.9.1

@@ -59,7 +59,7 @@ namespace PrisonLabor.HarmonyPatches
             foreach (var ci in instr)
             {
                 yield return ci;
-                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step))
+                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step, "Patch_BillPrevention"))
                 {
                     yield return new CodeInstruction(OpCodes.Ldarg_1);
                     yield return new CodeInstruction(OpCodes.Ldloc_1);

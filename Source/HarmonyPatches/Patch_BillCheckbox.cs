@@ -95,19 +95,19 @@ namespace PrisonLabor.HarmonyPatches
                             typeof(Patch_BillCheckbox).GetMethod("GroupExclusionButton"));
                         ci.labels.Remove((Label)label);
                     }
-                    if(HPatcher.IsFragment(opCodes3, operands3, ci, ref step3))
+                    if(HPatcher.IsFragment(opCodes3, operands3, ci, ref step3, "Patch_BillCheckbox1"))
                     {
                         var instruction = new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StopScrolling"));
                         instruction.labels.AddRange(ci.labels);
                         ci.labels.Clear();
                         yield return instruction;
                     }
-                    if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step4))
+                    if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step4, "Patch_BillCheckbox2"))
                     {
                         yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("SetRect"));
                     }
                     yield return ci;
-                    if(HPatcher.IsFragment(opCodes2, operands2, ci, ref step2))
+                    if(HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "Patch_BillCheckbox3"))
                     {
                         yield return new CodeInstruction(OpCodes.Ldloc_2);
                         yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StartScrolling"));

@@ -28,7 +28,7 @@ namespace PrisonLabor.HarmonyPatches
 
             foreach(var ci in instr)
             {
-                if (HPatcher.IsFragment(opCodes, operands, ci, ref step))
+                if (HPatcher.IsFragment(opCodes, operands, ci, ref step, "Patch_RestrainsPatch"))
                 {
                     yield return new CodeInstruction(OpCodes.Pop);
                     yield return new CodeInstruction(OpCodes.Br, ci.operand);

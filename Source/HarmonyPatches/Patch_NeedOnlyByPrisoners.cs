@@ -15,6 +15,7 @@ namespace PrisonLabor.HarmonyPatches
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
+            HPatcher.CreateDebugFileOnDesktop("HPatches/Patch_NeedOnlyByPrisoners_CHANGE_LINE_if(ci.opcode.Value == OpCodes.Ldfld.Value)", instr);
             //Searches for loadFieldPawn Instruction. Can't create this by generator (don't know why)
             CodeInstruction loadFieldPawn = null;
             foreach (var ci in instr)
