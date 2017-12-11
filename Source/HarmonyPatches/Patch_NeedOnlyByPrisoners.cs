@@ -16,22 +16,15 @@ namespace PrisonLabor.HarmonyPatches
             IEnumerable<CodeInstruction> instr)
         {
             HPatcher.CreateDebugFileOnDesktop("HPatches/Patch_NeedOnlyByPrisoners_CHANGE_LINE_if(ci.opcode.Value == OpCodes.Ldfld.Value)", instr);
-            //Searches for loadFieldPawn Instruction. Can't create this by generator (don't know why)
-            CodeInstruction loadFieldPawn = null;
-            foreach (var ci in instr)
-                if (ci.opcode.Value == OpCodes.Ldfld.Value)
-                {
-                    loadFieldPawn = ci;
-                    break;
-                }
-
+            //Searches for pawn
+            var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr );
             // Define label to the begining of the original code
             var jumpTo = gen.DefineLabel();
             //Load argument onto stack
             yield return new CodeInstruction(OpCodes.Ldarg_1);
             //Load pawn onto stack
             yield return new CodeInstruction(OpCodes.Ldarg_0);
-            yield return loadFieldPawn;
+            yield return new CodeInstruction(OpCodes.Ldfld, pawn);
             //Call function
             yield return new CodeInstruction(OpCodes.Call,
                 typeof(Patch_NeedOnlyByPrisoners).GetMethod("ShouldHaveNeedPrisoner"));

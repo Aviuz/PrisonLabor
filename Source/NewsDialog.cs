@@ -26,6 +26,7 @@ namespace PrisonLabor
         public static bool news_0_8_1 = false;
         public static bool news_0_8_3 = false;
         public static bool news_0_8_6 = false;
+        public static bool news_0_9_0 = false;
 
         // Fields
         private string[] titles;
@@ -45,31 +46,13 @@ namespace PrisonLabor
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
 
-            // 0.8.9.2 (silent)
-            if (showAll)
+            // 0.9.0
+            if (news_0_9_0 || showAll)
             {
-                titlesList.Add("Prison Labor Beta v0.8.9.2 unstable");
+                titlesList.Add("Prison Labor Beta v0.9.0");
                 string[] itemsArray =
                 {
-                    "disabled bill button",
-                };
-            }
-            // 0.8.9.1 (silent)
-            if (showAll)
-            {
-                titlesList.Add("Prison Labor Beta v0.8.9.1 unstable");
-                string[] itemsArray =
-                {
-                    "fixed harmony patches (work tab should appear now)",
-                };
-            }
-            // 0.8.9 (silent)
-            if (showAll)
-            {
-                titlesList.Add("Prison Labor Beta v0.8.9 unstable");
-                string[] itemsArray =
-                {
-                    "updated to beta 18",
+                    "updated to RimWorld beta v18",
                 };
             }
             // 0.8.8 (silent)

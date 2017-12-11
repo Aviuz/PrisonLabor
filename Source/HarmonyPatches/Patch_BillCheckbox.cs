@@ -7,20 +7,21 @@ using UnityEngine;
 using Verse;
 using System;
 using System.IO;
+using Verse.Sound;
 
 #pragma warning disable CS0252
 
 namespace PrisonLabor.HarmonyPatches
 {
-    //[HarmonyPatch(typeof(Dialog_BillConfig))]
-    //[HarmonyPatch("DoWindowContents")]
-    //[HarmonyPatch(new[] { typeof(Rect) })]
+    [HarmonyPatch(typeof(Dialog_BillConfig))]
+    [HarmonyPatch("DoWindowContents")]
+    [HarmonyPatch(new[] { typeof(Rect) })]
     internal class Patch_BillCheckbox
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
-            // Find operands
+            // Find >> this.bill
             OpCode[] opCodes0 =
             {
                 OpCodes.Ldfld,
@@ -30,6 +31,8 @@ namespace PrisonLabor.HarmonyPatches
                 "RimWorld.Bill_Production bill",
             };
             var billField = HPatcher.FindOperandAfter(opCodes0, operands0, instr);
+
+            // Find label after >> if (listing_Standard.ButtonText(label, null))
             OpCode[] opCodes1 =
             {
                 OpCodes.Ldloc_S,
@@ -40,8 +43,8 @@ namespace PrisonLabor.HarmonyPatches
             };
             String[] operands1 =
             {
-                "Verse.Listing_Standard (4)",
-                "System.String (5)",
+                "Verse.Listing_Standard (6)",
+                "System.String (7)",
                 "",
                 "Boolean ButtonText(System.String, System.String)",
                 "System.Reflection.Emit.Label",
@@ -51,6 +54,7 @@ namespace PrisonLabor.HarmonyPatches
             // Begin rect - start of scrollable view
             int step2 = 0;
             int step4 = 0;
+            // Find fragment >> listing_Standard.Begin(rect3);
             OpCode[] opCodes2 =
             {
                 OpCodes.Ldloc_S,
@@ -59,12 +63,13 @@ namespace PrisonLabor.HarmonyPatches
             };
             String[] operands2 =
             {
-                "Verse.Listing_Standard (4)",
+                "Verse.Listing_Standard (6)",
                 "",
                 "Void Begin(Rect)",
             };
             // End rect - end of scrollable view
             int step3 = 0;
+            // Find fragment >> listing_Standard.End();
             OpCode[] opCodes3 =
             {
                 OpCodes.Call,
@@ -75,51 +80,40 @@ namespace PrisonLabor.HarmonyPatches
             {
                 "Int32 RoundToInt(Single)",
                 "System.Int32 unpauseWhenYouHave",
-                "Verse.Listing_Standard (4)",
+                "Verse.Listing_Standard (6)",
             };
 
-
-            // Transpiller
-            if (billField != null && label != null)
+            foreach (var ci in instr)
             {
-                foreach (var ci in instr)
+                if (ci.labels.Contains((Label)label))
                 {
-                    if (ci.labels.Contains((Label)label))
-                    {
-                        var injectedInstruction = new CodeInstruction(OpCodes.Ldloc_S, ci.operand);
-                        injectedInstruction.labels.Add((Label)label);
-                        yield return injectedInstruction;
-                        yield return new CodeInstruction(OpCodes.Ldarg_0);
-                        yield return new CodeInstruction(OpCodes.Ldfld, billField);
-                        yield return new CodeInstruction(OpCodes.Call,
-                            typeof(Patch_BillCheckbox).GetMethod("GroupExclusionButton"));
-                        ci.labels.Remove((Label)label);
-                    }
-                    if(HPatcher.IsFragment(opCodes3, operands3, ci, ref step3, "Patch_BillCheckbox1"))
-                    {
-                        var instruction = new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StopScrolling"));
-                        instruction.labels.AddRange(ci.labels);
-                        ci.labels.Clear();
-                        yield return instruction;
-                    }
-                    if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step4, "Patch_BillCheckbox2"))
-                    {
-                        yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("SetRect"));
-                    }
-                    yield return ci;
-                    if(HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "Patch_BillCheckbox3"))
-                    {
-                        yield return new CodeInstruction(OpCodes.Ldloc_2);
-                        yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StartScrolling"));
-                    }
+                    var injectedInstruction = new CodeInstruction(OpCodes.Ldloc_S, ci.operand);
+                    injectedInstruction.labels.Add((Label)label);
+                    yield return injectedInstruction;
+                    yield return new CodeInstruction(OpCodes.Ldarg_0);
+                    yield return new CodeInstruction(OpCodes.Ldfld, billField);
+                    yield return new CodeInstruction(OpCodes.Call,
+                        typeof(Patch_BillCheckbox).GetMethod("GroupExclusionButton"));
+                    ci.labels.Remove((Label)label);
+                }
+                if (HPatcher.IsFragment(opCodes3, operands3, ci, ref step3, "Patch_BillCheckbox1"))
+                {
+                    var instruction = new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StopScrolling"));
+                    instruction.labels.AddRange(ci.labels);
+                    ci.labels.Clear();
+                    yield return instruction;
+                }
+                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step4, "Patch_BillCheckbox2"))
+                {
+                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("SetRect"));
+                }
+                yield return ci;
+                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "Patch_BillCheckbox3"))
+                {
+                    yield return new CodeInstruction(OpCodes.Ldloc_2);
+                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StartScrolling"));
                 }
             }
-            else
-            {
-                // TODO repair
-                //throw new Exception($"Failed to get operands for harmony patch Patch_BillCheckbox: billField: {billField != null}, label: {label != null}");
-            }
-
         }
 
         public static void GroupExclusionButton(Listing_Standard listing, Bill bill)
@@ -127,17 +121,26 @@ namespace PrisonLabor.HarmonyPatches
             if (BillUtility.IsFor(bill) == GroupMode.ColonistsOnly)
             {
                 if (listing.ButtonText("PrisonLabor_ColonistsOnly".Translate()))
+                {
                     BillUtility.SetFor(bill, GroupMode.PrisonersOnly);
+                    SoundDefOf.Click.PlayOneShotOnCamera();
+                }
             }
             else if (BillUtility.IsFor(bill) == GroupMode.PrisonersOnly)
             {
                 if (listing.ButtonText("PrisonLabor_PrisonersOnly".Translate()))
+                {
                     BillUtility.SetFor(bill, GroupMode.ColonyOnly);
+                    SoundDefOf.Click.PlayOneShotOnCamera();
+                }
             }
             else
             {
                 if (listing.ButtonText("PrisonLabor_ColonyOnly".Translate()))
+                {
                     BillUtility.SetFor(bill, GroupMode.ColonistsOnly);
+                    SoundDefOf.Click.PlayOneShotOnCamera();
+                }
             }
             listing.Gap(12f);
         }

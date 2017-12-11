@@ -86,6 +86,7 @@
     <Compile Include="HarmonyPatches\Patch_RespectReservation.cs" />
     <Compile Include="HarmonyPatches\Patch_RestrainsPatch.cs" />
     <Compile Include="HarmonyPatches\Patch_ShowNews.cs" />
+    <Compile Include="HarmonyPatches\Patch_TimetableFix.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable2.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkTab.cs" />
