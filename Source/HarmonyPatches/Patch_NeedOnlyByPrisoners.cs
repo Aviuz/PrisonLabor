@@ -15,7 +15,6 @@ namespace PrisonLabor.HarmonyPatches
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
-            HPatcher.CreateDebugFileOnDesktop("HPatches/Patch_NeedOnlyByPrisoners_CHANGE_LINE_if(ci.opcode.Value == OpCodes.Ldfld.Value)", instr);
             //Searches for pawn
             var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr );
             // Define label to the begining of the original code

@@ -19,7 +19,6 @@ namespace PrisonLabor.HarmonyPatches
 
             foreach (var ci in instr)
             {
-                HPatcher.CreateDebugFileOnDesktop("HPatches/Patch_ExtendVisitorRect", instr);
                 if (ci.operand is float && (float)ci.operand == 200f)
                     ci.operand = 30f * DefDatabase<PrisonerInteractionModeDef>.DefCount + 10;
                 yield return ci;

@@ -17,8 +17,6 @@ namespace PrisonLabor.HarmonyPatches
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
-            HPatcher.CreateDebugFileOnDesktop("HPatches/Patch_LaborForbid", instr);
-
             //var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr);
             var jobgiver = HPatcher.FindOperandAfter(new[] {OpCodes.Ldloc_S }, new[] { "RimWorld.JobGiver_Work+<TryIssueJobPackage>c__AnonStorey1 (11)" }, instr );
             var scanner = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "RimWorld.WorkGiver_Scanner scanner" }, instr);
