@@ -46,6 +46,11 @@ namespace PrisonLabor
             List<string> titlesList = new List<string>();
             List<string[]> itemsList = new List<string[]>();
 
+            // How to insert news:
+            // [subtitle] for subtitle
+            // [img] ... [/img] for image (inside name of file)
+            // [gap] for gap
+
             // 0.9.0
             if (news_0_9_0 || showAll)
             {
@@ -53,7 +58,10 @@ namespace PrisonLabor
                 string[] itemsArray =
                 {
                     "updated to RimWorld beta v18",
+                    "added option to disable icons above prisoners heads in mod menu",
+                    "fixed error \"null reference in onGui()\" when loading save",
                 };
+                itemsList.Add(itemsArray);
             }
             // 0.8.8 (silent)
             if (showAll)
@@ -64,6 +72,7 @@ namespace PrisonLabor
                     "changed slow from prisoners chains to act as factor instead offset",
                     "fixed compatibility issues with Seeds Please(again)",
                 };
+                itemsList.Add(itemsArray);
             }
             // 0.8.7 (silent)
             if (showAll)
@@ -80,6 +89,7 @@ namespace PrisonLabor
                     "wardens will now try to motivate most prisoners at once, but with priority to motivate lowest motivation first",
                     "fixed bug with animals do not respect reservations (and vice versa)",
                 };
+                itemsList.Add(itemsArray);
             }
             // 0.8.6
             if (news_0_8_6 || showAll)

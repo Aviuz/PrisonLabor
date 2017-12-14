@@ -12,6 +12,7 @@ namespace PrisonLabor
         private static bool showNews;
         private static bool allowAllWorktypes;
         private static bool enableMotivationMechanics;
+        private static bool enableMotivationIcons;
         private static bool advanceGrowing;
         private static bool disableMod;
         private static int defaultInteractionMode;
@@ -27,6 +28,7 @@ namespace PrisonLabor
             showNews = PrisonLaborPrefs.ShowNews;
             allowAllWorktypes = PrisonLaborPrefs.AllowAllWorkTypes;
             enableMotivationMechanics = PrisonLaborPrefs.EnableMotivationMechanics;
+            enableMotivationIcons = PrisonLaborPrefs.EnableMotivationIcons;
             disableMod = PrisonLaborPrefs.DisableMod;
 
             interactionModeList = new List<PrisonerInteractionModeDef>(DefDatabase<PrisonerInteractionModeDef>.AllDefs);
@@ -48,7 +50,7 @@ namespace PrisonLabor
 
             listing_options.GapLine();
 
-            if (listing_options.ButtonTextLabeled("PrisonLabor_DefaultInterMode".Translate(), interactionModeList[defaultInteractionMode].label))
+            if (listing_options.ButtonTextLabeled("PrisonLabor_DefaultInterMode".Translate(), interactionModeList[defaultInteractionMode].LabelCap))
                 defaultInteractionMode = defaultInteractionMode < interactionModeList.Count - 1 ? defaultInteractionMode + 1 : 0;
 
             listing_options.GapLine();
@@ -71,6 +73,11 @@ namespace PrisonLabor
 
                 listing_options.CheckboxLabeled("PrisonLabor_MotivationMechanics".Translate(), ref enableMotivationMechanics,
                     "PrisonLabor_MotivationWarning".Translate());
+
+                listing_options.GapLine();
+
+                listing_options.CheckboxLabeled("PrisonLabor_MotivationIcons".Translate(), ref enableMotivationIcons,
+                    "PrisonLabor_MotivationIconsDesc".Translate());
 
                 listing_options.GapLine();
 
@@ -141,6 +148,7 @@ namespace PrisonLabor
             PrisonLaborPrefs.AllowAllWorkTypes = allowAllWorktypes;
             if (!disableMod)
                 PrisonLaborPrefs.EnableMotivationMechanics = enableMotivationMechanics;
+            PrisonLaborPrefs.EnableMotivationIcons = enableMotivationIcons;
             PrisonLaborPrefs.AdvancedGrowing = advanceGrowing;
             PrisonLaborPrefs.DisableMod = disableMod;
             PrisonLaborPrefs.DefaultInteractionMode = interactionModeList[defaultInteractionMode].defName;

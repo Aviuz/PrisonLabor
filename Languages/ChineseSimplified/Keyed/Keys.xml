@@ -16,6 +16,8 @@
   <PrisonLabor_Browse>浏览</PrisonLabor_Browse>
   <PrisonLabor_MotivationMechanics>激励技巧(!)</PrisonLabor_MotivationMechanics>
   <PrisonLabor_MotivationWarning>当选择时，囚犯将需要被激励\n\n警告：需要重新载入存档。</PrisonLabor_MotivationWarning>
+  <PrisonLabor_MotivationIcons>Inspiration/Motivation Icons</PrisonLabor_MotivationIcons>
+  <PrisonLabor_MotivationIconsDesc>When enabled above prisoners head will be displayed blue icon when they are inspired, and green icon when they gain motivation by other factors.</PrisonLabor_MotivationIconsDesc>
   <PrisonLabor_CanGrowAdvanced>囚犯可以种植高级作物</PrisonLabor_CanGrowAdvanced>
   <PrisonLabor_CanGrowAdvancedDesc>当禁用时囚犯只能种不需要技能的植物。</PrisonLabor_CanGrowAdvancedDesc>
   <PrisonLabor_RestartInfo>重启并重新存储你的游戏</PrisonLabor_RestartInfo>

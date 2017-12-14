@@ -1,7 +1,11 @@
 Changelog:
+0.9.0
+- added option to disable icons above prisoners heads in mod menu
+- corrected casing in default prisoner interaction mode option in mod menu
+- fixed error "null reference in onGui()" when loading save
 *********** BETA 18 COMPATIBILITY PATCHES *******************
 0.8.9.5
-- cleared some code debris, hope it fix the "uknown bug"
+- cleared some code debris, hope it fix the "unknown bug"
 0.8.9.4
 - fixed timetables
 - fixed bill checkboxes
@@ -13,9 +17,10 @@ Changelog:
 - disabled bill button
 0.8.9.1
 - fixed harmony patches (work tab should appear now)
-*************************************************************
 0.8.9
-- updated to RimWorld b18
+- updated libraries to RimWorld b18
+- minor fixes related to uptading to RimWorld b18
+*************************************************************
 0.8.8
 - changed slow from prisoners chains to act as factor instead offset
 - fixed compatibility issues with Seeds Please (again)

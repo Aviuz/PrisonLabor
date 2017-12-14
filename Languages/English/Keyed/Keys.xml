@@ -16,6 +16,8 @@
   <PrisonLabor_Browse>browse</PrisonLabor_Browse>
   <PrisonLabor_MotivationMechanics>Motivation mechanics (!)</PrisonLabor_MotivationMechanics>
   <PrisonLabor_MotivationWarning>When checked prisoners need to be motivated.\n\nWARINING: Needs reloading save.</PrisonLabor_MotivationWarning>
+  <PrisonLabor_MotivationIcons>Inspiration/Motivation Icons</PrisonLabor_MotivationIcons>
+  <PrisonLabor_MotivationIconsDesc>When enabled icons will be displayed above prisoners heads. Blue icon for inspiration, and green icon for gaining motivation by other factors.</PrisonLabor_MotivationIconsDesc>
   <PrisonLabor_CanGrowAdvanced>Prisoners can grow advanced plants</PrisonLabor_CanGrowAdvanced>
   <PrisonLabor_CanGrowAdvancedDesc>When disabled prisoners can only grow plants that not require any skills.</PrisonLabor_CanGrowAdvancedDesc>
   <PrisonLabor_RestartInfo>Restart then re-save your game.</PrisonLabor_RestartInfo>

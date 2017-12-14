@@ -12,6 +12,7 @@ namespace PrisonLabor
         public string allowed_works = "";
         public bool disable_mod = false;
         public bool enable_motivation_mechanics = true;
+        public bool enable_motivation_icons = true;
         public Version last_version = Version.v0_0;
         public bool show_news = true;
 
@@ -51,7 +52,8 @@ namespace PrisonLabor
         v0_8_9_1,
         v0_8_9_2,
         v0_8_9_4,
-        v0_8_9_5
+        v0_8_9_5,
+        v0_9_0
     }
 
     [Flags]

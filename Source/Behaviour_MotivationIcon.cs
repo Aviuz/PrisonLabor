@@ -47,9 +47,8 @@ namespace PrisonLabor
         {
             try
             {
-                //TODO add icons enabled
-                var iconsEnabled = true;
-                var inGame = Find.GameInfo != null && Find.World != null && Find.World.renderer != null && !WorldRendererUtility.WorldRenderedNow;
+                var iconsEnabled = PrisonLaborPrefs.EnableMotivationIcons && !PrisonLaborPrefs.DisableMod;
+                var inGame = Find.VisibleMap != null && Find.VisibleMap.mapPawns != null;
 
                 if (iconsEnabled && inGame)
                     foreach (var pawn in Find.VisibleMap.mapPawns.AllPawns)
@@ -72,7 +71,7 @@ namespace PrisonLabor
             {
                 if (!displayedError)
                 {
-                    Log.Message("[Debug] (Ignore that) Prison labor null reference in OnGui() : " + e.Message + " trace: " + e.StackTrace);
+                    Log.ErrorOnce("PrisonLaborError: null reference in OnGui() : " + e.Message + " trace: " + e.StackTrace, typeof(Behaviour_MotivationIcon).GetHashCode());
                     displayedError = true;
                 }
             }

@@ -70,13 +70,24 @@ namespace PrisonLabor
         {
             get
             {
-                if (data.disable_mod)
-                    return false;
                 return data.enable_motivation_mechanics;
             }
             set
             {
                 data.enable_motivation_mechanics = value;
+                Apply();
+            }
+        }
+
+        public static bool EnableMotivationIcons
+        {
+            get
+            {
+                return data.enable_motivation_icons;
+            }
+            set
+            {
+                data.enable_motivation_icons = value;
                 Apply();
             }
         }
