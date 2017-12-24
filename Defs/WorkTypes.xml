@@ -5,7 +5,7 @@
     <labelShort>Jailor</labelShort>
     <pawnLabel>Jailor</pawnLabel>
     <gerundLabel>watching prisoners</gerundLabel>
-    <description>Manage prisoners, wchich includes escort, watching, releasing, and execution of prisoners.</description>
+    <description>Manage prisoners, which includes escort, watching, releasing, and execution of prisoners.</description>
     <verb>Supervise</verb>
     <naturalPriority>1099</naturalPriority>
     <requireCapableColonist>true</requireCapableColonist>
