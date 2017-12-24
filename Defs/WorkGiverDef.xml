@@ -4,7 +4,7 @@
     <defName>PrisonLabor_SupervisePrisonLabor</defName>
     <label>watch prisoner</label>
     <giverClass>PrisonLabor.WorkGiver_Supervise</giverClass>
-    <workType>Warden</workType>
+    <workType>PrisonLabor_Jailor</workType>
     <priorityInType>5</priorityInType>
     <verb>watch prisoner</verb>
     <gerund>watching prisoner</gerund>

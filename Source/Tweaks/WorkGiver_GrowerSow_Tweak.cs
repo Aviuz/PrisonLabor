@@ -74,7 +74,7 @@ namespace PrisonLabor
             {
                 return null;
             }
-            if (pawn.IsPrisoner && wantedPlantDef.plant.sowMinSkill > 0 && !PrisonLaborPrefs.AdvancedGrowing)
+            if (pawn.IsPrisoner && wantedPlantDef.plant.sowMinSkill > 6 && !PrisonLaborPrefs.AdvancedGrowing)
             {
                 Tutorials.Growing();
                 return null;

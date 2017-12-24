@@ -12,7 +12,7 @@ namespace PrisonLabor
             HPatcher.Init();
             ClassInjector.Init();
             PrisonLaborPrefs.Init();
-            PrisonLaborMod.Init();
+            SettingsMenu.Init();
             VersionUtility.CheckVersion();
             Designator_AreaLabor.Initialization();
             Behaviour_MotivationIcon.Initialization();

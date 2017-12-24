@@ -27,6 +27,7 @@ namespace PrisonLabor
         public static bool news_0_8_3 = false;
         public static bool news_0_8_6 = false;
         public static bool news_0_9_0 = false;
+        public static bool news_0_9_1 = false;
 
         // Fields
         private string[] titles;
@@ -51,6 +52,20 @@ namespace PrisonLabor
             // [img] ... [/img] for image (inside name of file)
             // [gap] for gap
 
+            // 0.9.1
+            if (news_0_9_1 || showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.1");
+                string[] itemsArray =
+                {
+                    "changed max. skill required for non-advanced growing by prisoners to 6 instead of 0",
+                    "added new work type Jailor",
+                    "fixed drawing icons on world map",
+                    "fixed disabling mod from existing saves",
+                    "fixed incorrectly showing \"advanced growing by prisoners\" option",
+                };
+                itemsList.Add(itemsArray);
+            }
             // 0.9.0
             if (news_0_9_0 || showAll)
             {

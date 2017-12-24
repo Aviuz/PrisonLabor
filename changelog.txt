@@ -1,4 +1,10 @@
 Changelog:
+0.9.1
+- changed max. skill required for non-advanced growing by prisoners to 6 instead of 0
+- added new work type Jailor
+- fixed drawing icons on world map
+- fixed disabling mod from existing saves
+- fixed incorrectly showing "advanced growing by prisoners" option
 0.9.0
 - added option to disable icons above prisoners heads in mod menu
 - corrected casing in default prisoner interaction mode option in mod menu

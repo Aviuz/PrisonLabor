@@ -11,6 +11,12 @@ namespace PrisonLabor.Tweaks
     {
         public static void Init()
         {
+            JobTweaks();
+            SplitWardenType();
+        }
+
+        private static void JobTweaks()
+        {
             // Deliver food to prisoners (include other rooms etc.)
             var deliverFoodWorkGiver = DefDatabase<WorkGiverDef>.GetNamed("DeliverFoodToPrisoner");
             deliverFoodWorkGiver.giverClass = typeof(WorkGiver_Warden_DeliverFood_Tweak);
@@ -37,6 +43,19 @@ namespace PrisonLabor.Tweaks
             // Clean
             var cleanWorkGiver = DefDatabase<WorkGiverDef>.GetNamed("CleanFilth");
             cleanWorkGiver.giverClass = typeof(WorkGiver_CleanFilth_Tweak);
+        }
+
+        private static void SplitWardenType()
+        {
+            DefDatabase<WorkGiverDef>.GetNamed("DoExecution").workType = PrisonLaborDefOf.PrisonLabor_Jailor;
+            DefDatabase<WorkGiverDef>.GetNamed("ReleasePrisoner").workType = PrisonLaborDefOf.PrisonLabor_Jailor;
+            DefDatabase<WorkGiverDef>.GetNamed("TakePrisonerToBed").workType = PrisonLaborDefOf.PrisonLabor_Jailor;
+            //DefDatabase<WorkGiverDef>.GetNamed("FeedPrisoner").workType = PrisonLaborDefOf.PrisonLabor_Jailor;
+            //DefDatabase<WorkGiverDef>.GetNamed("DeliverFoodToPrisoner").workType = PrisonLaborDefOf.PrisonLabor_Jailor;
+            WorkTypeDefOf.Warden.workGiversByPriority.Clear();
+            WorkTypeDefOf.Warden.ResolveReferences();
+            PrisonLaborDefOf.PrisonLabor_Jailor.workGiversByPriority.Clear();
+            PrisonLaborDefOf.PrisonLabor_Jailor.ResolveReferences();
         }
     }
 }

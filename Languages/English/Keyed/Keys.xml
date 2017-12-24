@@ -39,7 +39,7 @@
   <PrisonLabor_StarvingPrisonerExplanationDef>Prisoners are starving and won't work.</PrisonLabor_StarvingPrisonerExplanationDef>
   <PrisonLabor_StarvingPrisonerExplanation>Those prisoners are starving and won't work:\n\n{0}</PrisonLabor_StarvingPrisonerExplanation>
   <PrisonLabor_LaborArea>Prison Labor Area</PrisonLabor_LaborArea>
-  <PrisonLabor_LaborAreaDesc>Labor area is area where only prisoners can work. No colonist's work allowed here expect warden type jobs.</PrisonLabor_LaborAreaDesc>
+  <PrisonLabor_LaborAreaDesc>Labor area is area where only prisoners can work. No colonist's work allowed here except warden type jobs.</PrisonLabor_LaborAreaDesc>
   <PrisonLabor_ClearLaborArea>Clear Labor Area</PrisonLabor_ClearLaborArea>
   <PrisonLabor_ExpandLaborArea>Expand Labor Area</PrisonLabor_ExpandLaborArea>
   <PrisonLabor_ColonistsOnly>Colonists only</PrisonLabor_ColonistsOnly>

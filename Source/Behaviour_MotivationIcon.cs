@@ -48,7 +48,7 @@ namespace PrisonLabor
             try
             {
                 var iconsEnabled = PrisonLaborPrefs.EnableMotivationIcons && !PrisonLaborPrefs.DisableMod;
-                var inGame = Find.VisibleMap != null && Find.VisibleMap.mapPawns != null;
+                var inGame = Find.VisibleMap != null && Find.VisibleMap.mapPawns != null && !WorldRendererUtility.WorldRenderedNow;
 
                 if (iconsEnabled && inGame)
                     foreach (var pawn in Find.VisibleMap.mapPawns.AllPawns)

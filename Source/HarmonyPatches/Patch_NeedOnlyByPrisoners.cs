@@ -9,14 +9,14 @@ namespace PrisonLabor.HarmonyPatches
 {
     [HarmonyPatch(typeof(Pawn_NeedsTracker))]
     [HarmonyPatch("ShouldHaveNeed")]
-    [HarmonyPatch(new[] {typeof(NeedDef)})]
+    [HarmonyPatch(new[] { typeof(NeedDef) })]
     internal class Patch_NeedOnlyByPrisoners
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
             //Searches for pawn
-            var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr );
+            var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr);
             // Define label to the begining of the original code
             var jumpTo = gen.DefineLabel();
             //Load argument onto stack
@@ -61,7 +61,7 @@ namespace PrisonLabor.Harmony
 {
     [HarmonyPatch(typeof(Pawn_NeedsTracker))]
     [HarmonyPatch("ShouldHaveNeed")]
-    [HarmonyPatch(new[] {typeof(NeedDef)})]
+    [HarmonyPatch(new[] { typeof(NeedDef) })]
     internal class NeedOnlyByPrisonersPatch
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
@@ -108,9 +108,13 @@ namespace PrisonLabor.Harmony
 
         public static bool ShouldHaveNeedPrisoner(NeedDef nd, Pawn pawn)
         {
-            if (nd.defName == "PrisonLabor_Motivation" &&
-                !(pawn.IsPrisoner && PrisonLaborPrefs.EnableMotivationMechanics))
-                return false;
+            if (nd.defName == "PrisonLabor_Motivation")
+            {
+                if (pawn.IsPrisoner && PrisonLaborPrefs.EnableMotivationMechanics && !PrisonLaborPrefs.DisableMod)
+                    return true;
+                else
+                    return false;
+            }
             return true;
         }
     }

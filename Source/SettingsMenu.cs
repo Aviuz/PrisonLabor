@@ -6,20 +6,20 @@ using Verse;
 namespace PrisonLabor
 {
     [StaticConstructorOnStartup]
-    internal class PrisonLaborMod : Mod
+    internal class SettingsMenu : Mod
     {
         private static string difficulty = "";
         private static bool showNews;
         private static bool allowAllWorktypes;
         private static bool enableMotivationMechanics;
         private static bool enableMotivationIcons;
-        private static bool advanceGrowing;
+        private static bool advancedGrowing;
         private static bool disableMod;
         private static int defaultInteractionMode;
 
         private static List<PrisonerInteractionModeDef> interactionModeList;
 
-        public PrisonLaborMod(ModContentPack content) : base(content)
+        public SettingsMenu(ModContentPack content) : base(content)
         {
         }
 
@@ -27,6 +27,7 @@ namespace PrisonLabor
         {
             showNews = PrisonLaborPrefs.ShowNews;
             allowAllWorktypes = PrisonLaborPrefs.AllowAllWorkTypes;
+            advancedGrowing = PrisonLaborPrefs.AdvancedGrowing;
             enableMotivationMechanics = PrisonLaborPrefs.EnableMotivationMechanics;
             enableMotivationIcons = PrisonLaborPrefs.EnableMotivationIcons;
             disableMod = PrisonLaborPrefs.DisableMod;
@@ -81,7 +82,7 @@ namespace PrisonLabor
 
                 listing_options.GapLine();
 
-                listing_options.CheckboxLabeled("PrisonLabor_CanGrowAdvanced".Translate(), ref advanceGrowing,
+                listing_options.CheckboxLabeled("PrisonLabor_CanGrowAdvanced".Translate(), ref advancedGrowing,
                     "PrisonLabor_CanGrowAdvancedDesc".Translate());
             }
             else
@@ -149,7 +150,7 @@ namespace PrisonLabor
             if (!disableMod)
                 PrisonLaborPrefs.EnableMotivationMechanics = enableMotivationMechanics;
             PrisonLaborPrefs.EnableMotivationIcons = enableMotivationIcons;
-            PrisonLaborPrefs.AdvancedGrowing = advanceGrowing;
+            PrisonLaborPrefs.AdvancedGrowing = advancedGrowing;
             PrisonLaborPrefs.DisableMod = disableMod;
             PrisonLaborPrefs.DefaultInteractionMode = interactionModeList[defaultInteractionMode].defName;
             PrisonLaborPrefs.Save();
@@ -167,7 +168,7 @@ namespace PrisonLabor
             var value = 1000;
             if (!enableMotivationMechanics)
                 value -= 300;
-            if (advanceGrowing)
+            if (advancedGrowing)
                 value -= 50;
             value -= 500;
             if (!allowAllWorktypes)

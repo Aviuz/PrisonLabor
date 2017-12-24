@@ -76,6 +76,7 @@
     <Compile Include="HarmonyPatches\Patch_ForibiddenDrop.cs" />
     <Compile Include="HarmonyPatches\Patch_ItemIsForbidden.cs" />
     <Compile Include="HarmonyPatches\HPatcher.cs" />
+    <Compile Include="HarmonyPatches\Patch_JailorTypeSaveCompatibility.cs" />
     <Compile Include="HarmonyPatches\Patch_LaborForbid.cs" />
     <Compile Include="HarmonyPatches\Patch_NeedOnlyByPrisoners.cs" />
     <Compile Include="HarmonyPatches\Patch_PrisonInteractionLabel.cs" />
@@ -100,8 +101,9 @@
     <Compile Include="InspirationUtility.cs" />
     <Compile Include="Need_Motivation.cs" />
     <Compile Include="PrisonerFoodReservation.cs" />
+    <Compile Include="PrisonLaborDefOf.cs" />
     <Compile Include="PrisonLaborUtility.cs" />
-    <Compile Include="PrisonLaborMod.cs" />
+    <Compile Include="SettingsMenu.cs" />
     <Compile Include="SelectWorkTypesDialog.cs" />
     <Compile Include="NewsDialog.cs" />
     <Compile Include="Tweaks\FoodUtility_Tweak.cs" />
@@ -156,8 +158,12 @@
     <Content Include="..\Defs\WorkGiverDef.xml">
       <Link>Defs\WorkGiverDef.xml</Link>
     </Content>
+    <Content Include="..\Defs\WorkTypes.xml">
+      <Link>Defs\WorkTypes.xml</Link>
+    </Content>
     <Content Include="..\Languages\English\Keyed\Keys.xml">
       <Link>Language\Keys.xml</Link>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\TaskList.txt">
       <Link>Organizer\TaskList.txt</Link>
