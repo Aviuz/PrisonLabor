@@ -8,7 +8,7 @@ using Verse.AI;
 
 namespace PrisonLabor.CompatibilityPatches
 {
-    class SeedsPlease_WorkGiver : WorkGiver_GrowerSow_Tweak
+    public class SeedsPlease_WorkGiver : WorkGiver_GrowerSow_Tweak
     {
         private const int SEEDS_TO_CARRY = 25;
 

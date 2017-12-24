@@ -23,7 +23,7 @@ namespace PrisonLabor.CompatibilityPatches
                 }
                 catch (Exception e)
                 {
-                    Log.Error("PrisonLaborException: encountered problem with SeedsPlease mod. Failed to patch. Error message:\n" + e.ToString());
+                    Log.Error("PrisonLaborException: encountered problem with SeedsPlease mod. Failed to patch:\n" + e.ToString());
                 }
             }
         }

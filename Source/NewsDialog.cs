@@ -28,6 +28,7 @@ namespace PrisonLabor
         public static bool news_0_8_6 = false;
         public static bool news_0_9_0 = false;
         public static bool news_0_9_1 = false;
+        public static bool news_0_9_2 = false;
 
         // Fields
         private string[] titles;
@@ -52,6 +53,16 @@ namespace PrisonLabor
             // [img] ... [/img] for image (inside name of file)
             // [gap] for gap
 
+            // 0.9.2
+            if (news_0_9_2 || showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.2");
+                string[] itemsArray =
+                {
+                    "fixed seeds please compatibility issue",
+                };
+                itemsList.Add(itemsArray);
+            }
             // 0.9.1
             if (news_0_9_1 || showAll)
             {
