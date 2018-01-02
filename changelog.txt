@@ -1,6 +1,7 @@
 Changelog:
 0.9.2
 - fixed seeds please compatibility issue
+- added option to disable revolts
 0.9.1
 - changed max. skill required for non-advanced growing by prisoners to 6 instead of 0
 - added new work type Jailor

@@ -35,7 +35,7 @@ namespace PrisonLabor
             if (accumulatedMotivation / prisonersCount > MinMotivationToStart)
                 return false;
 
-            return enemyFaction;
+            return enemyFaction && PrisonLaborPrefs.EnableRevolts;
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)

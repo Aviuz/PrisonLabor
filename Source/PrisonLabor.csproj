@@ -57,8 +57,6 @@
     <Compile Include="Area_Labor.cs" />
     <Compile Include="BillGroupData.cs" />
     <Compile Include="BillUtility.cs" />
-    <Compile Include="CompatibilityPatches\CleaningArea.cs" />
-    <Compile Include="CompatibilityPatches\CleaningArea_WorkDriver_Patch.cs" />
     <Compile Include="CompatibilityPatches\Initialization.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease_WorkDriver_Patch.cs" />
