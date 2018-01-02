@@ -60,6 +60,7 @@ namespace PrisonLabor
                 string[] itemsArray =
                 {
                     "fixed seeds please compatibility issue",
+                    "added option to disable revolts",
                 };
                 itemsList.Add(itemsArray);
             }

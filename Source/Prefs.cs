@@ -92,6 +92,19 @@ namespace PrisonLabor
             }
         }
 
+        public static bool EnableRevolts
+        {
+            get
+            {
+                return data.enable_revolts;
+            }
+            set
+            {
+                data.enable_revolts = value;
+                Apply();
+            }
+        }
+
         public static bool DisableMod
         {
             get { return data.disable_mod; }
