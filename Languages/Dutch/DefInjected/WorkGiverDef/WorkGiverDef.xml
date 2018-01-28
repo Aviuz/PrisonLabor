@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+<PrisonLabor_SupervisePrisonLabor.label>Houdt gevangene in de gate.</PrisonLabor_SupervisePrisonLabor.label>
+<PrisonLabor_SupervisePrisonLabor.verb>Houdt gevangene in de gate.</PrisonLabor_SupervisePrisonLabor.verb>
+<PrisonLabor_SupervisePrisonLabor.gerund>Houdt gevangene in de gate.</PrisonLabor_SupervisePrisonLabor.gerund>
+<PrisonLabor_DeliverFoodToPrisoner_Tweak.label>Geef voedsel aan gevangenen</PrisonLabor_DeliverFoodToPrisoner_Tweak.label>
+<PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>Geef voedsel aan</PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>
+<PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>Voedsel aan het geven</PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>
+<PrisonLabor_Mine_Tweak.label>Delf</PrisonLabor_Mine_Tweak.label>
+<PrisonLabor_Mine_Tweak.verb>Delf</PrisonLabor_Mine_Tweak.verb>
+<PrisonLabor_Mine_Tweak.gerund>Delven</PrisonLabor_Mine_Tweak.gerund>
+<PrisonLabor_PlantsCut_Tweak.label>Snij planten</PrisonLabor_PlantsCut_Tweak.label>
+<PrisonLabor_PlantsCut_Tweak.verb>Snij</PrisonLabor_PlantsCut_Tweak.verb>
+<PrisonLabor_PlantsCut_Tweak.gerund>Snijden</PrisonLabor_PlantsCut_Tweak.gerund>
+<PrisonLabor_GrowerHarvest_Tweak.label>Oogst planten</PrisonLabor_GrowerHarvest_Tweak.label>
+<PrisonLabor_GrowerHarvest_Tweak.verb>Oogst</PrisonLabor_GrowerHarvest_Tweak.verb>
+<PrisonLabor_GrowerHarvest_Tweak.gerund>Oogsten</PrisonLabor_GrowerHarvest_Tweak.gerund>
+<PrisonLabor_GrowerSow_Tweak.label>Zaai planten</PrisonLabor_GrowerSow_Tweak.label>
+<PrisonLabor_GrowerSow_Tweak.verb>Zaai</PrisonLabor_GrowerSow_Tweak.verb>
+<PrisonLabor_GrowerSow_Tweak.gerund>Zaaien</PrisonLabor_GrowerSow_Tweak.gerund>
+<PrisonLabor_CleanFilth_Tweak.label>Maak vuiligheid schoon</PrisonLabor_CleanFilth_Tweak.label>
+<PrisonLabor_CleanFilth_Tweak.verb>Maak schoon</PrisonLabor_CleanFilth_Tweak.verb>
+<PrisonLabor_CleanFilth_Tweak.gerund>Schoonmaken</PrisonLabor_CleanFilth_Tweak.gerund>
+
+
+
+</LanguageData>
