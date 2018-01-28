@@ -37,7 +37,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\Games\SteamLibrary\SteamApps\common\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>Libraries\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -47,7 +47,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\Games\SteamLibrary\SteamApps\common\RimWorld\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>Libraries\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -57,6 +57,7 @@
     <Compile Include="Area_Labor.cs" />
     <Compile Include="BillGroupData.cs" />
     <Compile Include="BillUtility.cs" />
+    <Compile Include="BugTracker.cs" />
     <Compile Include="CompatibilityPatches\Initialization.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease_WorkDriver_Patch.cs" />

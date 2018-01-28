@@ -4,18 +4,20 @@ namespace PrisonLabor
 {
     public class PrisonLaborPrefsData
     {
-        public bool advanced_growing = false;
-        public bool allow_all_worktypes = false;
-
         public string defaultInteraction = "PrisonLabor_workOption";
 
         public string allowed_works = "";
-        public bool disable_mod = false;
+        public bool allow_all_worktypes = false;
+        public bool advanced_growing = false;
         public bool enable_motivation_mechanics = true;
         public bool enable_motivation_icons = true;
         public bool enable_revolts = true;
+
+        public bool disable_mod = false;
+
         public Version last_version = Version.v0_0;
         public bool show_news = true;
+        public bool enable_reports = false;
 
         public TutorialFlag tutorials_flags = TutorialFlag.None;
         public Version version = Version.v0_0;
