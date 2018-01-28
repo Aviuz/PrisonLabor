@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+<PrisonLabor_Indroduction.label>Gevangenisarbeid</PrisonLabor_Indroduction.label>
+<PrisonLabor_Indroduction.helpText>Je kan gevangenen forceren te werken.\n\nOm dit te doen moet je de "Forceer om te werken" optie van het "Gevangenen" tab\n\nGevangenen zal aan opdrachten werken die zich bevinden in toegestane gebieden. Wees zeker dat de gevangenen hun werkplek kunnen bereiken.\n\n\Ze kunnen alleen koken, delven, planten snijden, vervoeren, schoonmaken of planten groeien als dit geen speciale vaardigheid eist.\n\n\Gevangenen zullen soms weigeren om te werken. De reden hiervoor kan verschillen: Hij kan hongerig, gewond vermoeid of niet gemotiveerd genoeg zijn.\n\nTIP: Je kan in het "Arbeids" tab verschillende arbeidstypes selecteren.\n\nTIP: Als je een oven in een gevangenis plaats kunnen de gevangenen rauw voedsel koken.\n\nTIP: Je kan gevangenen door deuren laten bewegen door deze open te laten staan</PrisonLabor_Indroduction.helpText>
+<PrisonLabor_Motivation.label>Gevangenen motiveren</PrisonLabor_Motivation.label>
+<PrisonLabor_Motivation.helpText>Een van je gevangenen is gestopt met werken.\nHij wil niet meer werken tenzij hij gemotiveerd word.\n\nJe kan de status van zijn motivatie bekijken in de "Behoefte" tab.\n\nWees zeker dat je genoeg bewakers (controleer "Arbeids" tab) of roep een van je kolonisten op om bij de gevangenen te gaan staan.\n\nLage motivatie kan tot een opstand leiden.</PrisonLabor_Motivation.helpText>
+<PrisonLabor_Growing.label>Planten groeien door gevangenen</PrisonLabor_Growing.label>
+<PrisonLabor_Growing.helpText>Gevangenen kunnen alleen planten groeien die geen speciale vaardigheid nodig hebben zoals katoen of aardappelen. Ze kunnen daarintegen wel alle planten oogsten die hiertoe gemarkeerd zijn.</PrisonLabor_Growing.helpText>
+<PrisonLabor_Management.label>Gevangenisarbeid beheer</PrisonLabor_Management.label>
+"<PrisonLabor_Management.helpText>Je kan je gevangenisarbeid op verschillende manier beheren.\n\nJe kan gevangenen verschillende arbeidstypen aangeven via de ""Arbeids"" tab.\n\nJe kan aangeven wanneer gevangenen moeten werken, rusten of slapen via de ""Beperkingen"" tab.\n\nJe kan arbeid beperken tot ""Alleen gevangenen"". Voor werk opdrachten die een gebied dekken kan je ""Gevangenen Werk Zone"" selecteren via ""Architect""->""Opdrachten"" tab.\nVoor opdrachten is een optie: ""Alleen gevangenen"" mogelijk.
+</PrisonLabor_Management.helpText>"
+<PrisonLabor_Timetable.label>Gevangenen tijd beperkingen</PrisonLabor_Timetable.label>
+<PrisonLabor_Timetable.helpText>Je kan tijd beperkingen instellen voor gevangenen.\n\n"Arbeid" tijd zorgt dat gevangenen altijd werken, ook bij vermoeidheid of honger.\n\n"Plezier" tijd zorgt dat gevangenen gaan rusten en zorgt voor een motivatie bonus.\n\n"Slaap" tijd zorgt dat gevangenen in hun cel blijven.\n\n"Alles" is de standaard instelling.</PrisonLabor_Timetable.helpText>
+</LanguageData>
