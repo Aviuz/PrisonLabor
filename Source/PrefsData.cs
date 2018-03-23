@@ -12,6 +12,7 @@ namespace PrisonLabor
         public bool enable_motivation_mechanics = true;
         public bool enable_motivation_icons = true;
         public bool enable_revolts = true;
+        public bool show_treatment_happiness = false;
 
         public bool disable_mod = false;
 

@@ -10,6 +10,7 @@ namespace PrisonLabor_Tests
     {
         static void Main(string[] args)
         {
+
         }
     }
 }

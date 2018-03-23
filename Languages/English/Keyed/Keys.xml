@@ -46,5 +46,7 @@
   <PrisonLabor_PrisonersOnly>Prisoners only</PrisonLabor_PrisonersOnly>
   <PrisonLabor_ColonyOnly>Colony only</PrisonLabor_ColonyOnly>
   <PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
-  <PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
+  <PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents.</PrisonLabor_EnableRevoltsDesc>
+  <PrisonLabor_ShowTreatmentHappiness>Show treatment happiness</PrisonLabor_ShowTreatmentHappiness>
+  <PrisonLabor_ShowTreatmentHappinessDesc>When enabled treatment happiness will be shown in Needs tab.</PrisonLabor_ShowTreatmentHappinessDesc>
 </LanguageData>

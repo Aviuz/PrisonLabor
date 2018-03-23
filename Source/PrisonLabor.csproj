@@ -85,6 +85,7 @@
     <Compile Include="HarmonyPatches\Patch_RemoveHediffIfDisabled.cs" />
     <Compile Include="HarmonyPatches\Patch_RemoveLaborAreaIfDisabled.cs" />
     <Compile Include="HarmonyPatches\Patch_ReservedByPrisoner.cs" />
+    <Compile Include="HarmonyPatches\Patch_ResetWorktableWhenRecruited.cs" />
     <Compile Include="HarmonyPatches\Patch_RespectReservation.cs" />
     <Compile Include="HarmonyPatches\Patch_RestrainsPatch.cs" />
     <Compile Include="HarmonyPatches\Patch_ShowNews.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="LaborExclusionUtility.cs" />
     <Compile Include="Behaviour_MotivationIcon.cs" />
     <Compile Include="InspirationUtility.cs" />
+    <Compile Include="Need_Treatment.cs" />
     <Compile Include="Need_Motivation.cs" />
     <Compile Include="PrisonerFoodReservation.cs" />
     <Compile Include="PrisonLaborDefOf.cs" />
