@@ -14,5 +14,7 @@ namespace PrisonLabor
         public static PrisonerInteractionModeDef PrisonLabor_workAndRecruitOption;
 
         public static WorkTypeDef PrisonLabor_Jailor;
+
+        public static NeedDef PrisonLabor_Treatment;
     }
 }

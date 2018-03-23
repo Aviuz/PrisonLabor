@@ -14,6 +14,7 @@ namespace PrisonLabor
         private static bool enableMotivationMechanics;
         private static bool enableMotivationIcons;
         private static bool enableRevolts;
+        private static bool showTreatmentHappiness;
         private static bool advancedGrowing;
         private static bool disableMod;
         private static int defaultInteractionMode;
@@ -32,6 +33,7 @@ namespace PrisonLabor
             enableMotivationMechanics = PrisonLaborPrefs.EnableMotivationMechanics;
             enableMotivationIcons = PrisonLaborPrefs.EnableMotivationIcons;
             enableRevolts = PrisonLaborPrefs.EnableRevolts;
+            showTreatmentHappiness = PrisonLaborPrefs.ShowTreatmentHappiness;
             disableMod = PrisonLaborPrefs.DisableMod;
 
             interactionModeList = new List<PrisonerInteractionModeDef>(DefDatabase<PrisonerInteractionModeDef>.AllDefs);
@@ -91,6 +93,11 @@ namespace PrisonLabor
 
                 listing_options.CheckboxLabeled("PrisonLabor_EnableRevolts".Translate(), ref enableRevolts,
                     "PrisonLabor_EnableRevoltsDesc".Translate());
+
+                listing_options.GapLine();
+                
+                listing_options.CheckboxLabeled("PrisonLabor_ShowTreatmentHappiness".Translate(), ref showTreatmentHappiness,
+                    "PrisonLabor_ShowTreatmentHappinessDesc".Translate());
             }
             else
             {
@@ -158,6 +165,7 @@ namespace PrisonLabor
                 PrisonLaborPrefs.EnableMotivationMechanics = enableMotivationMechanics;
             PrisonLaborPrefs.EnableMotivationIcons = enableMotivationIcons;
             PrisonLaborPrefs.EnableRevolts = enableRevolts;
+            PrisonLaborPrefs.ShowTreatmentHappiness = showTreatmentHappiness;
             PrisonLaborPrefs.AdvancedGrowing = advancedGrowing;
             PrisonLaborPrefs.DisableMod = disableMod;
             PrisonLaborPrefs.DefaultInteractionMode = interactionModeList[defaultInteractionMode].defName;
