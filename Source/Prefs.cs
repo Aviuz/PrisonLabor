@@ -105,6 +105,19 @@ namespace PrisonLabor
             }
         }
 
+        public static bool ShowTreatmentHappiness
+        {
+            get
+            {
+                return data.show_treatment_happiness;
+            }
+            set
+            {
+                data.show_treatment_happiness = value;
+                Apply();
+            }
+        }
+
         public static bool DisableMod
         {
             get { return data.disable_mod; }
@@ -165,6 +178,7 @@ namespace PrisonLabor
             data.Apply();
             PrisonLaborUtility.AllowedWorkTypesData = AllowedWorkTypes;
             Tutorials.Apply();
+            Need_Treatment.ShowOnList = ShowTreatmentHappiness;
         }
 
         public static void RestoreToDefault()

@@ -1,4 +1,7 @@
 Changelog:
+0.9.3
+- added new hidden need "Treatment" that indicates level of prison treatment towards prisoner (WIP)
+- now work settings reset after prisoner is recruited, so it should fix some issues
 0.9.2
 - fixed seeds please compatibility issue
 - added option to disable revolts

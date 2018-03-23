@@ -10,3 +10,13 @@ Agenda:
  - add buff to mood if motivation is low
  - add buff to mood if got beat by warden
  - rewrite jobs def (transfer to class injection if possible)
+ - check "do nothing" bug
+ - add respecting forbidden when close to colonists also seek safe temeperature when hypothermia
+ - add symbol for hypothermia
+ - add "Recruting opportunity" when prisoner is treated nicely
+ - prisoner -> colonists work bug
+ - add happienies of prisoners
+ - add beating reducing treatment
+ - low treatment lower chance of mental breaks
+ - high treatment lower chance of revolts, and bonus to mood
+ - reduce motivation from free time and add treatment bonus
