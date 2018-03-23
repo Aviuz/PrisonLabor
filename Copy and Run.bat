@@ -1,9 +1,3 @@
-:: ========= Build ==========
-
-devenv "Source\PrisonLabor.sln" /build Debug
-
-
-
 :: ========= Copy ==========
  
 rd "D:\Program Files\Steam\steamapps\common\RimWorld\Mods\PrisonLabor" /s /q
