@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/Aviuz/PrisonLabor/master/Logo.png" alt="Prison Labor" />
+    <img src="https://raw.githubusercontent.com/Aviuz/PrisonLabor/Images/master/Logo.png" alt="Prison Labor" />
 </p>
 <p align="center">
   <a href="https://github.com/Aviuz/PrisonLabor/releases">
