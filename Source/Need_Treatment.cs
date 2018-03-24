@@ -14,9 +14,6 @@ namespace PrisonLabor
         {
         }
 
-        //TODO change to lazy category?
-        public HungerCategory CurCategory => 0;
-
         public override int GUIChangeArrow => 0;
 
         public static NeedDef Def
