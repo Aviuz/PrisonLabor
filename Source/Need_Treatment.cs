@@ -8,6 +8,10 @@ namespace PrisonLabor
 {
     public class Need_Treatment : Need
     {
+        private const float LaborRate = -0.01f;
+        private const float StatusMultiplier = 0.01f;
+        private const float JoyRate = 0.03f;
+
         private static NeedDef def;
 
         public Need_Treatment(Pawn pawn) : base(pawn)
@@ -33,7 +37,29 @@ namespace PrisonLabor
 
         public override void NeedInterval()
         {
+            // Joy
+            if (pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy)
+                CurLevel += JoyRate;
 
+            // Status
+            var hunger = pawn.needs.TryGetNeed<Need_Food>();
+            
+            int statusScore = 0;
+            if (hunger.CurCategory < HungerCategory.UrgentlyHungry)
+                statusScore += 5;
+            if (hunger.CurCategory < HungerCategory.Hungry)
+                statusScore += 5;
+            statusScore -= (int)pawn.health.hediffSet.PainTotal/10;
+            if (pawn.health.HasHediffsNeedingTend())
+                statusScore -= 7;
+
+            CurLevel += statusScore * StatusMultiplier;
+
+
+            // Labor
+            var motivation = pawn.needs.TryGetNeed<Need_Motivation>();
+            if (motivation != null && motivation.PrisonerWorking)
+                CurLevel += LaborRate;
         }
 
         public override void SetInitialLevel()

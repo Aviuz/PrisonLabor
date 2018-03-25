@@ -13,6 +13,7 @@ namespace PrisonLabor
 
         private static readonly Texture2D inspiredTexture;
         private static readonly Texture2D motivatedTexture;
+        private static readonly Texture2D freezingTexture;
         private static readonly Vector3 iconPos;
 
         private float worldScale;
@@ -21,6 +22,7 @@ namespace PrisonLabor
         {
             inspiredTexture = ContentFinder<Texture2D>.Get("InspireIcon", false);
             motivatedTexture = ContentFinder<Texture2D>.Get("MotivateIcon", false);
+            freezingTexture = ContentFinder<Texture2D>.Get("FreezingIcon", false);
             iconPos = new Vector3(0f, 0f, 1.3f);
         }
 
@@ -59,11 +61,20 @@ namespace PrisonLabor
                         if (pawn.IsPrisonerOfColony)
                         {
                             var need = pawn.needs.TryGetNeed<Need_Motivation>();
-                            if (need != null && need.Motivated)
-                                if (need.Insipred)
-                                    DrawIcon(inspiredTexture, pawn.DrawPos);
-                                else
-                                    DrawIcon(motivatedTexture, pawn.DrawPos);
+                            if (need != null)
+                            {
+                                if (pawn.health.hediffSet.HasTemperatureInjury(TemperatureInjuryStage.Serious) && PrisonLaborUtility.WorkTime(pawn))
+                                {
+                                    DrawIcon(freezingTexture, pawn.DrawPos);
+                                }
+                                else if (need.Motivated)
+                                {
+                                    if (need.Inspired)
+                                        DrawIcon(inspiredTexture, pawn.DrawPos);
+                                    else
+                                        DrawIcon(motivatedTexture, pawn.DrawPos);
+                                }
+                            }
                         }
                     }
             }

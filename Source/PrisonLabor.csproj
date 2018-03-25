@@ -109,6 +109,7 @@
     <Compile Include="SettingsMenu.cs" />
     <Compile Include="SelectWorkTypesDialog.cs" />
     <Compile Include="NewsDialog.cs" />
+    <Compile Include="ThinkNode_SeekSafeTemperature.cs" />
     <Compile Include="Tweaks\FoodUtility_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_FoodDeliver_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_Mine_Tweak.cs" />
@@ -178,6 +179,9 @@
     </None>
     <None Include="..\README.md">
       <Link>Organizer\README.md</Link>
+    </None>
+    <None Include="..\To-Do.md">
+      <Link>Organizer\To-Do.md</Link>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

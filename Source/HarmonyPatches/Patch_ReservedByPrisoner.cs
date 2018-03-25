@@ -39,7 +39,7 @@ namespace PrisonLabor.Harmony
                 return false;
             if (t.def.IsNutritionGivingIngestible && t.def.ingestible.HumanEdible &&
                 !t.IsSociallyProper(p, false, true))
-                if (PrisonerFoodReservation.isReserved(t))
+                if (PrisonerFoodReservation.IsReserved(t))
                 {
                     JobFailReason.Is("ReservedForPrisoners".Translate());
                     return false;

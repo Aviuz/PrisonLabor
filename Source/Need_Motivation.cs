@@ -18,7 +18,7 @@ namespace PrisonLabor
         private const float HungryRate = 0.006f;
         private const float TiredRate = 0.006f;
         private const float HealthRate = 0.006f;
-        private const float JoyRate = 0.006f;
+        private const float JoyRate = 0.001f;
         private const int ReadyToRunLevel = 100;
 
         private static NeedDef def;
@@ -31,10 +31,13 @@ namespace PrisonLabor
             delta = 0;
             impatient = 0;
             ReadyToRun = false;
-            Insipred = false;
+            Inspired = false;
         }
 
-        public bool Enabled { get; set; }
+        /// <summary>
+        /// Indicates whenever pawn is currently working, and his motivation is decreasing by laziness rate.
+        /// </summary>
+        public bool PrisonerWorking { get; set; }
 
         public bool NeedToBeInspired { get; private set; }
 
@@ -42,7 +45,7 @@ namespace PrisonLabor
 
         public bool ReadyToRun { get; private set; }
 
-        public bool Insipred { get; private set; }
+        public bool Inspired { get; private set; }
 
         public bool CanEscape { get; set; }
 
@@ -87,7 +90,7 @@ namespace PrisonLabor
 
                         if (PrisonLaborUtility.LaborEnabled(pawn))
                         {
-                            if (Enabled)
+                            if (PrisonerWorking)
                             {
                                 value -= LazyRate;
                                 if (HealthAIUtility.ShouldSeekMedicalRest(pawn))
@@ -95,25 +98,25 @@ namespace PrisonLabor
                                 value -= (int)pawn.needs.food.CurCategory * HungryRate;
                                 value -= (int)pawn.needs.rest.CurCategory * TiredRate;
                                 if (value >= 0)
-                                    Insipred = true;
+                                    Inspired = true;
                                 else
-                                    Insipred = false;
+                                    Inspired = false;
                             }
                             else if (pawn.timetable != null &&
                                      pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy)
                             {
                                 if (value != 0)
-                                    Insipred = true;
+                                    Inspired = true;
                                 else
-                                    Insipred = false;
+                                    Inspired = false;
                                 value += JoyRate;
                             }
                             else
                             {
                                 if (value != 0)
-                                    Insipred = true;
+                                    Inspired = true;
                                 else
-                                    Insipred = false;
+                                    Inspired = false;
                             }
                             delta = value.CompareTo(0.0f);
                             return value;
@@ -121,9 +124,9 @@ namespace PrisonLabor
                         else
                         {
                             if (value != 0)
-                                Insipred = true;
+                                Inspired = true;
                             else
-                                Insipred = false;
+                                Inspired = false;
 
                             delta = value.CompareTo(0.0f);
                             return value;
@@ -170,7 +173,7 @@ namespace PrisonLabor
         public override void SetInitialLevel()
         {
             CurLevelPercentage = 1.0f;
-            Enabled = false;
+            PrisonerWorking = false;
         }
 
         public override string GetTipString()
@@ -198,7 +201,7 @@ namespace PrisonLabor
 
         private void ImpatientTick()
         {
-            if (Insipred || !CanEscape)
+            if (Inspired || !CanEscape)
             {
                 if (impatient != 0)
                 {

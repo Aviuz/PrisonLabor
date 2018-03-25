@@ -1,5 +1,9 @@
 Changelog:
 0.9.3
+- prisoners will now work in cold only if "work" time is set
+- prisoners will now seek safe temperature when not supervised
+- prisoners will respect forbidden items, if "inspired"
+- "Treatment happiness" will decrease if health conditions are bad, when prisoners are hungry, or they're working.
 - added new hidden need "Treatment" that indicates level of prison treatment towards prisoner (WIP)
 - now work settings reset after prisoner is recruited, so it should fix some issues
 0.9.2

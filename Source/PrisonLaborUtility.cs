@@ -143,7 +143,8 @@ namespace PrisonLabor
             if (pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Work)
                 return true;
             if (pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Anything)
-                if (HealthAIUtility.ShouldSeekMedicalRest(pawn) ||
+                if (HealthAIUtility.ShouldSeekMedicalRest(pawn) || 
+                    pawn.health.hediffSet.HasTemperatureInjury(TemperatureInjuryStage.Serious) ||
                     pawn.needs.food.CurCategory > HungerCategory.Hungry ||
                     pawn.needs.rest.CurCategory != RestCategory.Rested)
                     return false;

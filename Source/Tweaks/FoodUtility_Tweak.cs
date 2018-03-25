@@ -187,7 +187,7 @@ namespace PrisonLabor
                     : FoodPreferability.MealAwful;
             Predicate<Thing> foodValidator = delegate(Thing t)
             {
-                if (PrisonerFoodReservation.isReserved(t) && (eater != getter || !eater.IsPrisoner) && !desperate)
+                if (PrisonerFoodReservation.IsReserved(t) && (eater != getter || !eater.IsPrisoner) && !desperate)
                     return false;
                 if (!allowForbidden && t.IsForbidden(getter))
                     return false;

@@ -47,7 +47,7 @@ namespace PrisonLabor
                     return true;
                 }
 
-                need.Enabled = false;
+                need.PrisonerWorking = false;
             }
             return false;
         }

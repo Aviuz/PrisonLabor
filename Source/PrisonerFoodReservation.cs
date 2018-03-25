@@ -8,7 +8,7 @@ namespace PrisonLabor
     {
         private static readonly Dictionary<Thing, Pawn> reservation = new Dictionary<Thing, Pawn>();
 
-        public static bool isReserved(Thing t)
+        public static bool IsReserved(Thing t)
         {
             Pawn p;
             reservation.TryGetValue(t, out p);
@@ -32,7 +32,7 @@ namespace PrisonLabor
         {
             var removeList = new List<Thing>();
             foreach (var t in reservation.Keys)
-                if (t == null || t.GetRoom() == null || !isReserved(t))
+                if (t == null || t.GetRoom() == null || !IsReserved(t))
                     removeList.Add(t);
             foreach (var t in removeList)
                 reservation.Remove(t);

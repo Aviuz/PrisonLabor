@@ -7,6 +7,11 @@
       <thinkRoot Class="PrisonLabor.ThinkNode_Labor">
       	<invert>false</invert>
       	<subNodes>
+          <li Class="PrisonLabor.ThinkNode_SeekSafeTemperature">
+            <subNodes>
+              <li Class="JobGiver_SeekSafeTemperature"/>
+            </subNodes>
+          </li>
       		<li Class="ThinkNode_Priority">
       			<subNodes>
               <li Class="PrisonLabor.JobGiver_BedTime" />

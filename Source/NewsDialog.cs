@@ -29,6 +29,7 @@ namespace PrisonLabor
         public static bool news_0_9_0 = false;
         public static bool news_0_9_1 = false;
         public static bool news_0_9_2 = false;
+        public static bool news_0_9_3 = false;
 
         // Fields
         private string[] titles;
@@ -53,6 +54,21 @@ namespace PrisonLabor
             // [img] ... [/img] for image (inside name of file)
             // [gap] for gap
 
+            // 0.9.3
+            if (news_0_9_3 || showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.3");
+                string[] itemsArray =
+                {
+                    "prisoners will now work in cold only if \"work\" time is set",
+                    "prisoners will now seek safe temperature when not supervised",
+                    "prisoners will respect forbidden items, if \"inspired\"",
+                    "\"Treatment happiness\" will decrease if health conditions are bad, when prisoners are hungry, or they're working",
+                    "added new hidden need \"Treatment\" that indicates level of prison treatment towards prisoner",
+                    "now work settings reset after prisoner is recruited, so it should fix some issues",
+                };
+                itemsList.Add(itemsArray);
+            }
             // 0.9.2
             if (news_0_9_2 || showAll)
             {

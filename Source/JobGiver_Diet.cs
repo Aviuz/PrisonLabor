@@ -11,7 +11,7 @@ namespace PrisonLabor
 
         public override ThinkNode DeepCopy(bool resolve = true)
         {
-            var jobGiver_Diet = (JobGiver_Diet) base.DeepCopy(resolve);
+            var jobGiver_Diet = (JobGiver_Diet)base.DeepCopy(resolve);
             jobGiver_Diet.minCategory = minCategory;
             return jobGiver_Diet;
         }
@@ -39,7 +39,7 @@ namespace PrisonLabor
                 return null;
             var need = pawn.needs.TryGetNeed<Need_Motivation>();
             if (need != null)
-                need.Enabled = false;
+                need.PrisonerWorking = false;
             bool flag;
             if (pawn.RaceProps.Animal)
             {

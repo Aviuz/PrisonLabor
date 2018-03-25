@@ -48,7 +48,7 @@ namespace PrisonLabor
         [DebuggerHidden]
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.FailOn(() => PrisonerFoodReservation.isReserved(TargetA.Thing));
+            this.FailOn(() => PrisonerFoodReservation.IsReserved(TargetA.Thing));
             yield return Toils_Reserve.Reserve(TargetIndex.B, 1, -1, null);
             if (eatingFromInventory)
             {

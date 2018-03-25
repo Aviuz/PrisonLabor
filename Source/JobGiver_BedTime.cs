@@ -31,7 +31,7 @@ namespace PrisonLabor
                 return null;
             var need = pawn.needs.TryGetNeed<Need_Motivation>();
             if (need != null)
-                need.Enabled = false;
+                need.PrisonerWorking = false;
             var lord = pawn.GetLord();
             Building_Bed building_Bed;
             if (lord != null && lord.CurLordToil != null && !lord.CurLordToil.AllowRestingInBed)
