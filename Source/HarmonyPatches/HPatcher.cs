@@ -47,7 +47,7 @@ namespace PrisonLabor.HarmonyPatches
                 foreach(var f in fragments.Keys)
                 {
                     if(!fragments[f])
-                        Log.Warning($"PrisonLaborWarning: Harmony patch failed to find \"{f}\" fragment.");
+                        Log.Error($"PrisonLaborWarning: Harmony patch failed to find \"{f}\" fragment.");
                 }
             }
             catch (Exception e)

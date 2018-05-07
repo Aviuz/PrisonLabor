@@ -1,4 +1,8 @@
 Changelog:
+0.9.3
+- fixed compatibility with No Water no Life
+- fixed compatibility with Dubs Bad Hygiene Mod
+- fixed error with loading old saves
 0.9.2
 - fixed seeds please compatibility issue
 - added option to disable revolts

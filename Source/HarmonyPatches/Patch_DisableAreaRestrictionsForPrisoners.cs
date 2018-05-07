@@ -8,10 +8,13 @@ using Verse;
 
 namespace PrisonLabor.Harmony
 {
+    /// <summary>
+    /// This patch will remove prisoners in "Restrict" tab.
+    /// They are there in first place, because of adding them to PawnTable in another patch.
+    /// </summary>
     [HarmonyPatch(typeof(PawnColumnWorker_AllowedArea))]
     [HarmonyPatch("DoCell")]
     [HarmonyPatch(new[] {typeof(Rect), typeof(Pawn), typeof(PawnTable)})]
-    //(Rect rect, Pawn pawn, PawnTable table)
     internal class DisableAreaRestrictionsForPrisoners
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
