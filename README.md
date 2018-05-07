@@ -8,7 +8,10 @@
 </p>
 
 <p align="center">
-  Prison Labor mod for RimWorld
+    Prison Labor mod for RimWorld
+</p>
+<p align="center">
+    <a href=https://steamcommunity.com/sharedfiles/filedetails/?id=972057888>Steam Workshop</a> | <a href=https://ludeon.com/forums/index.php?topic=34465.0>Ludeon Forums</a>
 </p>
 
 ## Description
@@ -31,7 +34,7 @@ This is beta version. Some ascpects of mod still need to be balanced (like motiv
 * Now works with Dubs Hygiene and Central Heating Mod
 * http://steamcommunity.com/sharedfiles/filedetails/?id=784327493&searchtext=industrials+rollers
 
-## [To-do list](https://github.com/Aviuz/PrisonLabor/projects/1)
+## [To-do list](To-Do.md)
 ## [Credits](credits.md)
 
 ## Translations
