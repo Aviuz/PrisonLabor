@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+<PrisonLabor_PrisonerSupervise.reportString>Houdt gevangene DoelA in de gate.</PrisonLabor_PrisonerSupervise.reportString>
+<PrisonLabor_DeliverFood_Tweak.reportString>Geef eten aan DoelA tot DoelB</PrisonLabor_DeliverFood_Tweak.reportString>
+<PrisonLabor_Mine_Tweak.reportString>Delf DoelA</PrisonLabor_Mine_Tweak.reportString>
+<PrisonLabor_Harvest_Tweak.reportString>Oogst DoelA</PrisonLabor_Harvest_Tweak.reportString>
+<PrisonLabor_CutPlant_Tweak.reportString>Snij DoelA</PrisonLabor_CutPlant_Tweak.reportString>
+
+
+
+</LanguageData>

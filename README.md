@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="https://github.com/Aviuz/PrisonLabor/releases">
-    <img src="https://img.shields.io/badge/version-0.9.1-orange.svg?style=flat" alt="v0.9.1" />
+    <img src="https://img.shields.io/badge/version-0.9.3-orange.svg?style=flat" alt="v0.9.3" />
   </a>
 </p>
 
@@ -32,6 +32,7 @@ This is beta version. Some ascpects of mod still need to be balanced (like motiv
 * Now works with WorkTab (by Fluffy)
 * Now works with Seeds Please
 * Now works with Dubs Hygiene and Central Heating Mod
+* Now works with "No water, No life." Mod
 * http://steamcommunity.com/sharedfiles/filedetails/?id=784327493&searchtext=industrials+rollers
 
 ## [To-do list](To-Do.md)

@@ -9,10 +9,22 @@ namespace PrisonLabor.CompatibilityPatches
 {
     static internal class SeedsPlease
     {
-        static public void Init()
+        static internal void Init()
+        {
+            if (Check())
+                Work();
+        }
+
+        static internal bool Check()
         {
             if (DefDatabase<JobDef>.GetNamed("SowWithSeeds", false) != null)
-            {
+                return true;
+            else
+                return false;
+        }
+
+        static internal void Work()
+        {
                 try
                 {
                     WorkGiverDef seedsPleaseDef = DefDatabase<WorkGiverDef>.GetNamed("GrowerSow");
@@ -23,12 +35,11 @@ namespace PrisonLabor.CompatibilityPatches
                 }
                 catch (Exception e)
                 {
-                    Log.Error("PrisonLaborException: encountered problem with SeedsPlease mod. Failed to patch. Error message:\n" + e.ToString());
+                    Log.Error("PrisonLaborException: encountered problem with SeedsPlease mod. Failed to patch:\n" + e.ToString());
                 }
-            }
         }
 
-        static public bool CanOverrideHarvest()
+        static internal bool CanOverrideHarvest()
         {
             return DefDatabase<JobDef>.GetNamed("SowWithSeeds", false) == null;
         }
