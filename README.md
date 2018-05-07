@@ -26,14 +26,16 @@ This mod force prisoners to work. To enable this feature prisoners must have "Fo
 This is beta version. Some ascpects of mod still need to be balanced (like motivation). There can be still some bugs.
 
 ## Compatibility
-* Works with mods that add Jobs of type cook/mine/craft/haul/clean like Quarry, Haulers Can Haul To Blueprints, or Industrial Rollers
+* Works with mods that add Jobs of type cook/mine/craft/haul/clean like [url=http://steamcommunity.com/sharedfiles/filedetails/?id=942690136]Quarry[/url], 
+[url=http://steamcommunity.com/sharedfiles/filedetails/?id=952779481]Haulers Can Haul To Blueprints[/url], or [url=http://steamcommunity.com/sharedfiles/filedetails/?id=784327493]Industrials Rollers[/url].
 * Works with old saves.
 * To disable mod from existing saves check "Disable mod" in settings and follow instructions.
 * Now works with WorkTab (by Fluffy)
 * Now works with Seeds Please
 * Now works with Dubs Hygiene and Central Heating Mod
-* Now works with "No water, No life." Mod
-* http://steamcommunity.com/sharedfiles/filedetails/?id=784327493&searchtext=industrials+rollers
+* Now works with "No Water, No life." mod
+* DOES NOT work with CleaningArea mod. Author of CA refused to cooperate.
+* COMPATIBILITY ISSUES with custom beds (Wooden Medieval Cot) from Medieval Times mod. You can use both mods, but if you use custom beds for prisoners, there can be some issues.
 
 ## [To-do list](To-Do.md)
 ## [Credits](credits.md)
