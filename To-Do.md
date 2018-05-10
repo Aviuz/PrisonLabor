@@ -18,5 +18,7 @@ Minor issues, bugs, and others can be found [here](../../issues).
 - Top priority is for now bug with no-working colonists/prisoners. I'll take some actions to fix as many cases as possible.
 - Currently I'm not aware of any compatibility issues expect Cleaning Area (which is lost case)
 - The loading save bug with "OnGui()" message in error log.
+## Construction work type
+- This a big "bug" that forbids prisoners to build stuff. I know lot of you are very unhappy of that fact you cannot force prisoners to build.
 
 Those changes will be implemented in **future** versions, and I need some time for them. But letting you know, on what I am currently working on.
