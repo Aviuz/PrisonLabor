@@ -6,13 +6,61 @@ using Verse;
 
 namespace PrisonLabor
 {
+    public enum TreatmentCategory : byte
+    {
+        VeryGood = 0,
+        Good = 1,
+        Normal = 2,
+        Bad = 3,
+        VeryBad = 4,
+    }
+
     public class Need_Treatment : Need
     {
-        private const float LaborRate = -0.01f;
-        private const float StatusMultiplier = 0.01f;
-        private const float JoyRate = 0.03f;
+        #region Constants
+        public const float ResocializationLevel = 0.1f;
 
-        private static NeedDef def;
+        // 10% every 12 days
+        private const float LaborRate = 1f / (120f * GenDate.TicksPerDay / 150f);
+        // 1% every 12 days for every point of status
+        private const float StatusMultiplier = 1f / (1200f * GenDate.TicksPerDay / 150f);
+        // 10% every 6 days
+        private const float JoyRate = 1f / (60f * GenDate.TicksPerDay / 150f);
+
+        private const float BeatenHit = -0.1f;
+        #endregion
+
+        #region TreshPercentages
+        public float PercentageThreshVeryGood => 0.75f;
+        public float PercentageThreshGood => 0.5f;
+        public float PercentageThreshNormal => 0.25f;
+        public float PercentageThreshBad => 0.10f;
+        #endregion
+
+        private bool _resocializationReady = false;
+
+        public bool ResocializationReady
+        {
+            get => _resocializationReady;
+            set { _resocializationReady = value; }
+        }
+
+        public TreatmentCategory CurCategory
+        {
+            get
+            {
+                if (CurLevelPercentage < PercentageThreshBad)
+                    return TreatmentCategory.VeryBad;
+                else if (CurLevelPercentage < PercentageThreshNormal)
+                    return TreatmentCategory.Bad;
+                else if (CurLevelPercentage < PercentageThreshGood)
+                    return TreatmentCategory.Normal;
+                else if (CurLevelPercentage < PercentageThreshVeryGood)
+                    return TreatmentCategory.Good;
+                else
+                    return TreatmentCategory.VeryGood;
+            }
+        }
 
         public Need_Treatment(Pawn pawn) : base(pawn)
         {
@@ -20,19 +68,12 @@ namespace PrisonLabor
 
         public override int GUIChangeArrow => 0;
 
-        public static NeedDef Def
-        {
-            get
-            {
-                if (def == null)
-                    def = DefDatabase<NeedDef>.GetNamed("PrisonLabor_Treatment");
-                return def;
-            }
-        }
+        public static NeedDef Def => PrisonLaborDefOf.PrisonLabor_Treatment;
 
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Values.Look<bool>(ref _resocializationReady, "PrisonLabor_resocialization_ready", false, false);
         }
 
         public override void NeedInterval()
@@ -43,13 +84,13 @@ namespace PrisonLabor
 
             // Status
             var hunger = pawn.needs.TryGetNeed<Need_Food>();
-            
+
             int statusScore = 0;
             if (hunger.CurCategory < HungerCategory.UrgentlyHungry)
                 statusScore += 5;
             if (hunger.CurCategory < HungerCategory.Hungry)
                 statusScore += 5;
-            statusScore -= (int)pawn.health.hediffSet.PainTotal/10;
+            statusScore -= (int)pawn.health.hediffSet.PainTotal / 10;
             if (pawn.health.HasHediffsNeedingTend())
                 statusScore -= 7;
 
@@ -78,8 +119,13 @@ namespace PrisonLabor
             bool drawArrows = true, bool doTooltip = true)
         {
             if (threshPercents == null)
+            {
                 threshPercents = new List<float>();
-            threshPercents.Clear();
+                threshPercents.Add(PercentageThreshBad);
+                threshPercents.Add(PercentageThreshNormal);
+                threshPercents.Add(PercentageThreshGood);
+                threshPercents.Add(PercentageThreshVeryGood);
+            }
             base.DrawOnGUI(rect, maxThresholdMarkers, customMargin, drawArrows, doTooltip);
         }
 
@@ -94,6 +140,11 @@ namespace PrisonLabor
             {
                 PrisonLaborDefOf.PrisonLabor_Treatment.showOnNeedList = value;
             }
+        }
+
+        public void NotifyPrisonerBeaten(DamageInfo dinfo, bool absorbed)
+        {
+            CurLevel += BeatenHit;
         }
     }
 }

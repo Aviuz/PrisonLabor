@@ -85,6 +85,22 @@ namespace PrisonLabor
                     Log.ErrorOnce("PrisonLaborError: null reference in OnGui() : " + e.Message + " trace: " + e.StackTrace, typeof(Behaviour_MotivationIcon).GetHashCode());
                     displayedError = true;
                 }
+                var step = 0;
+                try
+                {
+                    if (Find.VisibleMap == null)
+                        Log.Message("Find.VisibleMap == null");
+                    step += 1;
+                    if (Find.VisibleMap.mapPawns == null)
+                        Log.Message("Find.VisibleMap.mapPawns == null");
+                    step += 1;
+                    var temp = WorldRendererUtility.WorldRenderedNow;
+                    step += 1;
+                }
+                catch (NullReferenceException e2)
+                {
+                    Log.Error("Expeption stopped at step " + step);
+                }
             }
         }
 

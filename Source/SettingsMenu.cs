@@ -43,7 +43,7 @@ namespace PrisonLabor
         public override void DoSettingsWindowContents(Rect inRect)
         {
             var leftRect = new Rect(inRect.x, inRect.y, inRect.width * 0.65f, inRect.height);
-            var rightRect = new Rect(inRect.x + inRect.width * 0.65f + 30f, inRect.y, inRect.width * 0.35f - 30f,
+            var rightRect = new Rect((int)(inRect.x + inRect.width * 0.65f + 30f), inRect.y, inRect.width * 0.35f - 30f,
                 inRect.height);
 
             var listing_options = new Listing_Standard();

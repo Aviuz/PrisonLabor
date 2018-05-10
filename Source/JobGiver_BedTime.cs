@@ -18,6 +18,8 @@ namespace PrisonLabor
 
         public override float GetPriority(Pawn pawn)
         {
+            if (HealthAIUtility.ShouldHaveSurgeryDoneNow(pawn))
+                return 15f;
             if (pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Sleep)
                 return 10f;
             return 0f;

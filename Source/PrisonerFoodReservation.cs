@@ -12,7 +12,7 @@ namespace PrisonLabor
         {
             Pawn p;
             reservation.TryGetValue(t, out p);
-            if (p != null && p.GetRoom() == t.GetRoom() && p.needs.food.CurCategory != HungerCategory.Fed)
+            if (p != null && t!= null && p.GetRoom() == t.GetRoom() && p.needs != null && p.needs.food != null && p.needs.food.CurCategory != HungerCategory.Fed)
                 return true;
             return false;
         }

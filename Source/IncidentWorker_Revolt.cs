@@ -9,7 +9,8 @@ namespace PrisonLabor
 {
     public class IncidentWorker_Revolt : IncidentWorker
     {
-        private const float HivePoints = 400f;
+        // TODO remove line below
+        //private const float HivePoints = 400f;
         private const float MinMotivationToStart = 0.4f;
 
         protected override bool CanFireNowSub(IIncidentTarget target)
@@ -43,6 +44,36 @@ namespace PrisonLabor
             Map map = (Map)parms.target;
             Pawn t = null;
             var affectedPawns = new List<Pawn>(map.mapPawns.PrisonersOfColony);
+
+            // Calculate chance for blocking incident if prisoners are treated good
+            float treatment = 0f;
+            float chance = 0f;
+            foreach (Pawn pawn in affectedPawns)
+                if (pawn.needs.TryGetNeed<Need_Treatment>() != null)
+                    treatment += (float)pawn.needs.TryGetNeed<Need_Treatment>().CurCategory;
+            treatment = treatment / affectedPawns.Count;
+            if (treatment < 0.5)
+                chance = 1f;
+            else if (treatment < 1.5)
+                chance = 0.95f;
+            else if (treatment < 2.5)
+                chance = 0.5f;
+            else if (treatment < 3.5)
+                chance = 0.1f;
+
+            // When incident is forced, log instead of blocking
+            if (!parms.forced)
+            {
+                if (Prefs.DevMode)
+                {
+                    string msg = $"Prison Labor: Revolt blocking chance is currently equal to {chance * 100}% (overall treatment = {treatment}). Rolling ...";
+                    Log.Message(msg);
+                }
+                if (UnityEngine.Random.value < chance)
+                    return false;
+            }
+
+
             foreach (Pawn pawn in affectedPawns)
             {
                 if (pawn.Faction.HostileTo(Faction.OfPlayer))

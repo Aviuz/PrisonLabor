@@ -42,11 +42,20 @@
   <PrisonLabor_LaborAreaDesc>Labor area is area where only prisoners can work. No colonist's work allowed here except warden type jobs.</PrisonLabor_LaborAreaDesc>
   <PrisonLabor_ClearLaborArea>Clear Labor Area</PrisonLabor_ClearLaborArea>
   <PrisonLabor_ExpandLaborArea>Expand Labor Area</PrisonLabor_ExpandLaborArea>
-  <PrisonLabor_ColonistsOnly>Colonists only</PrisonLabor_ColonistsOnly>
-  <PrisonLabor_PrisonersOnly>Prisoners only</PrisonLabor_PrisonersOnly>
-  <PrisonLabor_ColonyOnly>Colony only</PrisonLabor_ColonyOnly>
+
   <PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
   <PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents.</PrisonLabor_EnableRevoltsDesc>
   <PrisonLabor_ShowTreatmentHappiness>Show treatment happiness</PrisonLabor_ShowTreatmentHappiness>
   <PrisonLabor_ShowTreatmentHappinessDesc>When enabled treatment happiness will be shown in Needs tab.</PrisonLabor_ShowTreatmentHappinessDesc>
+
+  <PrisonLabor_ColonyOnlyShort>Everyone</PrisonLabor_ColonyOnlyShort>
+  <PrisonLabor_ColonistsOnlyShort>Colonists</PrisonLabor_ColonistsOnlyShort>
+  <PrisonLabor_PrisonersOnlyShort>Prisoners</PrisonLabor_PrisonersOnlyShort>
+
+  <PrisonLabor_ColonyOnly>For everyone</PrisonLabor_ColonyOnly>
+  <PrisonLabor_ColonistsOnly>Limit to colonists</PrisonLabor_ColonistsOnly>
+  <PrisonLabor_PrisonersOnly>Limit to prisoners</PrisonLabor_PrisonersOnly>
+
+  <PrisonLabor_RecruitButtonLabel>Recruit</PrisonLabor_RecruitButtonLabel>
+  <PrisonLabor_RecruitButtonDesc>Ready to join colony</PrisonLabor_RecruitButtonDesc>
 </LanguageData>

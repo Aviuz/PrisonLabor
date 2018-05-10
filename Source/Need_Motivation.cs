@@ -45,6 +45,8 @@ namespace PrisonLabor
 
         public bool ReadyToRun { get; private set; }
 
+        public int ReadyToRunPercentage => impatient * 100 / ReadyToRunLevel;
+
         public bool Inspired { get; private set; }
 
         public bool CanEscape { get; set; }

@@ -29,7 +29,7 @@ namespace PrisonLabor
         public static bool news_0_9_0 = false;
         public static bool news_0_9_1 = false;
         public static bool news_0_9_2 = false;
-        public static bool news_0_9_3 = false;
+        public static bool news_0_10_0 = false;
 
         // Fields
         private string[] titles;
@@ -54,10 +54,10 @@ namespace PrisonLabor
             // [img] ... [/img] for image (inside name of file)
             // [gap] for gap
 
-            // 0.9.3
-            if (news_0_9_3 || showAll)
+            // 0.10.0
+            if (news_0_10_0 || showAll)
             {
-                titlesList.Add("Prison Labor Beta v0.9.3");
+                titlesList.Add("Prison Labor Beta v0.10.0");
                 string[] itemsArray =
                 {
                     "prisoners will now work in cold only if \"work\" time is set",

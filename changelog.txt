@@ -1,11 +1,25 @@
 Changelog:
-0.9.3
+0.10.0
+- fixed food reservation throwing errors
+- added prisoner sucicides
+- added +5 bonus to mood while prisoner have free time
+- added +5 bonus to mood if prisoner is not supervised and got lazy
+- added +15 bonus to mood if treatment is above 75%
+- added blocking revolts (100%, 95%, 50%, 10%) if overall prisoner treatment is good enough
+- increased base chance for Revolts
+- added blocking mental breaks for prisoners with low treatment levels
+- added treatment drop when prisoner is being beaten
+- fixed cutting some content of bill config in some languages
+- cosmetic changes to bill checkbox
+- prisoners will now give offer to join colony if treatment is good enough (random)
+- prisoners will now stay at bed if waiting for surgery
 - prisoners will now work in cold only if "work" time is set
 - prisoners will now seek safe temperature when not supervised
 - prisoners will respect forbidden items, if "inspired"
 - "Treatment happiness" will decrease if health conditions are bad, when prisoners are hungry, or they're working.
 - added new hidden need "Treatment" that indicates level of prison treatment towards prisoner (WIP)
 - now work settings reset after prisoner is recruited, so it should fix some issues
+- fixed blurred effect on settings window
 0.9.2
 - fixed seeds please compatibility issue
 - added option to disable revolts

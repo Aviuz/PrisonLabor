@@ -6,14 +6,8 @@ Agenda:
   - Scheduled for implementation
   * Considered
 ==========================
- - add buff to mood for free time (Thoughts)
- - add buff to mood if motivation is low
- - add buff to mood if got beat by warden
  - rewrite jobs def (transfer to class injection if possible)
- - check "do nothing" bug
- - add symbol for hypothermia
- - add "Recruting opportunity" when prisoner is treated nicely
- - prisoner -> colonists work bug
- - add beating reducing treatment
- - low treatment lower chance of mental breaks
- - high treatment lower chance of revolts, and bonus to mood
+ - remake symbol for hypothermia
+ - surrender/capture
+ - robots mod
+ - weapon pickups

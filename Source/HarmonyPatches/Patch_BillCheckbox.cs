@@ -13,6 +13,9 @@ using Verse.Sound;
 
 namespace PrisonLabor.HarmonyPatches
 {
+    /// <summary>
+    /// This patch is adding checkbox to toggle between allowed workers
+    /// </summary>
     [HarmonyPatch(typeof(Dialog_BillConfig))]
     [HarmonyPatch("DoWindowContents")]
     [HarmonyPatch(new[] { typeof(Rect) })]
@@ -21,6 +24,8 @@ namespace PrisonLabor.HarmonyPatches
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
+            HPatcher.CreateDebugFileOnDesktop("Bill", instr);
+
             // Find >> this.bill
             OpCode[] opCodes0 =
             {
@@ -31,6 +36,19 @@ namespace PrisonLabor.HarmonyPatches
                 "RimWorld.Bill_Production bill",
             };
             var billField = HPatcher.FindOperandAfter(opCodes0, operands0, instr);
+
+            // Find >> Listing_Standard listing_Standard = new Listing_Standard();
+            OpCode[] opCodes4 =
+           {
+                OpCodes.Newobj,
+                OpCodes.Stloc_S,
+            };
+            String[] operands4 =
+            {
+                "Void .ctor()",
+                "Verse.Listing_Standard (6)",
+            };
+            var listingVar = HPatcher.FindOperandAfter(opCodes4, operands4, instr);
 
             // Find label after >> if (listing_Standard.ButtonText(label, null))
             OpCode[] opCodes1 =
@@ -105,12 +123,14 @@ namespace PrisonLabor.HarmonyPatches
                 }
                 if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step4, "Patch_BillCheckbox2"))
                 {
+                    yield return new CodeInstruction(OpCodes.Ldloc_S, listingVar);
                     yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("SetRect"));
                 }
                 yield return ci;
                 if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "Patch_BillCheckbox3"))
                 {
                     yield return new CodeInstruction(OpCodes.Ldloc_2);
+                    yield return new CodeInstruction(OpCodes.Ldloc_S, listingVar);
                     yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StartScrolling"));
                 }
             }
@@ -118,45 +138,57 @@ namespace PrisonLabor.HarmonyPatches
 
         public static void GroupExclusionButton(Listing_Standard listing, Bill bill)
         {
-            if (BillUtility.IsFor(bill) == GroupMode.ColonistsOnly)
+            string label = "no label";
+            switch (BillUtility.IsFor(bill))
             {
-                if (listing.ButtonText("PrisonLabor_ColonistsOnly".Translate()))
-                {
-                    BillUtility.SetFor(bill, GroupMode.PrisonersOnly);
-                    SoundDefOf.Click.PlayOneShotOnCamera();
-                }
+                case GroupMode.ColonistsOnly:
+                    label = "PrisonLabor_ColonistsOnlyShort".Translate();
+                    break;
+                case GroupMode.PrisonersOnly:
+                    label = "PrisonLabor_PrisonersOnlyShort".Translate();
+                    break;
+                case GroupMode.ColonyOnly:
+                    label = "PrisonLabor_ColonyOnlyShort".Translate();
+                    break;
             }
-            else if (BillUtility.IsFor(bill) == GroupMode.PrisonersOnly)
+
+            if (listing.ButtonText(label))
             {
-                if (listing.ButtonText("PrisonLabor_PrisonersOnly".Translate()))
-                {
-                    BillUtility.SetFor(bill, GroupMode.ColonyOnly);
-                    SoundDefOf.Click.PlayOneShotOnCamera();
-                }
+                MakeModeFloatMenu(bill);
             }
-            else
-            {
-                if (listing.ButtonText("PrisonLabor_ColonyOnly".Translate()))
-                {
-                    BillUtility.SetFor(bill, GroupMode.ColonistsOnly);
-                    SoundDefOf.Click.PlayOneShotOnCamera();
-                }
-            }
+
             listing.Gap(12f);
         }
 
-        public static Rect SetRect(Rect rect)
+        private static void MakeModeFloatMenu(Bill bill)
         {
-            rect.height += 32;
-            rect.width -= 16;
+            List<FloatMenuOption> list = new List<FloatMenuOption>();
+            list.Add(new FloatMenuOption("PrisonLabor_ColonyOnly".Translate(), delegate
+            {
+                BillUtility.SetFor(bill, GroupMode.ColonyOnly);
+            }));
+            list.Add(new FloatMenuOption("PrisonLabor_ColonistsOnly".Translate(), delegate
+            {
+                BillUtility.SetFor(bill, GroupMode.ColonistsOnly);
+            }));
+            list.Add(new FloatMenuOption("PrisonLabor_PrisonersOnly".Translate(), delegate
+            {
+                BillUtility.SetFor(bill, GroupMode.PrisonersOnly);
+            }));
+            Find.WindowStack.Add(new FloatMenu(list));
+        }
+
+        public static Rect SetRect(Rect rect, Listing_Standard listing)
+        {
+            rect.height += 60 + listing.verticalSpacing + 1;
             return rect;
         }
 
         public static Vector2 position;
-        public static void StartScrolling(Rect rect)
+        public static void StartScrolling(Rect rect, Listing_Standard listing)
         {
-            Rect viewRect = new Rect(0, 0, rect.width - 16, rect.height + 32);
-            Rect outRect = new Rect(0, 0, rect.width, rect.height);
+            Rect viewRect = new Rect(0, 0, rect.width, rect.height + 30 + listing.verticalSpacing + 1);
+            Rect outRect = new Rect(0, 0, rect.width + 16, rect.height);
             Widgets.BeginScrollView(outRect, ref position, viewRect, true);
         }
 
