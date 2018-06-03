@@ -72,7 +72,7 @@ namespace PrisonLabor
             {
                 if (_allowedWorkTypes == null)
                     return "";
-                var data = "";
+                string data = "";
                 foreach (var workDef in _allowedWorkTypes)
                     data += workDef.defName + ";";
                 return data;
@@ -89,7 +89,8 @@ namespace PrisonLabor
                     _allowedWorkTypes = new List<WorkTypeDef>();
                     var subs = value.Split(';');
                     foreach (var s in subs)
-                        _allowedWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed(s, false));
+                        if (DefDatabase<WorkTypeDef>.GetNamed(s, false) != null)
+                            _allowedWorkTypes.Add(DefDatabase<WorkTypeDef>.GetNamed(s));
                 }
             }
         }
