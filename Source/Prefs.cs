@@ -163,7 +163,7 @@ namespace PrisonLabor
         public static void Apply()
         {
             data.Apply();
-            PrisonLaborUtility.AllowedWorkTypesData = AllowedWorkTypes;
+            WorkSettings.DataString = AllowedWorkTypes;
             Tutorials.Apply();
         }
 

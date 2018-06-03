@@ -22,8 +22,8 @@ namespace PrisonLabor
 
             workTypes = new Dictionary<WorkTypeDef, bool>();
 
-            foreach (var workType in DefDatabase<WorkTypeDef>.AllDefs)
-                if (!PrisonLaborUtility.WorkDisabled(workType))
+            foreach (var workType in WorkSettings.AvailableWorkTypes)
+                if (!WorkSettings.WorkDisabled(workType))
                     workTypes.Add(workType, true);
                 else
                     workTypes.Add(workType, false);
@@ -92,8 +92,7 @@ namespace PrisonLabor
             foreach (var workDef in workTypes.Keys)
                 if (workTypes[workDef])
                     list.Add(workDef);
-            PrisonLaborUtility.SetAllowedWorkTypes(list);
-            PrisonLaborPrefs.AllowedWorkTypes = PrisonLaborUtility.AllowedWorkTypesData;
+            WorkSettings.AllowedWorkTypes = list;
         }
     }
 }

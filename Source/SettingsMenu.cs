@@ -182,8 +182,8 @@ namespace PrisonLabor
             if (!allowAllWorktypes)
             {
                 var delta = 500 + 7 * 50 + (DefDatabase<WorkTypeDef>.DefCount - 20) * 25;
-                foreach (var wtd in DefDatabase<WorkTypeDef>.AllDefs)
-                    if (!PrisonLaborUtility.WorkDisabled(wtd))
+                foreach (var wtd in WorkSettings.AvailableWorkTypes)
+                    if (!WorkSettings.WorkDisabled(wtd))
                         delta -= 50;
                 if (delta > 0)
                     value += delta;

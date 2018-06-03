@@ -28,7 +28,7 @@ namespace PrisonLabor.HarmonyPatches
                 foreach (var pawn in Find.VisibleMap.mapPawns.PrisonersOfColony)
                     if (PrisonLaborUtility.LaborEnabled(pawn))
                     {
-                        PrisonLaborUtility.InitWorkSettings(pawn);
+                        WorkSettings.InitWorkSettings(pawn);
                         yield return pawn;
                     }
         }

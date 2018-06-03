@@ -9,18 +9,18 @@ using Verse.AI;
 
 namespace PrisonLabor.CompatibilityPatches
 {
-    static class NoWaterNoLife
+    internal static class NoWaterNoLife
     {
         private const string DirectoryName = "PrisonLaborPatch";
         private const string FileName = "Patch.xml";
 
-        static internal void Init()
+        internal static void Init()
         {
             if (Check())
                 Work();
         }
 
-        static internal bool Check()
+        internal static bool Check()
         {
             if (DefDatabase<ThinkTreeDef>.GetNamed("Mizu_LeaveIfDehydration", false) != null)
                 return true;
@@ -28,7 +28,7 @@ namespace PrisonLabor.CompatibilityPatches
                 return false;
         }
 
-        static internal void Work()
+        internal static void Work()
         {
             var mod = LoadedModManager.RunningMods.First(m => m.Name == "No Water, No Life.");
             CreateCompatibilityXml(mod);
