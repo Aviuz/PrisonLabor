@@ -11,3 +11,4 @@ Agenda:
  - surrender/capture
  - robots mod
  - weapon pickups
+ - fix bug when prisoner is stuck on snow clearing
