@@ -10,3 +10,4 @@ Agenda:
  - add buff to mood if motivation is low
  - add buff to mood if got beat by warden
  - rewrite jobs def (transfer to class injection if possible)
+ - fix bug when prisoner is stuck on snow clearing
