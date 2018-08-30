@@ -31,7 +31,7 @@ namespace PrisonLabor
         {
             var stringBuilder = new StringBuilder();
             foreach (var current in LazyPrisoners)
-                stringBuilder.AppendLine("    " + current.NameStringShort);
+                stringBuilder.AppendLine("    " + current.Name.ToStringShort);
             return string.Format("PrisonLabor_LazyPrisonerExplanation".Translate(), stringBuilder);
         }
 

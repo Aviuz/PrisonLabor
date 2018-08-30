@@ -47,8 +47,9 @@ namespace PrisonLabor
                     if (mineable == null || mineTarget.HitPoints > num)
                     {
                         var actor2 = mine.actor;
-                        var dinfo = new DamageInfo(DamageDefOf.Mining, num, -1f, actor2, null, null,
-                            DamageInfo.SourceCategory.ThingOrUnknown);
+                        // TODO old code:
+                        //var dinfo = new DamageInfo(DamageDefOf.Mining, num, -1f, actor2, null, null,DamageInfo.SourceCategory.ThingOrUnknown);
+                        var dinfo = new DamageInfo(DamageDefOf.Mining, num, 0, -1f, actor2, null, null, DamageInfo.SourceCategory.ThingOrUnknown);
                         mineTarget.TakeDamage(dinfo);
                     }
                     else
@@ -86,7 +87,7 @@ namespace PrisonLabor
             Scribe_Values.Look(ref ticksToPickHit, "ticksToPickHit", 0, false);
         }
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return true;
         }

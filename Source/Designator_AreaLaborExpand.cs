@@ -12,9 +12,9 @@ namespace PrisonLabor
             defaultDesc = "PrisonLabor_LaborAreaDesc".Translate();
             icon = ContentFinder<Texture2D>.Get("LaborAreaExpand", true);
             //this.hotKey = KeyBindingDefOf.Misc5;
-            soundDragSustain = SoundDefOf.DesignateDragAreaAdd;
-            soundDragChanged = SoundDefOf.DesignateDragAreaAddChanged;
-            soundSucceeded = SoundDefOf.DesignateAreaAdd;
+            soundDragSustain = SoundDefOf.Designate_DragAreaAdd;
+            soundDragChanged = null;
+            soundSucceeded = SoundDefOf.Designate_AreaAdd;
         }
     }
 }

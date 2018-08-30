@@ -178,7 +178,7 @@ namespace PrisonLabor
 
         private bool PawnCanUseWorkGiver(Pawn pawn, WorkGiver giver)
         {
-            return !giver.ShouldSkip(pawn) && (giver.def.canBeDoneByNonColonists || pawn.IsPrisoner) &&
+            return !giver.ShouldSkip(pawn) && (giver.def.nonColonistsCanDo || pawn.IsPrisoner) &&
                    (pawn.story == null || !pawn.story.WorkTagIsDisabled(giver.def.workTags)) &&
                    giver.MissingRequiredCapacity(pawn) == null;
         }

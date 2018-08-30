@@ -18,8 +18,8 @@ namespace PrisonLabor
         public Designator_AreaLabor(DesignateMode mode)
         {
             this.mode = mode;
-            soundDragSustain = SoundDefOf.DesignateDragStandard;
-            soundDragChanged = SoundDefOf.DesignateDragStandardChanged;
+            soundDragSustain = SoundDefOf.Designate_DragStandard;
+            soundDragChanged = SoundDefOf.Designate_DragStandard_Changed;
             useMouseIcon = true;
             defaultLabel = "PrisonLabor_LaborArea".Translate();
             //Initialization();

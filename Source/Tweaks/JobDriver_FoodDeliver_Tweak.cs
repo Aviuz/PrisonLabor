@@ -40,7 +40,7 @@ namespace PrisonLabor
             eatingFromInventory = pawn.inventory != null && pawn.inventory.Contains(TargetThingA);
         }
 
-        public override bool TryMakePreToilReservations()
+        public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
             return true;
         }

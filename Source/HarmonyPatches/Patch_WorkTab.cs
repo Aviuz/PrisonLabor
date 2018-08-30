@@ -21,11 +21,11 @@ namespace PrisonLabor.HarmonyPatches
 
         public static IEnumerable<Pawn> Pawns(MainTabWindow mainTabWindow)
         {
-            foreach (var p in Find.VisibleMap.mapPawns.FreeColonists)
+            foreach (var p in Find.CurrentMap.mapPawns.FreeColonists)
                 yield return p;
             if (mainTabWindow is MainTabWindow_Work || mainTabWindow is MainTabWindow_Restrict ||
                 mainTabWindow.GetType().ToString().Contains("MainTabWindow_WorkTab"))
-                foreach (var pawn in Find.VisibleMap.mapPawns.PrisonersOfColony)
+                foreach (var pawn in Find.CurrentMap.mapPawns.PrisonersOfColony)
                     if (PrisonLaborUtility.LaborEnabled(pawn))
                     {
                         WorkSettings.InitWorkSettings(pawn);

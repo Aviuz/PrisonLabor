@@ -49,7 +49,7 @@ namespace PrisonLabor.CompatibilityPatches
             XmlInheritance.Resolve();
             foreach (var item in list)
             {
-                foreach (Def def in DirectXmlLoader.AllDefsFromAsset(item))
+                foreach (Def def in item.defPackage)
                 {
                     Log.Message($"Added def {def.defName}");
                     DefDatabase<ThinkTreeDef>.Add(def as ThinkTreeDef);

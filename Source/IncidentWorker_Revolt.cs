@@ -12,9 +12,9 @@ namespace PrisonLabor
         private const float HivePoints = 400f;
         private const float MinMotivationToStart = 0.4f;
 
-        protected override bool CanFireNowSub(IIncidentTarget target)
+        protected override bool CanFireNowSub(IncidentParms parms)
         {
-            Map map = (Map)target;
+            Map map = parms.target as Map;
 
             bool enemyFaction = false;
             float accumulatedMotivation = 0.0f;
@@ -118,8 +118,10 @@ namespace PrisonLabor
                     points -= pointsToRemove;
                 }
             }
-            LordMaker.MakeNewLord(parms.faction, (new RaidStrategyWorker_ImmediateAttackSmart()).MakeLordJob(parms, map), map, affectedPawns);
-            base.SendStandardLetter(t, new string[] { t.NameStringShort, t.Faction.Name });
+            var lordJob = new LordJob_AssaultColony();
+            //TODO old code:
+            LordMaker.MakeNewLord(parms.faction, lordJob/*(new RaidStrategyWorker_ImmediateAttackSmart()).MakeLordJob(parms, map)*/, map, affectedPawns);
+            base.SendStandardLetter(t, null, new string[] { t.Name.ToStringShort, t.Faction.Name });
             Find.TickManager.slower.SignalForceNormalSpeedShort();
             return true;
         }

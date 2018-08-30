@@ -73,7 +73,7 @@ namespace PrisonLabor
         private static float NutritionAvailableForFrom(Pawn p, Thing foodSource)
         {
             if (foodSource.def.IsNutritionGivingIngestible && p.RaceProps.WillAutomaticallyEat(foodSource))
-                return foodSource.def.ingestible.nutrition * foodSource.stackCount;
+                return foodSource.def.ingestible.CachedNutrition * foodSource.stackCount;
             if (p.RaceProps.ToolUser && p.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))
             {
                 var building_NutrientPasteDispenser = foodSource as Building_NutrientPasteDispenser;

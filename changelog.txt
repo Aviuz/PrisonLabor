@@ -1,4 +1,6 @@
 Changelog:
+0.9.5
+- updated to RimWorld Beta 19
 0.9.4
 - disabled Warden and Jailor types of work for prisoner labor, it should fix bug, where jailors do not warden inside labor area
 0.9.3

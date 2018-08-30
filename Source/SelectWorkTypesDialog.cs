@@ -16,7 +16,6 @@ namespace PrisonLabor
         public SelectWorkTypesDialog()
         {
             absorbInputAroundWindow = true;
-            closeOnEscapeKey = true;
             doCloseX = true;
             doCloseButton = true;
 
@@ -58,9 +57,9 @@ namespace PrisonLabor
                 {
                     workTypeClicked = workDef;
                     if (checkOn)
-                        SoundDefOf.CheckboxTurnedOn.PlayOneShotOnCamera(null);
+                        SoundDefOf.Checkbox_TurnedOn.PlayOneShotOnCamera(null);
                     else
-                        SoundDefOf.CheckboxTurnedOff.PlayOneShotOnCamera(null);
+                        SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera(null);
                 }
                 var color = GUI.color;
                 Texture2D image;

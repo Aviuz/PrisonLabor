@@ -2,9 +2,9 @@
   <IncidentDef>
       <defName>PrisonLabor_Revolt</defName>
       <label>revolt</label>
-      <targetTypes>
-        <li>MapPlayerHome</li>
-      </targetTypes>
+      <targetTags>
+        <li>Map_PlayerHome</li>
+      </targetTags>
       <workerClass>PrisonLabor.IncidentWorker_Revolt</workerClass>
       <letterLabel>Revolt</letterLabel>
       <letterText>Revolt has been started by {0}. The prisoners united under faction {1}, and began uprising with self-made weapons</letterText>
