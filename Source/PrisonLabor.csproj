@@ -68,6 +68,7 @@
     <Compile Include="Designator_AreaLabor.cs" />
     <Compile Include="Designator_AreaLaborExpand.cs" />
     <Compile Include="HarmonyPatches\Patch_AddLaborArea.cs" />
+    <Compile Include="HarmonyPatches\Patch_AddScrollToPrisonerTab.cs" />
     <Compile Include="HarmonyPatches\Patch_BillCheckbox.cs" />
     <Compile Include="HarmonyPatches\Patch_BillPrevention.cs" />
     <Compile Include="HarmonyPatches\Patch_ChangeWorkTabPrisonerLabelColor.cs" />
