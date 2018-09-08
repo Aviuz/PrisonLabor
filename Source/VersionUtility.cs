@@ -80,7 +80,6 @@ namespace PrisonLabor
                 CompatibilityPatches.OlderVersions.Pre_v0_9_4();
             }
 
-            Log.Message($"Enabled Prison Labor v{versionString}");
             PrisonLaborPrefs.Version = versionNumber;
             PrisonLaborPrefs.Save();
         }

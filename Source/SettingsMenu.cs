@@ -36,6 +36,8 @@ namespace PrisonLabor
 
             interactionModeList = new List<PrisonerInteractionModeDef>(DefDatabase<PrisonerInteractionModeDef>.AllDefs);
             defaultInteractionMode = interactionModeList.IndexOf(DefDatabase<PrisonerInteractionModeDef>.GetNamed(PrisonLaborPrefs.DefaultInteractionMode));
+            if (defaultInteractionMode < 0 || defaultInteractionMode > interactionModeList.Count - 1)
+                defaultInteractionMode = 0;
         }
 
         public override void DoSettingsWindowContents(Rect inRect)

@@ -18,6 +18,8 @@ namespace PrisonLabor.HarmonyPatches
         public static void Init()
         {
             var harmony = HarmonyInstance.Create("Harmony_PrisonLabor");
+
+            // SECTION - Classic patches
             try
             {
                 // Clear old data, to avoid misleading info
@@ -25,7 +27,21 @@ namespace PrisonLabor.HarmonyPatches
 
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
 
-                // TODO move it to seperate files. Why I did this ??? I have no clue ...
+                // Print out not completed methods
+                foreach(var f in fragments.Keys)
+                {
+                    if(!fragments[f])
+                        Log.Error($"PrisonLaborWarning: Harmony patch failed to find \"{f}\" fragment.");
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error($"PrisonLaborException: failed to proceed harmony patches: {e.Message}");
+            }
+
+            // SECTION - Patches with references in method
+            try
+            {
                 harmony.Patch(
                     typeof(Pawn_CarryTracker).GetMethod("TryDropCarriedThing",
                         new[]
@@ -42,17 +58,10 @@ namespace PrisonLabor.HarmonyPatches
                         typeof(Action<Thing, int>)
                         }),
                     new HarmonyMethod(null), new HarmonyMethod(typeof(ForibiddenDropPatch).GetMethod("Postfix2")));
-
-                // Print out not completed methods
-                foreach(var f in fragments.Keys)
-                {
-                    if(!fragments[f])
-                        Log.Error($"PrisonLaborWarning: Harmony patch failed to find \"{f}\" fragment.");
-                }
             }
             catch (Exception e)
             {
-                Log.Error($"PrisonLaborException: failed to proceed harmony patches: {e.Message}");
+                Log.Error($"PrisonLaborException: failed to proceed harmony patches (reference section): {e.Message}");
             }
         }
 
