@@ -1,4 +1,5 @@
 ﻿using Harmony;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,28 +13,48 @@ namespace PrisonLabor.HarmonyPatches
     /// This patch is adding Prison Labor dev tools
     /// </summary>
     [HarmonyPatch(typeof(Dialog_DebugActionsMenu), "DoListingItems_MapTools")]
-    static class Patch_AddDebugTools
+    static class DevTools
     {
         static void Postfix(Dialog_DebugActionsMenu __instance)
         {
             var menu = __instance;
             menu.DoLabel("Prison Labor Tools:");
-            menu.DebugToolMapForPawns("Tool: Increase treatment by 10%", delegate (Pawn p)
+
+            // Increase motivation
+            menu.DebugToolMapForPawns("Tool: Motivation +10%", delegate (Pawn p)
             {
-                if (p.needs.TryGetNeed<Need_Treatment>() != null)
+                if (p.needs.TryGetNeed<Need_Motivation>() != null)
                 {
-                    p.needs.TryGetNeed<Need_Treatment>().CurLevel += 0.1f;
+                    OffsetNeed(p, Need_Motivation.Def, 0.1f);
                 }
             });
-            menu.DebugToolMapForPawns("Tool: Decrease treatment by 10%", delegate (Pawn p)
+            // Decrease motivation
+            menu.DebugToolMapForPawns("Tool: Motivation -10%", delegate (Pawn p)
+            {
+                if (p.needs.TryGetNeed<Need_Motivation>() != null)
+                {
+                    OffsetNeed(p, Need_Motivation.Def, -0.1f);
+                }
+            });
+            // Increase treatment
+            menu.DebugToolMapForPawns("Tool: Treatment +10%", delegate (Pawn p)
             {
                 if (p.needs.TryGetNeed<Need_Treatment>() != null)
                 {
-                    p.needs.TryGetNeed<Need_Treatment>().CurLevel -= 0.1f;
+                    OffsetNeed(p, Need_Treatment.Def, 0.1f);
+                }
+            });
+            // Decrease treatment
+            menu.DebugToolMapForPawns("Tool: Treatment -10%", delegate (Pawn p)
+            {
+                if (p.needs.TryGetNeed<Need_Treatment>() != null)
+                {
+                    OffsetNeed(p, Need_Treatment.Def, -0.1f);
                 }
             });
         }
 
+        #region Utilities
         static void DoLabel(this Dialog_DebugActionsMenu instance, string label)
         {
             var method = typeof(Dialog_DebugActionsMenu).GetMethod("DoLabel", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -51,5 +72,19 @@ namespace PrisonLabor.HarmonyPatches
             var method = typeof(Dialog_DebugActionsMenu).GetMethod("DebugToolMapForPawns", BindingFlags.Instance | BindingFlags.NonPublic);
             method.Invoke(instance, new object[] { label, pawnAction });
         }
+
+        static void OffsetNeed(Pawn pawn, NeedDef nd, float offsetPct)
+        {
+            if (pawn != null)
+            {
+                Need need = pawn.needs.TryGetNeed(nd);
+                if (need != null)
+                {
+                    need.CurLevel += offsetPct * need.MaxLevel;
+                    pawn.Drawer.Notify_DebugAffected();
+                }
+            }
+        }
+        #endregion
     }
 }

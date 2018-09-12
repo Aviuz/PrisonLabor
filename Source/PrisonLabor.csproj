@@ -65,7 +65,7 @@
     <Compile Include="Designator_AreaLaborClear.cs" />
     <Compile Include="Designator_AreaLabor.cs" />
     <Compile Include="Designator_AreaLaborExpand.cs" />
-    <Compile Include="HarmonyPatches\Patch_AddDebugTools.cs" />
+    <Compile Include="HarmonyPatches\DevTools.cs" />
     <Compile Include="HarmonyPatches\Patch_AddLaborArea.cs" />
     <Compile Include="HarmonyPatches\Patch_BillCheckbox.cs" />
     <Compile Include="HarmonyPatches\Patch_BillPrevention.cs" />
@@ -104,6 +104,7 @@
     <Compile Include="IncidentWorker_Revolt.cs" />
     <Compile Include="JobGiver_BedTime.cs" />
     <Compile Include="JobGiver_Diet.cs" />
+    <Compile Include="JobGiver_PickupWeapon.cs" />
     <Compile Include="LaborExclusionUtility.cs" />
     <Compile Include="Behaviour_MotivationIcon.cs" />
     <Compile Include="InspirationUtility.cs" />
@@ -152,6 +153,7 @@
     </Content>
     <Content Include="..\Defs\Hediffs.xml">
       <Link>Defs\Hediffs.xml</Link>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\Defs\Incidents.xml">
       <Link>Defs\Incidents.xml</Link>

@@ -7,6 +7,14 @@
     <alwaysShowWeapon>true</alwaysShowWeapon>
   </JobDef>
   <JobDef>
+    <defName>PrisonLabor_Arrest</defName>
+    <driverClass>JobDriver_TakeToBed</driverClass>
+    <reportString>arresting TargetA.</reportString>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <makeTargetPrisoner>true</makeTargetPrisoner>
+    <casualInteruptable>false</casualInteruptable>
+  </JobDef>
+  <JobDef>
     <defName>PrisonLabor_DeliverFood_Tweak</defName>
     <driverClass>PrisonLabor.JobDriver_FoodDeliver_Tweak</driverClass>
     <reportString>feeding TargetA to TargetB.</reportString>

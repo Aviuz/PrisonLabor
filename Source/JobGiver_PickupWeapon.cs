@@ -92,7 +92,7 @@ namespace PrisonLabor
 
         private bool ShouldEquip(Thing newWep, Pawn pawn)
         {
-            return this.GetWeaponScore(newWep) > this.GetWeaponScore(pawn.equipment.Primary);
+            return GetWeaponScore(newWep) > GetWeaponScore(pawn.equipment.Primary);
         }
 
         private int GetWeaponScore(Thing wep)
