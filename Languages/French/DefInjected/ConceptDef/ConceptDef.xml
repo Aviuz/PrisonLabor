@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf - 8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <LanguageData> 
 	<PrisonLabor_Indroduction.label>Prison labor (Travail de prison)</PrisonLabor_Indroduction.label>
 	<PrisonLabor_Indroduction.helpText>Vous pouvez forcer les prisonniers à travailler.\n\nPour se faire, vous devez sélectionner l’option « Forcer à travailler » dans l’onglet « Prisonnier »\n\nLes prisonniers travailleront dans les zones autorisées.  Vérifiez que les prisonniers peuvent atteindre leur travail.\n\nIls peuvent uniquement cuisiner, miner, couper des plantes, transporter, nettoyer ou cultiver des plantes.\n\nLes prisonniers refuseront parfois de travailler. Les raisons peuvent êtres différentes. Ils peuvent être blessés, fatigués, pas assez motivés ou avoir faim.\n\nASTUCE: Vous pouvez assigner le travail depuis l’onglet « Travail ».\n\nASTUCE: Si vous mettez une cuisinière dans leur cellule, vérifiez qu’ils peuvent atteindre les ingrédients.\n\nASTUCE: Vous pouvez permettre aux prisonniers de passer les portes en les laissant ouvertes</PrisonLabor_Indroduction.helpText>
