@@ -9,7 +9,7 @@ using Verse.AI;
 namespace PrisonLabor.Harmony
 {
     [HarmonyPatch(typeof(HaulAIUtility))]
-    [HarmonyPatch("PawnCanAutomaticallyHaulBasicChecks")]
+    [HarmonyPatch("PawnCanAutomaticallyHaulFast")]
     [HarmonyPatch(new[] {typeof(Pawn), typeof(Thing), typeof(bool)})]
     internal class ReservedByPrisonerPatch
     {

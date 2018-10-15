@@ -31,10 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=1.0.9.1, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Assemblies\0Harmony.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\Documents\Visual Studio 2017\ExternalLibraries\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>Libraries\Assembly-CSharp.dll</HintPath>
@@ -59,6 +58,8 @@
     <Compile Include="BillUtility.cs" />
     <Compile Include="BugTracker.cs" />
     <Compile Include="CompatibilityPatches\Initialization.cs" />
+    <Compile Include="CompatibilityPatches\NoWaterNoLife.cs" />
+    <Compile Include="CompatibilityPatches\OlderVersions.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease_WorkDriver_Patch.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease_WorkGiver.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Designator_AreaLaborExpand.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
     <Compile Include="HarmonyPatches\Patch_AddLaborArea.cs" />
+    <Compile Include="HarmonyPatches\Patch_AddScrollToPrisonerTab.cs" />
     <Compile Include="HarmonyPatches\Patch_BillCheckbox.cs" />
     <Compile Include="HarmonyPatches\Patch_BillPrevention.cs" />
     <Compile Include="HarmonyPatches\Patch_ChangeWorkTabPrisonerLabelColor.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="HarmonyPatches\Patch_RespectReservation.cs" />
     <Compile Include="HarmonyPatches\Patch_RestrainsPatch.cs" />
     <Compile Include="HarmonyPatches\Patch_ShowNews.cs" />
+    <Compile Include="HarmonyPatches\Patch_SocialPropernessFix.cs" />
     <Compile Include="HarmonyPatches\Patch_TimetableFix.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable2.cs" />
@@ -140,10 +143,12 @@
     <Compile Include="VersionUtility.cs" />
     <Compile Include="WorkGiver_Supervise.cs" />
     <Compile Include="Tweaks\WorkGiver_Warden_DeliverFood_Tweak.cs" />
+    <Compile Include="WorkSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\About\About.xml">
       <Link>Organizer\About.xml</Link>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\changelog.txt">
       <Link>Organizer\changelog.txt</Link>

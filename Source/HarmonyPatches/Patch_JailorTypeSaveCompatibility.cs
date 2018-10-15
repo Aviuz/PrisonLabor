@@ -47,12 +47,12 @@ namespace PrisonLabor.HarmonyPatches
                 var newPriorities = new DefMap<WorkTypeDef, int>();
 
                 int jailorIndex = PrisonLaborDefOf.PrisonLabor_Jailor.index;
-                newPriorities[jailorIndex] = 0;
-                foreach (var def in DefDatabase<WorkTypeDef>.AllDefs)
+                newPriorities[PrisonLaborDefOf.PrisonLabor_Jailor] = 0;
+                foreach (var def in DefDatabase<WorkTypeDef>.AllDefs.Where(d => d.index < priorities.Count))
                 {
                     if (def.index < jailorIndex)
                         newPriorities[def] = priorities[def];
-                    else if(def.index > jailorIndex)
+                    else if (def.index > jailorIndex)
                         newPriorities[def] = priorities[def.index - 1];
                 }
 

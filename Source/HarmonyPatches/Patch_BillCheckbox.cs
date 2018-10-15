@@ -51,22 +51,24 @@ namespace PrisonLabor.HarmonyPatches
             // Find label after >> if (listing_Standard.ButtonText(label, null))
             OpCode[] opCodes1 =
             {
-                OpCodes.Ldloc_S,
-                OpCodes.Ldloc_S,
+                OpCodes.Ldstr,
+                OpCodes.Call,
                 OpCodes.Ldnull,
                 OpCodes.Callvirt,
                 OpCodes.Brfalse
             };
             String[] operands1 =
             {
-                "Verse.Listing_Standard (6)",
-                "System.String (7)",
+                "NotSuspended",
+                "System.String Translate(System.String)",
                 "",
                 "Boolean ButtonText(System.String, System.String)",
                 "System.Reflection.Emit.Label",
             };
             var label = HPatcher.FindOperandAfter(opCodes1, operands1, instr);
 
+            // TODO old code
+            /*
             // Begin rect - start of scrollable view
             int step2 = 0;
             int step4 = 0;
@@ -98,20 +100,39 @@ namespace PrisonLabor.HarmonyPatches
                 "System.Int32 unpauseWhenYouHave",
                 "Verse.Listing_Standard (6)",
             };
+            */
+
+            // Find listing standard for buttons on left
+            OpCode[] opCodes4 =
+           {
+                OpCodes.Call,
+                OpCodes.Br,
+                OpCodes.Ldloc_S,
+            };
+            String[] operands4 =
+            {
+                "Void PlayOneShotOnCamera(Verse.SoundDef, Verse.Map)",
+                "System.Reflection.Emit.Label",
+                "Verse.Listing_Standard (30)",
+            };
+            var listing = HPatcher.FindOperandAfter(opCodes4, operands4, instr);
 
             foreach (var ci in instr)
             {
                 if (ci.labels.Contains((Label)label))
                 {
-                    var injectedInstruction = new CodeInstruction(OpCodes.Ldloc_S, ci.operand);
-                    injectedInstruction.labels.Add((Label)label);
+                    var injectedInstruction = new CodeInstruction(OpCodes.Ldloc_S, listing);
+                    foreach(var item in ci.labels)
+                        injectedInstruction.labels.Add(item);
                     yield return injectedInstruction;
                     yield return new CodeInstruction(OpCodes.Ldarg_0);
                     yield return new CodeInstruction(OpCodes.Ldfld, billField);
                     yield return new CodeInstruction(OpCodes.Call,
                         typeof(Patch_BillCheckbox).GetMethod("GroupExclusionButton"));
-                    ci.labels.Remove((Label)label);
+                    ci.labels.Clear();
                 }
+                //TODO old code
+                /*
                 if (HPatcher.IsFragment(opCodes3, operands3, ci, ref step3, "Patch_BillCheckbox1"))
                 {
                     var instruction = new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StopScrolling"));
@@ -124,13 +145,16 @@ namespace PrisonLabor.HarmonyPatches
                     yield return new CodeInstruction(OpCodes.Ldloc_S, listingVar);
                     yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("SetRect"));
                 }
+                */
                 yield return ci;
+                /*
                 if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "Patch_BillCheckbox3"))
                 {
                     yield return new CodeInstruction(OpCodes.Ldloc_2);
                     yield return new CodeInstruction(OpCodes.Ldloc_S, listingVar);
                     yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StartScrolling"));
                 }
+                */
             }
         }
 

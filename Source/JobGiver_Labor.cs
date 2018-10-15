@@ -28,7 +28,7 @@ namespace PrisonLabor
             var need = pawn.needs.TryGetNeed<Need_Motivation>();
 
             if (pawn.timetable == null)
-                PrisonLaborUtility.InitWorkSettings(pawn);
+                WorkSettings.InitWorkSettings(pawn);
             if (HealthAIUtility.ShouldHaveSurgeryDoneNow(pawn))
                 return ThinkResult.NoJob;
             //Check medical assistance, fed, and rest if not override
@@ -43,7 +43,7 @@ namespace PrisonLabor
             if (PrisonLaborPrefs.EnableMotivationMechanics && (need == null || need.IsLazy))
                 return ThinkResult.NoJob;
             //Work prisoners will do
-            PrisonLaborUtility.InitWorkSettings(pawn);
+            WorkSettings.InitWorkSettings(pawn);
             var workList = pawn.workSettings.WorkGiversInOrderNormal;
             //TODO check this
             //workList.RemoveAll(workGiver => workGiver.def.defName == "GrowerSow");
@@ -178,7 +178,7 @@ namespace PrisonLabor
 
         private bool PawnCanUseWorkGiver(Pawn pawn, WorkGiver giver)
         {
-            return !giver.ShouldSkip(pawn) && (giver.def.canBeDoneByNonColonists || pawn.IsPrisoner) &&
+            return !giver.ShouldSkip(pawn) && (giver.def.nonColonistsCanDo || pawn.IsPrisoner) &&
                    (pawn.story == null || !pawn.story.WorkTagIsDisabled(giver.def.workTags)) &&
                    giver.MissingRequiredCapacity(pawn) == null;
         }

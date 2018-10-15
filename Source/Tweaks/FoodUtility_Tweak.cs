@@ -155,7 +155,7 @@ namespace PrisonLabor
                     thing.def.ingestible.preferability >= minFoodPref &&
                     thing.def.ingestible.preferability <= maxFoodPref && (allowDrug || !thing.def.IsDrug))
                 {
-                    var num = thing.def.ingestible.nutrition * thing.stackCount;
+                    var num = thing.def.ingestible.CachedNutrition * thing.stackCount;
                     if (num >= minStackNutrition)
                         return thing;
                 }
@@ -364,10 +364,10 @@ namespace PrisonLabor
             var pawn = Find.Selector.SingleSelectedThing as Pawn;
             if (pawn == null)
                 return;
-            if (pawn.Map != Find.VisibleMap)
+            if (pawn.Map != Find.CurrentMap)
                 return;
             var thing = SpawnedFoodSearchInnerScan(pawn, root,
-                Find.VisibleMap.listerThings.ThingsInGroup(ThingRequestGroup.FoodSourceNotPlantOrTree),
+                Find.CurrentMap.listerThings.ThingsInGroup(ThingRequestGroup.FoodSourceNotPlantOrTree),
                 PathEndMode.ClosestTouch, TraverseParms.For(TraverseMode.PassDoors, Danger.Deadly, false), 9999f, null);
             if (thing != null)
                 GenDraw.DrawLineBetween(root.ToVector3Shifted(), thing.Position.ToVector3Shifted());
@@ -379,11 +379,11 @@ namespace PrisonLabor
             var pawn = Find.Selector.SingleSelectedThing as Pawn;
             if (pawn == null)
                 return;
-            if (pawn.Map != Find.VisibleMap)
+            if (pawn.Map != Find.CurrentMap)
                 return;
             Text.Anchor = TextAnchor.MiddleCenter;
             Text.Font = GameFont.Tiny;
-            foreach (var current in Find.VisibleMap.listerThings.ThingsInGroup(ThingRequestGroup
+            foreach (var current in Find.CurrentMap.listerThings.ThingsInGroup(ThingRequestGroup
                 .FoodSourceNotPlantOrTree))
             {
                 var num = FoodSourceOptimality(pawn, current, (a - current.Position).LengthHorizontal, false);
@@ -405,7 +405,7 @@ namespace PrisonLabor
 
         private static Pawn BestPawnToHuntForPredator(Pawn predator)
         {
-            if (predator.meleeVerbs.TryGetMeleeVerb() == null)
+            if (predator.meleeVerbs.TryGetMeleeVerb(null) == null)
                 return null;
             var flag = false;
             var summaryHealthPercent = predator.health.summaryHealth.SummaryHealthPercent;
@@ -563,7 +563,7 @@ namespace PrisonLabor
         {
             if (nutrition <= 0.0001f)
                 return 0;
-            return Mathf.Max(Mathf.RoundToInt(nutrition / def.ingestible.nutrition), 1);
+            return Mathf.Max(Mathf.RoundToInt(nutrition / def.ingestible.CachedNutrition), 1);
         }
 
         public static bool ShouldBeFedBySomeone(Pawn pawn)

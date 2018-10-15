@@ -9,7 +9,8 @@ namespace PrisonLabor.CompatibilityPatches
     {
         internal static void Run()
         {
-            SeedsPlease.Init();
+            //SeedsPlease.Init();
+            //NoWaterNoLife.Init();
         }
     }
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_PrisonerWork>Forcer à travailler</PrisonLabor_PrisonerWork>
+	<PrisonLabor_WorkAndRecruit>Travailler et recruter</PrisonLabor_WorkAndRecruit>
+	<PrisonLabor_LazyPrisonerMessage>Votre prisonnier à cessé de travailler !</PrisonLabor_LazyPrisonerMessage>
+	<PrisonLabor_WardenResponeThreshold>Limite de réponse du gardien</PrisonLabor_WardenResponeThreshold>
+	<PrisonLabor_StoppingWorkThreshold>Limite d’arrêt de travail</PrisonLabor_StoppingWorkThreshold>
+	<PrisonLabor_WorkTypeDisabled>Type de travail désactivé pour les prisonniers</PrisonLabor_WorkTypeDisabled>
+	<PrisonLabor_ShowNews>Montrer les nouvelles</PrisonLabor_ShowNews>
+	<PrisonLabor_ShowNewsDesc>Montrer les nouvelles à propos des changements du mod quand un prisonnier est détecté</PrisonLabor_ShowNewsDesc>
+	<PrisonLabor_DefaultInterMode>Mode d’interaction avec les prisonniers par défaut</PrisonLabor_DefaultInterMode>
+	<PrisonLabor_AllowedWorkTypes>Types de travaux autorisés</PrisonLabor_AllowedWorkTypes>
+	<PrisonLabor_AllowAll>tout autoriser</PrisonLabor_AllowAll>
+	<PrisonLabor_AllowAllWorktypes>autoriser tout types de travaux</PrisonLabor_AllowAllWorktypes>
+	<PrisonLabor_AllowedWorktypesL>types de travaux autorisés</PrisonLabor_AllowedWorktypesL>
+	<PrisonLabor_Browse>rechercher</PrisonLabor_Browse>
+	<PrisonLabor_MotivationMechanics>Mécanique de motivation</PrisonLabor_MotivationMechanics>
+	<PrisonLabor_MotivationWarning>Lorsque coché, les prisonniers ont besoin d’être motivés. ATTENTION : Nécessite de recharger la sauvegarde.</PrisonLabor_MotivationWarning>
+	<PrisonLabor_MotivationIcons>Icônes d’inspiration/motivation</PrisonLabor_MotivationIcons>
+	<PrisonLabor_MotivationIconsDesc>Lorsque activé, des icônes seront affichés au dessus de la tête des prisonniers. Un icône bleu pour l’inspiration, et un icône vert pour un gain de motivation grâce à d’autres facteurs.</PrisonLabor_MotivationIconsDesc>
+	<PrisonLabor_CanGrowAdvanced>Les prisonniers peuvent cultiver des plantes avancées.</PrisonLabor_CanGrowAdvanced>
+	<PrisonLabor_CanGrowAdvancedDesc>Lorsque désactivé, les prisonniers pourront uniquement planter et cultiver les plantes qui ne requièrent aucune compétence en agriculture.</PrisonLabor_CanGrowAdvancedDesc>
+	<PrisonLabor_RestartInfo>Redémarrez le jeu puis re-sauvegardez votre partie.</PrisonLabor_RestartInfo>
+	<PrisonLabor_RestartInfo2>Après ces étapes vous pourrez sainement désactiver ce mod.</PrisonLabor_RestartInfo2>
+	<PrisonLabor_DisableMod>Désactiver le mod.</PrisonLabor_DisableMod>
+	<PrisonLabor_DisableModDesc>Lorsque activé, les mondes sont sauvegardés et transférés en « mode sûr», et pourront être joués sans mods.</PrisonLabor_DisableModDesc>
+	<PrisonLabor_Version>Version :</PrisonLabor_Version>
+	<PrisonLabor_Difficulty>Difficulté :</PrisonLabor_Difficulty>
+	<PrisonLabor_Defaults>Défauts</PrisonLabor_Defaults>
+	<PrisonLabor_DifficultyNormal>Normal</PrisonLabor_DifficultyNormal>
+	<PrisonLabor_DifficultyCasual>Occasionnel</PrisonLabor_DifficultyCasual>
+	<PrisonLabor_DifficultyEasy>Facile</PrisonLabor_DifficultyEasy>
+	<PrisonLabor_DifficultyPeaceful>Paisible</PrisonLabor_DifficultyPeaceful>
+	<PrisonLabor_DifficultyJoke>Une blague</PrisonLabor_DifficultyJoke>
+	<PrisonLabor_LazyPrisonerAlert>Les prisonniers ne travaillent pas</PrisonLabor_LazyPrisonerAlert>
+	<PrisonLabor_LazyPrisonerExplanationDef>Les prisonniers sont fainéants. Essayez de les motiver.</PrisonLabor_LazyPrisonerExplanationDef>
+	<PrisonLabor_LazyPrisonerExplanation>Ces prisonniers sont fainéants:\n\n{0}\nEssayez de les motiver.</PrisonLabor_LazyPrisonerExplanation>
+	<PrisonLabor_StarvingPrisonerAlert>Les prisonniers meurent de faim</PrisonLabor_StarvingPrisonerAlert>
+	<PrisonLabor_StarvingPrisonerExplanationDef>Les prisonniers meurent de faim et ne travaillerons pas.</PrisonLabor_StarvingPrisonerExplanationDef>
+	<PrisonLabor_StarvingPrionserExplanation>les prisonniers meurent de faim et ne travaillerons pas:\n\n{0}</PrisonLabor_StarvingPrionserExplanation>
+	<PrisonLabor_LaborArea>Zone de Travail de Prison</PrisonLabor_LaborArea>
+	<PrisonLabor_LaborAreaDesc>La Zone de Travail de Prison est une zone où uniquement les prisonniers peuvent travailler. Les colons n’y sont pas autorisés exceptés les gardiens de prison.</PrisonLabor_LaborAreaDesc>
+	<PrisonLabor_ClearLaborArea>Supprimer la Zone de Travail de Prison</PrisonLabor_ClearLaborArea>
+	<PrisonLabor_ExpandLaborArea>Élargir la Zone de Travail de Prison</PrisonLabor_ExpandLaborArea>
+	<PrisonLabor_ColonistsOnly>Colons seulement</PrisonLabor_ColonistsOnly>
+	<PrisonLabor_PrisonersOnly>Prisonniers seulement</PrisonLabor_PrisonersOnly>
+	<PrisonLabor_ColonyOnly>Colonie seulement</PrisonLabor_ColonyOnly>
+</LanguageData>

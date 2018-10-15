@@ -20,6 +20,14 @@ Changelog:
 - added new hidden need "Treatment" that indicates level of prison treatment towards prisoner (WIP)
 - now work settings reset after prisoner is recruited, so it should fix some issues
 - fixed blurred effect on settings window
+0.9.5
+- updated to RimWorld Beta 19
+0.9.4
+- disabled Warden and Jailor types of work for prisoner labor, it should fix bug, where jailors do not warden inside labor area
+0.9.3
+- fixed compatibility with No Water no Life
+- fixed compatibility with Dubs Bad Hygiene Mod
+- fixed error with loading old saves
 0.9.2
 - fixed seeds please compatibility issue
 - added option to disable revolts

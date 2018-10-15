@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_SupervisePrisonLabor.label>surveiller le prisonnier</PrisonLabor_SupervisePrisonLabor.label>
+	<PrisonLabor_SupervisePrisonLabor.verb>surveiller le prisonnier</PrisonLabor_SupervisePrisonLabor.verb>
+	<PrisonLabor_SupervisePrisonLabor.gerund>surveille le prisonnier</PrisonLabor_SupervisePrisonLabor.gerund>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.label>apporter de la nourriture aux prisonniers</PrisonLabor_DeliverFoodToPrisoner_Tweak.label>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>apporter de la nourriture pour</PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>apporte de la nourriture pour</PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>
+	<PrisonLabor_Mine_Tweak.label>miner</PrisonLabor_Mine_Tweak.label>
+	<PrisonLabor_Mine_Tweak.verb>miner</PrisonLabor_Mine_Tweak.verb>
+	<PrisonLabor_Mine_Tweak.gerund>mine</PrisonLabor_Mine_Tweak.gerund>
+	<PrisonLabor_PlantsCut_Tweak.label>couper les plantes</PrisonLabor_PlantsCut_Tweak.label>
+	<PrisonLabor_PlantsCut_Tweak.verb>couper</PrisonLabor_PlantsCut_Tweak.verb>
+	<PrisonLabor_PlantsCut_Tweak.gerund>coupe</PrisonLabor_PlantsCut_Tweak.gerund>
+	<PrisonLabor_GrowerHarvest_Tweak.label>récolter les plantes</PrisonLabor_GrowerHarvest_Tweak.label>
+	<PrisonLabor_GrowerHarvest_Tweak.verb>récolter</PrisonLabor_GrowerHarvest_Tweak.verb>
+	<PrisonLabor_GrowerHarvest_Tweak.gerund>récolte</PrisonLabor_GrowerHarvest_Tweak.gerund>
+	<PrisonLabor_GrowerSow_Tweak.label>semer les plantes</PrisonLabor_GrowerSow_Tweak.label>
+	<PrisonLabor_GrowerSow_Tweak.verb>semer</PrisonLabor_GrowerSow_Tweak.verb>
+	<PrisonLabor_GrowerSow_Tweak.gerund>sème</PrisonLabor_GrowerSow_Tweak.gerund>
+	<PrisonLabor_CleanFilth_Tweak.label>nettoyer la saleté</PrisonLabor_CleanFilth_Tweak.label>
+	<PrisonLabor_CleanFilth_Tweak.verb>nettoyer</PrisonLabor_CleanFilth_Tweak.verb>
+	<PrisonLabor_CleanFilth_Tweak.gerund>nettoie</PrisonLabor_CleanFilth_Tweak.gerund>
+</LanguageData>

@@ -75,13 +75,16 @@ namespace PrisonLabor
                 NewsDialog.news_0_9_2 = true;
                 NewsDialog.autoShow = true;
             }
+            if (PrisonLaborPrefs.LastVersion < Version.v0_9_4)
+            {
+                CompatibilityPatches.OlderVersions.Pre_v0_9_4();
+            }
             if (PrisonLaborPrefs.LastVersion < Version.v0_10_0)
             {
                 NewsDialog.news_0_10_0 = true;
                 NewsDialog.autoShow = true;
             }
 
-            Log.Message($"Enabled Prison Labor v{versionString}");
             PrisonLaborPrefs.Version = versionNumber;
             PrisonLaborPrefs.Save();
         }

@@ -35,7 +35,7 @@ namespace PrisonLabor
             {
                 var actor = cut.actor;
                 if (actor.skills != null)
-                    actor.skills.Learn(SkillDefOf.Growing, xpPerTick, false);
+                    actor.skills.Learn(SkillDefOf.Plants, xpPerTick, false);
                 var statValue = actor.GetStatValue(StatDefOf.PlantWorkSpeed, true);
                 var num = statValue;
                 var plant = Plant;

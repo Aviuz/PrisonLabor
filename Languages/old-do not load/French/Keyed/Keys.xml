@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<LanguageData>
-    <PrisonLabor_PrisonerWork>Travaux forcés</PrisonLabor_PrisonerWork>
-    <PrisonLabor_LazyPrisonerMessage>Votre prisonnier a arrêté de travailler!</PrisonLabor_LazyPrisonerMessage>
-    <WardenResponseThreshold>Réaction des geôliers</WardenResponseThreshold>
-    <StoppingWorkThreshold>Arrêt de travail</StoppingWorkThreshold>
-</LanguageData>

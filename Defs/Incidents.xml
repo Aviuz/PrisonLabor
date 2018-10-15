@@ -1,22 +1,21 @@
 <Defs>
   <IncidentDef>
-    <defName>PrisonLabor_Revolt</defName>
-    <label>revolt</label>
-    <targetTypes>
-      <li>MapPlayerHome</li>
-    </targetTypes>
-    <workerClass>PrisonLabor.IncidentWorker_Revolt</workerClass>
-    <letterLabel>Revolt</letterLabel>
-    <letterText>Revolt has been started by {0}. The prisoners united under faction {1}, and began uprising with self-made weapons</letterText>
-    <letterDef>ThreatBig</letterDef>
+      <defName>PrisonLabor_Revolt</defName>
+      <label>revolt</label>
+      <targetTags>
+        <li>Map_PlayerHome</li>
+      </targetTags>
+      <workerClass>PrisonLabor.IncidentWorker_Revolt</workerClass>
+      <letterLabel>Revolt</letterLabel>
+      <letterText>Revolt has been started by {0}. The prisoners united under faction {1}, and began uprising with self-made weapons</letterText>
+      <letterDef>ThreatBig</letterDef>
     <baseChance>5.4</baseChance>
-    <minRefireDays>20</minRefireDays>
-    <category>ThreatBig</category>
-    <pointsScaleable>true</pointsScaleable>
-    <minThreatPoints>200</minThreatPoints>
-  </IncidentDef>
+      <minRefireDays>20</minRefireDays>
+      <category>ThreatBig</category>
+      <pointsScaleable>true</pointsScaleable>
+      <minThreatPoints>200</minThreatPoints>
+    </IncidentDef>
 
-  <IncidentDef>
     <defName>PrisonLabor_ResocializationOffer</defName>
     <label>resocialization offer</label>
     <category>Misc</category>

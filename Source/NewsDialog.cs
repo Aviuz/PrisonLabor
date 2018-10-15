@@ -69,6 +69,8 @@ namespace PrisonLabor
                 };
                 itemsList.Add(itemsArray);
             }
+            // TODO 0.9.3
+
             // 0.9.2
             if (news_0_9_2 || showAll)
             {

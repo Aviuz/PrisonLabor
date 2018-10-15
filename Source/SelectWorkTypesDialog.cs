@@ -16,14 +16,13 @@ namespace PrisonLabor
         public SelectWorkTypesDialog()
         {
             absorbInputAroundWindow = true;
-            closeOnEscapeKey = true;
             doCloseX = true;
             doCloseButton = true;
 
             workTypes = new Dictionary<WorkTypeDef, bool>();
 
-            foreach (var workType in DefDatabase<WorkTypeDef>.AllDefs)
-                if (!PrisonLaborUtility.WorkDisabled(workType))
+            foreach (var workType in WorkSettings.AvailableWorkTypes)
+                if (!WorkSettings.WorkDisabled(workType))
                     workTypes.Add(workType, true);
                 else
                     workTypes.Add(workType, false);
@@ -58,9 +57,9 @@ namespace PrisonLabor
                 {
                     workTypeClicked = workDef;
                     if (checkOn)
-                        SoundDefOf.CheckboxTurnedOn.PlayOneShotOnCamera(null);
+                        SoundDefOf.Checkbox_TurnedOn.PlayOneShotOnCamera(null);
                     else
-                        SoundDefOf.CheckboxTurnedOff.PlayOneShotOnCamera(null);
+                        SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera(null);
                 }
                 var color = GUI.color;
                 Texture2D image;
@@ -92,8 +91,7 @@ namespace PrisonLabor
             foreach (var workDef in workTypes.Keys)
                 if (workTypes[workDef])
                     list.Add(workDef);
-            PrisonLaborUtility.SetAllowedWorkTypes(list);
-            PrisonLaborPrefs.AllowedWorkTypes = PrisonLaborUtility.AllowedWorkTypesData;
+            WorkSettings.AllowedWorkTypes = list;
         }
     }
 }

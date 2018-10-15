@@ -12,7 +12,7 @@ namespace PrisonLabor.CompatibilityPatches
     {
         private const int SEEDS_TO_CARRY = 25;
 
-        public override Job JobOnCell(Pawn pawn, IntVec3 c)
+        public override Job JobOnCell(Pawn pawn, IntVec3 c, bool forced = false)
         {
             Job job = base.JobOnCell(pawn, c);
             if (job == null || job.plantDefToSow == null || job.plantDefToSow.blueprintDef == null)

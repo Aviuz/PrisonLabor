@@ -36,26 +36,39 @@ namespace PrisonLabor.HarmonyPatches
             };
             int step1 = 0;
 
+            // Find else if with ..  && !current.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, current, false) and add && IsDisabledByLabor()
             OpCode[] opCodes2 =
            {
                 OpCodes.Bge_Un,
+                OpCodes.Ldloc_S,
+                OpCodes.Ldloc_0,
+                OpCodes.Ldfld,
+                OpCodes.Call,
+                OpCodes.Brtrue,
                 OpCodes.Ldloc_S,
                 OpCodes.Ldfld,
                 OpCodes.Ldloc_0,
                 OpCodes.Ldfld,
                 OpCodes.Ldloc_S,
+                OpCodes.Ldc_I4_0,
                 OpCodes.Callvirt,
                 OpCodes.Brfalse,
             };
             String[] operands2 =
             {
                 "System.Reflection.Emit.Label",
+                "Verse.IntVec3 (33)",
+                "",
+                "Verse.Pawn pawn",
+                "Boolean IsForbidden(IntVec3, Verse.Pawn)",
+                "System.Reflection.Emit.Label",
                 "RimWorld.JobGiver_Work+<TryIssueJobPackage>c__AnonStorey1 (11)",
                 "RimWorld.WorkGiver_Scanner scanner",
                 "",
                 "Verse.Pawn pawn",
                 "Verse.IntVec3 (33)",
-                "Boolean HasJobOnCell(Verse.Pawn, IntVec3)",
+                "",
+                "Boolean HasJobOnCell(Verse.Pawn, IntVec3, Boolean)",
                 "System.Reflection.Emit.Label",
             };
             int step2 = 0;

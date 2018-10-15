@@ -20,7 +20,7 @@ namespace PrisonLabor.HarmonyPatches
             yield return new CodeInstruction(OpCodes.Ldarg_2);
             yield return new CodeInstruction(OpCodes.Ldarg_3);
             yield return new CodeInstruction(OpCodes.Call,
-                typeof(PrisonLaborUtility).GetMethod("WorkDisabled", new[] {typeof(Pawn), typeof(WorkTypeDef)}));
+                typeof(WorkSettings).GetMethod("WorkDisabled", new[] {typeof(Pawn), typeof(WorkTypeDef)}));
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             //Return

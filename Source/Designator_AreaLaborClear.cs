@@ -12,9 +12,9 @@ namespace PrisonLabor
             defaultDesc = "PrisonLabor_LaborAreaDesc".Translate();
             icon = ContentFinder<Texture2D>.Get("LaborAreaClear", true);
             //this.hotKey = KeyBindingDefOf.Misc6;
-            soundDragSustain = SoundDefOf.DesignateDragAreaDelete;
-            soundDragChanged = SoundDefOf.DesignateDragAreaDeleteChanged;
-            soundSucceeded = SoundDefOf.DesignateAreaDelete;
+            soundDragSustain = SoundDefOf.Designate_DragAreaDelete;
+            soundDragChanged = null;
+            soundSucceeded = SoundDefOf.Designate_AreaDelete;
         }
     }
 }

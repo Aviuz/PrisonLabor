@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+<PrisonLabor_Revolt.label>revuelta</PrisonLabor_Revolt.label>
+<PrisonLabor_Revolt.letterLabel>Revuelta</PrisonLabor_Revolt.letterLabel>
+<PrisonLabor_Revolt.letterText>Se ha iniciado una revuelta por {0}. Los prisioneros se han unido bajo la facción {1}, y se ha comenzado un levantamiento usando armas hechas por ellos mismos</PrisonLabor_Revolt.letterText>
+</LanguageData>

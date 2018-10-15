@@ -6,7 +6,7 @@ using Verse;
 namespace PrisonLabor
 {
     [StaticConstructorOnStartup]
-    public abstract class Designator_AreaLabor : Designator
+    public abstract class Designator_AreaLabor : Designator_Area
     {
         private static readonly List<IntVec3> JustRemovedCells = new List<IntVec3>();
 
@@ -18,8 +18,8 @@ namespace PrisonLabor
         public Designator_AreaLabor(DesignateMode mode)
         {
             this.mode = mode;
-            soundDragSustain = SoundDefOf.DesignateDragStandard;
-            soundDragChanged = SoundDefOf.DesignateDragStandardChanged;
+            soundDragSustain = SoundDefOf.Designate_DragStandard;
+            soundDragChanged = SoundDefOf.Designate_DragStandard_Changed;
             useMouseIcon = true;
             defaultLabel = "PrisonLabor_LaborArea".Translate();
             //Initialization();
@@ -28,6 +28,11 @@ namespace PrisonLabor
         public override int DraggableDimensions => 2;
 
         public override bool DragDrawMeasurements => true;
+
+        public override AcceptanceReport CanDesignateThing(Thing t)
+        {
+            return AcceptanceReport.WasRejected;
+        }
 
         public override AcceptanceReport CanDesignateCell(IntVec3 c)
         {

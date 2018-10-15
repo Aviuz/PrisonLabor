@@ -28,13 +28,13 @@ namespace PrisonLabor
             return wantedPlantDef != null;
         }
 
-        public override Job JobOnCell(Pawn pawn, IntVec3 c)
+        public override Job JobOnCell(Pawn pawn, IntVec3 c, bool forced = false)
         {
             //if (!pawn.IsPrisoner)
             //    return null;
             if (c.IsForbidden(pawn))
                 return null;
-            if (!GenPlant.GrowthSeasonNow(c, pawn.Map))
+            if (!PlantUtility.GrowthSeasonNow(c, pawn.Map))
                 return null;
             if (wantedPlantDef == null)
             {
@@ -58,7 +58,7 @@ namespace PrisonLabor
                     return null;
                 return new Job(JobDefOf.CutPlant, plant);
             }
-            var thing2 = GenPlant.AdjacentSowBlocker(wantedPlantDef, c, pawn.Map);
+            var thing2 = PlantUtility.AdjacentSowBlocker(wantedPlantDef, c, pawn.Map);
             if (thing2 != null)
             {
                 var plant2 = thing2 as Plant;
@@ -70,7 +70,7 @@ namespace PrisonLabor
                 }
                 return null;
             }
-            if (wantedPlantDef.plant.sowMinSkill > 0 && pawn.skills != null && pawn.skills.GetSkill(SkillDefOf.Growing).Level < wantedPlantDef.plant.sowMinSkill)
+            if (wantedPlantDef.plant.sowMinSkill > 0 && pawn.skills != null && pawn.skills.GetSkill(SkillDefOf.Plants).Level < wantedPlantDef.plant.sowMinSkill)
             {
                 return null;
             }
@@ -99,7 +99,7 @@ namespace PrisonLabor
                 }
                 j++;
             }
-            if (!wantedPlantDef.CanEverPlantAt(c, pawn.Map) || !GenPlant.GrowthSeasonNow(c, pawn.Map) ||
+            if (!wantedPlantDef.CanEverPlantAt(c, pawn.Map) || !PlantUtility.GrowthSeasonNow(c, pawn.Map) ||
                 !pawn.CanReserve(c, 1, -1, null, false))
                 return null;
             return new Job(JobDefOf.Sow, c)
