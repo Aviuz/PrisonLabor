@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_PrisonerSupervise.reportString>bevakar fånge TargetA.</PrisonLabor_PrisonerSupervise.reportString>
+	<PrisonLabor_DeliverFood_Tweak.reportString>matar TargetA till TargetB</PrisonLabor_DeliverFood_Tweak.reportString>
+	<PrisonLabor_Mine_Tweak.reportString>gräver vid TargetA</PrisonLabor_Mine_Tweak.reportString>
+	<PrisonLabor_Harvest_Tweak.reportString>skördar vid TargetA</PrisonLabor_Harvest_Tweak.reportString>
+	<PrisonLabor_CutPlant_Tweak.reportString>hugger TargetA</PrisonLabor_CutPlant_Tweak.reportString>
+</LanguageData>

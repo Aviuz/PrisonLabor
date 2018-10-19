@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_PrisonerWork>Tvinga att arbeta</PrisonLabor_PrisonerWork>
+	<PrisonLabor_WorkAndRecruit>Arbeta och värva</PrisonLabor_WorkAndRecruit>
+	<PrisonLabor_LazyPrisonerMessage>Dina fångar slutade arbeta!</PrisonLabor_LazyPrisonerMessage>
+	<PrisonLabor_WardenResponeThreshold>Vaktens svargräns</PrisonLabor_WardenResponeThreshold>
+	<PrisonLabor_StoppingWorkThreshold>Stoppar arbetsgränsen</PrisonLabor_StoppingWorkThreshold>
+	<PrisonLabor_WorkTypeDisabled>Arbetes typ är inaktiverad för fångarna</PrisonLabor_WorkTypeDisabled>
+	<PrisonLabor_ShowNews>Visa nyheter</PrisonLabor_ShowNews>
+	<PrisonLabor_ShowNewsDesc>Visar nyheter om ändringar i moddet när fångar är upptäckt.</PrisonLabor_ShowNewsDesc>
+	<PrisonLabor_DefaultInterMode>Standard fångarna interaktions läge</PrisonLabor_DefaultInterMode>
+	<PrisonLabor_AllowedWorkTypes>Tillåtna arbets typer:</PrisonLabor_AllowedWorkTypes>
+	<PrisonLabor_AllowAll>tillåt alla</PrisonLabor_AllowAll>
+	<PrisonLabor_AllowAllWorktypes>tillåt alla arbets typer</PrisonLabor_AllowAllWorktypes>
+	<PrisonLabor_AllowedWorktypesL>tillåtna alla arbets typer:</PrisonLabor_AllowedWorktypesL>
+	<PrisonLabor_Browse>sök</PrisonLabor_Browse>
+	<PrisonLabor_MotivationMechanics>Motivering mekanik (!)</PrisonLabor_MotivationMechanics>
+	<PrisonLabor_MotivationWarning>När kollat fångarnas behov att bli motiverade.\n\nVARNING: Behöver laddas om</PrisonLabor_MotivationWarning>
+	<PrisonLabor_MotivationIcons>Inspiration/Motivation Icons</PrisonLabor_MotivationIcons>
+	<PrisonLabor_MotivationIconsDesc>When enabled icons will be displayed above prisoners heads. Blue icon for inspiration, and green icon for gaining motivation by other factors.</PrisonLabor_MotivationIconsDesc>
+	<PrisonLabor_CanGrowAdvanced>Fångarna kan gro avancerade växter</PrisonLabor_CanGrowAdvanced>
+	<PrisonLabor_CanGrowAdvancedDesc>När inaktiverat prisoners kan endast plantera växter som inte behöver någon skicklighet.</PrisonLabor_CanGrowAdvancedDesc>
+	<PrisonLabor_RestartInfo>Starta om sedan spara spelet igen.</PrisonLabor_RestartInfo>
+	<PrisonLabor_RestartInfo2>Efter detta steg kan du med säkerhet stänga av detta mod.</PrisonLabor_RestartInfo2>
+	<PrisonLabor_DisableMod>Inaktivera mod</PrisonLabor_DisableMod>
+	<PrisonLabor_DisableModDesc>När aktiverad, världar som är sparade är flyttat till "safe mode" och kan bli spelade utan moddet.</PrisonLabor_DisableModDesc>
+	<PrisonLabor_Version>Version:</PrisonLabor_Version>
+	<PrisonLabor_Difficulty>Svårighetsgrad:</PrisonLabor_Difficulty>
+	<PrisonLabor_Defaults>Standard</PrisonLabor_Defaults>
+	<PrisonLabor_DifficultyNormal>Normalt</PrisonLabor_DifficultyNormal>
+	<PrisonLabor_DifficultyCasual>Lungt</PrisonLabor_DifficultyCasual>
+	<PrisonLabor_DifficultyEasy>Enkelt</PrisonLabor_DifficultyEasy>
+	<PrisonLabor_DifficultyPeaceful>Fredligt</PrisonLabor_DifficultyPeaceful>
+	<PrisonLabor_DifficultyJoke>Ett skämt</PrisonLabor_DifficultyJoke>
+	<PrisonLabor_LazyPrisonerAlert>Fångarna arbetar inte</PrisonLabor_LazyPrisonerAlert>
+	<PrisonLabor_LazyPrisonerExplanationDef>Fångarna är lata. Försök att motivera dem.</PrisonLabor_LazyPrisonerExplanationDef>
+	<PrisonLabor_LazyPrisonerExplanation>De här fångarna är lata:\n\n{0}\nFörsök att motivera dem.</PrisonLabor_LazyPrisonerExplanation>
+	<PrisonLabor_StarvingPrisonerAlert>Fångarna svälter</PrisonLabor_StarvingPrisonerAlert>
+	<PrisonLabor_StarvingPrisonerExplanationDef>Fångarna svälter och kommer inte att arbeta</PrisonLabor_StarvingPrisonerExplanationDef>
+	<PrisonLabor_StarvingPrionserExplanation>De här fångarna svälter och kommer inte arbeta:\n\n{0}</PrisonLabor_StarvingPrionserExplanation>
+	<PrisonLabor_LaborArea>Fängelse arbetsområde</PrisonLabor_LaborArea>
+	<PrisonLabor_LaborAreaDesc>Arbetsområdet är området där endast fångar kan arbeta. Inga kolonister är tillåtna att arbeta här förutom med vakt typen av arbete.</PrisonLabor_LaborAreaDesc>
+	<PrisonLabor_ClearLaborArea>Ta bort arbetsområdet</PrisonLabor_ClearLaborArea>
+	<PrisonLabor_ExpandLaborArea>Utöka arbetsområdet</PrisonLabor_ExpandLaborArea>
+	<PrisonLabor_ColonistsOnly>Endast kolonister</PrisonLabor_ColonistsOnly>
+	<PrisonLabor_PrisonersOnly>Endast fångar</PrisonLabor_PrisonersOnly>
+	<PrisonLabor_ColonyOnly>Endast kolonin</PrisonLabor_ColonyOnly>
+</LanguageData>
