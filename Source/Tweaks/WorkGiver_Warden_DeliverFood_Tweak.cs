@@ -63,7 +63,7 @@ namespace PrisonLabor
                     if (pawn.IsPrisonerOfColony &&
                         pawn.needs.food.CurLevelPercentage < pawn.needs.food.PercentageThreshHungry + 0.02f &&
                         (pawn.carryTracker.CarriedThing == null ||
-                         !pawn.RaceProps.WillAutomaticallyEat(pawn.carryTracker.CarriedThing)))
+                         !pawn.WillEat(pawn.carryTracker.CarriedThing)))
                         num += pawn.needs.food.NutritionWanted;
                 }
             }
@@ -72,7 +72,7 @@ namespace PrisonLabor
 
         private static float NutritionAvailableForFrom(Pawn p, Thing foodSource)
         {
-            if (foodSource.def.IsNutritionGivingIngestible && p.RaceProps.WillAutomaticallyEat(foodSource))
+            if (foodSource.def.IsNutritionGivingIngestible && p.WillEat(foodSource))
                 return foodSource.def.ingestible.CachedNutrition * foodSource.stackCount;
             if (p.RaceProps.ToolUser && p.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))
             {

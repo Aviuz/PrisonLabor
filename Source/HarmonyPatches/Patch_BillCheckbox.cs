@@ -51,41 +51,6 @@ namespace PrisonLabor.HarmonyPatches
             };
             var label = HPatcher.FindOperandAfter(opCodes1, operands1, instr);
 
-            // TODO old code
-            /*
-            // Begin rect - start of scrollable view
-            int step2 = 0;
-            int step4 = 0;
-            // Find fragment >> listing_Standard.Begin(rect3);
-            OpCode[] opCodes2 =
-            {
-                OpCodes.Ldloc_S,
-                OpCodes.Ldloc_2,
-                OpCodes.Callvirt,
-            };
-            String[] operands2 =
-            {
-                "Verse.Listing_Standard (6)",
-                "",
-                "Void Begin(Rect)",
-            };
-            // End rect - end of scrollable view
-            int step3 = 0;
-            // Find fragment >> listing_Standard.End();
-            OpCode[] opCodes3 =
-            {
-                OpCodes.Call,
-                OpCodes.Stfld,
-                OpCodes.Ldloc_S,
-            };
-            String[] operands3 =
-            {
-                "Int32 RoundToInt(Single)",
-                "System.Int32 unpauseWhenYouHave",
-                "Verse.Listing_Standard (6)",
-            };
-            */
-
             // Find listing standard for buttons on left
             OpCode[] opCodes4 =
            {
@@ -97,7 +62,7 @@ namespace PrisonLabor.HarmonyPatches
             {
                 "Void PlayOneShotOnCamera(Verse.SoundDef, Verse.Map)",
                 "System.Reflection.Emit.Label",
-                "Verse.Listing_Standard (30)",
+                "Verse.Listing_Standard (40)",
             };
             var listing = HPatcher.FindOperandAfter(opCodes4, operands4, instr);
 
@@ -115,28 +80,8 @@ namespace PrisonLabor.HarmonyPatches
                         typeof(Patch_BillCheckbox).GetMethod("GroupExclusionButton"));
                     ci.labels.Clear();
                 }
-                //TODO old code
-                /*
-                if (HPatcher.IsFragment(opCodes3, operands3, ci, ref step3, "Patch_BillCheckbox1"))
-                {
-                    var instruction = new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StopScrolling"));
-                    instruction.labels.AddRange(ci.labels);
-                    ci.labels.Clear();
-                    yield return instruction;
-                }
-                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step4, "Patch_BillCheckbox2"))
-                {
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("SetRect"));
-                }
-                */
+
                 yield return ci;
-                /*
-                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "Patch_BillCheckbox3"))
-                {
-                    yield return new CodeInstruction(OpCodes.Ldloc_2);
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StartScrolling"));
-                }
-                */
             }
         }
 
