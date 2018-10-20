@@ -2,3 +2,6 @@ theme: jekyll-theme-time-machine
 title: Prison Labor
 description: Mod for RimWorld
 show_downloads: true
+github:
+  zip_url: https://github.com/Aviuz/PrisonLabor/releases/download/v0.9.6/PrisonLabor.zip
+  
