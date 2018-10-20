@@ -11,7 +11,7 @@
     Prison Labor mod for RimWorld
 </p>
 <p align="center">
-    [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=972057888) | [Ludeon Forums](https://ludeon.com/forums/index.php?topic=34465.0)</a>
+    <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=972057888">Steam Workshop</a> | <a href="https://ludeon.com/forums/index.php?topic=34465.0">Ludeon Forums</a>
 </p>
 
 ## Description
