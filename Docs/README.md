@@ -11,7 +11,7 @@
     Prison Labor mod for RimWorld
 </p>
 <p align="center">
-    [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=972057888) | [Ludeon Forums](https://ludeon.com/forums/index.php?topic=34465.0)</a>
+    <a href=https://steamcommunity.com/sharedfiles/filedetails/?id=972057888>Steam Workshop</a> | <a href=https://ludeon.com/forums/index.php?topic=34465.0>Ludeon Forums</a>
 </p>
 
 ## Description
@@ -26,10 +26,16 @@ This mod force prisoners to work. To enable this feature prisoners must have "Fo
 This is beta version. Some ascpects of mod still need to be balanced (like motivation). There can be still some bugs.
 
 ## Compatibility
-* Works with mods that add custom Jobs, to enable some of them you need to go to the mod settings.
+* Works with mods that add Jobs of type cook/mine/craft/haul/clean like [url=http://steamcommunity.com/sharedfiles/filedetails/?id=942690136]Quarry[/url], 
+[url=http://steamcommunity.com/sharedfiles/filedetails/?id=952779481]Haulers Can Haul To Blueprints[/url], or [url=http://steamcommunity.com/sharedfiles/filedetails/?id=784327493]Industrials Rollers[/url].
 * Works with old saves.
 * To disable mod from existing saves check "Disable mod" in settings and follow instructions.
-* Cleaning area DOES NOT work. Author of CA declared that it will be at RimWorld 1.0.
+* Now works with WorkTab (by Fluffy)
+* Now works with Seeds Please
+* Now works with Dubs Hygiene and Central Heating Mod
+* Now works with "No Water, No life." mod
+* DOES NOT work with CleaningArea mod. Author of CA refused to cooperate.
+* COMPATIBILITY ISSUES with custom beds (Wooden Medieval Cot) from Medieval Times mod. You can use both mods, but if you use custom beds for prisoners, there can be some issues.
 
 ## [To-do list](To-Do.md)
 ## [Credits](credits.md)
