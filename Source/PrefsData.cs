@@ -73,6 +73,7 @@ namespace PrisonLabor
         Motivation = 0x2,
         Growing = 0x4,
         Managment = 0x8,
-        Timetable = 0x10
+        Timetable = 0x10,
+        LaborAreaWarning = 0x20,
     }
 }

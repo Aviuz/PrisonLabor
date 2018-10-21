@@ -78,6 +78,7 @@ namespace PrisonLabor
 
         public override void SelectedUpdate()
         {
+            Tutorials.LaborAreaWarning();
             GenUI.RenderMouseoverBracket();
             if (Map.areaManager.Get<Area_Labor>() == null)
                 Map.areaManager.AllAreas.Add(new Area_Labor(Map.areaManager));

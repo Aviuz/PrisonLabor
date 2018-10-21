@@ -47,4 +47,6 @@
   <PrisonLabor_ColonyOnly>Colony only</PrisonLabor_ColonyOnly>
   <PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
   <PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
+  <PrisonLabor_LaborAreaWarning>Labor area isn't required to make prisoners work.\n\nThis area forbids colonists from working.\n\nIt's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</PrisonLabor_LaborAreaWarning>
+  <PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
 </LanguageData>
