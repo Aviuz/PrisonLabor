@@ -21,14 +21,14 @@
     <label>resocialization offer</label>
     <category>Misc</category>
     <targetTags>
-      <li>MapPlayerHome</li>
+      <li>Map_PlayerHome</li>
     </targetTags>
     <workerClass>PrisonLabor.IncidentWorker_ResocializationOffer</workerClass>
     <letterLabel>Resocialization offer</letterLabel>
     <letterText>Offer by {0}.</letterText>
     <letterDef>PositiveEvent</letterDef>
     <baseChance>10</baseChance>
-    <populationEffect>Increase</populationEffect>
+    <populationEffect>IncreaseEasy</populationEffect>
   </IncidentDef>
 
   <IncidentDef>
@@ -36,7 +36,7 @@
     <label>prisoner suicide</label>
     <category>Misc</category>
     <targetTags>
-      <li>MapPlayerHome</li>
+      <li>Map_PlayerHome</li>
     </targetTags>
     <workerClass>PrisonLabor.IncidentWorker_Suicide</workerClass>
     <letterLabel>Prisoner suicide</letterLabel>

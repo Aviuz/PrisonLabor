@@ -12,7 +12,7 @@
     <reportString>arresting TargetA.</reportString>
     <alwaysShowWeapon>true</alwaysShowWeapon>
     <makeTargetPrisoner>true</makeTargetPrisoner>
-    <casualInteruptable>false</casualInteruptable>
+    <casualInterruptible>false</casualInterruptible>
   </JobDef>
   <JobDef>
     <defName>PrisonLabor_DeliverFood_Tweak</defName>
