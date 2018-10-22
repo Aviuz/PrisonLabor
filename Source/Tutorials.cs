@@ -63,6 +63,17 @@ namespace PrisonLabor
             TryActivateTutorial(growingDef, OpportunityType.Important);
         }
 
+        public static void LaborAreaWarning()
+        {
+            if (!PrisonLaborPrefs.HasTutorialFlag(TutorialFlag.LaborAreaWarning))
+                Find.WindowStack.Add(
+                    new Dialog_MessageBox(
+                        "PrisonLabor_LaborAreaWarning".Translate(),
+                        "PrisonLabor_DontShowAgain".Translate(),
+                        () => { PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.LaborAreaWarning); PrisonLaborPrefs.Save(); }
+                        ));
+        }
+
         private static void TryActivateTutorial(ConceptDef def, OpportunityType opr)
         {
             if (!triggeredTutorials.Contains(def))

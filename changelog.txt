@@ -20,6 +20,10 @@ Changelog:
 - added new hidden need "Treatment" that indicates level of prison treatment towards prisoner (WIP)
 - now work settings reset after prisoner is recruited, so it should fix some issues
 - fixed blurred effect on settings window
+0.9.7
+- added warning message before placing labor area for the first time
+0.9.6
+- updated to RimWorld 1.0
 0.9.5
 - updated to RimWorld Beta 19
 0.9.4

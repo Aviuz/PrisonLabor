@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_SupervisePrisonLabor.label>bevaka fångarna</PrisonLabor_SupervisePrisonLabor.label>
+	<PrisonLabor_SupervisePrisonLabor.verb>bevaka fångarna</PrisonLabor_SupervisePrisonLabor.verb>
+	<PrisonLabor_SupervisePrisonLabor.gerund>bevakar fångarna</PrisonLabor_SupervisePrisonLabor.gerund>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.label>leverera mat till fångarna</PrisonLabor_DeliverFoodToPrisoner_Tweak.label>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>leverera mat för</PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>levererar mat för</PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>
+	<PrisonLabor_Mine_Tweak.label>gruva</PrisonLabor_Mine_Tweak.label>
+	<PrisonLabor_Mine_Tweak.verb>gruva</PrisonLabor_Mine_Tweak.verb>
+	<PrisonLabor_Mine_Tweak.gerund>bryter</PrisonLabor_Mine_Tweak.gerund>
+	<PrisonLabor_PlantsCut_Tweak.label>hugga växter</PrisonLabor_PlantsCut_Tweak.label>
+	<PrisonLabor_PlantsCut_Tweak.verb>hugga</PrisonLabor_PlantsCut_Tweak.verb>
+	<PrisonLabor_PlantsCut_Tweak.gerund>hugger</PrisonLabor_PlantsCut_Tweak.gerund>
+	<PrisonLabor_GrowerHarvest_Tweak.label>skörda grödor</PrisonLabor_GrowerHarvest_Tweak.label>
+	<PrisonLabor_GrowerHarvest_Tweak.verb>skörda</PrisonLabor_GrowerHarvest_Tweak.verb>
+	<PrisonLabor_GrowerHarvest_Tweak.gerund>skördar</PrisonLabor_GrowerHarvest_Tweak.gerund>
+	<PrisonLabor_GrowerSow_Tweak.label>så grödor</PrisonLabor_GrowerSow_Tweak.label>
+	<PrisonLabor_GrowerSow_Tweak.verb>så</PrisonLabor_GrowerSow_Tweak.verb>
+	<PrisonLabor_GrowerSow_Tweak.gerund>planterar</PrisonLabor_GrowerSow_Tweak.gerund>
+	<PrisonLabor_CleanFilth_Tweak.label>städa smuts</PrisonLabor_CleanFilth_Tweak.label>
+	<PrisonLabor_CleanFilth_Tweak.verb>städa</PrisonLabor_CleanFilth_Tweak.verb>
+	<PrisonLabor_CleanFilth_Tweak.gerund>städar</PrisonLabor_CleanFilth_Tweak.gerund>
+</LanguageData>
