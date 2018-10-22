@@ -35,19 +35,6 @@ namespace PrisonLabor.HarmonyPatches
             };
             var billField = HPatcher.FindOperandAfter(opCodes0, operands0, instr);
 
-            // Find >> Listing_Standard listing_Standard = new Listing_Standard();
-            OpCode[] opCodes4 =
-           {
-                OpCodes.Newobj,
-                OpCodes.Stloc_S,
-            };
-            String[] operands4 =
-            {
-                "Void .ctor()",
-                "Verse.Listing_Standard (6)",
-            };
-            var listingVar = HPatcher.FindOperandAfter(opCodes4, operands4, instr);
-
             // Find label after >> if (listing_Standard.ButtonText(label, null))
             OpCode[] opCodes1 =
             {
@@ -67,41 +54,6 @@ namespace PrisonLabor.HarmonyPatches
             };
             var label = HPatcher.FindOperandAfter(opCodes1, operands1, instr);
 
-            // TODO old code
-            /*
-            // Begin rect - start of scrollable view
-            int step2 = 0;
-            int step4 = 0;
-            // Find fragment >> listing_Standard.Begin(rect3);
-            OpCode[] opCodes2 =
-            {
-                OpCodes.Ldloc_S,
-                OpCodes.Ldloc_2,
-                OpCodes.Callvirt,
-            };
-            String[] operands2 =
-            {
-                "Verse.Listing_Standard (6)",
-                "",
-                "Void Begin(Rect)",
-            };
-            // End rect - end of scrollable view
-            int step3 = 0;
-            // Find fragment >> listing_Standard.End();
-            OpCode[] opCodes3 =
-            {
-                OpCodes.Call,
-                OpCodes.Stfld,
-                OpCodes.Ldloc_S,
-            };
-            String[] operands3 =
-            {
-                "Int32 RoundToInt(Single)",
-                "System.Int32 unpauseWhenYouHave",
-                "Verse.Listing_Standard (6)",
-            };
-            */
-
             // Find listing standard for buttons on left
             OpCode[] opCodes4 =
            {
@@ -113,7 +65,7 @@ namespace PrisonLabor.HarmonyPatches
             {
                 "Void PlayOneShotOnCamera(Verse.SoundDef, Verse.Map)",
                 "System.Reflection.Emit.Label",
-                "Verse.Listing_Standard (30)",
+                "Verse.Listing_Standard (40)",
             };
             var listing = HPatcher.FindOperandAfter(opCodes4, operands4, instr);
 
@@ -122,7 +74,7 @@ namespace PrisonLabor.HarmonyPatches
                 if (ci.labels.Contains((Label)label))
                 {
                     var injectedInstruction = new CodeInstruction(OpCodes.Ldloc_S, listing);
-                    foreach(var item in ci.labels)
+                    foreach (var item in ci.labels)
                         injectedInstruction.labels.Add(item);
                     yield return injectedInstruction;
                     yield return new CodeInstruction(OpCodes.Ldarg_0);
@@ -131,36 +83,14 @@ namespace PrisonLabor.HarmonyPatches
                         typeof(Patch_BillCheckbox).GetMethod("GroupExclusionButton"));
                     ci.labels.Clear();
                 }
-                //TODO old code
-                /*
-                if (HPatcher.IsFragment(opCodes3, operands3, ci, ref step3, "Patch_BillCheckbox1"))
-                {
-                    var instruction = new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StopScrolling"));
-                    instruction.labels.AddRange(ci.labels);
-                    ci.labels.Clear();
-                    yield return instruction;
-                }
-                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step4, "Patch_BillCheckbox2"))
-                {
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, listingVar);
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("SetRect"));
-                }
-                */
+
                 yield return ci;
-                /*
-                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "Patch_BillCheckbox3"))
-                {
-                    yield return new CodeInstruction(OpCodes.Ldloc_2);
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, listingVar);
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod("StartScrolling"));
-                }
-                */
             }
         }
 
         public static void GroupExclusionButton(Listing_Standard listing, Bill bill)
         {
-            string label = "no label";
+            string label;
             switch (BillUtility.IsFor(bill))
             {
                 case GroupMode.ColonistsOnly:
@@ -171,6 +101,9 @@ namespace PrisonLabor.HarmonyPatches
                     break;
                 case GroupMode.ColonyOnly:
                     label = "PrisonLabor_ColonyOnlyShort".Translate();
+                    break;
+                default:
+                    label = "no label";
                     break;
             }
 
@@ -198,25 +131,6 @@ namespace PrisonLabor.HarmonyPatches
                 BillUtility.SetFor(bill, GroupMode.PrisonersOnly);
             }));
             Find.WindowStack.Add(new FloatMenu(list));
-        }
-
-        public static Rect SetRect(Rect rect, Listing_Standard listing)
-        {
-            rect.height += 60 + listing.verticalSpacing + 1;
-            return rect;
-        }
-
-        public static Vector2 position;
-        public static void StartScrolling(Rect rect, Listing_Standard listing)
-        {
-            Rect viewRect = new Rect(0, 0, rect.width, rect.height + 30 + listing.verticalSpacing + 1);
-            Rect outRect = new Rect(0, 0, rect.width + 16, rect.height);
-            Widgets.BeginScrollView(outRect, ref position, viewRect, true);
-        }
-
-        public static void StopScrolling()
-        {
-            Widgets.EndScrollView();
         }
     }
 }

@@ -88,10 +88,10 @@ namespace PrisonLabor
                 var step = 0;
                 try
                 {
-                    if (Find.VisibleMap == null)
+                    if (Find.CurrentMap == null)
                         Log.Message("Find.VisibleMap == null");
                     step += 1;
-                    if (Find.VisibleMap.mapPawns == null)
+                    if (Find.CurrentMap.mapPawns == null)
                         Log.Message("Find.VisibleMap.mapPawns == null");
                     step += 1;
                     var temp = WorldRendererUtility.WorldRenderedNow;

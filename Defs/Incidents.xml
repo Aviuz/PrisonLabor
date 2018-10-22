@@ -16,12 +16,13 @@
       <minThreatPoints>200</minThreatPoints>
     </IncidentDef>
 
+  <IncidentDef>
     <defName>PrisonLabor_ResocializationOffer</defName>
     <label>resocialization offer</label>
     <category>Misc</category>
-    <targetTypes>
+    <targetTags>
       <li>MapPlayerHome</li>
-    </targetTypes>
+    </targetTags>
     <workerClass>PrisonLabor.IncidentWorker_ResocializationOffer</workerClass>
     <letterLabel>Resocialization offer</letterLabel>
     <letterText>Offer by {0}.</letterText>
@@ -34,9 +35,9 @@
     <defName>PrisonLabor_Suicide</defName>
     <label>prisoner suicide</label>
     <category>Misc</category>
-    <targetTypes>
+    <targetTags>
       <li>MapPlayerHome</li>
-    </targetTypes>
+    </targetTags>
     <workerClass>PrisonLabor.IncidentWorker_Suicide</workerClass>
     <letterLabel>Prisoner suicide</letterLabel>
     <letterText>{0} has commited suicide, because of bad treatment.</letterText>

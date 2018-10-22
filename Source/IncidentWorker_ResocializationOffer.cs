@@ -9,9 +9,9 @@ namespace PrisonLabor
 {
     public class IncidentWorker_ResocializationOffer : IncidentWorker
     {
-        protected override bool CanFireNowSub(IIncidentTarget target)
+        protected override bool CanFireNowSub(IncidentParms parms)
         {
-            Map map = (Map)target;
+            Map map = (Map)parms.target;
 
             foreach (var pawn in map.mapPawns.PrisonersOfColony)
             {
@@ -54,7 +54,7 @@ namespace PrisonLabor
             if (prisoner == null)
                 return false;
 
-            SendStandardLetter(prisoner, new string[] { prisoner.NameStringShort, prisoner.Faction.Name });
+            SendStandardLetter(prisoner, null, new string[] { prisoner.Name.ToStringShort, prisoner.Faction.Name });
             return true;
         }
     }
