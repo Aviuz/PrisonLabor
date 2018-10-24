@@ -1,5 +1,6 @@
 Changelog:
 0.10.0
+- added sub-tabs in "Work" Tab and "Assign" Tab for "Colonists" and "Prisoners"
 - fixed food reservation throwing errors
 - added prisoner sucicides
 - added +5 bonus to mood while prisoner have free time

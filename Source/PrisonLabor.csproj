@@ -99,6 +99,7 @@
     <Compile Include="HarmonyPatches\Patch_WorkDisable.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable2.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkTab.cs" />
+    <Compile Include="HarmonyPatches\Trigger_AddHumanlikeOrders.cs" />
     <Compile Include="HarmonyPatches\Trigger_PreApplyDamage.cs" />
     <Compile Include="HediffGiver_PrisonersChains.cs" />
     <Compile Include="HediffManager.cs" />
@@ -113,9 +114,11 @@
     <Compile Include="InspirationUtility.cs" />
     <Compile Include="Need_Treatment.cs" />
     <Compile Include="Need_Motivation.cs" />
+    <Compile Include="PawnTable_Prisoners.cs" />
     <Compile Include="PrisonerFoodReservation.cs" />
     <Compile Include="PrisonLaborDefOf.cs" />
     <Compile Include="PrisonLaborUtility.cs" />
+    <Compile Include="PrisonLaborWidgets.cs" />
     <Compile Include="SettingsMenu.cs" />
     <Compile Include="SelectWorkTypesDialog.cs" />
     <Compile Include="NewsDialog.cs" />
@@ -137,12 +140,15 @@
     <Compile Include="Tweaks\JobDriver_PlantHarvest_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_PlantWork_Tweak.cs" />
     <Compile Include="Tweaks\ClassInjector.cs" />
+    <Compile Include="Tweaks\MainTabWindow_Assign_Tweak.cs" />
+    <Compile Include="Tweaks\MainTabWindow_Work_Tweak.cs" />
     <Compile Include="Tweaks\WorkGiver_CleanFilth_Tweak.cs" />
     <Compile Include="Tweaks\WorkGiver_GrowerSow_Tweak.cs" />
     <Compile Include="Initialization.cs" />
     <Compile Include="VersionUtility.cs" />
-    <Compile Include="WorkGiver_Supervise.cs" />
+    <Compile Include="ArrestUtility.cs" />
     <Compile Include="Tweaks\WorkGiver_Warden_DeliverFood_Tweak.cs" />
+    <Compile Include="WorkGiver_Supervise.cs" />
     <Compile Include="WorkSettings.cs" />
   </ItemGroup>
   <ItemGroup>

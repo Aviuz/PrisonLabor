@@ -1,6 +1,9 @@
 ﻿using PrisonLabor.HarmonyPatches;
 using PrisonLabor.Tweaks;
+using RimWorld;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace PrisonLabor
@@ -24,7 +27,7 @@ namespace PrisonLabor
 
                 Log.Message($"Enabled Prison Labor v{VersionUtility.versionString}");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error($"Prison Labor v{VersionUtility.versionString} caught error during start up:\n{e.Message}");
             }

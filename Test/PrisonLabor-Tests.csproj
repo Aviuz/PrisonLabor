@@ -55,6 +55,7 @@
     <Compile Include="GistCreate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortingVersion.cs" />
     <Compile Include="ToilLister.cs" />
   </ItemGroup>
   <ItemGroup>
