@@ -98,7 +98,7 @@
     <Compile Include="HarmonyPatches\Patch_TimetableFix.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable2.cs" />
-    <Compile Include="HarmonyPatches\Patch_WorkTab.cs" />
+    <Compile Include="HarmonyPatches\Patch_PawnTableSetDirtyFix.cs" />
     <Compile Include="HarmonyPatches\Trigger_AddHumanlikeOrders.cs" />
     <Compile Include="HarmonyPatches\Trigger_PreApplyDamage.cs" />
     <Compile Include="HediffGiver_PrisonersChains.cs" />

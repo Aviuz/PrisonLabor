@@ -17,11 +17,11 @@ namespace PrisonLabor
             IntVec3 c = IntVec3.FromVector3(clickPos);
             if (pawn.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))
             {
-                foreach (LocalTargetInfo current in GenUI.TargetsAt(clickPos, TargetingParameters.ForArrest(pawn), true))
+                foreach (LocalTargetInfo current in GenUI.TargetsAt(clickPos, ForArrest(pawn), true))
                 {
                     LocalTargetInfo dest = current;
                     bool flag = dest.HasThing && dest.Thing is Pawn && ((Pawn)dest.Thing).IsWildMan();
-                    if (pawn.Drafted || flag)
+                    if (!pawn.Drafted || flag)
                     {
                         if (!pawn.CanReach(dest, PathEndMode.OnCell, Danger.Deadly, false, TraverseMode.ByPawn))
                         {
@@ -59,6 +59,30 @@ namespace PrisonLabor
                     }
                 }
             }
+        }
+
+        public static TargetingParameters ForArrest(Pawn arrester)
+        {
+            return new TargetingParameters
+            {
+                canTargetPawns = true,
+                canTargetBuildings = false,
+                mapObjectTargetsMustBeAutoAttackable = false,
+                validator = delegate (TargetInfo targ)
+                {
+                    if (!targ.HasThing)
+                    {
+                        return false;
+                    }
+                    Pawn pawn = targ.Thing as Pawn;
+                    return pawn != null && pawn != arrester && CanBeArrestedBy(pawn, arrester) && !pawn.Downed;
+                }
+            };
+        }
+
+        public static bool CanBeArrestedBy(Pawn pawn, Pawn arrester)
+        {
+            return pawn.RaceProps.Humanlike && pawn.HostileTo(arrester.Faction) && pawn.CurJob.def == JobDefOf.Flee && (!pawn.IsPrisonerOfColony || !pawn.Position.IsInPrisonCell(pawn.Map));
         }
     }
 }
