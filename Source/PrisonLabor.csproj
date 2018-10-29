@@ -77,6 +77,7 @@
     <Compile Include="HarmonyPatches\Patch_EscapingPrisoner.cs" />
     <Compile Include="HarmonyPatches\Patch_ExposeBillGroup.cs" />
     <Compile Include="HarmonyPatches\Patch_ExtendVistorRect.cs" />
+    <Compile Include="HarmonyPatches\Patch_FoodDeliver.cs" />
     <Compile Include="HarmonyPatches\Patch_ForibiddenDrop.cs" />
     <Compile Include="HarmonyPatches\Patch_ItemIsForbidden.cs" />
     <Compile Include="HarmonyPatches\HPatcher.cs" />
@@ -89,7 +90,6 @@
     <Compile Include="HarmonyPatches\Patch_RemoveBillFromUtility.cs" />
     <Compile Include="HarmonyPatches\Patch_RemoveHediffIfDisabled.cs" />
     <Compile Include="HarmonyPatches\Patch_RemoveLaborAreaIfDisabled.cs" />
-    <Compile Include="HarmonyPatches\Patch_ReservedByPrisoner.cs" />
     <Compile Include="HarmonyPatches\Patch_ResetWorktableWhenRecruited.cs" />
     <Compile Include="HarmonyPatches\Patch_RespectReservation.cs" />
     <Compile Include="HarmonyPatches\Patch_RestrainsPatch.cs" />
@@ -126,8 +126,6 @@
     <Compile Include="ThoughtWorker_FreeTime.cs" />
     <Compile Include="ThoughtWorker_LowMotivation.cs" />
     <Compile Include="ThoughtWorker_VeryGoodTreatment.cs" />
-    <Compile Include="Tweaks\FoodUtility_Tweak.cs" />
-    <Compile Include="Tweaks\JobDriver_FoodDeliver_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_Mine_Tweak.cs" />
     <Compile Include="JobDriver_Supervise.cs" />
     <Compile Include="Prefs.cs" />
@@ -147,7 +145,6 @@
     <Compile Include="Initialization.cs" />
     <Compile Include="VersionUtility.cs" />
     <Compile Include="ArrestUtility.cs" />
-    <Compile Include="Tweaks\WorkGiver_Warden_DeliverFood_Tweak.cs" />
     <Compile Include="WorkGiver_Supervise.cs" />
     <Compile Include="WorkSettings.cs" />
   </ItemGroup>
