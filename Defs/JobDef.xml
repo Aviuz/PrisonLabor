@@ -15,11 +15,6 @@
     <casualInterruptible>false</casualInterruptible>
   </JobDef>
   <JobDef>
-    <defName>PrisonLabor_DeliverFood_Tweak</defName>
-    <driverClass>PrisonLabor.JobDriver_FoodDeliver_Tweak</driverClass>
-    <reportString>feeding TargetA to TargetB.</reportString>
-  </JobDef>
-  <JobDef>
     <defName>PrisonLabor_Mine_Tweak</defName>
     <driverClass>PrisonLabor.JobDriver_Mine_Tweak</driverClass>
     <reportString>digging at TargetA.</reportString>

@@ -29,10 +29,6 @@ namespace PrisonLabor.Tweaks
 
         private static void JobTweaks()
         {
-            // Deliver food to prisoners (include other rooms etc.)
-            var deliverFoodWorkGiver = DefDatabase<WorkGiverDef>.GetNamed("DeliverFoodToPrisoner");
-            deliverFoodWorkGiver.giverClass = typeof(WorkGiver_Warden_DeliverFood_Tweak);
-
             // Mine
             var minerJob = JobDefOf.Mine;
             minerJob.driverClass = typeof(JobDriver_Mine_Tweak);
