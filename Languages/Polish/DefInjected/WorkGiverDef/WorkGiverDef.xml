@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_SupervisePrisonLabor.label>pilnuj więźnia</PrisonLabor_SupervisePrisonLabor.label>
+	<PrisonLabor_SupervisePrisonLabor.verb>pilnuj więźnia</PrisonLabor_SupervisePrisonLabor.verb>
+	<PrisonLabor_SupervisePrisonLabor.gerund>pilnuje więźnia</PrisonLabor_SupervisePrisonLabor.gerund>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.label>dostarcz jedzenie dla więźniów</PrisonLabor_DeliverFoodToPrisoner_Tweak.label>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>dostarcz jedzenie dla</PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>dostarcza jedzenie dla</PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>
+	<PrisonLabor_Mine_Tweak.label>kop</PrisonLabor_Mine_Tweak.label>
+	<PrisonLabor_Mine_Tweak.verb>kop</PrisonLabor_Mine_Tweak.verb>
+	<PrisonLabor_Mine_Tweak.gerund>kopie</PrisonLabor_Mine_Tweak.gerund>
+	<PrisonLabor_PlantsCut_Tweak.label>wytnij rośliny</PrisonLabor_PlantsCut_Tweak.label>
+	<PrisonLabor_PlantsCut_Tweak.verb>wytnij</PrisonLabor_PlantsCut_Tweak.verb>
+	<PrisonLabor_PlantsCut_Tweak.gerund>wycina</PrisonLabor_PlantsCut_Tweak.gerund>
+	<PrisonLabor_GrowerHarvest_Tweak.label>zbierz plony</PrisonLabor_GrowerHarvest_Tweak.label>
+	<PrisonLabor_GrowerHarvest_Tweak.verb>zbierz</PrisonLabor_GrowerHarvest_Tweak.verb>
+	<PrisonLabor_GrowerHarvest_Tweak.gerund>zbiera</PrisonLabor_GrowerHarvest_Tweak.gerund>
+	<PrisonLabor_GrowerSow_Tweak.label>siej uprawy</PrisonLabor_GrowerSow_Tweak.label>
+	<PrisonLabor_GrowerSow_Tweak.verb>siej</PrisonLabor_GrowerSow_Tweak.verb>
+	<PrisonLabor_GrowerSow_Tweak.gerund>sadzi</PrisonLabor_GrowerSow_Tweak.gerund>
+	<PrisonLabor_CleanFilth_Tweak.label>wyczyść brud</PrisonLabor_CleanFilth_Tweak.label>
+	<PrisonLabor_CleanFilth_Tweak.verb>wyczyść</PrisonLabor_CleanFilth_Tweak.verb>
+	<PrisonLabor_CleanFilth_Tweak.gerund>czyści</PrisonLabor_CleanFilth_Tweak.gerund>
+</LanguageData>
