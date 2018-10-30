@@ -10,10 +10,9 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(Pawn_NeedsTracker))]
     [HarmonyPatch("ShouldHaveNeed")]
     [HarmonyPatch(new[] { typeof(NeedDef) })]
-    internal class Patch_NeedOnlyByPrisoners
+    public class Patch_NeedOnlyByPrisoners
     {
-        private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
-            IEnumerable<CodeInstruction> instr)
+        private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instr)
         {
             //Searches for pawn
             var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr);
@@ -25,8 +24,7 @@ namespace PrisonLabor.HarmonyPatches
             yield return new CodeInstruction(OpCodes.Ldarg_0);
             yield return new CodeInstruction(OpCodes.Ldfld, pawn);
             //Call function
-            yield return new CodeInstruction(OpCodes.Call,
-                typeof(Patch_NeedOnlyByPrisoners).GetMethod("ShouldHaveNeedPrisoner"));
+            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_NeedOnlyByPrisoners).GetMethod(nameof(ShouldHaveNeedPrisoner)));
             //If true continue
             yield return new CodeInstruction(OpCodes.Brtrue, jumpTo);
             //Load false to stack
@@ -46,14 +44,9 @@ namespace PrisonLabor.HarmonyPatches
             }
         }
 
-
         public static bool ShouldHaveNeedPrisoner(NeedDef nd, Pawn pawn)
         {
-            if (
-                (nd.defName == "PrisonLabor_Motivation" || nd.defName == "PrisonLabor_Treatment")
-                &&
-                !(pawn.IsPrisoner && PrisonLaborPrefs.EnableMotivationMechanics)
-               )
+            if ((nd.defName == "PrisonLabor_Motivation" || nd.defName == "PrisonLabor_Treatment") && !(pawn.IsPrisoner && PrisonLaborPrefs.EnableMotivationMechanics))
                 return false;
             return true;
         }

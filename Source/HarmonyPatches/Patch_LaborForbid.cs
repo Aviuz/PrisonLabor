@@ -18,9 +18,9 @@ namespace PrisonLabor.HarmonyPatches
             IEnumerable<CodeInstruction> instr)
         {
             //var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr);
-            var jobgiver = HPatcher.FindOperandAfter(new[] {OpCodes.Ldloc_S }, new[] { "RimWorld.JobGiver_Work+<TryIssueJobPackage>c__AnonStorey1 (11)" }, instr );
+            var jobgiver = HPatcher.FindOperandAfter(new[] { OpCodes.Ldloc_S }, new[] { "RimWorld.JobGiver_Work+<TryIssueJobPackage>c__AnonStorey1 (11)" }, instr);
             var scanner = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "RimWorld.WorkGiver_Scanner scanner" }, instr);
-            var cell = HPatcher.FindOperandAfter(new[] {OpCodes.Ldloc_S }, new[] { "Verse.IntVec3 (33)" }, instr );
+            var cell = HPatcher.FindOperandAfter(new[] { OpCodes.Ldloc_S }, new[] { "Verse.IntVec3 (33)" }, instr);
 
             OpCode[] opcodes1 =
             {
@@ -83,17 +83,17 @@ namespace PrisonLabor.HarmonyPatches
                     yield return new CodeInstruction(OpCodes.Ldarg_1);
                     yield return new CodeInstruction(OpCodes.Ldloc_S, jobgiver);
                     yield return new CodeInstruction(OpCodes.Ldfld, scanner);
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_LaborForbid).GetMethod("CreatePredicate"));
+                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_LaborForbid).GetMethod(nameof(CreatePredicate)));
                 }
 
-                if(HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "Patch_LaborForbid2"))
+                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "Patch_LaborForbid2"))
                 {
                     yield return new CodeInstruction(OpCodes.Ldloc_S, cell);
                     yield return new CodeInstruction(OpCodes.Ldarg_1);
                     yield return new CodeInstruction(OpCodes.Ldloc_S, jobgiver);
                     yield return new CodeInstruction(OpCodes.Ldfld, scanner);
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_LaborForbid).GetMethod("GetWorkType"));
-                    yield return new CodeInstruction(OpCodes.Call, typeof(LaborExclusionUtility).GetMethod("IsDisabledByLabor"));
+                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_LaborForbid).GetMethod((nameof(GetWorkType))));
+                    yield return new CodeInstruction(OpCodes.Call, typeof(LaborExclusionUtility).GetMethod((nameof(LaborExclusionUtility.IsDisabledByLabor))));
                     yield return new CodeInstruction(OpCodes.Brtrue, ci.operand);
                 }
             }
@@ -112,4 +112,3 @@ namespace PrisonLabor.HarmonyPatches
         }
     }
 }
- 

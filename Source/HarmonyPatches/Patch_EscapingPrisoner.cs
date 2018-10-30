@@ -19,7 +19,7 @@ namespace PrisonLabor.HarmonyPatches
         {
             Label restOfMethod = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_1);
-            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_EscapingPrisoner).GetMethod("IsReadyToEscape"));
+            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_EscapingPrisoner).GetMethod(nameof(IsReadyToEscape)));
             yield return new CodeInstruction(OpCodes.Brtrue, restOfMethod);
             yield return new CodeInstruction(OpCodes.Ldnull);
             yield return new CodeInstruction(OpCodes.Ret);

@@ -82,7 +82,7 @@ namespace PrisonLabor.CompatibilityPatches
                 {
                     if (ci.opcode == OpCodes.Beq)
                     {
-                        yield return new CodeInstruction(OpCodes.Call, typeof(SeedsPlease_WorkDriver_Patch).GetMethod("CorrectCondition"));
+                        yield return new CodeInstruction(OpCodes.Call, typeof(SeedsPlease_WorkDriver_Patch).GetMethod(nameof(CorrectCondition)));
                         yield return new CodeInstruction(OpCodes.Brfalse, ci.operand);
                         step++;
                     }

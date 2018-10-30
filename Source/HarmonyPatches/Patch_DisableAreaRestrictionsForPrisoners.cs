@@ -23,7 +23,7 @@ namespace PrisonLabor.Harmony
             var jumpTo = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_2);
             yield return new CodeInstruction(OpCodes.Call,
-                typeof(DisableAreaRestrictionsForPrisoners).GetMethod("isPrisoner"));
+                typeof(DisableAreaRestrictionsForPrisoners).GetMethod(nameof(isPrisoner)));
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             yield return new CodeInstruction(OpCodes.Ret);
 

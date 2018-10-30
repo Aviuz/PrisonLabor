@@ -63,7 +63,7 @@ namespace PrisonLabor.HarmonyPatches
                 {
                     yield return new CodeInstruction(OpCodes.Ldarg_1);
                     yield return new CodeInstruction(OpCodes.Ldloc_1);
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillPrevention).GetMethod("IsForCertainGroup"));
+                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillPrevention).GetMethod(nameof(IsForCertainGroup)));
                     yield return new CodeInstruction(OpCodes.Brfalse, label);
                 }
             }

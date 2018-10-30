@@ -20,7 +20,7 @@ namespace PrisonLabor.Harmony
             yield return new CodeInstruction(OpCodes.Ldarg_0);
             yield return new CodeInstruction(OpCodes.Ldarg_1);
             yield return new CodeInstruction(OpCodes.Call,
-                typeof(WorkSettings).GetMethod("WorkDisabled", new[] {typeof(Pawn), typeof(WorkTypeDef)}));
+                typeof(WorkSettings).GetMethod(nameof(WorkSettings.WorkDisabled), new[] {typeof(Pawn), typeof(WorkTypeDef)}));
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             //Load string TODO translate

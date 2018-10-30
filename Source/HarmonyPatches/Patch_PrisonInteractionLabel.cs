@@ -18,10 +18,10 @@ namespace PrisonLabor.HarmonyPatches
             // create our WORK label
             var jumpTo = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_0);
-            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_PrisonInteractionLabel).GetMethod("getLabelWork"));
+            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_PrisonInteractionLabel).GetMethod(nameof(getLabelWork)));
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             yield return new CodeInstruction(OpCodes.Ldarg_0);
-            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_PrisonInteractionLabel).GetMethod("getLabelWork"));
+            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_PrisonInteractionLabel).GetMethod(nameof(getLabelWork)));
             yield return new CodeInstruction(OpCodes.Ret);
 
             var first = true;

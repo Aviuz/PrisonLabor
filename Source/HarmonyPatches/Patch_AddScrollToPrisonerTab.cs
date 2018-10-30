@@ -80,7 +80,7 @@ namespace PrisonLabor.HarmonyPatches
                 // end scroll
                 if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "AddScrollToPrisonerTab2"))
                 {
-                    var instruction = new CodeInstruction(OpCodes.Call, typeof(Patch_AddScrollToPrisonerTab).GetMethod("StopScrolling"));
+                    var instruction = new CodeInstruction(OpCodes.Call, typeof(Patch_AddScrollToPrisonerTab).GetMethod(nameof(StopScrolling)));
                     instruction.labels.AddRange(ci.labels);
                     ci.labels.Clear();
                     yield return instruction;
@@ -89,7 +89,7 @@ namespace PrisonLabor.HarmonyPatches
                 // resize
                 if (HPatcher.IsFragment(opCodes3, operands3, ci, ref step3, "AddScrollToPrisonerTab3"))
                 {
-                    
+
                 }
 
                 yield return ci;
@@ -98,7 +98,7 @@ namespace PrisonLabor.HarmonyPatches
                 if (HPatcher.IsFragment(opCodes1, operands1, ci, ref step1, "AddScrollToPrisonerTab1"))
                 {
                     yield return new CodeInstruction(OpCodes.Ldloc_S, rect);
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_AddScrollToPrisonerTab).GetMethod("StartScrolling"));
+                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_AddScrollToPrisonerTab).GetMethod(nameof(StartScrolling)));
                     yield return new CodeInstruction(OpCodes.Stloc_S, rect);
                 }
             }

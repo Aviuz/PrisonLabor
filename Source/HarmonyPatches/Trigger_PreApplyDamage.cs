@@ -22,7 +22,7 @@ namespace PrisonLabor.HarmonyPatches
                     yield return new CodeInstruction(OpCodes.Ldarg_1);
                     yield return new CodeInstruction(OpCodes.Ldarg_2);
                     yield return new CodeInstruction(OpCodes.Ldind_I1);
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Trigger_PreApplyDamage).GetMethod("Trigger"));
+                    yield return new CodeInstruction(OpCodes.Call, typeof(Trigger_PreApplyDamage).GetMethod(nameof(Trigger)));
                 }
 
                 yield return ci;
