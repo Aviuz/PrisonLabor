@@ -21,7 +21,7 @@ namespace PrisonLabor.HarmonyPatches
             yield return new CodeInstruction(OpCodes.Ldarg_0);
             yield return new CodeInstruction(OpCodes.Dup);
             yield return new CodeInstruction(OpCodes.Ldfld, priorities);
-            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_JailorTypeSaveCompatibility).GetMethod("AddJailor"));
+            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_JailorTypeSaveCompatibility).GetMethod(nameof(AddJailor)));
             //yield return new CodeInstruction(OpCodes.Pop);
             //yield return new CodeInstruction(OpCodes.Ldarg_0);
             yield return new CodeInstruction(OpCodes.Stfld, priorities);

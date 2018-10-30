@@ -242,7 +242,7 @@ namespace PrisonLabor.HarmonyPatches
                 yield return new CodeInstruction(OpCodes.Ldarg_2);
                 //Call function
                 yield return new CodeInstruction(OpCodes.Call,
-                    typeof(ReservedByPrisonerPatch).GetMethod("CanHaulAndInPrisonCell"));
+                    typeof(ReservedByPrisonerPatch).GetMethod(nameof(CanHaulAndInPrisonCell)));
                 //Return
                 yield return new CodeInstruction(OpCodes.Ret);
             }

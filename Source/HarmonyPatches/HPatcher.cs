@@ -36,7 +36,7 @@ namespace PrisonLabor.HarmonyPatches
             }
             catch (Exception e)
             {
-                Log.Error($"PrisonLaborException: failed to proceed harmony patches: {e.Message}");
+                Log.Error($"PrisonLaborException: failed to proceed harmony patches: {e.InnerException.Message}");
             }
 
             // SECTION - Patches with references in method
@@ -61,7 +61,7 @@ namespace PrisonLabor.HarmonyPatches
             }
             catch (Exception e)
             {
-                Log.Error($"PrisonLaborException: failed to proceed harmony patches (reference section): {e.Message}");
+                Log.Error($"PrisonLaborException: failed to proceed harmony patches (reference section): {e.InnerException.Message}");
             }
         }
 

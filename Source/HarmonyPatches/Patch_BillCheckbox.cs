@@ -79,8 +79,7 @@ namespace PrisonLabor.HarmonyPatches
                     yield return injectedInstruction;
                     yield return new CodeInstruction(OpCodes.Ldarg_0);
                     yield return new CodeInstruction(OpCodes.Ldfld, billField);
-                    yield return new CodeInstruction(OpCodes.Call,
-                        typeof(Patch_BillCheckbox).GetMethod("GroupExclusionButton"));
+                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillCheckbox).GetMethod(nameof(GroupExclusionButton)));
                     ci.labels.Clear();
                 }
 
