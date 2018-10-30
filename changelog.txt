@@ -1,5 +1,6 @@
 Changelog:
 0.10.0
+- added sub-tabs in "Work" Tab and "Assign" Tab for "Colonists" and "Prisoners"
 - fixed food reservation throwing errors
 - added prisoner sucicides
 - added +5 bonus to mood while prisoner have free time
@@ -22,6 +23,8 @@ Changelog:
 - fixed blurred effect on settings window
 0.9.9
 - added sub-tabs in "Work" Tab and "Assign" Tab for "Colonists" and "Prisoners"
+0.9.8
+- fixed SeedsPlease compatibility
 0.9.7
 - added warning message before placing labor area for the first time
 0.9.6
