@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_PrisonerWork>Zmuś do pracy</PrisonLabor_PrisonerWork>
+	<PrisonLabor_WorkAndRecruit>Praca i próba rekrutacji</PrisonLabor_WorkAndRecruit>
+	<PrisonLabor_LazyPrisonerMessage>Twój więzień przestał pracować!</PrisonLabor_LazyPrisonerMessage>
+	<PrisonLabor_WardenResponeThreshold>Próg reakcji strażnika</PrisonLabor_WardenResponeThreshold>
+	<PrisonLabor_StoppingWorkThreshold>Próg przerywania pracy</PrisonLabor_StoppingWorkThreshold>
+	<PrisonLabor_WorkTypeDisabled>Prace zakazane dla więźniów</PrisonLabor_WorkTypeDisabled>
+	<PrisonLabor_ShowNews>Pokaż aktualne informacje</PrisonLabor_ShowNews>
+	<PrisonLabor_ShowNewsDesc>Pokazuje aktualności o zmianach w modzie, gdy wykrywani są więźniowie.</PrisonLabor_ShowNewsDesc>
+	<PrisonLabor_DefaultInterMode>Domyślna opcja interakcji z więźniami</PrisonLabor_DefaultInterMode>
+	<PrisonLabor_AllowedWorkTypes>Dozwolone typy pracy:</PrisonLabor_AllowedWorkTypes>
+	<PrisonLabor_AllowAll>zezwól na wszystko</PrisonLabor_AllowAll>
+	<PrisonLabor_AllowAllWorktypes>zezwól na wszystkie typy pracy</PrisonLabor_AllowAllWorktypes>
+	<PrisonLabor_AllowedWorktypesL>dozwolone typy pracy:</PrisonLabor_AllowedWorktypesL>
+	<PrisonLabor_Browse>przeglądaj</PrisonLabor_Browse>
+	<PrisonLabor_MotivationMechanics>Mechanika motywacji (!)</PrisonLabor_MotivationMechanics>
+	<PrisonLabor_MotivationWarning>Kiedy aktywna, więźniowie muszą być motywowani.\n\nUWAGA! Potrzebny restart.</PrisonLabor_MotivationWarning>
+	<PrisonLabor_MotivationIcons>Ikony Inspiracji/Motywacji</PrisonLabor_MotivationIcons>
+	<PrisonLabor_MotivationIconsDesc>Kiedy aktywne, nad głowami więźniów będą pojawiać się ikony. Niebieska dla inspiracji, i zielona gdy więzień jest motywowany w inny sposób.</PrisonLabor_MotivationIconsDesc>
+	<PrisonLabor_CanGrowAdvanced>Więźniowie mogą sadzić zaawansowane rośliny</PrisonLabor_CanGrowAdvanced>
+	<PrisonLabor_CanGrowAdvancedDesc>Kiedy wyłączone, więźniowie mogą sadzić tylko rośliny które nie wymagają żadnych specjalnych zdolności.</PrisonLabor_CanGrowAdvancedDesc>
+	<PrisonLabor_RestartInfo>Zrestartuj, a następnie ponownie zapisz swoją grę.</PrisonLabor_RestartInfo>
+	<PrisonLabor_RestartInfo2>Po tych krokach możesz bezpiecznie wyłączyć tego moda.</PrisonLabor_RestartInfo2>
+	<PrisonLabor_DisableMod>Wyłącz modyfikację</PrisonLabor_DisableMod>
+	<PrisonLabor_DisableModDesc>Kiedy aktywne, światy które są zapisane, są przenoszone do "trybu bezpiecznego", i mogą być rozgrywane bez moda.</PrisonLabor_DisableModDesc>
+	<PrisonLabor_Version>Wersja:</PrisonLabor_Version>
+	<PrisonLabor_Difficulty>Poziom trudności:</PrisonLabor_Difficulty>
+	<PrisonLabor_Defaults>Domyślny</PrisonLabor_Defaults>
+	<PrisonLabor_DifficultyNormal>Normalny</PrisonLabor_DifficultyNormal>
+	<PrisonLabor_DifficultyCasual>Lekko łatwy</PrisonLabor_DifficultyCasual>
+	<PrisonLabor_DifficultyEasy>Łatwy</PrisonLabor_DifficultyEasy>
+	<PrisonLabor_DifficultyPeaceful>Pokojowy</PrisonLabor_DifficultyPeaceful>
+	<PrisonLabor_DifficultyJoke>Żart</PrisonLabor_DifficultyJoke>
+	<PrisonLabor_LazyPrisonerAlert>Więźniowie nie pracują</PrisonLabor_LazyPrisonerAlert>
+	<PrisonLabor_LazyPrisonerExplanationDef>Więźniowie są leniwi. Spróbuj ich zmotywować</PrisonLabor_LazyPrisonerExplanationDef>
+	<PrisonLabor_LazyPrisonerExplanation>Ci więźniowie są leniwi:\n\n{0}\nSpróbuj ich zmotywować.</PrisonLabor_LazyPrisonerExplanation>
+	<PrisonLabor_StarvingPrisonerAlert>Więźniowie głodują</PrisonLabor_StarvingPrisonerAlert>
+	<PrisonLabor_StarvingPrisonerExplanationDef>Więźniowie głodują i nie pracują</PrisonLabor_StarvingPrisonerExplanationDef>
+	<PrisonLabor_StarvingPrionserExplanation>Ci więźniowie głodują i nie będą pracować:\n\n{0}</PrisonLabor_StarvingPrionserExplanation>
+	<PrisonLabor_LaborArea>Obszar Pracy Więźniów</PrisonLabor_LaborArea>
+	<PrisonLabor_LaborAreaDesc>Obszar pracy gdzie mogą pracować tylko więźniowie. Praca kolonistów nie jest tutaj dozwolona za wyjątkiem pracy straźniczej.</PrisonLabor_LaborAreaDesc>
+	<PrisonLabor_ClearLaborArea>Usuń Obszar Pracy Więźniów</PrisonLabor_ClearLaborArea>
+	<PrisonLabor_ExpandLaborArea>Powiększ Obszar Pracy</PrisonLabor_ExpandLaborArea>
+	<PrisonLabor_ColonistsOnly>Koloniści</PrisonLabor_ColonistsOnly>
+	<PrisonLabor_PrisonersOnly>Więźniowie</PrisonLabor_PrisonersOnly>
+	<PrisonLabor_ColonyOnly>Wszyscy</PrisonLabor_ColonyOnly>
+	<PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
+	<PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
+	<PrisonLabor_LaborAreaWarning>Labor area isn't required to make prisoners work.\n\nThis area forbids colonists from working.\n\nIt's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</PrisonLabor_LaborAreaWarning>
+	<PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
+</LanguageData>

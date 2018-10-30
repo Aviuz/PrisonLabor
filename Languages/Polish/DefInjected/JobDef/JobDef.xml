@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_PrisonerSupervise.reportString>pilnuje więźnia TargetA.</PrisonLabor_PrisonerSupervise.reportString>
+	<PrisonLabor_DeliverFood_Tweak.reportString>karmi TargetA TargetB.</PrisonLabor_DeliverFood_Tweak.reportString>
+	<PrisonLabor_Mine_Tweak.reportString>kopie TargetA.</PrisonLabor_Mine_Tweak.reportString>
+	<PrisonLabor_Harvest_Tweak.reportString>zbiera TargetA.</PrisonLabor_Harvest_Tweak.reportString>
+	<PrisonLabor_CutPlant_Tweak.reportString>wycina TargetA.</PrisonLabor_CutPlant_Tweak.reportString>
+</LanguageData>
