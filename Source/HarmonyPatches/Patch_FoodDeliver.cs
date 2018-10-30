@@ -118,7 +118,7 @@ namespace PrisonLabor.HarmonyPatches
                 }
             }
 
-            static Predicate<Thing> AddContitionToPredicate(Predicate<Thing> predicate, Pawn getter, Pawn eater, bool desperate)
+            public static Predicate<Thing> AddContitionToPredicate(Predicate<Thing> predicate, Pawn getter, Pawn eater, bool desperate)
             {
                 return new Predicate<Thing>(target =>
                 {
