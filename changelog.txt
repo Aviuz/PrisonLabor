@@ -1,4 +1,6 @@
 Changelog:
+0.9.8
+- fixed SeedsPlease compatibility
 0.9.7
 - added warning message before placing labor area for the first time
 0.9.6
