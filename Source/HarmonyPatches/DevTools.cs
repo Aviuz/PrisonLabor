@@ -52,6 +52,16 @@ namespace PrisonLabor.HarmonyPatches
                     OffsetNeed(p, Need_Treatment.Def, -0.1f);
                 }
             });
+            // Turn into prisoner
+            menu.DebugToolMapForPawns("Tool: Turn into prisoner", delegate (Pawn p)
+            {
+                p.guest.SetGuestStatus(Faction.OfPlayer, true);
+            });
+            // Set free
+            menu.DebugToolMapForPawns("Tool: Set free", delegate (Pawn p)
+            {
+                p.guest.SetGuestStatus(null, false);
+            });
         }
 
         #region Utilities
