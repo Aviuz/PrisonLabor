@@ -82,6 +82,7 @@
     <Compile Include="HarmonyPatches\Patch_JailorTypeSaveCompatibility.cs" />
     <Compile Include="HarmonyPatches\Patch_LaborForbid.cs" />
     <Compile Include="HarmonyPatches\Patch_NeedOnlyByPrisoners.cs" />
+    <Compile Include="HarmonyPatches\Patch_PawnTableSetDirtyFix.cs" />
     <Compile Include="HarmonyPatches\Patch_PrisonInteractionLabel.cs" />
     <Compile Include="HarmonyPatches\Patch_RemoveBillFromUtility.cs" />
     <Compile Include="HarmonyPatches\Patch_RemoveHediffIfDisabled.cs" />
@@ -94,7 +95,6 @@
     <Compile Include="HarmonyPatches\Patch_TimetableFix.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable2.cs" />
-    <Compile Include="HarmonyPatches\Patch_WorkTab.cs" />
     <Compile Include="HediffGiver_PrisonersChains.cs" />
     <Compile Include="HediffManager.cs" />
     <Compile Include="IncidentWorker_Revolt.cs" />
