@@ -99,6 +99,7 @@
     <Compile Include="HarmonyPatches\Patch_WorkDisable.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable2.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkTab.cs" />
+    <Compile Include="HarmonyPatches\Trigger_AddHumanlikeOrders.cs" />
     <Compile Include="HarmonyPatches\Trigger_PreApplyDamage.cs" />
     <Compile Include="HediffGiver_PrisonersChains.cs" />
     <Compile Include="HediffManager.cs" />
@@ -145,8 +146,9 @@
     <Compile Include="Tweaks\WorkGiver_GrowerSow_Tweak.cs" />
     <Compile Include="Initialization.cs" />
     <Compile Include="VersionUtility.cs" />
-    <Compile Include="WorkGiver_Supervise.cs" />
+    <Compile Include="ArrestUtility.cs" />
     <Compile Include="Tweaks\WorkGiver_Warden_DeliverFood_Tweak.cs" />
+    <Compile Include="WorkGiver_Supervise.cs" />
     <Compile Include="WorkSettings.cs" />
   </ItemGroup>
   <ItemGroup>
