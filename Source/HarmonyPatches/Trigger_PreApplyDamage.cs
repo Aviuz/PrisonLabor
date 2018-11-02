@@ -35,7 +35,10 @@ namespace PrisonLabor.HarmonyPatches
                 return;
 
             Pawn attacker = dinfo.Instigator as Pawn;
-            Pawn victim = (Pawn)(typeof(Pawn_HealthTracker).GetField("pawn", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(instance));
+            Pawn victim = (Pawn)(typeof(Pawn_HealthTracker).GetField("pawn", BindingFlags.NonPublic | BindingFlags.Instance)?.GetValue(instance));
+
+            if (attacker == null || victim == null)
+                return;
 
             if (victim.IsPrisonerOfColony && attacker.IsColonist)
             {

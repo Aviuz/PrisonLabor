@@ -13,6 +13,8 @@ namespace PrisonLabor_Tests
     {
         static void Main(string[] args)
         {
+            SortingVersion.Test();
+
             var pawn1 = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
             var pawn2 = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist);
             var job = new Job(JobDefOf.PrisonerAttemptRecruit, new LocalTargetInfo(pawn1));
