@@ -104,9 +104,11 @@
     <Compile Include="Behaviour_MotivationIcon.cs" />
     <Compile Include="InspirationUtility.cs" />
     <Compile Include="Need_Motivation.cs" />
+    <Compile Include="PawnTable_Prisoners.cs" />
     <Compile Include="PrisonerFoodReservation.cs" />
     <Compile Include="PrisonLaborDefOf.cs" />
     <Compile Include="PrisonLaborUtility.cs" />
+    <Compile Include="PrisonLaborWidgets.cs" />
     <Compile Include="SettingsMenu.cs" />
     <Compile Include="SelectWorkTypesDialog.cs" />
     <Compile Include="NewsDialog.cs" />
@@ -124,6 +126,8 @@
     <Compile Include="Tweaks\JobDriver_PlantHarvest_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_PlantWork_Tweak.cs" />
     <Compile Include="Tweaks\ClassInjector.cs" />
+    <Compile Include="Tweaks\MainTabWindow_Assign_Tweak.cs" />
+    <Compile Include="Tweaks\MainTabWindow_Work_Tweak.cs" />
     <Compile Include="Tweaks\WorkGiver_CleanFilth_Tweak.cs" />
     <Compile Include="Tweaks\WorkGiver_GrowerSow_Tweak.cs" />
     <Compile Include="Initialization.cs" />

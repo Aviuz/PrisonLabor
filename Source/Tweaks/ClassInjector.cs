@@ -11,8 +11,20 @@ namespace PrisonLabor.Tweaks
     {
         public static void Init()
         {
+            UITweaks();
             JobTweaks();
             SplitWardenType();
+        }
+
+        private static void UITweaks()
+        {
+            // Replace work tab with custom one
+            var workTab = DefDatabase<MainButtonDef>.GetNamed("Work");
+            workTab.tabWindowClass = typeof(MainTabWindow_Work_Tweak);
+
+            // Replace assign tab with custom one
+            var assignTab = DefDatabase<MainButtonDef>.GetNamed("Assign");
+            assignTab.tabWindowClass = typeof(MainTabWindow_Assign_Tweak);
         }
 
         private static void JobTweaks()
