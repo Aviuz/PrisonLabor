@@ -56,7 +56,7 @@ namespace PrisonLabor.HarmonyPatches
 
                 foreach (var instr in instructions)
                 {
-                    if (HPatcher.IsFragment(opCodes, operands, instr, ref step, nameof(Patch_RenamePrisoners) + nameof(EnableRenamingPrisoners), true))
+                    if (HPatcher.IsFragment(opCodes, operands, instr, ref step, nameof(Patch_RenamePrisoners) + nameof(EnableRenamingPrisoners)))
                     {
                         yield return new CodeInstruction(OpCodes.Call, typeof(EnableRenamingPrisoners).GetMethod(nameof(IsColonistOrPrisonerOfColony)));
                     }

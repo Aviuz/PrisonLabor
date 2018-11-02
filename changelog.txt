@@ -22,6 +22,7 @@ Changelog:
 - fixed blurred effect on settings window
 0.9.9
 - added sub-tabs in "Work" Tab and "Assign" Tab for "Colonists" and "Prisoners"
+- added renaming Prisoners for imprisonment time (pawns will restore old names after releasing)
 0.9.8
 - fixed SeedsPlease compatibility
 0.9.7
