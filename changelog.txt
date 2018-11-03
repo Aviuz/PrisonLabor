@@ -20,6 +20,8 @@ Changelog:
 - added new hidden need "Treatment" that indicates level of prison treatment towards prisoner (WIP)
 - now work settings reset after prisoner is recruited, so it should fix some issues
 - fixed blurred effect on settings window
+0.9.10
+- hotfixed compatibility with Fluffy's WorkTab (still have some visual flaws)
 0.9.9
 - added sub-tabs in "Work" Tab and "Assign" Tab for "Colonists" and "Prisoners"
 - added renaming Prisoners for imprisonment time (pawns will restore old names after releasing)

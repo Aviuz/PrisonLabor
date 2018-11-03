@@ -54,10 +54,21 @@ namespace PrisonLabor
             // [img] ... [/img] for image (inside name of file)
             // [gap] for gap
 
+            // 0.9.10
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.10");
+                string[] itemsArray =
+                {
+                    "hotfixed compatibility with Fluffy's WorkTab (still have some visual flaws)",
+                };
+                itemsList.Add(itemsArray);
+            }
+
             // 0.9.9
             if (news_0_9_9 || showAll)
             {
-                titlesList.Add("Prison Labor Beta v0.9.8");
+                titlesList.Add("Prison Labor Beta v0.9.9");
                 string[] itemsArray =
                 {
                     "added sub-tabs in \"Work\" Tab and \"Assign\" Tab for \"Colonists\" and \"Prisoners\"",
