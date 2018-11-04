@@ -38,6 +38,8 @@ namespace PrisonLabor
 
         public static bool WorkTime(Pawn pawn)
         {
+            if (pawn.needs == null || pawn.needs.food == null || pawn.needs.rest == null)
+                return false;
             if (pawn.timetable == null)
                 return true;
             if (pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Work)
