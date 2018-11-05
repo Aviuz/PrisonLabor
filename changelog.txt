@@ -20,6 +20,8 @@ Changelog:
 - added new hidden need "Treatment" that indicates level of prison treatment towards prisoner (WIP)
 - now work settings reset after prisoner is recruited, so it should fix some issues
 - fixed blurred effect on settings window
+0.9.11
+- fixed compatibility with Fluffy's WorkTab (final)
 0.9.10
 - hotfixed compatibility with Fluffy's WorkTab (still have some visual flaws)
 0.9.9

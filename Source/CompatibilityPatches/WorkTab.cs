@@ -37,14 +37,15 @@ namespace PrisonLabor.CompatibilityPatches
 
     public class MainTabWindow_WorkTabMod_Tweak : MainTabWindow
     {
-        private MainTabWindow_PawnTable singleTab;
+        private const int TopMargin = 12;
 
-        protected IEnumerable<Pawn> colonistsAndPrisoners
+        private MainTabWindow_PawnTable pawnTab;
+
+        protected IEnumerable<Pawn> colonists => Find.CurrentMap.mapPawns.FreeColonists;
+        protected IEnumerable<Pawn> prisoners
         {
             get
             {
-                foreach (var pawn in Find.CurrentMap.mapPawns.FreeColonists)
-                    yield return pawn;
                 foreach (var pawn in Find.CurrentMap.mapPawns.PrisonersOfColony)
                 {
                     if (PrisonLaborUtility.LaborEnabled(pawn))
@@ -58,30 +59,58 @@ namespace PrisonLabor.CompatibilityPatches
 
         public static Type InnerTabType { get; set; }
 
+        public const int ColonistsTabIndex = 0;
+        public const int PrisonersTabIndex = 1;
+        private int currentTabIndex = 0;
+        private int lastTabIndex = 0;
+
         public MainTabWindow_WorkTabMod_Tweak()
         {
-            singleTab = Activator.CreateInstance(InnerTabType) as MainTabWindow_PawnTable;
-            if (singleTab == null)
+            pawnTab = Activator.CreateInstance(InnerTabType) as MainTabWindow_PawnTable;
+            if (pawnTab == null)
                 throw new Exception("PrisonLabor exception: wrong MainTabWindow_PawnTable type");
         }
 
         public override void DoWindowContents(Rect rect)
         {
-            singleTab.DoWindowContents(rect);
+            base.DoWindowContents(rect);
+
+            string[] tabs;
+            if (prisoners.Count() > 0)
+                tabs = new string[] { "PrisonLabor_ColonistsOnlyShort".Translate(), "PrisonLabor_PrisonersOnlyShort".Translate() };
+            else
+                tabs = new string[] { "PrisonLabor_ColonistsOnlyShort".Translate() };
+
+            Text.Font = GameFont.Small;
+            PrisonLaborWidgets.BeginTabbedView(rect, tabs, ref currentTabIndex);
+            rect.height -= PrisonLaborWidgets.HorizontalSpacing - TopMargin;
+            GUI.BeginGroup(new Rect(0, TopMargin, rect.width, rect.height));
+            if (currentTabIndex != lastTabIndex)
+            {
+                CreatePawnTable();
+                lastTabIndex = currentTabIndex;
+            }
+            pawnTab.DoWindowContents(rect);
+
+            GUI.EndGroup();
+            PrisonLaborWidgets.EndTabbedView();
         }
 
-        private bool IsTablesNull()
+        private bool IsTableNull()
         {
             var tableField = typeof(MainTabWindow_PawnTable).GetField("table", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-            var singleTable = tableField.GetValue(singleTab);
-            return singleTable == null;
+            var colonistTable = tableField.GetValue(pawnTab);
+            return colonistTable == null;
         }
 
-        private void CreateBothTables()
+        private void CreatePawnTable()
         {
             var tableField = typeof(MainTabWindow_PawnTable).GetField("table", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
 
-            tableField.SetValue(singleTab, CreateTable(singleTab, new Func<IEnumerable<Pawn>>(() => colonistsAndPrisoners)));
+            if (currentTabIndex == ColonistsTabIndex)
+                tableField.SetValue(pawnTab, CreateTable(pawnTab, new Func<IEnumerable<Pawn>>(() => colonists)));
+            else if(currentTabIndex == PrisonersTabIndex)
+                tableField.SetValue(pawnTab, CreateTable(pawnTab, new Func<IEnumerable<Pawn>>(() => prisoners)));
         }
 
         private PawnTable CreateTable(MainTabWindow_PawnTable pawnTable, Func<IEnumerable<Pawn>> pawnsFunc)
@@ -95,27 +124,27 @@ namespace PrisonLabor.CompatibilityPatches
 
         public override void Notify_ResolutionChanged()
         {
-            CreateBothTables();
+            CreatePawnTable();
             base.Notify_ResolutionChanged();
         }
 
         public override void PostOpen()
         {
-            if (IsTablesNull())
+            if (IsTableNull())
             {
-                CreateBothTables();
+                CreatePawnTable();
             }
             var setDirtyMethod = typeof(MainTabWindow_PawnTable).GetMethod("SetDirty", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-            setDirtyMethod.Invoke(singleTab, new object[] { });
+            setDirtyMethod.Invoke(pawnTab, new object[] { });
             Find.World.renderer.wantedMode = WorldRenderMode.None;
-            SetInitialSizeAndPosition();
         }
 
         public override Vector2 RequestedTabSize
         {
             get
             {
-                return new Vector2(singleTab.RequestedTabSize.x+1, singleTab.RequestedTabSize.y);
+                var cSize = pawnTab.RequestedTabSize;
+                return new Vector2(Math.Max(cSize.x, 0), Math.Max(cSize.y, 0) + TopMargin + PrisonLaborWidgets.TabHeight);
             }
         }
 

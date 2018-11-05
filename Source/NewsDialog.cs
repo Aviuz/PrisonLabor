@@ -54,6 +54,17 @@ namespace PrisonLabor
             // [img] ... [/img] for image (inside name of file)
             // [gap] for gap
 
+            // 0.9.11
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.11");
+                string[] itemsArray =
+                {
+                    "fixed compatibility with Fluffy's WorkTab (final)",
+                };
+                itemsList.Add(itemsArray);
+            }
+
             // 0.9.10
             if (showAll)
             {
