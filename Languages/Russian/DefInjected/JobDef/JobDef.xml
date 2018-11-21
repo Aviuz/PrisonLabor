@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_PrisonerSupervise.reportString>наблюдает за заключенным TargetA </PrisonLabor_PrisonerSupervise.reportString>
+	<PrisonLabor_DeliverFood_Tweak.reportString>кормит TargetB едой TargetA</PrisonLabor_DeliverFood_Tweak.reportString>
+	<PrisonLabor_Mine_Tweak.reportString>добывает TargetA</PrisonLabor_Mine_Tweak.reportString>
+	<PrisonLabor_Harvest_Tweak.reportString>собирает TargetA</PrisonLabor_Harvest_Tweak.reportString>
+	<PrisonLabor_CutPlant_Tweak.reportString>срезает TargetA</PrisonLabor_CutPlant_Tweak.reportString>
+</LanguageData>

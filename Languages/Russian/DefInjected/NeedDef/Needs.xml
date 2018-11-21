@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_Motivation.label>Мотивация</PrisonLabor_Motivation.label>
+	<PrisonLabor_Motivation.description>Мотивация указывает насколько заключенный мотивирован работать. Мотивация может улучшатся поселенцами что находятся неподалеку или надзирателями.</PrisonLabor_Motivation.description>
+</LanguageData>

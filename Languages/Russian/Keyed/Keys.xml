@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_PrisonerWork>Заставить работать</PrisonLabor_PrisonerWork>
+	<PrisonLabor_WorkAndRecruit>Работать и агитировать присоединится</PrisonLabor_WorkAndRecruit>
+	<PrisonLabor_LazyPrisonerMessage>Ваш раб прекратил работать!</PrisonLabor_LazyPrisonerMessage>
+	<PrisonLabor_WardenResponeThreshold>Уровень на котором заключенный отвечает надзирателю</PrisonLabor_WardenResponeThreshold>
+	<PrisonLabor_StoppingWorkThreshold>Уровень на котором заключенный прекращает работать</PrisonLabor_StoppingWorkThreshold>
+	<PrisonLabor_WorkTypeDisabled>Запрещенные типы работ для заключенных</PrisonLabor_WorkTypeDisabled>
+	<PrisonLabor_ShowNews>Показывать новости о заключенных</PrisonLabor_ShowNews>
+	<PrisonLabor_ShowNewsDesc>Показывать сообщения об изменениях в моде если он был установлен раньше</PrisonLabor_ShowNewsDesc>
+	<PrisonLabor_DefaultInterMode>Поведение с заключенными по умолчанию</PrisonLabor_DefaultInterMode>
+	<PrisonLabor_AllowedWorkTypes>Разрешенные типы работ</PrisonLabor_AllowedWorkTypes>
+	<PrisonLabor_AllowAll>разрешить все</PrisonLabor_AllowAll>
+	<PrisonLabor_AllowAllWorktypes>разрешить все типы работ</PrisonLabor_AllowAllWorktypes>
+	<PrisonLabor_AllowedWorktypesL>разрешить такие типы работ:</PrisonLabor_AllowedWorktypesL>
+	<PrisonLabor_Browse>просмотреть</PrisonLabor_Browse>
+	<PrisonLabor_MotivationMechanics>Механика мотивации заключенных (!)</PrisonLabor_MotivationMechanics>
+	<PrisonLabor_MotivationWarning>Если включитьто заключенныхнадо мотивировать. \n\n ПРЕДУПРЕЖЕНИЕ: надо перезагрузить сохранение</PrisonLabor_MotivationWarning>
+	<PrisonLabor_MotivationIcons>Иконки Вдохновления/Мотивации</PrisonLabor_MotivationIcons>
+	<PrisonLabor_MotivationIconsDesc>Если включить то над головами заключенных будут показаны иконки статуса. Синяя иконка - вдохновление, зеленая - мотивация полученная другим путем.</PrisonLabor_MotivationIconsDesc>
+	<PrisonLabor_CanGrowAdvanced>Заключенные могут сажать изученные растения.</PrisonLabor_CanGrowAdvanced>
+	<PrisonLabor_CanGrowAdvancedDesc>Если отключить то заключенные могут сажать только самые базовые растения.</PrisonLabor_CanGrowAdvancedDesc>
+	<PrisonLabor_RestartInfo>Перезапустите и сохраните игру повторно.</PrisonLabor_RestartInfo>
+	<PrisonLabor_RestartInfo2>После етих действий можно безопасно для сохранений, которые перезаписали, отключить мод.</PrisonLabor_RestartInfo2>
+	<PrisonLabor_DisableMod>Отключить мод.</PrisonLabor_DisableMod>
+	<PrisonLabor_DisableModDesc>Если включить, то сохранения в которых включен "безопасный режим" можно загружать без него.</PrisonLabor_DisableModDesc>
+	<PrisonLabor_Version>Версия:</PrisonLabor_Version>
+	<PrisonLabor_Difficulty>Сложность:</PrisonLabor_Difficulty>
+	<PrisonLabor_Defaults>По умолчанию</PrisonLabor_Defaults>
+	<PrisonLabor_DifficultyNormal>Нормально</PrisonLabor_DifficultyNormal>
+	<PrisonLabor_DifficultyCasual>Казуальненько</PrisonLabor_DifficultyCasual>
+	<PrisonLabor_DifficultyEasy>Легко</PrisonLabor_DifficultyEasy>
+	<PrisonLabor_DifficultyPeaceful>Мирно</PrisonLabor_DifficultyPeaceful>
+	<PrisonLabor_DifficultyJoke>Шуточная</PrisonLabor_DifficultyJoke>
+	<PrisonLabor_LazyPrisonerAlert>Заключенные не работают.</PrisonLabor_LazyPrisonerAlert>
+	<PrisonLabor_LazyPrisonerExplanationDef>Заключенные ленятся. Пора промотивировать их.</PrisonLabor_LazyPrisonerExplanationDef>
+	<PrisonLabor_LazyPrisonerExplanation>Эти заключенные ленятся: \n\n{0}\n Их надокакто промотивироватьЄ</PrisonLabor_LazyPrisonerExplanation>
+	<PrisonLabor_StarvingPrisonerAlert>Заключенные голодают</PrisonLabor_StarvingPrisonerAlert>
+	<PrisonLabor_StarvingPrisonerExplanationDef>Заключенные голодают и не будут работать.</PrisonLabor_StarvingPrisonerExplanationDef>
+	<PrisonLabor_StarvingPrionserExplanation>Эти заключенные голодают и не будут работать: \n\n{0}</PrisonLabor_StarvingPrionserExplanation>
+	<PrisonLabor_LaborArea>Зона работ для заключенных</PrisonLabor_LaborArea>
+	<PrisonLabor_LaborAreaDesc>Зона работ - зона гдетолько заключенные могут работать. Поселенцы не будут раюотать в зоне работ для заключенных.</PrisonLabor_LaborAreaDesc>
+	<PrisonLabor_ClearLaborArea>Сузить зону работ.</PrisonLabor_ClearLaborArea>
+	<PrisonLabor_ExpandLaborArea>Расширить зону работ.</PrisonLabor_ExpandLaborArea>
+	<PrisonLabor_ColonistsOnly>Только для поселенцев</PrisonLabor_ColonistsOnly>
+	<PrisonLabor_PrisonersOnly>Только для заключенных</PrisonLabor_PrisonersOnly>
+	<PrisonLabor_ColonyOnly>Для поселения</PrisonLabor_ColonyOnly>
+	<PrisonLabor_EnableRevolts>Разрешить бунты</PrisonLabor_EnableRevolts>
+	<PrisonLabor_EnableRevoltsDesc>Если включить то бунт может случатся в качестве случайного события.</PrisonLabor_EnableRevoltsDesc>
+	<PrisonLabor_LaborAreaWarning>Зона работ не обязательна для того чтоб заключенные работали. \n\n Зона работ запрещает поселенцам работу в указанных местах.\n\n Она создана для тех случаев, когда вы не хотите чтобы поселенцы работали в указанном месте. Заключенные же будут работать там, куда у них есть доступ.</PrisonLabor_LaborAreaWarning>
+	<PrisonLabor_DontShowAgain>Больше не показывать</PrisonLabor_DontShowAgain>
+</LanguageData>

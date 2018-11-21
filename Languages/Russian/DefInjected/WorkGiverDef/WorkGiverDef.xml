@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData> 
+	<PrisonLabor_SupervisePrisonLabor.label>надзирать за заключенным</PrisonLabor_SupervisePrisonLabor.label>
+	<PrisonLabor_SupervisePrisonLabor.verb>надзирать за заключенным</PrisonLabor_SupervisePrisonLabor.verb>
+	<PrisonLabor_SupervisePrisonLabor.gerund>надзирает за заключенным</PrisonLabor_SupervisePrisonLabor.gerund>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.label>приносить еду заключенным</PrisonLabor_DeliverFoodToPrisoner_Tweak.label>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>принести еду для</PrisonLabor_DeliverFoodToPrisoner_Tweak.verb>
+	<PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>несет еду для</PrisonLabor_DeliverFoodToPrisoner_Tweak.gerund>
+	<PrisonLabor_Mine_Tweak.label>добывать</PrisonLabor_Mine_Tweak.label>
+	<PrisonLabor_Mine_Tweak.verb>добывать</PrisonLabor_Mine_Tweak.verb>
+	<PrisonLabor_Mine_Tweak.gerund>добывает</PrisonLabor_Mine_Tweak.gerund>
+	<PrisonLabor_PlantsCut_Tweak.label>срезать растения</PrisonLabor_PlantsCut_Tweak.label>
+	<PrisonLabor_PlantsCut_Tweak.verb>срезать</PrisonLabor_PlantsCut_Tweak.verb>
+	<PrisonLabor_PlantsCut_Tweak.gerund>срезать</PrisonLabor_PlantsCut_Tweak.gerund>
+	<PrisonLabor_GrowerHarvest_Tweak.label>собирать урожай</PrisonLabor_GrowerHarvest_Tweak.label>
+	<PrisonLabor_GrowerHarvest_Tweak.verb>собирать</PrisonLabor_GrowerHarvest_Tweak.verb>
+	<PrisonLabor_GrowerHarvest_Tweak.gerund>собирает</PrisonLabor_GrowerHarvest_Tweak.gerund>
+	<PrisonLabor_GrowerSow_Tweak.label>садить растения</PrisonLabor_GrowerSow_Tweak.label>
+	<PrisonLabor_GrowerSow_Tweak.verb>садить(растения)</PrisonLabor_GrowerSow_Tweak.verb>
+	<PrisonLabor_GrowerSow_Tweak.gerund>сажает</PrisonLabor_GrowerSow_Tweak.gerund>
+	<PrisonLabor_CleanFilth_Tweak.label>убирать мусор</PrisonLabor_CleanFilth_Tweak.label>
+	<PrisonLabor_CleanFilth_Tweak.verb>убирать</PrisonLabor_CleanFilth_Tweak.verb>
+	<PrisonLabor_CleanFilth_Tweak.gerund>убирает</PrisonLabor_CleanFilth_Tweak.gerund>
+</LanguageData>
