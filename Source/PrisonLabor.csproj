@@ -68,6 +68,7 @@
     <Compile Include="Designator_AreaLaborExpand.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
     <Compile Include="HarmonyPatches\Patch_AddLaborArea.cs" />
+    <Compile Include="HarmonyPatches\Patch_AddModVersionToFile.cs" />
     <Compile Include="HarmonyPatches\Patch_AddScrollToPrisonerTab.cs" />
     <Compile Include="HarmonyPatches\Patch_BillCheckbox.cs" />
     <Compile Include="HarmonyPatches\Patch_BillPrevention.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="HarmonyPatches\Patch_WorkDisable.cs" />
     <Compile Include="HarmonyPatches\Patch_WorkDisable2.cs" />
     <Compile Include="HarmonyPatches\Patch_PawnTableSetDirtyFix.cs" />
+    <Compile Include="HarmonyPatches\Triggers_UpgradeSave.cs" />
     <Compile Include="HarmonyPatches\Trigger_AddHumanlikeOrders.cs" />
     <Compile Include="HarmonyPatches\Trigger_PreApplyDamage.cs" />
     <Compile Include="HediffGiver_PrisonersChains.cs" />
@@ -141,6 +143,7 @@
     <Compile Include="Tweaks\ClassInjector.cs" />
     <Compile Include="Tweaks\MainTabWindow_Assign_Tweak.cs" />
     <Compile Include="Tweaks\MainTabWindow_Work_Tweak.cs" />
+    <Compile Include="Tweaks\SaveUpgrader.cs" />
     <Compile Include="Tweaks\WorkGiver_CleanFilth_Tweak.cs" />
     <Compile Include="Tweaks\WorkGiver_GrowerSow_Tweak.cs" />
     <Compile Include="Initialization.cs" />

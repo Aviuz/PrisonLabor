@@ -11,6 +11,8 @@ namespace PrisonLabor
         public const Version versionNumber = Version.v0_10_0;
         public const string versionString = "0.10.0";
 
+        public static Version VersionOfSaveFile { get; set; }
+
         public static void CheckVersion()
         {
             // Update actual version
