@@ -15,6 +15,7 @@
       		<li Class="ThinkNode_Priority">
       			<subNodes>
               <li Class="PrisonLabor.JobGiver_BedTime" />
+              <li Class="PrisonLabor.JobGiver_PickupWeapon" />
       				<li Class="PrisonLabor.JobGiver_Diet" />
       				<li Class="PrisonLabor.JobGiver_Labor" />
       			</subNodes>

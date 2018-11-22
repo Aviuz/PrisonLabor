@@ -6,13 +6,4 @@ Agenda:
   - Scheduled for implementation
   * Considered
 ==========================
- - rewrite jobs def (transfer to class injection if possible)
- - fix bug when prisoner is stuck on snow clearing
-
- - remake symbol for hypothermia
- - surrender/capture
- - robots mod
  - weapon pickups
- - fix bug when prisoner is stuck on snow clearing
- - construction job
- - deep drills JobGiver_DeepDrills.HasJobOnTHing()
