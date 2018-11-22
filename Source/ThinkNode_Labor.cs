@@ -29,8 +29,7 @@ namespace PrisonLabor
 
                 // Prisoner will escape if get ready to run.
                 // If he can run he will start ticking impatient, once complete he will get ready.
-                if (!pawn.guest.PrisonerIsSecure ||
-                        RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
+                if (!pawn.guest.PrisonerIsSecure || RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
                 {
                     need.CanEscape = true;
                     if (need.ReadyToRun)

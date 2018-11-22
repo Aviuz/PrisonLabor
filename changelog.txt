@@ -1,6 +1,6 @@
 Changelog:
 0.10.0
-- added sub-tabs in "Work" Tab and "Assign" Tab for "Colonists" and "Prisoners"
+- prisoners now will pick up weapons if treated bad
 - fixed food reservation throwing errors
 - added prisoner sucicides
 - added +5 bonus to mood while prisoner have free time
@@ -21,6 +21,7 @@ Changelog:
 - added new hidden need "Treatment" that indicates level of prison treatment towards prisoner (WIP)
 - now work settings reset after prisoner is recruited, so it should fix some issues
 - fixed blurred effect on settings window
+- fixed Revolts
 0.9.9
 - added sub-tabs in "Work" Tab and "Assign" Tab for "Colonists" and "Prisoners"
 0.9.8

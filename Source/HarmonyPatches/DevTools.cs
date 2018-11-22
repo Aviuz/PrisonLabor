@@ -13,8 +13,10 @@ namespace PrisonLabor.HarmonyPatches
     /// This patch is adding Prison Labor dev tools
     /// </summary>
     [HarmonyPatch(typeof(Dialog_DebugActionsMenu), "DoListingItems_MapTools")]
-    static class DevTools
+    public static class DevTools
     {
+        public static bool LogEscapeUtilityEnabled { get; set; }
+
         static void Postfix(Dialog_DebugActionsMenu __instance)
         {
             var menu = __instance;
@@ -61,6 +63,11 @@ namespace PrisonLabor.HarmonyPatches
             menu.DebugToolMapForPawns("Tool: Set free", delegate (Pawn p)
             {
                 p.guest.SetGuestStatus(null, false);
+            });
+            // Set free
+            menu.DebugAction("Toggle logging escape utility", ()=>
+            {
+                LogEscapeUtilityEnabled = !LogEscapeUtilityEnabled;
             });
         }
 

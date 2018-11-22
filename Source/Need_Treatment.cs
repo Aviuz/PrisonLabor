@@ -6,13 +6,20 @@ using Verse;
 
 namespace PrisonLabor
 {
+    /// <summary>
+    /// VeryGood:   4
+    /// Good:       3
+    /// Normal:     2
+    /// Bad:        1
+    /// VeryBad:    0
+    /// </summary>
     public enum TreatmentCategory : byte
     {
-        VeryGood = 0,
-        Good = 1,
+        VeryGood = 4,
+        Good = 3,
         Normal = 2,
-        Bad = 3,
-        VeryBad = 4,
+        Bad = 1,
+        VeryBad = 0,
     }
 
     public class Need_Treatment : Need
@@ -62,9 +69,7 @@ namespace PrisonLabor
             }
         }
 
-        public Need_Treatment(Pawn pawn) : base(pawn)
-        {
-        }
+        public Need_Treatment(Pawn pawn) : base(pawn) { }
 
         public override int GUIChangeArrow => 0;
 

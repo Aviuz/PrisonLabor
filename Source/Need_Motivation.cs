@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using PrisonLabor.HarmonyPatches;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -43,13 +44,35 @@ namespace PrisonLabor
 
         public bool IsLazy { get; private set; }
 
-        public bool ReadyToRun { get; private set; }
+        bool _readyToRun;
+        public bool ReadyToRun
+        {
+            get => _readyToRun;
+
+            private set
+            {
+                if (DevTools.LogEscapeUtilityEnabled && _readyToRun != value)
+                    Log.Message($"{pawn.Name.ToStringShort}.ReadyToRun = {value}");
+                _readyToRun = value;
+            }
+        }
 
         public int ReadyToRunPercentage => impatient * 100 / ReadyToRunLevel;
 
         public bool Inspired { get; private set; }
 
-        public bool CanEscape { get; set; }
+        bool _canEscape;
+        public bool CanEscape
+        {
+            get => _canEscape;
+
+            set
+            {
+                if (DevTools.LogEscapeUtilityEnabled && _canEscape != value)
+                    Log.Message($"{pawn.Name.ToStringShort}.CanEscape = {value}");
+                _canEscape = value;
+            }
+        }
 
         public float PercentageThreshNeedInsipration => NeedInspirationLevel;
 
