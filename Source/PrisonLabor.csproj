@@ -113,7 +113,7 @@
     <Compile Include="JobGiver_Diet.cs" />
     <Compile Include="JobGiver_PickupWeapon.cs" />
     <Compile Include="LaborExclusionUtility.cs" />
-    <Compile Include="Behaviour_MotivationIcon.cs" />
+    <Compile Include="MapComponent_Icons.cs" />
     <Compile Include="InspirationUtility.cs" />
     <Compile Include="Need_Treatment.cs" />
     <Compile Include="Need_Motivation.cs" />

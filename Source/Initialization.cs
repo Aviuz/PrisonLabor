@@ -21,7 +21,6 @@ namespace PrisonLabor
                 SettingsMenu.Init();
                 VersionUtility.CheckVersion();
                 Designator_AreaLabor.Initialization();
-                Behaviour_MotivationIcon.Initialization();
                 CompatibilityPatches.Initialization.Run();
                 HediffManager.Init();
 

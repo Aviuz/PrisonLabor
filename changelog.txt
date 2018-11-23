@@ -20,6 +20,7 @@ Changelog:
 - "Treatment happiness" will decrease if health conditions are bad, when prisoners are hungry, or they're working.
 - added new hidden need "Treatment" that indicates level of prison treatment towards prisoner (WIP)
 - now work settings reset after prisoner is recruited, so it should fix some issues
+- finally fixed "OnGui()" error, big thanks to @notfood (https://github.com/notfood)
 - fixed blurred effect on settings window
 - fixed Revolts
 0.9.9
