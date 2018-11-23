@@ -4,20 +4,12 @@ using Verse;
 
 namespace PrisonLabor
 {
-    internal class PrisonLaborUtility
+    internal static class PrisonLaborUtility
     {
-        private static PrisonerInteractionModeDef workDef;
-        private static PrisonerInteractionModeDef workAndRecruitDef;
-
-        public static bool LaborEnabled(Pawn pawn)
+        public static bool LaborEnabled(this Pawn pawn)
         {
-            if (workDef == null || workAndRecruitDef == null)
-            {
-                workDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption");
-                workAndRecruitDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workAndRecruitOption");
-            }
             if (pawn.IsPrisoner && !PrisonLaborPrefs.DisableMod)
-                if (pawn.guest.interactionMode == workDef || pawn.guest.interactionMode == workAndRecruitDef)
+                if (pawn.guest.interactionMode == PrisonLaborDefOf.PrisonLabor_workOption || pawn.guest.interactionMode == PrisonLaborDefOf.PrisonLabor_workAndRecruitOption)
                     return true;
 
             return false;
@@ -25,12 +17,7 @@ namespace PrisonLabor
 
         public static bool RecruitInLaborEnabled(Pawn pawn)
         {
-            if (workDef == null || workAndRecruitDef == null)
-            {
-                workDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workOption");
-                workAndRecruitDef = DefDatabase<PrisonerInteractionModeDef>.GetNamed("PrisonLabor_workAndRecruitOption");
-            }
-            if (pawn.guest.interactionMode == workAndRecruitDef && pawn.guest.ScheduledForInteraction && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
+            if (pawn.guest.interactionMode == PrisonLaborDefOf.PrisonLabor_workAndRecruitOption && pawn.guest.ScheduledForInteraction && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
                 return true;
 
             return false;

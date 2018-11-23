@@ -8,7 +8,7 @@ namespace PrisonLabor
     [StaticConstructorOnStartup]
     public class MapComponent_Icons : MapComponent
     {
-        private static readonly Texture2D inspiredTexture;
+        private static readonly Texture2D watchedTexture;
         private static readonly Texture2D motivatedTexture;
         private static readonly Texture2D freezingTexture;
         private static readonly Vector3 iconPos;
@@ -17,7 +17,7 @@ namespace PrisonLabor
 
         static MapComponent_Icons()
         {
-            inspiredTexture = ContentFinder<Texture2D>.Get("InspireIcon", false);
+            watchedTexture = ContentFinder<Texture2D>.Get("InspireIcon", false);
             motivatedTexture = ContentFinder<Texture2D>.Get("MotivateIcon", false);
             freezingTexture = ContentFinder<Texture2D>.Get("FreezingIcon", false);
             iconPos = new Vector3(0f, 0f, 1.3f);
@@ -68,12 +68,9 @@ namespace PrisonLabor
                             {
                                 DrawIcon(freezingTexture, pawn.DrawPos);
                             }
-                            else if (need.Motivated)
+                            else if (need.Watched)
                             {
-                                if (need.Inspired)
-                                    DrawIcon(inspiredTexture, pawn.DrawPos);
-                                else
-                                    DrawIcon(motivatedTexture, pawn.DrawPos);
+                                DrawIcon(watchedTexture, pawn.DrawPos);
                             }
                         }
                     }

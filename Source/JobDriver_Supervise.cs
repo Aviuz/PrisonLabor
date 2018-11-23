@@ -10,7 +10,7 @@ namespace PrisonLabor
     {
         private static readonly float GapLengh = 3.0f;
 
-        protected Pawn Prisoner => (Pawn) job.targetA.Thing;
+        protected Pawn Prisoner => (Pawn)job.targetA.Thing;
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
@@ -42,7 +42,7 @@ namespace PrisonLabor
                 int score = 0;
                 int curScore = 0;
                 bool found = false;
-                foreach(var cell in prisoner.GetRoom().Cells)
+                foreach (var cell in prisoner.GetRoom().Cells)
                 {
                     float distance = cell.DistanceTo(prisoner.InteractionCell);
                     if (distance < Need_Motivation.InpirationRange)
@@ -54,7 +54,7 @@ namespace PrisonLabor
 
                         foreach (var pawn in prisonersInRoom)
                             if (cell.DistanceTo(pawn.Position) < Need_Motivation.InpirationRange)
-                                curScore += 100;
+                                curScore += pawn.needs.TryGetNeed<Need_Motivation>().Watched ? 50 : 100;
 
                         if (curScore > score)
                         {
@@ -80,7 +80,7 @@ namespace PrisonLabor
 
         private IEnumerable<Pawn> PrisonersInRoom(Room room)
         {
-            foreach(var pawn in room.Map.mapPawns.PrisonersOfColony)
+            foreach (var pawn in room.Map.mapPawns.PrisonersOfColony.Where(p => p.LaborEnabled() && p.needs?.TryGetNeed<Need_Motivation>() != null))
             {
                 if (pawn.GetRoom() == room)
                     yield return pawn;

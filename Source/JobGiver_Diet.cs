@@ -40,7 +40,7 @@ namespace PrisonLabor
 
             var need = pawn.needs.TryGetNeed<Need_Motivation>();
             if (need != null)
-                need.PrisonerWorking = false;
+                need.IsPrisonerWorking = false;
 
             return base.TryGiveJob(pawn);
         }

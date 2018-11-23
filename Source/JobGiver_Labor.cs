@@ -36,7 +36,7 @@ namespace PrisonLabor
             {
                 Tutorials.Timetable();
                 if (need != null)
-                    need.PrisonerWorking = false;
+                    need.IsPrisonerWorking = false;
                 return ThinkResult.NoJob;
             }
             //Check motivation
@@ -48,7 +48,7 @@ namespace PrisonLabor
             //TODO check this
             //workList.RemoveAll(workGiver => workGiver.def.defName == "GrowerSow");
             if (need != null)
-                need.PrisonerWorking = false;
+                need.IsPrisonerWorking = false;
 
             var num = -999;
             var targetInfo = TargetInfo.Invalid;
@@ -66,7 +66,7 @@ namespace PrisonLabor
                         if (job2 != null)
                         {
                             if (need != null)
-                                need.PrisonerWorking = true;
+                                need.IsPrisonerWorking = true;
                             return new ThinkResult(job2, this, workList[j].def.tagToGive);
                         }
                         var scanner = workGiver as WorkGiver_Scanner;
@@ -162,7 +162,7 @@ namespace PrisonLabor
                         if (job3 != null)
                         {
                             if (need != null)
-                                need.PrisonerWorking = true;
+                                need.IsPrisonerWorking = true;
                             return new ThinkResult(job3, this, workList[j].def.tagToGive);
                         }
                         Log.ErrorOnce(

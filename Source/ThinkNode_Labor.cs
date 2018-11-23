@@ -32,7 +32,7 @@ namespace PrisonLabor
                 if (!pawn.guest.PrisonerIsSecure || RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
                 {
                     need.CanEscape = true;
-                    if (need.ReadyToRun)
+                    if (need.ReadyToEscape)
                         return false;
                 }
                 else
@@ -46,7 +46,7 @@ namespace PrisonLabor
                     return true;
                 }
 
-                need.PrisonerWorking = false;
+                need.IsPrisonerWorking = false;
             }
             return false;
         }

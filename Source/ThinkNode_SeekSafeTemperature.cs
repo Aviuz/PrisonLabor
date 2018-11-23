@@ -13,7 +13,7 @@ namespace PrisonLabor
                 var need = pawn.needs.TryGetNeed<Need_Motivation>();
                 if (need == null)
                     return true;
-                if (need.Inspired && PrisonLaborUtility.WorkTime(pawn))
+                if (need.Watched && PrisonLaborUtility.WorkTime(pawn))
                     return false;
                 return true;
             }

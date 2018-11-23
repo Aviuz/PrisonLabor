@@ -104,7 +104,7 @@ namespace PrisonLabor
 
             // Labor
             var motivation = pawn.needs.TryGetNeed<Need_Motivation>();
-            if (motivation != null && motivation.PrisonerWorking)
+            if (motivation != null && motivation.IsPrisonerWorking)
                 CurLevel += LaborRate;
         }
 

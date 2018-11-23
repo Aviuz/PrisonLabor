@@ -39,7 +39,7 @@ namespace PrisonLabor.HarmonyPatches
         public static bool IsReadyToEscape(Pawn pawn)
         {
             Need_Motivation need = pawn.needs.TryGetNeed<Need_Motivation>();
-            if (need != null && !need.ReadyToRun)
+            if (need != null && !need.ReadyToEscape)
                 return false;
             else
                 return true;

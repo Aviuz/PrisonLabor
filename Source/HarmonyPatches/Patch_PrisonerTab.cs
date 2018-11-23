@@ -70,7 +70,7 @@ namespace PrisonLabor.HarmonyPatches
             var pawn = Find.Selector.SingleSelectedThing as Pawn;
             var need = pawn.needs.TryGetNeed<Need_Motivation>();
             if (need != null)
-                listingStandard.Label("Dev: Ready to escape: " + (need.ReadyToRun ? "ready" : need.ReadyToRunPercentage + "%"), -1f);
+                listingStandard.Label("Dev: Ready to escape: " + (need.ReadyToEscape ? "ready" : need.ReadyToRunPercentage + "%"), -1f);
         }
 
         public static void AddRecruitButton(Listing_Standard listingStandard)

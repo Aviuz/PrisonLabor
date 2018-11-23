@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Verse;
 
 namespace PrisonLabor
@@ -28,19 +29,33 @@ namespace PrisonLabor
             foreach (var prisoner in prisoners)
                 inspirationValues[map][prisoner] = 0f;
 
-            var prisonersInRange = new List<Pawn>();
+            var inRange = new Dictionary<Pawn, float>();
             foreach (var warden in wardens)
             {
-                prisonersInRange.Clear();
+                inRange.Clear();
                 foreach (var prisoner in prisoners)
-                    if (warden.Position.DistanceTo(prisoner.Position) < Need_Motivation.InpirationRange &&
-                        prisoner.GetRoom() == warden.GetRoom())
-                        prisonersInRange.Add(prisoner);
+                {
+                    float distance = warden.Position.DistanceTo(prisoner.Position);
+                    if (distance < Need_Motivation.InpirationRange && prisoner.GetRoom() == warden.GetRoom())
+                        inRange.Add(prisoner, distance);
+                }
 
-                var delta = Need_Motivation.InspireRate / prisonersInRange.Count;
+                var watchedPawns = new List<Pawn>(inRange.Keys);
+                float points;
+                if (inRange.Count > Need_Motivation.WardenCapacity)
+                {
+                    watchedPawns.Sort(new Comparison<Pawn>((x, y) => inRange[x].CompareTo(inRange[y])));
+                    points = Need_Motivation.InspireRate / Need_Motivation.WardenCapacity;
+                }
+                else
+                {
+                    points = Need_Motivation.InspireRate / inRange.Count;
+                }
 
-                foreach (var prisoner in prisonersInRange)
-                    inspirationValues[map][prisoner] += delta;
+                for (int i = 0; i < watchedPawns.Count && i < Need_Motivation.WardenCapacity; i++)
+                {
+                    inspirationValues[map][watchedPawns[i]] += points;
+                }
             }
         }
     }

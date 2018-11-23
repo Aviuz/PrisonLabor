@@ -29,6 +29,8 @@ namespace PrisonLabor
 
         public override string GetExplanation()
         {
+            Tutorials.Motivation();
+
             var stringBuilder = new StringBuilder();
             foreach (var current in LazyPrisoners)
                 stringBuilder.AppendLine("    " + current.Name.ToStringShort);

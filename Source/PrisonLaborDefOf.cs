@@ -15,6 +15,7 @@ namespace PrisonLabor
 
         public static WorkTypeDef PrisonLabor_Jailor;
 
+        public static NeedDef PrisonLabor_Motivation;
         public static NeedDef PrisonLabor_Treatment;
     }
 }

@@ -21,7 +21,7 @@ namespace PrisonLabor.HarmonyPatches
             var endOfPatch = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_0);
             yield return new CodeInstruction(OpCodes.Ldarg_1);
-            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_ItemIsForbidden).GetMethod(nameof(NewForbidConditions)));
+            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_ItemIsForbidden).GetMethod(nameof(CustomForbidConditions)));
             yield return new CodeInstruction(OpCodes.Brfalse, endOfPatch);
             yield return new CodeInstruction(OpCodes.Ldc_I4_1);
             yield return new CodeInstruction(OpCodes.Ret);
@@ -38,12 +38,12 @@ namespace PrisonLabor.HarmonyPatches
             }
         }
 
-        public static bool NewForbidConditions(Thing thing, Pawn pawn)
+        public static bool CustomForbidConditions(Thing thing, Pawn pawn)
         {
             if (PrisonerFoodReservation.IsReserved(thing) && !pawn.IsPrisoner)
                 return true;
             var motivation = pawn.needs.TryGetNeed<Need_Motivation>();
-            if (motivation != null && pawn.IsPrisonerOfColony && motivation.Inspired && ForbidUtility.IsForbidden(thing, Faction.OfPlayer))
+            if (motivation != null && pawn.IsPrisonerOfColony && motivation.Watched && ForbidUtility.IsForbidden(thing, Faction.OfPlayer))
                 return true;
             return false;
         }

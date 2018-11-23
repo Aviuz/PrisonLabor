@@ -23,7 +23,7 @@ namespace PrisonLabor
                 return null;
             if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))
                 return new Job(JobDefOf.PrisonerAttemptRecruit, t);
-            if ((!PrisonLaborUtility.WorkTime(prisoner) || !need.NeedToBeInspired) && !need.CanEscape)
+            if ((!PrisonLaborUtility.WorkTime(prisoner) || !need.NeedToBeMotivated) && !need.CanEscape)
                 return null;
 
             return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerSupervise"), prisoner);
