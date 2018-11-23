@@ -38,11 +38,11 @@ namespace PrisonLabor.HarmonyPatches
 
         public static bool IsReadyToEscape(Pawn pawn)
         {
-            Need_Motivation need = pawn.needs.TryGetNeed<Need_Motivation>();
-            if (need != null && !need.ReadyToEscape)
-                return false;
-            else
+            var escapeTracker = EscapeTracker.Of(pawn);
+            if (escapeTracker.ReadyToEscape)
                 return true;
+            else
+                return false;
         }
     }
 }

@@ -62,16 +62,17 @@ namespace PrisonLabor
                     if (pawn.IsPrisonerOfColony)
                     {
                         var need = pawn.needs.TryGetNeed<Need_Motivation>();
-                        if (need != null)
+                        if (pawn.health.hediffSet.HasTemperatureInjury(TemperatureInjuryStage.Serious) && PrisonLaborUtility.WorkTime(pawn))
                         {
-                            if (pawn.health.hediffSet.HasTemperatureInjury(TemperatureInjuryStage.Serious) && PrisonLaborUtility.WorkTime(pawn))
-                            {
-                                DrawIcon(freezingTexture, pawn.DrawPos);
-                            }
-                            else if (need.Watched)
-                            {
-                                DrawIcon(watchedTexture, pawn.DrawPos);
-                            }
+                            DrawIcon(freezingTexture, pawn.DrawPos);
+                        }
+                        else if (pawn.IsWatched())
+                        {
+                            DrawIcon(watchedTexture, pawn.DrawPos);
+                        }
+                        else if(need != null && need.IsLazy)
+                        {
+                            //TODO draw lazy icon
                         }
                     }
                 }

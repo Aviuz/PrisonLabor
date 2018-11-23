@@ -45,16 +45,16 @@ namespace PrisonLabor
                 foreach (var cell in prisoner.GetRoom().Cells)
                 {
                     float distance = cell.DistanceTo(prisoner.InteractionCell);
-                    if (distance < Need_Motivation.InpirationRange)
+                    if (distance < BGP.InpirationRange)
                     {
                         if (distance < GapLengh)
                             curScore = (int)distance;
                         else
-                            curScore = (int)(Need_Motivation.InpirationRange - distance);
+                            curScore = (int)(BGP.InpirationRange - distance);
 
                         foreach (var pawn in prisonersInRoom)
-                            if (cell.DistanceTo(pawn.Position) < Need_Motivation.InpirationRange)
-                                curScore += pawn.needs.TryGetNeed<Need_Motivation>().Watched ? 50 : 100;
+                            if (cell.DistanceTo(pawn.Position) < BGP.InpirationRange)
+                                curScore += pawn.IsWatched() ? 50 : 100;
 
                         if (curScore > score)
                         {
@@ -75,7 +75,7 @@ namespace PrisonLabor
 
         private bool RangeCondition(Toil toil)
         {
-            return toil.actor.Position.DistanceTo(Prisoner.Position) > Need_Motivation.InpirationRange;
+            return toil.actor.Position.DistanceTo(Prisoner.Position) > BGP.InpirationRange;
         }
 
         private IEnumerable<Pawn> PrisonersInRoom(Room room)

@@ -9,8 +9,7 @@ namespace PrisonLabor
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
             var prisoner = t as Pawn;
-            var need = prisoner.needs.TryGetNeed<Need_Motivation>();
-
+            var need = prisoner?.needs.TryGetNeed<Need_Motivation>();
             if (need == null || prisoner == null)
                 return null;
             if (!ShouldTakeCareOfPrisoner(pawn, prisoner))
@@ -19,11 +18,12 @@ namespace PrisonLabor
                 return null;
             if (pawn.IsPrisoner)
                 return null;
-            if (!PrisonLaborUtility.LaborEnabled(prisoner) && !need.CanEscape)
+            var escapeTracker = EscapeTracker.Of(prisoner);
+            if (!PrisonLaborUtility.LaborEnabled(prisoner) && !escapeTracker.CanEscape)
                 return null;
             if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))
                 return new Job(JobDefOf.PrisonerAttemptRecruit, t);
-            if ((!PrisonLaborUtility.WorkTime(prisoner) || !need.NeedToBeMotivated) && !need.CanEscape)
+            if ((!PrisonLaborUtility.WorkTime(prisoner) || !need.ShouldToBeMotivated) && !escapeTracker.CanEscape)
                 return null;
 
             return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerSupervise"), prisoner);

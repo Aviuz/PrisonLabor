@@ -4,9 +4,28 @@ using Verse;
 
 namespace PrisonLabor
 {
-    internal class InspirationUtility
+    internal static class InspirationUtility
     {
         public static Dictionary<Map, Dictionary<Pawn, float>> inspirationValues = new Dictionary<Map, Dictionary<Pawn, float>>();
+
+        /// <summary>
+        /// Check if pawn is watched(supervised) by a Jailor
+        /// </summary>
+        public static bool IsWatched(this Pawn pawn)
+        {
+            Dictionary<Pawn, float> iValues;
+            float value;
+
+            var map = pawn.Map;
+            if (inspirationValues.TryGetValue(map, out iValues))
+            {
+                if (iValues.TryGetValue(pawn, out value))
+                {
+                    return value != 0;
+                }
+            }
+            return false;
+        }
 
         public static float GetInsiprationValue(Pawn pawn)
         {
@@ -36,23 +55,23 @@ namespace PrisonLabor
                 foreach (var prisoner in prisoners)
                 {
                     float distance = warden.Position.DistanceTo(prisoner.Position);
-                    if (distance < Need_Motivation.InpirationRange && prisoner.GetRoom() == warden.GetRoom())
+                    if (distance < BGP.InpirationRange && prisoner.GetRoom() == warden.GetRoom())
                         inRange.Add(prisoner, distance);
                 }
 
                 var watchedPawns = new List<Pawn>(inRange.Keys);
                 float points;
-                if (inRange.Count > Need_Motivation.WardenCapacity)
+                if (inRange.Count > BGP.WardenCapacity)
                 {
                     watchedPawns.Sort(new Comparison<Pawn>((x, y) => inRange[x].CompareTo(inRange[y])));
-                    points = Need_Motivation.InspireRate / Need_Motivation.WardenCapacity;
+                    points = BGP.InspireRate / BGP.WardenCapacity;
                 }
                 else
                 {
-                    points = Need_Motivation.InspireRate / inRange.Count;
+                    points = BGP.InspireRate / inRange.Count;
                 }
 
-                for (int i = 0; i < watchedPawns.Count && i < Need_Motivation.WardenCapacity; i++)
+                for (int i = 0; i < watchedPawns.Count && i < BGP.WardenCapacity; i++)
                 {
                     inspirationValues[map][watchedPawns[i]] += points;
                 }

@@ -42,8 +42,7 @@ namespace PrisonLabor.HarmonyPatches
         {
             if (PrisonerFoodReservation.IsReserved(thing) && !pawn.IsPrisoner)
                 return true;
-            var motivation = pawn.needs.TryGetNeed<Need_Motivation>();
-            if (motivation != null && pawn.IsPrisonerOfColony && motivation.Watched && ForbidUtility.IsForbidden(thing, Faction.OfPlayer))
+            if (pawn.IsWatched() && ForbidUtility.IsForbidden(thing, Faction.OfPlayer))
                 return true;
             return false;
         }

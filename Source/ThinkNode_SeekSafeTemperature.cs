@@ -10,10 +10,7 @@ namespace PrisonLabor
         {
             if (pawn.IsPrisoner)
             {
-                var need = pawn.needs.TryGetNeed<Need_Motivation>();
-                if (need == null)
-                    return true;
-                if (need.Watched && PrisonLaborUtility.WorkTime(pawn))
+                if (pawn.IsWatched() && PrisonLaborUtility.WorkTime(pawn))
                     return false;
                 return true;
             }

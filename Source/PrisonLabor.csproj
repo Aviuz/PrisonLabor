@@ -54,6 +54,7 @@
     <Compile Include="Alert_LazyPrisoners.cs" />
     <Compile Include="Alert_StarvingPrisoners.cs" />
     <Compile Include="Area_Labor.cs" />
+    <Compile Include="BGP.cs" />
     <Compile Include="BillGroupData.cs" />
     <Compile Include="BillUtility.cs" />
     <Compile Include="BugTracker.cs" />
@@ -66,7 +67,9 @@
     <Compile Include="Designator_AreaLaborClear.cs" />
     <Compile Include="Designator_AreaLabor.cs" />
     <Compile Include="Designator_AreaLaborExpand.cs" />
+    <Compile Include="EscapeTracker.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
+    <Compile Include="HarmonyPatches\Patch_EscapeTimer.cs" />
     <Compile Include="HarmonyPatches\Patch_AddLaborArea.cs" />
     <Compile Include="HarmonyPatches\Patch_AddModVersionToFile.cs" />
     <Compile Include="HarmonyPatches\Patch_AddScrollToPrisonerTab.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="SettingsMenu.cs" />
     <Compile Include="SelectWorkTypesDialog.cs" />
     <Compile Include="NewsDialog.cs" />
+    <Compile Include="SimpleTimer.cs" />
     <Compile Include="ThinkNode_SeekSafeTemperature.cs" />
     <Compile Include="ThoughtWorker_FreeTime.cs" />
     <Compile Include="ThoughtWorker_LowMotivation.cs" />
