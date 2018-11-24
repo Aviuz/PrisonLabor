@@ -1,9 +1,9 @@
-﻿using Harmony;
+using Harmony;
 using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace PrisonLabor.Harmony
+namespace PrisonLabor.HarmonyPatches
 {
     [HarmonyPatch(typeof(PawnColumnWorker_Label))]
     [HarmonyPatch("DoCell")]

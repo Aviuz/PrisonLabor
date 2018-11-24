@@ -1,7 +1,7 @@
-﻿using Harmony;
+using Harmony;
 using Verse;
 
-namespace PrisonLabor.Harmony
+namespace PrisonLabor.HarmonyPatches
 {
     [HarmonyPatch(typeof(AreaManager))]
     [HarmonyPatch("AddStartingAreas")]

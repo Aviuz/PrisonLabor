@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 using Harmony;
 using RimWorld;
 using Verse;
 
-namespace PrisonLabor.Harmony
+namespace PrisonLabor.HarmonyPatches
 {
     [HarmonyPatch(typeof(WidgetsWork))]
     [HarmonyPatch("TipForPawnWorker")]

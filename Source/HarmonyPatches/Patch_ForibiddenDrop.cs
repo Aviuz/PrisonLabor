@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using RimWorld;
 using Verse;
 
-namespace PrisonLabor.Harmony
+namespace PrisonLabor.HarmonyPatches
 {
     internal class ForibiddenDropPatch
     {
