@@ -19,13 +19,25 @@ namespace PrisonLabor
         /// <summary>
         /// Access EscapeTracker of Pawn
         /// </summary>
-        public static EscapeTracker Of(Pawn pawn)
+        public static EscapeTracker Of(Pawn pawn, bool forced = false)
         {
+            if(!pawn.IsPrisoner && !forced)
+            {
+                return null;
+            }
             if (!escapeTimers.ContainsKey(pawn))
             {
                 escapeTimers.Add(pawn, new EscapeTracker(pawn));
             }
             return escapeTimers[pawn];
+        }
+
+        public static void Save(Pawn pawn, EscapeTracker tracker)
+        {
+            if(pawn != null && tracker != null)
+            {
+                escapeTimers[pawn] = tracker;
+            }
         }
         #endregion
 
@@ -71,7 +83,18 @@ namespace PrisonLabor
         {
             get
             {
-                return 100;
+                var treatment = Pawn.needs?.TryGetNeed<Need_Treatment>();
+                if (treatment == null || treatment.CurCategory <= TreatmentCategory.Bad)
+                    return BGP.Escape_MinLevel;
+
+                int level = (int)(treatment.CurLevel * BGP.Escape_LevelTreatmentMultiplier) + BGP.Escape_LevelBase;
+
+                if (level < BGP.Escape_MinLevel)
+                    return BGP.Escape_MinLevel;
+                else if (level > BGP.Escape_MaxLevel)
+                    return BGP.Escape_MaxLevel;
+                else
+                    return level;
             }
         }
 
@@ -79,7 +102,7 @@ namespace PrisonLabor
         /// Creates new escape tracker attached to pawn
         /// </summary>
         /// <param name="pawn"></param>
-        private EscapeTracker(Pawn pawn)
+        public EscapeTracker(Pawn pawn)
         {
             Pawn = pawn;
         }
@@ -108,9 +131,7 @@ namespace PrisonLabor
 
         public void ExposeData()
         {
-            Scribe.EnterNode("EscapeTracker");
-            Scribe_Deep.Look(ref timer, "timer");
-            Scribe.ExitNode();
+            Scribe_Deep.Look(ref timer, "Timer");
         }
     }
 }

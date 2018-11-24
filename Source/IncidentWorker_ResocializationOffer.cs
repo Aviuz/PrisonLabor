@@ -18,11 +18,11 @@ namespace PrisonLabor
                 if (pawn.IsColonist)
                     continue;
 
-                var need = pawn.needs.TryGetNeed<Need_Treatment>();
-                if (need == null)
+                var treatment = pawn.needs.TryGetNeed<Need_Treatment>();
+                if (treatment == null)
                     continue;
 
-                if (need.CurLevel >= Need_Treatment.ResocializationLevel)
+                if (treatment.CurLevel >= BGP.ResocializationLevel)
                     return true;
             }
 
@@ -39,13 +39,13 @@ namespace PrisonLabor
                 if (pawn.IsColonist)
                     continue;
 
-                var need = pawn.needs.TryGetNeed<Need_Treatment>();
-                if (need == null)
+                var treatment = pawn.needs.TryGetNeed<Need_Treatment>();
+                if (treatment == null)
                     continue;
 
-                if (need.CurLevel >= Need_Treatment.ResocializationLevel)
+                if (treatment.CurLevel >= BGP.ResocializationLevel)
                 {
-                    need.ResocializationReady = true;
+                    treatment.ResocializationReady = true;
                     parms.faction = pawn.Faction;
                     prisoner = pawn;
                     break;

@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alert_EscapingPrisoners.cs" />
     <Compile Include="Alert_LazyPrisoners.cs" />
     <Compile Include="Alert_StarvingPrisoners.cs" />
     <Compile Include="Area_Labor.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Designator_AreaLaborExpand.cs" />
     <Compile Include="EscapeTracker.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
-    <Compile Include="HarmonyPatches\Patch_EscapeTimer.cs" />
+    <Compile Include="HarmonyPatches\Patch_EscapeTracker.cs" />
     <Compile Include="HarmonyPatches\Patch_AddLaborArea.cs" />
     <Compile Include="HarmonyPatches\Patch_AddModVersionToFile.cs" />
     <Compile Include="HarmonyPatches\Patch_AddScrollToPrisonerTab.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="HarmonyPatches\Patch_ExtendVistorRect.cs" />
     <Compile Include="HarmonyPatches\Patch_FoodDeliver.cs" />
     <Compile Include="HarmonyPatches\Patch_ForibiddenDrop.cs" />
+    <Compile Include="HarmonyPatches\Patch_InsiprationTracker.cs" />
     <Compile Include="HarmonyPatches\Patch_ItemIsForbidden.cs" />
     <Compile Include="HarmonyPatches\HPatcher.cs" />
     <Compile Include="HarmonyPatches\Patch_JailorTypeSaveCompatibility.cs" />
@@ -117,7 +119,7 @@
     <Compile Include="JobGiver_PickupWeapon.cs" />
     <Compile Include="LaborExclusionUtility.cs" />
     <Compile Include="MapComponent_Icons.cs" />
-    <Compile Include="InspirationUtility.cs" />
+    <Compile Include="InspirationTracker.cs" />
     <Compile Include="Need_Treatment.cs" />
     <Compile Include="Need_Motivation.cs" />
     <Compile Include="PawnTable_Prisoners.cs" />

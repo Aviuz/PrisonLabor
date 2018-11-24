@@ -60,4 +60,8 @@
 
   <PrisonLabor_RecruitButtonLabel>Recruit</PrisonLabor_RecruitButtonLabel>
   <PrisonLabor_RecruitButtonDesc>Ready to join colony</PrisonLabor_RecruitButtonDesc>
+
+  <PrisonLabor_Alert_EscapingPrisoners_Title>Prisoners can escape</PrisonLabor_Alert_EscapingPrisoners_Title>
+  <PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>Prisoners can reach end of map and escape. They will run unless colonist will keep an eye on them.</PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>
+  <PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>Those prisoners can escape:\n\n{0}\nThey will run unless colonist will keep an eye on them.</PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>
 </LanguageData>

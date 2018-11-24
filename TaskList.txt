@@ -6,4 +6,3 @@ Agenda:
   - Scheduled for implementation
   * Considered
 ==========================
- - weapon pickups

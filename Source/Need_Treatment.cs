@@ -24,27 +24,16 @@ namespace PrisonLabor
 
     public class Need_Treatment : Need
     {
-        #region Constants
-        public const float ResocializationLevel = 0.1f;
-
-        // 10% every 12 days
-        private const float LaborRate = 1f / (120f * GenDate.TicksPerDay / 150f);
-        // 1% every 12 days for every point of status
-        private const float StatusMultiplier = 1f / (1200f * GenDate.TicksPerDay / 150f);
-        // 10% every 6 days
-        private const float JoyRate = 1f / (60f * GenDate.TicksPerDay / 150f);
-
-        private const float BeatenHit = -0.1f;
-        #endregion
-
-        #region TreshPercentages
-        public float PercentageThreshVeryGood => 0.75f;
-        public float PercentageThreshGood => 0.5f;
-        public float PercentageThreshNormal => 0.25f;
-        public float PercentageThreshBad => 0.10f;
-        #endregion
-
         private bool _resocializationReady = false;
+
+        public float PercentageThreshVeryGood => 0.85f;
+        public float PercentageThreshGood => 0.65f;
+        public float PercentageThreshNormal => 0.35f;
+        public float PercentageThreshBad => 0.15f;
+
+        public override int GUIChangeArrow => 0;
+
+        public static NeedDef Def => PrisonLaborDefOf.PrisonLabor_Treatment;
 
         public bool ResocializationReady
         {
@@ -69,23 +58,30 @@ namespace PrisonLabor
             }
         }
 
+        public static bool ShowOnList
+        {
+            get
+            {
+                return PrisonLaborDefOf.PrisonLabor_Treatment.showOnNeedList;
+            }
+            set
+            {
+                PrisonLaborDefOf.PrisonLabor_Treatment.showOnNeedList = value;
+            }
+        }
+
         public Need_Treatment(Pawn pawn) : base(pawn) { }
 
-        public override int GUIChangeArrow => 0;
-
-        public static NeedDef Def => PrisonLaborDefOf.PrisonLabor_Treatment;
-
-        public override void ExposeData()
+        public override void SetInitialLevel()
         {
-            base.ExposeData();
-            Scribe_Values.Look<bool>(ref _resocializationReady, "PrisonLabor_resocialization_ready", false, false);
+            CurLevelPercentage = 0.5f;
         }
 
         public override void NeedInterval()
         {
             // Joy
             if (pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy)
-                CurLevel += JoyRate;
+                CurLevel += BGP.JoyRate;
 
             // Status
             var hunger = pawn.needs.TryGetNeed<Need_Food>();
@@ -99,18 +95,13 @@ namespace PrisonLabor
             if (pawn.health.HasHediffsNeedingTend())
                 statusScore -= 7;
 
-            CurLevel += statusScore * StatusMultiplier;
+            CurLevel += statusScore * BGP.StatusMultiplier;
 
 
             // Labor
             var motivation = pawn.needs.TryGetNeed<Need_Motivation>();
             if (motivation != null && motivation.IsPrisonerWorking)
-                CurLevel += LaborRate;
-        }
-
-        public override void SetInitialLevel()
-        {
-            CurLevelPercentage = 0.5f;
+                CurLevel += BGP.LaborRate;
         }
 
         public override string GetTipString()
@@ -118,6 +109,11 @@ namespace PrisonLabor
             var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine(base.GetTipString());
             return stringBuilder.ToString();
+        }
+
+        public void NotifyPrisonerBeaten(DamageInfo dinfo, bool absorbed)
+        {
+            CurLevel += BGP.BeatenHit;
         }
 
         public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f,
@@ -134,22 +130,10 @@ namespace PrisonLabor
             base.DrawOnGUI(rect, maxThresholdMarkers, customMargin, drawArrows, doTooltip);
         }
 
-
-        public static bool ShowOnList
+        public override void ExposeData()
         {
-            get
-            {
-                return PrisonLaborDefOf.PrisonLabor_Treatment.showOnNeedList;
-            }
-            set
-            {
-                PrisonLaborDefOf.PrisonLabor_Treatment.showOnNeedList = value;
-            }
-        }
-
-        public void NotifyPrisonerBeaten(DamageInfo dinfo, bool absorbed)
-        {
-            CurLevel += BeatenHit;
+            base.ExposeData();
+            Scribe_Values.Look<bool>(ref _resocializationReady, "PrisonLabor_resocialization_ready", false, false);
         }
     }
 }

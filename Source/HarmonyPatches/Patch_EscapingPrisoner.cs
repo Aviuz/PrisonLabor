@@ -38,7 +38,7 @@ namespace PrisonLabor.HarmonyPatches
 
         public static bool IsReadyToEscape(Pawn pawn)
         {
-            var escapeTracker = EscapeTracker.Of(pawn);
+            var escapeTracker = EscapeTracker.Of(pawn, true);
             if (escapeTracker.ReadyToEscape)
                 return true;
             else

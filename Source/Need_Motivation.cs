@@ -74,7 +74,7 @@ namespace PrisonLabor
             {
                 if (pawn.GetRoomGroup() != null)
                 {
-                    var value = InspirationUtility.GetInsiprationValue(pawn);
+                    var value = InspirationTracker.GetInsiprationValue(pawn, true);
 
                     if (PrisonLaborUtility.LaborEnabled(pawn))
                     {

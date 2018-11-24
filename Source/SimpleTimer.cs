@@ -28,7 +28,13 @@ namespace PrisonLabor
 
         public void Reset() => Ticks = 0;
 
-        public void Tick() => Ticks++;
+        public void Tick()
+        {
+            if (_IsActive)
+            {
+                Ticks++;
+            }
+        }
 
         public void ResetAndStop()
         {

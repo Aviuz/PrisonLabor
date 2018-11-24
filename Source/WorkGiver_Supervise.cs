@@ -18,7 +18,7 @@ namespace PrisonLabor
                 return null;
             if (pawn.IsPrisoner)
                 return null;
-            var escapeTracker = EscapeTracker.Of(prisoner);
+            var escapeTracker = EscapeTracker.Of(prisoner, true);
             if (!PrisonLaborUtility.LaborEnabled(prisoner) && !escapeTracker.CanEscape)
                 return null;
             if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))

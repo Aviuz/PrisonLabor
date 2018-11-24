@@ -15,7 +15,9 @@ namespace PrisonLabor.HarmonyPatches
         {
             static void Postfix(Pawn __instance)
             {
-                EscapeTracker.Of(__instance).ExposeData();
+                var escapeTracker = EscapeTracker.Of(__instance);
+                Scribe_Deep.Look(ref escapeTracker, "EscapeTracker", new object[] { __instance});
+                EscapeTracker.Save(__instance, escapeTracker);
             }
         }
 
@@ -27,7 +29,7 @@ namespace PrisonLabor.HarmonyPatches
             {
                 if (!__instance.Dead)
                 {
-                    EscapeTracker.Of(__instance).Tick();
+                    EscapeTracker.Of(__instance)?.Tick();
                 }
             }
         }
