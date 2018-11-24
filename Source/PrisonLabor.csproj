@@ -70,6 +70,7 @@
     <Compile Include="Designator_AreaLaborExpand.cs" />
     <Compile Include="EscapeTracker.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
+    <Compile Include="HarmonyPatches\Patch_AssignPrisonersToBed.cs" />
     <Compile Include="HarmonyPatches\Patch_EscapeTracker.cs" />
     <Compile Include="HarmonyPatches\Patch_AddLaborArea.cs" />
     <Compile Include="HarmonyPatches\Patch_AddModVersionToFile.cs" />
