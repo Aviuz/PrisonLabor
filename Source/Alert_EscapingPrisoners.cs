@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 using Verse;
 
 namespace PrisonLabor
 {
-    public class Alert_EscapingPrisoners : Alert
+    public class Alert_EscapingPrisoners : Alert_Critical
     {
         public Alert_EscapingPrisoners()
         {
