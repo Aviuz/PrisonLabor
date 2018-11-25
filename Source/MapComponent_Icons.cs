@@ -20,7 +20,7 @@ namespace PrisonLabor
             watchedTexture = ContentFinder<Texture2D>.Get("InspireIcon", false);
             motivatedTexture = ContentFinder<Texture2D>.Get("MotivateIcon", false);
             freezingTexture = ContentFinder<Texture2D>.Get("FreezingIcon", false);
-            iconPos = new Vector3(0f, 0f, 1.3f);
+            iconPos = new Vector3(0.3f, 0f, 0.9f);
         }
 
         public MapComponent_Icons(Map map) : base(map) { }
