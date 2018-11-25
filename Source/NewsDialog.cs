@@ -29,6 +29,7 @@ namespace PrisonLabor
         public static bool news_0_9_0 = false;
         public static bool news_0_9_1 = false;
         public static bool news_0_9_2 = false;
+        public static bool news_0_9_9 = false;
         public static bool news_0_10_0 = false;
 
         // Fields
@@ -69,7 +70,107 @@ namespace PrisonLabor
                 };
                 itemsList.Add(itemsArray);
             }
-            // TODO 0.9.3
+            // 0.9.11
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.11");
+                string[] itemsArray =
+                {
+                    "fixed compatibility with Fluffy's WorkTab (final)",
+                };
+                itemsList.Add(itemsArray);
+            }
+
+            // 0.9.10
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.10");
+                string[] itemsArray =
+                {
+                    "hotfixed compatibility with Fluffy's WorkTab (still have some visual flaws)",
+                };
+                itemsList.Add(itemsArray);
+            }
+
+            // 0.9.9
+            if (news_0_9_9 || showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.9");
+                string[] itemsArray =
+                {
+                    "added sub-tabs in \"Work\" Tab and \"Assign\" Tab for \"Colonists\" and \"Prisoners\"",
+                    "added renaming Prisoners for imprisonment time (pawns will restore old names after releasing)",
+                };
+                itemsList.Add(itemsArray);
+            }
+
+            // 0.9.8
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.8");
+                string[] itemsArray =
+                {
+                    "fixed SeedsPlease compatibility",
+                };
+                itemsList.Add(itemsArray);
+            }
+
+            // 0.9.7
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.7");
+                string[] itemsArray =
+                {
+                    "added warning message before placing labor area for the first time",
+                };
+                itemsList.Add(itemsArray);
+            }
+
+            // 0.9.6
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.6");
+                string[] itemsArray =
+                {
+                    "updated to RimWorld 1.0",
+                };
+                itemsList.Add(itemsArray);
+            }
+
+            // 0.9.5
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.5");
+                string[] itemsArray =
+                {
+                    "updated to RimWorld Beta 19",
+                };
+                itemsList.Add(itemsArray);
+            }
+
+            // 0.9.4
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.4");
+                string[] itemsArray =
+                {
+                    "disabled Warden and Jailor types of work for prisoner labor, it should fix bug, where jailors do not warden inside labor area",
+                };
+                itemsList.Add(itemsArray);
+            }
+
+            // 0.9.3
+            if (showAll)
+            {
+                titlesList.Add("Prison Labor Beta v0.9.3");
+                string[] itemsArray =
+                {
+                    "fixed compatibility with No Water no Life",
+                    "fixed compatibility with Dubs Bad Hygiene Mod",
+                    "fixed error with loading old saves",
+                };
+                itemsList.Add(itemsArray);
+            }
 
             // 0.9.2
             if (news_0_9_2 || showAll)

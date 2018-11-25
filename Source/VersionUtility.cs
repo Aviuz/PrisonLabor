@@ -81,6 +81,11 @@ namespace PrisonLabor
             {
                 CompatibilityPatches.OlderVersions.Pre_v0_9_4();
             }
+            if (PrisonLaborPrefs.LastVersion < Version.v0_9_9)
+            {
+                NewsDialog.news_0_9_9 = true;
+                NewsDialog.autoShow = true;
+            }
             if (PrisonLaborPrefs.LastVersion < Version.v0_10_0)
             {
                 NewsDialog.news_0_10_0 = true;

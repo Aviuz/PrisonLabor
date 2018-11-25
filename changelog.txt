@@ -23,8 +23,13 @@ Changelog:
 - finally fixed "OnGui()" error, big thanks to @notfood (https://github.com/notfood)
 - fixed blurred effect on settings window
 - fixed Revolts
+0.9.11
+- fixed compatibility with Fluffy's WorkTab (final)
+0.9.10
+- hotfixed compatibility with Fluffy's WorkTab (still have some visual flaws)
 0.9.9
 - added sub-tabs in "Work" Tab and "Assign" Tab for "Colonists" and "Prisoners"
+- added renaming Prisoners for imprisonment time (pawns will restore old names after releasing)
 0.9.8
 - fixed SeedsPlease compatibility
 0.9.7

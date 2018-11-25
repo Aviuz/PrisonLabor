@@ -62,6 +62,7 @@
     <Compile Include="CompatibilityPatches\Initialization.cs" />
     <Compile Include="CompatibilityPatches\NoWaterNoLife.cs" />
     <Compile Include="CompatibilityPatches\OlderVersions.cs" />
+    <Compile Include="CompatibilityPatches\WorkTab.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease_WorkDriver_Patch.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease_WorkGiver.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="HarmonyPatches\Patch_RemoveLaborAreaIfDisabled.cs" />
     <Compile Include="HarmonyPatches\Patch_RenamePrisoners.cs" />
     <Compile Include="HarmonyPatches\Patch_ResetWorktableWhenRecruited.cs" />
+    <Compile Include="HarmonyPatches\Patch_ReservedByPrisoner.cs" />
     <Compile Include="HarmonyPatches\Patch_RespectReservation.cs" />
     <Compile Include="HarmonyPatches\Patch_RestrainsPatch.cs" />
     <Compile Include="HarmonyPatches\Patch_ShowNews.cs" />
@@ -148,7 +150,8 @@
     <Compile Include="Tweaks\JobDriver_PlantHarvest_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_PlantWork_Tweak.cs" />
     <Compile Include="Tweaks\ClassInjector.cs" />
-    <Compile Include="Tweaks\MainTabWindow_Assign_Tweak.cs" />
+    <Compile Include="Tweaks\MainTabWindow_Restrict_Tweak.cs" />
+    <Compile Include="Tweaks\MainTabWindow_Dual.cs" />
     <Compile Include="Tweaks\MainTabWindow_Work_Tweak.cs" />
     <Compile Include="Tweaks\SaveUpgrader.cs" />
     <Compile Include="Tweaks\WorkGiver_CleanFilth_Tweak.cs" />
