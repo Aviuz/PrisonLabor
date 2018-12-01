@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <PrisonLabor_Revolt.label>暴動</PrisonLabor_Revolt.label>
+  <PrisonLabor_Revolt.letterText>{0}開始了一場暴動. {1}派系的囚犯聚集一起,並開始用自製武器暴動</PrisonLabor_Revolt.letterText>
+  <PrisonLabor_Revolt.letterLabel>暴動</PrisonLabor_Revolt.letterLabel>
+
+
+</LanguageData>

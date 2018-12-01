@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <PrisonLabor_PrisonerWork>強迫工作</PrisonLabor_PrisonerWork>
+  <PrisonLabor_WorkAndRecruit>工作和招募</PrisonLabor_WorkAndRecruit>
+  <PrisonLabor_LazyPrisonerMessage>你的囚犯停止工作了!</PrisonLabor_LazyPrisonerMessage>
+  <PrisonLabor_WardenResponseThreshold>看守反應值</PrisonLabor_WardenResponseThreshold>
+  <PrisonLabor_StoppingWorkThreshold>停止工作次數</PrisonLabor_StoppingWorkThreshold>
+  <PrisonLabor_WorkTypeDisabled>囚犯無法作該工作</PrisonLabor_WorkTypeDisabled>
+  <PrisonLabor_ShowNews>顯示新消息</PrisonLabor_ShowNews>
+  <PrisonLabor_ShowNewsDesc>當更新時，顯示PrisonLabor的最新消息.</PrisonLabor_ShowNewsDesc>
+  <PrisonLabor_DefaultInterMode>默認互動模式</PrisonLabor_DefaultInterMode>
+  <PrisonLabor_AllowedWorkTypes>允許的工作項目:</PrisonLabor_AllowedWorkTypes>
+  <PrisonLabor_AllowAll>全部允許</PrisonLabor_AllowAll>
+  <PrisonLabor_AllowAllWorkTypes>允許全部的工作項目</PrisonLabor_AllowAllWorkTypes>
+  <PrisonLabor_AllowedWorkTypesL>允許的工作項目:</PrisonLabor_AllowedWorkTypesL>
+  <PrisonLabor_Browse>瀏覽</PrisonLabor_Browse>
+  <PrisonLabor_MotivationMechanics>動力機制 (!)</PrisonLabor_MotivationMechanics>
+  <PrisonLabor_MotivationWarning>啟用時，囚犯將需要被激勵.\n\n警告：需要重新載入存檔.</PrisonLabor_MotivationWarning>
+  <PrisonLabor_MotivationIcons>放鬆/積極性 圖示</PrisonLabor_MotivationIcons>
+  <PrisonLabor_MotivationIconsDesc>當啟用時，圖標將顯示在囚犯頭上方. 積極性的藍色圖標和獲取其他因素的放鬆的綠色圖標.</PrisonLabor_MotivationIconsDesc>
+  <PrisonLabor_CanGrowAdvanced>囚犯可以種植高階植物</PrisonLabor_CanGrowAdvanced>
+  <PrisonLabor_CanGrowAdvancedDesc>當禁用時，囚犯只能種不需技能數值的植物</PrisonLabor_CanGrowAdvancedDesc>
+  <PrisonLabor_RestartInfo>重載並儲存你的遊戲.</PrisonLabor_RestartInfo>
+  <PrisonLabor_RestartInfo2>此操作後，你就能安全禁用此模組.</PrisonLabor_RestartInfo2>
+  <PrisonLabor_DisableMod>禁用模組</PrisonLabor_DisableMod>
+  <PrisonLabor_DisableModDesc>當開啟時，存檔將會轉化成【安全模式】，並且可以在模組移除後繼續遊戲.</PrisonLabor_DisableModDesc>
+  <PrisonLabor_Version>版本: </PrisonLabor_Version>
+  <PrisonLabor_Difficulty>難度: </PrisonLabor_Difficulty>
+  <PrisonLabor_Defaults>默認</PrisonLabor_Defaults>
+  <PrisonLabor_DifficultyNormal>普通</PrisonLabor_DifficultyNormal>
+  <PrisonLabor_DifficultyCasual>輕鬆</PrisonLabor_DifficultyCasual>
+  <PrisonLabor_DifficultyEasy>簡單</PrisonLabor_DifficultyEasy>
+  <PrisonLabor_DifficultyPeaceful>和平</PrisonLabor_DifficultyPeaceful>
+  <PrisonLabor_DifficultyJoke>搞笑</PrisonLabor_DifficultyJoke>
+  <PrisonLabor_LazyPrisonerAlert>囚犯不工作</PrisonLabor_LazyPrisonerAlert>
+  <PrisonLabor_LazyPrisonerExplanationDef>囚犯在偷懶. 嘗試增加他們的積極性.</PrisonLabor_LazyPrisonerExplanationDef>
+  <PrisonLabor_LazyPrisonerExplanation>這些囚犯在偷懶:\n\n{0}\n嘗試增加他們的積極性.</PrisonLabor_LazyPrisonerExplanation>
+  <PrisonLabor_StarvingPrisonerAlert>囚犯飢餓</PrisonLabor_StarvingPrisonerAlert>
+  <PrisonLabor_StarvingPrisonerExplanationDef>囚犯因飢餓停止了工作.</PrisonLabor_StarvingPrisonerExplanationDef>
+  <PrisonLabor_StarvingPrisonerExplanation>囚犯因飢餓停止了工作:\n\n{0}</PrisonLabor_StarvingPrisonerExplanation>
+  <PrisonLabor_LaborArea>囚犯工作區域</PrisonLabor_LaborArea>
+  <PrisonLabor_LaborAreaDesc>這是只有囚犯可以工作的地區,除了指派看守的殖民者，不允許殖民者在此工作.</PrisonLabor_LaborAreaDesc>
+  <PrisonLabor_ClearLaborArea>清除工作區域</PrisonLabor_ClearLaborArea>
+  <PrisonLabor_ExpandLaborArea>擴展工作區域</PrisonLabor_ExpandLaborArea>
+  <PrisonLabor_ColonistsOnly>限殖民者</PrisonLabor_ColonistsOnly>
+  <PrisonLabor_PrisonersOnly>限囚犯</PrisonLabor_PrisonersOnly>
+  <PrisonLabor_ColonyOnly>允許所有人</PrisonLabor_ColonyOnly>
+  <PrisonLabor_EnableRevolts>啟用暴動</PrisonLabor_EnableRevolts>
+  <PrisonLabor_EnableRevoltsDesc>啟用時，有時會發生反叛，而不是系統事件</PrisonLabor_EnableRevoltsDesc>
+  <PrisonLabor_LaborAreaWarning>勞動區不需要讓囚犯工作.\n\n該地區禁止殖民者工作.\n\n這是因為你不希望殖民者在某些地區工作.囚犯可以在無限制進入的地方工作.</PrisonLabor_LaborAreaWarning>
+  <PrisonLabor_DontShowAgain>不再顯示</PrisonLabor_DontShowAgain>
+
+  <PrisonLabor_ColonyOnlyShort>所有人</PrisonLabor_ColonyOnlyShort>
+  <PrisonLabor_ColonistsOnlyShort>殖民者</PrisonLabor_ColonistsOnlyShort>
+  <PrisonLabor_PrisonersOnlyShort>囚犯</PrisonLabor_PrisonersOnlyShort>
+
+</LanguageData>
