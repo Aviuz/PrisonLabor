@@ -81,6 +81,7 @@ namespace PrisonLabor.HarmonyPatches
             {
                 if (listingStandard.ButtonTextLabeled("PrisonLabor_RecruitButtonDesc".Translate(), "PrisonLabor_RecruitButtonLabel".Translate()))
                 {
+                    pawn.guest.SetGuestStatus(null);
                     pawn.SetFaction(Faction.OfPlayer);
                 }
             }
