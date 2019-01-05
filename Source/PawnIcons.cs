@@ -6,7 +6,7 @@ using Verse;
 namespace PrisonLabor
 {
     [StaticConstructorOnStartup]
-    public class MapComponent_Icons : MapComponent
+    public class PawnIcons : MapComponent
     {
         private static readonly Texture2D watchedTexture;
         private static readonly Texture2D motivatedTexture;
@@ -15,7 +15,7 @@ namespace PrisonLabor
 
         private static float worldScale;
 
-        static MapComponent_Icons()
+        static PawnIcons()
         {
             watchedTexture = ContentFinder<Texture2D>.Get("InspireIcon", false);
             motivatedTexture = ContentFinder<Texture2D>.Get("MotivateIcon", false);
@@ -23,7 +23,7 @@ namespace PrisonLabor
             iconPos = new Vector3(0.3f, 0f, 0.9f);
         }
 
-        public MapComponent_Icons(Map map) : base(map) { }
+        public PawnIcons(Map map) : base(map) { }
 
         private static void DrawIcon(Texture2D texture, Vector3 pawnPos)
         {
@@ -59,7 +59,7 @@ namespace PrisonLabor
                     if (pawn == null) continue;
                     if (pawn.RaceProps == null) continue;
 
-                    if (pawn.IsPrisonerOfColony)
+                    if (pawn.IsPrisonerOfColony && pawn.CarriedBy == null)
                     {
                         var need = pawn.needs.TryGetNeed<Need_Motivation>();
                         if (pawn.health.hediffSet.HasTemperatureInjury(TemperatureInjuryStage.Serious) && PrisonLaborUtility.WorkTime(pawn))
@@ -70,7 +70,7 @@ namespace PrisonLabor
                         {
                             DrawIcon(watchedTexture, pawn.DrawPos);
                         }
-                        else if(need != null && need.IsLazy)
+                        else if (need != null && need.IsLazy)
                         {
                             //TODO draw lazy icon
                         }
@@ -79,7 +79,7 @@ namespace PrisonLabor
             }
             catch (NullReferenceException e)
             {
-                Log.ErrorOnce("PrisonLaborError: null reference in OnGui() : " + e.Message + " trace: " + e.StackTrace, typeof(MapComponent_Icons).GetHashCode());
+                Log.ErrorOnce("PrisonLaborError: null reference in OnGui() : " + e.Message + " trace: " + e.StackTrace, typeof(PawnIcons).GetHashCode());
             }
         }
 
