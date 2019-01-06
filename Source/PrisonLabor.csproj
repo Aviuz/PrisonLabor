@@ -72,6 +72,12 @@
     <Compile Include="HarmonyPatches\DevTools.cs" />
     <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
     <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapeTracker.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\DeliverEvenOutsidePrisonCell.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\FoodUtility_IsFoodSourceOnMapSociallyProper.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\ReserveFoodForPrisonerAfterDropping.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
     <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_AddScrollToPrisonerTab.cs" />
@@ -83,7 +89,6 @@
     <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapingPrisoner.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_ExposeBillGroup.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_ExtendVistorRect.cs" />
-    <Compile Include="HarmonyPatches\Patches_Food\Patch_FoodDeliver.cs" />
     <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop.cs" />
     <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ItemIsForbidden.cs" />
     <Compile Include="HarmonyPatches\HPatcher.cs" />

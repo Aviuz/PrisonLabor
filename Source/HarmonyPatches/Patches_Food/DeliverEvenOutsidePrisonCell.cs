@@ -50,7 +50,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
 
             foreach (var instr in instructions)
             {
-                if (HPatcher.IsFragment(opCodes, operands, instr, ref step, nameof(Patch_FoodDeliver) + nameof(DeliverEvenOutsidePrisonCell), true))
+                if (HPatcher.IsFragment(opCodes, operands, instr, ref step, nameof(DeliverEvenOutsidePrisonCell), true))
                 {
                     yield return new CodeInstruction(OpCodes.Pop);
                     instr.opcode = OpCodes.Br;
