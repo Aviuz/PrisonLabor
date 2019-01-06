@@ -2,7 +2,7 @@
 <Defs>
   <NeedDef>
     <defName>PrisonLabor_Motivation</defName>
-    <needClass>PrisonLabor.Need_Motivation</needClass>
+    <needClass>PrisonLabor.Core.Needs.Need_Motivation</needClass>
     <label>Motivation</label>
     <description>Motivation represents how motivated to work is prisoner. Motivation can be improved by colonists standing nearby.</description>
     <listPriority>90</listPriority>
@@ -11,7 +11,7 @@
   </NeedDef>
   <NeedDef>
     <defName>PrisonLabor_Treatment</defName>
-    <needClass>PrisonLabor.Need_Treatment</needClass>
+    <needClass>PrisonLabor.Core.Needs.Need_Treatment</needClass>
     <label>Treatment happiness</label>
     <description>Treatment happiness represents how prisoners are content of treatment in colony.</description>
     <listPriority>89</listPriority>

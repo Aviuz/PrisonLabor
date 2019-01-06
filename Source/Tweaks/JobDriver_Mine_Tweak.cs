@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace PrisonLabor
+namespace PrisonLabor.Tweaks
 {
     public class JobDriver_Mine_Tweak : JobDriver
     {

@@ -3,7 +3,7 @@
   <!-- Situation thoughts-->
   <ThoughtDef>
     <defName>PrisonLabor_VeryGoodTreatment</defName>
-    <workerClass>PrisonLabor.ThoughtWorker_VeryGoodTreatment</workerClass>
+    <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_VeryGoodTreatment</workerClass>
     <stages>
       <li>
         <label>treated very good</label>
@@ -14,7 +14,7 @@
   </ThoughtDef>
   <ThoughtDef>
     <defName>PrisonLabor_LowMotivation</defName>
-    <workerClass>PrisonLabor.ThoughtWorker_LowMotivation</workerClass>
+    <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_LowMotivation</workerClass>
     <stages>
       <li>
         <label>not supervised</label>
@@ -25,7 +25,7 @@
   </ThoughtDef>
   <ThoughtDef>
     <defName>PrisonLabor_FreeTime</defName>
-    <workerClass>PrisonLabor.ThoughtWorker_FreeTime</workerClass>
+    <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_FreeTime</workerClass>
     <stages>
       <li>
         <label>free time</label>

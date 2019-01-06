@@ -1,10 +1,10 @@
-﻿using PrisonLabor.Core.Meta;
+using PrisonLabor.Core.Meta;
 using PrisonLabor.Core.Other;
 using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace PrisonLabor
+namespace PrisonLabor.Tweaks
 {
     public class WorkGiver_GrowerSow_Tweak : WorkGiver_Grower
     {

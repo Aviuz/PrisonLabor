@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using RimWorld;
 using Verse.AI;
 
-namespace PrisonLabor
+namespace PrisonLabor.Tweaks
 {
     public class JobDriver_PlantHarvest_Tweak : JobDriver_PlantWork_Tweak
     {
