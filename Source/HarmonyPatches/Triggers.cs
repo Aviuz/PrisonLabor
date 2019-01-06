@@ -17,8 +17,8 @@ namespace PrisonLabor.HarmonyPatches
 {
     /// <summary>
     /// This is group of patch dedicated to attach execution of other methods similar to event handling.
-    /// The difference between patches inside this class, and others is that this patches
-    /// are executing single method of Prison Labor classes.
+    /// The difference between patches inside this class, and others is that
+    /// this patches are executing single method of Prison Labor classes.
     /// </summary>
     static class Triggers
     {
