@@ -1,5 +1,6 @@
 Changelog:
 0.10.0
+- wardens no longer deliver food if prisoners can get it from another room
 - added alert when prisoners can escape
 - prisoners now will pick up weapons if treated bad
 - fixed food reservation throwing errors
