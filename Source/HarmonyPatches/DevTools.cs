@@ -1,4 +1,5 @@
 ﻿using Harmony;
+using PrisonLabor.Core.Needs;
 using RimWorld;
 using System;
 using System.Collections.Generic;

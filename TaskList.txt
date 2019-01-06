@@ -6,3 +6,5 @@ Agenda:
   - Scheduled for implementation
   * Considered
 ==========================
+
+- Prevent Wardens from delivering food if prisoner can get some by himself

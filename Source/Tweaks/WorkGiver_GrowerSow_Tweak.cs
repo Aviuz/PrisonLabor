@@ -1,4 +1,6 @@
-﻿using RimWorld;
+﻿using PrisonLabor.Core.Meta;
+using PrisonLabor.Core.Other;
+using RimWorld;
 using Verse;
 using Verse.AI;
 

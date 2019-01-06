@@ -1,4 +1,8 @@
-﻿using PrisonLabor.HarmonyPatches;
+﻿using PrisonLabor.Core.Hediffs;
+using PrisonLabor.Core.LaborArea;
+using PrisonLabor.Core.Meta;
+using PrisonLabor.Core.Settings;
+using PrisonLabor.HarmonyPatches;
 using PrisonLabor.Tweaks;
 using RimWorld;
 using System;

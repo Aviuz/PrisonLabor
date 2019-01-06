@@ -1,4 +1,6 @@
-﻿using RimWorld;
+﻿using PrisonLabor.Core;
+using PrisonLabor.Core.LaborWorkSettings;
+using RimWorld;
 using RimWorld.Planet;
 using System;
 using System.Collections.Generic;

@@ -48,7 +48,7 @@ namespace PrisonLabor.HarmonyPatches
                         typeof(IntVec3), typeof(ThingPlaceMode), typeof(Thing).MakeByRefType(),
                         typeof(Action<Thing, int>)
                         }),
-                    new HarmonyMethod(null), new HarmonyMethod(typeof(ForibiddenDropPatch).GetMethod("Postfix")));
+                    new HarmonyMethod(null), new HarmonyMethod(typeof(Patches_PermissionFix.ForibiddenDropPatch).GetMethod("Postfix")));
                 harmony.Patch(
                     typeof(Pawn_CarryTracker).GetMethod("TryDropCarriedThing",
                         new[]
@@ -56,7 +56,7 @@ namespace PrisonLabor.HarmonyPatches
                         typeof(IntVec3), typeof(int), typeof(ThingPlaceMode), typeof(Thing).MakeByRefType(),
                         typeof(Action<Thing, int>)
                         }),
-                    new HarmonyMethod(null), new HarmonyMethod(typeof(ForibiddenDropPatch).GetMethod("Postfix2")));
+                    new HarmonyMethod(null), new HarmonyMethod(typeof(Patches_PermissionFix.ForibiddenDropPatch).GetMethod("Postfix2")));
             }
             catch (Exception e)
             {

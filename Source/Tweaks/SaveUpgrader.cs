@@ -1,8 +1,10 @@
-﻿using System;
+﻿using PrisonLabor.Core.Meta;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Verse;
+using Version = PrisonLabor.Core.Meta.Version;
 
 namespace PrisonLabor.Tweaks
 {
