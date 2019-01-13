@@ -1,11 +1,8 @@
 using Harmony;
 using PrisonLabor.Core.Meta;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
 using Verse;
 using Version = PrisonLabor.Core.Meta.Version;
 
@@ -59,11 +56,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_Version
 
             public static void AddMetaData()
             {
-                if (!PrisonLaborPrefs.DisableMod)
-                {
-                    var currentVersionString = VersionUtility.versionNumber;
-                    Scribe_Values.Look(ref currentVersionString, ParameterName, default(Version), true);
-                }
+                var currentVersionString = VersionUtility.versionNumber;
+                Scribe_Values.Look(ref currentVersionString, ParameterName, default(Version), true);
             }
         }
 

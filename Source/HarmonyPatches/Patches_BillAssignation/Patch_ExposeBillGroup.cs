@@ -13,9 +13,6 @@ namespace PrisonLabor.HarmonyPatches.Patches_BillAssignation
     {
         private static void Postfix(Bill __instance)
         {
-            if (PrisonLaborPrefs.DisableMod)
-                return;
-
             BillAssignationUtility.GetData(__instance).ExposeData();
         }
     }

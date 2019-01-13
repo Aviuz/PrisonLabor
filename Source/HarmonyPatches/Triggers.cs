@@ -6,12 +6,9 @@ using PrisonLabor.Tweaks;
 using RimWorld;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection.Emit;
-using System.Text;
 using UnityEngine;
 using Verse;
-using Verse.AI;
 
 namespace PrisonLabor.HarmonyPatches
 {
@@ -27,10 +24,7 @@ namespace PrisonLabor.HarmonyPatches
         [HarmonyPatch(new[] { typeof(Vector3), typeof(Pawn), typeof(List<FloatMenuOption>) })]
         static class AddHumanlikeOrders
         {
-            public static void Prefix(Vector3 clickPos, Pawn pawn, List<FloatMenuOption> opts)
-            {
-                ArrestUtility.AddArrestOrder(clickPos, pawn, opts);
-            }
+            public static void Prefix(Vector3 clickPos, Pawn pawn, List<FloatMenuOption> opts) { ArrestUtility.AddArrestOrder(clickPos, pawn, opts); }
         }
 
         [HarmonyPatch(typeof(Pawn_HealthTracker), "PreApplyDamage")]
@@ -54,42 +48,18 @@ namespace PrisonLabor.HarmonyPatches
             }
         }
 
+        [HarmonyPatch(typeof(Game))]
+        [HarmonyPatch(nameof(Game.LoadGame))]
         static class UpgradeSave
         {
-
-            [HarmonyPatch(typeof(Pawn_JobTracker))]
-            [HarmonyPatch(nameof(Pawn_JobTracker.ExposeData))]
-            static class Trigger_Pawn_JobTracker
-            {
-                static bool Prefix()
-                {
-                    SaveUpgrader.Pawn_JobTracker();
-                    return true;
-                }
-            }
-
-
-            [HarmonyPatch(typeof(Job))]
-            [HarmonyPatch(nameof(Job.ExposeData))]
-            static class Trigger_Job
-            {
-                static bool Prefix()
-                {
-                    SaveUpgrader.Job();
-                    return true;
-                }
-            }
+            static bool Prefix() { SaveUpgrader.Upgrade(); return true; }
         }
 
         [HarmonyPatch(typeof(Map))]
         [HarmonyPatch(nameof(Map.MapPostTick))]
         static class InsiprationTracker
         {
-            static bool Prefix(Map __instance)
-            {
-                InspirationTracker.Calculate(__instance);
-                return true;
-            }
+            static bool Prefix(Map __instance) { InspirationTracker.Calculate(__instance); return true; }
         }
 
         [HarmonyPatch(typeof(Map))]
@@ -97,10 +67,7 @@ namespace PrisonLabor.HarmonyPatches
         [HarmonyPatch(new Type[] { })]
         static class Patch_ShowNews
         {
-            static void Postfix()
-            {
-                NewsDialog.TryShow();
-            }
+            static void Postfix() { NewsDialog.TryShow(); }
         }
     }
 }

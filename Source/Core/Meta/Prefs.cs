@@ -121,16 +121,6 @@ namespace PrisonLabor.Core.Meta
             }
         }
 
-        public static bool DisableMod
-        {
-            get { return data.disable_mod; }
-            set
-            {
-                data.disable_mod = value;
-                Apply();
-            }
-        }
-
         public static bool AdvancedGrowing
         {
             get { return data.advanced_growing; }

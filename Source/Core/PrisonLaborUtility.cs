@@ -12,7 +12,7 @@ namespace PrisonLabor.Core
     {
         public static bool LaborEnabled(this Pawn pawn)
         {
-            if (pawn.IsPrisoner && !PrisonLaborPrefs.DisableMod)
+            if (pawn.IsPrisoner)
                 if (pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workOption || pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndRecruitOption)
                     return true;
 

@@ -19,7 +19,6 @@ namespace PrisonLabor.Core.Settings
         private static bool enableRevolts;
         private static bool showTreatmentHappiness;
         private static bool advancedGrowing;
-        private static bool disableMod;
         private static int defaultInteractionMode;
 
         private static List<PrisonerInteractionModeDef> interactionModeList;
@@ -37,7 +36,6 @@ namespace PrisonLabor.Core.Settings
             enableMotivationIcons = PrisonLaborPrefs.EnableMotivationIcons;
             enableRevolts = PrisonLaborPrefs.EnableRevolts;
             showTreatmentHappiness = PrisonLaborPrefs.ShowTreatmentHappiness;
-            disableMod = PrisonLaborPrefs.DisableMod;
 
             interactionModeList = new List<PrisonerInteractionModeDef>(DefDatabase<PrisonerInteractionModeDef>.AllDefs);
             defaultInteractionMode = interactionModeList.IndexOf(DefDatabase<PrisonerInteractionModeDef>.GetNamed(PrisonLaborPrefs.DefaultInteractionMode));
@@ -65,62 +63,49 @@ namespace PrisonLabor.Core.Settings
 
             listing_options.GapLine();
 
-            if (!disableMod)
+            listing_options.Label("PrisonLabor_AllowedWorkTypes".Translate(), -1f);
+            listing_options.CheckboxLabeled("   " + "PrisonLabor_AllowAll".Translate(), ref allowAllWorktypes, "PrisonLabor_AllowAllWorkTypes".Translate());
+            if (!allowAllWorktypes)
             {
-                listing_options.Label("PrisonLabor_AllowedWorkTypes".Translate(), -1f);
-                listing_options.CheckboxLabeled("   " + "PrisonLabor_AllowAll".Translate(), ref allowAllWorktypes, "PrisonLabor_AllowAllWorkTypes".Translate());
-                if (!allowAllWorktypes)
-                {
-                    if (listing_options.ButtonTextLabeled("   " + "PrisonLabor_AllowedWorkTypesL".Translate(), "PrisonLabor_Browse".Translate()))
-                        Find.WindowStack.Add(new SelectWorkTypesDialog());
-                }
-                else
-                {
-                    listing_options.Gap();
-                }
-
-                listing_options.GapLine();
-
-                listing_options.CheckboxLabeled("PrisonLabor_MotivationMechanics".Translate(), ref enableMotivationMechanics,
-                    "PrisonLabor_MotivationWarning".Translate());
-
-                listing_options.GapLine();
-
-                listing_options.CheckboxLabeled("PrisonLabor_MotivationIcons".Translate(), ref enableMotivationIcons,
-                    "PrisonLabor_MotivationIconsDesc".Translate());
-
-                listing_options.GapLine();
-
-                listing_options.CheckboxLabeled("PrisonLabor_CanGrowAdvanced".Translate(), ref advancedGrowing,
-                    "PrisonLabor_CanGrowAdvancedDesc".Translate());
-
-                listing_options.GapLine();
-
-                listing_options.CheckboxLabeled("PrisonLabor_EnableRevolts".Translate(), ref enableRevolts,
-                    "PrisonLabor_EnableRevoltsDesc".Translate());
-
-                listing_options.GapLine();
-                
-                listing_options.CheckboxLabeled("PrisonLabor_ShowTreatmentHappiness".Translate(), ref showTreatmentHappiness,
-                    "PrisonLabor_ShowTreatmentHappinessDesc".Translate());
+                if (listing_options.ButtonTextLabeled("   " + "PrisonLabor_AllowedWorkTypesL".Translate(), "PrisonLabor_Browse".Translate()))
+                    Find.WindowStack.Add(new SelectWorkTypesDialog());
             }
             else
             {
                 listing_options.Gap();
-                listing_options.Gap();
-                listing_options.Label("PrisonLabor_RestartInfo".Translate(), -1f);
-                listing_options.Label("PrisonLabor_RestartInfo2".Translate(), -1f);
-                listing_options.Gap();
-                listing_options.Gap();
-                listing_options.Gap();
             }
 
+            listing_options.GapLine();
+
+            listing_options.CheckboxLabeled("PrisonLabor_MotivationMechanics".Translate(), ref enableMotivationMechanics,
+                "PrisonLabor_MotivationWarning".Translate());
+
+            listing_options.GapLine();
+
+            listing_options.CheckboxLabeled("PrisonLabor_MotivationIcons".Translate(), ref enableMotivationIcons,
+                "PrisonLabor_MotivationIconsDesc".Translate());
+
+            listing_options.GapLine();
+
+            listing_options.CheckboxLabeled("PrisonLabor_CanGrowAdvanced".Translate(), ref advancedGrowing,
+                "PrisonLabor_CanGrowAdvancedDesc".Translate());
+
+            listing_options.GapLine();
+
+            listing_options.CheckboxLabeled("PrisonLabor_EnableRevolts".Translate(), ref enableRevolts,
+                "PrisonLabor_EnableRevoltsDesc".Translate());
+
+            listing_options.GapLine();
+
+            listing_options.CheckboxLabeled("PrisonLabor_ShowTreatmentHappiness".Translate(), ref showTreatmentHappiness,
+                "PrisonLabor_ShowTreatmentHappinessDesc".Translate());
+
             listing_options.Gap();
             listing_options.Gap();
             listing_options.Gap();
 
-            listing_options.CheckboxLabeled("PrisonLabor_DisableMod".Translate(), ref disableMod,
-                "PrisonLabor_DisableModDesc".Translate());
+            if (listing_options.ButtonTextLabeled("PrisonLabor_ButtonRemoveModFromSaveDesc".Translate(), "PrisonLabor_ButtonRemoveModFromSave".Translate()))
+                Find.WindowStack.Add(new SelectSaveForCleaningDialog());
 
             listing_options.End();
 
@@ -166,13 +151,11 @@ namespace PrisonLabor.Core.Settings
         {
             PrisonLaborPrefs.ShowNews = showNews;
             PrisonLaborPrefs.AllowAllWorkTypes = allowAllWorktypes;
-            if (!disableMod)
-                PrisonLaborPrefs.EnableMotivationMechanics = enableMotivationMechanics;
+            PrisonLaborPrefs.EnableMotivationMechanics = enableMotivationMechanics;
             PrisonLaborPrefs.EnableMotivationIcons = enableMotivationIcons;
             PrisonLaborPrefs.EnableRevolts = enableRevolts;
             PrisonLaborPrefs.ShowTreatmentHappiness = showTreatmentHappiness;
             PrisonLaborPrefs.AdvancedGrowing = advancedGrowing;
-            PrisonLaborPrefs.DisableMod = disableMod;
             PrisonLaborPrefs.DefaultInteractionMode = interactionModeList[defaultInteractionMode].defName;
             PrisonLaborPrefs.Save();
             Log.Message("Prison Labor settings saved");

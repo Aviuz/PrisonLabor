@@ -51,7 +51,7 @@ namespace PrisonLabor.Core.GUI_Components
         {
             try
             {
-                if (!PrisonLaborPrefs.EnableMotivationIcons || PrisonLaborPrefs.DisableMod)
+                if (!PrisonLaborPrefs.EnableMotivationIcons)
                     return;
 
                 if (map.mapPawns == null)

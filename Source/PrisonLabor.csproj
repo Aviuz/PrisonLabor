@@ -68,9 +68,12 @@
     <Compile Include="Core\LaborArea\Designator_AreaLaborClear.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
+    <Compile Include="Core\Settings\CleanSaveDialog.cs" />
+    <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
     <Compile Include="Core\Trackers\EscapeTracker.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
     <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
+    <Compile Include="HarmonyPatches\Patches_DeepDrill\EnableDeepDrillsToPrisoners.cs" />
     <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapeTracker.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\DeliverEvenOutsidePrisonCell.cs" />
@@ -99,8 +102,6 @@
     <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_PrisonInteractionLabel.cs" />
     <Compile Include="HarmonyPatches\Patches_TreatmentTinkering\Patch_ReduceChanceForMentalBreak.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_RemoveBillFromUtility.cs" />
-    <Compile Include="HarmonyPatches\Patches_SaveCompatibility\Patch_RemoveHediffIfDisabled.cs" />
-    <Compile Include="HarmonyPatches\Patches_SaveCompatibility\Patch_RemoveLaborAreaIfDisabled.cs" />
     <Compile Include="HarmonyPatches\Patches_RenamingPrisoners\Patch_RenamePrisoners.cs" />
     <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_ResetWorktableWhenRecruited.cs" />
     <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_RespectReservation.cs" />
@@ -151,7 +152,8 @@
     <Compile Include="Tweaks\MainTabWindow_Restrict_Tweak.cs" />
     <Compile Include="Tweaks\MainTabWindow_Dual.cs" />
     <Compile Include="Tweaks\MainTabWindow_Work_Tweak.cs" />
-    <Compile Include="Tweaks\SaveUpgrader.cs" />
+    <Compile Include="Core\GameSaves\SaveCleaner.cs" />
+    <Compile Include="Core\GameSaves\SaveUpgrader.cs" />
     <Compile Include="Tweaks\WorkGiver_CleanFilth_Tweak.cs" />
     <Compile Include="Tweaks\WorkGiver_GrowerSow_Tweak.cs" />
     <Compile Include="Initialization.cs" />

@@ -1,9 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using PrisonLabor.Core.Meta;
 using PrisonLabor.Core.Needs;
 using RimWorld;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Verse;
 
 namespace PrisonLabor.Core.Alerts
@@ -42,9 +42,7 @@ namespace PrisonLabor.Core.Alerts
 
         public override AlertReport GetReport()
         {
-            if (!PrisonLaborPrefs.DisableMod)
-                return AlertReport.CulpritIs(StarvingPrisoners.FirstOrDefault());
-            return false;
+            return AlertReport.CulpritIs(StarvingPrisoners.FirstOrDefault());
         }
     }
 }

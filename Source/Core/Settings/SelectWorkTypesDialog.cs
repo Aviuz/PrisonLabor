@@ -8,7 +8,7 @@ using Verse.Sound;
 
 namespace PrisonLabor.Core.Settings
 {
-    internal class SelectWorkTypesDialog : Window
+    public class SelectWorkTypesDialog : Window
     {
         private float maxH;
         private Vector2 position;

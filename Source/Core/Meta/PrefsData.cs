@@ -14,8 +14,6 @@ namespace PrisonLabor.Core.Meta
         public bool enable_revolts = true;
         public bool show_treatment_happiness = false;
 
-        public bool disable_mod = false;
-
         public Version last_version = Version.v0_0;
         public bool show_news = true;
         public bool enable_reports = false;

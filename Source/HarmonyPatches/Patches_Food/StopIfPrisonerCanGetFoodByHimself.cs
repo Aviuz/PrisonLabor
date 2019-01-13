@@ -36,8 +36,6 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
 
         static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, IEnumerable<CodeInstruction> instructions)
         {
-            HPatcher.CreateDebugFileOnDesktop("food", instructions);
-
             OpCode[] opCodes =
             {
                 OpCodes.Call,
