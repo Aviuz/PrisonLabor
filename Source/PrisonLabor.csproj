@@ -73,6 +73,7 @@
     <Compile Include="Core\Trackers\EscapeTracker.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
     <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
+    <Compile Include="HarmonyPatches\Patches_Construction\EnableConstructionFinishFrames.cs" />
     <Compile Include="HarmonyPatches\Patches_DeepDrill\EnableDeepDrillsToPrisoners.cs" />
     <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapeTracker.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
