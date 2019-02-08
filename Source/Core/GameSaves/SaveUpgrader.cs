@@ -1,4 +1,4 @@
-﻿using PrisonLabor.Core.GUI_Components;
+using PrisonLabor.Core.GUI_Components;
 using PrisonLabor.Core.Meta;
 using PrisonLabor.Core.Needs;
 using System;
@@ -6,7 +6,7 @@ using System.Xml;
 using Verse;
 using Version = PrisonLabor.Core.Meta.Version;
 
-namespace PrisonLabor.Tweaks
+namespace PrisonLabor.Core.GameSaves
 {
     static class SaveUpgrader
     {

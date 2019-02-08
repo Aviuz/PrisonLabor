@@ -133,7 +133,7 @@ namespace PrisonLabor.Core.Settings
 
             if (listing_panel.ButtonText("PrisonLabor_ShowNews".Translate()))
             {
-                NewsDialog.showAll = true;
+                NewsDialog.ShowAll = true;
                 NewsDialog.ForceShow();
             }
 

@@ -54,6 +54,7 @@
     <Compile Include="Core\Alerts\Alert_EscapingPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_LazyPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_StarvingPrisoners.cs" />
+    <Compile Include="Core\GUI_Components\RichListing.cs" />
     <Compile Include="Core\LaborArea\Area_Labor.cs" />
     <Compile Include="Constants\BGP.cs" />
     <Compile Include="Core\BillAssignation\BillGroupData.cs" />
@@ -68,7 +69,8 @@
     <Compile Include="Core\LaborArea\Designator_AreaLaborClear.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
-    <Compile Include="Core\Other\ChangelogUtility.cs" />
+    <Compile Include="Core\Meta\Version.cs" />
+    <Compile Include="Core\News\NewsProvider.cs" />
     <Compile Include="Core\Settings\CleanSaveDialog.cs" />
     <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
     <Compile Include="Core\Trackers\EscapeTracker.cs" />
@@ -139,6 +141,11 @@
     <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_FreeTime.cs" />
     <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_LowMotivation.cs" />
     <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_VeryGoodTreatment.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tweaks\JobDriver_Mine_Tweak.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_Supervise.cs" />
     <Compile Include="Core\Meta\Prefs.cs" />
@@ -211,6 +218,7 @@
     <Content Include="..\TaskList.txt">
       <Link>Organizer\TaskList.txt</Link>
     </Content>
+    <Content Include="Organizer\NewsFeed.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\credits.md">
@@ -225,6 +233,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Treatment\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
