@@ -68,6 +68,7 @@
     <Compile Include="Core\LaborArea\Designator_AreaLaborClear.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
+    <Compile Include="Core\Other\ChangelogUtility.cs" />
     <Compile Include="Core\Settings\CleanSaveDialog.cs" />
     <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
     <Compile Include="Core\Trackers\EscapeTracker.cs" />
