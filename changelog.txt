@@ -1,6 +1,7 @@
 Changelog:
 ============== BETA VERSION ==============
 0.10.0
+- reworked news pop-up window
 - fixed construction job
 - new system for removing mod from save (new button in mod menu)
 - wardens no longer deliver food if prisoners can get it from another room
