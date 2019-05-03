@@ -40,9 +40,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_PermissionFix.Jobs
 
             //var body = action.Method.GetMethodBody().GetILAsByteArray();
 
-            var bodyH = new MethodBodyReader(action.Method, gen);
 
-            HPatcher.CreateDebugFileOnDesktop("debugAfterUpgraded", MethodBodyReader.GetInstructions(gen, method).Select(i => i.GetCodeInstruction()));
+            Debug(MethodBodyReader.GetInstructions(gen, action.Method), "debugAfterUpgraded");
 
             return new Action(() => { });
         }
@@ -231,22 +230,19 @@ namespace PrisonLabor.HarmonyPatches.Patches_PermissionFix.Jobs
             // Write the string array to a new file.
             using (StreamWriter outputFile = new StreamWriter(myDesktopPath + @"\" + fileName + ".txt"))
             {
-                outputFile.WriteLine("================");
-                outputFile.WriteLine("Body of " + fileName + " method", fileName);
-                outputFile.WriteLine("================");
+                outputFile.WriteLine($".method public void {fileName}(void) cil managed");
+                outputFile.WriteLine("{");
                 foreach (ILInstruction instruction in instr)
                 {
+                    foreach (var label in instruction.labels)
+                        outputFile.WriteLine($"\tLABEL_{label.GetHashCode()}:\n\n\n\n\n\n");
+
                     var instructionString = instruction.opcode.ToString();
-                    instructionString += " | ";
-                    instructionString += instruction.operand is Label ? $"Label {instruction.operand.GetHashCode()}" : instruction.operand;
-                    instructionString += " | ";
-                    if (instruction.labels.Count > 0)
-                        foreach (var label in instruction.labels)
-                            instructionString += $"Label {label.GetHashCode()}";
-                    else
-                        instructionString += "no labels";
-                    outputFile.WriteLine(instructionString);
+                    var operandString = instruction.operand is Label ? $"LABEL_{instruction.operand.GetHashCode()}" : instruction.operand;
+                    outputFile.WriteLine($"\t{instructionString} {operandString}");
+                    outputFile.WriteLine($"\t\t{instruction.operand?.GetType()}");
                 }
+                outputFile.WriteLine("}");
             }
         }
     }

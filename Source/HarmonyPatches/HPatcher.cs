@@ -82,11 +82,11 @@ namespace PrisonLabor.HarmonyPatches
                 foreach (CodeInstruction instruction in instr)
                 {
                     foreach (var label in instruction.labels)
-                        outputFile.WriteLine($"LABEL_{label.GetHashCode()}:");
+                        outputFile.WriteLine($"\tLABEL_{label.GetHashCode()}:");
 
                     var instructionString = instruction.opcode.ToString();
                     var operandString = instruction.operand is Label ? $"LABEL_{instruction.operand.GetHashCode()}" : instruction.operand;
-                    outputFile.WriteLine($"{instructionString} {operandString}");
+                    outputFile.WriteLine($"\t{instructionString} {operandString}");
                 }
                 outputFile.WriteLine("}");
             }
