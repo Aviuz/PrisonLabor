@@ -1,10 +1,13 @@
-﻿using PrisonLabor.Constants;
+﻿using Harmony.ILCopying;
+using PrisonLabor.Constants;
 using RimWorld;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
+using System.Reflection;
+using System.Reflection.Emit;
 using Verse;
+using Verse.AI;
 
 namespace PrisonLabor.Tweaks
 {
@@ -39,6 +42,125 @@ namespace PrisonLabor.Tweaks
             // Cut plant
             var cutPlantJob = JobDefOf.CutPlant;
             cutPlantJob.driverClass = typeof(JobDriver_PlantCut_Tweak);
+
+            // Harvest designated
+            {
+                var instance = new JobDriver_PlantHarvest_Designated();
+                var enumerator = typeof(JobDriver_PlantHarvest_Designated).GetMethod("MakeNewToils", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(instance, null) as IEnumerable<Toil>;
+                if (enumerator != null)
+                {
+                    string myDesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    using (StreamWriter outputFile = new StreamWriter(myDesktopPath + @"\" + "toils" + ".txt"))
+                    {
+                        foreach (var toil in enumerator)
+                        {
+                            outputFile.WriteLine($"{toil.GetType()}");
+                            outputFile.WriteLine($"CompleteMode: {toil.defaultCompleteMode.ToString()}");
+                            outputFile.WriteLine($"SocialMode: {toil.socialMode}");
+                            if (toil.initAction != null && toil.initAction.Method != null)
+                            {
+                                outputFile.WriteLine($"  InitAction:");
+                                var dynMethod = new DynamicMethod(toil.initAction.Method.Name, toil.initAction.Method.ReturnType, null);
+                                foreach (ILInstruction ci in MethodBodyReader.GetInstructions(dynMethod.GetILGenerator(), toil.initAction.Method))
+                                {
+                                    var operand = ci.operand is Label ? ("Label " + ci.operand.GetHashCode()).ToString() : ci.operand;
+                                    string labels = "";
+                                    if (ci.labels.Count > 0)
+                                        foreach (var label in ci.labels)
+                                            labels += $"Label {label.GetHashCode()}";
+                                    else
+                                        labels += "no labels";
+                                    outputFile.WriteLine($"    {ci.opcode} | {operand} | {labels}");
+                                }
+                            }
+
+                            if (toil.tickAction != null && toil.tickAction.Method != null)
+                            {
+                                outputFile.WriteLine($"  TickAction:");
+                                var dynMethod = new DynamicMethod(toil.tickAction.Method.Name, toil.tickAction.Method.ReturnType, null);
+                                foreach (ILInstruction ci in MethodBodyReader.GetInstructions(dynMethod.GetILGenerator(), toil.tickAction.Method))
+                                {
+                                    var operand = ci.operand is Label ? ("Label " + ci.operand.GetHashCode()).ToString() : ci.operand;
+                                    string labels = "";
+                                    if (ci.labels.Count > 0)
+                                        foreach (var label in ci.labels)
+                                            labels += $"Label {label.GetHashCode()}";
+                                    else
+                                        labels += "no labels";
+                                    outputFile.WriteLine($"    {ci.opcode} | {operand} | {labels}");
+                                }
+                            }
+
+                            if (toil.finishActions != null)
+                            {
+                                outputFile.WriteLine($"  FinishActions:");
+                                foreach (var action in toil.finishActions)
+                                {
+                                    outputFile.WriteLine($"  Action:");
+                                    var dynMethod = new DynamicMethod(action.Method.Name, action.Method.ReturnType, null);
+                                    foreach (ILInstruction ci in MethodBodyReader.GetInstructions(dynMethod.GetILGenerator(), action.Method))
+                                    {
+                                        var operand = ci.operand is Label ? ("Label " + ci.operand.GetHashCode()).ToString() : ci.operand;
+                                        string labels = "";
+                                        if (ci.labels.Count > 0)
+                                            foreach (var label in ci.labels)
+                                                labels += $"Label {label.GetHashCode()}";
+                                        else
+                                            labels += "no labels";
+                                        outputFile.WriteLine($"    {ci.opcode} | {operand} | {labels}");
+                                    }
+                                }
+                            }
+
+                            if (toil.preInitActions != null)
+                            {
+                                outputFile.WriteLine($"  PreInitActions:");
+                                foreach (var action in toil.preInitActions)
+                                {
+                                    outputFile.WriteLine($"  Action:");
+                                    var dynMethod = new DynamicMethod(action.Method.Name, action.Method.ReturnType, null);
+                                    foreach (ILInstruction ci in MethodBodyReader.GetInstructions(dynMethod.GetILGenerator(), action.Method))
+                                    {
+                                        var operand = ci.operand is Label ? ("Label " + ci.operand.GetHashCode()).ToString() : ci.operand;
+                                        string labels = "";
+                                        if (ci.labels.Count > 0)
+                                            foreach (var label in ci.labels)
+                                                labels += $"Label {label.GetHashCode()}";
+                                        else
+                                            labels += "no labels";
+                                        outputFile.WriteLine($"    {ci.opcode} | {operand} | {labels}");
+                                    }
+                                }
+                            }
+
+                            if (toil.preTickActions != null)
+                            {
+                                outputFile.WriteLine($"  PreTickActions:");
+                                foreach (var action in toil.preTickActions)
+                                {
+                                    outputFile.WriteLine($"  Action:");
+                                    var dynMethod = new DynamicMethod(action.Method.Name, action.Method.ReturnType, null);
+                                    foreach (ILInstruction ci in MethodBodyReader.GetInstructions(dynMethod.GetILGenerator(), action.Method))
+                                    {
+                                        var operand = ci.operand is Label ? ("Label " + ci.operand.GetHashCode()).ToString() : ci.operand;
+                                        string labels = "";
+                                        if (ci.labels.Count > 0)
+                                            foreach (var label in ci.labels)
+                                                labels += $"Label {label.GetHashCode()}";
+                                        else
+                                            labels += "no labels";
+                                        outputFile.WriteLine($"    {ci.opcode} | {operand} | {labels}");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Log.Error("enumerator is null");
+                }
+            }
 
             // Harvest
             if (CompatibilityPatches.SeedsPlease.CanOverrideHarvest())

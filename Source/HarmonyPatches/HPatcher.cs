@@ -1,11 +1,11 @@
-﻿using System;
-using System.Reflection;
-using Harmony;
-using Verse;
+﻿using Harmony;
+using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection.Emit;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Reflection.Emit;
+using Verse;
 
 namespace PrisonLabor.HarmonyPatches
 {
@@ -77,22 +77,18 @@ namespace PrisonLabor.HarmonyPatches
             // Write the string array to a new file.
             using (StreamWriter outputFile = new StreamWriter(myDesktopPath + @"\" + fileName + ".txt"))
             {
-                outputFile.WriteLine("================");
-                outputFile.WriteLine("Body of " + fileName + " method", fileName);
-                outputFile.WriteLine("================");
+                outputFile.WriteLine($".method public void {fileName}(void) cil managed");
+                outputFile.WriteLine("{");
                 foreach (CodeInstruction instruction in instr)
                 {
+                    foreach (var label in instruction.labels)
+                        outputFile.WriteLine($"LABEL_{label.GetHashCode()}:");
+
                     var instructionString = instruction.opcode.ToString();
-                    instructionString += " | ";
-                    instructionString += instruction.operand is Label ? $"Label {instruction.operand.GetHashCode()}" : instruction.operand;
-                    instructionString += " | ";
-                    if (instruction.labels.Count > 0)
-                        foreach (var label in instruction.labels)
-                            instructionString += $"Label {label.GetHashCode()}";
-                    else
-                        instructionString += "no labels";
-                    outputFile.WriteLine(instructionString);
+                    var operandString = instruction.operand is Label ? $"LABEL_{instruction.operand.GetHashCode()}" : instruction.operand;
+                    outputFile.WriteLine($"{instructionString} {operandString}");
                 }
+                outputFile.WriteLine("}");
             }
         }
 
@@ -120,7 +116,7 @@ namespace PrisonLabor.HarmonyPatches
 
             var finalStep = opCodes.Length;
 
-            
+
             if (InstructionMatching(instr, opCodes[step], operands[step], perfectMatch))
                 step++;
             else

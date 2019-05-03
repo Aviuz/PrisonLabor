@@ -4,7 +4,7 @@ using Verse;
 
 namespace PrisonLabor.HarmonyPatches.Patches_PermissionFix
 {
-    internal class ForibiddenDropPatch
+    public class ForibiddenDropPatch
     {
         public static void Postfix(Pawn_CarryTracker __instance, IntVec3 dropLoc, ThingPlaceMode mode,
             Thing resultingThing, Action<Thing, int> placedAction = null)

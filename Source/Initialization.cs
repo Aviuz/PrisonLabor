@@ -32,7 +32,7 @@ namespace PrisonLabor
             }
             catch (Exception e)
             {
-                Log.Error($"Prison Labor v{VersionUtility.versionString} caught error during start up:\n{e.Message}");
+                Log.Error($"Prison Labor v{VersionUtility.versionString} caught error during start up:\n{e.ToString()}");
             }
 
         }

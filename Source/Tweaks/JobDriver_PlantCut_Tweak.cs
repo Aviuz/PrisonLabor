@@ -8,14 +8,19 @@ namespace PrisonLabor.Tweaks
     {
         protected override void Init()
         {
-            if (Plant.def.plant.harvestedThingDef != null && Plant.YieldNow() > 0)
-                xpPerTick = 0.11f;
+            if (base.Plant.def.plant.harvestedThingDef != null && base.Plant.CanYieldNow())
+            {
+                this.xpPerTick = 0.085f;
+            }
             else
-                xpPerTick = 0f;
+            {
+                this.xpPerTick = 0f;
+            }
         }
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
+            Log.Message("hit2");
             foreach (var toil in base.MakeNewToils())
                 yield return toil;
             var toil2 = new Toil();

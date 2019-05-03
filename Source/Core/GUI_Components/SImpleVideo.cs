@@ -17,7 +17,7 @@ namespace PrisonLabor.Core.GUI_Components
             Texture2D texture;
             do
             {
-                texture = ContentFinder<Texture2D>.Get($"{texturesPath}\\{iterator++}");
+                texture = ContentFinder<Texture2D>.Get($"{texturesPath}/{iterator++}", false);
                 if (texture != null)
                     framesList.Add(texture);
             }
@@ -29,7 +29,10 @@ namespace PrisonLabor.Core.GUI_Components
 
         public void OnGui(Rect rect)
         {
-            GUI.DrawTexture(rect, frames[(int)(Time.time * framesPerSecond) % frames.Length]);
+            if (frames.Length > 0)
+                GUI.DrawTexture(rect, frames[(int)(Time.time * framesPerSecond) % frames.Length]);
+            else
+                Log.Warning("PrisonLabor Warning: no frames found in SimpleVideo");
         }
     }
 }
