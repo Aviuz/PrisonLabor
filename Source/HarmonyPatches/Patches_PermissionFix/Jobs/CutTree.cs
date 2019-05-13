@@ -234,13 +234,16 @@ namespace PrisonLabor.HarmonyPatches.Patches_PermissionFix.Jobs
                 outputFile.WriteLine("{");
                 foreach (ILInstruction instruction in instr)
                 {
-                    foreach (var label in instruction.labels)
-                        outputFile.WriteLine($"\tLABEL_{label.GetHashCode()}:\n\n\n\n\n\n");
+                    //foreach (var label in instruction.labels)
+                    //    outputFile.WriteLine($"\tLABEL_{label.GetHashCode()}:\n\n\n\n\n\n");
 
-                    var instructionString = instruction.opcode.ToString();
-                    var operandString = instruction.operand is Label ? $"LABEL_{instruction.operand.GetHashCode()}" : instruction.operand;
-                    outputFile.WriteLine($"\t{instructionString} {operandString}");
-                    outputFile.WriteLine($"\t\t{instruction.operand?.GetType()}");
+                    //var instructionString = instruction.opcode.ToString();
+                    //var operandString = instruction.operand is ILInstruction ?
+                    //                $"LABEL_{((ILInstruction)instruction.operand).GetHashCode()}" :
+                    //                instruction.operand;
+                    //outputFile.WriteLine($"\t{instructionString} {operandString}");
+                    //outputFile.WriteLine($"\t\t{instruction.operand?.GetType()}");
+                    outputFile.WriteLine(instruction.ToString());
                 }
                 outputFile.WriteLine("}");
             }
