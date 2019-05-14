@@ -112,6 +112,20 @@ namespace PrisonLabor.Core.GUI_Components
                 Widgets.Label(viewRect, item.Substring(10));
                 viewRect.y += Text.CalcHeight(item, viewRect.width) + Spacing;
             }
+            // Draw Video
+            else if (item.StartsWith("[video]"))
+            {
+                int imgLength = item.IndexOf("[/video]");
+                var framesSrc = item.Substring(7, imgLength - 7);
+                var dimensions = item.Substring(imgLength + 8).Split('x');
+
+                Vector2 videoSize = dimensions.Length >= 2 ? new Vector2(int.Parse(dimensions[0]), int.Parse(dimensions[1])) : new Vector2(100, 100);
+                int framesPerSecond = dimensions.Length >= 3 ? int.Parse(dimensions[2]) : 10;
+
+                new SimpleVideo(framesSrc, framesPerSecond).OnGui(new Rect((viewRect.x-videoSize.x)/2, viewRect.y, videoSize.x, videoSize.y));
+
+                viewRect.y += videoSize.y;
+            }
             // Draw Text
             else
             {

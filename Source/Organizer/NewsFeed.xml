@@ -15,6 +15,12 @@
         <item>now work settings reset after prisoner is recruited, so it should fix some issues</item>
       </items>
     </patch>-->
+    <patch version="0.10.0">
+      <title> Test </title>
+      <items>
+        <item>[video]test[/video]300x100x20</item>
+      </items>
+    </patch>
     <patch version="0.9.11">
       <title>Prison Labor Beta v0.9.11</title>
       <items>
