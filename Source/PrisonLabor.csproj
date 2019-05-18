@@ -71,7 +71,7 @@
     <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
     <Compile Include="Core\Meta\Version.cs" />
-    <Compile Include="Core\News\NewsProvider.cs" />
+    <Compile Include="Core\Other\NewsProvider.cs" />
     <Compile Include="Core\Settings\CleanSaveDialog.cs" />
     <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
     <Compile Include="Core\Trackers\EscapeTracker.cs" />
@@ -136,7 +136,7 @@
     <Compile Include="Core\PrisonLaborWidgets.cs" />
     <Compile Include="Core\Settings\SettingsMenu.cs" />
     <Compile Include="Core\Settings\SelectWorkTypesDialog.cs" />
-    <Compile Include="Core\News\NewsDialog.cs" />
+    <Compile Include="Core\Windows\NewsWindow.cs" />
     <Compile Include="Core\BaseClasses\SimpleTimer.cs" />
     <Compile Include="Core\AI\ThinkNodes\ThinkNode_SeekSafeTemperature.cs" />
     <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_FreeTime.cs" />

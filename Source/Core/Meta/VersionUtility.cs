@@ -1,9 +1,4 @@
-using PrisonLabor.Core.News;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Verse;
+using PrisonLabor.Core.Windows;
 
 namespace PrisonLabor.Core.Meta
 {
@@ -28,11 +23,11 @@ namespace PrisonLabor.Core.Meta
             }
 
             // Client has new version
-            if(PrisonLaborPrefs.LastVersion < versionNumber)
+            if (PrisonLaborPrefs.LastVersion < versionNumber)
             {
                 // Show version news
-                NewsDialog.LastVersionString = GetVersionString(PrisonLaborPrefs.LastVersion);
-                NewsDialog.AutoShow = true;
+                NewsWindow.LastVersionString = GetVersionString(PrisonLaborPrefs.LastVersion);
+                NewsWindow.AutoShow = true;
 
                 // Pre 0.9.4
                 if (PrisonLaborPrefs.LastVersion < Version.v0_9_4)
