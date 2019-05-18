@@ -137,6 +137,11 @@ namespace PrisonLabor.Core.Settings
                 NewsWindow.ForceShow();
             }
 
+            if (listing_panel.ButtonText("PrisonLabor_ReplayTurorialsButton".Translate()))
+            {
+                ReplayTutorialsWindow.Show();
+            }
+
             listing_panel.End();
 
             Apply();

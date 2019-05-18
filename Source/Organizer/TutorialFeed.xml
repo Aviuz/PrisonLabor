@@ -1,0 +1,22 @@
+﻿<TutorialFeed>
+  <!-- How to insert rich text: -->
+  <!-- [subtitle] for subtitle -->
+  <!-- [img] ... [/img] for image (inside name of file) -->
+  <!-- [gap] for gap -->
+  <tutorials>
+    <tutorial key="test">
+      <items>
+        <item>[title]Video</item>
+        <item>[video]test[/video]300x100x20</item>
+        <item>the end!</item>
+      </items>
+    </tutorial>
+  <tutorial key="test2">
+      <items>
+        <item>[title]Super test</item>
+        <item>[subtitle]he he</item>
+        <item>wazz up?</item>
+      </items>
+    </tutorial>
+  </tutorials>
+</TutorialFeed>

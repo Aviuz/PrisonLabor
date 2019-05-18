@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -72,9 +72,12 @@
     <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
     <Compile Include="Core\Meta\Version.cs" />
     <Compile Include="Core\Other\NewsProvider.cs" />
+    <Compile Include="Core\Other\TutorialProvider.cs" />
     <Compile Include="Core\Settings\CleanSaveDialog.cs" />
     <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
     <Compile Include="Core\Trackers\EscapeTracker.cs" />
+    <Compile Include="Core\Windows\ReplayTutorialsWindow.cs" />
+    <Compile Include="Core\Windows\TutorialWindow.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
     <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
     <Compile Include="HarmonyPatches\Patches_Construction\EnableConstructionFinishFrames.cs" />
@@ -220,6 +223,9 @@
       <Link>Organizer\TaskList.txt</Link>
     </Content>
     <Content Include="Organizer\NewsFeed.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Organizer\TutorialFeed.xml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
