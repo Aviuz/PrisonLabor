@@ -55,6 +55,7 @@
     <Compile Include="Core\Alerts\Alert_LazyPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_StarvingPrisoners.cs" />
     <Compile Include="Core\GUI_Components\RichListing.cs" />
+    <Compile Include="Core\GUI_Components\SImpleVideo.cs" />
     <Compile Include="Core\LaborArea\Area_Labor.cs" />
     <Compile Include="Constants\BGP.cs" />
     <Compile Include="Core\BillAssignation\BillGroupData.cs" />
@@ -70,10 +71,13 @@
     <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
     <Compile Include="Core\Meta\Version.cs" />
-    <Compile Include="Core\News\NewsProvider.cs" />
+    <Compile Include="Core\Other\NewsProvider.cs" />
+    <Compile Include="Core\Other\TutorialProvider.cs" />
     <Compile Include="Core\Settings\CleanSaveDialog.cs" />
     <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
     <Compile Include="Core\Trackers\EscapeTracker.cs" />
+    <Compile Include="Core\Windows\ReplayTutorialsWindow.cs" />
+    <Compile Include="Core\Windows\TutorialWindow.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
     <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
     <Compile Include="HarmonyPatches\Patches_Construction\EnableConstructionFinishFrames.cs" />
@@ -135,7 +139,7 @@
     <Compile Include="Core\PrisonLaborWidgets.cs" />
     <Compile Include="Core\Settings\SettingsMenu.cs" />
     <Compile Include="Core\Settings\SelectWorkTypesDialog.cs" />
-    <Compile Include="Core\News\NewsDialog.cs" />
+    <Compile Include="Core\Windows\NewsWindow.cs" />
     <Compile Include="Core\BaseClasses\SimpleTimer.cs" />
     <Compile Include="Core\AI\ThinkNodes\ThinkNode_SeekSafeTemperature.cs" />
     <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_FreeTime.cs" />
@@ -218,7 +222,12 @@
     <Content Include="..\TaskList.txt">
       <Link>Organizer\TaskList.txt</Link>
     </Content>
-    <Content Include="Organizer\NewsFeed.xml" />
+    <Content Include="Organizer\NewsFeed.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Organizer\TutorialFeed.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\credits.md">

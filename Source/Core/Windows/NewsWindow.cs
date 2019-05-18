@@ -1,11 +1,12 @@
 using PrisonLabor.Core.Meta;
+using PrisonLabor.Core.Other;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
-namespace PrisonLabor.Core.News
+namespace PrisonLabor.Core.Windows
 {
-    internal class NewsDialog : Window
+    public class NewsWindow : Window
     {
         // Static Properties
         public static bool AutoShow { get; set; }
@@ -18,7 +19,7 @@ namespace PrisonLabor.Core.News
         private string[] entries;
         private Vector2 position;
 
-        public NewsDialog()
+        public NewsWindow()
         {
             doCloseButton = true;
             doCloseX = true;
@@ -51,7 +52,7 @@ namespace PrisonLabor.Core.News
         {
             if (AutoShow && PrisonLaborPrefs.ShowNews)
             {
-                Find.WindowStack.Add(new NewsDialog());
+                Find.WindowStack.Add(new NewsWindow());
                 PrisonLaborPrefs.LastVersion = PrisonLaborPrefs.Version;
                 PrisonLaborPrefs.Save();
                 AutoShow = false;
@@ -60,7 +61,7 @@ namespace PrisonLabor.Core.News
 
         public static void ForceShow()
         {
-            Find.WindowStack.Add(new NewsDialog());
+            Find.WindowStack.Add(new NewsWindow());
             PrisonLaborPrefs.LastVersion = PrisonLaborPrefs.Version;
             PrisonLaborPrefs.Save();
             AutoShow = false;

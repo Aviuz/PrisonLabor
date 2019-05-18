@@ -71,4 +71,7 @@
   <PrisonLabor_UpgradeSaveProcessMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveProcessMessage>
   <PrisonLabor_UpgradeSaveDialogMessage>You are going to remove Prison Labor mod from save. After this operation you will be able to play without the mod.</PrisonLabor_UpgradeSaveDialogMessage>
   <PrisonLabor_BackupSaveDialogMessage>Please backup your file with button below.</PrisonLabor_BackupSaveDialogMessage>
+
+  <PrisonLabor_ReplayTurorialsButton>Tutorials</PrisonLabor_ReplayTurorialsButton>
+  <PrisonLabor_ShowTutorialButton>Show</PrisonLabor_ShowTutorialButton>
 </LanguageData>

@@ -1,6 +1,6 @@
 using PrisonLabor.Core.LaborWorkSettings;
 using PrisonLabor.Core.Meta;
-using PrisonLabor.Core.News;
+using PrisonLabor.Core.Windows;
 using RimWorld;
 using System.Collections.Generic;
 using UnityEngine;
@@ -133,8 +133,13 @@ namespace PrisonLabor.Core.Settings
 
             if (listing_panel.ButtonText("PrisonLabor_ShowNews".Translate()))
             {
-                NewsDialog.ShowAll = true;
-                NewsDialog.ForceShow();
+                NewsWindow.ShowAll = true;
+                NewsWindow.ForceShow();
+            }
+
+            if (listing_panel.ButtonText("PrisonLabor_ReplayTurorialsButton".Translate()))
+            {
+                ReplayTutorialsWindow.Show();
             }
 
             listing_panel.End();

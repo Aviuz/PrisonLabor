@@ -61,9 +61,10 @@ namespace PrisonLabor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1Changelog:
+        ///   Looks up a localized string similar to Changelog:
         ///============== BETA VERSION ==============
         ///0.10.0
+        ///- reworked news pop-up window
         ///- fixed construction job
         ///- new system for removing mod from save (new button in mod menu)
         ///- wardens no longer deliver food if prisoners can get it from another room
@@ -72,7 +73,7 @@ namespace PrisonLabor.Properties {
         ///- fixed food reservation throwing errors
         ///- added prisoner sucicides
         ///- added +5 bonus to mood while prisoner have free time
-        ///- added +5 bonus to mood if prisoner is not supervised and  [rest of string was truncated]&quot;;.
+        ///- added +5 bonus to mood if p [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string changelog {
             get {
@@ -82,19 +83,41 @@ namespace PrisonLabor.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;NewsFeed&gt;
+        ///  &lt;!-- How to insert news: --&gt;
+        ///  &lt;!-- [subtitle] for subtitle --&gt;
+        ///  &lt;!-- [img] ... [/img] for image (inside name of file) --&gt;
+        ///  &lt;!-- [gap] for gap --&gt;
         ///  &lt;patches&gt;
-        ///    &lt;patch version=&quot;0.10.0&quot;&gt;
+        ///    &lt;!--&lt;patch version=&quot;0.10.0&quot;&gt;
         ///      &lt;title&gt;Prison Labor Beta v0.10.0&lt;/title&gt;
         ///      &lt;items&gt;
         ///        &lt;item&gt;prisoners will now work in cold only if &quot;work&quot; time is set&lt;/item&gt;
         ///        &lt;item&gt;prisoners will now seek safe temperature when not supervised&lt;/item&gt;
-        ///        &lt;item&gt;prisoners will respect forbidden items, if &quot;inspired&quot;&lt;/item&gt;
-        ///        &lt;item&gt;&quot;Treatment happiness&quot; will decrease if health conditions are bad, when prisoners are hungry, or they&apos;re working&lt;/item&gt;
-        ///        &lt;item&gt;added  [rest of string was truncated]&quot;;.
+        ///        &lt;item&gt;prisoners will respect forbidden items, if &quot;inspired&quot;&lt;/it [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string NewsFeed {
             get {
                 return ResourceManager.GetString("NewsFeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;NewsFeed&gt;
+        ///  &lt;!-- How to insert news: --&gt;
+        ///  &lt;!-- [subtitle] for subtitle --&gt;
+        ///  &lt;!-- [img] ... [/img] for image (inside name of file) --&gt;
+        ///  &lt;!-- [gap] for gap --&gt;
+        ///  &lt;patches&gt;
+        ///    &lt;!--&lt;patch version=&quot;0.10.0&quot;&gt;
+        ///      &lt;title&gt;Prison Labor Beta v0.10.0&lt;/title&gt;
+        ///      &lt;items&gt;
+        ///        &lt;item&gt;prisoners will now work in cold only if &quot;work&quot; time is set&lt;/item&gt;
+        ///        &lt;item&gt;prisoners will now seek safe temperature when not supervised&lt;/item&gt;
+        ///        &lt;item&gt;prisoners will respect forbidden items, if &quot;inspired&quot;&lt;/it [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TutorialFeed {
+            get {
+                return ResourceManager.GetString("TutorialFeed", resourceCulture);
             }
         }
     }

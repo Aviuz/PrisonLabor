@@ -42,7 +42,7 @@ namespace PrisonLabor.Core.GUI_Components
         public void OnGui()
         {
             Start(windowRect, viewRect);
-            foreach(var entry in entries)
+            foreach (var entry in entries)
                 Append(entry);
             End();
         }
@@ -106,22 +106,42 @@ namespace PrisonLabor.Core.GUI_Components
                 GUI.color = color;
                 viewRect.y += GapHeight;
             }
-            // Draw Subtitle (without margin)
+            // Draw Subtitle (without margin, old)
             else if (item.StartsWith("[subtitle]"))
             {
                 Widgets.Label(viewRect, item.Substring(10));
-                viewRect.y += Text.CalcHeight(item, viewRect.width) + Spacing;
+                viewRect.y += Text.CalcHeight(item.Substring(10), viewRect.width) + Spacing;
             }
-            // Draw Text
-            else
+            // Draw Video
+            else if (item.StartsWith("[video]"))
+            {
+                int imgLength = item.IndexOf("[/video]");
+                var framesSrc = item.Substring(7, imgLength - 7);
+                var dimensions = item.Substring(imgLength + 8).Split('x');
+
+                Vector2 videoSize = dimensions.Length >= 2 ? new Vector2(int.Parse(dimensions[0]), int.Parse(dimensions[1])) : new Vector2(100, 100);
+                int framesPerSecond = dimensions.Length >= 3 ? int.Parse(dimensions[2]) : 10;
+
+                new SimpleVideo(framesSrc, framesPerSecond).OnGui(new Rect((viewRect.x - videoSize.x) / 2, viewRect.y, videoSize.x, videoSize.y));
+
+                viewRect.y += videoSize.y;
+            }
+            // List point (with margin)
+            else if (item.StartsWith("[-]"))
             {
                 viewRect.width -= MarginWidth;
                 Widgets.Label(viewRect, MarginText);
                 viewRect.x += MarginWidth;
-                Widgets.Label(viewRect, item);
+                Widgets.Label(viewRect, item.Substring(3));
                 viewRect.x -= MarginWidth;
-                viewRect.y += Text.CalcHeight(item, viewRect.width) + Spacing;
+                viewRect.y += Text.CalcHeight(item.Substring(3), viewRect.width) + Spacing;
                 viewRect.width += MarginWidth;
+            }
+            // Draw Text
+            else
+            {
+                Widgets.Label(viewRect, item);
+                viewRect.y += Text.CalcHeight(item, viewRect.width) + Spacing;
             }
         }
 
@@ -165,11 +185,16 @@ namespace PrisonLabor.Core.GUI_Components
                     Text.Font = ItemFont;
                     height += Text.CalcHeight(item.Substring(10), width) + Spacing;
                 }
+                else if (item.StartsWith("[-]"))
+                {
+                    Text.Font = ItemFont;
+                    height += Text.CalcHeight(item.Substring(3), width - MarginWidth) + Spacing;
+                }
                 // Only Text
                 else
                 {
                     Text.Font = ItemFont;
-                    height += Text.CalcHeight(item, width - MarginWidth) + Spacing;
+                    height += Text.CalcHeight(item, width) + Spacing;
                 }
             }
             return height;

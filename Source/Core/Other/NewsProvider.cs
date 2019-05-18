@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
 using Verse;
 
-namespace PrisonLabor.Core.News
+namespace PrisonLabor.Core.Other
 {
     public static class NewsProvider
     {
@@ -79,7 +79,7 @@ namespace PrisonLabor.Core.News
 
                 if (match.Success)
                 {
-                    currentPatchNotes.Add(line.Replace(match.Value, "").Trim());
+                    currentPatchNotes.Add("[-]" + line.Replace(match.Value, "").Trim());
                 }
                 else
                 {

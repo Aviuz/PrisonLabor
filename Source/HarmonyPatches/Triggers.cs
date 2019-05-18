@@ -1,8 +1,8 @@
 ﻿using Harmony;
 using PrisonLabor.Core.GameSaves;
-using PrisonLabor.Core.News;
 using PrisonLabor.Core.Other;
 using PrisonLabor.Core.Trackers;
+using PrisonLabor.Core.Windows;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -67,7 +67,7 @@ namespace PrisonLabor.HarmonyPatches
         [HarmonyPatch(new Type[] { })]
         static class Patch_ShowNews
         {
-            static void Postfix() { NewsDialog.TryShow(); }
+            static void Postfix() { NewsWindow.TryShow();}
         }
     }
 }
