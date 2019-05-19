@@ -10,6 +10,8 @@ namespace PrisonLabor.Core.Windows
         private string[] entries;
         private Vector2 position;
 
+        public override Vector2 InitialSize => new Vector2(800, 700);
+
         public TutorialWindow(string tutorialKey)
         {
             entries = TutorialProvider.TutorialNodes[tutorialKey].entries;
