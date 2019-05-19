@@ -20,14 +20,9 @@ namespace PrisonLabor.Core.Windows
 
             listing_panel.Begin(inRect);
 
-            if (listing_panel.ButtonTextLabeled("test", "PrisonLabor_ShowTutorialButton".Translate()))
+            if (listing_panel.ButtonTextLabeled("Indroduction", "PrisonLabor_ShowTutorialButton".Translate()))
             {
-                TutorialWindow.Show("test");
-            }
-
-            if (listing_panel.ButtonTextLabeled("test2", "PrisonLabor_ShowTutorialButton".Translate()))
-            {
-                TutorialWindow.Show("test2");
+                TutorialWindow.Show("Indroduction");
             }
 
             listing_panel.End();
