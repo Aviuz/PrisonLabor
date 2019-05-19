@@ -25,6 +25,11 @@ namespace PrisonLabor.Core.Windows
                 TutorialWindow.Show("Indroduction");
             }
 
+            if (listing_panel.ButtonTextLabeled("Labor Area", "PrisonLabor_ShowTutorialButton".Translate()))
+            {
+                TutorialWindow.Show("LaborArea");
+            }
+
             listing_panel.End();
         }
 

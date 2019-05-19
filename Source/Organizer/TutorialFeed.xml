@@ -32,5 +32,13 @@
         <item><b>If you have any questions please visit FAQ first</b></item>
       </items>
     </tutorial>
+    <tutorial key ="LaborArea">
+      <items>
+        <item>[title]Labor areas</item>
+        <item>Labor area isn't required to make prisoners work.</item>
+        <item>This area forbids colonists from working.</item>
+        <item>It's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</item>
+      </items>
+    </tutorial>
   </tutorials>
 </TutorialFeed>

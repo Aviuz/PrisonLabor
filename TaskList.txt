@@ -13,13 +13,12 @@ Agenda:
 -add tutorials:
 Advanced (videos)
 * Reporting bugs?
-* Putting on clothes?
-* Motivation (enable jailor first)
 * labor area
 * revolts
 * accept prisoner
 * hypothermia
 Minor (Hints)
+* Putting on clothes?
 * Advanced planting (growing)
 * timetable (old)
 * managment (old)
