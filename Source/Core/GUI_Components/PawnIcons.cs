@@ -1,7 +1,6 @@
 using PrisonLabor.Core.Meta;
 using PrisonLabor.Core.Needs;
 using PrisonLabor.Core.Trackers;
-using RimWorld.Planet;
 using System;
 using UnityEngine;
 using Verse;
@@ -12,7 +11,7 @@ namespace PrisonLabor.Core.GUI_Components
     public class PawnIcons : MapComponent
     {
         private static readonly Texture2D watchedTexture;
-        private static readonly Texture2D motivatedTexture;
+        private static readonly Texture2D lazyTexture;
         private static readonly Texture2D freezingTexture;
         private static readonly Vector3 iconPos;
 
@@ -21,7 +20,7 @@ namespace PrisonLabor.Core.GUI_Components
         static PawnIcons()
         {
             watchedTexture = ContentFinder<Texture2D>.Get("InspireIcon", false);
-            motivatedTexture = ContentFinder<Texture2D>.Get("MotivateIcon", false);
+            lazyTexture = ContentFinder<Texture2D>.Get("LazyIcon", false);
             freezingTexture = ContentFinder<Texture2D>.Get("FreezingIcon", false);
             iconPos = new Vector3(0.3f, 0f, 0.9f);
         }
@@ -73,9 +72,9 @@ namespace PrisonLabor.Core.GUI_Components
                         {
                             DrawIcon(watchedTexture, pawn.DrawPos);
                         }
-                        else if (need != null && need.IsLazy)
+                        else if (need != null && need.IsLazy && PrisonLaborUtility.LaborEnabled(pawn) && PrisonLaborUtility.WorkTime(pawn))
                         {
-                            //TODO draw lazy icon
+                            DrawIcon(lazyTexture, pawn.DrawPos);
                         }
                     }
                 }
