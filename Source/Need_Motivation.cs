@@ -21,7 +21,7 @@ namespace PrisonLabor
         private const float JoyRate = 0.006f;
         private const int ReadyToRunLevel = 100;
 
-        private static NeedDef def;
+        private new static NeedDef def;
 
         private int delta;
         private int impatient;
@@ -31,18 +31,18 @@ namespace PrisonLabor
             delta = 0;
             impatient = 0;
             ReadyToRun = false;
-            Insipred = false;
+            Inspired = false;
         }
 
         public bool Enabled { get; set; }
 
-        public bool NeedToBeInspired { get; private set; }
+        public bool NeedToBeInspired { get; set; }
 
         public bool IsLazy { get; private set; }
 
-        public bool ReadyToRun { get; private set; }
+        public bool ReadyToRun { get; set; }
 
-        public bool Insipred { get; private set; }
+        public bool Inspired { get; set; }
 
         public bool CanEscape { get; set; }
 
@@ -95,25 +95,25 @@ namespace PrisonLabor
                                 value -= (int)pawn.needs.food.CurCategory * HungryRate;
                                 value -= (int)pawn.needs.rest.CurCategory * TiredRate;
                                 if (value >= 0)
-                                    Insipred = true;
+                                    Inspired = true;
                                 else
-                                    Insipred = false;
+                                    Inspired = false;
                             }
                             else if (pawn.timetable != null &&
                                      pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy)
                             {
                                 if (value != 0)
-                                    Insipred = true;
+                                    Inspired = true;
                                 else
-                                    Insipred = false;
+                                    Inspired = false;
                                 value += JoyRate;
                             }
                             else
                             {
                                 if (value != 0)
-                                    Insipred = true;
+                                    Inspired = true;
                                 else
-                                    Insipred = false;
+                                    Inspired = false;
                             }
                             delta = value.CompareTo(0.0f);
                             return value;
@@ -121,9 +121,9 @@ namespace PrisonLabor
                         else
                         {
                             if (value != 0)
-                                Insipred = true;
+                                Inspired = true;
                             else
-                                Insipred = false;
+                                Inspired = false;
 
                             delta = value.CompareTo(0.0f);
                             return value;
@@ -198,7 +198,7 @@ namespace PrisonLabor
 
         private void ImpatientTick()
         {
-            if (Insipred || !CanEscape)
+            if (Inspired || !CanEscape)
             {
                 if (impatient != 0)
                 {
