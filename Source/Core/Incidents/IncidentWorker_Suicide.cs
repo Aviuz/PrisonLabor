@@ -5,6 +5,7 @@ using RimWorld;
 using Verse.AI.Group;
 using System.Collections.Generic;
 using PrisonLabor.Core.Needs;
+using PrisonLabor.Core.Other;
 
 namespace PrisonLabor.Core.Incidents
 {
@@ -58,6 +59,8 @@ namespace PrisonLabor.Core.Incidents
                     DamageInfo dinfo = new DamageInfo(DamageDefOf.Cut, 29, 0, 0, pawn, pawn.RaceProps.body.AllParts.Find(p => p.def == BodyPartDefOf.Neck));
                     while (!pawn.Dead)
                         pawn.TakeDamage(dinfo);
+
+                    Tutorials.Treatment();
 
                     return true;
                 }

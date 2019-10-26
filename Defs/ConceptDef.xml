@@ -38,4 +38,11 @@
       <needsOpportunity>True</needsOpportunity>
       <helpText>You can make time restrictions for prisoners.\n\n"Work" time will force them to work even when they're hungry or tired.\n\n"Joy" time will let them rest from job and get motivation bonus.\n\n"Sleep" time will force them to stay in prison cell.\n\n"Anything" is default setting.</helpText>
     </ConceptDef>
+    <ConceptDef>
+      <defName>PrisonLabor_Treatment</defName>
+      <label>Treatment system</label>
+      <priority>50</priority>
+      <needsOpportunity>True</needsOpportunity>
+      <helpText>In prison labor you need to take care for prisoners. Good treatment can prevent revolts, and can provoke recruit proposition (without recruting process!).\n\nTo maintain good treatment status you need to feed prisoners regularly and set some free time so they can regenerate their strength\n\nTreatment will go lower if you beat prisoners, starve them, or exploit in terms of labor.\nGood treatment will result in:\n - Random offers with request to join colony\n - Preventing revolts\n - Preventing suicide</helpText>
+    </ConceptDef>
 </Defs>

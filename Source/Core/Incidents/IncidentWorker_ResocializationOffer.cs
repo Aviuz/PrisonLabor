@@ -6,6 +6,7 @@ using Verse.AI.Group;
 using System.Collections.Generic;
 using PrisonLabor.Constants;
 using PrisonLabor.Core.Needs;
+using PrisonLabor.Core.Other;
 
 namespace PrisonLabor.Core.Incidents
 {
@@ -55,6 +56,8 @@ namespace PrisonLabor.Core.Incidents
             }
             if (prisoner == null)
                 return false;
+
+            Tutorials.Treatment();
 
             SendStandardLetter(prisoner, null, new string[] { prisoner.Name.ToStringShort, prisoner.Faction.Name });
             return true;

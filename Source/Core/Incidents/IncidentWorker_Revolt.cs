@@ -6,6 +6,7 @@ using Verse.AI.Group;
 using System.Collections.Generic;
 using PrisonLabor.Core.Needs;
 using PrisonLabor.Core.Meta;
+using PrisonLabor.Core.Other;
 
 namespace PrisonLabor.Core.Incidents
 {
@@ -163,6 +164,9 @@ namespace PrisonLabor.Core.Incidents
                 LordMaker.MakeNewLord(parms.faction, lordJob/*(new RaidStrategyWorker_ImmediateAttackSmart()).MakeLordJob(parms, map)*/, map, affectedPawns);
                 SendStandardLetter(t, null, new string[] { t.Name.ToStringShort, t.Faction.Name });
                 Find.TickManager.slower.SignalForceNormalSpeedShort();
+
+                Tutorials.Treatment();
+
                 return true;
             }
             catch(Exception e)

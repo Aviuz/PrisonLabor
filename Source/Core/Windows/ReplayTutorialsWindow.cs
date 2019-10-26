@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +28,11 @@ namespace PrisonLabor.Core.Windows
             if (listing_panel.ButtonTextLabeled("Labor Area", "PrisonLabor_ShowTutorialButton".Translate()))
             {
                 TutorialWindow.Show("LaborArea");
+            }
+
+            if (listing_panel.ButtonTextLabeled("Treatment system", "PrisonLabor_ShowTutorialButton".Translate()))
+            {
+                TutorialWindow.Show("Treatment");
             }
 
             listing_panel.End();
