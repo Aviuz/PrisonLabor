@@ -1,4 +1,4 @@
-﻿<NewsFeed>
+<NewsFeed>
   <!-- How to insert news: -->
   <!-- [subtitle] for subtitle -->
   <!-- [img] ... [/img] for image (inside name of file) -->
@@ -120,7 +120,7 @@
     <patch version="0.8.6">
       <title>Prison Labor Beta v0.8.6</title>
       <items>
-        <item>[img]NewsElement_Locks[/img]<b>Locks mod:</b>\nIf you want to allow prisoners to pass by closed doors, please check out my other mod called <b>Locks</b></item>
+        <item>[img]NewsElement_Locks[/img][b]Locks mod:[/b]\nIf you want to allow prisoners to pass by closed doors, please check out my other mod called [b]Locks[/b]</item>
         <item>[gap]</item>
         <item>[-]fixed bug that Sowing job do not comply to Labor Area</item>
         <item>[-]fixed bug with JoyGiver debris (sorry about that)</item>
@@ -143,8 +143,8 @@
       <title>Prison Labor Beta v0.8.1</title>
       <items>
         <item>[-]fixed bug with rendering icons on world map</item>
-        <item>[subtitle] If you encouter any bugs <b>please report it on github</b>. I'm fixing most important ones every day. This is (recently) beta version and it has to consist some bugs. Thank you for understaning.</item>
-        <item>[subtitle] Also you can always <b>download old version</b> via github, but I think this was last big update</item>
+        <item>[subtitle] If you encouter any bugs [b]please report it on github[/b]. I'm fixing most important ones every day. This is (recently) beta version and it has to consist some bugs. Thank you for understaning.</item>
+        <item>[subtitle] Also you can always [b]download old version[/b] via github, but I think this was last big update</item>
         <item>[-]re-enabled button in Bills detail panel</item>
         <item>[-]added slider to Bills (temporary fix)</item>
         <item>[-]fixed Bill \"Prisoner only\" button (I think, let me know if you still experience errors)</item>
@@ -155,16 +155,16 @@
     <patch version="0.8.0">
       <title>Prison Labor Beta v0.8.0</title>
       <items>
-        <item>[subtitle]<b>Now in Beta!</b> I would no longer add any more features. Instead I will focus on improving existing ones.</item>
+        <item>[subtitle][b]Now in Beta![/b] I would no longer add any more features. Instead I will focus on improving existing ones.</item>
         <item>[gap]</item>
-        <item>[subtitle]<b>Main changes:</b></item>
-        <item>[img]NewsElement_Revolt[/img]<b>Revolts:</b>\nPrisoners will now form organized group under self-elected leader if motivation of prisoners is low. They will try to inflict damage to your colony or they will attemp running to elected enemy faction</item>
-        <item>[img]NewsElement_InspirationReworked[/img]<b>Insiration reworked:</b>\nQuicker, better and more intuitive.\nYou can now send your prisoners to work outside your walls, but be carefull: they will try to escape if left alone. Prisoners will start thinking about escape after being left for some time.</item>
-        <item>[img]LaborAreaExpand[/img]<b>Labor area:</b>\nYou can now select area for labor only. Your colonists will no longer go mine with peasants.\nTo access this tool look into \"Architect->Zones\" panel.</item>
-        <item>[img]NewsElement_PrisonersOnly[/img]<b>Prisoners Only button</b>\nGo to Bill details to mark bills for prisoners only!</item>
-        <item>[img]NewsElement_WorkAndRecruit[/img]<b>Work and recruit:</b>\nThis feature has been mostly requested by community. I hope it will be well received.</item>
+        <item>[subtitle][b]Main changes:[/b]</item>
+        <item>[img]NewsElement_Revolt[/img][b]Revolts:[/b]\nPrisoners will now form organized group under self-elected leader if motivation of prisoners is low. They will try to inflict damage to your colony or they will attemp running to elected enemy faction</item>
+        <item>[img]NewsElement_InspirationReworked[/img][b]Insiration reworked:[/b]\nQuicker, better and more intuitive.\nYou can now send your prisoners to work outside your walls, but be carefull: they will try to escape if left alone. Prisoners will start thinking about escape after being left for some time.</item>
+        <item>[img]LaborAreaExpand[/img][b]Labor area:[/b]\nYou can now select area for labor only. Your colonists will no longer go mine with peasants.\nTo access this tool look into \"Architect->Zones\" panel.</item>
+        <item>[img]NewsElement_PrisonersOnly[/img][b]Prisoners Only button[/b]\nGo to Bill details to mark bills for prisoners only!</item>
+        <item>[img]NewsElement_WorkAndRecruit[/img][b]Work and recruit:[/b]\nThis feature has been mostly requested by community. I hope it will be well received.</item>
         <item>[gap]</item>
-        <item>[subtitle]<b>Other changes:</b></item>
+        <item>[subtitle][b]Other changes:[/b]</item>
         <item>[-]added default prisoner interaction mode option to settings menu</item>
         <item>[-]added icons above prisoners indicating whenever he's being motivated/inspired</item>
         <item>[-]reduced manipulation capability of prisoners (now they have 80% of normal manipulation, down from 100%)</item>
@@ -179,7 +179,7 @@
         <item>[-]perfomance and code improvements</item>
         <item>[-]translation improvements</item>
         <item>[gap]</item>
-        <item>[subtitle]Also I want to annouce that I will start new mod called <b>Prison Expansion</b> that would be PrisonExtensions remake.The aim of this mod would be improving Prison Labor experience, especially cell doors and fences.</item>
+        <item>[subtitle]Also I want to annouce that I will start new mod called [b]Prison Expansion[/b] that would be PrisonExtensions remake.The aim of this mod would be improving Prison Labor experience, especially cell doors and fences.</item>
       </items>
     </patch>
     <patch version="0.7">
