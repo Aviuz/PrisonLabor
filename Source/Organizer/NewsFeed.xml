@@ -1,20 +1,55 @@
-<NewsFeed>
+﻿<NewsFeed>
   <!-- How to insert news: -->
   <!-- [subtitle] for subtitle -->
   <!-- [img] ... [/img] for image (inside name of file) -->
   <!-- [gap] for gap -->
   <patches>
-    <!--<patch version="0.10.0">
-      <title>Prison Labor Beta v0.10.0</title>
+    <patch version="0.10.1">
+      <title>Prison Labor v0.10.1</title>
       <items>
-        <item>prisoners will now work in cold only if "work" time is set</item>
-        <item>prisoners will now seek safe temperature when not supervised</item>
-        <item>prisoners will respect forbidden items, if "inspired"</item>
-        <item>"Treatment happiness" will decrease if health conditions are bad, when prisoners are hungry, or they're working</item>
-        <item>added new hidden need "Treatment" that indicates level of prison treatment towards prisoner</item>
-        <item>now work settings reset after prisoner is recruited, so it should fix some issues</item>
+        <item>This patch contains a lot of changes, so there can be bugs. Please [b]report bugs[/b] so I can repair them ASAP</item>
+        <item>[gap]</item>
+        
+        <item>[b]Treatment system[/b]</item>
+        <item>[-]added new hidden need "Treatment" that indicates level of prison treatment towards prisoner</item>
+        <item>[-]prisoners will now give offer to join colony if treatment is good enough (random)</item>
+        <item>[-]prisoners now will pick up weapons if treated bad</item>
+        <item>[-]added +5 bonus to mood while prisoner have free time</item>
+        <item>[-]added +5 bonus to mood if prisoner is not supervised and got lazy</item>
+        <item>[-]added +15 bonus to mood if treatment is above 75%</item>
+        <item>[-]added prisoner suicides</item>
+        <item>[-]added blocking revolts (100%, 95%, 50%, 10%) if overall prisoner treatment is good enough</item>
+        <item>[-]added treatment drop when prisoner is being beaten</item>
+        <item>[-]increased base chance for Revolts</item>
+        <item>[-]added blocking mental breaks for prisoners with low treatment levels</item>
+        <item>[-]"Treatment happiness" will decrease if health conditions are bad, when prisoners are hungry, or they're working.</item>
+
+        <item>[b]Prisoners can do construction jobs now[/b]</item>
+
+        <item>[b]Enchantments[/b]</item>
+        <item>[-]new system for removing mod from save (new button in mod menu)</item>
+        <item>[-]prisoners will now seek safe temperature when not supervised</item>
+        <item>[-]prisoners will respect forbidden items, if "inspired"</item>
+        <item>[-]prisoners will now work in cold only if "work" time is set</item>
+        <item>[-]added alert when prisoners can escape</item>
+        <item>[-]reworked news popup window</item>
+        <item>[-]wardens no longer deliver food if prisoners can get it from another room</item>
+        <item>[-]cosmetic changes to bill checkbox</item>
+        <item>[-]prisoners will now stay at bed if waiting for surgery</item>
+
+        <item>[b]Bugs[/b]</item>
+        <item>[-]fixed food reservation throwing errors</item>
+        <item>[-]fixed cutting some content of bill config in some languages</item>
+        <item>[-]now work settings reset after prisoner is recruited, so it should fix some issues</item>
+        <item>[-]finally fixed "OnGui()" error, big thanks to @notfood (https://github.com/notfood)</item>
+        <item>[-]fixed blurred effect on settings window</item>
+        <item>[-]fixed Revolts</item>
+
+        <item>[gap]</item>
+
+        <item>If you want to support the work I do, please consider small donation. Link to Ko-fi will be placed at steam page.</item>
       </items>
-    </patch>-->
+    </patch>
     <patch version="0.9.11">
       <title>Prison Labor Beta v0.9.11</title>
       <items>
