@@ -4,7 +4,7 @@
   <!-- [img] ... [/img] for image (inside name of file) -->
   <!-- [gap] for gap -->
   <tutorials>
-    <tutorial key="Indroduction">
+    <tutorial key="Introduction">
       <items>
         <item>[title]Prison Labor Mod - Introduction</item>
         <item>Are you new to Prison Labor Mod? Don't worry, in this tutorial you will learn how to use this mod.</item>

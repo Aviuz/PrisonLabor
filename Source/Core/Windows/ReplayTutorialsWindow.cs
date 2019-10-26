@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +20,9 @@ namespace PrisonLabor.Core.Windows
 
             listing_panel.Begin(inRect);
 
-            if (listing_panel.ButtonTextLabeled("Indroduction", "PrisonLabor_ShowTutorialButton".Translate()))
+            if (listing_panel.ButtonTextLabeled("Introduction", "PrisonLabor_ShowTutorialButton".Translate()))
             {
-                TutorialWindow.Show("Indroduction");
+                TutorialWindow.Show("Introduction");
             }
 
             if (listing_panel.ButtonTextLabeled("Labor Area", "PrisonLabor_ShowTutorialButton".Translate()))

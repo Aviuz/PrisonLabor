@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using PrisonLabor.Core.Meta;
+using PrisonLabor.Core.Windows;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -41,7 +42,12 @@ namespace PrisonLabor.Core.Other
 
         public static void Introduction()
         {
-            TryActivateTutorial(introductionDef, OpportunityType.Important);
+            //TryActivateTutorial(introductionDef, OpportunityType.Important);
+            if (!PrisonLaborPrefs.HasTutorialFlag(TutorialFlag.Introduction))
+            {
+                TutorialWindow.Show("Introduction");
+                PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Introduction);
+            }
         }
 
         public static void Motivation()
