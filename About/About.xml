@@ -5,7 +5,7 @@
 	<supportedVersions>
 		<li>1.0</li>
 	</supportedVersions>
-	<description>Version 0.9.11
+	<description>Version 0.10.1
 
 This mod force prisoners to work. To enable this feature prisoners must have "Force to work" option checked ("Prisoner" tab). Prison labor needs management that consist:
 - Motivation - prisoners need to be motivated by presence of colonists. Wardens have new job - supervising prisoners. Low motivation can lead to revolts.
@@ -16,3 +16,4 @@ This mod force prisoners to work. To enable this feature prisoners must have "Fo
 
 This is beta version. Some ascpects of mod still need to be balanced (like motivation). There can be still some bugs.</description>
 </ModMetaData>
+

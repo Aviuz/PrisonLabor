@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <LanguageData> 
 	<PrisonLabor_PrisonerWork>Zmuś do pracy</PrisonLabor_PrisonerWork>
 	<PrisonLabor_WorkAndRecruit>Praca i próba rekrutacji</PrisonLabor_WorkAndRecruit>
@@ -49,4 +49,6 @@
 	<PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
 	<PrisonLabor_LaborAreaWarning>Labor area isn't required to make prisoners work.\n\nThis area forbids colonists from working.\n\nIt's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</PrisonLabor_LaborAreaWarning>
 	<PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
+
+	<PrisonLabor_UpgradeSaveMessage>Aktualizacja modyfikacji [PrisonLabor]</PrisonLabor_UpgradeSaveMessage>
 </LanguageData>

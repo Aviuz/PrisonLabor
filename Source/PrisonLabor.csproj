@@ -51,12 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alert_LazyPrisoners.cs" />
-    <Compile Include="Alert_StarvingPrisoners.cs" />
-    <Compile Include="Area_Labor.cs" />
-    <Compile Include="BillGroupData.cs" />
-    <Compile Include="BillUtility.cs" />
-    <Compile Include="BugTracker.cs" />
+    <Compile Include="Core\Alerts\Alert_EscapingPrisoners.cs" />
+    <Compile Include="Core\Alerts\Alert_LazyPrisoners.cs" />
+    <Compile Include="Core\Alerts\Alert_StarvingPrisoners.cs" />
+    <Compile Include="Core\GUI_Components\RichListing.cs" />
+    <Compile Include="Core\GUI_Components\SImpleVideo.cs" />
+    <Compile Include="Core\LaborArea\Area_Labor.cs" />
+    <Compile Include="Constants\BGP.cs" />
+    <Compile Include="Core\BillAssignation\BillGroupData.cs" />
+    <Compile Include="Core\BillAssignation\BillAssignationUtility.cs" />
     <Compile Include="CompatibilityPatches\Initialization.cs" />
     <Compile Include="CompatibilityPatches\NoWaterNoLife.cs" />
     <Compile Include="CompatibilityPatches\OlderVersions.cs" />
@@ -64,65 +67,97 @@
     <Compile Include="CompatibilityPatches\SeedsPlease.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease_WorkDriver_Patch.cs" />
     <Compile Include="CompatibilityPatches\SeedsPlease_WorkGiver.cs" />
-    <Compile Include="Designator_AreaLaborClear.cs" />
-    <Compile Include="Designator_AreaLabor.cs" />
-    <Compile Include="Designator_AreaLaborExpand.cs" />
-    <Compile Include="HarmonyPatches\Patch_AddLaborArea.cs" />
-    <Compile Include="HarmonyPatches\Patch_AddScrollToPrisonerTab.cs" />
-    <Compile Include="HarmonyPatches\Patch_BillCheckbox.cs" />
-    <Compile Include="HarmonyPatches\Patch_BillPrevention.cs" />
-    <Compile Include="HarmonyPatches\Patch_ChangeWorkTabPrisonerLabelColor.cs" />
-    <Compile Include="HarmonyPatches\Patch_DefaultInteractionMode.cs" />
-    <Compile Include="HarmonyPatches\Patch_DisableAreaRestrictionsForPrisoners.cs" />
-    <Compile Include="HarmonyPatches\Patch_EscapingPrisoner.cs" />
-    <Compile Include="HarmonyPatches\Patch_ExposeBillGroup.cs" />
-    <Compile Include="HarmonyPatches\Patch_ExtendVistorRect.cs" />
-    <Compile Include="HarmonyPatches\Patch_ForibiddenDrop.cs" />
-    <Compile Include="HarmonyPatches\Patch_ItemIsForbidden.cs" />
+    <Compile Include="Core\LaborArea\Designator_AreaLaborClear.cs" />
+    <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
+    <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
+    <Compile Include="Core\Meta\Version.cs" />
+    <Compile Include="Core\Other\NewsProvider.cs" />
+    <Compile Include="Core\Other\TutorialProvider.cs" />
+    <Compile Include="Core\Settings\CleanSaveDialog.cs" />
+    <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
+    <Compile Include="Core\Trackers\EscapeTracker.cs" />
+    <Compile Include="Core\Windows\ReplayTutorialsWindow.cs" />
+    <Compile Include="Core\Windows\TutorialWindow.cs" />
+    <Compile Include="HarmonyPatches\DevTools.cs" />
+    <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
+    <Compile Include="HarmonyPatches\Patches_Construction\EnableConstructionFinishFrames.cs" />
+    <Compile Include="HarmonyPatches\Patches_DeepDrill\EnableDeepDrillsToPrisoners.cs" />
+    <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapeTracker.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\DeliverEvenOutsidePrisonCell.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\FoodUtility_IsFoodSourceOnMapSociallyProper.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\ReserveFoodForPrisonerAfterDropping.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
+    <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
+    <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_AddScrollToPrisonerTab.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_BillCheckbox.cs" />
+    <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_BillPrevention.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_ChangeWorkTabPrisonerLabelColor.cs" />
+    <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_DefaultInteractionMode.cs" />
+    <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_DisableAreaRestrictionsForPrisoners.cs" />
+    <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapingPrisoner.cs" />
+    <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_ExposeBillGroup.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_ExtendVistorRect.cs" />
+    <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop.cs" />
+    <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ItemIsForbidden.cs" />
     <Compile Include="HarmonyPatches\HPatcher.cs" />
-    <Compile Include="HarmonyPatches\Patch_JailorTypeSaveCompatibility.cs" />
-    <Compile Include="HarmonyPatches\Patch_LaborForbid.cs" />
-    <Compile Include="HarmonyPatches\Patch_NeedOnlyByPrisoners.cs" />
-    <Compile Include="HarmonyPatches\Patch_PrisonInteractionLabel.cs" />
-    <Compile Include="HarmonyPatches\Patch_RemoveBillFromUtility.cs" />
-    <Compile Include="HarmonyPatches\Patch_RemoveHediffIfDisabled.cs" />
-    <Compile Include="HarmonyPatches\Patch_RemoveLaborAreaIfDisabled.cs" />
-    <Compile Include="HarmonyPatches\Patch_RenamePrisoners.cs" />
-    <Compile Include="HarmonyPatches\Patch_ReservedByPrisoner.cs" />
-    <Compile Include="HarmonyPatches\Patch_RespectReservation.cs" />
-    <Compile Include="HarmonyPatches\Patch_RestrainsPatch.cs" />
-    <Compile Include="HarmonyPatches\Patch_ShowNews.cs" />
-    <Compile Include="HarmonyPatches\Patch_SocialPropernessFix.cs" />
-    <Compile Include="HarmonyPatches\Patch_TimetableFix.cs" />
-    <Compile Include="HarmonyPatches\Patch_WorkDisable.cs" />
-    <Compile Include="HarmonyPatches\Patch_WorkDisable2.cs" />
-    <Compile Include="HediffGiver_PrisonersChains.cs" />
-    <Compile Include="HediffManager.cs" />
-    <Compile Include="IncidentWorker_Revolt.cs" />
-    <Compile Include="JobGiver_BedTime.cs" />
-    <Compile Include="JobGiver_Diet.cs" />
-    <Compile Include="LaborExclusionUtility.cs" />
-    <Compile Include="Behaviour_MotivationIcon.cs" />
-    <Compile Include="InspirationUtility.cs" />
-    <Compile Include="Need_Motivation.cs" />
-    <Compile Include="PawnTable_Prisoners.cs" />
-    <Compile Include="PrisonerFoodReservation.cs" />
-    <Compile Include="PrisonLaborDefOf.cs" />
-    <Compile Include="PrisonLaborUtility.cs" />
-    <Compile Include="PrisonLaborWidgets.cs" />
-    <Compile Include="SettingsMenu.cs" />
-    <Compile Include="SelectWorkTypesDialog.cs" />
-    <Compile Include="NewsDialog.cs" />
-    <Compile Include="Tweaks\FoodUtility_Tweak.cs" />
-    <Compile Include="Tweaks\JobDriver_FoodDeliver_Tweak.cs" />
+    <Compile Include="HarmonyPatches\Patches_SaveCompatibility\Patch_JailorTypeSaveCompatibility.cs" />
+    <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_LaborForbid.cs" />
+    <Compile Include="HarmonyPatches\Patches_Needs\Patch_NeedOnlyByPrisoners.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_PrisonerTab.cs" />
+    <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_PrisonInteractionLabel.cs" />
+    <Compile Include="HarmonyPatches\Patches_TreatmentTinkering\Patch_ReduceChanceForMentalBreak.cs" />
+    <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_RemoveBillFromUtility.cs" />
+    <Compile Include="HarmonyPatches\Patches_RenamingPrisoners\Patch_RenamePrisoners.cs" />
+    <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_ResetWorktableWhenRecruited.cs" />
+    <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_RespectReservation.cs" />
+    <Compile Include="HarmonyPatches\Patches_Restraints\Patch_RestrainsPatch.cs" />
+    <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_SocialPropernessFix.cs" />
+    <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_TimetableFix.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled2.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_PawnTableSetDirtyFix.cs" />
+    <Compile Include="HarmonyPatches\Triggers.cs" />
+    <Compile Include="Core\Hediffs\HediffGiver_PrisonersChains.cs" />
+    <Compile Include="Core\Hediffs\HediffManager.cs" />
+    <Compile Include="Core\Incidents\IncidentWorker_Suicide.cs" />
+    <Compile Include="Core\Incidents\IncidentWorker_ResocializationOffer.cs" />
+    <Compile Include="Core\Incidents\IncidentWorker_Revolt.cs" />
+    <Compile Include="Core\AI\JobGivers\JobGiver_BedTime.cs" />
+    <Compile Include="Core\AI\JobGivers\JobGiver_Diet.cs" />
+    <Compile Include="Core\AI\JobGivers\JobGiver_PickupWeapon.cs" />
+    <Compile Include="Core\GUI_Components\PawnIcons.cs" />
+    <Compile Include="Core\Trackers\InspirationTracker.cs" />
+    <Compile Include="Core\Needs\Need_Treatment.cs" />
+    <Compile Include="Core\Needs\Need_Motivation.cs" />
+    <Compile Include="Core\GUI_Components\PawnTable_Prisoners.cs" />
+    <Compile Include="Core\Other\PrisonerFoodReservation.cs" />
+    <Compile Include="Constants\PL_DefOf.cs" />
+    <Compile Include="Core\PrisonLaborUtility.cs" />
+    <Compile Include="Core\PrisonLaborWidgets.cs" />
+    <Compile Include="Core\Settings\SettingsMenu.cs" />
+    <Compile Include="Core\Settings\SelectWorkTypesDialog.cs" />
+    <Compile Include="Core\Windows\NewsWindow.cs" />
+    <Compile Include="Core\BaseClasses\SimpleTimer.cs" />
+    <Compile Include="Core\AI\ThinkNodes\ThinkNode_SeekSafeTemperature.cs" />
+    <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_FreeTime.cs" />
+    <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_LowMotivation.cs" />
+    <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_VeryGoodTreatment.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tweaks\JobDriver_Mine_Tweak.cs" />
-    <Compile Include="JobDriver_Supervise.cs" />
-    <Compile Include="Prefs.cs" />
-    <Compile Include="PrefsData.cs" />
-    <Compile Include="JobGiver_Labor.cs" />
+    <Compile Include="Core\AI\JobDrivers\JobDriver_Supervise.cs" />
+    <Compile Include="Core\Meta\Prefs.cs" />
+    <Compile Include="Core\Meta\PrefsData.cs" />
+    <Compile Include="Core\AI\JobGivers\JobGiver_Labor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThinkNode_Labor.cs" />
-    <Compile Include="Tutorials.cs" />
+    <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
+    <Compile Include="Core\Other\Tutorials.cs" />
     <Compile Include="Tweaks\JobDriver_PlantCut_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_PlantHarvest_Tweak.cs" />
     <Compile Include="Tweaks\JobDriver_PlantWork_Tweak.cs" />
@@ -130,13 +165,16 @@
     <Compile Include="Tweaks\MainTabWindow_Restrict_Tweak.cs" />
     <Compile Include="Tweaks\MainTabWindow_Dual.cs" />
     <Compile Include="Tweaks\MainTabWindow_Work_Tweak.cs" />
+    <Compile Include="Core\GameSaves\SaveCleaner.cs" />
+    <Compile Include="Core\GameSaves\SaveUpgrader.cs" />
     <Compile Include="Tweaks\WorkGiver_CleanFilth_Tweak.cs" />
     <Compile Include="Tweaks\WorkGiver_GrowerSow_Tweak.cs" />
     <Compile Include="Initialization.cs" />
-    <Compile Include="VersionUtility.cs" />
-    <Compile Include="WorkGiver_Supervise.cs" />
-    <Compile Include="Tweaks\WorkGiver_Warden_DeliverFood_Tweak.cs" />
-    <Compile Include="WorkSettings.cs" />
+    <Compile Include="Core\Other\TreatmentUtility.cs" />
+    <Compile Include="Core\Meta\VersionUtility.cs" />
+    <Compile Include="Core\Other\ArrestUtility.cs" />
+    <Compile Include="Core\AI\WorkGivers\WorkGiver_Supervise.cs" />
+    <Compile Include="Core\LaborWorkSettings\WorkSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\About\About.xml">
@@ -151,6 +189,7 @@
     </Content>
     <Content Include="..\Defs\Hediffs.xml">
       <Link>Defs\Hediffs.xml</Link>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="..\Defs\Incidents.xml">
       <Link>Defs\Incidents.xml</Link>
@@ -167,6 +206,9 @@
     <Content Include="..\Defs\ThinkTreeDef.xml">
       <Link>Defs\ThinkTreeDef.xml</Link>
     </Content>
+    <Content Include="..\Defs\ThoughtsDef.xml">
+      <Link>Defs\ThoughtsDef.xml</Link>
+    </Content>
     <Content Include="..\Defs\WorkGiverDef.xml">
       <Link>Defs\WorkGiverDef.xml</Link>
     </Content>
@@ -180,6 +222,12 @@
     <Content Include="..\TaskList.txt">
       <Link>Organizer\TaskList.txt</Link>
     </Content>
+    <Content Include="Organizer\NewsFeed.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Organizer\TutorialFeed.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\credits.md">
@@ -188,6 +236,18 @@
     <None Include="..\README.md">
       <Link>Organizer\README.md</Link>
     </None>
+    <None Include="..\To-Do.md">
+      <Link>Organizer\To-Do.md</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Treatment\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

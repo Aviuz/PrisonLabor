@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using PrisonLabor.Constants;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,10 +32,6 @@ namespace PrisonLabor.Tweaks
 
         private static void JobTweaks()
         {
-            // Deliver food to prisoners (include other rooms etc.)
-            var deliverFoodWorkGiver = DefDatabase<WorkGiverDef>.GetNamed("DeliverFoodToPrisoner");
-            deliverFoodWorkGiver.giverClass = typeof(WorkGiver_Warden_DeliverFood_Tweak);
-
             // Mine
             var minerJob = JobDefOf.Mine;
             minerJob.driverClass = typeof(JobDriver_Mine_Tweak);
@@ -61,15 +58,15 @@ namespace PrisonLabor.Tweaks
 
         private static void SplitWardenType()
         {
-            DefDatabase<WorkGiverDef>.GetNamed("DoExecution").workType = PrisonLaborDefOf.PrisonLabor_Jailor;
-            DefDatabase<WorkGiverDef>.GetNamed("ReleasePrisoner").workType = PrisonLaborDefOf.PrisonLabor_Jailor;
-            DefDatabase<WorkGiverDef>.GetNamed("TakePrisonerToBed").workType = PrisonLaborDefOf.PrisonLabor_Jailor;
+            DefDatabase<WorkGiverDef>.GetNamed("DoExecution").workType = PL_DefOf.PrisonLabor_Jailor;
+            DefDatabase<WorkGiverDef>.GetNamed("ReleasePrisoner").workType = PL_DefOf.PrisonLabor_Jailor;
+            DefDatabase<WorkGiverDef>.GetNamed("TakePrisonerToBed").workType = PL_DefOf.PrisonLabor_Jailor;
             //DefDatabase<WorkGiverDef>.GetNamed("FeedPrisoner").workType = PrisonLaborDefOf.PrisonLabor_Jailor;
             //DefDatabase<WorkGiverDef>.GetNamed("DeliverFoodToPrisoner").workType = PrisonLaborDefOf.PrisonLabor_Jailor;
             WorkTypeDefOf.Warden.workGiversByPriority.Clear();
             WorkTypeDefOf.Warden.ResolveReferences();
-            PrisonLaborDefOf.PrisonLabor_Jailor.workGiversByPriority.Clear();
-            PrisonLaborDefOf.PrisonLabor_Jailor.ResolveReferences();
+            PL_DefOf.PrisonLabor_Jailor.workGiversByPriority.Clear();
+            PL_DefOf.PrisonLabor_Jailor.ResolveReferences();
         }
     }
 }

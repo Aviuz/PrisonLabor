@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Diagnostics;
 using RimWorld;
 using Verse;
 using Verse.AI;
 using Verse.Sound;
 
-namespace PrisonLabor
+namespace PrisonLabor.Tweaks
 {
     public abstract class JobDriver_PlantWork_Tweak : JobDriver
     {

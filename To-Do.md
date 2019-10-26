@@ -1,7 +1,13 @@
 # TO-DO
 In this section I will describe some major changes that I plan to implement. This list is dynamic and will change eventually.
 Minor issues, bugs, and others can be found [here](../../issues).
-
+## Pawn attributes & Motivation & Treatment happiness
+- There will be more adjustments to how quickly pawn is beign motivated, how fast he is going to be lazy etc.
+- Motivation will be increased with high social/combat power of warden
+- Prisoners will be able to do forbidden jobs, but:
+- Prisoners will get more lazy if doing jobs that they do not like.
+- Prisoners will get more lazy if they are working in bad conditions.
+- Prisoners will get less treat. happiness when their faction is at very bad stance with player's faction.
 ## Treatment
 - I will add new need "Treatment" or "Treatment happiness"(by default hidden, changeable via settings if possible). It will indicate "how good" prisoners are treated. This will make boost to mood, and will reduce chance of revolts.[/li]
 - Free time, or joy time will now give very little motivation boost, but instead it will give treatment happiness.

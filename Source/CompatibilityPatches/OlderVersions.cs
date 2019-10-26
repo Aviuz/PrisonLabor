@@ -1,4 +1,7 @@
-﻿using RimWorld;
+﻿using PrisonLabor.Constants;
+using PrisonLabor.Core.LaborWorkSettings;
+using PrisonLabor.Core.Meta;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +16,8 @@ namespace PrisonLabor.CompatibilityPatches
         {
             if (WorkSettings.AllowedWorkTypes.Contains(WorkTypeDefOf.Warden))
                 WorkSettings.AllowedWorkTypes.Remove(WorkTypeDefOf.Warden);
-            if (WorkSettings.AllowedWorkTypes.Contains(PrisonLaborDefOf.PrisonLabor_Jailor))
-                WorkSettings.AllowedWorkTypes.Remove(PrisonLaborDefOf.PrisonLabor_Jailor);
+            if (WorkSettings.AllowedWorkTypes.Contains(PL_DefOf.PrisonLabor_Jailor))
+                WorkSettings.AllowedWorkTypes.Remove(PL_DefOf.PrisonLabor_Jailor);
 
             WorkSettings.Apply();
             PrisonLaborPrefs.Save();

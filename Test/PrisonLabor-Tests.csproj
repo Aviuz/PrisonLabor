@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony, Version=1.0.9.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\avius\Desktop\RimworldMods Shortcuts\Libraries\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Source\Libraries\Assembly-CSharp.dll</HintPath>
     </Reference>
@@ -51,6 +55,8 @@
     <Compile Include="GistCreate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortingVersion.cs" />
+    <Compile Include="ToilLister.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

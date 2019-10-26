@@ -1,6 +1,13 @@
-﻿using PrisonLabor.HarmonyPatches;
+﻿using PrisonLabor.Core.Hediffs;
+using PrisonLabor.Core.LaborArea;
+using PrisonLabor.Core.Meta;
+using PrisonLabor.Core.Settings;
+using PrisonLabor.HarmonyPatches;
 using PrisonLabor.Tweaks;
+using RimWorld;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace PrisonLabor
@@ -18,13 +25,12 @@ namespace PrisonLabor
                 SettingsMenu.Init();
                 VersionUtility.CheckVersion();
                 Designator_AreaLabor.Initialization();
-                Behaviour_MotivationIcon.Initialization();
                 CompatibilityPatches.Initialization.Run();
                 HediffManager.Init();
 
                 Log.Message($"Enabled Prison Labor v{VersionUtility.versionString}");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error($"Prison Labor v{VersionUtility.versionString} caught error during start up:\n{e.Message}");
             }

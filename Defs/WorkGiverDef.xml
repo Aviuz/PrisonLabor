@@ -3,7 +3,7 @@
   <WorkGiverDef>
     <defName>PrisonLabor_SupervisePrisonLabor</defName>
     <label>watch prisoner</label>
-    <giverClass>PrisonLabor.WorkGiver_Supervise</giverClass>
+    <giverClass>PrisonLabor.Core.AI.WorkGivers.WorkGiver_Supervise</giverClass>
     <workType>PrisonLabor_Jailor</workType>
     <priorityInType>5</priorityInType>
     <verb>watch prisoner</verb>

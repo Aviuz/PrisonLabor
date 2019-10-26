@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection;
 using Harmony;
-using PrisonLabor.Harmony;
 using Verse;
 using System.Collections.Generic;
 using System.IO;
@@ -28,15 +27,15 @@ namespace PrisonLabor.HarmonyPatches
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
 
                 // Print out not completed methods
-                foreach(var f in fragments.Keys)
+                foreach (var f in fragments.Keys)
                 {
-                    if(!fragments[f])
+                    if (!fragments[f])
                         Log.Error($"PrisonLaborWarning: Harmony patch failed to find \"{f}\" fragment.");
                 }
             }
             catch (Exception e)
             {
-                Log.Error($"PrisonLaborException: failed to proceed harmony patches: {e.Message}");
+                Log.Error($"PrisonLaborException: failed to proceed harmony patches: {e.InnerException.Message}");
             }
 
             // SECTION - Patches with references in method
@@ -49,7 +48,7 @@ namespace PrisonLabor.HarmonyPatches
                         typeof(IntVec3), typeof(ThingPlaceMode), typeof(Thing).MakeByRefType(),
                         typeof(Action<Thing, int>)
                         }),
-                    new HarmonyMethod(null), new HarmonyMethod(typeof(ForibiddenDropPatch).GetMethod("Postfix")));
+                    new HarmonyMethod(null), new HarmonyMethod(typeof(Patches_PermissionFix.ForibiddenDropPatch).GetMethod("Postfix")));
                 harmony.Patch(
                     typeof(Pawn_CarryTracker).GetMethod("TryDropCarriedThing",
                         new[]
@@ -57,11 +56,11 @@ namespace PrisonLabor.HarmonyPatches
                         typeof(IntVec3), typeof(int), typeof(ThingPlaceMode), typeof(Thing).MakeByRefType(),
                         typeof(Action<Thing, int>)
                         }),
-                    new HarmonyMethod(null), new HarmonyMethod(typeof(ForibiddenDropPatch).GetMethod("Postfix2")));
+                    new HarmonyMethod(null), new HarmonyMethod(typeof(Patches_PermissionFix.ForibiddenDropPatch).GetMethod("Postfix2")));
             }
             catch (Exception e)
             {
-                Log.Error($"PrisonLaborException: failed to proceed harmony patches (reference section): {e.Message}");
+                Log.Error($"PrisonLaborException: failed to proceed harmony patches (reference section): {e.InnerException.Message}");
             }
         }
 
@@ -106,7 +105,7 @@ namespace PrisonLabor.HarmonyPatches
         /// <param name="instr"></param>
         /// <param name="step"></param>
         /// <returns></returns>
-        public static bool IsFragment(OpCode[] opCodes, String[] operands, CodeInstruction instr, ref int step, string fragmentName)
+        public static bool IsFragment(OpCode[] opCodes, String[] operands, CodeInstruction instr, ref int step, string fragmentName, bool perfectMatch = true)
         {
             if (opCodes.Length != operands.Length)
             {
@@ -121,7 +120,8 @@ namespace PrisonLabor.HarmonyPatches
 
             var finalStep = opCodes.Length;
 
-            if (instr.opcode == opCodes[step] && (instr.operand == null || instr.operand.ToString() == operands[step]))
+            
+            if (InstructionMatching(instr, opCodes[step], operands[step], perfectMatch))
                 step++;
             else
                 step = 0;
@@ -143,7 +143,7 @@ namespace PrisonLabor.HarmonyPatches
         /// <param name="instr"></param>
         /// <param name="step"></param>
         /// <returns></returns>
-        public static object FindOperandAfter(OpCode[] opCodes, String[] operands, IEnumerable<CodeInstruction> instr)
+        public static object FindOperandAfter(OpCode[] opCodes, String[] operands, IEnumerable<CodeInstruction> instr, bool perfectMatch = true)
         {
             if (opCodes.Length != operands.Length)
             {
@@ -156,7 +156,7 @@ namespace PrisonLabor.HarmonyPatches
             int step = 0;
             foreach (var ci in instr)
             {
-                if (ci.opcode == opCodes[step] && (ci.operand == null || ci.operand.ToString() == operands[step]))
+                if (InstructionMatching(ci, opCodes[step], operands[step], perfectMatch))
                     step++;
                 else
                     step = 0;
@@ -167,6 +167,17 @@ namespace PrisonLabor.HarmonyPatches
 
             Log.Error("PrisonLaborException: FindOperandAfter() didn't find any lines. Trace:" + new StackTrace());
             return null;
+        }
+
+        private static bool InstructionMatching(CodeInstruction instr, OpCode opCode, string operand, bool perfectMatch)
+        {
+            bool matchingOpCodes = instr.opcode == opCode;
+            bool noOperands = instr.operand == null || string.IsNullOrEmpty(operand);
+            bool matchingOperands;
+            if (perfectMatch) matchingOperands = instr.operand != null && instr.operand.ToString() == operand;
+            else matchingOperands = instr.operand != null && instr.operand.ToString().Contains(operand);
+
+            return matchingOpCodes && (noOperands || matchingOperands);
         }
     }
 }

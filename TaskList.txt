@@ -6,8 +6,25 @@ Agenda:
   - Scheduled for implementation
   * Considered
 ==========================
- - add buff to mood for free time (Thoughts)
- - add buff to mood if motivation is low
- - add buff to mood if got beat by warden
- - rewrite jobs def (transfer to class injection if possible)
- - fix bug when prisoner is stuck on snow clearing
+
+- Prevent Wardens from delivering food if prisoner can get some by himself
+
+
+-add tutorials:
+Advanced (videos)
+* Reporting bugs?
+* labor area
+* revolts
+* accept prisoner
+* hypothermia
+Minor (Hints)
+* Putting on clothes?
+* Advanced planting (growing)
+* timetable (old)
+* managment (old)
+* Available jobs for prisoners
+* reaasign beds
+* treatment
+* accesing food
+* bills
+* icons (settings)

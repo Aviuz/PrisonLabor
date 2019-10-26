@@ -1,5 +1,12 @@
 Changelog:
-0.10.0
+============== BETA VERSION ==============
+0.10.1
+- reworked news pop-up window
+- fixed construction job
+- new system for removing mod from save (new button in mod menu)
+- wardens no longer deliver food if prisoners can get it from another room
+- added alert when prisoners can escape
+- prisoners now will pick up weapons if treated bad
 - fixed food reservation throwing errors
 - added prisoner sucicides
 - added +5 bonus to mood while prisoner have free time
@@ -19,7 +26,9 @@ Changelog:
 - "Treatment happiness" will decrease if health conditions are bad, when prisoners are hungry, or they're working.
 - added new hidden need "Treatment" that indicates level of prison treatment towards prisoner (WIP)
 - now work settings reset after prisoner is recruited, so it should fix some issues
+- finally fixed "OnGui()" error, big thanks to @notfood (https://github.com/notfood)
 - fixed blurred effect on settings window
+- fixed Revolts
 0.9.11
 - fixed compatibility with Fluffy's WorkTab (final)
 0.9.10
@@ -54,7 +63,7 @@ Changelog:
 - added option to disable icons above prisoners heads in mod menu
 - corrected casing in default prisoner interaction mode option in mod menu
 - fixed error "null reference in onGui()" when loading save
-*********** BETA 18 COMPATIBILITY PATCHES *******************
+============== BETA 18 COMPATIBILITY PATCHES ==============
 0.8.9.5
 - cleared some code debris, hope it fix the "unknown bug"
 0.8.9.4
@@ -71,7 +80,7 @@ Changelog:
 0.8.9
 - updated libraries to RimWorld b18
 - minor fixes related to uptading to RimWorld b18
-*************************************************************
+===========================================================
 0.8.8
 - changed slow from prisoners chains to act as factor instead offset
 - fixed compatibility issues with Seeds Please (again)
@@ -142,31 +151,25 @@ Changelog:
 - fixed that new subscribers see all "old player" messages
 - fixed reserving food for prisoners
 - fixed "work settings not initialized" error
-
 0.5
 - added growing to available jobs
 - added prisoner work priorities to "Work" tab
 - food is no longer reserved in prison cell unless is brought by warden
 - food is now delivered by Wardens even if prisoner get out of his prison cell
 - disabled passive "Laziness" when prisoner have no work to do
-
 0.4
 - added "Laziness" bar in "Needs" tab
 - fixed plant cut / harvest result being forbidden
 - added German translation
-
 0.3b
 - fixed "Forbidden" bug
-
 0.3a
 - wardens no longer watch over hungry or tired prisoners
-
 0.3
 - added work of Warden type that supervise prisoners
 - prisoners will get lazy
 - added version checker
 - added stat laziness
 - added "Work" prisoner interaction mode
-
 0.2a
 - added tutorial in "LearningHelper"

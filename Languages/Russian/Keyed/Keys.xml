@@ -49,4 +49,5 @@
 	<PrisonLabor_EnableRevoltsDesc>Если включить то бунт может случатся в качестве случайного события.</PrisonLabor_EnableRevoltsDesc>
 	<PrisonLabor_LaborAreaWarning>Зона работ не обязательна для того чтоб заключенные работали. \n\n Зона работ запрещает поселенцам работу в указанных местах.\n\n Она создана для тех случаев, когда вы не хотите чтобы поселенцы работали в указанном месте. Заключенные же будут работать там, куда у них есть доступ.</PrisonLabor_LaborAreaWarning>
 	<PrisonLabor_DontShowAgain>Больше не показывать</PrisonLabor_DontShowAgain>
+<PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
 </LanguageData>

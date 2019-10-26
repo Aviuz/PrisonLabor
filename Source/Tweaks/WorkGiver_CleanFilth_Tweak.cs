@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace PrisonLabor
+namespace PrisonLabor.Tweaks
 {
     internal class WorkGiver_CleanFilth_Tweak : WorkGiver_Scanner
     {

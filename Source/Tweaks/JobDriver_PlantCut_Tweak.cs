@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 
-namespace PrisonLabor
+namespace PrisonLabor.Tweaks
 {
     public class JobDriver_PlantCut_Tweak : JobDriver_PlantWork_Tweak
     {

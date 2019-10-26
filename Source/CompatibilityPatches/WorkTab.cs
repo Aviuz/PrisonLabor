@@ -7,6 +7,8 @@ using RimWorld;
 using PrisonLabor.Tweaks;
 using UnityEngine;
 using RimWorld.Planet;
+using PrisonLabor.Core;
+using PrisonLabor.Core.LaborWorkSettings;
 
 namespace PrisonLabor.CompatibilityPatches
 {
