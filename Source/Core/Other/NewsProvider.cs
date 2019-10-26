@@ -21,9 +21,6 @@ namespace PrisonLabor.Core.Other
         {
             try
             {
-
-                Log.Message("news initialized");
-
                 allVersionNotes = GetVersionNotesFromChangelog(Properties.Resources.changelog).ToArray();
 
                 int iterator = 0;
@@ -52,7 +49,7 @@ namespace PrisonLabor.Core.Other
         public static IEnumerable<VersionNotes> NewsAfterVersion(string versionString)
         {
             bool stop = false;
-            for (int i = 0; i < allVersionNotes.Length && stop; i++)
+            for (int i = 0; i < allVersionNotes.Length && !stop; i++)
             {
                 if (allVersionNotes[i].version == versionString)
                     stop = true;
@@ -91,6 +88,13 @@ namespace PrisonLabor.Core.Other
                     currentPatch = line;
                     currentPatchNotes = new List<string>();
                 }
+            }
+
+            // Last iteration
+            if (currentPatchNotes.Count > 0)
+            {
+                currentPatchNotes.Insert(0, $"[title]Prison Labor v{currentPatch}");
+                yield return new VersionNotes() { version = currentPatch, entries = currentPatchNotes.ToArray() };
             }
         }
 

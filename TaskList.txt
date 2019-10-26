@@ -8,3 +8,23 @@ Agenda:
 ==========================
 
 - Prevent Wardens from delivering food if prisoner can get some by himself
+
+
+-add tutorials:
+Advanced (videos)
+* Reporting bugs?
+* labor area
+* revolts
+* accept prisoner
+* hypothermia
+Minor (Hints)
+* Putting on clothes?
+* Advanced planting (growing)
+* timetable (old)
+* managment (old)
+* Available jobs for prisoners
+* reaasign beds
+* treatment
+* accesing food
+* bills
+* icons (settings)

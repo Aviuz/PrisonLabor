@@ -20,14 +20,19 @@ namespace PrisonLabor.Core.Windows
 
             listing_panel.Begin(inRect);
 
-            if (listing_panel.ButtonTextLabeled("test", "PrisonLabor_ShowTutorialButton".Translate()))
+            if (listing_panel.ButtonTextLabeled("Introduction", "PrisonLabor_ShowTutorialButton".Translate()))
             {
-                TutorialWindow.Show("test");
+                TutorialWindow.Show("Introduction");
             }
 
-            if (listing_panel.ButtonTextLabeled("test2", "PrisonLabor_ShowTutorialButton".Translate()))
+            if (listing_panel.ButtonTextLabeled("Labor Area", "PrisonLabor_ShowTutorialButton".Translate()))
             {
-                TutorialWindow.Show("test2");
+                TutorialWindow.Show("LaborArea");
+            }
+
+            if (listing_panel.ButtonTextLabeled("Treatment system", "PrisonLabor_ShowTutorialButton".Translate()))
+            {
+                TutorialWindow.Show("Treatment");
             }
 
             listing_panel.End();

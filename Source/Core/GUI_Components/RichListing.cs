@@ -69,7 +69,14 @@ namespace PrisonLabor.Core.GUI_Components
 
         public void Append(string item)
         {
+            //Insert html formatting
+            item = item
+                .Replace("[b]", "<b>")
+                .Replace("[/b]", "</b>");
+
             Text.Font = ItemFont;
+
+            // Draw title
             if (item.StartsWith("[title]"))
             {
                 Text.Font = TitleFont;

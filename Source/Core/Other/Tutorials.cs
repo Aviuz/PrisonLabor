@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using PrisonLabor.Core.Meta;
+using PrisonLabor.Core.Windows;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -8,19 +9,17 @@ namespace PrisonLabor.Core.Other
 {
     public static class Tutorials
     {
-        private static readonly ConceptDef introductionDef =
-            DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Indroduction", true);
+        private static readonly ConceptDef introductionDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Indroduction", true);
 
-        private static readonly ConceptDef motivationDef =
-            DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Motivation", true);
+        private static readonly ConceptDef motivationDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Motivation", true);
 
         private static readonly ConceptDef growingDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Growing", true);
 
-        private static readonly ConceptDef managementDef =
-            DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Management", true);
+        private static readonly ConceptDef managementDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Management", true);
 
-        private static readonly ConceptDef timetableDef =
-            DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Timetable", true);
+        private static readonly ConceptDef timetableDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Timetable", true);
+
+        private static readonly ConceptDef treatmentDef = DefDatabase<ConceptDef>.GetNamed("PrisonLabor_Treatment", true);
 
         private static readonly List<ConceptDef> triggeredTutorials = new List<ConceptDef>();
         private static float lastTutorTime;
@@ -37,11 +36,18 @@ namespace PrisonLabor.Core.Other
                 PlayerKnowledgeDatabase.SetKnowledge(managementDef, 1.0f);
             if (PrisonLaborPrefs.HasTutorialFlag(TutorialFlag.Timetable))
                 PlayerKnowledgeDatabase.SetKnowledge(timetableDef, 1.0f);
+            if (PrisonLaborPrefs.HasTutorialFlag(TutorialFlag.Treatment))
+                PlayerKnowledgeDatabase.SetKnowledge(treatmentDef, 1.0f);
         }
 
         public static void Introduction()
         {
-            TryActivateTutorial(introductionDef, OpportunityType.Important);
+            //TryActivateTutorial(introductionDef, OpportunityType.Important);
+            if (!PrisonLaborPrefs.HasTutorialFlag(TutorialFlag.Introduction))
+            {
+                TutorialWindow.Show("Introduction");
+                PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Introduction);
+            }
         }
 
         public static void Motivation()
@@ -62,6 +68,11 @@ namespace PrisonLabor.Core.Other
         public static void Growing()
         {
             TryActivateTutorial(growingDef, OpportunityType.Important);
+        }
+
+        public static void Treatment()
+        {
+            TryActivateTutorial(treatmentDef, OpportunityType.Important);
         }
 
         public static void LaborAreaWarning()
@@ -106,6 +117,8 @@ namespace PrisonLabor.Core.Other
                 PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Timetable);
             if (!PlayerKnowledgeDatabase.IsComplete(growingDef))
                 PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Growing);
+            if (!PlayerKnowledgeDatabase.IsComplete(treatmentDef))
+                PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Treatment);
         }
 
         public static void Reset()
@@ -115,6 +128,7 @@ namespace PrisonLabor.Core.Other
             PlayerKnowledgeDatabase.SetKnowledge(managementDef, 0.0f);
             PlayerKnowledgeDatabase.SetKnowledge(timetableDef, 0.0f);
             PlayerKnowledgeDatabase.SetKnowledge(growingDef, 0.0f);
+            PlayerKnowledgeDatabase.SetKnowledge(treatmentDef, 0.0f);
         }
     }
 }

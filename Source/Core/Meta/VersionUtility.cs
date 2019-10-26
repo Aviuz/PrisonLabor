@@ -4,8 +4,8 @@ namespace PrisonLabor.Core.Meta
 {
     class VersionUtility
     {
-        public const Version versionNumber = Version.v0_10_0;
-        public const string versionString = "0.10.0 [DEV]";
+        public const Version versionNumber = Version.v0_10_1;
+        public const string versionString = "0.10.1";
 
         public static Version VersionOfSaveFile { get; set; }
 
@@ -28,6 +28,13 @@ namespace PrisonLabor.Core.Meta
                 // Show version news
                 NewsWindow.LastVersionString = GetVersionString(PrisonLaborPrefs.LastVersion);
                 NewsWindow.AutoShow = true;
+
+                // Dev version fix, it can be removed in future
+                // There is no changelog for 0.10 so it will skip it, and display all changes
+                if (PrisonLaborPrefs.LastVersion == Version.v0_10_0)
+                {
+                    NewsWindow.LastVersionString = GetVersionString(Version.v0_9_11);
+                }
 
                 // Pre 0.9.4
                 if (PrisonLaborPrefs.LastVersion < Version.v0_9_4)

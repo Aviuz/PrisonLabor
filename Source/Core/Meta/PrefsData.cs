@@ -36,5 +36,6 @@ namespace PrisonLabor.Core.Meta
         Managment = 0x8,
         Timetable = 0x10,
         LaborAreaWarning = 0x20,
+        Treatment = 0x40,
     }
 }

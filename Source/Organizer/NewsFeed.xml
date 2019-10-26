@@ -4,17 +4,52 @@
   <!-- [img] ... [/img] for image (inside name of file) -->
   <!-- [gap] for gap -->
   <patches>
-    <!--<patch version="0.10.0">
-      <title>Prison Labor Beta v0.10.0</title>
+    <patch version="0.10.1">
+      <title>Prison Labor v0.10.1</title>
       <items>
-        <item>prisoners will now work in cold only if "work" time is set</item>
-        <item>prisoners will now seek safe temperature when not supervised</item>
-        <item>prisoners will respect forbidden items, if "inspired"</item>
-        <item>"Treatment happiness" will decrease if health conditions are bad, when prisoners are hungry, or they're working</item>
-        <item>added new hidden need "Treatment" that indicates level of prison treatment towards prisoner</item>
-        <item>now work settings reset after prisoner is recruited, so it should fix some issues</item>
+        <item>This patch contains a lot of changes, so there can be bugs. Please [b]report bugs[/b] so I can repair them ASAP</item>
+        <item>[gap]</item>
+        
+        <item>[b]Treatment system[/b]</item>
+        <item>[-]added new hidden need "Treatment" that indicates level of prison treatment towards prisoner</item>
+        <item>[-]prisoners will now give offer to join colony if treatment is good enough (random)</item>
+        <item>[-]prisoners now will pick up weapons if treated bad</item>
+        <item>[-]added +5 bonus to mood while prisoner have free time</item>
+        <item>[-]added +5 bonus to mood if prisoner is not supervised and got lazy</item>
+        <item>[-]added +15 bonus to mood if treatment is above 75%</item>
+        <item>[-]added prisoner suicides</item>
+        <item>[-]added blocking revolts (100%, 95%, 50%, 10%) if overall prisoner treatment is good enough</item>
+        <item>[-]added treatment drop when prisoner is being beaten</item>
+        <item>[-]increased base chance for Revolts</item>
+        <item>[-]added blocking mental breaks for prisoners with low treatment levels</item>
+        <item>[-]"Treatment happiness" will decrease if health conditions are bad, when prisoners are hungry, or they're working.</item>
+
+        <item>[b]Prisoners can do construction jobs now[/b]</item>
+
+        <item>[b]Enchantments[/b]</item>
+        <item>[-]new system for removing mod from save (new button in mod menu)</item>
+        <item>[-]prisoners will now seek safe temperature when not supervised</item>
+        <item>[-]prisoners will respect forbidden items, if "inspired"</item>
+        <item>[-]prisoners will now work in cold only if "work" time is set</item>
+        <item>[-]added alert when prisoners can escape</item>
+        <item>[-]reworked news popup window</item>
+        <item>[-]wardens no longer deliver food if prisoners can get it from another room</item>
+        <item>[-]cosmetic changes to bill checkbox</item>
+        <item>[-]prisoners will now stay at bed if waiting for surgery</item>
+
+        <item>[b]Bugs[/b]</item>
+        <item>[-]fixed food reservation throwing errors</item>
+        <item>[-]fixed cutting some content of bill config in some languages</item>
+        <item>[-]now work settings reset after prisoner is recruited, so it should fix some issues</item>
+        <item>[-]finally fixed "OnGui()" error, big thanks to @notfood (https://github.com/notfood)</item>
+        <item>[-]fixed blurred effect on settings window</item>
+        <item>[-]fixed Revolts</item>
+
+        <item>[gap]</item>
+
+        <item>If you want to support the work I do, please consider small donation. Link to Ko-fi will be placed at steam page.</item>
       </items>
-    </patch>-->
+    </patch>
     <patch version="0.9.11">
       <title>Prison Labor Beta v0.9.11</title>
       <items>
@@ -120,7 +155,7 @@
     <patch version="0.8.6">
       <title>Prison Labor Beta v0.8.6</title>
       <items>
-        <item>[img]NewsElement_Locks[/img]<b>Locks mod:</b>\nIf you want to allow prisoners to pass by closed doors, please check out my other mod called <b>Locks</b></item>
+        <item>[img]NewsElement_Locks[/img][b]Locks mod:[/b]\nIf you want to allow prisoners to pass by closed doors, please check out my other mod called [b]Locks[/b]</item>
         <item>[gap]</item>
         <item>[-]fixed bug that Sowing job do not comply to Labor Area</item>
         <item>[-]fixed bug with JoyGiver debris (sorry about that)</item>
@@ -143,8 +178,8 @@
       <title>Prison Labor Beta v0.8.1</title>
       <items>
         <item>[-]fixed bug with rendering icons on world map</item>
-        <item>[subtitle] If you encouter any bugs <b>please report it on github</b>. I'm fixing most important ones every day. This is (recently) beta version and it has to consist some bugs. Thank you for understaning.</item>
-        <item>[subtitle] Also you can always <b>download old version</b> via github, but I think this was last big update</item>
+        <item>[subtitle] If you encouter any bugs [b]please report it on github[/b]. I'm fixing most important ones every day. This is (recently) beta version and it has to consist some bugs. Thank you for understaning.</item>
+        <item>[subtitle] Also you can always [b]download old version[/b] via github, but I think this was last big update</item>
         <item>[-]re-enabled button in Bills detail panel</item>
         <item>[-]added slider to Bills (temporary fix)</item>
         <item>[-]fixed Bill \"Prisoner only\" button (I think, let me know if you still experience errors)</item>
@@ -155,16 +190,16 @@
     <patch version="0.8.0">
       <title>Prison Labor Beta v0.8.0</title>
       <items>
-        <item>[subtitle]<b>Now in Beta!</b> I would no longer add any more features. Instead I will focus on improving existing ones.</item>
+        <item>[subtitle][b]Now in Beta![/b] I would no longer add any more features. Instead I will focus on improving existing ones.</item>
         <item>[gap]</item>
-        <item>[subtitle]<b>Main changes:</b></item>
-        <item>[img]NewsElement_Revolt[/img]<b>Revolts:</b>\nPrisoners will now form organized group under self-elected leader if motivation of prisoners is low. They will try to inflict damage to your colony or they will attemp running to elected enemy faction</item>
-        <item>[img]NewsElement_InspirationReworked[/img]<b>Insiration reworked:</b>\nQuicker, better and more intuitive.\nYou can now send your prisoners to work outside your walls, but be carefull: they will try to escape if left alone. Prisoners will start thinking about escape after being left for some time.</item>
-        <item>[img]LaborAreaExpand[/img]<b>Labor area:</b>\nYou can now select area for labor only. Your colonists will no longer go mine with peasants.\nTo access this tool look into \"Architect->Zones\" panel.</item>
-        <item>[img]NewsElement_PrisonersOnly[/img]<b>Prisoners Only button</b>\nGo to Bill details to mark bills for prisoners only!</item>
-        <item>[img]NewsElement_WorkAndRecruit[/img]<b>Work and recruit:</b>\nThis feature has been mostly requested by community. I hope it will be well received.</item>
+        <item>[subtitle][b]Main changes:[/b]</item>
+        <item>[img]NewsElement_Revolt[/img][b]Revolts:[/b]\nPrisoners will now form organized group under self-elected leader if motivation of prisoners is low. They will try to inflict damage to your colony or they will attemp running to elected enemy faction</item>
+        <item>[img]NewsElement_InspirationReworked[/img][b]Insiration reworked:[/b]\nQuicker, better and more intuitive.\nYou can now send your prisoners to work outside your walls, but be carefull: they will try to escape if left alone. Prisoners will start thinking about escape after being left for some time.</item>
+        <item>[img]LaborAreaExpand[/img][b]Labor area:[/b]\nYou can now select area for labor only. Your colonists will no longer go mine with peasants.\nTo access this tool look into \"Architect->Zones\" panel.</item>
+        <item>[img]NewsElement_PrisonersOnly[/img][b]Prisoners Only button[/b]\nGo to Bill details to mark bills for prisoners only!</item>
+        <item>[img]NewsElement_WorkAndRecruit[/img][b]Work and recruit:[/b]\nThis feature has been mostly requested by community. I hope it will be well received.</item>
         <item>[gap]</item>
-        <item>[subtitle]<b>Other changes:</b></item>
+        <item>[subtitle][b]Other changes:[/b]</item>
         <item>[-]added default prisoner interaction mode option to settings menu</item>
         <item>[-]added icons above prisoners indicating whenever he's being motivated/inspired</item>
         <item>[-]reduced manipulation capability of prisoners (now they have 80% of normal manipulation, down from 100%)</item>
@@ -179,7 +214,7 @@
         <item>[-]perfomance and code improvements</item>
         <item>[-]translation improvements</item>
         <item>[gap]</item>
-        <item>[subtitle]Also I want to annouce that I will start new mod called <b>Prison Expansion</b> that would be PrisonExtensions remake.The aim of this mod would be improving Prison Labor experience, especially cell doors and fences.</item>
+        <item>[subtitle]Also I want to annouce that I will start new mod called [b]Prison Expansion[/b] that would be PrisonExtensions remake.The aim of this mod would be improving Prison Labor experience, especially cell doors and fences.</item>
       </items>
     </patch>
     <patch version="0.7">
