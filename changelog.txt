@@ -1,4 +1,7 @@
 Changelog:
+1.0.0
+- fixed tutorial window constantly showing
+- fixed news pop-up auto-showing on minor changes too (it auto-shows only on major changes)
 ============== BETA VERSION ==============
 0.10.1
 - reworked news pop-up window

@@ -4,7 +4,8 @@
   <!-- [img] ... [/img] for image (inside name of file) -->
   <!-- [gap] for gap -->
   <patches>
-    <patch version="0.10.1">
+    <patch version="1.0.0" silent="true"/>
+    <patch version="0.10.1" silent="false">
       <title>Prison Labor v0.10.1</title>
       <items>
         <item>This patch contains a lot of changes, so there can be bugs. Please [b]report bugs[/b] so I can repair them ASAP</item>
