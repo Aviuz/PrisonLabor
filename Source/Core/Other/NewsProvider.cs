@@ -12,6 +12,8 @@ namespace PrisonLabor.Core.Other
         public struct VersionNotes
         {
             public string version;
+            public bool? silent;
+            public string title;
             public string[] entries;
         }
 
@@ -31,7 +33,7 @@ namespace PrisonLabor.Core.Other
 
                     if (iterator < allVersionNotes.Length)
                     {
-                        allVersionNotes[iterator] = notes;
+                        allVersionNotes[iterator] = Combine(allVersionNotes[iterator], notes);
                     }
                     else
                     {
@@ -44,6 +46,18 @@ namespace PrisonLabor.Core.Other
             {
                 Log.Error("PrisonLabor: Failed to initialize news" + e.ToString());
             }
+        }
+
+        public static bool ShouldAutoShowChangelog(string lastVersion)
+        {
+            for (int i = 0; i < allVersionNotes.Length; i++)
+            {
+                if (allVersionNotes[i].version == lastVersion)
+                    return false;
+                else if (allVersionNotes[i].silent == false)
+                    return true;
+            }
+            return false;
         }
 
         public static IEnumerable<VersionNotes> NewsAfterVersion(string versionString)
@@ -82,8 +96,13 @@ namespace PrisonLabor.Core.Other
                 {
                     if (currentPatchNotes.Count > 0)
                     {
-                        currentPatchNotes.Insert(0, $"[title]Prison Labor v{currentPatch}");
-                        yield return new VersionNotes() { version = currentPatch, entries = currentPatchNotes.ToArray() };
+                        yield return new VersionNotes() 
+                        { 
+                            version = currentPatch,
+                            silent = true,
+                            title= $"[title]Prison Labor v{currentPatch}",
+                            entries = currentPatchNotes.ToArray()
+                        };
                     }
                     currentPatch = line;
                     currentPatchNotes = new List<string>();
@@ -93,8 +112,13 @@ namespace PrisonLabor.Core.Other
             // Last iteration
             if (currentPatchNotes.Count > 0)
             {
-                currentPatchNotes.Insert(0, $"[title]Prison Labor v{currentPatch}");
-                yield return new VersionNotes() { version = currentPatch, entries = currentPatchNotes.ToArray() };
+                yield return new VersionNotes()
+                {
+                    version = currentPatch,
+                    silent = true,
+                    title = $"[title]Prison Labor v{currentPatch}",
+                    entries = currentPatchNotes.ToArray()
+                };
             }
         }
 
@@ -106,17 +130,63 @@ namespace PrisonLabor.Core.Other
             {
                 if (patch.Name == "patch")
                 {
-                    var entries = new List<string>();
-                    entries.Add($"[title]{patch["title"].InnerXml}");
-                    foreach (XmlNode item in patch["items"].ChildNodes)
-                        entries.Add(item.InnerXml);
-                    yield return new VersionNotes()
+                    var versionNotes = new VersionNotes();
+
+                    if(patch.Attributes["version"] != null)
                     {
-                        version = patch.Attributes["version"].Value,
-                        entries = entries.ToArray(),
-                    };
+                        versionNotes.version = patch.Attributes["version"].Value;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    if (patch["title"] != null)
+                    {
+                        versionNotes.title = $"[title]{patch["title"].InnerXml}";
+                    }
+                    else
+                    {
+                        versionNotes.title = null;
+                    }
+
+                    if(patch.Attributes["silent"] != null)
+                    {
+                        versionNotes.silent = bool.Parse(patch.Attributes["silent"].Value);
+                    }
+                    else
+                    {
+                        versionNotes.silent = null;
+                    }
+
+                    if (patch["items"] != null)
+                    {
+                        var entries = new List<string>();
+                        foreach (XmlNode item in patch["items"].ChildNodes)
+                            entries.Add(item.InnerXml);
+                        versionNotes.entries = entries.ToArray();
+                    }
+
+                    yield return versionNotes;
                 }
             }
+        }
+
+        private static VersionNotes Combine(VersionNotes orginal, VersionNotes target)
+        {
+            if (target.version != orginal.version)
+                throw new Exception("Bad news version");
+
+            if (target.title != null)
+                orginal.title = target.title;
+
+            if (target.silent != null)
+                orginal.silent = target.silent;
+
+            if (target.entries != null)
+                orginal.entries = target.entries;
+
+            return orginal;
         }
     }
 }

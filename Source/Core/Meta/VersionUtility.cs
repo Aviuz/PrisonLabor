@@ -1,3 +1,4 @@
+using PrisonLabor.Core.Other;
 using PrisonLabor.Core.Windows;
 
 namespace PrisonLabor.Core.Meta
@@ -27,7 +28,7 @@ namespace PrisonLabor.Core.Meta
             {
                 // Show version news
                 NewsWindow.LastVersionString = GetVersionString(PrisonLaborPrefs.LastVersion);
-                NewsWindow.AutoShow = true;
+                NewsWindow.AutoShow = NewsProvider.ShouldAutoShowChangelog(NewsWindow.LastVersionString);
 
                 // Dev version fix, it can be removed in future
                 // There is no changelog for 0.10 so it will skip it, and display all changes

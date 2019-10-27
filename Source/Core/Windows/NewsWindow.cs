@@ -34,6 +34,7 @@ namespace PrisonLabor.Core.Windows
             {
                 foreach (var patch in NewsProvider.allVersionNotes)
                 {
+                    entriesList.Add(patch.title);
                     entriesList.AddRange(patch.entries);
                 }
             }
@@ -41,6 +42,7 @@ namespace PrisonLabor.Core.Windows
             {
                 foreach (var patch in NewsProvider.NewsAfterVersion(LastVersionString))
                 {
+                    entriesList.Add(patch.title);
                     entriesList.AddRange(patch.entries);
                 }
             }
