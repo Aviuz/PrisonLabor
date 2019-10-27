@@ -1,4 +1,6 @@
 Changelog:
+1.0.2
+- set minimum 500 points for suicide event
 1.0.1
 - lowered chance for suicide incident
 1.0.0
