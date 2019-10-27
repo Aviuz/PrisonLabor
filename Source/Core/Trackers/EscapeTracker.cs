@@ -59,7 +59,7 @@ namespace PrisonLabor.Core.Trackers
         /// <summary>
         /// Flag that indicates whenever pawn should escape when JobGiver is trying to assign him a job
         /// </summary>
-        public bool ReadyToEscape { get; private set; }
+        public bool ReadyToEscape { get; set; }
 
         /// <summary>
         /// This value is tracking whenever pawn is ready to run,

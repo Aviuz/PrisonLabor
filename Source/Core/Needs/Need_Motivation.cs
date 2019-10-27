@@ -32,7 +32,7 @@ namespace PrisonLabor.Core.Needs
         /// This property purpose is that pawn should be only motivated in semi-auto mode,
         /// which means after getting to full, it should wait to drop a bit before recharging again.
         /// </summary>
-        public bool ShouldToBeMotivated { get; private set; }
+        public bool ShouldBeMotivated { get; set; }
 
         /// <summary>
         /// Indicates whenever pawn is currently working, and his motivation is decreasing by laziness rate.
@@ -59,9 +59,9 @@ namespace PrisonLabor.Core.Needs
 
             // Set NeedToBeMotivated
             if (CurLevel == MaxLevel)
-                ShouldToBeMotivated = false;
+                ShouldBeMotivated = false;
             else if (CurLevel <= NeedInspirationLevel)
-                ShouldToBeMotivated = true;
+                ShouldBeMotivated = true;
 
             // Set IsLazy
             if (CurLevel <= LazyLevel && _GUIChangeArrow <= 0)
