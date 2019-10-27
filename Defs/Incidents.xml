@@ -43,5 +43,7 @@
     <letterText>{0} has commited suicide, because of bad treatment.</letterText>
     <letterDef>NegativeEvent</letterDef>
     <baseChance>2</baseChance>
+    <minThreatPoints>500</minThreatPoints>
+    <pointsScaleable>false</pointsScaleable>
   </IncidentDef>
 </Defs>
