@@ -47,6 +47,7 @@ namespace PrisonLabor.Core.Other
             {
                 TutorialWindow.Show("Introduction");
                 PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Introduction);
+                PrisonLaborPrefs.Save();
             }
         }
 
@@ -107,17 +108,17 @@ namespace PrisonLabor.Core.Other
 
         public static void UpdateTutorialFlags()
         {
-            if (PlayerKnowledgeDatabase.IsComplete(introductionDef))
-                PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Introduction);
-            if (!PlayerKnowledgeDatabase.IsComplete(motivationDef))
+            //if (PlayerKnowledgeDatabase.IsComplete(introductionDef))
+            //    PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Introduction);
+            if (PlayerKnowledgeDatabase.IsComplete(motivationDef))
                 PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Motivation);
-            if (!PlayerKnowledgeDatabase.IsComplete(managementDef))
+            if (PlayerKnowledgeDatabase.IsComplete(managementDef))
                 PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Managment);
-            if (!PlayerKnowledgeDatabase.IsComplete(timetableDef))
+            if (PlayerKnowledgeDatabase.IsComplete(timetableDef))
                 PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Timetable);
-            if (!PlayerKnowledgeDatabase.IsComplete(growingDef))
+            if (PlayerKnowledgeDatabase.IsComplete(growingDef))
                 PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Growing);
-            if (!PlayerKnowledgeDatabase.IsComplete(treatmentDef))
+            if (PlayerKnowledgeDatabase.IsComplete(treatmentDef))
                 PrisonLaborPrefs.AddTutorialFlag(TutorialFlag.Treatment);
         }
 
