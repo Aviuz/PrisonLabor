@@ -1,4 +1,6 @@
 Changelog:
+1.0.1
+- lowered chance for suicide incident
 1.0.0
 - fixed tutorial window constantly showing
 - fixed news pop-up auto-showing on minor changes too (it auto-shows only on major changes)

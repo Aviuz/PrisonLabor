@@ -42,6 +42,6 @@
     <letterLabel>Prisoner suicide</letterLabel>
     <letterText>{0} has commited suicide, because of bad treatment.</letterText>
     <letterDef>NegativeEvent</letterDef>
-    <baseChance>3</baseChance>
+    <baseChance>2</baseChance>
   </IncidentDef>
 </Defs>

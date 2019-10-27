@@ -24,7 +24,7 @@ namespace PrisonLabor.Core.Incidents
                 if (need == null)
                     continue;
 
-                if (need.CurCategory >= TreatmentCategory.Bad)
+                if (need.CurCategory <= TreatmentCategory.Bad)
                     return true;
             }
 
@@ -44,7 +44,7 @@ namespace PrisonLabor.Core.Incidents
                 if (need == null)
                     continue;
 
-                if (need.CurCategory >= TreatmentCategory.Bad)
+                if (need.CurCategory <= TreatmentCategory.Bad)
                 {
                     // If treatment is only bad reduce chance by 50%
                     if (need.CurCategory == TreatmentCategory.Bad && !parms.forced)
