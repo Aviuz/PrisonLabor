@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <PrisonLabor_Revolt.label>反叛</PrisonLabor_Revolt.label>
+  <PrisonLabor_Revolt.label>暴動</PrisonLabor_Revolt.label>
   <PrisonLabor_Revolt.letterText>叛亂已由{0}發起。 囚犯們開始團結起來{1}，並開始用自製武器造反</PrisonLabor_Revolt.letterText>
-  <PrisonLabor_Revolt.letterLabel>造反辣~</PrisonLabor_Revolt.letterLabel>
+  <PrisonLabor_Revolt.letterLabel>暴動</PrisonLabor_Revolt.letterLabel>
+
+  <PrisonLabor_ResocializationOffer.label>resocialization offer</PrisonLabor_ResocializationOffer.label>
+  <PrisonLabor_ResocializationOffer.letterText>Offer by {0}.</PrisonLabor_ResocializationOffer.letterText>
+  <PrisonLabor_ResocializationOffer.letterLabel>Resocialization offer</PrisonLabor_ResocializationOffer.letterLabel>
+
+  <PrisonLabor_Suicide.label>囚犯自殺</PrisonLabor_Suicide.label>
+  <PrisonLabor_Suicide.letterText>{0} 因惡劣待遇而自殺</PrisonLabor_Suicide.letterText>
+  <PrisonLabor_Suicide.letterLabel>囚犯自殺</PrisonLabor_Suicide.letterLabel>
 
 
 </LanguageData>
