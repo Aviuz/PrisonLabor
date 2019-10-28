@@ -17,7 +17,7 @@ Changelog:
 - added alert when prisoners can escape
 - prisoners now will pick up weapons if treated bad
 - fixed food reservation throwing errors
-- added prisoner sucicides
+- added prisoner suicides
 - added +5 bonus to mood while prisoner have free time
 - added +5 bonus to mood if prisoner is not supervised and got lazy
 - added +15 bonus to mood if treatment is above 75%
@@ -26,7 +26,7 @@ Changelog:
 - added blocking mental breaks for prisoners with low treatment levels
 - added treatment drop when prisoner is being beaten
 - fixed cutting some content of bill config in some languages
-- cosmetic changes to bill checkbox
+- cosmetic changes to bill check-box
 - prisoners will now give offer to join colony if treatment is good enough (random)
 - prisoners will now stay at bed if waiting for surgery
 - prisoners will now work in cold only if "work" time is set
@@ -88,7 +88,7 @@ Changelog:
 - fixed harmony patches (work tab should appear now)
 0.8.9
 - updated libraries to RimWorld b18
-- minor fixes related to uptading to RimWorld b18
+- minor fixes related to updating to RimWorld b18
 ===========================================================
 0.8.8
 - changed slow from prisoners chains to act as factor instead offset
@@ -96,10 +96,10 @@ Changelog:
 0.8.7
 - fixed bug with dropping motivation while in bed
 - prisoners will now get different weapons when revolt triggers (molotovs, bows, or clubs)
-- replaced orginal jobs with "tweak" jobs (instead of overriding them, this fix is for users who use "WorkTab" by Fluffy)
+- replaced original jobs with "tweak" jobs (instead of overriding them, this fix is for users who use "WorkTab" by Fluffy)
 - removed warning message from logs
 - prisoners will now have 50% of normal speed in chains (instead of 35%)
-- prisoners will now break chains after some period of time instead of immadiately (matter in incidents, breakouts etc.)
+- prisoners will now break chains after some period of time instead of immediately (matter in incidents, breakouts etc.)
 - wardens will now try to motivate most prisoners at once, but with priority to motivate lowest motivation first
 - fixed bug with animals do not respect reservations (and vice versa)
 0.8.6
