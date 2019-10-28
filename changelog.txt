@@ -8,7 +8,7 @@ Changelog:
 1.0.0
 - fixed tutorial window constantly showing
 - fixed news pop-up auto-showing on minor changes too (it auto-shows only on major changes)
-============== BETA VERSION ==============
+============== 1.0 Pre-patch ==============
 0.10.1
 - reworked news pop-up window
 - fixed construction job
@@ -38,6 +38,7 @@ Changelog:
 - finally fixed "OnGui()" error, big thanks to @notfood (https://github.com/notfood)
 - fixed blurred effect on settings window
 - fixed Revolts
+============== BETA VERSION ==============
 0.9.11
 - fixed compatibility with Fluffy's WorkTab (final)
 0.9.10
