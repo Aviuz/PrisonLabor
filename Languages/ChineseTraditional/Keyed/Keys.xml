@@ -20,10 +20,6 @@
   <PrisonLabor_MotivationIconsDesc>當啟用圖標將顯示在囚犯頭上方。 激勵的藍色圖標和獲取其他因素的監督的綠色圖標。</PrisonLabor_MotivationIconsDesc>
   <PrisonLabor_CanGrowAdvanced>囚犯可以種植高級植物</PrisonLabor_CanGrowAdvanced>
   <PrisonLabor_CanGrowAdvancedDesc>當殘疾囚犯只能種植不需要任何技能的植物時。</PrisonLabor_CanGrowAdvancedDesc>
-  <PrisonLabor_RestartInfo>重新啟動然後重新保存您的遊戲。</PrisonLabor_RestartInfo>
-  <PrisonLabor_RestartInfo2>完成此步驟後，您可以安全地禁用此mod。</PrisonLabor_RestartInfo2>
-  <PrisonLabor_DisableMod>禁用mod</PrisonLabor_DisableMod>
-  <PrisonLabor_DisableModDesc>啟用後，保存的世界將轉換為“安全模式”，無需mod即可遊戲。</PrisonLabor_DisableModDesc>
   <PrisonLabor_Version>版本號: </PrisonLabor_Version>
   <PrisonLabor_Difficulty>難易度: </PrisonLabor_Difficulty>
   <PrisonLabor_Defaults>默認</PrisonLabor_Defaults>
@@ -42,15 +38,47 @@
   <PrisonLabor_LaborAreaDesc>勞動區是只有囚犯可以工作的地區。 除了監獄長類型的工作，這裡不允許殖民者的工作。</PrisonLabor_LaborAreaDesc>
   <PrisonLabor_ClearLaborArea>清除勞動區域</PrisonLabor_ClearLaborArea>
   <PrisonLabor_ExpandLaborArea>擴大勞動區域</PrisonLabor_ExpandLaborArea>
-  <PrisonLabor_ColonistsOnly>只允許殖民者</PrisonLabor_ColonistsOnly>
-  <PrisonLabor_PrisonersOnly>只允許囚犯</PrisonLabor_PrisonersOnly>
-  <PrisonLabor_ColonyOnly>只允許殖民地</PrisonLabor_ColonyOnly>
+
   <PrisonLabor_EnableRevolts>啟用反抗</PrisonLabor_EnableRevolts>
   <PrisonLabor_EnableRevoltsDesc>啟用時，有時會發生額外反叛，而不是原版事件</PrisonLabor_EnableRevoltsDesc>
   <PrisonLabor_LaborAreaWarning>勞動區不需要讓囚犯工作。\n \n該地區禁止殖民者工作。\n \n這是因為你不希望殖民者在某些地區工作。 囚犯可以在任何可以進入的地方工作。</PrisonLabor_LaborAreaWarning>
   <PrisonLabor_DontShowAgain>不要再顯示了</PrisonLabor_DontShowAgain>
+  <PrisonLabor_ShowTreatmentHappiness>顯示待遇指數</PrisonLabor_ShowTreatmentHappiness>
+  <PrisonLabor_ShowTreatmentHappinessDesc>啟用後,待遇指數將顯示在"需求"的選項頁中.</PrisonLabor_ShowTreatmentHappinessDesc>
+
   <PrisonLabor_ColonyOnlyShort>所有人</PrisonLabor_ColonyOnlyShort>
   <PrisonLabor_ColonistsOnlyShort>殖民者</PrisonLabor_ColonistsOnlyShort>
   <PrisonLabor_PrisonersOnlyShort>囚犯</PrisonLabor_PrisonersOnlyShort>
-<PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
+
+  <PrisonLabor_ColonyOnly>只允許殖民地</PrisonLabor_ColonyOnly>
+  <PrisonLabor_ColonistsOnly>只允許殖民者</PrisonLabor_ColonistsOnly>
+  <PrisonLabor_PrisonersOnly>只允許囚犯</PrisonLabor_PrisonersOnly>
+
+  <!-- 0.10 -->
+  <PrisonLabor_RecruitButtonLabel>招募</PrisonLabor_RecruitButtonLabel>
+  <PrisonLabor_RecruitButtonDesc>準備加入殖民地</PrisonLabor_RecruitButtonDesc>
+
+  <PrisonLabor_Alert_EscapingPrisoners_Title>囚犯可以越獄</PrisonLabor_Alert_EscapingPrisoners_Title>
+  <PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>囚犯可以到達地圖盡頭並逃脫,除非殖民者有密切監督,囚犯便會開始逃獄.</PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>
+  <PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>這些囚犯可以越獄:\n\n{0}\n殖民者需監督關注他們，否則他們將逃跑.</PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>
+
+  <PrisonLabor_ButtonRemoveModFromSave>選擇保存</PrisonLabor_ButtonRemoveModFromSave>
+  <PrisonLabor_ButtonRemoveModFromSaveDesc>從保存中刪除Prison Labor mod</PrisonLabor_ButtonRemoveModFromSaveDesc>
+
+  <PrisonLabor_ButtonBackup>備份</PrisonLabor_ButtonBackup>
+  <PrisonLabor_ButtonProceed>繼續</PrisonLabor_ButtonProceed>
+
+  <PrisonLabor_UpgradeSaveProcessMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveProcessMessage>
+  <PrisonLabor_UpgradeSaveDialogMessage>您將要從保存中刪除Prison Labor mod.完成此操作後，您將可以在沒有mod的情況下進行遊戲.</PrisonLabor_UpgradeSaveDialogMessage>
+  <PrisonLabor_BackupSaveDialogMessage>請使用下面按鈕備份文件</PrisonLabor_BackupSaveDialogMessage>
+
+  <PrisonLabor_ReplayTurorialsButton>講解</PrisonLabor_ReplayTurorialsButton>
+  <PrisonLabor_ShowTutorialButton>顯示</PrisonLabor_ShowTutorialButton>
+
+  <!--<PrisonLabor_RestartInfo>重新啟動然後重新保存您的遊戲。</PrisonLabor_RestartInfo>-->
+  <!--<PrisonLabor_RestartInfo2>完成此步驟後，您可以安全地禁用此mod。</PrisonLabor_RestartInfo2>-->
+  <!--<PrisonLabor_DisableMod>禁用mod</PrisonLabor_DisableMod>-->
+  <!--<PrisonLabor_DisableModDesc>啟用後，保存的世界將轉換為“安全模式”，無需mod即可遊戲。</PrisonLabor_DisableModDesc>-->
+  <!--<PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>-->
+
 </LanguageData>

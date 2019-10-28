@@ -4,5 +4,8 @@
   <PrisonLabor_Motivation.label>監督</PrisonLabor_Motivation.label>
   <PrisonLabor_Motivation.description>要是沒人監督囚犯 他們可能會偷懶</PrisonLabor_Motivation.description>
 
+  <PrisonLabor_Treatment.label>待遇指數</PrisonLabor_Treatment.label>
+  <PrisonLabor_Treatment.description>待遇指數代表囚犯在殖民地中接受怎樣對待.</PrisonLabor_Treatment.description>
+
 
 </LanguageData>

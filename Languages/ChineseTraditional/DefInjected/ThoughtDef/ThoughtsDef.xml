@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Situation thoughts -->
+
+  <PrisonLabor_VeryGoodTreatment.stages.0.label>良好待遇</PrisonLabor_VeryGoodTreatment.stages.0.label>
+  <PrisonLabor_VeryGoodTreatment.stages.0.description>在這所監獄裡,我受到了很好的對待.</PrisonLabor_VeryGoodTreatment.stages.0.description>
+
+  <PrisonLabor_LowMotivation.stages.0.label>沒人管</PrisonLabor_LowMotivation.stages.0.label>
+  <PrisonLabor_LowMotivation.stages.0.description>沒人看我是否在工作.</PrisonLabor_LowMotivation.stages.0.description>
+
+  <PrisonLabor_FreeTime.stages.0.label>放風時間</PrisonLabor_FreeTime.stages.0.label>
+  <PrisonLabor_FreeTime.stages.0.description>即使我是囚犯，我仍然可以有一些空閒時間.</PrisonLabor_FreeTime.stages.0.description>
+
+
+</LanguageData>
