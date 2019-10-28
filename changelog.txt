@@ -1,4 +1,6 @@
 Changelog:
+1.0.3
+- updated Traditional Chinese translation, thanks to shiuanyue
 1.0.2
 - set minimum 500 points for suicide event
 1.0.1

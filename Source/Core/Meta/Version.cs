@@ -50,5 +50,6 @@ namespace PrisonLabor.Core.Meta
         v1_0_0,
         v1_0_1,
         v1_0_2,
+        v1_0_3,
     }
 }
