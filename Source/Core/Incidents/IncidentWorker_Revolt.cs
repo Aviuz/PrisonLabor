@@ -162,7 +162,7 @@ namespace PrisonLabor.Core.Incidents
                 var lordJob = new LordJob_AssaultColony(parms.faction, true, true, false, true, true);
                 //TODO old code:
                 LordMaker.MakeNewLord(parms.faction, lordJob/*(new RaidStrategyWorker_ImmediateAttackSmart()).MakeLordJob(parms, map)*/, map, affectedPawns);
-                SendStandardLetter(t, null, new string[] { t.Name.ToStringShort, t.Faction.Name });
+                SendStandardLetter(parms, t, new NamedArgument[] { new NamedArgument(t.Name.ToStringShort, null), new NamedArgument(t.Faction.Name, null)});
                 Find.TickManager.slower.SignalForceNormalSpeedShort();
 
                 Tutorials.Treatment();

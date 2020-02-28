@@ -1,4 +1,4 @@
-using Harmony;
+using HarmonyLib;
 using PrisonLabor.Core.Meta;
 using System.Collections.Generic;
 using System.Reflection;

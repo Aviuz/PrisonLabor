@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace PrisonLabor.CompatibilityPatches
 
         public static void Run()
         {
-            var harmony = HarmonyInstance.Create("Harmony_PrisonLabor_SeedsPlease");
+            var harmony = new Harmony("Harmony_PrisonLabor_SeedsPlease");
             var harvestDriverClass = JobDefOf.Harvest.driverClass.BaseType;
             harmony.Patch(
                 harvestDriverClass.GetMethod("HarvestSeedsToil", BindingFlags.NonPublic | BindingFlags.Instance),

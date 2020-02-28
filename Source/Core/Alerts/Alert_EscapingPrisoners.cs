@@ -30,14 +30,14 @@ namespace PrisonLabor.Core.Alerts
             }
         }
 
-        public override string GetExplanation()
+        public override TaggedString GetExplanation()
         {
             Tutorials.Motivation();
 
             var stringBuilder = new StringBuilder();
             foreach (var current in PotentialEscapingPrisoners)
                 stringBuilder.AppendLine("    " + current.Name.ToStringShort);
-            return string.Format("PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat".Translate(), stringBuilder.ToString());
+            return new TaggedString(string.Format("PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat".Translate(), stringBuilder.ToString()));
         }
 
         public override AlertReport GetReport()

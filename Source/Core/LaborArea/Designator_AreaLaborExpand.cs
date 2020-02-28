@@ -14,7 +14,7 @@ namespace PrisonLabor.Core.LaborArea
             //this.hotKey = KeyBindingDefOf.Misc5;
             soundDragSustain = SoundDefOf.Designate_DragAreaAdd;
             soundDragChanged = null;
-            soundSucceeded = SoundDefOf.Designate_AreaAdd;
+            soundSucceeded = SoundDefOf.Designate_ZoneAdd;
         }
     }
 }

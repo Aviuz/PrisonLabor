@@ -47,15 +47,16 @@ namespace PrisonLabor.CompatibilityPatches
                 XmlInheritance.TryRegisterAllFrom(item, mod);
             }
             XmlInheritance.Resolve();
-            foreach (var item in list)
+            //TODO: wtf is this?
+/*            foreach (var item in list)
             {
                 foreach (Def def in item.defPackage)
                 {
                     Log.Message($"Added def {def.defName}");
                     DefDatabase<ThinkTreeDef>.Add(def as ThinkTreeDef);
                 }
-            }
-            foreach(var def in DefDatabase<ThinkTreeDef>.AllDefs.Where(d => d.insertTag == "Humanlike_PostDuty").OrderByDescending(d => d.insertPriority))
+            }*/
+            foreach (var def in DefDatabase<ThinkTreeDef>.AllDefs.Where(d => d.insertTag == "Humanlike_PostDuty").OrderByDescending(d => d.insertPriority))
                 Log.Message($"  ThinkTree {def.defName}");
 
         }

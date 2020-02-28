@@ -13,7 +13,7 @@ namespace PrisonLabor.Tweaks
 
         public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForGroup(ThingRequestGroup.Filth);
 
-        public override int LocalRegionsToScanFirst => 4;
+        public override int MaxRegionsToScanBeforeGlobalSearch => 4;
 
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
         {
