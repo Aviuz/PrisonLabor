@@ -23,10 +23,9 @@ namespace PrisonLabor.HarmonyPatches
             {
                 // Clear old data, to avoid misleading info
                 fragments = new Dictionary<string, bool>();
-                Log.Error("przed patch all");
+                
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
-                Log.Error("po patch all");
-
+                ``
                 // Print out not completed methods
                 foreach (var f in fragments.Keys)
                 {
