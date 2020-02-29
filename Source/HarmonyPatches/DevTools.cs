@@ -13,7 +13,7 @@ namespace PrisonLabor.HarmonyPatches
     /// <summary>
     /// This patch is adding Prison Labor dev tools
     /// </summary>
-    [HarmonyPatch(typeof(Dialog_DebugActionsMenu), "DoListingItems_MapTools")]
+    [HarmonyPatch(typeof(Dialog_DebugActionsMenu), "DoListingItems")]
     public static class DevTools
     {
         public static bool LogEscapeUtilityEnabled { get; set; }
