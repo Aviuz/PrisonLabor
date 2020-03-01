@@ -32,7 +32,7 @@ namespace PrisonLabor.Core.Alerts
             }
         }
 
-        public override string GetExplanation()
+        public override TaggedString GetExplanation()
         {
             var stringBuilder = new StringBuilder();
             foreach (var current in StarvingPrisoners)

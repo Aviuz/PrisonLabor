@@ -19,7 +19,7 @@ namespace PrisonLabor.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -62,18 +62,21 @@ namespace PrisonLabor.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Changelog:
-        ///============== BETA VERSION ==============
-        ///0.10.0
+        ///1.0.3
+        ///- updated Traditional Chinese translation, thanks to shiuanyue
+        ///1.0.2
+        ///- set minimum 500 points for suicide event
+        ///1.0.1
+        ///- lowered chance for suicide incident
+        ///1.0.0
+        ///- fixed tutorial window constantly showing
+        ///- fixed news pop-up auto-showing on minor changes too (it auto-shows only on major changes)
+        ///============== 1.0 Pre-patch ==============
+        ///0.10.1
         ///- reworked news pop-up window
         ///- fixed construction job
         ///- new system for removing mod from save (new button in mod menu)
-        ///- wardens no longer deliver food if prisoners can get it from another room
-        ///- added alert when prisoners can escape
-        ///- prisoners now will pick up weapons if treated bad
-        ///- fixed food reservation throwing errors
-        ///- added prisoner sucicides
-        ///- added +5 bonus to mood while prisoner have free time
-        ///- added +5 bonus to mood if p [rest of string was truncated]&quot;;.
+        ///- wardens no [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string changelog {
             get {
@@ -88,12 +91,14 @@ namespace PrisonLabor.Properties {
         ///  &lt;!-- [img] ... [/img] for image (inside name of file) --&gt;
         ///  &lt;!-- [gap] for gap --&gt;
         ///  &lt;patches&gt;
-        ///    &lt;!--&lt;patch version=&quot;0.10.0&quot;&gt;
-        ///      &lt;title&gt;Prison Labor Beta v0.10.0&lt;/title&gt;
+        ///    &lt;patch version=&quot;1.0.3&quot; silent=&quot;true&quot;/&gt;
+        ///    &lt;patch version=&quot;1.0.2&quot; silent=&quot;true&quot;/&gt;
+        ///    &lt;patch version=&quot;1.0.1&quot; silent=&quot;true&quot;/&gt;
+        ///    &lt;patch version=&quot;1.0.0&quot; silent=&quot;true&quot;/&gt;
+        ///    &lt;patch version=&quot;0.10.1&quot; silent=&quot;false&quot;&gt;
+        ///      &lt;title&gt;Prison Labor v0.10.1&lt;/title&gt;
         ///      &lt;items&gt;
-        ///        &lt;item&gt;prisoners will now work in cold only if &quot;work&quot; time is set&lt;/item&gt;
-        ///        &lt;item&gt;prisoners will now seek safe temperature when not supervised&lt;/item&gt;
-        ///        &lt;item&gt;prisoners will respect forbidden items, if &quot;inspired&quot;&lt;/it [rest of string was truncated]&quot;;.
+        ///        &lt;item&gt;This patch contains a lot of changes, s [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string NewsFeed {
             get {
@@ -102,18 +107,17 @@ namespace PrisonLabor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;NewsFeed&gt;
-        ///  &lt;!-- How to insert news: --&gt;
+        ///   Looks up a localized string similar to &lt;TutorialFeed&gt;
+        ///  &lt;!-- How to insert rich text: --&gt;
         ///  &lt;!-- [subtitle] for subtitle --&gt;
         ///  &lt;!-- [img] ... [/img] for image (inside name of file) --&gt;
         ///  &lt;!-- [gap] for gap --&gt;
-        ///  &lt;patches&gt;
-        ///    &lt;!--&lt;patch version=&quot;0.10.0&quot;&gt;
-        ///      &lt;title&gt;Prison Labor Beta v0.10.0&lt;/title&gt;
+        ///  &lt;tutorials&gt;
+        ///    &lt;tutorial key=&quot;Introduction&quot;&gt;
         ///      &lt;items&gt;
-        ///        &lt;item&gt;prisoners will now work in cold only if &quot;work&quot; time is set&lt;/item&gt;
-        ///        &lt;item&gt;prisoners will now seek safe temperature when not supervised&lt;/item&gt;
-        ///        &lt;item&gt;prisoners will respect forbidden items, if &quot;inspired&quot;&lt;/it [rest of string was truncated]&quot;;.
+        ///        &lt;item&gt;[title]Prison Labor Mod - Introduction&lt;/item&gt;
+        ///        &lt;item&gt;Are you new to Prison Labor Mod? Don&apos;t worry, in this tutorial you will learn how to use this mod.&lt;/item&gt;
+        ///        &lt;item&gt;The main goal of this mod is to make prisoners work, but managing prisoners [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string TutorialFeed {
             get {

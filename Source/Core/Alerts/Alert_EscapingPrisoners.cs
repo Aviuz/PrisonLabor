@@ -30,7 +30,7 @@ namespace PrisonLabor.Core.Alerts
             }
         }
 
-        public override string GetExplanation()
+        public override TaggedString GetExplanation()
         {
             Tutorials.Motivation();
 

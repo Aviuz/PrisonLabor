@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 using System;
@@ -18,19 +18,18 @@ namespace PrisonLabor.HarmonyPatches.Patches_BillAssignation
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
+            HPatcher.CreateDebugFileOnDesktop("Patch_BillPrevention.cs", instr);
             OpCode[] opCodes =
             {
                 OpCodes.Ldfld,
                 OpCodes.Ldfld,
-                OpCodes.Beq,
-                OpCodes.Br,
+                OpCodes.Bne_Un
             };
             String[] operands =
             {
                 "RimWorld.WorkGiverDef def",
                 "Verse.WorkTypeDef workType",
-                "System.Reflection.Emit.Label",
-                "System.Reflection.Emit.Label",
+                "System.Reflection.Emit.Label"
             };
             var label = (Label)HPatcher.FindOperandAfter(opCodes, operands, instr);
 

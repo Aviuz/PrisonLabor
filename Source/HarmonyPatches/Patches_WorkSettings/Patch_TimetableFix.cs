@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using System.Reflection.Emit;
 using Verse;
@@ -16,7 +16,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, IEnumerable<CodeInstruction> instr)
         {
             var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr);
-            var label = HPatcher.FindOperandAfter(new[] { OpCodes.Brtrue }, new[] { "System.Reflection.Emit.Label" }, instr);
+            var label = HPatcher.FindOperandAfter(new[] { OpCodes.Brtrue_S }, new[] { "System.Reflection.Emit.Label" }, instr);
 
             OpCode[] opCodes =
             {
@@ -43,7 +43,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
                     yield return new CodeInstruction(OpCodes.Ldarg_0);
                     yield return new CodeInstruction(OpCodes.Ldfld, pawn);
                     yield return new CodeInstruction(OpCodes.Callvirt, typeof(Pawn).GetMethod("get_IsPrisonerOfColony"));
-                    yield return new CodeInstruction(OpCodes.Brtrue, label);
+                    yield return new CodeInstruction(OpCodes.Brtrue_S, label);
                 }
             }
         }
