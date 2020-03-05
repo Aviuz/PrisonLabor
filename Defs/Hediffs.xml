@@ -3,6 +3,7 @@
   <HediffDef>
     <defName>PrisonLabor_PrisonerChains</defName>
     <label>prisoners chains</label>
+    <description>The prisoner is in chains</description>
     <stages>
       <li>
         <label>not active</label>
