@@ -35,20 +35,23 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
                 "RimWorld.Bill_Production bill",
             };
             var billField = HPatcher.FindOperandAfter(opCodes0, operands0, instr);
+            Log.Message("loaded bill field");
 
             // Find label after >> if (listing_Standard.ButtonText(label, null))
             OpCode[] opCodes1 =
             {
                 OpCodes.Ldstr,
                 OpCodes.Call,
+                OpCodes.Call,
                 OpCodes.Ldnull,
                 OpCodes.Callvirt,
-                OpCodes.Brfalse
+                OpCodes.Brfalse_S
             };
             String[] operands1 =
             {
                 "NotSuspended",
-                "System.String Translate(System.String)",
+                "Verse.TaggedString Translate(System.String)",
+                "",//"string op_Implicit(Verse.TaggedString)",
                 "",
                 "Boolean ButtonText(System.String, System.String)",
                 "System.Reflection.Emit.Label",
@@ -59,14 +62,14 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
             OpCode[] opCodes4 =
            {
                 OpCodes.Call,
-                OpCodes.Br,
+                OpCodes.Br_S,
                 OpCodes.Ldloc_S,
             };
             String[] operands4 =
             {
                 "Void PlayOneShotOnCamera(Verse.SoundDef, Verse.Map)",
                 "System.Reflection.Emit.Label",
-                "Verse.Listing_Standard (40)",
+                "Verse.Listing_Standard (28)",
             };
             var listing = HPatcher.FindOperandAfter(opCodes4, operands4, instr);
 

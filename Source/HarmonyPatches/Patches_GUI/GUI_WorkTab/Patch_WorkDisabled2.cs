@@ -25,7 +25,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_WorkTab
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             //Load string TODO translate
-            yield return new CodeInstruction(OpCodes.Ldstr, "PrisonLabor_WorkTypeDisabled".Translate());
+            yield return new CodeInstruction(OpCodes.Ldstr, "PrisonLabor_WorkTypeDisabled");
             //Return
             yield return new CodeInstruction(OpCodes.Ret);
 
