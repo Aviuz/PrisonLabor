@@ -44,7 +44,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
                     yield return new CodeInstruction(OpCodes.Ldarg_0);
                     yield return new CodeInstruction(OpCodes.Ldfld, pawn);
                     yield return new CodeInstruction(OpCodes.Callvirt, typeof(Pawn).GetMethod("get_IsPrisonerOfColony"));
-                    yield return new CodeInstruction(OpCodes.Brtrue, label);
+                    yield return new CodeInstruction(OpCodes.Brtrue_S, label);
                 }
             }
         }

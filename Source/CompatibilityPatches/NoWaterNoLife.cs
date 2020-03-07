@@ -47,7 +47,8 @@ namespace PrisonLabor.CompatibilityPatches
                 XmlInheritance.TryRegisterAllFrom(item, mod);
             }
             XmlInheritance.Resolve();
-            foreach (var item in list)
+            //TODO: wtf is this?
+/*            foreach (var item in list)
             {
                 // TODO NoWaterNoLife compability
                 //foreach (Def def in item.defPackage)

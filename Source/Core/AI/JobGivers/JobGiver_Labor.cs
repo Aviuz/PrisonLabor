@@ -168,6 +168,7 @@ namespace PrisonLabor.Core.AI.JobGivers
                             job3 = workGiver_Scanner.JobOnCell(pawn, targetInfo.Cell);
                         if (job3 != null)
                         {
+                            job3.workGiverDef = workGiver.def;
                             if (need != null)
                                 need.IsPrisonerWorking = true;
                             return new ThinkResult(job3, this, workList[j].def.tagToGive);
