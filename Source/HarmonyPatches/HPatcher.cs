@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Reflection;
-using Harmony;
+using HarmonyLib;
 using Verse;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +16,7 @@ namespace PrisonLabor.HarmonyPatches
 
         public static void Init()
         {
-            var harmony = HarmonyInstance.Create("Harmony_PrisonLabor");
+            var harmony = new Harmony("Harmony_PrisonLabor");
 
             // SECTION - Classic patches
             try
