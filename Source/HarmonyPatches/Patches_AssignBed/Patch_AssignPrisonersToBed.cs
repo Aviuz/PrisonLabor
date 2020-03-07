@@ -46,8 +46,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_AssignBed
     }
 
 
-    [HarmonyPatch(typeof(Building_Bed))]
-    [HarmonyPatch("get_" + nameof(Building_Bed.OwnersForReading))]
+    // TODO This is currently crashing the game
+    //[HarmonyPatch(typeof(Building_Bed))]
+    //[HarmonyPatch("get_" + nameof(Building_Bed.OwnersForReading))]
     static class Patch_MakePrisonersCandidates
     {
         static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instructions)
