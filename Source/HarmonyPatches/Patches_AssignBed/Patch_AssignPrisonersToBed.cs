@@ -111,7 +111,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_AssignBed
                 OpCodes.Ldc_I4_1,
                 OpCodes.Ldc_I4_0,
                 OpCodes.Call,
-                OpCodes.Brfalse,
+                OpCodes.Brfalse_S,
             };
             string[] operands1 =
             {

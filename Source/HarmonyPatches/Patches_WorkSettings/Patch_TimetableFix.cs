@@ -18,12 +18,13 @@ namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
             var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr);
             var label = HPatcher.FindOperandAfter(new[] { OpCodes.Brtrue }, new[] { "System.Reflection.Emit.Label" }, instr);
 
+            // if (!pawn.IsColonist)
             OpCode[] opCodes =
             {
                 OpCodes.Ldarg_0,
                 OpCodes.Ldfld,
                 OpCodes.Callvirt,
-                OpCodes.Brtrue,
+                OpCodes.Brtrue_S,
             };
             string[] operands =
             {

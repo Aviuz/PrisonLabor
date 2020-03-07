@@ -17,7 +17,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Restraints
             OpCode[] opCodes =
             {
                 OpCodes.Call,
-                OpCodes.Brfalse,
+                OpCodes.Brfalse_S,
             };
             String[] operands =
             {
