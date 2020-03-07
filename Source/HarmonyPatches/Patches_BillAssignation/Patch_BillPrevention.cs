@@ -22,14 +22,12 @@ namespace PrisonLabor.HarmonyPatches.Patches_BillAssignation
             {
                 OpCodes.Ldfld,
                 OpCodes.Ldfld,
-                OpCodes.Beq,
-                OpCodes.Br,
+                OpCodes.Bne_Un,
             };
             String[] operands =
             {
                 "RimWorld.WorkGiverDef def",
                 "Verse.WorkTypeDef workType",
-                "System.Reflection.Emit.Label",
                 "System.Reflection.Emit.Label",
             };
             var label = (Label)HPatcher.FindOperandAfter(opCodes, operands, instr);

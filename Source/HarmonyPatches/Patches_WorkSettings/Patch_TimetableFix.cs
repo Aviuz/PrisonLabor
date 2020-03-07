@@ -16,7 +16,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, IEnumerable<CodeInstruction> instr)
         {
             var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr);
-            var label = HPatcher.FindOperandAfter(new[] { OpCodes.Brtrue }, new[] { "System.Reflection.Emit.Label" }, instr);
+            var label = HPatcher.FindOperandAfter(new[] { OpCodes.Brtrue_S }, new[] { "System.Reflection.Emit.Label" }, instr);
 
             // if (!pawn.IsColonist)
             OpCode[] opCodes =
