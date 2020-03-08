@@ -25,7 +25,7 @@ namespace PrisonLabor.HarmonyPatches
                 fragments = new Dictionary<string, bool>();
                 
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
-                ``
+                
                 // Print out not completed methods
                 foreach (var f in fragments.Keys)
                 {
@@ -36,6 +36,7 @@ namespace PrisonLabor.HarmonyPatches
             catch (Exception e)
             {
                 Log.Error($"PrisonLaborException: failed to proceed harmony patches: {e.InnerException.Message}");
+                Log.Error(e.ToString());
             }
 
             // SECTION - Patches with references in method

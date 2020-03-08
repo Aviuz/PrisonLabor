@@ -18,8 +18,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
+            HPatcher.CreateDebugFileOnDesktop("LaborArea", instr);
             //var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr);
-            var jobgiver = HPatcher.FindOperandAfter(new[] { OpCodes.Ldloc_S }, new[] { "RimWorld.JobGiver_Work+<TryIssueJobPackage>c__AnonStorey1 (11)" }, instr);
+            var jobgiver = HPatcher.FindOperandAfter(new[] { OpCodes.Ldloc_S }, new[] { "RimWorld.JobGiver_Work+<>c__DisplayClass3_1 (9)" }, instr);
             var scanner = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "RimWorld.WorkGiver_Scanner scanner" }, instr);
             var cell = HPatcher.FindOperandAfter(new[] { OpCodes.Ldloc_S }, new[] { "Verse.IntVec3 (33)" }, instr);
 
@@ -111,5 +112,42 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
         {
             return scanner.def.workType;
         }
+
+/*        public static void ProcessCellWrapper(IntVec3 c)
+        {
+            bool flag = false;
+            float num2 = (c - pawnPosition).LengthHorizontalSquared;
+            float num3 = 0f;
+            if (prioritized)
+            {
+                if (!c.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, c))
+                {
+                    if (!allowUnreachable && !pawn.CanReach(c, scanner.PathEndMode, maxPathDanger))
+                    {
+                        return;
+                    }
+                    num3 = scanner.GetPriority(pawn, c);
+                    if (num3 > bestPriority || (num3 == bestPriority && num2 < closestDistSquared))
+                    {
+                        flag = true;
+                    }
+                }
+            }
+            else if (num2 < closestDistSquared && !c.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, c))
+            {
+                if (!allowUnreachable && !pawn.CanReach(c, scanner.PathEndMode, maxPathDanger))
+                {
+                    return;
+                }
+                flag = true;
+            }
+            if (flag)
+            {
+                bestTargetOfLastPriority = new TargetInfo(c, pawn.Map);
+                scannerWhoProvidedTarget = scanner;
+                closestDistSquared = num2;
+                bestPriority = num3;
+            }
+        }*/
     }
 }
