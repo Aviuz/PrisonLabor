@@ -16,5 +16,7 @@
   <PrisonLabor_Timetable.label>囚犯时间管制</PrisonLabor_Timetable.label>
   <PrisonLabor_Timetable.helpText>你可以给囚犯们设置时间限制。\n\n“工作”时间将会强迫囚犯去工作，即使他们还处于饥饿或疲劳状态。\n\n“娱乐”时间会让囚犯从工作中解脱，并且给他们一些积极性加成。\n\n“睡眠”时间将会强迫囚犯待在监狱里。\n\n“任何事”是默认设置。</PrisonLabor_Timetable.helpText>
 
+  <PrisonLabor_Treatment.label>待遇系统</PrisonLabor_Treatment.label>
+  <PrisonLabor_Treatment.helpText>在监狱劳力中，你需要照顾好囚犯。良好的待遇可以预防反叛并且直接招募他们（无需招募流程）。\n\n保持良好的待遇，您需要定期喂饱囚犯并设置一些放风时间，让他们恢复体力。\n\n如果您殴打囚犯，不给食物或过量工作，待遇就会降低。\n良好的待遇将导致：\n-随机提出请求加入殖民地\n-防止反叛\n-防止自杀</PrisonLabor_Treatment.helpText>
 
 </LanguageData>
