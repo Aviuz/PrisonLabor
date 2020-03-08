@@ -16,7 +16,7 @@ namespace PrisonLabor.HarmonyPatches
     [HarmonyPatch(typeof(Dialog_DebugActionsMenu), "DoListingItems")]
     public static class DevTools
     {
-        public static bool LogEscapeUtilityEnabled { get; set; }
+        private static bool logEscapeUtilityEnabled;
 
         static void Postfix(Dialog_DebugActionsMenu __instance)
         {
@@ -68,7 +68,7 @@ namespace PrisonLabor.HarmonyPatches
             // Set free
             menu.DebugAction("Toggle logging escape utility", ()=>
             {
-                LogEscapeUtilityEnabled = !LogEscapeUtilityEnabled;
+                logEscapeUtilityEnabled = !logEscapeUtilityEnabled;
             });
         }
 
