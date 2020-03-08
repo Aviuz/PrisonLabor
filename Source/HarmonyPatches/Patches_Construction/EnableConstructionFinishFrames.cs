@@ -39,7 +39,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Construction
                 OpCodes.Callvirt,
                 OpCodes.Ldarg_1,
                 OpCodes.Callvirt,
-                OpCodes.Beq,
+                OpCodes.Beq_S,
             };
             string[] operands1 =
             {
