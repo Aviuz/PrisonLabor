@@ -18,6 +18,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_BillAssignation
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
+            HPatcher.CreateDebugFileOnDesktop("Patch_BillPrevention.cs", instr);
             OpCode[] opCodes =
             {
                 OpCodes.Ldfld,
