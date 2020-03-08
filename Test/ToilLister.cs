@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Verse.AI;
-using HarmonyLib;
-using Harmony.ILCopying;
 using System.Reflection.Emit;
 using System.Reflection;
 

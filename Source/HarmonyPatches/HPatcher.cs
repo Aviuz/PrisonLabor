@@ -25,7 +25,7 @@ namespace PrisonLabor.HarmonyPatches
                 fragments = new Dictionary<string, bool>();
                 
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
-                ``
+
                 // Print out not completed methods
                 foreach (var f in fragments.Keys)
                 {
