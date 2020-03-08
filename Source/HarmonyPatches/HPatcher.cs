@@ -206,6 +206,38 @@ namespace PrisonLabor.HarmonyPatches
             return instructions;
         }
 
+        public static IEnumerable<CodeInstruction> InjectFragmentBefore(OpCode[] opCodes, String[] operands, IEnumerable<CodeInstruction> instr, IEnumerable<CodeInstruction> newFragment, string fragmentName, bool perfectMatch = true)
+        {
+            // Convert to list, to freely jump between lines
+            var instructions = instr.ToList();
+
+            // Find last index of fragment
+            int index = -1;
+            int step = 0;
+            for (int i = 0; i < instructions.Count; i++)
+            {
+                if (HPatcher.IsFragment(opCodes, operands, instructions[i], ref step, fragmentName, perfectMatch))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            // Jump back to begining of fragment
+            index -= operands.Length;
+
+            // If no fragment is found throw exception (or somehow begining of fragment is lower than 0)
+            if (index < 0)
+            {
+                throw new Exception($"Couldn't find fragment {fragmentName}");
+            }
+
+            // Add fragment
+            instructions.InsertRange(index + 1, newFragment);
+
+            return instructions;
+        }
+
         private static bool InstructionMatching(CodeInstruction instr, OpCode opCode, string operand, bool perfectMatch)
         {
             bool matchingOpCodes = instr.opcode == opCode;
