@@ -4,5 +4,8 @@
   <PrisonLabor_Motivation.label>积极性</PrisonLabor_Motivation.label>
   <PrisonLabor_Motivation.description>积极性表示囚犯工作的动力。动力可以靠殖民者站在旁边来增加。</PrisonLabor_Motivation.description>
 
+  <PrisonLabor_Treatment.label>待遇满意度</PrisonLabor_Treatment.label>
+  <PrisonLabor_Treatment.description>待遇满意度表示了囚犯认为自己在殖民地接受了怎样的对待。</PrisonLabor_Treatment.description>
+
 
 </LanguageData>
