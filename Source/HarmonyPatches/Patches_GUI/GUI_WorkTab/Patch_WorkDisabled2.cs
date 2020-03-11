@@ -15,7 +15,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_WorkTab
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
-        {
+        {            
             // Define label to the begining of the original code
             var jumpTo = gen.DefineLabel();
             yield return new CodeInstruction(OpCodes.Ldarg_0);
@@ -25,7 +25,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_WorkTab
             //If false continue
             yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
             //Load string TODO translate
-            yield return new CodeInstruction(OpCodes.Ldstr, "PrisonLabor_WorkTypeDisabled");
+            yield return new CodeInstruction(OpCodes.Ldstr, "PrisonLabor_WorkTypeDisabled".TranslateSimple());
             //Return
             yield return new CodeInstruction(OpCodes.Ret);
 

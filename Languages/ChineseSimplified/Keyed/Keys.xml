@@ -45,10 +45,29 @@
   <PrisonLabor_ColonistsOnly>只允许殖民者</PrisonLabor_ColonistsOnly>
   <PrisonLabor_PrisonersOnly>只允许囚犯</PrisonLabor_PrisonersOnly>
   <PrisonLabor_ColonyOnly>只允许殖民地</PrisonLabor_ColonyOnly>
-  <PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
-  <PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
-  <PrisonLabor_LaborAreaWarning>Labor area isn't required to make prisoners work.\n\nThis area forbids colonists from working.\n\nIt's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</PrisonLabor_LaborAreaWarning>
+  <PrisonLabor_EnableRevolts>启用叛乱</PrisonLabor_EnableRevolts>
+  <PrisonLabor_EnableRevoltsDesc>启用时，有时会用叛乱事件取代原版的越狱。</PrisonLabor_EnableRevoltsDesc>
+  <PrisonLabor_LaborAreaWarning>劳作区不需要囚犯工作。\n\n该区域禁止殖民者工作。\n\n这是用于防止你的殖民者在这片区域工作。囚犯会在他们可以到达的任意区域工作。</PrisonLabor_LaborAreaWarning>
   <PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
-	
-<PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
+ 
+  <PrisonLabor_ShowTreatmentHappiness>显示待遇满意度</PrisonLabor_ShowTreatmentHappiness>
+  <PrisonLabor_ShowTreatmentHappinessDesc>启用时，待遇满意度会显示在需求页中。</PrisonLabor_ShowTreatmentHappinessDesc>
+  <PrisonLabor_ColonyOnlyShort>只允许殖民地</PrisonLabor_ColonyOnlyShort>
+  <PrisonLabor_ColonistsOnlyShort>只允许殖民地</PrisonLabor_ColonistsOnlyShort>
+  <PrisonLabor_PrisonersOnlyShort>只允许囚犯</PrisonLabor_PrisonersOnlyShort>
+  <PrisonLabor_RecruitButtonLabel>招募</PrisonLabor_RecruitButtonLabel>
+  <PrisonLabor_RecruitButtonDesc>准备加入殖民地</PrisonLabor_RecruitButtonDesc>
+  <PrisonLabor_Alert_EscapingPrisoners_Title>囚犯可以逃脱</PrisonLabor_Alert_EscapingPrisoners_Title>
+  <PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>囚犯可以到达地图边缘并逃脱。只要殖民者不密切关注，他们就会尝试逃跑。</PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>
+  <PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>这些囚犯可以逃跑：\n\n{0}\n只要殖民者不密切关注，他们就会尝试逃跑。</PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>
+  <PrisonLabor_ButtonRemoveModFromSave>选择存档</PrisonLabor_ButtonRemoveModFromSave>
+  <PrisonLabor_ButtonRemoveModFromSaveDesc>从存档中删除监狱劳力</PrisonLabor_ButtonRemoveModFromSaveDesc>
+  <PrisonLabor_ButtonBackup>备份</PrisonLabor_ButtonBackup>
+  <PrisonLabor_ButtonProceed>继续</PrisonLabor_ButtonProceed>
+  <PrisonLabor_UpgradeSaveProcessMessage>更新 [PrisonLabor] 模组</PrisonLabor_UpgradeSaveProcessMessage>
+  <PrisonLabor_UpgradeSaveDialogMessage>你正在从存档中移除监狱劳力模组。在这操作之后，你可以在没有该模组的情况下游玩。</PrisonLabor_UpgradeSaveDialogMessage>
+  <PrisonLabor_BackupSaveDialogMessage>请用下面的按钮备份文件</PrisonLabor_BackupSaveDialogMessage>
+  <PrisonLabor_ReplayTurorialsButton>教程</PrisonLabor_ReplayTurorialsButton>
+  <PrisonLabor_ShowTutorialButton>显示</PrisonLabor_ShowTutorialButton>
+  <PrisonLabor_UpgradeSaveMessage>更新 [PrisonLabor] 模组</PrisonLabor_UpgradeSaveMessage>
 </LanguageData>

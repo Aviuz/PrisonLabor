@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <PrisonLabor_Jailor.label>狱卒</PrisonLabor_Jailor.label>
+  <PrisonLabor_Jailor.description>管理囚犯，包括护送、观察、释放和处决囚犯。</PrisonLabor_Jailor.description>
+  <PrisonLabor_Jailor.labelShort>狱卒</PrisonLabor_Jailor.labelShort>
+  <PrisonLabor_Jailor.pawnLabel>狱卒</PrisonLabor_Jailor.pawnLabel>
+  <PrisonLabor_Jailor.gerundLabel>看着囚犯</PrisonLabor_Jailor.gerundLabel>
+  <PrisonLabor_Jailor.verb>监督</PrisonLabor_Jailor.verb>
+
+
+</LanguageData>

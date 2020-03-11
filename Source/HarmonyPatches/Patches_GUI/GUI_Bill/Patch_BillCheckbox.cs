@@ -24,7 +24,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
-        {
+        {            
             // Find >> this.bill
             OpCode[] opCodes0 =
             {
@@ -51,7 +51,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
             {
                 "NotSuspended",
                 "Verse.TaggedString Translate(System.String)",
-                "",//"string op_Implicit(Verse.TaggedString)",
+                "System.String op_Implicit(Verse.TaggedString)",
                 "",
                 "Boolean ButtonText(System.String, System.String)",
                 "System.Reflection.Emit.Label",
