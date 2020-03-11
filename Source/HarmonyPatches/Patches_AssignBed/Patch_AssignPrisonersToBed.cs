@@ -54,7 +54,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_AssignBed
         static bool Prefix(ref IEnumerable<Pawn> __result, CompAssignableToPawn __instance)
         {
             Building_Bed bed = __instance.parent as Building_Bed;
-            if (bed != null && __instance is CompAssignableToPawn_Bed)
+            if (bed != null && __instance is CompAssignableToPawn_Bed && bed.ForPrisoners)
             {
                 __result = bed.Map.mapPawns.PrisonersOfColony;
                 return false;
