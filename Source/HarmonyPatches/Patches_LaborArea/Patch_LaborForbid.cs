@@ -11,10 +11,9 @@ using Verse.AI;
 
 namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
 {
-    // TODO fix this, laborArea not working atm
-    // [HarmonyPatch(typeof(JobGiver_Work))]
-    // [HarmonyPatch("TryIssueJobPackage")]
-    // [HarmonyPatch(new[] { typeof(Pawn), typeof(JobIssueParams) })]
+    [HarmonyPatch(typeof(JobGiver_Work))]
+    [HarmonyPatch("TryIssueJobPackage")]
+    [HarmonyPatch(new[] { typeof(Pawn), typeof(JobIssueParams) })]
     internal class Patch_LaborForbid
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
