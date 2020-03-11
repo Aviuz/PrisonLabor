@@ -22,26 +22,13 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_PrisonerTab
     {
         static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, IEnumerable<CodeInstruction> instr)
         {
-            // "if (Prefs.DevMode)" fragment
-            OpCode[] opCodes1 =
-            {
-                OpCodes.Call,
-                OpCodes.Brfalse,
-            };
-            string[] operands1 =
-            {
-                "Boolean get_DevMode()",
-                "System.Reflection.Emit.Label",
-            };
-            int step1 = 0;
-
             // "listing_Standard.End()" fragment
-            OpCode[] opCodes2 =
+            OpCode[] opCodes =
             {
                 OpCodes.Ldloc_1,
                 OpCodes.Callvirt,
             };
-            string[] operands2 =
+            string[] operands =
             {
                 "",
                 "Void End()",
@@ -50,30 +37,33 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_PrisonerTab
 
             foreach (var ci in instr)
             {
-                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "Patch_PrisonerTab listing_standard.End()"))
+                if (HPatcher.IsFragment(opCodes, operands, ci, ref step2, "Patch_PrisonerTab listing_standard.End()"))
                 {
                     yield return new CodeInstruction(OpCodes.Ldloc_1);
                     yield return new CodeInstruction(OpCodes.Call, typeof(Patch_PrisonerTab).GetMethod(nameof(AddRecruitButton)));
+
+                    // Append Dev lines (When dev mode is on)
+                    yield return new CodeInstruction(OpCodes.Ldloc_1);
+                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_PrisonerTab).GetMethod(nameof(AppendDevLines)));
                 }
 
                 yield return ci;
-
-                // TODO add this back?
-                //if (HPatcher.IsFragment(opCodes1, operands1, ci, ref step1, "Patch_PrisonerTab IfDevMode"))
-                //{
-                //    yield return new CodeInstruction(OpCodes.Ldloc_3);
-                //    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_PrisonerTab).GetMethod(nameof(AppendDevLines)));
-                //}
 
             }
         }
 
         public static void AppendDevLines(Listing_Standard listingStandard)
         {
-            var pawn = Find.Selector.SingleSelectedThing as Pawn;
-            var escapeTracker = EscapeTracker.Of(pawn);
-            if (escapeTracker != null)
-                listingStandard.Label("Dev: Ready to escape: " + (escapeTracker.ReadyToEscape ? "ready" : escapeTracker.ReadyToRunPercentage + "%") + $" (Cap:{escapeTracker.EscapeLevel})", -1f);
+            if (Prefs.DevMode)
+            {
+                var pawn = Find.Selector.SingleSelectedThing as Pawn;
+                var escapeTracker = EscapeTracker.Of(pawn);
+                if (escapeTracker != null)
+                    listingStandard.Label(
+                        "Dev: Ready to escape: " +
+                        (escapeTracker.ReadyToEscape ? "ready" : escapeTracker.ReadyToRunPercentage + "%") +
+                        $" (Cap:{escapeTracker.EscapeLevel})", -1f);
+            }
         }
 
         public static void AddRecruitButton(Listing_Standard listingStandard)
