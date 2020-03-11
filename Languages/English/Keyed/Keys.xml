@@ -74,4 +74,7 @@
 
   <PrisonLabor_ReplayTurorialsButton>Tutorials</PrisonLabor_ReplayTurorialsButton>
   <PrisonLabor_ShowTutorialButton>Show</PrisonLabor_ShowTutorialButton>
+
+  <PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
+  <PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
 </LanguageData>
