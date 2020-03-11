@@ -190,5 +190,56 @@ namespace PrisonLabor.Core.AI.JobGivers
                    (pawn.story == null || !pawn.WorkTagIsDisabled(giver.def.workTags)) &&
                    giver.MissingRequiredCapacity(pawn) == null;
         }
+
+        private Job GiverTryGiveJobPrioritized(Pawn pawn, WorkGiver giver, IntVec3 cell)
+        {
+            if (!PawnCanUseWorkGiver(pawn, giver))
+                return null;
+            try
+            {
+                var job = giver.NonScanJob(pawn);
+                if (job != null)
+                {
+                    var result = job;
+                    return result;
+                }
+                var scanner = giver as WorkGiver_Scanner;
+                if (scanner != null)
+                {
+                    if (giver.def.scanThings)
+                    {
+                        Predicate<Thing> predicate = t => !t.IsForbidden(pawn) && scanner.HasJobOnThing(pawn, t, false);
+                        var thingList = cell.GetThingList(pawn.Map);
+                        for (var i = 0; i < thingList.Count; i++)
+                        {
+                            var thing = thingList[i];
+                            if (scanner.PotentialWorkThingRequest.Accepts(thing) && predicate(thing))
+                            {
+                                return AssignWorkGiverIfNecessary(scanner.JobOnThing(pawn, thing, false), giver);
+                            }
+                        }
+                    }
+                    if (giver.def.scanCells && !cell.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, cell))
+                    {
+                        return AssignWorkGiverIfNecessary(scanner.JobOnCell(pawn, cell), giver);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(string.Concat(pawn, " threw exception in GiverTryGiveJobTargeted on WorkGiver ",
+                    giver.def.defName, ": ", ex.ToString()));
+            }
+            return null;
+        }
+
+        private Job AssignWorkGiverIfNecessary(Job job, WorkGiver giver)
+        {
+            if (job != null)
+            {
+                job.workGiverDef = giver.def;
+            }
+            return job;
+        }
     }
 }
