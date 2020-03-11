@@ -159,8 +159,6 @@ namespace PrisonLabor.Core.AI.JobGivers
                     }
                     if (targetInfo.IsValid)
                     {
-                        // TODO this is probably not correct
-                        pawn.mindState.lastJobTag = JobTag.MiscWork;
                         Job job3;
                         if (targetInfo.HasThing)
                             job3 = workGiver_Scanner.JobOnThing(pawn, targetInfo.Thing, false);
