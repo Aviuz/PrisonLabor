@@ -105,6 +105,7 @@
     <Compile Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
+    <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
     <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_AddScrollToPrisonerTab.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_BillCheckbox.cs" />
