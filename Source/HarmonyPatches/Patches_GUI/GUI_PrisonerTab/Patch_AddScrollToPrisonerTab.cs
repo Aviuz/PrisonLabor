@@ -97,7 +97,6 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_PrisonerTab
                 // begin scroll
                 if (HPatcher.IsFragment(opCodes1, operands1, ci, ref step1, "AddScrollToPrisonerTab1"))
                 {
-                    Log.Message("isfragment");
                     yield return new CodeInstruction(OpCodes.Ldloc_S, rect);
                     yield return new CodeInstruction(OpCodes.Call, typeof(Patch_AddScrollToPrisonerTab).GetMethod(nameof(StartScrolling)));
                     yield return new CodeInstruction(OpCodes.Stloc_S, rect);
