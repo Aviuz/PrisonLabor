@@ -235,6 +235,9 @@
       <Link>Language\Keys.xml</Link>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="..\LoadFolders.xml">
+      <Link>Organizer\LoadFolders.xml</Link>
+    </Content>
     <Content Include="..\TaskList.txt">
       <Link>Organizer\TaskList.txt</Link>
     </Content>

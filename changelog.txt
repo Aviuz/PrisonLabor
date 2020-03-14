@@ -1,4 +1,7 @@
 Changelog:
+1.1.0
+- updated to RimWorld 1.1
+- added option in settings to opt-out from suicide events
 1.0.3
 - updated Traditional Chinese translation, thanks to shiuanyue
 1.0.2
