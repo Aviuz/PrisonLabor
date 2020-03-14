@@ -35,7 +35,6 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
                 "RimWorld.Bill_Production bill",
             };
             var billField = HPatcher.FindOperandAfter(opCodes0, operands0, instr);
-            Log.Message("loaded bill field");
 
             // Find label after >> if (listing_Standard.ButtonText(label, null))
             OpCode[] opCodes1 =
