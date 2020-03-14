@@ -70,4 +70,7 @@
   <PrisonLabor_ReplayTurorialsButton>教程</PrisonLabor_ReplayTurorialsButton>
   <PrisonLabor_ShowTutorialButton>显示</PrisonLabor_ShowTutorialButton>
   <PrisonLabor_UpgradeSaveMessage>更新 [PrisonLabor] 模组</PrisonLabor_UpgradeSaveMessage>
+
+  <PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
+  <PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
 </LanguageData>

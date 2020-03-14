@@ -50,4 +50,7 @@
 	<PrisonLabor_LaborAreaWarning>Зона работ не обязательна для того чтоб заключенные работали. \n\n Зона работ запрещает поселенцам работу в указанных местах.\n\n Она создана для тех случаев, когда вы не хотите чтобы поселенцы работали в указанном месте. Заключенные же будут работать там, куда у них есть доступ.</PrisonLabor_LaborAreaWarning>
 	<PrisonLabor_DontShowAgain>Больше не показывать</PrisonLabor_DontShowAgain>
 <PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
+
+	<PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
+  	<PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
 </LanguageData>
