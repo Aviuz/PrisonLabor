@@ -1,54 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-<PrisonLabor_PrisonerWork>Forceer om te werken</PrisonLabor_PrisonerWork>
-<PrisonLabor_WorkAndRecruit>Werken en recruiteren</PrisonLabor_WorkAndRecruit>
-<PrisonLabor_LazyPrisonerMessage>Jouw gevangene is gestopt met werken!</PrisonLabor_LazyPrisonerMessage>
-<PrisonLabor_WardenResponeThreshold>Bewaker reactie drempel</PrisonLabor_WardenResponeThreshold>
-<PrisonLabor_StoppingWorkThreshold>Staak werken drempel</PrisonLabor_StoppingWorkThreshold>
-<PrisonLabor_WorkTypeDisabled>Werkvorm onmogelijk voor gevangenen</PrisonLabor_WorkTypeDisabled>
-<PrisonLabor_ShowNews>Toon nieuws</PrisonLabor_ShowNews>
-<PrisonLabor_ShowNewsDesc>Toon nieuws over wijzingen wanneer gevangenen gedetecteerd worden.</PrisonLabor_ShowNewsDesc>
-<PrisonLabor_DefaultInterMode>Standaard gevangene interactie modus</PrisonLabor_DefaultInterMode>
-<PrisonLabor_AllowedWorkTypes>Toegestane werkvormen:</PrisonLabor_AllowedWorkTypes>
-<PrisonLabor_AllowAll>Sta allen toe</PrisonLabor_AllowAll>
-<PrisonLabor_AllowAllWorktypes>Sta alle werkvormen toe</PrisonLabor_AllowAllWorktypes>
-<PrisonLabor_AllowedWorktypesL>Toegestane werkvormen:</PrisonLabor_AllowedWorktypesL>
-<PrisonLabor_Browse>Doorblader</PrisonLabor_Browse>
-<PrisonLabor_MotivationMechanics>Motivatie mechanismen (!)</PrisonLabor_MotivationMechanics>
-<PrisonLabor_MotivationWarning>Wanneer aangekruist moet de gevangene gemotiveerd worden. \n\nWAARSCHUWING: Herladen opslag nodig.</PrisonLabor_MotivationWarning>
-<PrisonLabor_MotivationIcons>Inspiratie/Motivatie tekens</PrisonLabor_MotivationIcons>
-<PrisonLabor_MotivationIconsDesc>Wanneer deze geactiveerd zijn worden deze getoont boven de hoofden van de gevangenen. Blauw icoon voor inspiratie en het groene icoon for het krijgen van motivatie door andere factoren.</PrisonLabor_MotivationIconsDesc>
-<PrisonLabor_CanGrowAdvanced>Gevangenen kunnen geadvanceerde planten groeien</PrisonLabor_CanGrowAdvanced>
-<PrisonLabor_CanGrowAdvancedDesc>Wanneer uitgezet kunnen gevangenen alleen planten groeien die geen vaardigheid nodig hebben.</PrisonLabor_CanGrowAdvancedDesc>
-<PrisonLabor_RestartInfo>Herstart het spel en sla je spel opnieuw op</PrisonLabor_RestartInfo>
-<PrisonLabor_RestartInfo2>Na deze stappen kan je de mod veilig uitschakelen</PrisonLabor_RestartInfo2>
-<PrisonLabor_DisableMod>Schakel de mod uit</PrisonLabor_DisableMod>
-<PrisonLabor_DisableModDesc>Wanneer aangezet kunnen werelden die naar 'Veilige Modus' zijn getransferred worden gespeeld zonder de mod.</PrisonLabor_DisableModDesc>
-<PrisonLabor_Version>Versie:</PrisonLabor_Version>
-<PrisonLabor_Difficulty>Moeilijkheid:</PrisonLabor_Difficulty>
-<PrisonLabor_Defaults>Standaard</PrisonLabor_Defaults>
-<PrisonLabor_DifficultyNormal>Normaal</PrisonLabor_DifficultyNormal>
-<PrisonLabor_DifficultyCasual>Casual</PrisonLabor_DifficultyCasual>
-<PrisonLabor_DifficultyEasy>Makkelijk</PrisonLabor_DifficultyEasy>
-<PrisonLabor_DifficultyPeaceful>Vredig</PrisonLabor_DifficultyPeaceful>
-<PrisonLabor_DifficultyJoke>Een grap</PrisonLabor_DifficultyJoke>
-<PrisonLabor_LazyPrisonerAlert>Gevangenen werken niet</PrisonLabor_LazyPrisonerAlert>
-<PrisonLabor_LazyPrisonerExplanationDef>Gevangenen zijn lui, motiveer ze.</PrisonLabor_LazyPrisonerExplanationDef>
-<PrisonLabor_LazyPrisonerExplanation>Deze gevangenen zijn lui:\n\n{0}\nProbeer ze te motiveren</PrisonLabor_LazyPrisonerExplanation>
-<PrisonLabor_StarvingPrisonerAlert>Gevangenen verhongeren</PrisonLabor_StarvingPrisonerAlert>
-<PrisonLabor_StarvingPrisonerExplanationDef>Gevangenen verhongeren en willen niet werken</PrisonLabor_StarvingPrisonerExplanationDef>
-<PrisonLabor_StarvingPrionserExplanation>Deze gevangenen verhongeren en willen niet werkeni:\n\n{0}</PrisonLabor_StarvingPrionserExplanation>
-<PrisonLabor_LaborArea>Gevangenen Werk Zone</PrisonLabor_LaborArea>
-<PrisonLabor_LaborAreaDesc>Werk Zone is gebied waar alleen gevangenen kunnen werken. Kolonisten kunnen hier niet werken tenzij het een bewaker type opdracht is.</PrisonLabor_LaborAreaDesc>
-<PrisonLabor_ClearLaborArea>Verwijder Werk Zone</PrisonLabor_ClearLaborArea>
-<PrisonLabor_ExpandLaborArea>Breid Werk Zone uit</PrisonLabor_ExpandLaborArea>
-<PrisonLabor_ColonistsOnly>Alleen kolonisten</PrisonLabor_ColonistsOnly>
-<PrisonLabor_PrisonersOnly>Alleen  gevangenen</PrisonLabor_PrisonersOnly>
-<PrisonLabor_ColonyOnly>Alleen kolonie</PrisonLabor_ColonyOnly>
-<PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
-<PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
-<PrisonLabor_LaborAreaWarning>Labor area isn't required to make prisoners work.\n\nThis area forbids colonists from working.\n\nIt's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</PrisonLabor_LaborAreaWarning>
-<PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
+    <PrisonLabor_PrisonerWork>Forceer om te werken</PrisonLabor_PrisonerWork>
+    <PrisonLabor_WorkAndRecruit>Werken en recruiteren</PrisonLabor_WorkAndRecruit>
+    <PrisonLabor_LazyPrisonerMessage>Jouw gevangene is gestopt met werken!</PrisonLabor_LazyPrisonerMessage>
+    <PrisonLabor_WardenResponeThreshold>Bewaker reactie drempel</PrisonLabor_WardenResponeThreshold>
+    <PrisonLabor_StoppingWorkThreshold>Staak werken drempel</PrisonLabor_StoppingWorkThreshold>
+    <PrisonLabor_WorkTypeDisabled>Werkvorm onmogelijk voor gevangenen</PrisonLabor_WorkTypeDisabled>
+    <PrisonLabor_ShowNews>Toon nieuws</PrisonLabor_ShowNews>
+    <PrisonLabor_ShowNewsDesc>Toon nieuws over wijzingen wanneer gevangenen gedetecteerd worden.</PrisonLabor_ShowNewsDesc>
+    <PrisonLabor_DefaultInterMode>Standaard gevangene interactie modus</PrisonLabor_DefaultInterMode>
+    <PrisonLabor_AllowedWorkTypes>Toegestane werkvormen:</PrisonLabor_AllowedWorkTypes>
+    <PrisonLabor_AllowAll>Sta allen toe</PrisonLabor_AllowAll>
+    <PrisonLabor_AllowAllWorktypes>Sta alle werkvormen toe</PrisonLabor_AllowAllWorktypes>
+    <PrisonLabor_AllowedWorktypesL>Toegestane werkvormen:</PrisonLabor_AllowedWorktypesL>
+    <PrisonLabor_Browse>Doorblader</PrisonLabor_Browse>
+    <PrisonLabor_MotivationMechanics>Motivatie mechanismen (!)</PrisonLabor_MotivationMechanics>
+    <PrisonLabor_MotivationWarning>Wanneer aangekruist moet de gevangene gemotiveerd worden. \n\nWAARSCHUWING: Herladen opslag nodig.</PrisonLabor_MotivationWarning>
+    <PrisonLabor_MotivationIcons>Inspiratie/Motivatie tekens</PrisonLabor_MotivationIcons>
+    <PrisonLabor_MotivationIconsDesc>Wanneer deze geactiveerd zijn worden deze getoont boven de hoofden van de gevangenen. Blauw icoon voor inspiratie en het groene icoon for het krijgen van motivatie door andere factoren.</PrisonLabor_MotivationIconsDesc>
+    <PrisonLabor_CanGrowAdvanced>Gevangenen kunnen geadvanceerde planten groeien</PrisonLabor_CanGrowAdvanced>
+    <PrisonLabor_CanGrowAdvancedDesc>Wanneer uitgezet kunnen gevangenen alleen planten groeien die geen vaardigheid nodig hebben.</PrisonLabor_CanGrowAdvancedDesc>
+    <PrisonLabor_RestartInfo>Herstart het spel en sla je spel opnieuw op</PrisonLabor_RestartInfo>
+    <PrisonLabor_RestartInfo2>Na deze stappen kan je de mod veilig uitschakelen</PrisonLabor_RestartInfo2>
+    <PrisonLabor_DisableMod>Schakel de mod uit</PrisonLabor_DisableMod>
+    <PrisonLabor_DisableModDesc>Wanneer aangezet kunnen werelden die naar 'Veilige Modus' zijn getransferred worden gespeeld zonder de mod.</PrisonLabor_DisableModDesc>
+    <PrisonLabor_Version>Versie:</PrisonLabor_Version>
+    <PrisonLabor_Difficulty>Moeilijkheid:</PrisonLabor_Difficulty>
+    <PrisonLabor_Defaults>Standaard</PrisonLabor_Defaults>
+    <PrisonLabor_DifficultyNormal>Normaal</PrisonLabor_DifficultyNormal>
+    <PrisonLabor_DifficultyCasual>Casual</PrisonLabor_DifficultyCasual>
+    <PrisonLabor_DifficultyEasy>Makkelijk</PrisonLabor_DifficultyEasy>
+    <PrisonLabor_DifficultyPeaceful>Vredig</PrisonLabor_DifficultyPeaceful>
+    <PrisonLabor_DifficultyJoke>Een grap</PrisonLabor_DifficultyJoke>
+    <PrisonLabor_LazyPrisonerAlert>Gevangenen werken niet</PrisonLabor_LazyPrisonerAlert>
+    <PrisonLabor_LazyPrisonerExplanationDef>Gevangenen zijn lui, motiveer ze.</PrisonLabor_LazyPrisonerExplanationDef>
+    <PrisonLabor_LazyPrisonerExplanation>Deze gevangenen zijn lui:\n\n{0}\nProbeer ze te motiveren</PrisonLabor_LazyPrisonerExplanation>
+    <PrisonLabor_StarvingPrisonerAlert>Gevangenen verhongeren</PrisonLabor_StarvingPrisonerAlert>
+    <PrisonLabor_StarvingPrisonerExplanationDef>Gevangenen verhongeren en willen niet werken</PrisonLabor_StarvingPrisonerExplanationDef>
+    <PrisonLabor_StarvingPrionserExplanation>Deze gevangenen verhongeren en willen niet werkeni:\n\n{0}</PrisonLabor_StarvingPrionserExplanation>
+    <PrisonLabor_LaborArea>Gevangenen Werk Zone</PrisonLabor_LaborArea>
+    <PrisonLabor_LaborAreaDesc>Werk Zone is gebied waar alleen gevangenen kunnen werken. Kolonisten kunnen hier niet werken tenzij het een bewaker type opdracht is.</PrisonLabor_LaborAreaDesc>
+    <PrisonLabor_ClearLaborArea>Verwijder Werk Zone</PrisonLabor_ClearLaborArea>
+    <PrisonLabor_ExpandLaborArea>Breid Werk Zone uit</PrisonLabor_ExpandLaborArea>
+    <PrisonLabor_ColonistsOnly>Alleen kolonisten</PrisonLabor_ColonistsOnly>
+    <PrisonLabor_PrisonersOnly>Alleen  gevangenen</PrisonLabor_PrisonersOnly>
+    <PrisonLabor_ColonyOnly>Alleen kolonie</PrisonLabor_ColonyOnly>
+    <PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
+    <PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
+    <PrisonLabor_LaborAreaWarning>Labor area isn't required to make prisoners work.\n\nThis area forbids colonists from working.\n\nIt's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</PrisonLabor_LaborAreaWarning>
+    <PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
 
-<PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
+    <PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
+
+    <PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
+    <PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
+
+    <PrisonLabor_EnableSuicide>Enable prisoner suicide</PrisonLabor_EnableSuicide>
+    <PrisonLabor_EnableSuicideDesc>Enables suicide of prisoners when they aren't very happy</PrisonLabor_EnableSuicideDesc>
 </LanguageData>

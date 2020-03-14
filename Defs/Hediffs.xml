@@ -2,6 +2,7 @@
 <Defs>
   <HediffDef>
     <defName>PrisonLabor_PrisonerChains</defName>
+    <description>This pawn has prisoners chains. Note: it is default Vanilla mechanics, but in hediff state</description>
     <label>prisoners chains</label>
     <stages>
       <li>

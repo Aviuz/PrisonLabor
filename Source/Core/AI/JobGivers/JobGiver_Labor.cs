@@ -103,7 +103,7 @@ namespace PrisonLabor.Core.AI.JobGivers
                                     thing = GenClosest.ClosestThingReachable(pawn.Position, pawn.Map,
                                         scanner.PotentialWorkThingRequest, scanner.PathEndMode,
                                         TraverseParms.For(pawn, Danger.Deadly, TraverseMode.ByPawn, false), 9999f,
-                                        validator, enumerable, 0, scanner.LocalRegionsToScanFirst, forceGlobalSearch,
+                                        validator, enumerable, 0, scanner.MaxRegionsToScanBeforeGlobalSearch, forceGlobalSearch,
                                         RegionType.Set_Passable, false);
                                 }
                                 if (thing != null)
@@ -159,7 +159,6 @@ namespace PrisonLabor.Core.AI.JobGivers
                     }
                     if (targetInfo.IsValid)
                     {
-                        pawn.mindState.lastGivenWorkType = workGiver.def.workType;
                         Job job3;
                         if (targetInfo.HasThing)
                             job3 = workGiver_Scanner.JobOnThing(pawn, targetInfo.Thing, false);
@@ -167,6 +166,7 @@ namespace PrisonLabor.Core.AI.JobGivers
                             job3 = workGiver_Scanner.JobOnCell(pawn, targetInfo.Cell);
                         if (job3 != null)
                         {
+                            job3.workGiverDef = workGiver.def;
                             if (need != null)
                                 need.IsPrisonerWorking = true;
                             return new ThinkResult(job3, this, workList[j].def.tagToGive);
@@ -185,7 +185,7 @@ namespace PrisonLabor.Core.AI.JobGivers
         private bool PawnCanUseWorkGiver(Pawn pawn, WorkGiver giver)
         {
             return !giver.ShouldSkip(pawn) && (giver.def.nonColonistsCanDo || pawn.IsPrisoner) &&
-                   (pawn.story == null || !pawn.story.WorkTagIsDisabled(giver.def.workTags)) &&
+                   (pawn.story == null || !pawn.WorkTagIsDisabled(giver.def.workTags)) &&
                    giver.MissingRequiredCapacity(pawn) == null;
         }
 
@@ -213,17 +213,13 @@ namespace PrisonLabor.Core.AI.JobGivers
                             var thing = thingList[i];
                             if (scanner.PotentialWorkThingRequest.Accepts(thing) && predicate(thing))
                             {
-                                pawn.mindState.lastGivenWorkType = giver.def.workType;
-                                var result = scanner.JobOnThing(pawn, thing, false);
-                                return result;
+                                return AssignWorkGiverIfNecessary(scanner.JobOnThing(pawn, thing, false), giver);
                             }
                         }
                     }
                     if (giver.def.scanCells && !cell.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, cell))
                     {
-                        pawn.mindState.lastGivenWorkType = giver.def.workType;
-                        var result = scanner.JobOnCell(pawn, cell);
-                        return result;
+                        return AssignWorkGiverIfNecessary(scanner.JobOnCell(pawn, cell), giver);
                     }
                 }
             }
@@ -233,6 +229,15 @@ namespace PrisonLabor.Core.AI.JobGivers
                     giver.def.defName, ": ", ex.ToString()));
             }
             return null;
+        }
+
+        private Job AssignWorkGiverIfNecessary(Job job, WorkGiver giver)
+        {
+            if (job != null)
+            {
+                job.workGiverDef = giver.def;
+            }
+            return job;
         }
     }
 }

@@ -13,6 +13,7 @@ namespace PrisonLabor.Core.Meta
         public bool enable_motivation_icons = true;
         public bool enable_revolts = true;
         public bool show_treatment_happiness = false;
+        public bool enable_suicide = true;
 
         public Version last_version = Version.v0_0;
         public bool show_news = true;

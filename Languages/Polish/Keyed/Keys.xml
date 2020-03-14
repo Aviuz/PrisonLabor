@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<LanguageData> 
+<LanguageData>
 	<PrisonLabor_PrisonerWork>Zmuś do pracy</PrisonLabor_PrisonerWork>
 	<PrisonLabor_WorkAndRecruit>Praca i próba rekrutacji</PrisonLabor_WorkAndRecruit>
 	<PrisonLabor_LazyPrisonerMessage>Twój więzień przestał pracować!</PrisonLabor_LazyPrisonerMessage>
@@ -51,4 +51,10 @@
 	<PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
 
 	<PrisonLabor_UpgradeSaveMessage>Aktualizacja modyfikacji [PrisonLabor]</PrisonLabor_UpgradeSaveMessage>
+
+	<PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
+	<PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
+
+	<PrisonLabor_EnableSuicide>Enable prisoner suicide</PrisonLabor_EnableSuicide>
+	<PrisonLabor_EnableSuicideDesc>Enables suicide of prisoners when they aren't very happy</PrisonLabor_EnableSuicideDesc>
 </LanguageData>

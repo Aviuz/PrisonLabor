@@ -1,4 +1,4 @@
-using Harmony;
+using HarmonyLib;
 using PrisonLabor.Core.LaborArea;
 using Verse;
 

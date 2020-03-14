@@ -6,6 +6,7 @@ using Verse.AI.Group;
 using System.Collections.Generic;
 using PrisonLabor.Core.Needs;
 using PrisonLabor.Core.Other;
+using PrisonLabor.Core.Meta;
 
 namespace PrisonLabor.Core.Incidents
 {
@@ -13,6 +14,9 @@ namespace PrisonLabor.Core.Incidents
     {
         protected override bool CanFireNowSub(IncidentParms parms)
         {
+            if (!PrisonLaborPrefs.EnableSuicide)
+                return false;
+
             Map map = parms.target as Map;
 
             foreach (var pawn in map.mapPawns.PrisonersOfColony)
@@ -53,7 +57,7 @@ namespace PrisonLabor.Core.Incidents
                             continue;
                     }
 
-                    SendStandardLetter(new TargetInfo(pawn.Position, pawn.Map), null, new string[] { pawn.Name.ToStringShort });
+                    SendStandardLetter(parms, new TargetInfo(pawn.Position, pawn.Map), pawn.Name.ToStringShort);
                     parms.faction = pawn.Faction;
 
                     DamageInfo dinfo = new DamageInfo(DamageDefOf.Cut, 29, 0, 0, pawn, pawn.RaceProps.body.AllParts.Find(p => p.def == BodyPartDefOf.Neck));

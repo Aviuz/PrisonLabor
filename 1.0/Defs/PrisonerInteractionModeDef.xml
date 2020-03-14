@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <PrisonerInteractionModeDef>
+    <defName>PrisonLabor_workOption</defName>
+    <label>Force to work</label>
+    <listOrder>5</listOrder>
+  </PrisonerInteractionModeDef>
+  <PrisonerInteractionModeDef>
+    <defName>PrisonLabor_workAndRecruitOption</defName>
+    <label>Work and recruit</label>
+    <listOrder>6</listOrder>
+  </PrisonerInteractionModeDef>
+</Defs>

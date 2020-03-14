@@ -32,7 +32,7 @@ namespace PrisonLabor.Core.AI.JobGivers
             {
                 return null;
             }
-            if (pawn.RaceProps.Humanlike && pawn.story.WorkTagIsDisabled(WorkTags.Violent))
+            if (pawn.RaceProps.Humanlike && pawn.WorkTagIsDisabled(WorkTags.Violent))
             {
                 return null;
             }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <WorkGiverDef>
+    <defName>PrisonLabor_SupervisePrisonLabor</defName>
+    <label>watch prisoner</label>
+    <giverClass>PrisonLabor.Core.AI.WorkGivers.WorkGiver_Supervise</giverClass>
+    <workType>PrisonLabor_Jailor</workType>
+    <priorityInType>5</priorityInType>
+    <verb>watch prisoner</verb>
+    <gerund>watching prisoner</gerund>
+    <requiredCapacities>
+      <li>Talking</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+</Defs>

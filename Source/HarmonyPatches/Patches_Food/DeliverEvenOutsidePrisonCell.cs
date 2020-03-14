@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using RimWorld;
 using System.Collections.Generic;
 using System.Reflection.Emit;
@@ -39,11 +39,11 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
             OpCode[] opCodes =
             {
                     OpCodes.Call,
-                    OpCodes.Brtrue,
+                    OpCodes.Brtrue_S,
                 };
             string[] operands =
             {
-                    "Boolean IsInPrisonCell(IntVec3, Verse.Map)",
+                    "Boolean IsInPrisonCell(Verse.IntVec3, Verse.Map)",
                     "System.Reflection.Emit.Label",
                 };
             int step = 0;

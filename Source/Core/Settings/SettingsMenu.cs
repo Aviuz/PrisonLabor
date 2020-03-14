@@ -18,6 +18,7 @@ namespace PrisonLabor.Core.Settings
         private static bool enableMotivationIcons;
         private static bool enableRevolts;
         private static bool showTreatmentHappiness;
+        private static bool enableSuicide;
         private static bool advancedGrowing;
         private static int defaultInteractionMode;
 
@@ -94,6 +95,11 @@ namespace PrisonLabor.Core.Settings
 
             listing_options.CheckboxLabeled("PrisonLabor_EnableRevolts".Translate(), ref enableRevolts,
                 "PrisonLabor_EnableRevoltsDesc".Translate());
+
+            listing_options.GapLine();
+
+            listing_options.CheckboxLabeled("PrisonLabor_EnableSuicide".Translate(), ref enableSuicide,
+                "PrisonLabor_EnableSuicideDesc".Translate());
 
             listing_options.GapLine();
 
