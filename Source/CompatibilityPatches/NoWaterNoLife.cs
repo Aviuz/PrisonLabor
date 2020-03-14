@@ -48,15 +48,16 @@ namespace PrisonLabor.CompatibilityPatches
             }
             XmlInheritance.Resolve();
             //TODO: wtf is this?
-/*            foreach (var item in list)
+            foreach (var item in list)
             {
-                foreach (Def def in item.defPackage)
-                {
-                    Log.Message($"Added def {def.defName}");
-                    DefDatabase<ThinkTreeDef>.Add(def as ThinkTreeDef);
-                }
-            }*/
-            foreach (var def in DefDatabase<ThinkTreeDef>.AllDefs.Where(d => d.insertTag == "Humanlike_PostDuty").OrderByDescending(d => d.insertPriority))
+                // TODO NoWaterNoLife compability
+                //foreach (Def def in item.defPackage)
+                //{
+                //    Log.Message($"Added def {def.defName}");
+                //    DefDatabase<ThinkTreeDef>.Add(def as ThinkTreeDef);
+                //}
+            }
+            foreach(var def in DefDatabase<ThinkTreeDef>.AllDefs.Where(d => d.insertTag == "Humanlike_PostDuty").OrderByDescending(d => d.insertPriority))
                 Log.Message($"  ThinkTree {def.defName}");
 
         }

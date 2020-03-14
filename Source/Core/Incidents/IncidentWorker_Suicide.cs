@@ -53,7 +53,7 @@ namespace PrisonLabor.Core.Incidents
                             continue;
                     }
 
-                    SendStandardLetter(parms, new TargetInfo(pawn.Position, pawn.Map), new NamedArgument[] { new NamedArgument(pawn.Name.ToStringShort, null) });
+                    SendStandardLetter(parms, new TargetInfo(pawn.Position, pawn.Map), pawn.Name.ToStringShort);
                     parms.faction = pawn.Faction;
 
                     DamageInfo dinfo = new DamageInfo(DamageDefOf.Cut, 29, 0, 0, pawn, pawn.RaceProps.body.AllParts.Find(p => p.def == BodyPartDefOf.Neck));

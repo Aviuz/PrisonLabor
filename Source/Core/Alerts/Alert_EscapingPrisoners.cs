@@ -37,7 +37,7 @@ namespace PrisonLabor.Core.Alerts
             var stringBuilder = new StringBuilder();
             foreach (var current in PotentialEscapingPrisoners)
                 stringBuilder.AppendLine("    " + current.Name.ToStringShort);
-            return string.Format("PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat".Translate(), stringBuilder.ToString());
+            return string.Format("PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat".Translate(), stringBuilder);
         }
 
         public override AlertReport GetReport()

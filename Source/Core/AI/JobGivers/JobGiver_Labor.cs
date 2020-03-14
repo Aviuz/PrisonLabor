@@ -158,7 +158,7 @@ namespace PrisonLabor.Core.AI.JobGivers
                     {
                     }
                     if (targetInfo.IsValid)
-                    {                        
+                    {
                         Job job3;
                         if (targetInfo.HasThing)
                             job3 = workGiver_Scanner.JobOnThing(pawn, targetInfo.Thing, false);
@@ -218,7 +218,7 @@ namespace PrisonLabor.Core.AI.JobGivers
                         }
                     }
                     if (giver.def.scanCells && !cell.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, cell))
-                    { 
+                    {
                         return AssignWorkGiverIfNecessary(scanner.JobOnCell(pawn, cell), giver);
                     }
                 }
@@ -230,6 +230,7 @@ namespace PrisonLabor.Core.AI.JobGivers
             }
             return null;
         }
+
         private Job AssignWorkGiverIfNecessary(Job job, WorkGiver giver)
         {
             if (job != null)

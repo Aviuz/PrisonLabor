@@ -59,7 +59,7 @@ namespace PrisonLabor.Core.Incidents
 
             Tutorials.Treatment();
 
-            SendStandardLetter(parms, prisoner,  new NamedArgument[] { new NamedArgument(prisoner.Name.ToStringShort, null), new NamedArgument(prisoner.Faction.Name, null) });
+            SendStandardLetter(parms, prisoner, prisoner.Name.ToStringShort, prisoner.Faction.Name);
             return true;
         }
     }

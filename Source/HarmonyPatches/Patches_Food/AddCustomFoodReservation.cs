@@ -39,7 +39,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
                 };
             string[] operands =
             {
-                    "Boolean <>m__0(Verse.Thing)",
+                // TODO this is a workaround
+                    "", // "Boolean <>b__0(Verse.Thing)",
                     "Void .ctor(Object, IntPtr)",
                     "foodValidator",
                 };

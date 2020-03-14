@@ -19,10 +19,11 @@ namespace PrisonLabor.HarmonyPatches.Patches_PermissionFix
     {
         static private IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, IEnumerable<CodeInstruction> instr)
         {
+            // if (forPrisoner)
             OpCode[] opCodes =
             {
                 OpCodes.Ldarg_2,
-                OpCodes.Brfalse,
+                OpCodes.Brfalse_S,
             };
             string[] operands =
             {

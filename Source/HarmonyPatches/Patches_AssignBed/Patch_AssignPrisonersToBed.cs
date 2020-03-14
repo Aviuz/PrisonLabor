@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -36,8 +37,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_AssignBed
             {
                 yield return new Command_Action()
                 {
-                    defaultLabel = "CommandBedSetOwnerLabel".Translate(),
-                    defaultDesc = "CommandBedSetOwnerDesc".Translate(),
+                    defaultLabel = "PrisonLabor_CommandBedSetOwnerLabel".Translate(),
+                    defaultDesc = "PrisonLabor_CommandBedSetOwnerDesc".Translate(),
                     icon = ContentFinder<Texture2D>.Get("ui/commands/AssignOwner", true),
                     action = new Action(() => Find.WindowStack.Add(new Dialog_AssignBuildingOwner(bed.CompAssignableToPawn))),
                 };
@@ -46,35 +47,20 @@ namespace PrisonLabor.HarmonyPatches.Patches_AssignBed
     }
 
 
-    [HarmonyPatch(typeof(Building_Bed))]
-    [HarmonyPatch("get_" + nameof(Building_Bed.OwnersForReading))]
+    [HarmonyPatch(typeof(CompAssignableToPawn))]
+    [HarmonyPatch("get_" + nameof(CompAssignableToPawn.AssigningCandidates))]
     static class Patch_MakePrisonersCandidates
     {
-        static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instructions)
+        static bool Prefix(ref IEnumerable<Pawn> __result, CompAssignableToPawn __instance)
         {
-            foreach (var instr in instructions)
+            Building_Bed bed = __instance.parent as Building_Bed;
+            if (bed != null && __instance is CompAssignableToPawn_Bed && bed.ForPrisoners)
             {
-                if (instr.opcode == OpCodes.Ret)
-                {
-                    yield return new CodeInstruction(OpCodes.Ldarg_0);
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_MakePrisonersCandidates).GetMethod(nameof(NewCandidates)));
-                }
-                yield return instr;
+                __result = bed.Map.mapPawns.PrisonersOfColony;
+                return false;
             }
-        }
 
-        public static IEnumerable<Pawn> NewCandidates(IEnumerable<Pawn> pawns, Building_Bed bed)
-        {
-            if (!bed.ForPrisoners)
-            {
-                foreach (var pawn in pawns)
-                    yield return pawn;
-            }
-            else
-            {
-                foreach (var pawn in bed.Map.mapPawns.PrisonersOfColony)
-                    yield return pawn;
-            }
+            return true;
         }
     }
 
@@ -111,7 +97,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_AssignBed
                 OpCodes.Ldc_I4_1,
                 OpCodes.Ldc_I4_0,
                 OpCodes.Call,
-                OpCodes.Brfalse,
+                OpCodes.Brfalse_S,
             };
             string[] operands1 =
             {

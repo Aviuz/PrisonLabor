@@ -39,31 +39,6 @@ namespace PrisonLabor.HarmonyPatches
                 Log.Error($"PrisonLaborException: failed to proceed harmony patches: {e.InnerException.Message}");
                 Log.Error(e.ToString());
             }
-
-            // SECTION - Patches with references in method
-            try
-            {
-                harmony.Patch(
-                    typeof(Pawn_CarryTracker).GetMethod("TryDropCarriedThing",
-                        new[]
-                        {
-                        typeof(IntVec3), typeof(ThingPlaceMode), typeof(Thing).MakeByRefType(),
-                        typeof(Action<Thing, int>)
-                        }),
-                    new HarmonyMethod(null), new HarmonyMethod(typeof(Patches_PermissionFix.ForibiddenDropPatch).GetMethod("Postfix")));
-                harmony.Patch(
-                    typeof(Pawn_CarryTracker).GetMethod("TryDropCarriedThing",
-                        new[]
-                        {
-                        typeof(IntVec3), typeof(int), typeof(ThingPlaceMode), typeof(Thing).MakeByRefType(),
-                        typeof(Action<Thing, int>)
-                        }),
-                    new HarmonyMethod(null), new HarmonyMethod(typeof(Patches_PermissionFix.ForibiddenDropPatch).GetMethod("Postfix2")));
-            }
-            catch (Exception e)
-            {
-                Log.Error($"PrisonLaborException: failed to proceed harmony patches (reference section): {e.InnerException.Message}");
-            }
         }
 
         /// <summary>
@@ -118,7 +93,9 @@ namespace PrisonLabor.HarmonyPatches
             if (!fragments.ContainsKey(fragmentName))
                 fragments.Add(fragmentName, false);
             if (step < 0 || step >= opCodes.Length)
+            {
                 return false;
+            }
 
             var finalStep = opCodes.Length;
 

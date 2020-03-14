@@ -56,7 +56,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_PrisonerTab
             int step2 = 0;
             #endregion
 
-            #region fragment>>Rect position = rect5.ContractedBy(10f);
+            #region fragment>>Rect position = rect6.ContractedBy(10f);
             OpCode[] opCodes3 =
             {
                 OpCodes.Ldc_R4,
