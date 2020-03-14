@@ -36,6 +36,7 @@ namespace PrisonLabor.Core.Settings
             enableMotivationMechanics = PrisonLaborPrefs.EnableMotivationMechanics;
             enableMotivationIcons = PrisonLaborPrefs.EnableMotivationIcons;
             enableRevolts = PrisonLaborPrefs.EnableRevolts;
+            enableSuicide = PrisonLaborPrefs.EnableSuicide;
             showTreatmentHappiness = PrisonLaborPrefs.ShowTreatmentHappiness;
 
             interactionModeList = new List<PrisonerInteractionModeDef>(DefDatabase<PrisonerInteractionModeDef>.AllDefs);
