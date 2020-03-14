@@ -49,7 +49,7 @@
   <PrisonLabor_EnableRevoltsDesc>启用时，有时会用叛乱事件取代原版的越狱。</PrisonLabor_EnableRevoltsDesc>
   <PrisonLabor_LaborAreaWarning>劳作区不需要囚犯工作。\n\n该区域禁止殖民者工作。\n\n这是用于防止你的殖民者在这片区域工作。囚犯会在他们可以到达的任意区域工作。</PrisonLabor_LaborAreaWarning>
   <PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
- 
+
   <PrisonLabor_ShowTreatmentHappiness>显示待遇满意度</PrisonLabor_ShowTreatmentHappiness>
   <PrisonLabor_ShowTreatmentHappinessDesc>启用时，待遇满意度会显示在需求页中。</PrisonLabor_ShowTreatmentHappinessDesc>
   <PrisonLabor_ColonyOnlyShort>只允许殖民地</PrisonLabor_ColonyOnlyShort>
@@ -73,4 +73,7 @@
 
   <PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
   <PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
+
+  <PrisonLabor_EnableSuicide>Enable prisoner suicide</PrisonLabor_EnableSuicide>
+  <PrisonLabor_EnableSuicideDesc>Enables suicide of prisoners when they aren't very happy</PrisonLabor_EnableSuicideDesc>
 </LanguageData>

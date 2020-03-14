@@ -77,4 +77,7 @@
 
   <PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
   <PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
+
+  <PrisonLabor_EnableSuicide>Enable prisoner suicide</PrisonLabor_EnableSuicide>
+  <PrisonLabor_EnableSuicideDesc>Enables suicide of prisoners when they aren't very happy</PrisonLabor_EnableSuicideDesc>
 </LanguageData>

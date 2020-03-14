@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<LanguageData> 
+<LanguageData>
 	<PrisonLabor_PrisonerWork>Forcer à travailler</PrisonLabor_PrisonerWork>
 	<PrisonLabor_WorkAndRecruit>Travailler et recruter</PrisonLabor_WorkAndRecruit>
 	<PrisonLabor_LazyPrisonerMessage>Votre prisonnier à cessé de travailler !</PrisonLabor_LazyPrisonerMessage>
@@ -45,13 +45,16 @@
 	<PrisonLabor_ColonistsOnly>Colons seulement</PrisonLabor_ColonistsOnly>
 	<PrisonLabor_PrisonersOnly>Prisonniers seulement</PrisonLabor_PrisonersOnly>
 	<PrisonLabor_ColonyOnly>Colonie seulement</PrisonLabor_ColonyOnly>
-  <PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
-  <PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
-  <PrisonLabor_LaborAreaWarning>Labor area isn't required to make prisoners work.\n\nThis area forbids colonists from working.\n\nIt's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</PrisonLabor_LaborAreaWarning>
-  <PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
+	<PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
+	<PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
+	<PrisonLabor_LaborAreaWarning>Labor area isn't required to make prisoners work.\n\nThis area forbids colonists from working.\n\nIt's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</PrisonLabor_LaborAreaWarning>
+	<PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
 
-<PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
+	<PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
 
-  <PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
-  <PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
+	<PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
+	<PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
+
+	<PrisonLabor_EnableSuicide>Enable prisoner suicide</PrisonLabor_EnableSuicide>
+	<PrisonLabor_EnableSuicideDesc>Enables suicide of prisoners when they aren't very happy</PrisonLabor_EnableSuicideDesc>
 </LanguageData>
