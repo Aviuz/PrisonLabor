@@ -121,6 +121,19 @@ namespace PrisonLabor.Core.Meta
             }
         }
 
+        public static bool EnableSuicide
+        {
+            get
+            {
+                return data.enable_suicide;
+            }
+            set
+            {
+                data.enable_suicide = value;
+                Apply();
+            }
+        }
+
         public static bool AdvancedGrowing
         {
             get { return data.advanced_growing; }

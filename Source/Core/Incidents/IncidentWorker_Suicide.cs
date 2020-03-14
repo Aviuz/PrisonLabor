@@ -6,6 +6,7 @@ using Verse.AI.Group;
 using System.Collections.Generic;
 using PrisonLabor.Core.Needs;
 using PrisonLabor.Core.Other;
+using PrisonLabor.Core.Meta;
 
 namespace PrisonLabor.Core.Incidents
 {
@@ -13,6 +14,9 @@ namespace PrisonLabor.Core.Incidents
     {
         protected override bool CanFireNowSub(IncidentParms parms)
         {
+            if (!PrisonLaborPrefs.EnableSuicide)
+                return false;
+
             Map map = parms.target as Map;
 
             foreach (var pawn in map.mapPawns.PrisonersOfColony)
