@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using Harmony;
+using HarmonyLib;
 using PrisonLabor.Core;
 using RimWorld;
 using Verse;
@@ -18,98 +19,58 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
         {
-            //var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr);
-            var jobgiver = HPatcher.FindOperandAfter(new[] { OpCodes.Ldloc_S }, new[] { "RimWorld.JobGiver_Work+<TryIssueJobPackage>c__AnonStorey1 (11)" }, instr);
-            var scanner = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "RimWorld.WorkGiver_Scanner scanner" }, instr);
-            var cell = HPatcher.FindOperandAfter(new[] { OpCodes.Ldloc_S }, new[] { "Verse.IntVec3 (33)" }, instr);
+            // Temporary class for main loop
+            OpCode[] opCodesClass =
+{
+                OpCodes.Ldloc_S,
+            };
+            string[] operandsClass =
+            {
+                "RimWorld.JobGiver_Work+<>c__DisplayClass3_1 (9)",
+            };
+            var tempClass = HPatcher.FindOperandAfter(opCodesClass, operandsClass, instr, true);
 
-            OpCode[] opcodes1 =
-            {
-                OpCodes.Ldloc_S,
-                OpCodes.Ldftn,
-                OpCodes.Newobj,
-            };
-            String[] operands1 =
-            {
-                "RimWorld.JobGiver_Work+<TryIssueJobPackage>c__AnonStorey1 (11)",
-                "Boolean <>m__0(Verse.Thing)",
-                "Void .ctor(Object, IntPtr)",
-            };
-            int step1 = 0;
-
-            // Find else if with ..  && !current.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, current, false) and add && IsDisabledByLabor()
-            OpCode[] opCodes2 =
-           {
-                OpCodes.Bge_Un,
-                OpCodes.Ldloc_S,
-                OpCodes.Ldloc_0,
+            // Scanner
+            OpCode[] opCodesScanner =
+{
                 OpCodes.Ldfld,
-                OpCodes.Call,
-                OpCodes.Brtrue,
-                OpCodes.Ldloc_S,
-                OpCodes.Ldfld,
-                OpCodes.Ldloc_0,
-                OpCodes.Ldfld,
-                OpCodes.Ldloc_S,
-                OpCodes.Ldc_I4_0,
-                OpCodes.Callvirt,
-                OpCodes.Brfalse,
             };
-            String[] operands2 =
+            string[] operandsScanner =
             {
-                "System.Reflection.Emit.Label",
-                "Verse.IntVec3 (33)",
-                "",
-                "Verse.Pawn pawn",
-                "Boolean IsForbidden(IntVec3, Verse.Pawn)",
-                "System.Reflection.Emit.Label",
-                "RimWorld.JobGiver_Work+<TryIssueJobPackage>c__AnonStorey1 (11)",
                 "RimWorld.WorkGiver_Scanner scanner",
-                "",
-                "Verse.Pawn pawn",
-                "Verse.IntVec3 (33)",
-                "",
-                "Boolean HasJobOnCell(Verse.Pawn, IntVec3, Boolean)",
-                "System.Reflection.Emit.Label",
             };
-            int step2 = 0;
+            var scanner = HPatcher.FindOperandAfter(opCodesScanner, operandsScanner, instr, true);
 
-            foreach (var ci in instr)
+            // Fragment where cells are collected as IEnumerable
+            OpCode[] opCodesFunc =
             {
-                yield return ci;
+                OpCodes.Callvirt,
+            };
+            string[] operandsFunc =
+            {
+                "System.Collections.Generic.IEnumerable`1[Verse.IntVec3] PotentialWorkCellsGlobal(Verse.Pawn)",
+            };
+            int stepFunc = 0;
 
-                if (HPatcher.IsFragment(opcodes1, operands1, ci, ref step1, "Patch_LaborForbid1"))
+            // Transpiler
+            foreach (var instruction in instr)
+            {
+                yield return instruction;
+                if (HPatcher.IsFragment(opCodesFunc, operandsFunc, instruction, ref stepFunc, "LaborForbid", true))
                 {
-                    yield return new CodeInstruction(OpCodes.Pop);
                     yield return new CodeInstruction(OpCodes.Ldarg_1);
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, jobgiver);
+                    yield return new CodeInstruction(OpCodes.Ldloc_S, tempClass);
                     yield return new CodeInstruction(OpCodes.Ldfld, scanner);
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_LaborForbid).GetMethod(nameof(CreatePredicate)));
-                }
-
-                if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step2, "Patch_LaborForbid2"))
-                {
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, cell);
-                    yield return new CodeInstruction(OpCodes.Ldarg_1);
-                    yield return new CodeInstruction(OpCodes.Ldloc_S, jobgiver);
-                    yield return new CodeInstruction(OpCodes.Ldfld, scanner);
-                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_LaborForbid).GetMethod((nameof(GetWorkType))));
-                    yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod((nameof(PrisonLaborUtility.IsDisabledByLabor))));
-                    yield return new CodeInstruction(OpCodes.Brtrue, ci.operand);
+                    yield return new CodeInstruction(OpCodes.Ldfld, typeof(WorkGiver).GetField("def"));
+                    yield return new CodeInstruction(OpCodes.Ldfld, typeof(WorkGiverDef).GetField("workType"));
+                    yield return new CodeInstruction(OpCodes.Call, typeof(Patch_LaborForbid).GetMethod("RemoveFromListForbiddenCells"));
                 }
             }
         }
 
-        public static Predicate<Thing> CreatePredicate(Pawn pawn, WorkGiver_Scanner scanner)
+        public static IEnumerable<IntVec3> RemoveFromListForbiddenCells(IEnumerable<IntVec3> list, Pawn pawn, WorkTypeDef workType)
         {
-            return t => !t.IsForbidden(pawn)
-                        && scanner.HasJobOnThing(pawn, t, false)
-                        && !PrisonLaborUtility.IsDisabledByLabor(t.Position, pawn, scanner.def.workType);
-        }
-
-        public static WorkTypeDef GetWorkType(WorkGiver_Scanner scanner)
-        {
-            return scanner.def.workType;
+            return list.Where(i => !PrisonLaborUtility.IsDisabledByLabor(i, pawn, workType));
         }
     }
 }

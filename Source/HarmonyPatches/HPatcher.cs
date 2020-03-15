@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Reflection;
-using Harmony;
+using HarmonyLib;
 using Verse;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection.Emit;
 using System.Diagnostics;
+using System.Linq;
 
 namespace PrisonLabor.HarmonyPatches
 {
@@ -16,7 +17,7 @@ namespace PrisonLabor.HarmonyPatches
 
         public static void Init()
         {
-            var harmony = HarmonyInstance.Create("Harmony_PrisonLabor");
+            var harmony = new Harmony("Harmony_PrisonLabor");
 
             // SECTION - Classic patches
             try
@@ -36,31 +37,7 @@ namespace PrisonLabor.HarmonyPatches
             catch (Exception e)
             {
                 Log.Error($"PrisonLaborException: failed to proceed harmony patches: {e.InnerException.Message}");
-            }
-
-            // SECTION - Patches with references in method
-            try
-            {
-                harmony.Patch(
-                    typeof(Pawn_CarryTracker).GetMethod("TryDropCarriedThing",
-                        new[]
-                        {
-                        typeof(IntVec3), typeof(ThingPlaceMode), typeof(Thing).MakeByRefType(),
-                        typeof(Action<Thing, int>)
-                        }),
-                    new HarmonyMethod(null), new HarmonyMethod(typeof(Patches_PermissionFix.ForibiddenDropPatch).GetMethod("Postfix")));
-                harmony.Patch(
-                    typeof(Pawn_CarryTracker).GetMethod("TryDropCarriedThing",
-                        new[]
-                        {
-                        typeof(IntVec3), typeof(int), typeof(ThingPlaceMode), typeof(Thing).MakeByRefType(),
-                        typeof(Action<Thing, int>)
-                        }),
-                    new HarmonyMethod(null), new HarmonyMethod(typeof(Patches_PermissionFix.ForibiddenDropPatch).GetMethod("Postfix2")));
-            }
-            catch (Exception e)
-            {
-                Log.Error($"PrisonLaborException: failed to proceed harmony patches (reference section): {e.InnerException.Message}");
+                Log.Error(e.ToString());
             }
         }
 
@@ -116,11 +93,13 @@ namespace PrisonLabor.HarmonyPatches
             if (!fragments.ContainsKey(fragmentName))
                 fragments.Add(fragmentName, false);
             if (step < 0 || step >= opCodes.Length)
+            {
                 return false;
+            }
 
             var finalStep = opCodes.Length;
 
-            
+
             if (InstructionMatching(instr, opCodes[step], operands[step], perfectMatch))
                 step++;
             else
@@ -167,6 +146,73 @@ namespace PrisonLabor.HarmonyPatches
 
             Log.Error("PrisonLaborException: FindOperandAfter() didn't find any lines. Trace:" + new StackTrace());
             return null;
+        }
+
+        public static IEnumerable<CodeInstruction> ReplaceFragment(OpCode[] opCodes, String[] operands, IEnumerable<CodeInstruction> instr, IEnumerable<CodeInstruction> newFragment, string fragmentName, bool perfectMatch = true)
+        {
+            // Convert to list, to freely jump between lines
+            var instructions = instr.ToList();
+
+            // Find last index of fragment
+            int index = -1;
+            int step = 0;
+            for (int i = 0; i < instructions.Count; i++)
+            {
+                if (HPatcher.IsFragment(opCodes, operands, instructions[i], ref step, fragmentName, perfectMatch))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            // Jump back to begining of fragment
+            index -= operands.Length;
+
+            // If no fragment is found throw exception (or somehow begining of fragment is lower than 0)
+            if (index < 0)
+            {
+                throw new Exception($"Couldn't find fragment {fragmentName}");
+            }
+
+            // Remove fragment
+            instructions.RemoveRange(index, operands.Length);
+
+            // Add fragment
+            instructions.InsertRange(index + 1, newFragment);
+
+            return instructions;
+        }
+
+        public static IEnumerable<CodeInstruction> InjectFragmentBefore(OpCode[] opCodes, String[] operands, IEnumerable<CodeInstruction> instr, IEnumerable<CodeInstruction> newFragment, string fragmentName, bool perfectMatch = true)
+        {
+            // Convert to list, to freely jump between lines
+            var instructions = instr.ToList();
+
+            // Find last index of fragment
+            int index = -1;
+            int step = 0;
+            for (int i = 0; i < instructions.Count; i++)
+            {
+                if (HPatcher.IsFragment(opCodes, operands, instructions[i], ref step, fragmentName, perfectMatch))
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            // Jump back to begining of fragment
+            index -= operands.Length;
+
+            // If no fragment is found throw exception (or somehow begining of fragment is lower than 0)
+            if (index < 0)
+            {
+                throw new Exception($"Couldn't find fragment {fragmentName}");
+            }
+
+            // Add fragment
+            instructions.InsertRange(index + 1, newFragment);
+
+            return instructions;
         }
 
         private static bool InstructionMatching(CodeInstruction instr, OpCode opCode, string operand, bool perfectMatch)

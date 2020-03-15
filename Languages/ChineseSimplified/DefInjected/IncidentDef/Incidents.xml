@@ -5,5 +5,13 @@
   <PrisonLabor_Revolt.letterText>{0}开始了一场反叛行动。囚犯在 {1} 派系周围团结起来，拿起了自制武器开始反抗。</PrisonLabor_Revolt.letterText>
   <PrisonLabor_Revolt.letterLabel>反叛</PrisonLabor_Revolt.letterLabel>
 
+  <PrisonLabor_ResocializationOffer.label>申请加入</PrisonLabor_ResocializationOffer.label>
+  <PrisonLabor_ResocializationOffer.letterText>{0} 申请加入。</PrisonLabor_ResocializationOffer.letterText>
+  <PrisonLabor_ResocializationOffer.letterLabel>申请加入</PrisonLabor_ResocializationOffer.letterLabel>
+
+  <PrisonLabor_Suicide.label>囚犯自杀</PrisonLabor_Suicide.label>
+  <PrisonLabor_Suicide.letterText>{0} 由于太差的待遇而自杀了。</PrisonLabor_Suicide.letterText>
+  <PrisonLabor_Suicide.letterLabel>囚犯自杀</PrisonLabor_Suicide.letterLabel>
+
 
 </LanguageData>

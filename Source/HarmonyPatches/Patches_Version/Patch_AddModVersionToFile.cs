@@ -1,4 +1,4 @@
-using Harmony;
+using HarmonyLib;
 using PrisonLabor.Core.Meta;
 using System.Collections.Generic;
 using System.Reflection;
@@ -38,7 +38,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Version
             {
                 OpCode[] opCodes1 =
                 {
-                    OpCodes.Leave,
+                    OpCodes.Leave_S,
                 };
                 string[] operands1 =
                 {
@@ -88,7 +88,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Version
             {
                 OpCode[] opCodes1 =
                 {
-                    OpCodes.Leave,
+                    OpCodes.Leave_S,
                 };
                 string[] operands1 =
                 {

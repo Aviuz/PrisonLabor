@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -24,7 +24,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
     {
         private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
             IEnumerable<CodeInstruction> instr)
-        {
+        {            
             // Find >> this.bill
             OpCode[] opCodes0 =
             {
@@ -41,14 +41,16 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
             {
                 OpCodes.Ldstr,
                 OpCodes.Call,
+                OpCodes.Call,
                 OpCodes.Ldnull,
                 OpCodes.Callvirt,
-                OpCodes.Brfalse
+                OpCodes.Brfalse_S
             };
             String[] operands1 =
             {
                 "NotSuspended",
-                "System.String Translate(System.String)",
+                "Verse.TaggedString Translate(System.String)",
+                "System.String op_Implicit(Verse.TaggedString)",
                 "",
                 "Boolean ButtonText(System.String, System.String)",
                 "System.Reflection.Emit.Label",
@@ -59,14 +61,14 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
             OpCode[] opCodes4 =
            {
                 OpCodes.Call,
-                OpCodes.Br,
+                OpCodes.Br_S,
                 OpCodes.Ldloc_S,
             };
             String[] operands4 =
             {
                 "Void PlayOneShotOnCamera(Verse.SoundDef, Verse.Map)",
                 "System.Reflection.Emit.Label",
-                "Verse.Listing_Standard (40)",
+                "Verse.Listing_Standard (28)",
             };
             var listing = HPatcher.FindOperandAfter(opCodes4, operands4, instr);
 

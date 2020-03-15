@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PrisonLabor</RootNamespace>
     <AssemblyName>PrisonLabor</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,26 +30,40 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Documents\Visual Studio 2017\ExternalLibraries\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony, Version=2.0.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.0.0.8\lib\net472\0Harmony.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\Documents\Visual Studio 2017\ExternalLibraries\RimWorld\Assembly-CSharp.dll</HintPath>
+      <HintPath>packages\Rimworld\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>packages\Rimworld\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>packages\Rimworld\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>packages\Rimworld\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>packages\Rimworld\UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>Libraries\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Alerts\Alert_EscapingPrisoners.cs" />
@@ -90,6 +105,7 @@
     <Compile Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
+    <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
     <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_AddScrollToPrisonerTab.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_BillCheckbox.cs" />
@@ -219,6 +235,9 @@
       <Link>Language\Keys.xml</Link>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="..\LoadFolders.xml">
+      <Link>Organizer\LoadFolders.xml</Link>
+    </Content>
     <Content Include="..\TaskList.txt">
       <Link>Organizer\TaskList.txt</Link>
     </Content>
@@ -239,6 +258,7 @@
     <None Include="..\To-Do.md">
       <Link>Organizer\To-Do.md</Link>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Treatment\" />

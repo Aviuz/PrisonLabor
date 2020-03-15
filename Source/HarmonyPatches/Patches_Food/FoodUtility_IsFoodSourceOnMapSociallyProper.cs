@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using RimWorld;
 using System.Collections.Generic;
 using System.Reflection.Emit;
@@ -56,7 +56,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
             OpCode[] opCodes =
             {
                     OpCodes.Ldarg_3,
-                    OpCodes.Brtrue,
+                    OpCodes.Brtrue_S,
                 };
             string[] operands =
             {

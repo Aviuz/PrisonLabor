@@ -1,4 +1,4 @@
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -42,12 +42,16 @@ namespace PrisonLabor.HarmonyPatches.Patches_RenamingPrisoners
             {
                 OpCode[] opCodes =
                 {
-                    OpCodes.Ldloc_0,
+                    OpCodes.Ldloc_1,
+                    OpCodes.Ldfld,
                     OpCodes.Ldfld,
                     OpCodes.Callvirt,
                 };
                 string[] operands =
                 {
+                    "",
+
+                    // I wasn't sure here...'
                     "",
                     "Verse.Pawn pawn",
                     "Boolean get_IsColonist()",

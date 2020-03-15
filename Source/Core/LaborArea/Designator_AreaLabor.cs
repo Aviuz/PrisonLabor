@@ -6,7 +6,6 @@ using Verse;
 
 namespace PrisonLabor.Core.LaborArea
 {
-    [StaticConstructorOnStartup]
     public abstract class Designator_AreaLabor : Designator_Area
     {
         private static readonly List<IntVec3> JustRemovedCells = new List<IntVec3>();

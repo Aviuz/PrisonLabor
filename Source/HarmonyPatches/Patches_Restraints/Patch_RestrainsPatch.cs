@@ -1,4 +1,4 @@
-using Harmony;
+using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Restraints
             OpCode[] opCodes =
             {
                 OpCodes.Call,
-                OpCodes.Brfalse,
+                OpCodes.Brfalse_S,
             };
             String[] operands =
             {

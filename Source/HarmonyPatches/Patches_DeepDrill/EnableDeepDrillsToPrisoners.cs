@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_DeepDrill
                 OpCodes.Callvirt,
                 OpCodes.Ldarg_1,
                 OpCodes.Callvirt,
-                OpCodes.Beq,
+                OpCodes.Beq_S,
             };
             string[] operands1 =
             {
