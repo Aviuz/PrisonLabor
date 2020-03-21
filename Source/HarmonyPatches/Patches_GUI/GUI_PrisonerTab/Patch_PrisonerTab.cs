@@ -25,7 +25,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_PrisonerTab
             // "listing_Standard.End()" fragment
             OpCode[] opCodes =
             {
-                OpCodes.Ldloc_1,
+                OpCodes.Ldloc_2,
                 OpCodes.Callvirt,
             };
             string[] operands =
@@ -39,11 +39,11 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_PrisonerTab
             {
                 if (HPatcher.IsFragment(opCodes, operands, ci, ref step2, "Patch_PrisonerTab listing_standard.End()"))
                 {
-                    yield return new CodeInstruction(OpCodes.Ldloc_1);
+                    yield return new CodeInstruction(OpCodes.Ldloc_2);
                     yield return new CodeInstruction(OpCodes.Call, typeof(Patch_PrisonerTab).GetMethod(nameof(AddRecruitButton)));
 
                     // Append Dev lines (When dev mode is on)
-                    yield return new CodeInstruction(OpCodes.Ldloc_1);
+                    yield return new CodeInstruction(OpCodes.Ldloc_2);
                     yield return new CodeInstruction(OpCodes.Call, typeof(Patch_PrisonerTab).GetMethod(nameof(AppendDevLines)));
                 }
 
