@@ -1,4 +1,6 @@
 Changelog:
+1.1.1
+- updated to RimWorld 1.1.2579
 1.1.0
 - updated to RimWorld 1.1
 - added option in settings to opt-out from suicide events
