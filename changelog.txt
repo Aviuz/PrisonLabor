@@ -1,4 +1,6 @@
 Changelog:
+1.1.2
+- fixed the bug with creating file on desktop
 1.1.1
 - fixed a bug for pawns without rest need (e.g. Androids) (https://github.com/MerGatto)
 - fixed prisoner tab not scrolling (https://github.com/MerGatto)
