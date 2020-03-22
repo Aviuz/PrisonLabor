@@ -10,3 +10,5 @@ Arrow in motivation icon made by [Dave Gandy](https://www.flaticon.com/authors/d
 
 Also I want to thank community for great support and feedback!
 This mod wouldn't be so great without you.
+
+Special thanks to MerGatto(https://github.com/MerGatto) and Hazzer(https://github.com/Hazzer) for helping with patching the mod

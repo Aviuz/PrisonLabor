@@ -1,8 +1,7 @@
 Changelog:
-1.1.2
-- Fixed a bug for pawns without rest need (e.g. Androids)
 1.1.1
-- updated to RimWorld 1.1.2579
+- fixed a bug for pawns without rest need (e.g. Androids) (https://github.com/MerGatto)
+- fixed prisoner tab not scrolling (https://github.com/MerGatto)
 1.1.0
 - updated to RimWorld 1.1
 - added option in settings to opt-out from suicide events
