@@ -31,8 +31,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_PrisonerTab
             String[] operands1 =
             {
                 "UnityEngine.Rect ContractedBy(UnityEngine.Rect, Single)",
-                "UnityEngine.Rect (11)",
-                "UnityEngine.Rect (11)",
+                "UnityEngine.Rect (6)",
+                "UnityEngine.Rect (6)",
                 "Void BeginGroup(UnityEngine.Rect)",
             };
             int step1 = 0;
@@ -48,7 +48,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_PrisonerTab
             };
             String[] operands2 =
             {
-                "System.Collections.Generic.IEnumerator`1[RimWorld.PrisonerInteractionModeDef] (20)",
+                "System.Collections.Generic.IEnumerator`1[RimWorld.PrisonerInteractionModeDef] (21)",
                 "Void Dispose()",
                 "",
                 "Void EndGroup()",
@@ -68,8 +68,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_PrisonerTab
             {
                 "10",
                 "UnityEngine.Rect ContractedBy(UnityEngine.Rect, Single)",
-                "UnityEngine.Rect (11)",
-                "UnityEngine.Rect (11)",
+                "UnityEngine.Rect (6)",
+                "UnityEngine.Rect (6)",
             };
             int step3 = 0;
             var rect = HPatcher.FindOperandAfter(opCodes3, operands3, instr);
