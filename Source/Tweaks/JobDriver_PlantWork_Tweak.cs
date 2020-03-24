@@ -72,6 +72,7 @@ namespace PrisonLabor.Tweaks
             cut.WithEffect(EffecterDefOf.Harvest, TargetIndex.A);
             cut.WithProgressBar(TargetIndex.A, () => workDone / Plant.def.plant.harvestWork, true, -0.5f);
             cut.PlaySustainerOrSound(() => Plant.def.plant.soundHarvesting);
+			cut.activeSkill = (() => SkillDefOf.Plants);
             yield return cut;
             yield return checkNextQueuedTarget;
             yield return Toils_Jump.JumpIfHaveTargetInQueue(TargetIndex.A, initExtractTargetFromQueue);
