@@ -70,6 +70,7 @@ namespace PrisonLabor.Tweaks
             mine.WithProgressBar(TargetIndex.A,
                 () => 1f - (float) MineTarget.HitPoints / (float) MineTarget.MaxHitPoints, false, -0.5f);
             mine.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
+            mine.activeSkill = (() => SkillDefOf.Mining);
             yield return mine;
         }
 
