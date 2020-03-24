@@ -68,17 +68,23 @@
   <PrisonLabor_ButtonBackup>備份</PrisonLabor_ButtonBackup>
   <PrisonLabor_ButtonProceed>繼續</PrisonLabor_ButtonProceed>
 
-  <PrisonLabor_UpgradeSaveProcessMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveProcessMessage>
+  <PrisonLabor_UpgradeSaveProcessMessage>升級 [PrisonLabor] mod</PrisonLabor_UpgradeSaveProcessMessage>
   <PrisonLabor_UpgradeSaveDialogMessage>您將要從保存中刪除Prison Labor mod.完成此操作後，您將可以在沒有mod的情況下進行遊戲.</PrisonLabor_UpgradeSaveDialogMessage>
   <PrisonLabor_BackupSaveDialogMessage>請使用下面按鈕備份文件</PrisonLabor_BackupSaveDialogMessage>
 
   <PrisonLabor_ReplayTurorialsButton>講解</PrisonLabor_ReplayTurorialsButton>
   <PrisonLabor_ShowTutorialButton>顯示</PrisonLabor_ShowTutorialButton>
 
-  <!--<PrisonLabor_RestartInfo>重新啟動然後重新保存您的遊戲。</PrisonLabor_RestartInfo>-->
-  <!--<PrisonLabor_RestartInfo2>完成此步驟後，您可以安全地禁用此mod。</PrisonLabor_RestartInfo2>-->
-  <!--<PrisonLabor_DisableMod>禁用mod</PrisonLabor_DisableMod>-->
-  <!--<PrisonLabor_DisableModDesc>啟用後，保存的世界將轉換為“安全模式”，無需mod即可遊戲。</PrisonLabor_DisableModDesc>-->
-  <!--<PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>-->
+  <PrisonLabor_CommandBedSetOwnerLabel>分配囚犯</PrisonLabor_CommandBedSetOwnerLabel>
+  <PrisonLabor_CommandBedSetOwnerDesc>分配此床供特定囚犯使用</PrisonLabor_CommandBedSetOwnerDesc>
+
+  <PrisonLabor_EnableSuicide>啟用囚犯自殺</PrisonLabor_EnableSuicide>
+  <PrisonLabor_EnableSuicideDesc>允許犯人在待遇不好時自殺</PrisonLabor_EnableSuicideDesc>
+
+ <PrisonLabor_RestartInfo>重新啟動然後重新保存您的遊戲。</PrisonLabor_RestartInfo>
+  <PrisonLabor_RestartInfo2>完成此步驟後，您可以安全地禁用此mod。</PrisonLabor_RestartInfo2>
+  <PrisonLabor_DisableMod>禁用mod</PrisonLabor_DisableMod>
+  <PrisonLabor_DisableModDesc>啟用後，保存的世界將轉換為“安全模式”，無需mod即可遊戲。</PrisonLabor_DisableModDesc>
+  <PrisonLabor_UpgradeSaveMessage>升級 [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
 
 </LanguageData>

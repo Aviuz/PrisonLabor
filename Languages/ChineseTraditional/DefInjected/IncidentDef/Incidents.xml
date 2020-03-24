@@ -6,7 +6,7 @@
   <PrisonLabor_Revolt.letterLabel>暴動</PrisonLabor_Revolt.letterLabel>
 
   <PrisonLabor_ResocializationOffer.label>請求加入</PrisonLabor_ResocializationOffer.label>
-  <PrisonLabor_ResocializationOffer.letterText>{0}向殖民者發出請求加入.</PrisonLabor_ResocializationOffer.letterText>
+  <PrisonLabor_ResocializationOffer.letterText>{0}提出請求。</PrisonLabor_ResocializationOffer.letterText>
   <PrisonLabor_ResocializationOffer.letterLabel>請求加入</PrisonLabor_ResocializationOffer.letterLabel>
 
   <PrisonLabor_Suicide.label>囚犯自殺</PrisonLabor_Suicide.label>
