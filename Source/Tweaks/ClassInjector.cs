@@ -33,8 +33,8 @@ namespace PrisonLabor.Tweaks
         private static void JobTweaks()
         {
             // Mine
-            var minerJob = JobDefOf.Mine;
-            minerJob.driverClass = typeof(JobDriver_Mine_Tweak);
+            //var minerJob = JobDefOf.Mine;
+            //minerJob.driverClass = typeof(JobDriver_Mine_Tweak);
 
             // Cut plant
             var cutPlantJob = JobDefOf.CutPlant;

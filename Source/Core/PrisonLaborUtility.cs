@@ -55,5 +55,13 @@ namespace PrisonLabor.Core
                 return pawn.Map.areaManager.Get<Area_Labor>()[pos];
             return false;
         }
+
+        public static bool canWorkHere(IntVec3 pos, Pawn pawn, WorkTypeDef workType)
+        {
+            if (!pawn.IsPrisonerOfColony && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null &&
+                !WorkSettings.WorkDisabled(workType))
+                return !pawn.Map.areaManager.Get<Area_Labor>()[pos];
+            return true;
+        }
     }
 }

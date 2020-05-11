@@ -12,37 +12,19 @@ namespace PrisonLabor.HarmonyPatches.Patches_PermissionFix
 {
     [HarmonyPatch(typeof(ReservationManager))]
     [HarmonyPatch("RespectsReservationsOf")]
+    [HarmonyPatch(new[] { typeof(Pawn), typeof(Pawn) })]
     internal class Patch_RespectReservation
-    {
-        private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, IEnumerable<CodeInstruction> instr)
+    {        
+        static bool Postfix(bool __result, Pawn newClaimant, Pawn oldClaimant)
         {
-            Label label = gen.DefineLabel();
-            yield return new CodeInstruction(OpCodes.Ldarg_0);
-            yield return new CodeInstruction(OpCodes.Ldarg_1);
-            yield return new CodeInstruction(OpCodes.Call, typeof(Patch_RespectReservation).GetMethod(nameof(RespectPrisoners)));
-            yield return new CodeInstruction(OpCodes.Brfalse, label);
-            yield return new CodeInstruction(OpCodes.Ldc_I4_1);
-            yield return new CodeInstruction(OpCodes.Ret);
-
-            bool first = true;
-            foreach(var ci in instr)
-            {
-                if(first)
-                {
-                    ci.labels.Add(label);
-                    first = false;
-                }
-                yield return ci;
+            if ((newClaimant.Faction == Faction.OfPlayer && oldClaimant.IsPrisonerOfColony)
+                || (oldClaimant.Faction == Faction.OfPlayer && newClaimant.IsPrisonerOfColony)
+                || (newClaimant.IsPrisonerOfColony && oldClaimant.IsPrisonerOfColony))
+            {                
+                return true;
             }
+            return __result;
         }
 
-        public static bool RespectPrisoners(Pawn newClaimant, Pawn oldClaimant)
-        {
-            if (newClaimant.Faction == Faction.OfPlayer && oldClaimant.IsPrisonerOfColony)
-                return true;
-            if (oldClaimant.Faction == Faction.OfPlayer && newClaimant.IsPrisonerOfColony)
-                return true;
-            return false;
-        }
     }
 }

@@ -17,7 +17,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_TreatmentTinkering
     [HarmonyPatch(typeof(MentalStateHandler), "TryStartMentalState")]
     static class Patch_ReduceChanceForMentalBreak
     {
-        static bool Prefix(MentalStateHandler __instance, bool __result, MentalStateDef stateDef, string reason, bool forceWake, bool causedByMood, Pawn otherPawn)
+        static bool Prefix(MentalStateHandler __instance, ref bool __result, MentalStateDef stateDef, string reason, bool forceWake, bool causedByMood, Pawn otherPawn)
         {
             if (!causedByMood)
                 return true;

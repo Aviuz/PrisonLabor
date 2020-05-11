@@ -11,7 +11,7 @@ using Verse.AI;
 
 namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
 {
-    [HarmonyPatch(typeof(JobGiver_Work))]
+/*    [HarmonyPatch(typeof(JobGiver_Work))]
     [HarmonyPatch("TryIssueJobPackage")]
     [HarmonyPatch(new[] { typeof(Pawn), typeof(JobIssueParams) })]
     internal class Patch_LaborForbid
@@ -70,7 +70,10 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
 
         public static IEnumerable<IntVec3> RemoveFromListForbiddenCells(IEnumerable<IntVec3> list, Pawn pawn, WorkTypeDef workType)
         {
-            return list.Where(i => !PrisonLaborUtility.IsDisabledByLabor(i, pawn, workType));
+            Log.Message($"Checking work type: {workType.defName}, list size: {list.Count()}");
+            IEnumerable<IntVec3> result = list.Where(i => !PrisonLaborUtility.IsDisabledByLabor(i, pawn, workType));
+            Log.Message($"After filtration work type: {workType.defName}, list size: {result.Count()}");
+            return result;
         }
-    }
+    }*/
 }
