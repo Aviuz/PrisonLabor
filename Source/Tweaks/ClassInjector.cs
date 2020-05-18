@@ -13,7 +13,6 @@ namespace PrisonLabor.Tweaks
         public static void Init()
         {
             UITweaks();
-            JobTweaks();
             SplitWardenType();
         }
 
@@ -28,32 +27,6 @@ namespace PrisonLabor.Tweaks
             var assignTab = DefDatabase<MainButtonDef>.GetNamed("Restrict");
             MainTabWindow_Restrict_Tweak.MainTabWindowType = assignTab.tabWindowClass;
             assignTab.tabWindowClass = typeof(MainTabWindow_Restrict_Tweak);
-        }
-
-        private static void JobTweaks()
-        {
-            // Mine
-            //var minerJob = JobDefOf.Mine;
-            //minerJob.driverClass = typeof(JobDriver_Mine_Tweak);
-
-            // Cut plant
-            var cutPlantJob = JobDefOf.CutPlant;
-            cutPlantJob.driverClass = typeof(JobDriver_PlantCut_Tweak);
-
-            // Harvest
-            if (CompatibilityPatches.SeedsPlease.CanOverrideHarvest())
-            {
-                var harvestJob = JobDefOf.Harvest;
-                harvestJob.driverClass = typeof(JobDriver_PlantHarvest_Tweak);
-            }
-
-            // Grow
-            var growWorkGiver = DefDatabase<WorkGiverDef>.GetNamed("GrowerSow");
-            growWorkGiver.giverClass = typeof(WorkGiver_GrowerSow_Tweak);
-
-            // Clean
-            var cleanWorkGiver = DefDatabase<WorkGiverDef>.GetNamed("CleanFilth");
-            cleanWorkGiver.giverClass = typeof(WorkGiver_CleanFilth_Tweak);
         }
 
         private static void SplitWardenType()

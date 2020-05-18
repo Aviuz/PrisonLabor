@@ -1,4 +1,10 @@
 Changelog:
+1.1.3
+- Fixed forbidden items from core mining
+- Fixed prisoners reservation issue
+- Refactored part of code to make mod more Rimworld update proof
+- It may required to start new game...
+- Big thanks to mod discord with testing mod dev version specially to Mr. Mauer.
 1.1.2
 - fixed the bug with creating file on desktop
 1.1.1

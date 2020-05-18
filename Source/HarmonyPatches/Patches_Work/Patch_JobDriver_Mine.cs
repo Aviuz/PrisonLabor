@@ -16,8 +16,6 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
     {
         static IEnumerable<Toil> Postfix(IEnumerable<Toil> toilList, JobDriver_Mine __instance)
         {
-			Log.Message("Postfix launch");
-			Log.Message($"Toil size {toilList.Count()}");
 			int counter = 1;
 			int count = toilList.Count(); 
 			foreach (var toil in toilList)
@@ -36,20 +34,17 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
 		{
 			return delegate
 			{
-				Log.Message("Toil entered");
 				Thing mineTarget = __instance.job.GetTarget(TargetIndex.A).Thing;
 				Pawn pawn = __instance.pawn;
-				Log.Message("Toil before if");
 				if (pawn != null && mineTarget != null && mineTarget.Destroyed)
 				{
-					Log.Message("After toil");
+
 					if (pawn.IsPrisonerOfColony)
 					{
 						IntVec3 position = mineTarget.Position;
 						List<Thing> thingList = position.GetThingList(pawn.Map);
 						for (int i = 0; i < thingList.Count; i++)
 						{
-							Log.Message($"Setting forbid false for: {thingList[i]}");
 							thingList[i].SetForbidden(value: false, warnOnFail: false);
 						}
 
