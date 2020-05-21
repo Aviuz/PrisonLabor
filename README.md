@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="https://github.com/Aviuz/PrisonLabor/releases">
-    <img src="https://img.shields.io/badge/version-1.1.2-orange.svg?style=flat" alt="v1.1.3" />
+    <img src="https://img.shields.io/badge/version-1.1.4-orange.svg?style=flat" alt="v1.1.4" />
   </a>
 </p>
 
