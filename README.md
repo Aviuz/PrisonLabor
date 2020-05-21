@@ -3,7 +3,7 @@
 </p>
 <p align="center">
   <a href="https://github.com/Aviuz/PrisonLabor/releases">
-    <img src="https://img.shields.io/badge/version-1.1.2-orange.svg?style=flat" alt="v1.1.2" />
+    <img src="https://img.shields.io/badge/version-1.1.2-orange.svg?style=flat" alt="v1.1.3" />
   </a>
 </p>
 
@@ -37,3 +37,6 @@ Also I would gladly hear about misspellings or grammar mistakes in English versi
 
 ## Tutorial video
 Please contact me if you want to help me by creating tutorial video.
+
+## Support
+I'm maintaing this mod mostly in free time as a hobby, however if you want to thank me by donation here is <a href="https://ko-fi.com/warlocks_forge">Ko-fi</a>.

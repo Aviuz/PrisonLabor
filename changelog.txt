@@ -1,4 +1,12 @@
 Changelog:
+1.1.3
+- Fixed forbidden resources extracted by prisoners
+- Fixed labor arena being not respected by colonist
+- Fixed prisoners' reservation issue
+- Extracted resources by prisoners should not be forbidden anymore
+- Refactored part of code to make mod more Rimworld update proof
+- It may require starting new game...
+- Big thanks to discord users who help test dev version specially to Mr. Mauer, McBlackjack, Snails and calliban.
 1.1.2
 - fixed the bug with creating file on desktop
 1.1.1
