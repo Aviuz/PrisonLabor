@@ -27,12 +27,21 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
         {
             if (__result != null && __instance != null)
             {
-                foreach (IntVec3 pos in __result)
+                return checkFields(__result, __instance, pawn);
+            }
+            else
+            {
+                return __result;
+            }
+        }
+
+        private static IEnumerable<IntVec3> checkFields(IEnumerable<IntVec3> __result, WorkGiver_Scanner __instance, Pawn pawn)
+        {
+            foreach (IntVec3 pos in __result)
+            {
+                if (PrisonLaborUtility.canWorkHere(pos, pawn, __instance.def.workType))
                 {
-                    if (PrisonLaborUtility.canWorkHere(pos, pawn, __instance.def.workType))
-                    {
-                        yield return pos;
-                    }
+                    yield return pos;
                 }
             }
         }

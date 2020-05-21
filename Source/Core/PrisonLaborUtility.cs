@@ -61,10 +61,8 @@ namespace PrisonLabor.Core
             if (!pawn.IsPrisonerOfColony && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null &&
                 !WorkSettings.WorkDisabled(workType))
             {
-                Log.Message("Can work here inside if");
                 return !pawn.Map.areaManager.Get<Area_Labor>()[pos];
             }
-            Log.Message("Can work here outside");
             return true;
         }
     }

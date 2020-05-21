@@ -41,16 +41,25 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
         {
             if (__result != null && __instance != null)
             {
-                foreach (Thing thing in __result)
-                {
-                                        
-                    if (thing != null && PrisonLaborUtility.canWorkHere(thing.Position, pawn, __instance.def.workType))
-                    {
-                        //Log.Message($"Work type { __instance.def.workType}, value: {PrisonLaborUtility.canWorkHere(thing.Position, pawn, __instance.def.workType)}");
-                        yield return thing;
-                    }
-                }
+                return checkFields(__result, __instance, pawn);
+            }
+            else
+            {
+                return __result;
             }            
+        }
+
+        private static IEnumerable<Thing> checkFields(IEnumerable<Thing> __result, WorkGiver_Scanner __instance, Pawn pawn)
+        {
+            foreach (Thing thing in __result)
+            {
+                //Log.Message($"Work type: { __instance.def.workType}, thing is {thing}");
+                if (thing != null && PrisonLaborUtility.canWorkHere(thing.Position, pawn, __instance.def.workType))
+                {
+                   // Log.Message($"Work type { __instance.def.workType}, value: {PrisonLaborUtility.canWorkHere(thing.Position, pawn, __instance.def.workType)}");
+                    yield return thing;
+                }
+            }
         }
 
     }
