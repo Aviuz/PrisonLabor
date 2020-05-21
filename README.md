@@ -37,6 +37,3 @@ Also I would gladly hear about misspellings or grammar mistakes in English versi
 
 ## Tutorial video
 Please contact me if you want to help me by creating tutorial video.
-
-## Support
-I'm maintaing this mod mostly in free time as a hobby, however if you want to thank me by donation here is <a href="https://ko-fi.com/warlocks_forge">Ko-fi</a>.
