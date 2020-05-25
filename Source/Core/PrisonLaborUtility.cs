@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using PrisonLabor.Constants;
 using PrisonLabor.Core.LaborArea;
@@ -61,7 +62,16 @@ namespace PrisonLabor.Core
             if (!pawn.IsPrisonerOfColony && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null &&
                 !WorkSettings.WorkDisabled(workType))
             {
-                return !pawn.Map.areaManager.Get<Area_Labor>()[pos];
+                bool result = true;
+                try
+                {
+                    result = !pawn.Map.areaManager.Get<Area_Labor>()[pos];
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    Log.Message($"IndexOutOfRangeException for {workType.label} calling pos {pos}");
+                }
+                return result;
             }
             return true;
         }

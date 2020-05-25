@@ -12,6 +12,7 @@ namespace PrisonLabor.CompatibilityPatches
             SeedsPlease.Init();
             //NoWaterNoLife.Init();
             WorkTab.Init();
+            Quarry.Init();
         }
     }
 }
