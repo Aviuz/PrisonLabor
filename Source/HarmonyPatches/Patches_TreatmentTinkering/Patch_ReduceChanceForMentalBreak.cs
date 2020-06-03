@@ -27,29 +27,32 @@ namespace PrisonLabor.HarmonyPatches.Patches_TreatmentTinkering
             if (pawn.IsPrisonerOfColony)
             {
                 var need = pawn.needs.TryGetNeed<Need_Treatment>();
-                TreatmentCategory treatmentCat = need.CurCategory;
-                bool suspended = false;
-                float chance = 0f;
+                if (need != null)
+                { 
+                    TreatmentCategory treatmentCat = need.CurCategory;
+                    bool suspended = false;
+                    float chance = 0f;
 
-                switch (treatmentCat)
-                {
-                    case TreatmentCategory.Normal:
-                        chance = 0.1f;
-                        break;
-                    case TreatmentCategory.Bad:
-                        chance = 0.5f;
-                        break;
-                    case TreatmentCategory.VeryBad:
-                        chance = 1f;
-                        break;
-                }
+                    switch (treatmentCat)
+                    {
+                        case TreatmentCategory.Normal:
+                            chance = 0.1f;
+                            break;
+                        case TreatmentCategory.Bad:
+                            chance = 0.5f;
+                            break;
+                        case TreatmentCategory.VeryBad:
+                            chance = 1f;
+                            break;
+                    }
 
-                suspended = UnityEngine.Random.value < chance;
+                    suspended = UnityEngine.Random.value < chance;
 
-                if (suspended)
-                {
-                    __result = false;
-                    return false;
+                    if (suspended)
+                    {
+                        __result = false;
+                        return false;
+                    }
                 }
             }
             return true;

@@ -35,7 +35,7 @@ namespace PrisonLabor.Core.AI.JobGivers
 
             if (pawn.timetable == null)
                 WorkSettings.InitWorkSettings(pawn);
-            if (HealthAIUtility.ShouldHaveSurgeryDoneNow(pawn))
+            if (HealthAIUtility.ShouldHaveSurgeryDoneNow(pawn) || HealthAIUtility.ShouldBeTendedNowByPlayer(pawn) || HealthAIUtility.ShouldSeekMedicalRest(pawn))
                 return ThinkResult.NoJob;
             //Check medical assistance, fed, and rest if not override
             if (!PrisonLaborUtility.WorkTime(pawn))
@@ -184,8 +184,8 @@ namespace PrisonLabor.Core.AI.JobGivers
 
         private bool PawnCanUseWorkGiver(Pawn pawn, WorkGiver giver)
         {
-            return !giver.ShouldSkip(pawn) && (giver.def.nonColonistsCanDo || pawn.IsPrisoner) &&
-                   (pawn.story == null || !pawn.WorkTagIsDisabled(giver.def.workTags)) &&
+            return (pawn.story == null || !pawn.WorkTagIsDisabled(giver.def.workTags)) &&
+                   !giver.ShouldSkip(pawn) && (giver.def.nonColonistsCanDo || pawn.IsPrisoner) &&                   
                    giver.MissingRequiredCapacity(pawn) == null;
         }
 

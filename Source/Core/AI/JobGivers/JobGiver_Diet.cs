@@ -27,9 +27,13 @@ namespace PrisonLabor.Core.AI.JobGivers
             if (food.CurCategory < minCategory)
                 return 0f;
             if (food.CurCategory <= stopWorkingCat)
+            {
                 return 11f;
+            }
             if (food.CurLevelPercentage < pawn.RaceProps.FoodLevelPercentageWantEat)
+            {
                 return 7f;
+            }
             return 0f;
         }
 
@@ -38,6 +42,11 @@ namespace PrisonLabor.Core.AI.JobGivers
             var food = pawn.needs.food;
             if (food == null || food.CurCategory < minCategory)
                 return null;
+
+            if (HealthAIUtility.ShouldHaveSurgeryDoneNow(pawn))
+            {
+                return null;
+            }
 
             var need = pawn.needs.TryGetNeed<Need_Motivation>();
             if (need != null)

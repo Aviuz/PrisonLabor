@@ -53,7 +53,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
         {
             foreach (Thing thing in __result)
             {
-                //Log.Message($"Work type: { __instance.def.workType}, thing is {thing}");
+                //Log.Message($"Work type: { __instance.def.workType}, thing is {thing}, value: {PrisonLaborUtility.canWorkHere(thing.Position, pawn, __instance.def.workType)}");
                 if (thing != null && PrisonLaborUtility.canWorkHere(thing.Position, pawn, __instance.def.workType))
                 {
                    // Log.Message($"Work type { __instance.def.workType}, value: {PrisonLaborUtility.canWorkHere(thing.Position, pawn, __instance.def.workType)}");

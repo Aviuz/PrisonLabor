@@ -25,11 +25,11 @@ namespace PrisonLabor.HarmonyPatches.Patches_DeepDrill
             {
                 if (pawn.IsPrisonerOfColony)
                 {
-                    return true;
+                    return pawn.CanReserve(building, 1, -1, null, forced);
                 }
                 else if (pawn.Faction.IsPlayer)
                 {
-                    return !PrisonLaborUtility.IsDisabledByLabor(building.Position, pawn, __instance.def.workType);
+                    return __result && !PrisonLaborUtility.IsDisabledByLabor(building.Position, pawn, __instance.def.workType);
                 }                
             }
             return __result;
