@@ -1,4 +1,12 @@
 Changelog:
+1.1.5
+- remove wealth tracker from prisioners mining
+- updated part releated with seed please (no tested)
+- added some checks to remove npr errors
+- added more checks if prisioners should stay in bed
+- Quarry from Quarry mod should works with labor area
+- Added french translation (https://github.com/cprodhomme)
+- fixed deep drills reservation by colonist and prisioners
 1.1.4
 - Fixed forbidden resources extracted by prisoners
 - Fixed labor arena being not respected by colonist

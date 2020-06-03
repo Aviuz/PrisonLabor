@@ -63,7 +63,7 @@ namespace PrisonLabor.CompatibilityPatches
             {
                 var mod = LoadedModManager.RunningMods.First(m => m.Name == "Quarry 1.1");                
                 foundType = mod != null;
-                Verse.Log.Message($"[PL] Found: {mod}");               
+                Verse.Log.Message($"[PL] Trying to find: {mod}, Result: {foundType}");               
             }
             catch
             {

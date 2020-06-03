@@ -47,15 +47,6 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
 						{
 							thingList[i].SetForbidden(value: false, warnOnFail: false);
 						}
-
-						if (MineStrikeManager.MineableIsVeryValuable(mineTarget.def))
-						{
-							TaleRecorder.RecordTale(TaleDefOf.MinedValuable, pawn, mineTarget.def.building.mineableThing);
-						}
-						if (MineStrikeManager.MineableIsValuable(mineTarget.def) && !pawn.Map.IsPlayerHome)
-						{
-							TaleRecorder.RecordTale(TaleDefOf.CaravanRemoteMining, pawn, mineTarget.def.building.mineableThing);
-						}
 					}
 				}
 

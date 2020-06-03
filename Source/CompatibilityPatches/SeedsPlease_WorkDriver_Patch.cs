@@ -25,10 +25,8 @@ namespace PrisonLabor.CompatibilityPatches
             var harvestDriverClass = JobDefOf.Harvest.driverClass.BaseType;
             harmony.Patch(
                 harvestDriverClass.GetMethod("HarvestSeedsToil", BindingFlags.NonPublic | BindingFlags.Instance),
-                new HarmonyMethod(null), new HarmonyMethod(null), new HarmonyMethod(typeof(SeedsPlease_WorkDriver_Patch).GetMethod("MethodFinder")));
-            harmony.Patch(
-                method,
-                new HarmonyMethod(null), new HarmonyMethod(null), new HarmonyMethod(typeof(SeedsPlease_WorkDriver_Patch).GetMethod("DelegateTranspiler")));
+                transpiler: new HarmonyMethod(typeof(SeedsPlease_WorkDriver_Patch).GetMethod("MethodFinder")));
+            harmony.Patch(method, transpiler: new HarmonyMethod(typeof(SeedsPlease_WorkDriver_Patch).GetMethod("DelegateTranspiler")));
         }
 
         public static IEnumerable<CodeInstruction> MethodFinder(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instr)
