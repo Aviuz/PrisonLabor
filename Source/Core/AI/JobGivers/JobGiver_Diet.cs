@@ -28,12 +28,10 @@ namespace PrisonLabor.Core.AI.JobGivers
                 return 0f;
             if (food.CurCategory <= stopWorkingCat)
             {
-                Log.Message("JobDiet stop working");
                 return 11f;
             }
             if (food.CurLevelPercentage < pawn.RaceProps.FoodLevelPercentageWantEat)
             {
-                Log.Message("JobDiet FoodLevelPercentageWantEat");
                 return 7f;
             }
             return 0f;
