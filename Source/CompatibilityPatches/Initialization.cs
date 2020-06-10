@@ -8,8 +8,7 @@ namespace PrisonLabor.CompatibilityPatches
     internal static class Initialization
     {
         internal static void Run()
-        {
-            SeedsPlease.Init();
+        {            
             //NoWaterNoLife.Init();
             WorkTab.Init();
             Quarry.Init();
