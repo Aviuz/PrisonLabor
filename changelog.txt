@@ -1,4 +1,7 @@
 Changelog:
+1.1.6
+- removed patching for mod SeedsPlease. Potientialy should work with PL without issue. (Not tested)
+- added more checks to NPR exceptions
 1.1.5
 - remove wealth tracker from prisioners mining
 - updated part releated with seed please (no tested)
