@@ -45,7 +45,7 @@ namespace PrisonLabor.CompatibilityPatches
         {
             WorkTypeDef workDef = DefDatabase<WorkTypeDef>.GetNamed("QuarryMining");
 
-            if (__result != null && pawn.Faction.IsPlayer && !pawn.IsPrisonerOfColony && PrisonLaborUtility.IsDisabledByLabor(__result.targetA.Cell, pawn, workDef))
+            if (__result != null && !pawn.IsPrisonerOfColony && pawn.Faction != null && pawn.Faction.IsPlayer && PrisonLaborUtility.IsDisabledByLabor(__result.targetA.Cell, pawn, workDef))
             {
                 return null;
             }

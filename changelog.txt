@@ -1,4 +1,6 @@
 Changelog:
+1.1.7
+- fix for NPR in quarry patches
 1.1.6
 - removed patching for mod SeedsPlease. Potientialy should work with PL without issue. (Not tested)
 - added more checks to NPR exceptions
