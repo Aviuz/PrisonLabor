@@ -1,4 +1,5 @@
 using PrisonLabor.Constants;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using Verse;
@@ -8,6 +9,9 @@ namespace PrisonLabor.Core.Trackers
     internal static class InspirationTracker
     {
         public static Dictionary<Map, Dictionary<Pawn, float>> inspirationValues = new Dictionary<Map, Dictionary<Pawn, float>>();
+
+        private static UInt16 tickCounter = 32;
+        private static UInt16 updateInterval = 32;
 
         /// <summary>
         /// Check if pawn is watched(supervised) by a Jailor
@@ -47,52 +51,83 @@ namespace PrisonLabor.Core.Trackers
 
         public static void Calculate(Map map)
         {
-            lock (inspirationValues)
+            if (InspirationTracker.tickCounter >= InspirationTracker.updateInterval)
             {
-                var wardens = new List<Pawn>();
-                wardens.AddRange(map.mapPawns.FreeColonists);
-                var prisoners = new List<Pawn>();
-                prisoners.AddRange(map.mapPawns.PrisonersOfColony);
+                if (map.mapPawns.PrisonersOfColonyCount == 0)
+                    return;
 
-                Dictionary<Pawn, float> mapCalculations;
-                if (inspirationValues.TryGetValue(map, out mapCalculations))
-                    mapCalculations.Clear();
-                else
-                    inspirationValues[map] = mapCalculations = new Dictionary<Pawn, float>();
+                InspirationTracker.tickCounter = 0;
 
-                foreach (var prisoner in prisoners)
+                lock (inspirationValues)
                 {
-                    mapCalculations[prisoner] = 0f;
-                }
 
-                var inRange = new Dictionary<Pawn, float>();
-                foreach (var warden in wardens)
-                {
-                    inRange.Clear();
+                    var wardens = new List<Pawn>();
+                    wardens.AddRange(map.mapPawns.FreeColonists);
+
+                    var prisoners = new List<Pawn>();
+                    prisoners.AddRange(map.mapPawns.PrisonersOfColony);
+
+                    if (wardens.Count == 0 || prisoners.Count == 0)
+                        return;
+
+                    Dictionary<Pawn, float> mapCalculations;
+                    if (inspirationValues.TryGetValue(map, out mapCalculations))
+                        mapCalculations.Clear();
+                    else
+                        inspirationValues[map] = mapCalculations = new Dictionary<Pawn, float>();
+
                     foreach (var prisoner in prisoners)
                     {
-                        float distance = warden.Position.DistanceTo(prisoner.Position);
-                        if (distance < BGP.InpirationRange && prisoner.GetRoom() == warden.GetRoom())
-                            inRange.Add(prisoner, distance);
+                        mapCalculations[prisoner] = 0f;
                     }
 
-                    var watchedPawns = new List<Pawn>(inRange.Keys);
-                    float points;
-                    if (inRange.Count > BGP.WardenCapacity)
+                    var roomsIdtoWardens = new Dictionary<int, List<Pawn>>();
+                    var wardenCurrentPrisoners = new Dictionary<Pawn, List<Pawn>>();
+
+                    foreach (var warden in wardens)
                     {
-                        watchedPawns.Sort(new Comparison<Pawn>((x, y) => inRange[x].CompareTo(inRange[y])));
-                        points = BGP.InspireRate / BGP.WardenCapacity;
-                    }
-                    else
-                    {
-                        points = BGP.InspireRate / inRange.Count;
+                        var roomId = warden.GetRoom().ID;
+
+                        if (!roomsIdtoWardens.ContainsKey(roomId))
+                            roomsIdtoWardens[roomId] = new List<Pawn>();
+
+                        roomsIdtoWardens[roomId].Add(warden);
                     }
 
-                    for (int i = 0; i < watchedPawns.Count && i < BGP.WardenCapacity; i++)
+                    foreach (var prisoner in prisoners)
                     {
-                        mapCalculations[watchedPawns[i]] += points;
+                        var roomId = prisoner.GetRoom().ID;
+                        if (!roomsIdtoWardens.ContainsKey(roomId))
+                            continue;
+
+                        foreach (var warden in roomsIdtoWardens[roomId])
+                        {
+                            float distance = warden.Position.DistanceTo(prisoner.Position);
+                            if (distance < BGP.InpirationRange)
+                            {
+                                if (!wardenCurrentPrisoners.ContainsKey(warden))
+                                    wardenCurrentPrisoners.Add(warden, new List<Pawn>());
+
+                                wardenCurrentPrisoners[warden].Add(prisoner);
+                            }
+                        }
+                    }
+
+                    float points = 0.0f;
+                    foreach (var warden in wardenCurrentPrisoners.Keys)
+                    {
+                        if (wardenCurrentPrisoners[warden].Count > BGP.WardenCapacity)
+                            points = BGP.InspireRate / BGP.WardenCapacity;
+                        else
+                            points = BGP.InspireRate / wardenCurrentPrisoners[warden].Count;
+                        foreach (var prisoner in wardenCurrentPrisoners[warden])
+                            mapCalculations[prisoner] += points * updateInterval;
                     }
                 }
+            }
+            else
+            {
+                InspirationTracker.tickCounter++;
             }
         }
     }
