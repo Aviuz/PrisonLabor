@@ -1,4 +1,7 @@
 Changelog:
+1.1.8
+- Turn on/off prisoner suicide should work now
+- Performance optimalisation (https://github.com/kbatbouta)
 1.1.7
 - fix for NPR in quarry patches
 1.1.6
