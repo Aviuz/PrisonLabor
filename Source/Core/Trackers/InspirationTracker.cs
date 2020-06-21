@@ -94,9 +94,14 @@ namespace PrisonLabor.Core.Trackers
 
                     foreach (var warden in wardens)
                     {
+                        if(warden.GetRoom() == null)
+                        {
+                            continue;
+                        }
+
                         var roomId = warden.GetRoom().ID;
 
-                        if (!roomsIdtoWardens.ContainsKey(roomId))
+                        if (!roomsIdtoWardens.ContainsKey(warden.GetRoom().ID))
                         {
                             roomsIdtoWardens[roomId] = new List<Pawn>();
                         }
@@ -106,11 +111,11 @@ namespace PrisonLabor.Core.Trackers
 
                     foreach (var prisoner in prisoners)
                     {
-                        var roomId = prisoner.GetRoom().ID;
-                        if (!roomsIdtoWardens.ContainsKey(roomId))
+                        if (prisoner.GetRoom() == null || !roomsIdtoWardens.ContainsKey(prisoner.GetRoom().ID))
                         {
                             continue;
                         }
+                        var roomId = prisoner.GetRoom().ID;
 
                         foreach (var warden in roomsIdtoWardens[roomId])
                         {
