@@ -101,7 +101,7 @@ namespace PrisonLabor.Core.Trackers
 
                         var roomId = warden.GetRoom().ID;
 
-                        if (!roomsIdtoWardens.ContainsKey(warden.GetRoom().ID))
+                        if (!roomsIdtoWardens.ContainsKey(roomId))
                         {
                             roomsIdtoWardens[roomId] = new List<Pawn>();
                         }
