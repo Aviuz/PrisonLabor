@@ -1,276 +1,321 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{97750974-4CB6-4D31-84A1-A3AA77B1E2EE}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PrisonLabor</RootNamespace>
-    <AssemblyName>PrisonLabor</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>false</DebugSymbols>
-    <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\Assemblies\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="0Harmony, Version=2.0.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Lib.Harmony.2.0.0.8\lib\net472\0Harmony.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>packages\Rimworld\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>packages\Rimworld\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>packages\Rimworld\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>packages\Rimworld\UnityEngine.IMGUIModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>packages\Rimworld\UnityEngine.TextRenderingModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Core\Alerts\Alert_EscapingPrisoners.cs" />
-    <Compile Include="Core\Alerts\Alert_LazyPrisoners.cs" />
-    <Compile Include="Core\Alerts\Alert_StarvingPrisoners.cs" />
-    <Compile Include="Core\GUI_Components\RichListing.cs" />
-    <Compile Include="Core\GUI_Components\SImpleVideo.cs" />
-    <Compile Include="Core\LaborArea\Area_Labor.cs" />
-    <Compile Include="Constants\BGP.cs" />
-    <Compile Include="Core\BillAssignation\BillGroupData.cs" />
-    <Compile Include="Core\BillAssignation\BillAssignationUtility.cs" />
-    <Compile Include="CompatibilityPatches\Initialization.cs" />
-    <Compile Include="CompatibilityPatches\NoWaterNoLife.cs" />
-    <Compile Include="CompatibilityPatches\OlderVersions.cs" />
-    <Compile Include="CompatibilityPatches\WorkTab.cs" />
-    <Compile Include="CompatibilityPatches\SeedsPlease.cs" />
-    <Compile Include="CompatibilityPatches\SeedsPlease_WorkDriver_Patch.cs" />
-    <Compile Include="CompatibilityPatches\SeedsPlease_WorkGiver.cs" />
-    <Compile Include="Core\LaborArea\Designator_AreaLaborClear.cs" />
-    <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
-    <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
-    <Compile Include="Core\Meta\Version.cs" />
-    <Compile Include="Core\Other\NewsProvider.cs" />
-    <Compile Include="Core\Other\TutorialProvider.cs" />
-    <Compile Include="Core\Settings\CleanSaveDialog.cs" />
-    <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
-    <Compile Include="Core\Trackers\EscapeTracker.cs" />
-    <Compile Include="Core\Windows\ReplayTutorialsWindow.cs" />
-    <Compile Include="Core\Windows\TutorialWindow.cs" />
-    <Compile Include="HarmonyPatches\DevTools.cs" />
-    <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
-    <Compile Include="HarmonyPatches\Patches_Construction\EnableConstructionFinishFrames.cs" />
-    <Compile Include="HarmonyPatches\Patches_DeepDrill\EnableDeepDrillsToPrisoners.cs" />
-    <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapeTracker.cs" />
-    <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
-    <Compile Include="HarmonyPatches\Patches_Food\DeliverEvenOutsidePrisonCell.cs" />
-    <Compile Include="HarmonyPatches\Patches_Food\FoodUtility_IsFoodSourceOnMapSociallyProper.cs" />
-    <Compile Include="HarmonyPatches\Patches_Food\ReserveFoodForPrisonerAfterDropping.cs" />
-    <Compile Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
-    <Compile Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
-    <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
-    <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
-    <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
-    <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_AddScrollToPrisonerTab.cs" />
-    <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_BillCheckbox.cs" />
-    <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_BillPrevention.cs" />
-    <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_ChangeWorkTabPrisonerLabelColor.cs" />
-    <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_DefaultInteractionMode.cs" />
-    <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_DisableAreaRestrictionsForPrisoners.cs" />
-    <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapingPrisoner.cs" />
-    <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_ExposeBillGroup.cs" />
-    <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_ExtendVistorRect.cs" />
-    <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop.cs" />
-    <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ItemIsForbidden.cs" />
-    <Compile Include="HarmonyPatches\HPatcher.cs" />
-    <Compile Include="HarmonyPatches\Patches_SaveCompatibility\Patch_JailorTypeSaveCompatibility.cs" />
-    <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_LaborForbid.cs" />
-    <Compile Include="HarmonyPatches\Patches_Needs\Patch_NeedOnlyByPrisoners.cs" />
-    <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_PrisonerTab.cs" />
-    <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_PrisonInteractionLabel.cs" />
-    <Compile Include="HarmonyPatches\Patches_TreatmentTinkering\Patch_ReduceChanceForMentalBreak.cs" />
-    <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_RemoveBillFromUtility.cs" />
-    <Compile Include="HarmonyPatches\Patches_RenamingPrisoners\Patch_RenamePrisoners.cs" />
-    <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_ResetWorktableWhenRecruited.cs" />
-    <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_RespectReservation.cs" />
-    <Compile Include="HarmonyPatches\Patches_Restraints\Patch_RestrainsPatch.cs" />
-    <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_SocialPropernessFix.cs" />
-    <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_TimetableFix.cs" />
-    <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled.cs" />
-    <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled2.cs" />
-    <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_PawnTableSetDirtyFix.cs" />
-    <Compile Include="HarmonyPatches\Triggers.cs" />
-    <Compile Include="Core\Hediffs\HediffGiver_PrisonersChains.cs" />
-    <Compile Include="Core\Hediffs\HediffManager.cs" />
-    <Compile Include="Core\Incidents\IncidentWorker_Suicide.cs" />
-    <Compile Include="Core\Incidents\IncidentWorker_ResocializationOffer.cs" />
-    <Compile Include="Core\Incidents\IncidentWorker_Revolt.cs" />
-    <Compile Include="Core\AI\JobGivers\JobGiver_BedTime.cs" />
-    <Compile Include="Core\AI\JobGivers\JobGiver_Diet.cs" />
-    <Compile Include="Core\AI\JobGivers\JobGiver_PickupWeapon.cs" />
-    <Compile Include="Core\GUI_Components\PawnIcons.cs" />
-    <Compile Include="Core\Trackers\InspirationTracker.cs" />
-    <Compile Include="Core\Needs\Need_Treatment.cs" />
-    <Compile Include="Core\Needs\Need_Motivation.cs" />
-    <Compile Include="Core\GUI_Components\PawnTable_Prisoners.cs" />
-    <Compile Include="Core\Other\PrisonerFoodReservation.cs" />
-    <Compile Include="Constants\PL_DefOf.cs" />
-    <Compile Include="Core\PrisonLaborUtility.cs" />
-    <Compile Include="Core\PrisonLaborWidgets.cs" />
-    <Compile Include="Core\Settings\SettingsMenu.cs" />
-    <Compile Include="Core\Settings\SelectWorkTypesDialog.cs" />
-    <Compile Include="Core\Windows\NewsWindow.cs" />
-    <Compile Include="Core\BaseClasses\SimpleTimer.cs" />
-    <Compile Include="Core\AI\ThinkNodes\ThinkNode_SeekSafeTemperature.cs" />
-    <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_FreeTime.cs" />
-    <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_LowMotivation.cs" />
-    <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_VeryGoodTreatment.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Tweaks\JobDriver_Mine_Tweak.cs" />
-    <Compile Include="Core\AI\JobDrivers\JobDriver_Supervise.cs" />
-    <Compile Include="Core\Meta\Prefs.cs" />
-    <Compile Include="Core\Meta\PrefsData.cs" />
-    <Compile Include="Core\AI\JobGivers\JobGiver_Labor.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
-    <Compile Include="Core\Other\Tutorials.cs" />
-    <Compile Include="Tweaks\JobDriver_PlantCut_Tweak.cs" />
-    <Compile Include="Tweaks\JobDriver_PlantHarvest_Tweak.cs" />
-    <Compile Include="Tweaks\JobDriver_PlantWork_Tweak.cs" />
-    <Compile Include="Tweaks\ClassInjector.cs" />
-    <Compile Include="Tweaks\MainTabWindow_Restrict_Tweak.cs" />
-    <Compile Include="Tweaks\MainTabWindow_Dual.cs" />
-    <Compile Include="Tweaks\MainTabWindow_Work_Tweak.cs" />
-    <Compile Include="Core\GameSaves\SaveCleaner.cs" />
-    <Compile Include="Core\GameSaves\SaveUpgrader.cs" />
-    <Compile Include="Tweaks\WorkGiver_CleanFilth_Tweak.cs" />
-    <Compile Include="Tweaks\WorkGiver_GrowerSow_Tweak.cs" />
-    <Compile Include="Initialization.cs" />
-    <Compile Include="Core\Other\TreatmentUtility.cs" />
-    <Compile Include="Core\Meta\VersionUtility.cs" />
-    <Compile Include="Core\Other\ArrestUtility.cs" />
-    <Compile Include="Core\AI\WorkGivers\WorkGiver_Supervise.cs" />
-    <Compile Include="Core\LaborWorkSettings\WorkSettings.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\About\About.xml">
-      <Link>Organizer\About.xml</Link>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="..\changelog.txt">
-      <Link>Organizer\changelog.txt</Link>
-    </Content>
-    <Content Include="..\Defs\ConceptDef.xml">
-      <Link>Defs\ConceptDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\Hediffs.xml">
-      <Link>Defs\Hediffs.xml</Link>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="..\Defs\Incidents.xml">
-      <Link>Defs\Incidents.xml</Link>
-    </Content>
-    <Content Include="..\Defs\JobDef.xml">
-      <Link>Defs\JobDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\Needs.xml">
-      <Link>Defs\Needs.xml</Link>
-    </Content>
-    <Content Include="..\Defs\PrisonerInteractionModeDef.xml">
-      <Link>Defs\PrisonerInteractionModeDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\ThinkTreeDef.xml">
-      <Link>Defs\ThinkTreeDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\ThoughtsDef.xml">
-      <Link>Defs\ThoughtsDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\WorkGiverDef.xml">
-      <Link>Defs\WorkGiverDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\WorkTypes.xml">
-      <Link>Defs\WorkTypes.xml</Link>
-    </Content>
-    <Content Include="..\Languages\English\Keyed\Keys.xml">
-      <Link>Language\Keys.xml</Link>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="..\LoadFolders.xml">
-      <Link>Organizer\LoadFolders.xml</Link>
-    </Content>
-    <Content Include="..\TaskList.txt">
-      <Link>Organizer\TaskList.txt</Link>
-    </Content>
-    <Content Include="Organizer\NewsFeed.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Organizer\TutorialFeed.xml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\credits.md">
-      <Link>Organizer\credits.md</Link>
-    </None>
-    <None Include="..\README.md">
-      <Link>Organizer\README.md</Link>
-    </None>
-    <None Include="..\To-Do.md">
-      <Link>Organizer\To-Do.md</Link>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Treatment\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{97750974-4CB6-4D31-84A1-A3AA77B1E2EE}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>PrisonLabor</RootNamespace>
+        <AssemblyName>PrisonLabor</AssemblyName>
+        <FileAlignment>512</FileAlignment>
+        <TargetFrameworkProfile />
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DocumentationFile></DocumentationFile>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Assemblies</OutputPath>
+        <DefineConstants>TRACE;DEBUG;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <DocumentationFile></DocumentationFile>
+        <Prefer32Bit>false</Prefer32Bit>
+        <PlatformTarget>x64</PlatformTarget>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+      <DebugSymbols>true</DebugSymbols>
+      <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Assemblies</OutputPath>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <DocumentationFile>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Assemblies\PrisonLabor.xml</DocumentationFile>
+        <Prefer32Bit>false</Prefer32Bit>
+        <PlatformTarget>x64</PlatformTarget>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Assembly-CSharp">
+            <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\Assembly-CSharp.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.IMGUIModule">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.TextCoreModule">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\UnityEngine.TextCoreModule.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.TextRenderingModule">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="UnityEngine.UI">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\UnityEngine.UI.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="System.Configuration">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\System.Configuration.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="System.Core">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\System.Core.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="System">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\System.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="System.Runtime.Serialization">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\System.Runtime.Serialization.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="System.Security">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\System.Security.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="System.ServiceModel.Internals">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\System.ServiceModel.Internals.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="System.Xml">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\System.Xml.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="System.Xml.Linq">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\System.Xml.Linq.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="0Harmony">
+          <HintPath>packages\Lib.Harmony.2.0.1\lib\net472\0Harmony.dll</HintPath>
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="System.ValueTuple">
+          <HintPath>packages\System.ValueTuple.4.5.0\lib\portable-net40+sl4+win8+wp8\System.ValueTuple.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-CSharp-firstpass">
+          <HintPath>..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Contents\Resources\Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Core\Alerts\Alert_EscapingPrisoners.cs" />
+        <Compile Include="Core\Alerts\Alert_LazyPrisoners.cs" />
+        <Compile Include="Core\Alerts\Alert_StarvingPrisoners.cs" />
+        <Compile Include="Core\GUI_Components\RichListing.cs" />
+        <Compile Include="Core\GUI_Components\SImpleVideo.cs" />
+        <Compile Include="Core\LaborArea\Area_Labor.cs" />
+        <Compile Include="Constants\BGP.cs" />
+        <Compile Include="Core\BillAssignation\BillGroupData.cs" />
+        <Compile Include="Core\BillAssignation\BillAssignationUtility.cs" />
+        <Compile Include="CompatibilityPatches\Initialization.cs" />
+        <Compile Include="CompatibilityPatches\OlderVersions.cs" />
+        <Compile Include="CompatibilityPatches\WorkTab.cs" />
+        <Compile Include="Core\LaborArea\Designator_AreaLaborClear.cs" />
+        <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
+        <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
+        <Compile Include="Core\Meta\Version.cs" />
+        <Compile Include="Core\Other\NewsProvider.cs" />
+        <Compile Include="Core\Other\TutorialProvider.cs" />
+        <Compile Include="Core\Settings\CleanSaveDialog.cs" />
+        <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
+        <Compile Include="Core\Trackers\EscapeTracker.cs" />
+        <Compile Include="Core\Windows\ReplayTutorialsWindow.cs" />
+        <Compile Include="Core\Windows\TutorialWindow.cs" />
+        <Compile Include="HarmonyPatches\DevTools.cs" />
+        <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
+        <Compile Include="HarmonyPatches\Patches_Construction\EnableConstructionFinishFrames.cs" />
+        <Compile Include="HarmonyPatches\Patches_DeepDrill\EnableDeepDrillsToPrisoners.cs" />
+        <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapeTracker.cs" />
+        <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
+        <Compile Include="HarmonyPatches\Patches_Food\DeliverEvenOutsidePrisonCell.cs" />
+        <Compile Include="HarmonyPatches\Patches_Food\FoodUtility_IsFoodSourceOnMapSociallyProper.cs" />
+        <Compile Include="HarmonyPatches\Patches_Food\ReserveFoodForPrisonerAfterDropping.cs" />
+        <Compile Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
+        <Compile Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
+        <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
+        <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
+        <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
+        <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_AddScrollToPrisonerTab.cs" />
+        <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_BillCheckbox.cs" />
+        <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_BillPrevention.cs" />
+        <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_ChangeWorkTabPrisonerLabelColor.cs" />
+        <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_DefaultInteractionMode.cs" />
+        <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_DisableAreaRestrictionsForPrisoners.cs" />
+        <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapingPrisoner.cs" />
+        <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_ExposeBillGroup.cs" />
+        <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_ExtendVistorRect.cs" />
+        <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop.cs" />
+        <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ItemIsForbidden.cs" />
+        <Compile Include="HarmonyPatches\HPatcher.cs" />
+        <Compile Include="HarmonyPatches\Patches_SaveCompatibility\Patch_JailorTypeSaveCompatibility.cs" />
+        <Compile Include="HarmonyPatches\Patches_Needs\Patch_NeedOnlyByPrisoners.cs" />
+        <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_PrisonerTab.cs" />
+        <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_PrisonInteractionLabel.cs" />
+        <Compile Include="HarmonyPatches\Patches_TreatmentTinkering\Patch_ReduceChanceForMentalBreak.cs" />
+        <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_RemoveBillFromUtility.cs" />
+        <Compile Include="HarmonyPatches\Patches_RenamingPrisoners\Patch_RenamePrisoners.cs" />
+        <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_ResetWorktableWhenRecruited.cs" />
+        <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_RespectReservation.cs" />
+        <Compile Include="HarmonyPatches\Patches_Restraints\Patch_RestrainsPatch.cs" />
+        <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_SocialPropernessFix.cs" />
+        <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_TimetableFix.cs" />
+        <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled.cs" />
+        <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled2.cs" />
+        <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_PawnTableSetDirtyFix.cs" />
+        <Compile Include="HarmonyPatches\Triggers.cs" />
+        <Compile Include="Core\Hediffs\HediffGiver_PrisonersChains.cs" />
+        <Compile Include="Core\Hediffs\HediffManager.cs" />
+        <Compile Include="Core\Incidents\IncidentWorker_Suicide.cs" />
+        <Compile Include="Core\Incidents\IncidentWorker_ResocializationOffer.cs" />
+        <Compile Include="Core\Incidents\IncidentWorker_Revolt.cs" />
+        <Compile Include="Core\AI\JobGivers\JobGiver_BedTime.cs" />
+        <Compile Include="Core\AI\JobGivers\JobGiver_Diet.cs" />
+        <Compile Include="Core\AI\JobGivers\JobGiver_PickupWeapon.cs" />
+        <Compile Include="Core\GUI_Components\PawnIcons.cs" />
+        <Compile Include="Core\Trackers\InspirationTracker.cs" />
+        <Compile Include="Core\Needs\Need_Treatment.cs" />
+        <Compile Include="Core\Needs\Need_Motivation.cs" />
+        <Compile Include="Core\GUI_Components\PawnTable_Prisoners.cs" />
+        <Compile Include="Core\Other\PrisonerFoodReservation.cs" />
+        <Compile Include="Constants\PL_DefOf.cs" />
+        <Compile Include="Core\PrisonLaborUtility.cs" />
+        <Compile Include="Core\PrisonLaborWidgets.cs" />
+        <Compile Include="Core\Settings\SettingsMenu.cs" />
+        <Compile Include="Core\Settings\SelectWorkTypesDialog.cs" />
+        <Compile Include="Core\Windows\NewsWindow.cs" />
+        <Compile Include="Core\BaseClasses\SimpleTimer.cs" />
+        <Compile Include="Core\AI\ThinkNodes\ThinkNode_SeekSafeTemperature.cs" />
+        <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_FreeTime.cs" />
+        <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_LowMotivation.cs" />
+        <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_VeryGoodTreatment.cs" />
+        <Compile Include="Properties\Resources.Designer.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+        <Compile Include="Tweaks\JobDriver_Mine_Tweak.cs" />
+        <Compile Include="Core\AI\JobDrivers\JobDriver_Supervise.cs" />
+        <Compile Include="Core\Meta\Prefs.cs" />
+        <Compile Include="Core\Meta\PrefsData.cs" />
+        <Compile Include="Core\AI\JobGivers\JobGiver_Labor.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
+        <Compile Include="Core\Other\Tutorials.cs" />
+        <Compile Include="Tweaks\JobDriver_PlantCut_Tweak.cs" />
+        <Compile Include="Tweaks\JobDriver_PlantHarvest_Tweak.cs" />
+        <Compile Include="Tweaks\JobDriver_PlantWork_Tweak.cs" />
+        <Compile Include="Tweaks\ClassInjector.cs" />
+        <Compile Include="Tweaks\MainTabWindow_Restrict_Tweak.cs" />
+        <Compile Include="Tweaks\MainTabWindow_Dual.cs" />
+        <Compile Include="Tweaks\MainTabWindow_Work_Tweak.cs" />
+        <Compile Include="Core\GameSaves\SaveCleaner.cs" />
+        <Compile Include="Core\GameSaves\SaveUpgrader.cs" />
+        <Compile Include="Tweaks\WorkGiver_CleanFilth_Tweak.cs" />
+        <Compile Include="Tweaks\WorkGiver_GrowerSow_Tweak.cs" />
+        <Compile Include="Initialization.cs" />
+        <Compile Include="Core\Other\TreatmentUtility.cs" />
+        <Compile Include="Core\Meta\VersionUtility.cs" />
+        <Compile Include="Core\Other\ArrestUtility.cs" />
+        <Compile Include="Core\AI\WorkGivers\WorkGiver_Supervise.cs" />
+        <Compile Include="Core\LaborWorkSettings\WorkSettings.cs" />
+        <Compile Include="HarmonyPatches\Patches_Tracker\Patch_InspirationTracker.cs" />
+        <Compile Include="Core\AI\ThoughtWorkers\ThoughtWorker_TreatedBadly.cs" />
+        <Compile Include="Core\AI\InteractionWorkers\InteractionWorker_Horrer.cs" />
+        <Compile Include="HarmonyPatches\Patches_Doors\Patch_DoorAccess.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <Content Include="..\About\About.xml">
+            <Link>Organizer\About.xml</Link>
+            <SubType>Designer</SubType>
+        </Content>
+        <Content Include="..\changelog.txt">
+            <Link>Organizer\changelog.txt</Link>
+        </Content>
+        <Content Include="..\Languages\English\Keyed\Keys.xml">
+            <Link>Language\Keys.xml</Link>
+            <SubType>Designer</SubType>
+        </Content>
+        <Content Include="..\LoadFolders.xml">
+            <Link>Organizer\LoadFolders.xml</Link>
+        </Content>
+        <Content Include="..\TaskList.txt">
+            <Link>Organizer\TaskList.txt</Link>
+        </Content>
+        <Content Include="Organizer\NewsFeed.xml">
+            <SubType>Designer</SubType>
+        </Content>
+        <Content Include="Organizer\TutorialFeed.xml">
+            <SubType>Designer</SubType>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="..\credits.md">
+            <Link>Organizer\credits.md</Link>
+        </None>
+        <None Include="..\README.md">
+            <Link>Organizer\README.md</Link>
+        </None>
+        <None Include="..\To-Do.md">
+            <Link>Organizer\To-Do.md</Link>
+        </None>
+        <None Include="packages.config" />
+        <None Include="..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Defs\ThinkTreeDef.xml">
+          <Link>Defs\ThinkTreeDef.xml</Link>
+        </None>
+        <None Include="..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Defs\Hediffs.xml">
+          <Link>Defs\Hediffs.xml</Link>
+        </None>
+        <None Include="..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Defs\Incidents.xml">
+          <Link>Defs\Incidents.xml</Link>
+        </None>
+        <None Include="..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Defs\WorkTypes.xml">
+          <Link>Defs\WorkTypes.xml</Link>
+        </None>
+        <None Include="..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Defs\ThoughtsDef.xml">
+          <Link>Defs\ThoughtsDef.xml</Link>
+        </None>
+        <None Include="..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Defs\ConceptDef.xml">
+          <Link>Defs\ConceptDef.xml</Link>
+        </None>
+        <None Include="..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Defs\WorkGiverDef.xml">
+          <Link>Defs\WorkGiverDef.xml</Link>
+        </None>
+        <None Include="..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Defs\Needs.xml">
+          <Link>Defs\Needs.xml</Link>
+        </None>
+        <None Include="..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Defs\PrisonerInteractionModeDef.xml">
+          <Link>Defs\PrisonerInteractionModeDef.xml</Link>
+        </None>
+        <None Include="..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Defs\JobDef.xml">
+          <Link>Defs\JobDef.xml</Link>
+        </None>
+        <None Include="..\..\..\Library\Application Support\Steam\steamapps\common\RimWorld\RimWorldMac.app\Mods\Prison Labor\Defs\Interactions.xml">
+          <Link>Defs\Interactions.xml</Link>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Core\Treatment\" />
+        <Folder Include="HarmonyPatches\Patches_Tracker\" />
+        <Folder Include="Core\AI\InteractionWorkers\" />
+        <Folder Include="HarmonyPatches\Patches_Doors\" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Properties\Resources.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

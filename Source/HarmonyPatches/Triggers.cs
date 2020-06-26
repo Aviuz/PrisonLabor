@@ -6,9 +6,11 @@ using PrisonLabor.Core.Windows;
 using RimWorld;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 
 namespace PrisonLabor.HarmonyPatches
 {
@@ -55,19 +57,15 @@ namespace PrisonLabor.HarmonyPatches
             static bool Prefix() { SaveUpgrader.Upgrade(); return true; }
         }
 
-        [HarmonyPatch(typeof(Map))]
-        [HarmonyPatch(nameof(Map.MapPostTick))]
-        static class InsiprationTracker
-        {
-            static bool Prefix(Map __instance) { InspirationTracker.Calculate(__instance); return true; }
-        }
 
         [HarmonyPatch(typeof(Map))]
         [HarmonyPatch("FinalizeInit")]
         [HarmonyPatch(new Type[] { })]
         static class Patch_ShowNews
         {
-            static void Postfix() { NewsWindow.TryShow();}
+            static void Postfix() { NewsWindow.TryShow(); }
         }
+
+
     }
 }

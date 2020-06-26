@@ -24,12 +24,13 @@ namespace PrisonLabor.Tweaks
             }
             else
             {
-                c = ((Thing) settable).Position;
+                c = ((Thing)settable).Position;
             }
             wantedPlantDef = CalculateWantedPlantDef(c, pawn.Map);
             return wantedPlantDef != null;
         }
 
+        [System.Obsolete]
         public override Job JobOnCell(Pawn pawn, IntVec3 c, bool forced = false)
         {
             //if (!pawn.IsPrisoner)
