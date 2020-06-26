@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <InteractionDef>
+        <defName>SharedHorrerStory</defName>
+        <label>shit hole</label>
+        <workerClass>PrisonLabor.Core.AI.InteractionWorkers.InteractionWorker_Horrer</workerClass>
+        <symbol>Things/Mote/SpeechSymbols/DeepTalk</symbol>
+        
+        <socialFightBaseChance>0.000</socialFightBaseChance>
+        <logRulesInitiator>
+            <rulesStrings>
+                <li>r_logentry->[INITIATOR_nameDef] told [RECIPIENT_nameDef] stories about the guards.</li>
+                <li>r_logentry->[RECIPIENT_nameDef] started to ask questions.</li>
+                <li>conversed->started to cry about tourture by the prison gurads</li>
+                <li>conversed->vowed for revenge</li>
+            </rulesStrings>
+        </logRulesInitiator>
+    </InteractionDef>
+</Defs>

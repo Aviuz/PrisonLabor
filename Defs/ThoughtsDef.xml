@@ -39,10 +39,41 @@
         <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_TreatedBadly</workerClass>
         <stages>
             <li>
-                <label>Treated Badly</label>
-                <description>Even tough I'm prisoner, I'm someone little child!!'.</description>
+                <label>Treated badly</label>
+                <description>Even tough I'm prisoner, I'm someone little child!!</description>
                 <baseMoodEffect>-10</baseMoodEffect>
             </li>
         </stages>
     </ThoughtDef>
+    <ThoughtDef>
+        <defName>PrisonLabor_Horrer</defName>
+        <durationDays>1</durationDays>
+        <stackedEffectMultiplier>0.4</stackedEffectMultiplier>
+        <stackLimit>5</stackLimit>
+        <stages>
+            <li>
+                <label>Afraid</label>
+                <description>The poor guy was terrified by the guards!!</description>
+                <baseMoodEffect>-3</baseMoodEffect>
+            </li>
+        </stages>
+    </ThoughtDef>
+    <!-- Random social interactions -->
+    <!--<ThoughtDef>
+        <defName>PrisonLabor_SharedHorrer</defName>
+        <thoughtClass>Thought_MemorySocial</thoughtClass>
+        <stackLimit>300</stackLimit>
+        <stackedEffectMultiplier>0.88</stackedEffectMultiplier>
+        <requiredTraits>
+            <li>Prude</li>
+        </requiredTraits>
+        <stages>
+            <li>
+                <label>witnessed the </label>
+                <description>Was that person naked? Do they just let people run around without clothes on here? Disgusting.</description>
+                <baseOpinionOffset>-1</baseOpinionOffset>
+            </li>
+        </stages>
+    </ThoughtDef>-->
+    <!-- Random social interactions -->
 </Defs>
