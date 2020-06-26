@@ -168,6 +168,7 @@ namespace PrisonLabor.Core.Settings
             PrisonLaborPrefs.EnableRevolts = enableRevolts;
             PrisonLaborPrefs.ShowTreatmentHappiness = showTreatmentHappiness;
             PrisonLaborPrefs.AdvancedGrowing = advancedGrowing;
+            PrisonLaborPrefs.EnableSuicide = enableSuicide;
             PrisonLaborPrefs.DefaultInteractionMode = interactionModeList[defaultInteractionMode].defName;
             PrisonLaborPrefs.Save();
             Log.Message("Prison Labor settings saved");

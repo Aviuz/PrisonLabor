@@ -54,7 +54,9 @@ namespace PrisonLabor.Core.Trackers
             if (InspirationTracker.tickCounter >= InspirationTracker.updateInterval)
             {
                 if (map.mapPawns.PrisonersOfColonyCount == 0)
+                {
                     return;
+                }
 
                 InspirationTracker.tickCounter = 0;
 
@@ -68,13 +70,19 @@ namespace PrisonLabor.Core.Trackers
                     prisoners.AddRange(map.mapPawns.PrisonersOfColony);
 
                     if (wardens.Count == 0 || prisoners.Count == 0)
+                    {
                         return;
-
+                    }
+                    
                     Dictionary<Pawn, float> mapCalculations;
                     if (inspirationValues.TryGetValue(map, out mapCalculations))
+                    {
                         mapCalculations.Clear();
+                    }
                     else
+                    {
                         inspirationValues[map] = mapCalculations = new Dictionary<Pawn, float>();
+                    }
 
                     foreach (var prisoner in prisoners)
                     {
@@ -86,19 +94,28 @@ namespace PrisonLabor.Core.Trackers
 
                     foreach (var warden in wardens)
                     {
+                        if(warden.GetRoom() == null)
+                        {
+                            continue;
+                        }
+
                         var roomId = warden.GetRoom().ID;
 
                         if (!roomsIdtoWardens.ContainsKey(roomId))
+                        {
                             roomsIdtoWardens[roomId] = new List<Pawn>();
+                        }
 
                         roomsIdtoWardens[roomId].Add(warden);
                     }
 
                     foreach (var prisoner in prisoners)
                     {
-                        var roomId = prisoner.GetRoom().ID;
-                        if (!roomsIdtoWardens.ContainsKey(roomId))
+                        if (prisoner.GetRoom() == null || !roomsIdtoWardens.ContainsKey(prisoner.GetRoom().ID))
+                        {
                             continue;
+                        }
+                        var roomId = prisoner.GetRoom().ID;
 
                         foreach (var warden in roomsIdtoWardens[roomId])
                         {
@@ -106,7 +123,9 @@ namespace PrisonLabor.Core.Trackers
                             if (distance < BGP.InpirationRange)
                             {
                                 if (!wardenCurrentPrisoners.ContainsKey(warden))
+                                {
                                     wardenCurrentPrisoners.Add(warden, new List<Pawn>());
+                                }
 
                                 wardenCurrentPrisoners[warden].Add(prisoner);
                             }
@@ -117,11 +136,17 @@ namespace PrisonLabor.Core.Trackers
                     foreach (var warden in wardenCurrentPrisoners.Keys)
                     {
                         if (wardenCurrentPrisoners[warden].Count > BGP.WardenCapacity)
+                        {
                             points = BGP.InspireRate / BGP.WardenCapacity;
+                        }
                         else
+                        {
                             points = BGP.InspireRate / wardenCurrentPrisoners[warden].Count;
+                        }
                         foreach (var prisoner in wardenCurrentPrisoners[warden])
+                        {                            
                             mapCalculations[prisoner] += points * updateInterval;
+                        }
                     }
                 }
             }
