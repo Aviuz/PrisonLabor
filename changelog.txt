@@ -1,4 +1,9 @@
 Changelog:
+1.1.9
+- NPR fix for previus optimization
+1.1.8
+- Turn on/off prisoner suicide should work now
+- Performance optimization (https://github.com/kbatbouta)
 1.1.7
 - fix for NPR in quarry patches
 1.1.6

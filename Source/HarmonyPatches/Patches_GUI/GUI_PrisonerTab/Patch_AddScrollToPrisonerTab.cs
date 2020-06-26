@@ -86,11 +86,11 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_PrisonerTab
                     yield return instruction;
                 }
 
-                // resize
+/*                // resize
                 if (HPatcher.IsFragment(opCodes3, operands3, ci, ref step3, "AddScrollToPrisonerTab3"))
                 {
 
-                }
+                }*/
 
                 yield return ci;
 
