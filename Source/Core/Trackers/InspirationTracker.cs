@@ -1,11 +1,8 @@
 using HarmonyLib;
 using PrisonLabor.Constants;
-<<<<<<< HEAD
 using PrisonLabor.Core.AI.ThoughtWorkers;
 using PrisonLabor.Core.Needs;
 using RimWorld;
-=======
->>>>>>> parent of c1f9f4e... Merge pull request #1 from kbatbouta/patch-2
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,7 +16,6 @@ namespace PrisonLabor.Core.Trackers
     public static class InspirationTracker
     {
 
-<<<<<<< HEAD
         public static ThoughtDef defOfTreatedBadly;
         public static ThoughtDef defOfTreatedWell;
         public static ThoughtDef defOfLowMotivation;
@@ -46,12 +42,6 @@ namespace PrisonLabor.Core.Trackers
 
 
         public static bool Calculate()
-=======
-        /// <summary>
-        /// Check if pawn is watched(supervised) by a Jailor
-        /// </summary>
-        public static bool IsWatched(this Pawn pawn)
->>>>>>> parent of c1f9f4e... Merge pull request #1 from kbatbouta/patch-2
         {
             if (!Gen.IsHashIntervalTick(map.Parent, 24))
             {
@@ -153,7 +143,6 @@ namespace PrisonLabor.Core.Trackers
 
         public static void FinilizeUpdates()
         {
-<<<<<<< HEAD
             foreach (Pawn p in _prisoners)
             {
                 if (p.GetRoom() == null)
@@ -198,35 +187,6 @@ namespace PrisonLabor.Core.Trackers
 
                         _dmotivation[p] = _dmotivation[p] * 0.75f;
                         _motivation[p] = (BGP.InspireRate / BGP.WardenCapacity) * _memo[rId][0] * 8f + _dmotivation[p] * 5.5f * _memo[rId][0];
-=======
-            lock (inspirationValues)
-            {
-                var wardens = new List<Pawn>();
-                wardens.AddRange(map.mapPawns.FreeColonists);
-                var prisoners = new List<Pawn>();
-                prisoners.AddRange(map.mapPawns.PrisonersOfColony);
-
-                Dictionary<Pawn, float> mapCalculations;
-                if (inspirationValues.TryGetValue(map, out mapCalculations))
-                    mapCalculations.Clear();
-                else
-                    inspirationValues[map] = mapCalculations = new Dictionary<Pawn, float>();
-
-                foreach (var prisoner in prisoners)
-                {
-                    mapCalculations[prisoner] = 0f;
-                }
-
-                var inRange = new Dictionary<Pawn, float>();
-                foreach (var warden in wardens)
-                {
-                    inRange.Clear();
-                    foreach (var prisoner in prisoners)
-                    {
-                        float distance = warden.Position.DistanceTo(prisoner.Position);
-                        if (distance < BGP.InpirationRange && prisoner.GetRoom() == warden.GetRoom())
-                            inRange.Add(prisoner, distance);
->>>>>>> parent of c1f9f4e... Merge pull request #1 from kbatbouta/patch-2
                     }
                     _watched[p] = true;
                 }
@@ -237,7 +197,6 @@ namespace PrisonLabor.Core.Trackers
                     _watched[p] = false;
                 }
 
-<<<<<<< HEAD
 #if TRACE
                 Log.Message("1. if unmotivated of pawn " + p.Name.ToString() + " " + _memo[rId][1] * 25f * -0.0001f);
                 Log.Message("2. _motivation of pawn " + p.Name.ToString() + " " + _motivation[p] + ", " + _dmotivation[p]);
@@ -344,26 +303,6 @@ namespace PrisonLabor.Core.Trackers
             Log.Message("o. Interation between " + prisoner.Name.ToString() + " " + warden.Name.ToString() + " / opinion " + opinion);
             Log.Message("o. Interation between changed _dmotivation to , for" + prisoner.Name.ToString() + ", " + _dmotivation[prisoner]);
 #endif
-=======
-                    var watchedPawns = new List<Pawn>(inRange.Keys);
-                    float points;
-                    if (inRange.Count > BGP.WardenCapacity)
-                    {
-                        watchedPawns.Sort(new Comparison<Pawn>((x, y) => inRange[x].CompareTo(inRange[y])));
-                        points = BGP.InspireRate / BGP.WardenCapacity;
-                    }
-                    else
-                    {
-                        points = BGP.InspireRate / inRange.Count;
-                    }
-
-                    for (int i = 0; i < watchedPawns.Count && i < BGP.WardenCapacity; i++)
-                    {
-                        mapCalculations[watchedPawns[i]] += points;
-                    }
-                }
-            }
->>>>>>> parent of c1f9f4e... Merge pull request #1 from kbatbouta/patch-2
         }
     }
 }
