@@ -5,7 +5,7 @@
         <label>watch prisoner</label>
         <giverClass>PrisonLabor.Core.AI.WorkGivers.WorkGiver_Supervise</giverClass>
         <workType>PrisonLabor_Jailor</workType>
-        <priorityInType>7</priorityInType>
+        <priorityInType>5</priorityInType>
         <verb>watch prisoner</verb>
         <gerund>watching prisoner</gerund>
         <requiredCapacities>

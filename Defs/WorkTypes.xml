@@ -7,7 +7,7 @@
         <gerundLabel>watching prisoners</gerundLabel>
         <description>Manage prisoners, which includes escort, watching, releasing, and execution of prisoners.</description>
         <verb>Supervise</verb>
-        <naturalPriority>199</naturalPriority>
+        <naturalPriority>1099</naturalPriority>
         <requireCapableColonist>true</requireCapableColonist>
         <relevantSkills>
             <li>Social</li>
