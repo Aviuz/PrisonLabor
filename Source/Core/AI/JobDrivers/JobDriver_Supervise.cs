@@ -4,6 +4,7 @@ using PrisonLabor.Constants;
 using PrisonLabor.Core.Needs;
 using PrisonLabor.Core.Trackers;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -26,11 +27,11 @@ namespace PrisonLabor.Core.AI.JobDrivers
 
             yield return Toils_Reserve.Reserve(TargetIndex.A, 1, -1, null);
             // TODO: remove.
-            //yield return MakeWatchToil(Prisoner);
+            yield return MakeWatchToil(Prisoner);
             for (var i = 0; i < 80; i++)
                 yield return Toils_General.Wait(10).FailOn(rangeCondition);
             // TODO: remove.
-            //yield return MakeWatchToil(Prisoner);
+            yield return MakeWatchToil(Prisoner);
             for (var i = 0; i < 80; i++)
                 yield return Toils_General.Wait(10).FailOn(rangeCondition);
             yield return Toils_Interpersonal.SetLastInteractTime(TargetIndex.A);
@@ -42,36 +43,16 @@ namespace PrisonLabor.Core.AI.JobDrivers
             toil.initAction = delegate
             {
                 var actor = toil.actor;
-                var prisonersInRoom = PrisonersInRoom(prisoner.GetRoom());
-                IntVec3 ind = new IntVec3();
-                int score = 0;
-                int curScore = 0;
-                bool found = false;
-                foreach (var cell in prisoner.GetRoom().Cells)
+                var prisonersIDInRoom = Tracked.Prisoners[actor.GetRoom().ID];
+
+                foreach (int id in prisonersIDInRoom)
                 {
-                    float distance = cell.DistanceTo(prisoner.InteractionCell);
-                    if (distance < BGP.InpirationRange)
-                    {
-                        if (distance < GapLengh)
-                            curScore = (int)distance;
-                        else
-                            curScore = (int)(BGP.InpirationRange - distance);
-
-                        foreach (var pawn in prisonersInRoom)
-                            if (cell.DistanceTo(pawn.Position) < BGP.InpirationRange)
-                                curScore += pawn.IsWatched() ? 50 : 100;
-
-                        if (curScore > score)
-                        {
-                            ind = cell;
-                            score = curScore;
-                            found = true;
-                        }
-                    }
+                    var prisonerComp = Tracked.pawnComps[Tracked.index[id]];
+                    var needM = ((Pawn)prisonerComp.parent).needs.TryGetNeed<Need_Motivation>();
+                    needM.CurLevelPercentage = Mathf.Min(1.0f, needM.CurLevelPercentage + 0.01f);
                 }
-                if (!found)
-                    ind = prisoner.GetRoom().Cells.RandomElement();
 
+                var ind = prisoner.GetRoom().Cells.RandomElement();
                 actor.pather.StartPath(ind, PathEndMode.OnCell);
             };
             toil.defaultCompleteMode = ToilCompleteMode.PatherArrival;
@@ -83,14 +64,6 @@ namespace PrisonLabor.Core.AI.JobDrivers
             return toil.actor.Position.DistanceTo(Prisoner.Position) > BGP.InpirationRange;
         }
 
-        private IEnumerable<Pawn> PrisonersInRoom(Room room)
-        {
-            foreach (var pawn in room.Map.mapPawns.PrisonersOfColony.Where(p => p.LaborEnabled() && p.needs?.TryGetNeed<Need_Motivation>() != null))
-            {
-                if (pawn.GetRoom() == room)
-                    yield return pawn;
-            }
-        }
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {

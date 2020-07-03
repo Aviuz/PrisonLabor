@@ -23,6 +23,8 @@ namespace PrisonLabor.Core.Components
 
         private static readonly Object LOCK_ID = new Object();
 
+        public Thing Parent => parent;
+
         public PrisonerComp()
         {
             lock (LOCK_ID)

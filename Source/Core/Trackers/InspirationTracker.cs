@@ -20,24 +20,32 @@ namespace PrisonLabor.Core.Trackers
                 return false;
 
             var wardensCount = 0;
+            var prisonersCount = 0;
 
             lock (Tracked.LOCK_WARDEN)
+            {
                 wardensCount = Tracked.Wardens[room.ID].Count;
+                prisonersCount = Tracked.Prisoners[room.ID].Count;
+            }
 
             if (room.IsHuge)
             {
                 if (room.CellCount > 1600)
                     return false;
 
-                if (wardensCount < 3)
+                if (wardensCount - prisonersCount < 3)
                     return false;
             }
 
-            else if (wardensCount == 0)
+            else if (wardensCount == 0 && prisonersCount < 2)
                 return false;
+            else if (prisonersCount >= 2)
+            {
+                isWatched[pawn] = -prisonersCount / 100f;
+                return false;
+            }
 
-            isWatched[pawn] = wardensCount / 100f;
-
+            isWatched[pawn] = (wardensCount / prisonersCount) * 0.001f;
             return true;
         }
 
