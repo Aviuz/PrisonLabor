@@ -28,18 +28,17 @@ namespace PrisonLabor.Core.Trackers
                 prisonersCount = Tracked.Prisoners[room.ID].Count;
             }
 
+            if (prisonersCount == 0)
+                return false;
+
+
             if (room.IsHuge)
             {
                 if (room.CellCount > 1600)
                     return false;
-
-                if (wardensCount - prisonersCount < 3)
-                    return false;
             }
 
-            else if (wardensCount == 0 && prisonersCount < 2)
-                return false;
-            else if (prisonersCount >= 2)
+            if (prisonersCount >= 2 && wardensCount <= 1)
             {
                 isWatched[pawn] = -prisonersCount / 100f;
                 return false;
