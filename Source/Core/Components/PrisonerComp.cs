@@ -109,6 +109,9 @@ namespace PrisonLabor.Core.Components
                 {
                     Tracked.index.Remove(id);
                     Tracked.pawnComps.Remove(id);
+
+                    derefrenced = true;
+                    pawn.AllComps.Remove(this);
                 }
 #if TRACE
                 Log.Message("Unregisterd pawn: " + pawn.Name.ToStringFull);
@@ -133,30 +136,38 @@ namespace PrisonLabor.Core.Components
             if (this.pawn == null)
                 this.pawn = (Pawn)this.parent;
 
-            if (!initliazed)
+            if (this.pawn.Dead)
             {
-                if (this.pawn.RaceProps.Animal || !this.pawn.RaceProps.Humanlike)
-                {
-                    derefrenced = true; return;
-                }
-                else
-                {
-                    initliazed = true;
-                }
+                this.Unregister();
             }
+            else
+            {
+                if (!initliazed)
+                {
+                    if (this.pawn.RaceProps.Animal || !this.pawn.RaceProps.Humanlike)
+                    {
+                        derefrenced = true; return;
+                    }
+                    else
+                    {
+                        initliazed = true;
+                    }
+                }
 
-            if (pawn.IsPrisoner)
-                this.RegisterPrisoner();
-            else if (pawn.IsFreeColonist)
-                this.RegisterWarden();
+                if (pawn.IsPrisoner)
+                    this.RegisterPrisoner();
+                else if (pawn.IsFreeColonist)
+                    this.RegisterWarden();
 
-            if (isPrisoner && isWarden)
-                this.Reregister();
+                if (isPrisoner && isWarden)
+                    this.Reregister();
+            }
         }
 
         public override void PostDeSpawn(Map map)
         {
             base.PostDeSpawn(map);
+
             this.Unregister();
         }
     }
