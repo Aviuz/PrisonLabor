@@ -7,7 +7,12 @@ namespace PrisonLabor.Core.Components
 {
     public class PrisonerComp : ThingComp
     {
+        private bool initliazed = false;
+
         private bool derefrenced = false;
+
+        private bool isWarden = false;
+        private bool isPrisoner = false;
 
         private Pawn pawn;
 
@@ -49,6 +54,8 @@ namespace PrisonLabor.Core.Components
                     Tracked.index[id] = room.ID;
                 }
             }
+
+            isWarden = true;
         }
 
         private void RegisterPrisoner()
@@ -68,17 +75,54 @@ namespace PrisonLabor.Core.Components
                     Tracked.index[id] = room.ID;
                 }
             }
+
+            isPrisoner = true;
+        }
+
+        private void Reregister(bool unregister = false)
+        {
+            lock (Tracked.LOCK_WARDEN)
+            {
+                Tracked.index[id] = -1;
+
+                if (pawn.IsPrisoner)
+                    this.isWarden = false;
+                else if (pawn.IsFreeColonist)
+                    this.isPrisoner = false;
+
+                this.CleanUp();
+#if TRACE
+                Log.Message("Unregisterd pawn: " + pawn.Name.ToStringFull);
+#endif
+            }
         }
 
         private void Unregister(bool unregister = false)
         {
             lock (Tracked.LOCK_WARDEN)
             {
+                Tracked.index[id] = -1;
 
+                this.CleanUp();
+
+                if (pawn.Dead)
+                {
+                    Tracked.index.Remove(id);
+                    Tracked.pawnComps.Remove(id);
+                }
 #if TRACE
                 Log.Message("Unregisterd pawn: " + pawn.Name.ToStringFull);
 #endif
             }
+        }
+
+        private void CleanUp()
+        {
+            foreach (int roomid in Tracked.Prisoners.Keys)
+                Tracked.Prisoners[roomid].RemoveAll(x => x == id);
+
+            foreach (int roomid in Tracked.Wardens.Keys)
+                Tracked.Wardens[roomid].RemoveAll(x => x == id);
         }
 
         public override void CompTickRare()
@@ -89,22 +133,25 @@ namespace PrisonLabor.Core.Components
             if (this.pawn == null)
                 this.pawn = (Pawn)this.parent;
 
-            if (this.pawn.RaceProps.Animal || !this.pawn.RaceProps.Humanlike)
+            if (!initliazed)
             {
-                derefrenced = true;
-                return;
-            }
-
-            if (this.pawn.RaceProps.Animal || !this.pawn.RaceProps.Humanlike)
-            {
-                derefrenced = true;
-                return;
+                if (this.pawn.RaceProps.Animal || !this.pawn.RaceProps.Humanlike)
+                {
+                    derefrenced = true; return;
+                }
+                else
+                {
+                    initliazed = true;
+                }
             }
 
             if (pawn.IsPrisoner)
                 this.RegisterPrisoner();
-            else if (pawn.IsColonist)
+            else if (pawn.IsFreeColonist)
                 this.RegisterWarden();
+
+            if (isPrisoner && isWarden)
+                this.Reregister();
         }
 
         public override void PostDeSpawn(Map map)

@@ -27,16 +27,7 @@ namespace PrisonLabor.HarmonyPatches
         // Called at the end of the game loop.
         public static void OnEnd()
         {
-            if (Tracked.remove.Count > 0)
-            {
-                for (int i = 0; i < Tracked.remove.Count; i++)
-                {
-                    var comp = Tracked.remove[i].GetComp<PrisonerComp>();
-                    if (comp != null)
-                        Tracked.remove[i].AllComps.Remove(comp);
-                }
-                Tracked.remove.Clear();
-            }
+
         }
 
         #endregion Baisc 

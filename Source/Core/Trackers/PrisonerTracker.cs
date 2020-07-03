@@ -16,8 +16,6 @@ namespace PrisonLabor.Core.Trackers
 
         public static Dictionary<int, int> index = new Dictionary<int, int>();
         public static Dictionary<int, ThingComp> pawnComps = new Dictionary<int, ThingComp>();
-
-        public static List<Pawn> remove = new List<Pawn>();
     }
 
 
