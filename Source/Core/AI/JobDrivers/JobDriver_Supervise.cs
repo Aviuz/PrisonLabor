@@ -47,7 +47,7 @@ namespace PrisonLabor.Core.AI.JobDrivers
 
                 foreach (int id in prisonersIDInRoom)
                 {
-                    var prisonerComp = Tracked.pawnComps[Tracked.index[id]];
+                    var prisonerComp = Tracked.pawnComps[id];
                     var needM = ((Pawn)prisonerComp.parent).needs.TryGetNeed<Need_Motivation>();
                     needM.CurLevelPercentage = Mathf.Min(1.0f, needM.CurLevelPercentage + 0.01f);
                 }
