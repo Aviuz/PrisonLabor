@@ -2,22 +2,23 @@
 using HarmonyLib;
 using PrisonLabor.Core.Components;
 using PrisonLabor.Core.Trackers;
+using RimWorld;
 using Verse;
 using Verse.AI.Group;
 
 namespace PrisonLabor.HarmonyPatches.Patches_FactionsAndLords
 {
-    [HarmonyPatch(typeof(Lord))]
-    [HarmonyPatch(nameof(Lord.Notify_PawnAttemptArrested))]
+    [HarmonyPatch(typeof(Faction))]
+    [HarmonyPatch(nameof(Faction.Notify_MemberCaptured))]
     public static class Patches_ColonistArrested
     {
-        public static void Postfix(Pawn victim)
+        public static void Postfix(Pawn member)
         {
-            if (victim.IsPrisonerOfColony)
+            if (member.IsPrisoner)
             {
                 lock (Tracked.LOCK_WARDEN)
                 {
-                    var comp = victim.TryGetComp<PrisonerComp>();
+                    var comp = member.TryGetComp<PrisonerComp>();
 
                     if (comp == null)
                         return;
@@ -26,15 +27,22 @@ namespace PrisonLabor.HarmonyPatches.Patches_FactionsAndLords
                         return;
 
                     if (Tracked.index[comp.id] == -1)
-                        return;
-
-                    if (Tracked.Wardens[Tracked.index[comp.id]].Contains(comp.id))
+                    {
+                        Tracked.CleanUp();
+                    }
+                    else if (Tracked.Wardens[Tracked.index[comp.id]].Contains(comp.id))
                     {
                         Tracked.Wardens[Tracked.index[comp.id]].Remove(comp.id);
                         Tracked.index[comp.id] = -1;
                     }
                 }
             }
+
+#if TRACE
+            Log.Message("Pawn Arrest Attempted");
+#endif
+
+
         }
     }
 }

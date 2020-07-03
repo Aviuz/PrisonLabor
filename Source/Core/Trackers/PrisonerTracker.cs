@@ -15,7 +15,22 @@ namespace PrisonLabor.Core.Trackers
 
         public static Dictionary<int, int> index = new Dictionary<int, int>();
         public static Dictionary<int, ThingComp> pawnComps = new Dictionary<int, ThingComp>();
+
+        public static void CleanUp()
+        {
+            foreach (int id in Tracked.index.Keys)
+            {
+                Tracked.index[id] = -1;
+
+                foreach (int roomId in Tracked.Wardens.Keys)
+                    Tracked.Wardens[roomId].Clear();
+
+                foreach (int roomId in Tracked.Prisoners.Keys)
+                    Tracked.Prisoners[roomId].Clear();
+            }
+        }
     }
+
 
     [StaticConstructorOnStartup]
     public static class PrisonerRegistery
