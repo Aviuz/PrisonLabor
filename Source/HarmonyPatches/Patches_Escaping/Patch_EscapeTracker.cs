@@ -22,18 +22,18 @@ namespace PrisonLabor.HarmonyPatches.Patches_Escaping
             }
         }
 
-        // TODO: Patches_Escaping.Patch_Tick Remove
-        //[HarmonyPatch(typeof(Pawn))]
-        //[HarmonyPatch(nameof(Pawn.Tick))]
-        //static class Patch_Tick
-        //{
-        //    static void Postfix(Pawn __instance)
-        //    {
-        //        if (!__instance.Dead)
-        //        {
-        //            EscapeTracker.Of(__instance)?.Tick();
-        //        }
-        //    }
-        //}
+        //TODO:[TESTING] Patches_Escaping.Patch_Tick Remove
+        [HarmonyPatch(typeof(Pawn))]
+        [HarmonyPatch(nameof(Pawn.TickRare))]
+        static class Patch_Tick
+        {
+            static void Postfix(Pawn __instance)
+            {
+                if (!__instance.Dead)
+                {
+                    EscapeTracker.Of(__instance)?.Tick();
+                }
+            }
+        }
     }
 }

@@ -73,10 +73,7 @@ namespace PrisonLabor.Core.Components
             lock (Tracked.LOCK_WARDEN)
             {
                 if (Tracked.index[id] == -1)
-                {
-                    Tracked.index.Remove(id);
                     Tracked.pawnComps.Remove(id);
-                }
                 else
                 {
                     var roomid = Tracked.index[id];
@@ -87,7 +84,6 @@ namespace PrisonLabor.Core.Components
                     if (Tracked.Prisoners.ContainsKey(roomid))
                         Tracked.Prisoners[roomid].Remove(id);
 
-                    Tracked.index.Remove(id);
                     Tracked.pawnComps.Remove(id);
                 }
             }
@@ -98,19 +94,21 @@ namespace PrisonLabor.Core.Components
             if (this.pawn == null)
                 this.pawn = (Pawn)this.parent;
 
-            if (pawn.Dead == true || pawn.Corpse != null)
+            if (pawn.Dead == true || !pawn.Spawned)
             {
                 this.Unregister();
                 this.parent.AllComps.Remove(this);
             }
             else
             {
-                if (pawn.IsPrisonerOfColony)
+                if (pawn.IsPrisoner)
                     this.RegisterPrisoner();
-                else if (pawn.IsFreeColonist)
+                else if (pawn.IsColonist)
                     this.RegisterWarden();
             }
         }
+
+
 
         public override void PostDeSpawn(Map map)
         {

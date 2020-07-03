@@ -190,7 +190,6 @@
         <Compile Include="Core\Components\PrisonerComp.cs" />
         <Compile Include="Core\Trackers\PrisonerTracker.cs" />
         <Compile Include="HarmonyPatches\Patches_Room\Patch_Room.cs" />
-        <Compile Include="HarmonyPatches\Patches_FactionsAndLords\Patches_ColonistArrested.cs" />
         <Compile Include="Core\Components\PrisonerProperties.cs" />
     </ItemGroup>
     <ItemGroup>
@@ -265,7 +264,6 @@
         <Folder Include="Core\Treatment\" />
         <Folder Include="Core\Components\" />
         <Folder Include="HarmonyPatches\Patches_Room\" />
-        <Folder Include="HarmonyPatches\Patches_FactionsAndLords\" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Properties\Resources.resx">
