@@ -102,12 +102,9 @@ namespace PrisonLabor.Core.Components
             lock (Tracked.LOCK_WARDEN)
             {
                 this.CleanUp();
-
-                if (pawn.Dead || pawn == null)
+                if (pawn?.Dead ?? true || pawn == null)
                 {
                     Tracked.index.Remove(id);
-                    Tracked.index.Remove(id);
-                    Tracked.pawnComps.Remove(id);
 
                     derefrenced = true;
 
@@ -168,8 +165,6 @@ namespace PrisonLabor.Core.Components
         public override void PostDeSpawn(Map map)
         {
             base.PostDeSpawn(map);
-
-            this.Unregister();
         }
     }
 }

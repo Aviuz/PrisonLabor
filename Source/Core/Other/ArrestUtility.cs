@@ -82,7 +82,7 @@ namespace PrisonLabor.Core.Other
 
         public static bool CanBeArrestedBy(Pawn pawn, Pawn arrester)
         {
-            return pawn.RaceProps.Humanlike && pawn.HostileTo(arrester.Faction) && pawn.CurJob.def == JobDefOf.Flee && (!pawn.IsPrisonerOfColony || !pawn.Position.IsInPrisonCell(pawn.Map));
+            return (pawn.RaceProps.Humanlike && pawn.HostileTo(arrester.Faction) && (pawn.CurJob?.def ?? JobDefOf.Flee) == JobDefOf.Flee && !pawn.IsPrisonerOfColony) || pawn.Downed;
         }
     }
 }
