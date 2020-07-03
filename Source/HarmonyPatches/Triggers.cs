@@ -6,11 +6,9 @@ using PrisonLabor.Core.Windows;
 using RimWorld;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
-using Verse.AI;
 
 namespace PrisonLabor.HarmonyPatches
 {
@@ -57,7 +55,6 @@ namespace PrisonLabor.HarmonyPatches
             static bool Prefix() { SaveUpgrader.Upgrade(); return true; }
         }
 
-
         [HarmonyPatch(typeof(Map))]
         [HarmonyPatch("FinalizeInit")]
         [HarmonyPatch(new Type[] { })]
@@ -65,7 +62,5 @@ namespace PrisonLabor.HarmonyPatches
         {
             static void Postfix() { NewsWindow.TryShow(); }
         }
-
-
     }
 }

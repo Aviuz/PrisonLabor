@@ -25,10 +25,12 @@ namespace PrisonLabor.Core.AI.JobDrivers
             var rangeCondition = new System.Func<Toil, bool>(RangeCondition);
 
             yield return Toils_Reserve.Reserve(TargetIndex.A, 1, -1, null);
-            yield return MakeWatchToil(Prisoner);
+            // TODO: remove.
+            //yield return MakeWatchToil(Prisoner);
             for (var i = 0; i < 80; i++)
                 yield return Toils_General.Wait(10).FailOn(rangeCondition);
-            yield return MakeWatchToil(Prisoner);
+            // TODO: remove.
+            //yield return MakeWatchToil(Prisoner);
             for (var i = 0; i < 80; i++)
                 yield return Toils_General.Wait(10).FailOn(rangeCondition);
             yield return Toils_Interpersonal.SetLastInteractTime(TargetIndex.A);
