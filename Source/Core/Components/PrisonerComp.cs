@@ -101,17 +101,18 @@ namespace PrisonLabor.Core.Components
         {
             lock (Tracked.LOCK_WARDEN)
             {
-                Tracked.index[id] = -1;
-
                 this.CleanUp();
 
-                if (pawn.Dead)
+                if (pawn.Dead || pawn == null)
                 {
+                    Tracked.index.Remove(id);
                     Tracked.index.Remove(id);
                     Tracked.pawnComps.Remove(id);
 
                     derefrenced = true;
-                    pawn.AllComps.Remove(this);
+
+                    if (pawn != null)
+                        pawn.AllComps.Remove(this);
                 }
 #if TRACE
                 Log.Message("Unregisterd pawn: " + pawn.Name.ToStringFull);
