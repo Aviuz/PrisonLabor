@@ -29,22 +29,30 @@ namespace PrisonLabor.Core.Trackers
             }
 
             if (prisonersCount == 0)
-                return false;
-
-
-            if (room.IsHuge)
             {
-                if (room.CellCount > 1600)
-                    return false;
-            }
-
-            if (prisonersCount >= 2 && wardensCount <= 1)
-            {
-                isWatched[pawn] = -prisonersCount / 100f;
+                isWatched[pawn] = 0.0f;
                 return false;
             }
 
-            isWatched[pawn] = (wardensCount / prisonersCount) * 0.001f;
+            if (wardensCount == 0)
+            {
+                isWatched[pawn] = -0.001f;
+                return false;
+            }
+
+            if (room.IsHuge || room.CellCount > 1600)
+            {
+                isWatched[pawn] = -0.005f;
+                return false;
+            }
+
+            if (prisonersCount / wardensCount >= 2.5f)
+            {
+                isWatched[pawn] = -0.08f;
+                return false;
+            }
+
+            isWatched[pawn] = (wardensCount * (wardensCount + 1)) / prisonersCount * 0.005f;
             return true;
         }
 
@@ -52,6 +60,8 @@ namespace PrisonLabor.Core.Trackers
         {
             if (!isWatched.ContainsKey(pawn))
                 return 0;
+
+            pawn.IsWatched();
 
             return isWatched[pawn];
         }
