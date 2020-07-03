@@ -1,79 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-    <!-- Situation thoughts-->
-    <ThoughtDef>
-        <defName>PrisonLabor_VeryGoodTreatment</defName>
-        <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_VeryGoodTreatment</workerClass>
-        <stages>
-            <li>
-                <label>treated very good</label>
-                <description>In this prison I've been treated very well.</description>
-                <baseMoodEffect>15</baseMoodEffect>
-            </li>
-        </stages>
-    </ThoughtDef>
-    <ThoughtDef>
-        <defName>PrisonLabor_LowMotivation</defName>
-        <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_LowMotivation</workerClass>
-        <stages>
-            <li>
-                <label>not supervised</label>
-                <description>Nobody cares if I'm working or not.</description>
-                <baseMoodEffect>5</baseMoodEffect>
-            </li>
-        </stages>
-    </ThoughtDef>
-    <ThoughtDef>
-        <defName>PrisonLabor_FreeTime</defName>
-        <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_FreeTime</workerClass>
-        <stages>
-            <li>
-                <label>free time</label>
-                <description>Even tough I'm prisoner, I can still have some free time.</description>
-                <baseMoodEffect>5</baseMoodEffect>
-            </li>
-        </stages>
-    </ThoughtDef>
-    <ThoughtDef>
-        <defName>PrisonLabor_TreatedBadly</defName>
-        <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_TreatedBadly</workerClass>
-        <stages>
-            <li>
-                <label>Treated badly</label>
-                <description>Even tough I'm prisoner, I'm someone little child!!</description>
-                <baseMoodEffect>-10</baseMoodEffect>
-            </li>
-        </stages>
-    </ThoughtDef>
-    <ThoughtDef>
-        <defName>PrisonLabor_Horrer</defName>
-        <durationDays>1</durationDays>
-        <stackedEffectMultiplier>0.4</stackedEffectMultiplier>
-        <stackLimit>5</stackLimit>
-        <stages>
-            <li>
-                <label>Afraid</label>
-                <description>The poor guy was terrified by the guards!!</description>
-                <baseMoodEffect>-3</baseMoodEffect>
-            </li>
-        </stages>
-    </ThoughtDef>
-    <!-- Random social interactions -->
-    <!--<ThoughtDef>
-        <defName>PrisonLabor_SharedHorrer</defName>
-        <thoughtClass>Thought_MemorySocial</thoughtClass>
-        <stackLimit>300</stackLimit>
-        <stackedEffectMultiplier>0.88</stackedEffectMultiplier>
-        <requiredTraits>
-            <li>Prude</li>
-        </requiredTraits>
-        <stages>
-            <li>
-                <label>witnessed the </label>
-                <description>Was that person naked? Do they just let people run around without clothes on here? Disgusting.</description>
-                <baseOpinionOffset>-1</baseOpinionOffset>
-            </li>
-        </stages>
-    </ThoughtDef>-->
-    <!-- Random social interactions -->
+  <!-- Situation thoughts-->
+  <ThoughtDef>
+    <defName>PrisonLabor_VeryGoodTreatment</defName>
+    <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_VeryGoodTreatment</workerClass>
+    <stages>
+      <li>
+        <label>treated very good</label>
+        <description>In this prison I've been treated very well.</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>PrisonLabor_LowMotivation</defName>
+    <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_LowMotivation</workerClass>
+    <stages>
+      <li>
+        <label>not supervised</label>
+        <description>Nobody cares if I'm working or not.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>PrisonLabor_FreeTime</defName>
+    <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_FreeTime</workerClass>
+    <stages>
+      <li>
+        <label>free time</label>
+        <description>Even tough I'm prisoner, I can still have some free time.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
 </Defs>

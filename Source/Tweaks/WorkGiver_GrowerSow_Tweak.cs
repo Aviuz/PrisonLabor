@@ -30,7 +30,6 @@ namespace PrisonLabor.Tweaks
             return wantedPlantDef != null;
         }
 
-        [System.Obsolete]
         public override Job JobOnCell(Pawn pawn, IntVec3 c, bool forced = false)
         {
             //if (!pawn.IsPrisoner)
