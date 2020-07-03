@@ -16,17 +16,24 @@ namespace PrisonLabor.Core.Trackers
         public static Dictionary<int, int> index = new Dictionary<int, int>();
         public static Dictionary<int, ThingComp> pawnComps = new Dictionary<int, ThingComp>();
 
-        public static void CleanUp()
+        public static void CleanUp(Pawn pawn)
         {
+            var comp = pawn.TryGetComp<PrisonerComp>();
+
+            if (comp == null)
+                return;
+
             foreach (int id in Tracked.index.Keys)
             {
                 Tracked.index[id] = -1;
 
                 foreach (int roomId in Tracked.Wardens.Keys)
-                    Tracked.Wardens[roomId].Clear();
+                    if (Tracked.Wardens[roomId].Contains(comp.id))
+                        Tracked.Wardens[roomId].Remove(comp.id);
 
                 foreach (int roomId in Tracked.Prisoners.Keys)
-                    Tracked.Prisoners[roomId].Clear();
+                    if (Tracked.Prisoners[roomId].Contains(comp.id))
+                        Tracked.Prisoners[roomId].Remove(comp.id);
             }
         }
     }

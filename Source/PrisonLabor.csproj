@@ -191,6 +191,7 @@
         <Compile Include="Core\Trackers\PrisonerTracker.cs" />
         <Compile Include="HarmonyPatches\Patches_Room\Patch_Room.cs" />
         <Compile Include="HarmonyPatches\Patches_FactionsAndLords\Patches_ColonistArrested.cs" />
+        <Compile Include="Core\Components\PrisonerProperties.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">

@@ -5,14 +5,6 @@ using Verse;
 
 namespace PrisonLabor.Core.Components
 {
-    public class PrisonerProperties : CompProperties
-    {
-        public PrisonerProperties()
-        {
-            this.compClass = typeof(PrisonerComp);
-        }
-    }
-
     public class PrisonerComp : ThingComp
     {
         private Pawn pawn;
@@ -123,6 +115,7 @@ namespace PrisonLabor.Core.Components
         public override void PostDeSpawn(Map map)
         {
             base.PostDeSpawn(map);
+            this.Unregister();
         }
     }
 }

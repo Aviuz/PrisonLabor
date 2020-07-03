@@ -15,7 +15,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_FactionsAndLords
         public static void Postfix(Pawn member)
         {
             lock (Tracked.LOCK_WARDEN)
-                Tracked.CleanUp();
+                Tracked.CleanUp(member);
 #if TRACE
             Log.Message("Pawn Arrest Attempted");
 #endif
