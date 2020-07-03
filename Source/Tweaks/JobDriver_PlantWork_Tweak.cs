@@ -15,7 +15,7 @@ namespace PrisonLabor.Tweaks
 
         protected float xpPerTick;
 
-        protected Plant Plant => (Plant)job.targetA.Thing;
+        protected Plant Plant => (Plant) job.targetA.Thing;
 
         [DebuggerHidden]
         protected override IEnumerable<Toil> MakeNewToils()

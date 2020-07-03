@@ -68,7 +68,7 @@ namespace PrisonLabor.Tweaks
             };
             mine.defaultCompleteMode = ToilCompleteMode.Never;
             mine.WithProgressBar(TargetIndex.A,
-                () => 1f - (float)MineTarget.HitPoints / (float)MineTarget.MaxHitPoints, false, -0.5f);
+                () => 1f - (float) MineTarget.HitPoints / (float) MineTarget.MaxHitPoints, false, -0.5f);
             mine.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
             mine.activeSkill = (() => SkillDefOf.Mining);
             yield return mine;
@@ -79,7 +79,7 @@ namespace PrisonLabor.Tweaks
             var num = pawn.GetStatValue(StatDefOf.MiningSpeed, true);
             if (num < 0.5f && pawn.Faction != Faction.OfPlayer)
                 num = 0.5f;
-            ticksToPickHit = (int)Math.Round(120f / num);
+            ticksToPickHit = (int) Math.Round(120f / num);
         }
 
         public override void ExposeData()

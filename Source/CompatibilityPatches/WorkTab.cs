@@ -111,7 +111,7 @@ namespace PrisonLabor.CompatibilityPatches
 
             if (currentTabIndex == ColonistsTabIndex)
                 tableField.SetValue(pawnTab, CreateTable(pawnTab, new Func<IEnumerable<Pawn>>(() => colonists)));
-            else if (currentTabIndex == PrisonersTabIndex)
+            else if(currentTabIndex == PrisonersTabIndex)
                 tableField.SetValue(pawnTab, CreateTable(pawnTab, new Func<IEnumerable<Pawn>>(() => prisoners)));
         }
 

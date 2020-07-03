@@ -17,23 +17,22 @@ namespace PrisonLabor.HarmonyPatches.Patches_Escaping
             static void Postfix(Pawn __instance)
             {
                 var escapeTracker = EscapeTracker.Of(__instance);
-                Scribe_Deep.Look(ref escapeTracker, "EscapeTracker", new object[] { __instance });
+                Scribe_Deep.Look(ref escapeTracker, "EscapeTracker", new object[] { __instance});
                 EscapeTracker.Save(__instance, escapeTracker);
             }
         }
 
-        // TODO: Patches_Escaping.Patch_Tick Remove
-        //[HarmonyPatch(typeof(Pawn))]
-        //[HarmonyPatch(nameof(Pawn.Tick))]
-        //static class Patch_Tick
-        //{
-        //    static void Postfix(Pawn __instance)
-        //    {
-        //        if (!__instance.Dead)
-        //        {
-        //            EscapeTracker.Of(__instance)?.Tick();
-        //        }
-        //    }
-        //}
+        [HarmonyPatch(typeof(Pawn))]
+        [HarmonyPatch(nameof(Pawn.Tick))]
+        static class Patch_Tick
+        {
+            static void Postfix(Pawn __instance)
+            {
+                if (!__instance.Dead)
+                {
+                    EscapeTracker.Of(__instance)?.Tick();
+                }
+            }
+        }
     }
 }
