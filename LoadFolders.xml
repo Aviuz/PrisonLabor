@@ -1,9 +1,9 @@
-<loadFolders>
-  <v1.0>
-    <li>/</li>
-    <li>1.0</li>
-  </v1.0>
+<?xml version="1.0" encoding="utf-8"?>
+<loadFolders> 
   <v1.1>
-    <li>/</li>
+    	<li>/</li>
+    	<li>Defs</li>
+    	<li>Patches</li>
+    	<li>Textures</li>
   </v1.1>
 </loadFolders>

@@ -24,7 +24,10 @@ namespace PrisonLabor.HarmonyPatches.Patches_Factions
             {
                 var comp = member.TryGetComp<PrisonerComp>();
                 if (comp == null && member.IsPrisonerOfColony && !member.Dead)
+                {
+
                     member.AllComps.Add(new PrisonerComp());
+                }
                 else if (comp == null)
                     return;
 

@@ -7,6 +7,8 @@ namespace PrisonLabor.Core.Components
 {
     public class PrisonerComp : ThingComp
     {
+        private bool derefrenced = false;
+
         private Pawn pawn;
 
         public readonly int id;
@@ -72,43 +74,38 @@ namespace PrisonLabor.Core.Components
         {
             lock (Tracked.LOCK_WARDEN)
             {
-                if (Tracked.index[id] == -1)
-                    Tracked.pawnComps.Remove(id);
-                else
-                {
-                    var roomid = Tracked.index[id];
 
-                    if (Tracked.Wardens.ContainsKey(roomid))
-                        Tracked.Wardens[roomid].Remove(id);
-
-                    if (Tracked.Prisoners.ContainsKey(roomid))
-                        Tracked.Prisoners[roomid].Remove(id);
-
-                    Tracked.index[id] = -1;
-                }
+#if TRACE
+                Log.Message("Unregisterd pawn: " + pawn.Name.ToStringFull);
+#endif
             }
         }
 
         public override void CompTickRare()
         {
+            if (derefrenced)
+                return;
+
             if (this.pawn == null)
                 this.pawn = (Pawn)this.parent;
 
-            if (pawn.Dead == true || !pawn.Spawned)
+            if (this.pawn.RaceProps.Animal || !this.pawn.RaceProps.Humanlike)
             {
-                this.Unregister();
-                this.parent.AllComps.Remove(this);
+                derefrenced = true;
+                return;
             }
-            else
+
+            if (this.pawn.RaceProps.Animal || !this.pawn.RaceProps.Humanlike)
             {
-                if (pawn.IsPrisoner)
-                    this.RegisterPrisoner();
-                else if (pawn.IsColonist)
-                    this.RegisterWarden();
+                derefrenced = true;
+                return;
             }
+
+            if (pawn.IsPrisoner)
+                this.RegisterPrisoner();
+            else if (pawn.IsColonist)
+                this.RegisterWarden();
         }
-
-
 
         public override void PostDeSpawn(Map map)
         {

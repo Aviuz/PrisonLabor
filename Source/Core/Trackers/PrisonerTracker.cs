@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using PrisonLabor.Core.Components;
+using RimWorld;
 using Verse;
 
 namespace PrisonLabor.Core.Trackers
@@ -15,6 +16,8 @@ namespace PrisonLabor.Core.Trackers
 
         public static Dictionary<int, int> index = new Dictionary<int, int>();
         public static Dictionary<int, ThingComp> pawnComps = new Dictionary<int, ThingComp>();
+
+        public static List<Pawn> remove = new List<Pawn>();
     }
 
 
@@ -28,11 +31,22 @@ namespace PrisonLabor.Core.Trackers
         static PrisonerRegistery()
         {
             PrisonerRegistery.Prepare();
-            foreach (ThingDef defOfPawn in DefPawns)
+
+            var allThings = DefDatabase<ThingDef>.AllDefs;
+
+            foreach (var def in allThings)
             {
-                if (defOfPawn.comps == null)
-                    defOfPawn.comps = new List<CompProperties>();
-                defOfPawn.comps.Add(new PrisonerProperties());
+                if (!(def.inspectorTabsResolved?.Any(tab => tab is ITab_Pawn_Needs) ?? false) ||
+                    (def.inspectorTabsResolved?.Any(tab => tab is ITab_Pawn_Training) ?? false) ||
+                    !(def.inspectorTabsResolved?.Any(tab => tab is ITab_Pawn_Gear) ?? false) ||
+                    (def.comps?.Any(comp => comp is PrisonerProperties) ?? false))
+                    continue;
+
+                if (def.comps == null)
+                    def.comps = new List<CompProperties>();
+
+                Log.Message("def:" + def.defName);
+                def.comps.Add(new PrisonerProperties());
             }
         }
 
@@ -48,6 +62,13 @@ namespace PrisonLabor.Core.Trackers
                     && (DefStupidPawns == null || def.race.thinkTreeMain != DefStupidPawns)
                     select def
                 );
+
+            foreach (ThingDef def in DefPawns)
+            {
+                if (def.comps == null)
+                    def.comps = new List<CompProperties>();
+                def.comps.Add(new PrisonerProperties());
+            }
         }
     }
 }
