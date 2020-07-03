@@ -49,7 +49,7 @@ namespace PrisonLabor.Core.AI.JobDrivers
                 {
                     var prisonerComp = Tracked.pawnComps[id];
                     var needM = ((Pawn)prisonerComp.parent).needs.TryGetNeed<Need_Motivation>();
-                    needM.CurLevelPercentage = Mathf.Min(1.0f, needM.CurLevelPercentage + 0.01f);
+                    needM.CurLevelPercentage = Mathf.Min(1.0f, needM.CurLevelPercentage + 0.05f);
                 }
 
                 var ind = prisoner.GetRoom().Cells.RandomElement();
