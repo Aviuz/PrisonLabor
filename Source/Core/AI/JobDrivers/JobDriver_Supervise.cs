@@ -22,7 +22,6 @@ namespace PrisonLabor.Core.AI.JobDrivers
             this.FailOnMentalState(TargetIndex.A);
             this.FailOnNotAwake(TargetIndex.A);
 
-            this.FailOn(() => Prisoner.GetRoom() == null || pawn.GetRoom() == null);
             this.FailOn(() => !Prisoner.IsPrisonerOfColony || !Prisoner.guest.PrisonerIsSecure);
 
             var rangeCondition = new System.Func<Toil, bool>(RangeCondition);

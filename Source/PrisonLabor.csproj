@@ -191,6 +191,7 @@
         <Compile Include="Core\Trackers\PrisonerTracker.cs" />
         <Compile Include="HarmonyPatches\Patches_Room\Patch_Room.cs" />
         <Compile Include="Core\Components\PrisonerProperties.cs" />
+        <Compile Include="HarmonyPatches\Patches_Factions\Patch_PawnCaptured.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">
@@ -264,6 +265,7 @@
         <Folder Include="Core\Treatment\" />
         <Folder Include="Core\Components\" />
         <Folder Include="HarmonyPatches\Patches_Room\" />
+        <Folder Include="HarmonyPatches\Patches_Factions\" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Properties\Resources.resx">

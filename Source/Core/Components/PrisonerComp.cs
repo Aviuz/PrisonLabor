@@ -84,7 +84,7 @@ namespace PrisonLabor.Core.Components
                     if (Tracked.Prisoners.ContainsKey(roomid))
                         Tracked.Prisoners[roomid].Remove(id);
 
-                    Tracked.pawnComps.Remove(id);
+                    Tracked.index[id] = -1;
                 }
             }
         }
