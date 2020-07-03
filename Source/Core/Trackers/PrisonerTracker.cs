@@ -23,18 +23,16 @@ namespace PrisonLabor.Core.Trackers
             if (comp == null)
                 return;
 
-            foreach (int id in Tracked.index.Keys)
-            {
-                Tracked.index[id] = -1;
+            if (Tracked.index.ContainsKey(comp.id))
+                Tracked.index[comp.id] = -1;
 
-                foreach (int roomId in Tracked.Wardens.Keys)
-                    if (Tracked.Wardens[roomId].Contains(comp.id))
-                        Tracked.Wardens[roomId].Remove(comp.id);
+            foreach (int roomId in Tracked.Wardens.Keys)
+                if (Tracked.Wardens[roomId].Contains(comp.id))
+                    Tracked.Wardens[roomId].Remove(comp.id);
 
-                foreach (int roomId in Tracked.Prisoners.Keys)
-                    if (Tracked.Prisoners[roomId].Contains(comp.id))
-                        Tracked.Prisoners[roomId].Remove(comp.id);
-            }
+            foreach (int roomId in Tracked.Prisoners.Keys)
+                if (Tracked.Prisoners[roomId].Contains(comp.id))
+                    Tracked.Prisoners[roomId].Remove(comp.id);
         }
     }
 
