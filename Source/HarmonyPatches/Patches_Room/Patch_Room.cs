@@ -27,6 +27,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_Rooms
             {
                 if (!Tracked.Wardens.Keys.Contains(room.ID))
                     Tracked.Wardens[room.ID] = new List<int>();
+
+                if (!Tracked.Prisoners.Keys.Contains(room.ID))
+                    Tracked.Prisoners[room.ID] = new List<int>();
 #if DEBUG
                 Log.Message("Added Region " + room.ID);
 #endif
@@ -64,6 +67,12 @@ namespace PrisonLabor.HarmonyPatches.Patches_Rooms
                     {
                         var wID = Tracked.Wardens[__instance.ID][i];
                         Tracked.index[wID] = -1;
+                    }
+
+                    for (int i = 0; i < Tracked.Prisoners[__instance.ID].Count; i++)
+                    {
+                        var pID = Tracked.Prisoners[__instance.ID][i];
+                        Tracked.index[pID] = -1;
                     }
 
                     Tracked.Wardens.Remove(__instance.ID);

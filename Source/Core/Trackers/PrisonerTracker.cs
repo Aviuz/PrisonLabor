@@ -11,8 +11,10 @@ namespace PrisonLabor.Core.Trackers
         public static readonly Object LOCK_WARDEN = new Object();
 
         public static Dictionary<int, List<int>> Wardens = new Dictionary<int, List<int>>();
+        public static Dictionary<int, List<int>> Prisoners = new Dictionary<int, List<int>>();
 
         public static Dictionary<int, int> index = new Dictionary<int, int>();
+        public static Dictionary<int, ThingComp> pawnComps = new Dictionary<int, ThingComp>();
     }
 
     [StaticConstructorOnStartup]

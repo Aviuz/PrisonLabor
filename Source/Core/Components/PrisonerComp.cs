@@ -31,11 +31,12 @@ namespace PrisonLabor.Core.Components
                 idCounter++;
             }
 
+            Tracked.pawnComps[id] = this;
             Tracked.index.Add(id, -1);
         }
 
 
-        private void Register()
+        private void RegisterWarden()
         {
             lock (Tracked.LOCK_WARDEN)
             {
@@ -54,12 +55,34 @@ namespace PrisonLabor.Core.Components
             }
         }
 
+        private void RegisterPrisoner()
+        {
+            lock (Tracked.LOCK_WARDEN)
+            {
+                if (Tracked.index[id] != -1)
+                    Tracked.Prisoners[Tracked.index[id]].Remove(id);
+
+                var room = parent.GetRoom();
+
+                if (room == null)
+                    Tracked.index[id] = -1;
+                else
+                {
+                    Tracked.Prisoners[room.ID].Add(id);
+                    Tracked.index[id] = room.ID;
+                }
+            }
+        }
+
         private void Unregister(bool unregister = false)
         {
             lock (Tracked.LOCK_WARDEN)
             {
                 if (Tracked.index[id] == -1)
+                {
                     Tracked.index.Remove(id);
+                    Tracked.pawnComps.Remove(id);
+                }
                 else
                 {
                     var roomid = Tracked.index[id];
@@ -67,7 +90,11 @@ namespace PrisonLabor.Core.Components
                     if (Tracked.Wardens.ContainsKey(roomid))
                         Tracked.Wardens[roomid].Remove(id);
 
+                    if (Tracked.Prisoners.ContainsKey(roomid))
+                        Tracked.Prisoners[roomid].Remove(id);
+
                     Tracked.index.Remove(id);
+                    Tracked.pawnComps.Remove(id);
                 }
             }
         }
@@ -85,9 +112,9 @@ namespace PrisonLabor.Core.Components
             else
             {
                 if (pawn.IsPrisoner)
-                    return;
-
-                this.Register();
+                    this.RegisterPrisoner();
+                else if (pawn.IsColonist)
+                    this.RegisterWarden();
             }
         }
 

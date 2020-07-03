@@ -76,7 +76,7 @@ namespace PrisonLabor.Core.Needs
             {
                 if (pawn.GetRoomGroup() != null)
                 {
-                    var value = PrisonLabor.Core.Trackers.InspirationTracker.GetInsiprationValue(pawn, true);
+                    var value = InspirationTracker.GetInsiprationValue(pawn, true);
 
                     if (PrisonLaborUtility.LaborEnabled(pawn))
                     {
@@ -89,7 +89,7 @@ namespace PrisonLabor.Core.Needs
                             // Some pawns have no rest need (e.g. Pawns with Circadian Half Cycler or androids from other mods)
                             if (pawn.needs.rest != null)
                             {
-                                value -= (int)pawn.needs.rest.CurCategory * BGP.Laziness_TiredRate;
+                                value -= (int) pawn.needs.rest.CurCategory * BGP.Laziness_TiredRate;
                             }
                         }
                         else if (pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy)
