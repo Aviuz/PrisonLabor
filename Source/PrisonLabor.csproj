@@ -62,6 +62,7 @@
         </Reference>
         <Reference Include="0Harmony">
           <HintPath>packages\Lib.Harmony.2.0.1\lib\net45\0Harmony.dll</HintPath>
+          <Private>False</Private>
         </Reference>
     </ItemGroup>
     <ItemGroup>
@@ -189,6 +190,7 @@
         <Compile Include="Core\Components\PrisonerComp.cs" />
         <Compile Include="Core\Trackers\PrisonerTracker.cs" />
         <Compile Include="HarmonyPatches\Patches_Room\Patch_Room.cs" />
+        <Compile Include="HarmonyPatches\Patches_FactionsAndLords\Patches_ColonistArrested.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">
@@ -262,6 +264,7 @@
         <Folder Include="Core\Treatment\" />
         <Folder Include="Core\Components\" />
         <Folder Include="HarmonyPatches\Patches_Room\" />
+        <Folder Include="HarmonyPatches\Patches_FactionsAndLords\" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Properties\Resources.resx">

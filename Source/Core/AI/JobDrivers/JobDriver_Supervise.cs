@@ -43,6 +43,8 @@ namespace PrisonLabor.Core.AI.JobDrivers
             toil.initAction = delegate
             {
                 var actor = toil.actor;
+                var room = actor.GetRoom();
+
                 var prisonersIDInRoom = Tracked.Prisoners[actor.GetRoom().ID];
 
                 foreach (int id in prisonersIDInRoom)

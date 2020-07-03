@@ -113,9 +113,9 @@ namespace PrisonLabor.Core.Components
             }
             else
             {
-                if (pawn.IsPrisoner)
+                if (pawn.IsPrisonerOfColony)
                     this.RegisterPrisoner();
-                else if (pawn.IsColonist)
+                else if (pawn.IsFreeColonist)
                     this.RegisterWarden();
             }
         }
