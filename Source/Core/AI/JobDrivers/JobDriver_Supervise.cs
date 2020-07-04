@@ -24,17 +24,19 @@ namespace PrisonLabor.Core.AI.JobDrivers
 
             this.FailOn(() => !Prisoner.IsPrisonerOfColony || !Prisoner.guest.PrisonerIsSecure);
 
-            var rangeCondition = new System.Func<Toil, bool>(RangeCondition);
-
             yield return Toils_Reserve.Reserve(TargetIndex.A, 1, -1, null);
-            // TODO: remove.
+
             yield return MakeWatchToil(Prisoner);
             for (var i = 0; i < 80; i++)
-                yield return Toils_General.Wait(10);
-            // TODO: remove.
+                yield return Toils_General.Wait(7);
+
             yield return MakeWatchToil(Prisoner);
             for (var i = 0; i < 80; i++)
-                yield return Toils_General.Wait(10);
+                yield return Toils_General.Wait(7);
+
+            yield return MakeWatchToil(Prisoner);
+            for (var i = 0; i < 80; i++)
+                yield return Toils_General.Wait(7);
             yield return Toils_Interpersonal.SetLastInteractTime(TargetIndex.A);
         }
 
@@ -52,7 +54,7 @@ namespace PrisonLabor.Core.AI.JobDrivers
                 {
                     var prisonerComp = Tracked.pawnComps[id];
                     var needM = ((Pawn)prisonerComp.parent).needs.TryGetNeed<Need_Motivation>();
-                    needM.CurLevelPercentage = Mathf.Min(1.0f, needM.CurLevelPercentage + 0.05f);
+                    needM.CurLevelPercentage = Mathf.Min(1.0f, needM.CurLevelPercentage + 0.095f);
                 }
 
                 var ind = prisoner.GetRoom().Cells.RandomElement();
@@ -61,12 +63,6 @@ namespace PrisonLabor.Core.AI.JobDrivers
             toil.defaultCompleteMode = ToilCompleteMode.PatherArrival;
             return toil;
         }
-
-        private bool RangeCondition(Toil toil)
-        {
-            return toil.actor.Position.DistanceTo(Prisoner.Position) > BGP.InpirationRange;
-        }
-
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {

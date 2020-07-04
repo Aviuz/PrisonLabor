@@ -30,20 +30,21 @@ namespace PrisonLabor.Core.AI.ThinkNodes
                         return false;
                 }
 
+                // TODO: escape mechanines
                 // Prisoner will escape if get ready to run.
                 // If he can run he will start ticking impatient, once complete he will get ready.
-                var escapeTracker = EscapeTracker.Of(pawn, true);
-                if (pawn.guest.PrisonerIsSecure && RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
-                {
-                    if (escapeTracker.ReadyToEscape)
-                        return false;
-                    else
-                        escapeTracker.CanEscape = true;
-                }
-                else
-                {
-                    escapeTracker.CanEscape = false;
-                }
+                //var escapeTracker = EscapeTracker.Of(pawn, true);
+                //if (pawn.guest.PrisonerIsSecure && RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
+                //{
+                //    if (escapeTracker.ReadyToEscape)
+                //        return false;
+                //    else
+                //        escapeTracker.CanEscape = true;
+                //}
+                //else
+                //{
+                //    escapeTracker.CanEscape = false;
+                //}
 
 
                 if (PrisonLaborUtility.LaborEnabled(pawn))

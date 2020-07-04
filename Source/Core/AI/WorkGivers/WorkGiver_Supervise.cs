@@ -20,13 +20,18 @@ namespace PrisonLabor.Core.AI.WorkGivers
                 return null;
             if (pawn.IsPrisoner)
                 return null;
-            var escapeTracker = EscapeTracker.Of(prisoner, true);
-            if (!PrisonLaborUtility.LaborEnabled(prisoner) && !escapeTracker.CanEscape)
-                return null;
+
+            // TODO: Redo escape mechanincs
+            //var escapeTracker = EscapeTracker.Of(prisoner, true);
+            //if (!PrisonLaborUtility.LaborEnabled(prisoner) && !escapeTracker.CanEscape)
+            //    return null;
+            //if (!escapeTracker.CanEscape)
+            //    return null
+
             if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))
                 return new Job(JobDefOf.PrisonerAttemptRecruit, t);
 
-            if ((!PrisonLaborUtility.WorkTime(prisoner) || !need.ShouldBeMotivated) && !escapeTracker.CanEscape)
+            if ((!PrisonLaborUtility.WorkTime(prisoner) || !need.ShouldBeMotivated))
                 return null;
 
             return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerSupervise"), prisoner);

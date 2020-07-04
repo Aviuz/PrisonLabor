@@ -95,14 +95,7 @@
         <Compile Include="HarmonyPatches\Patches_Construction\EnableConstructionFinishFrames.cs" />
         <Compile Include="HarmonyPatches\Patches_DeepDrill\EnableDeepDrillsToPrisoners.cs" />
         <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapeTracker.cs" />
-        <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
-        <Compile Include="HarmonyPatches\Patches_Food\DeliverEvenOutsidePrisonCell.cs" />
-        <Compile Include="HarmonyPatches\Patches_Food\FoodUtility_IsFoodSourceOnMapSociallyProper.cs" />
-        <Compile Include="HarmonyPatches\Patches_Food\ReserveFoodForPrisonerAfterDropping.cs" />
-        <Compile Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
-        <Compile Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
         <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
-        <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
         <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
         <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_AddScrollToPrisonerTab.cs" />
         <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_BillCheckbox.cs" />
@@ -113,8 +106,6 @@
         <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapingPrisoner.cs" />
         <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_ExposeBillGroup.cs" />
         <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_ExtendVistorRect.cs" />
-        <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop.cs" />
-        <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ItemIsForbidden.cs" />
         <Compile Include="HarmonyPatches\HPatcher.cs" />
         <Compile Include="HarmonyPatches\Patches_SaveCompatibility\Patch_JailorTypeSaveCompatibility.cs" />
         <Compile Include="HarmonyPatches\Patches_Needs\Patch_NeedOnlyByPrisoners.cs" />
@@ -124,9 +115,7 @@
         <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_RemoveBillFromUtility.cs" />
         <Compile Include="HarmonyPatches\Patches_RenamingPrisoners\Patch_RenamePrisoners.cs" />
         <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_ResetWorktableWhenRecruited.cs" />
-        <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_RespectReservation.cs" />
         <Compile Include="HarmonyPatches\Patches_Restraints\Patch_RestrainsPatch.cs" />
-        <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_SocialPropernessFix.cs" />
         <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_TimetableFix.cs" />
         <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled.cs" />
         <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled2.cs" />
@@ -266,6 +255,17 @@
         <None Include="..\Patches\PrisonerComp.xml">
           <Link>Patches\PrisonerComp.xml</Link>
         </None>
+        <None Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
+        <None Include="HarmonyPatches\Patches_Food\DeliverEvenOutsidePrisonCell.cs" />
+        <None Include="HarmonyPatches\Patches_Food\FoodUtility_IsFoodSourceOnMapSociallyProper.cs" />
+        <None Include="HarmonyPatches\Patches_Food\ReserveFoodForPrisonerAfterDropping.cs" />
+        <None Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
+        <None Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
+        <None Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
+        <None Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop.cs" />
+        <None Include="HarmonyPatches\Patches_PermissionFix\Patch_ItemIsForbidden.cs" />
+        <None Include="HarmonyPatches\Patches_PermissionFix\Patch_RespectReservation.cs" />
+        <None Include="HarmonyPatches\Patches_PermissionFix\Patch_SocialPropernessFix.cs" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Core\Treatment\" />

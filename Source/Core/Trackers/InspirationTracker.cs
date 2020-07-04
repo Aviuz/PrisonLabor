@@ -36,19 +36,19 @@ namespace PrisonLabor.Core.Trackers
 
             if (wardensCount == 0)
             {
-                isWatched[pawn] = -0.0085f;
+                isWatched[pawn] = -0.00425f;
                 return false;
             }
 
             if (room.IsHuge || room.CellCount > 1600)
             {
-                isWatched[pawn] = -0.01f;
+                isWatched[pawn] = -0.005f;
                 return false;
             }
 
-            if (prisonersCount / wardensCount >= 3.5f)
+            if (prisonersCount / wardensCount > 4f)
             {
-                isWatched[pawn] = -0.08f;
+                isWatched[pawn] = -0.04f;
                 return false;
             }
 
