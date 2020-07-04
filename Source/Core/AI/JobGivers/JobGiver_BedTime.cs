@@ -12,7 +12,7 @@ namespace PrisonLabor.Core.AI.JobGivers
 
         public override ThinkNode DeepCopy(bool resolve = true)
         {
-            var jobGiver_BedTime = (JobGiver_BedTime) base.DeepCopy(resolve);
+            var jobGiver_BedTime = (JobGiver_BedTime)base.DeepCopy(resolve);
             jobGiver_BedTime.minCategory = minCategory;
             return jobGiver_BedTime;
         }
@@ -30,19 +30,24 @@ namespace PrisonLabor.Core.AI.JobGivers
         {
             if (pawn.timetable == null || pawn.timetable.CurrentAssignment != TimeAssignmentDefOf.Sleep)
                 return null;
+
             if (RestUtility.DisturbancePreventsLyingDown(pawn))
                 return null;
+
             var need = pawn.needs.TryGetNeed<Need_Motivation>();
             if (need != null)
                 need.IsPrisonerWorking = false;
+
             var lord = pawn.GetLord();
             Building_Bed building_Bed;
             if (lord != null && lord.CurLordToil != null && !lord.CurLordToil.AllowRestingInBed)
                 building_Bed = null;
             else
                 building_Bed = RestUtility.FindBedFor(pawn);
+
             if (building_Bed != null)
                 return new Job(JobDefOf.LayDown, building_Bed);
+
             return new Job(JobDefOf.LayDown, FindGroundSleepSpotFor(pawn));
         }
 

@@ -21,13 +21,6 @@ namespace PrisonLabor.Core.AI.WorkGivers
             if (pawn.IsPrisoner)
                 return null;
 
-            // TODO: Redo escape mechanincs
-            //var escapeTracker = EscapeTracker.Of(prisoner, true);
-            //if (!PrisonLaborUtility.LaborEnabled(prisoner) && !escapeTracker.CanEscape)
-            //    return null;
-            //if (!escapeTracker.CanEscape)
-            //    return null
-
             if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))
                 return new Job(JobDefOf.PrisonerAttemptRecruit, t);
 

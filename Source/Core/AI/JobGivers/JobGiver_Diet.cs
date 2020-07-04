@@ -40,6 +40,7 @@ namespace PrisonLabor.Core.AI.JobGivers
         protected override Job TryGiveJob(Pawn pawn)
         {
             var food = pawn.needs.food;
+
             if (food == null || food.CurCategory < minCategory)
                 return null;
 
@@ -49,6 +50,7 @@ namespace PrisonLabor.Core.AI.JobGivers
             }
 
             var need = pawn.needs.TryGetNeed<Need_Motivation>();
+
             if (need != null)
                 need.IsPrisonerWorking = false;
 
