@@ -194,6 +194,7 @@
         <Compile Include="HarmonyPatches\Patches_Factions\Patch_PawnCaptured.cs" />
         <Compile Include="HarmonyPatches\InjectCore.cs" />
         <Compile Include="HarmonyPatches\HSyncRegistery.cs" />
+        <Compile Include="HarmonyPatches\Patches_PathFinding\Patch_InjectLockCheck.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">
@@ -271,6 +272,7 @@
         <Folder Include="Core\Components\" />
         <Folder Include="HarmonyPatches\Patches_Room\" />
         <Folder Include="HarmonyPatches\Patches_Factions\" />
+        <Folder Include="HarmonyPatches\Patches_PathFinding\" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Properties\Resources.resx">

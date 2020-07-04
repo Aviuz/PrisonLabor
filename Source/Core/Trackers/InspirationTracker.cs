@@ -46,7 +46,7 @@ namespace PrisonLabor.Core.Trackers
                 return false;
             }
 
-            if (prisonersCount / wardensCount >= 2.5f)
+            if (prisonersCount / wardensCount >= 3.5f)
             {
                 isWatched[pawn] = -0.08f;
                 return false;
