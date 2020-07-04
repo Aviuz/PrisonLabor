@@ -1,14 +1,18 @@
 ﻿using System;
+using PrisonLabor.Core.AI.WorkGivers;
 using PrisonLabor.Core.Trackers;
 using RimWorld;
 using Verse;
+using Verse.Noise;
 
 namespace PrisonLabor.Core.Components
 {
     public class PrisonerComp : ThingComp
     {
-        private bool initliazed = false;
+        private const int INTERVAL = 3;
+        private int LAST_TICK = 0;
 
+        private bool initliazed = false;
         private bool derefrenced = false;
 
         private bool isWarden = false;
@@ -36,6 +40,10 @@ namespace PrisonLabor.Core.Components
             Tracked.index.Add(id, -1);
         }
 
+        public void TickRarePrisoner()
+        {
+            WorkGiver_Supervise.prisonersHungry[pawn] = pawn.needs.food.CurInstantLevelPercentage < 0.5;
+        }
 
         private void RegisterWarden()
         {
@@ -75,8 +83,9 @@ namespace PrisonLabor.Core.Components
                     Tracked.index[id] = room.ID;
                 }
             }
-
-            isPrisoner = true;
+            if (LAST_TICK++ % INTERVAL == 0)
+                this.TickRarePrisoner();
+            this.isPrisoner = true;
         }
 
         private void Reregister(bool unregister = false)

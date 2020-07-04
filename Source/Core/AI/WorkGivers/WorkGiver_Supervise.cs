@@ -10,6 +10,9 @@ namespace PrisonLabor.Core.AI.WorkGivers
 {
     internal class WorkGiver_Supervise : WorkGiver_Warden
     {
+        public static Dictionary<Pawn, int> prisonersCache = new Dictionary<Pawn, int>();
+        public static Dictionary<Pawn, bool> prisonersHungry = new Dictionary<Pawn, bool>();
+
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
             var prisoner = t as Pawn;
@@ -29,14 +32,21 @@ namespace PrisonLabor.Core.AI.WorkGivers
 
             var room = prisoner?.CurrentBed()?.GetRoom() ?? prisoner.GetRoom();
 
-            if (room != null && prisoner.needs.food.CurLevelPercentage < 0.35)
+            if (prisonersHungry.TryGetValue(prisoner, out bool isHungry) && room != null && prisoner.needs.food.CurLevelPercentage < 0.35 && !prisoner.Downed)
             {
-                if (!PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner) && FoodUtility.TryFindBestFoodSourceFor(pawn, prisoner, false, out Thing foodSource, out ThingDef thingDef))
+                var lastTick = Find.TickManager.TicksGame;
+                if (!prisonersCache.TryGetValue(prisoner, out lastTick))
+                    prisonersCache[prisoner] = Find.TickManager.TicksGame - 2500;
+
+                if (Find.TickManager.TicksGame - lastTick > 1500 && !PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner) && FoodUtility.TryFindBestFoodSourceFor(pawn, prisoner, false, out Thing foodSource, out ThingDef thingDef))
                 {
                     float nutrition = FoodUtility.GetNutrition(foodSource, thingDef);
                     var job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerDeliverFoodSupervise"), foodSource, prisoner);
+
                     job.count = FoodUtility.WillIngestStackCountOf(prisoner, thingDef, nutrition);
                     job.targetC = RCellFinder.SpotToChewStandingNear(prisoner, foodSource);
+
+                    prisonersCache[prisoner] = Find.TickManager.TicksGame;
                     return job;
                 }
             }

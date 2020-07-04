@@ -40,7 +40,7 @@ namespace PrisonLabor.Core.Trackers
                 return false;
             }
 
-            if (room.IsHuge || room.CellCount > 1600)
+            if (room.IsHuge)
             {
                 isWatched[pawn] = -0.005f;
                 return false;
