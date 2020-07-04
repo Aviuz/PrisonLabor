@@ -28,15 +28,15 @@ namespace PrisonLabor.Core.AI.JobDrivers
 
             yield return MakeWatchToil(Prisoner);
             for (var i = 0; i < 80; i++)
-                yield return Toils_General.Wait(7);
+                yield return Toils_General.Wait(3);
 
             yield return MakeWatchToil(Prisoner);
             for (var i = 0; i < 80; i++)
-                yield return Toils_General.Wait(7);
+                yield return Toils_General.Wait(3);
 
             yield return MakeWatchToil(Prisoner);
             for (var i = 0; i < 80; i++)
-                yield return Toils_General.Wait(7);
+                yield return Toils_General.Wait(3);
             yield return Toils_Interpersonal.SetLastInteractTime(TargetIndex.A);
         }
 

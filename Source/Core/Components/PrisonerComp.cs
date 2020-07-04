@@ -1,4 +1,5 @@
 ﻿using System;
+using HugsLib;
 using PrisonLabor.Core.AI.WorkGivers;
 using PrisonLabor.Core.Trackers;
 using RimWorld;
@@ -7,11 +8,8 @@ using Verse.Noise;
 
 namespace PrisonLabor.Core.Components
 {
-    public class PrisonerComp : ThingComp
+    public partial class PrisonerComp : ThingComp
     {
-        private const int INTERVAL = 3;
-        private int LAST_TICK = 0;
-
         private bool initliazed = false;
         private bool derefrenced = false;
 
@@ -40,9 +38,12 @@ namespace PrisonLabor.Core.Components
             Tracked.index.Add(id, -1);
         }
 
-        public void TickRarePrisoner()
+        public void TickSwitch()
         {
-            WorkGiver_Supervise.prisonersHungry[pawn] = pawn.needs.food.CurInstantLevelPercentage < 0.5;
+            if (isPrisoner)
+                TickLongPrisoner();
+            else
+                TickLongWarden();
         }
 
         private void RegisterWarden()
@@ -83,8 +84,6 @@ namespace PrisonLabor.Core.Components
                     Tracked.index[id] = room.ID;
                 }
             }
-            if (LAST_TICK++ % INTERVAL == 0)
-                this.TickRarePrisoner();
             this.isPrisoner = true;
         }
 
@@ -117,12 +116,15 @@ namespace PrisonLabor.Core.Components
 
                     derefrenced = true;
 
-                    if (pawn != null)
-                        pawn.AllComps.Remove(this);
+                    if (parent != null)
+                        parent.AllComps.RemoveAll(x => x == this);
+
+                    if (HugsLibController.Instance.DistributedTicker.IsRegistered(parent))
+                        HugsLibController.Instance.DistributedTicker.UnregisterTickability(parent);
                 }
 #if TRACE
                 Log.Message("Unregisterd pawn: " + pawn.Name.ToStringFull);
-#endif
+#endif                
             }
         }
 
@@ -158,6 +160,7 @@ namespace PrisonLabor.Core.Components
                     else
                     {
                         initliazed = true;
+                        HugsLibController.Instance.DistributedTicker.RegisterTickability(TickSwitch, 500, pawn);
                     }
                 }
 
@@ -174,6 +177,11 @@ namespace PrisonLabor.Core.Components
         public override void PostDeSpawn(Map map)
         {
             base.PostDeSpawn(map);
+        }
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            base.PostSpawnSetup(respawningAfterLoad);
         }
     }
 }
