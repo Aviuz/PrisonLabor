@@ -182,7 +182,6 @@
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_JobGiver_PickupWeapon.cs" />
         <Compile Include="Core\Other\FoodUtility.cs" />
-        <Compile Include="Core\AI\JobDrivers\JobDriver_DeliverFood.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">

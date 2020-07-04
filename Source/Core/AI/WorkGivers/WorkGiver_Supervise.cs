@@ -27,8 +27,19 @@ namespace PrisonLabor.Core.AI.WorkGivers
             if ((!prisoner.InBed() && prisoner.Downed) || !pawn.CanReserve(t, 1, -1, null, false) || !prisoner.Awake())
                 return null;
 
-            if (prisoner.needs.food.CurLevelPercentage < 0.25 && !PrisonFoodUtility.FoodAvailableInRoomTo(prisoner) && prisoner.guest.CanBeBroughtFood && pawn.jobs.curJob == null)
-                return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerDeliverFoodSupervise"), prisoner);
+            var room = prisoner?.CurrentBed()?.GetRoom() ?? prisoner.GetRoom();
+
+            if (room != null && prisoner.needs.food.CurLevelPercentage < 0.35)
+            {
+                if (!PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner) && FoodUtility.TryFindBestFoodSourceFor(pawn, prisoner, false, out Thing foodSource, out ThingDef thingDef))
+                {
+                    float nutrition = FoodUtility.GetNutrition(foodSource, thingDef);
+                    var job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerDeliverFoodSupervise"), foodSource, prisoner);
+                    job.count = FoodUtility.WillIngestStackCountOf(prisoner, thingDef, nutrition);
+                    job.targetC = RCellFinder.SpotToChewStandingNear(prisoner, foodSource);
+                    return job;
+                }
+            }
 
             if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))
                 return new Job(JobDefOf.PrisonerAttemptRecruit, t);

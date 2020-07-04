@@ -53,6 +53,43 @@ namespace PrisonLabor.Core.Other
             return false;
         }
 
+        public static bool FoodAvailableInRoomFor(Room room, Pawn prisoner)
+        {
+            float num = 0f;
+            float num2 = 0f;
+            if (room == null)
+            {
+                return false;
+            }
+            for (int i = 0; i < room.RegionCount; i++)
+            {
+                Region region = room.Regions[i];
+                List<Thing> list = region.ListerThings.ThingsInGroup(ThingRequestGroup.FoodSourceNotPlantOrTree);
+                for (int j = 0; j < list.Count; j++)
+                {
+                    Thing thing = list[j];
+                    if (!thing.def.IsIngestible || (int)thing.def.ingestible.preferability > 3)
+                    {
+                        num2 += NutritionAvailableForFrom(prisoner, thing);
+                    }
+                }
+                List<Thing> list2 = region.ListerThings.ThingsInGroup(ThingRequestGroup.Pawn);
+                for (int k = 0; k < list2.Count; k++)
+                {
+                    Pawn pawn = list2[k] as Pawn;
+                    if (pawn.IsPrisonerOfColony && pawn.needs.food.CurLevelPercentage < pawn.needs.food.PercentageThreshHungry + 0.02f && (pawn.carryTracker.CarriedThing == null || !pawn.WillEat(pawn.carryTracker.CarriedThing)))
+                    {
+                        num += pawn.needs.food.NutritionWanted;
+                    }
+                }
+            }
+            if (num2 + 0.5f >= num)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public static float NutritionAvailableForFrom(Pawn p, Thing foodSource)
         {
             if (foodSource.def.IsNutritionGivingIngestible && p.WillEat(foodSource))

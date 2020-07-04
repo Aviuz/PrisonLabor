@@ -8,9 +8,9 @@
     </JobDef>
     <JobDef>
         <defName>PrisonLabor_PrisonerDeliverFoodSupervise</defName>
-        <driverClass>PrisonLabor.Core.AI.JobDrivers.JobDriver_JailorDeliverFood</driverClass>
-        <reportString>Delivering food to TargetA.</reportString>
-        <alwaysShowWeapon>true</alwaysShowWeapon>
+        <driverClass>JobDriver_FoodDeliver</driverClass>
+        <reportString>Delivering shit to TargetB.</reportString>
+        <alwaysShowWeapon>false</alwaysShowWeapon>
     </JobDef>
     <JobDef>
         <defName>PrisonLabor_Arrest</defName>
