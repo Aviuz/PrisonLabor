@@ -87,14 +87,12 @@
         <Compile Include="Core\Other\TutorialProvider.cs" />
         <Compile Include="Core\Settings\CleanSaveDialog.cs" />
         <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
-        <Compile Include="Core\Trackers\EscapeTracker.cs" />
         <Compile Include="Core\Windows\ReplayTutorialsWindow.cs" />
         <Compile Include="Core\Windows\TutorialWindow.cs" />
         <Compile Include="HarmonyPatches\DevTools.cs" />
         <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
         <Compile Include="HarmonyPatches\Patches_Construction\EnableConstructionFinishFrames.cs" />
         <Compile Include="HarmonyPatches\Patches_DeepDrill\EnableDeepDrillsToPrisoners.cs" />
-        <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapeTracker.cs" />
         <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
         <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
         <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_AddScrollToPrisonerTab.cs" />
@@ -103,7 +101,6 @@
         <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_ChangeWorkTabPrisonerLabelColor.cs" />
         <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_DefaultInteractionMode.cs" />
         <Compile Include="HarmonyPatches\Patches_WorkSettings\Patch_DisableAreaRestrictionsForPrisoners.cs" />
-        <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapingPrisoner.cs" />
         <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_ExposeBillGroup.cs" />
         <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_ExtendVistorRect.cs" />
         <Compile Include="HarmonyPatches\HPatcher.cs" />
@@ -128,7 +125,6 @@
         <Compile Include="Core\Incidents\IncidentWorker_Revolt.cs" />
         <Compile Include="Core\AI\JobGivers\JobGiver_BedTime.cs" />
         <Compile Include="Core\AI\JobGivers\JobGiver_Diet.cs" />
-        <Compile Include="Core\AI\JobGivers\JobGiver_PickupWeapon.cs" />
         <Compile Include="Core\GUI_Components\PawnIcons.cs" />
         <Compile Include="Core\Trackers\InspirationTracker.cs" />
         <Compile Include="Core\Needs\Need_Treatment.cs" />
@@ -155,9 +151,8 @@
         <Compile Include="Core\AI\JobDrivers\JobDriver_Supervise.cs" />
         <Compile Include="Core\Meta\Prefs.cs" />
         <Compile Include="Core\Meta\PrefsData.cs" />
-        <Compile Include="Core\AI\JobGivers\JobGiver_Labor.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
+        <Compile Include="Core\AI\ThinkNodes\ThinkNode_Conditional_Labor.cs" />
         <Compile Include="Core\Other\Tutorials.cs" />
         <Compile Include="Tweaks\JobDriver_PlantCut_Tweak.cs" />
         <Compile Include="Tweaks\JobDriver_PlantHarvest_Tweak.cs" />
@@ -184,6 +179,10 @@
         <Compile Include="HarmonyPatches\InjectCore.cs" />
         <Compile Include="HarmonyPatches\HSyncRegistery.cs" />
         <Compile Include="HarmonyPatches\Patches_PathFinding\Patch_InjectLockCheck.cs" />
+        <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
+        <Compile Include="Core\AI\ThinkNodes\ThinkNode_JobGiver_PickupWeapon.cs" />
+        <Compile Include="Core\Other\FoodUtility.cs" />
+        <Compile Include="Core\AI\JobDrivers\JobDriver_DeliverFood.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">
@@ -255,17 +254,6 @@
         <None Include="..\Patches\PrisonerComp.xml">
           <Link>Patches\PrisonerComp.xml</Link>
         </None>
-        <None Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
-        <None Include="HarmonyPatches\Patches_Food\DeliverEvenOutsidePrisonCell.cs" />
-        <None Include="HarmonyPatches\Patches_Food\FoodUtility_IsFoodSourceOnMapSociallyProper.cs" />
-        <None Include="HarmonyPatches\Patches_Food\ReserveFoodForPrisonerAfterDropping.cs" />
-        <None Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
-        <None Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
-        <None Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
-        <None Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop.cs" />
-        <None Include="HarmonyPatches\Patches_PermissionFix\Patch_ItemIsForbidden.cs" />
-        <None Include="HarmonyPatches\Patches_PermissionFix\Patch_RespectReservation.cs" />
-        <None Include="HarmonyPatches\Patches_PermissionFix\Patch_SocialPropernessFix.cs" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Core\Treatment\" />
