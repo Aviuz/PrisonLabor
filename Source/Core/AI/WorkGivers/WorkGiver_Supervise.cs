@@ -28,7 +28,7 @@ namespace PrisonLabor.Core.AI.WorkGivers
                 return null;
 
             if (prisoner.needs.food.CurLevelPercentage < 0.25 && !PrisonFoodUtility.FoodAvailableInRoomTo(prisoner) && prisoner.guest.CanBeBroughtFood && pawn.jobs.curJob == null)
-                new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerDeliverFoodSupervise"), prisoner);
+                return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerDeliverFoodSupervise"), prisoner);
 
             if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))
                 return new Job(JobDefOf.PrisonerAttemptRecruit, t);
