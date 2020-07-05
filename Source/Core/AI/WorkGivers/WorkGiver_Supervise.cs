@@ -29,12 +29,13 @@ namespace PrisonLabor.Core.AI.WorkGivers
                 return null;
 
             var room = prisoner?.CurrentBed()?.GetRoom() ?? prisoner.GetRoom();
-            if (room != null && prisoner.needs.food.CurLevelPercentage < 0.35 && !prisoner.Downed)
+            if (room != null && prisoner.needs.food.CurLevelPercentage < 0.35 && !prisoner.Downed && prisoner.MentalState == null)
             {
                 if (!PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner) && FoodUtility.TryFindBestFoodSourceFor(pawn, prisoner, false, out Thing foodSource, out ThingDef thingDef))
                 {
                     float nutrition = FoodUtility.GetNutrition(foodSource, thingDef);
                     var job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerDeliverFoodSupervise"), foodSource, prisoner);
+
 
                     job.count = FoodUtility.WillIngestStackCountOf(prisoner, thingDef, nutrition);
                     job.targetC = RCellFinder.SpotToChewStandingNear(prisoner, foodSource);

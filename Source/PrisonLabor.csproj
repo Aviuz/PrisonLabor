@@ -187,6 +187,8 @@
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_JobGiver_PickupWeapon.cs" />
         <Compile Include="Core\Other\FoodUtility.cs" />
         <Compile Include="Core\Components\zPartialPrisonerComp.cs" />
+        <Compile Include="HarmonyPatches\Patches_Secuirity\Patch_EscortPrisoner.cs" />
+        <Compile Include="Core\AI\JobDrivers\JobDriver_JalorDeliverFood.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">
@@ -265,6 +267,7 @@
         <Folder Include="HarmonyPatches\Patches_Room\" />
         <Folder Include="HarmonyPatches\Patches_Factions\" />
         <Folder Include="HarmonyPatches\Patches_PathFinding\" />
+        <Folder Include="HarmonyPatches\Patches_Secuirity\" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Properties\Resources.resx">
