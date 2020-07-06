@@ -19,6 +19,7 @@ namespace PrisonLabor.Core.Settings
         private static bool enableRevolts;
         private static bool showTreatmentHappiness;
         private static bool enableSuicide;
+        private static bool enableFullHealRest;
         private static bool advancedGrowing;
         private static int defaultInteractionMode;
 
@@ -38,6 +39,7 @@ namespace PrisonLabor.Core.Settings
             enableRevolts = PrisonLaborPrefs.EnableRevolts;
             enableSuicide = PrisonLaborPrefs.EnableSuicide;
             showTreatmentHappiness = PrisonLaborPrefs.ShowTreatmentHappiness;
+            enableFullHealRest = PrisonLaborPrefs.EnableFullHealRest;
 
             interactionModeList = new List<PrisonerInteractionModeDef>(DefDatabase<PrisonerInteractionModeDef>.AllDefs);
             defaultInteractionMode = interactionModeList.IndexOf(DefDatabase<PrisonerInteractionModeDef>.GetNamed(PrisonLaborPrefs.DefaultInteractionMode));
@@ -101,6 +103,10 @@ namespace PrisonLabor.Core.Settings
 
             listing_options.CheckboxLabeled("PrisonLabor_EnableSuicide".Translate(), ref enableSuicide,
                 "PrisonLabor_EnableSuicideDesc".Translate());
+
+            listing_options.CheckboxLabeled("PrisonLabor_EnableFullHealRest".Translate(), ref enableFullHealRest,
+                "PrisonLabor_EnableFullHealRestDesc".Translate());
+
 
             listing_options.GapLine();
 
@@ -169,6 +175,7 @@ namespace PrisonLabor.Core.Settings
             PrisonLaborPrefs.ShowTreatmentHappiness = showTreatmentHappiness;
             PrisonLaborPrefs.AdvancedGrowing = advancedGrowing;
             PrisonLaborPrefs.EnableSuicide = enableSuicide;
+            PrisonLaborPrefs.EnableFullHealRest = enableFullHealRest;
             PrisonLaborPrefs.DefaultInteractionMode = interactionModeList[defaultInteractionMode].defName;
             PrisonLaborPrefs.Save();
             Log.Message("Prison Labor settings saved");

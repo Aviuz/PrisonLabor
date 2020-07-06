@@ -154,6 +154,17 @@ namespace PrisonLabor.Core.Meta
             }
         }
 
+        public static bool EnableFullHealRest
+        {
+            get { return data.enable_full_heal_rest; }
+
+            set
+            {
+                data.enable_full_heal_rest = value;
+                Apply();
+            }
+        }
+
         public static void Init()
         {
             var flag = !new FileInfo(prefsFilePath).Exists;
