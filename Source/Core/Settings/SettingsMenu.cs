@@ -19,6 +19,7 @@ namespace PrisonLabor.Core.Settings
         private static bool enableRevolts;
         private static bool showTreatmentHappiness;
         private static bool enableSuicide;
+        private static bool enableFullHealRest;
         private static bool advancedGrowing;
         private static int defaultInteractionMode;
 
@@ -38,6 +39,7 @@ namespace PrisonLabor.Core.Settings
             advancedGrowing = PrisonLaborPrefs.AdvancedGrowing;
             enableMotivationMechanics = PrisonLaborPrefs.EnableMotivationMechanics;
             enableMotivationIcons = PrisonLaborPrefs.EnableMotivationIcons;
+            enableFullHealRest = PrisonLaborPrefs.EnableFullHealRest;
             enableRevolts = PrisonLaborPrefs.EnableRevolts;
             enableSuicide = PrisonLaborPrefs.EnableSuicide;
             showTreatmentHappiness = PrisonLaborPrefs.ShowTreatmentHappiness;
@@ -101,6 +103,9 @@ namespace PrisonLabor.Core.Settings
                 "PrisonLabor_EnableRevoltsDesc".Translate());
 
             listing_options.GapLine();
+
+            listing_options.CheckboxLabeled("PrisonLabor_EnableFullHealRest".Translate(), ref enableFullHealRest,
+    "PrisonLabor_EnableFullHealRestDesc".Translate());
 
             listing_options.CheckboxLabeled("PrisonLabor_EnableSuicide".Translate(), ref enableSuicide,
                 "PrisonLabor_EnableSuicideDesc".Translate());
@@ -171,6 +176,7 @@ namespace PrisonLabor.Core.Settings
         {
             PrisonLaborPrefs.ShowNews = showNews;
             PrisonLaborPrefs.AllowAllWorkTypes = allowAllWorktypes;
+            PrisonLaborPrefs.EnableFullHealRest = enableFullHealRest;
             PrisonLaborPrefs.EnableMotivationMechanics = enableMotivationMechanics;
             PrisonLaborPrefs.EnableMotivationIcons = enableMotivationIcons;
             PrisonLaborPrefs.EnableRevolts = enableRevolts;

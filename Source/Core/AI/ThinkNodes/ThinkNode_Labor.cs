@@ -36,9 +36,14 @@ namespace PrisonLabor.Core.AI.ThinkNodes
             if (pawn.timetable == null)
                 WorkSettings.InitWorkSettings(pawn);
 
-            if (HealthAIUtility.ShouldHaveSurgeryDoneNow(pawn) || HealthAIUtility.ShouldBeTendedNowByPlayer(pawn) || HealthAIUtility.ShouldSeekMedicalRest(pawn))
-
+            if (HealthAIUtility.ShouldHaveSurgeryDoneNow(pawn))
                 return ThinkResult.NoJob;
+
+            if (PrisonLaborPrefs.EnableFullHealRest && (HealthAIUtility.ShouldBeTendedNowByPlayer(pawn) || HealthAIUtility.ShouldSeekMedicalRest(pawn)))
+            {
+                return ThinkResult.NoJob;
+            }
+
             //Check medical assistance, fed, and rest if not override
             if (!PrisonLaborUtility.WorkTime(pawn))
             {
