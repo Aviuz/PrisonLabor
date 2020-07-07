@@ -194,6 +194,11 @@
         <Compile Include="CompatibilityPatches\Locks.cs" />
         <Compile Include="CompatibilityPatches\LocksDoorExpanded.cs" />
         <Compile Include="CompatibilityPatches\Quarry.cs" />
+        <Compile Include="HarmonyPatches\Patches_Construction\Patch_WorkGiver_ConstructDeliverResourcesToFrames.cs" />
+        <Compile Include="HarmonyPatches\Patches_Construction\Patch_WorkGiver_Repair.cs" />
+        <Compile Include="HarmonyPatches\Patches_Construction\Patch_BlueprintsForPlayerFAction.cs" />
+        <Compile Include="HarmonyPatches\Patches_Construction\WorkGiver_ConstructDeliverResourcesToBlueprints.cs" />
+        <Compile Include="WorkUtils\ConstructionUtils.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">

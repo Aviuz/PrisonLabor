@@ -17,9 +17,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
     {
         private static void Prefix(Pawn __instance, Faction newFaction, Pawn recruiter)
         {
-            if(__instance.IsPrisonerOfColony && newFaction == Faction.OfPlayer)
+            if (__instance.IsPrisonerOfColony && newFaction == Faction.OfPlayer)
             {
-                __instance.workSettings = null;
+                __instance.workSettings = new Pawn_WorkSettings(__instance);
             }
         }
     }

@@ -80,4 +80,7 @@
 
   <PrisonLabor_EnableSuicide>Enable prisoner suicide</PrisonLabor_EnableSuicide>
   <PrisonLabor_EnableSuicideDesc>Enables suicide of prisoners when they aren't very happy</PrisonLabor_EnableSuicideDesc>
+
+  <PrisonLabor_EnableFullHealRest>Enable prisoner full heal rest</PrisonLabor_EnableFullHealRest>
+  <PrisonLabor_EnableFullHealRestDesc>Prisoner will stay in bed until fully healed</PrisonLabor_EnableFullHealRestDesc>
 </LanguageData>
