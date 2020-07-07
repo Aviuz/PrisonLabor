@@ -22,6 +22,8 @@ namespace PrisonLabor.Core.Meta
         public TutorialFlag tutorials_flags = TutorialFlag.None;
         public Version version = Version.v0_0;
 
+        public float maxPrisonerPerGuard = 4f;
+
         public void Apply()
         {
         }

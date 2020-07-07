@@ -46,7 +46,7 @@ namespace PrisonLabor.Core.Trackers
                 return false;
             }
 
-            if (prisonersCount / wardensCount > 4f)
+            if (prisonersCount / wardensCount > Prefs.MaxNumberOfPlayerSettlements)
             {
                 isWatched[pawn] = -0.04f;
                 return false;

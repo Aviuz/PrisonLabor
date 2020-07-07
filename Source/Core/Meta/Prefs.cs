@@ -154,6 +154,19 @@ namespace PrisonLabor.Core.Meta
             }
         }
 
+        public static float MaxNumberOfPrisonerPerGuard
+        {
+            get
+            {
+                return data.maxPrisonerPerGuard;
+            }
+            set
+            {
+                data.maxPrisonerPerGuard = value;
+                Apply();
+            }
+        }
+
         public static void Init()
         {
             var flag = !new FileInfo(prefsFilePath).Exists;

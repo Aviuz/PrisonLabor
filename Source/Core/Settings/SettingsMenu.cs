@@ -22,6 +22,9 @@ namespace PrisonLabor.Core.Settings
         private static bool advancedGrowing;
         private static int defaultInteractionMode;
 
+        private static float maxNumberOfPrisonerForGaurd;
+        private static string maxNumberOfPrisonerForGaurdBuffer;
+
         private static List<PrisonerInteractionModeDef> interactionModeList;
 
         public SettingsMenu(ModContentPack content) : base(content)
@@ -114,6 +117,11 @@ namespace PrisonLabor.Core.Settings
             if (listing_options.ButtonTextLabeled("PrisonLabor_ButtonRemoveModFromSaveDesc".Translate(), "PrisonLabor_ButtonRemoveModFromSave".Translate()))
                 Find.WindowStack.Add(new SelectSaveForCleaningDialog());
 
+            listing_options.Gap();
+            listing_options.Gap();
+            listing_options.Label("Max number of prisoners per gaurd to start lossing motivation (become ineffective)", -1f);
+            listing_options.TextFieldNumeric(ref maxNumberOfPrisonerForGaurd, ref maxNumberOfPrisonerForGaurdBuffer, min: 3.5f, max: 8f);
+
             listing_options.End();
 
             var listing_panel = new Listing_Standard();
@@ -170,6 +178,7 @@ namespace PrisonLabor.Core.Settings
             PrisonLaborPrefs.AdvancedGrowing = advancedGrowing;
             PrisonLaborPrefs.EnableSuicide = enableSuicide;
             PrisonLaborPrefs.DefaultInteractionMode = interactionModeList[defaultInteractionMode].defName;
+            PrisonLaborPrefs.MaxNumberOfPrisonerPerGuard = maxNumberOfPrisonerForGaurd;
             PrisonLaborPrefs.Save();
             Log.Message("Prison Labor settings saved");
         }
