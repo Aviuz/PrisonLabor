@@ -8,14 +8,14 @@
     </JobDef>
     <JobDef>
         <defName>PrisonLabor_PrisonerDeliverFoodSupervise</defName>
-        <driverClass> PrisonLabor.Core.AI.JobDrivers.JobDriver_JalorDeliverFood</driverClass>
+        <driverClass>PrisonLabor.Core.AI.JobDrivers.JobDriver_JalorDeliverFood</driverClass>
         <reportString>Delivering shit to TargetB.</reportString>
-        <alwaysShowWeapon>false</alwaysShowWeapon>
+        <alwaysShowWeapon>true</alwaysShowWeapon>
     </JobDef>
     <JobDef>
         <defName>PrisonLabor_Arrest</defName>
         <driverClass>JobDriver_TakeToBed</driverClass>
-        <reportString>arresting TargetA.</reportString>
+        <reportString>detaining TargetA.</reportString>
         <alwaysShowWeapon>true</alwaysShowWeapon>
         <makeTargetPrisoner>true</makeTargetPrisoner>
         <casualInterruptible>false</casualInterruptible>

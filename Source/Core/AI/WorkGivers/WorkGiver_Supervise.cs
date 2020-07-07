@@ -27,34 +27,31 @@ namespace PrisonLabor.Core.AI.WorkGivers
             if ((!prisoner.InBed() && prisoner.Downed) || !pawn.CanReserve(t, 1, -1, null, false) || !prisoner.Awake())
                 return null;
 
-
-            if (prisoner.needs.food.CurLevelPercentage < 0.15 && !prisoner.Downed && prisoner.MentalState == null)
-            {
-                Room[] rooms = { prisoner.GetRoom(), prisoner?.CurrentBed()?.GetRoom() ?? null };
-
-                var found = false;
-                foreach (Room room in rooms)
-                    if (room != null)
-                        if (PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner)) { found = true; break; }
-
-                if (found)
-                {
-
-                }
-                else if (FoodUtility.TryFindBestFoodSourceFor(pawn, prisoner, false, out Thing foodSource, out ThingDef thingDef))
-                {
-                    float nutrition = FoodUtility.GetNutrition(foodSource, thingDef);
-                    var njob = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerDeliverFoodSupervise"), foodSource, prisoner);
-
-                    njob.count = FoodUtility.WillIngestStackCountOf(prisoner, thingDef, nutrition);
-                    njob.targetC = RCellFinder.SpotToChewStandingNear(prisoner, foodSource);
-
-                    return njob;
-                }
-            }
-
             if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))
                 return new Job(JobDefOf.PrisonerAttemptRecruit, t);
+
+            if (prisoner.needs.food.CurLevelPercentage < 0.05 && !prisoner.Downed && prisoner.MentalState == null)
+            {
+                var room = prisoner?.CurrentBed()?.GetRoom() ?? prisoner.GetRoom();
+                if (room != null)
+                {
+                    if (PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner))
+                    {
+                        if (FoodUtility.TryFindBestFoodSourceFor(pawn, prisoner, false, out Thing foodSource, out ThingDef thingDef))
+                        {
+                            float nutrition = FoodUtility.GetNutrition(foodSource, thingDef);
+                            Job nJob = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerDeliverFoodSupervise"), foodSource, prisoner);
+
+                            nJob.count = FoodUtility.WillIngestStackCountOf(prisoner, thingDef, nutrition);
+                            if (!room.isPrisonCell)
+                                nJob.targetC = RCellFinder.SpotToChewStandingNear(prisoner, foodSource);
+                            else
+                                nJob.targetC = room.Cells.RandomElement();
+                            return nJob;
+                        }
+                    }
+                }
+            }
 
             if ((!PrisonLaborUtility.WorkTime(prisoner) || !mNeed.ShouldBeMotivated))
                 return null;

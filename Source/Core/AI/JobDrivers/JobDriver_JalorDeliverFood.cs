@@ -58,7 +58,7 @@ namespace PrisonLabor.Core.AI.JobDrivers
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            return base.TryMakePreToilReservations(errorOnFailed);
+            return pawn.Reserve(TargetB, job);
         }
     }
 }
