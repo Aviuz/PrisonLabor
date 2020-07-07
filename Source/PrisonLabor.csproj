@@ -191,6 +191,9 @@
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_FreeTime.cs" />
         <Compile Include="Core\AI\JobDrivers\JobDriver_FreePrisonerTime.cs" />
+        <Compile Include="CompatibilityPatches\Locks.cs" />
+        <Compile Include="CompatibilityPatches\LocksDoorExpanded.cs" />
+        <Compile Include="CompatibilityPatches\Quarry.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">

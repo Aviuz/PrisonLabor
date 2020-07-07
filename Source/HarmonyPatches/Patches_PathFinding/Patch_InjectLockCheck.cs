@@ -8,6 +8,7 @@ using HarmonyLib;
 using Verse;
 using Verse.AI.Group;
 using PrisonLabor.Core.LaborArea;
+using PrisonLabor.CompatibilityPatches;
 
 namespace PrisonLabor.HarmonyPatches.PathFinding
 {
@@ -32,6 +33,9 @@ namespace PrisonLabor.HarmonyPatches.PathFinding
     {
         public static bool Prefix(Building_Door __instance, Pawn p, ref bool __result)
         {
+            if (Locks.foundType || LocksDoorExpanded.foundType)
+                return true;
+
             if (p.IsPrisoner)
             {
                 __result = DoorRegistery.Controls.Contains(__instance.thingIDNumber); return false;
@@ -49,8 +53,10 @@ namespace PrisonLabor.HarmonyPatches.PathFinding
     {
         public static void Postfix(Building_Door __instance)
         {
-            if (!Gen.IsHashIntervalTick(__instance, 512))
-                return;
+            if (!Gen.IsHashIntervalTick(__instance, 512)) { return; }
+
+            if (Locks.foundType || LocksDoorExpanded.foundType) { return; }
+
             DoorRegistery.Update(__instance);
         }
     }

@@ -9,9 +9,10 @@ namespace PrisonLabor.CompatibilityPatches
     {
         internal static void Run()
         {
-            //NoWaterNoLife.Init();
             WorkTab.Init();
-            //Quarry.Init();
+            Quarry.Init();
+            Locks.Init();
+            LocksDoorExpanded.Init();
         }
     }
 }
