@@ -7,7 +7,7 @@ using Verse.AI;
 
 namespace PrisonLabor.Core.AI.ThinkNodes
 {
-    internal class ThinkNode_Labor : ThinkNode_Conditional
+    internal class ThinkNode_Conditional_Labor : ThinkNode_Conditional
     {
         protected override bool Satisfied(Pawn pawn)
         {

@@ -7,9 +7,9 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace PrisonLabor.Core.AI.JobGivers
+namespace PrisonLabor.Core.AI.ThinkNodes
 {
-    public class JobGiver_Labor : ThinkNode
+    public class ThinkNode_Labor : ThinkNode
     {
         public bool emergency;
 
@@ -17,7 +17,7 @@ namespace PrisonLabor.Core.AI.JobGivers
 
         public override ThinkNode DeepCopy(bool resolve = true)
         {
-            var jobGiver_Work = (JobGiver_Labor)base.DeepCopy(resolve);
+            var jobGiver_Work = (ThinkNode_Labor)base.DeepCopy(resolve);
             jobGiver_Work.emergency = emergency;
             return jobGiver_Work;
         }

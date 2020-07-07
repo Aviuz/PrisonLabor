@@ -4,7 +4,7 @@
         <defName>PrisonLabor_WorkThinkTree</defName>
         <insertTag>Humanlike_PostDuty</insertTag>
         <insertPriority>80</insertPriority>
-        <thinkRoot Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_Labor">
+        <thinkRoot Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_Conditional_Labor">
             <invert>false</invert>
             <subNodes>
                 <li Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_SeekSafeTemperature">
@@ -17,7 +17,8 @@
                         <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_BedTime" />
                         <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_PickupWeapon" />
                         <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_Diet" />
-                        <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_Labor" />
+                        <li Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_Labor" />
+                        <li Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_FreeTime" />
                     </subNodes>
                 </li>
             </subNodes>

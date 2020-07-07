@@ -183,12 +183,14 @@
         <Compile Include="HarmonyPatches\InjectCore.cs" />
         <Compile Include="HarmonyPatches\HSyncRegistery.cs" />
         <Compile Include="HarmonyPatches\Patches_PathFinding\Patch_InjectLockCheck.cs" />
-        <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_JobGiver_PickupWeapon.cs" />
         <Compile Include="Core\Other\FoodUtility.cs" />
         <Compile Include="Core\Components\zPartialPrisonerComp.cs" />
         <Compile Include="HarmonyPatches\Patches_Secuirity\Patch_EscortPrisoner.cs" />
         <Compile Include="Core\AI\JobDrivers\JobDriver_JalorDeliverFood.cs" />
+        <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
+        <Compile Include="Core\AI\ThinkNodes\ThinkNode_FreeTime.cs" />
+        <Compile Include="Core\AI\JobDrivers\JobDriver_FreePrisonerTime.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">
