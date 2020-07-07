@@ -13,7 +13,6 @@ namespace PrisonLabor.Core.AI.ThinkNodes
         {
             if (pawn.IsPrisoner)
             {
-
                 IntVec3 c;
 
                 var need = pawn.needs.TryGetNeed<Need_Motivation>();

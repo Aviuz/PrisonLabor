@@ -10,7 +10,6 @@ namespace PrisonLabor.Core.AI.WorkGivers
 {
     internal class WorkGiver_Supervise : WorkGiver_Warden
     {
-
         public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
         {
             var prisoner = t as Pawn;
@@ -28,18 +27,29 @@ namespace PrisonLabor.Core.AI.WorkGivers
             if ((!prisoner.InBed() && prisoner.Downed) || !pawn.CanReserve(t, 1, -1, null, false) || !prisoner.Awake())
                 return null;
 
-            var room = prisoner?.CurrentBed()?.GetRoom() ?? prisoner.GetRoom();
-            if (room != null && prisoner.needs.food.CurLevelPercentage < 0.35 && !prisoner.Downed && prisoner.MentalState == null)
+
+            if (prisoner.needs.food.CurLevelPercentage < 0.15 && !prisoner.Downed && prisoner.MentalState == null)
             {
-                if (!PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner) && FoodUtility.TryFindBestFoodSourceFor(pawn, prisoner, false, out Thing foodSource, out ThingDef thingDef))
+                Room[] rooms = { prisoner.GetRoom(), prisoner?.CurrentBed()?.GetRoom() ?? null };
+
+                var found = false;
+                foreach (Room room in rooms)
+                    if (room != null)
+                        if (PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner)) { found = true; break; }
+
+                if (found)
+                {
+
+                }
+                else if (FoodUtility.TryFindBestFoodSourceFor(pawn, prisoner, false, out Thing foodSource, out ThingDef thingDef))
                 {
                     float nutrition = FoodUtility.GetNutrition(foodSource, thingDef);
-                    var job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerDeliverFoodSupervise"), foodSource, prisoner);
+                    var njob = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerDeliverFoodSupervise"), foodSource, prisoner);
 
+                    njob.count = FoodUtility.WillIngestStackCountOf(prisoner, thingDef, nutrition);
+                    njob.targetC = RCellFinder.SpotToChewStandingNear(prisoner, foodSource);
 
-                    job.count = FoodUtility.WillIngestStackCountOf(prisoner, thingDef, nutrition);
-                    job.targetC = RCellFinder.SpotToChewStandingNear(prisoner, foodSource);
-                    return job;
+                    return njob;
                 }
             }
 
