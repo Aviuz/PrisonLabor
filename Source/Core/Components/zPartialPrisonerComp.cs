@@ -15,12 +15,15 @@ namespace PrisonLabor.Core.Components
     public partial class PrisonerComp
     {
         private bool isHungry = false;
+        private bool isStarving = false;
 
         public bool IsHungry => isHungry;
+        public bool IsStarving => isStarving;
 
         private void TickLongPrisoner()
         {
             this.isHungry = pawn.needs.food.CurLevelPercentage < 0.15f;
+            this.isStarving = pawn.needs.food.CurLevelPercentage <= 0.001f;
         }
 
         private void TickLongWarden()

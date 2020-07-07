@@ -16,6 +16,11 @@ namespace PrisonLabor.Core.Components
         private bool isWarden = false;
         private bool isPrisoner = false;
 
+        public bool IsWarden => isWarden;
+        public bool IsPrisoner => isPrisoner;
+
+        public bool motivated = false;
+
         private Pawn pawn;
 
         public readonly int id;
