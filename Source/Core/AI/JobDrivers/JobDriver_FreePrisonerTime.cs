@@ -19,11 +19,7 @@ namespace PrisonLabor.Core.AI.JobDrivers
             yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
 
             yield return MakeWatchToil();
-            for (int i = 0; i < 40; i++)
-                yield return Toils_General.Wait(5);
-
-            yield return MakeWatchToil();
-            for (int i = 0; i < 40; i++)
+            for (int i = 0; i < 20; i++)
                 yield return Toils_General.Wait(5);
         }
 

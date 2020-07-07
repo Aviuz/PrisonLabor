@@ -24,19 +24,32 @@ namespace PrisonLabor.Core.AI.WorkGivers
             if (!ShouldTakeCareOfPrisoner(pawn, prisoner))
                 return null;
 
-            if ((!prisoner.InBed() && prisoner.Downed) || !pawn.CanReserve(t, 1, -1, null, false) || !prisoner.Awake())
+            if ((!prisoner.InBed() && prisoner.Downed) || !prisoner.Awake())
                 return null;
 
             if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))
                 return new Job(JobDefOf.PrisonerAttemptRecruit, t);
 
-            if (prisoner.needs.food.CurLevelPercentage < 0.05 && !prisoner.Downed && prisoner.MentalState == null)
+            if (prisoner.needs.food.CurLevelPercentage < 0.15 && !prisoner.Downed)
             {
-                var room = prisoner?.CurrentBed()?.GetRoom() ?? prisoner.GetRoom();
-                if (room != null)
+                var curRoom = prisoner?.GetRoom();
+                var room = prisoner?.CurrentBed()?.GetRoom() ?? curRoom;
+
+                if (room != null && pawn.CanReserve(t, 1, -1, null, false))
                 {
-                    if (PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner))
+                    if (curRoom == null)
+                        goto CheckFood;
+
+                    if (curRoom.isPrisonCell)
+                        goto SkipFood;
+
+
+                    CheckFood:
+
+                    if (!PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner))
                     {
+                        //Log.Message("CheckFood");
+
                         if (FoodUtility.TryFindBestFoodSourceFor(pawn, prisoner, false, out Thing foodSource, out ThingDef thingDef))
                         {
                             float nutrition = FoodUtility.GetNutrition(foodSource, thingDef);
@@ -53,7 +66,9 @@ namespace PrisonLabor.Core.AI.WorkGivers
                 }
             }
 
-            if ((!PrisonLaborUtility.WorkTime(prisoner) || !mNeed.ShouldBeMotivated))
+        SkipFood:
+
+            if (!PrisonLaborUtility.WorkTime(prisoner) || !mNeed.ShouldBeMotivated || !pawn.CanReserve(t, 1, -1, null, false))
                 return null;
 
             return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerSupervise"), prisoner);
