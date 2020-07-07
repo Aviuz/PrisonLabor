@@ -15,7 +15,7 @@ namespace PrisonLabor.Core.AI.ThinkNodes
         {
             var bed = pawn.CurrentBed();
 
-            if (bed == null)
+            if (bed == null || pawn.health.HasHediffsNeedingTend())
                 return ThinkResult.NoJob;
 
             Job job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("PrisonLabor_FreePrisonerTime"), bed.GetRoom().Cells.RandomElement());

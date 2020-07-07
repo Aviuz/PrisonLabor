@@ -71,6 +71,8 @@ namespace PrisonLabor.Core.Components
         {
             lock (Tracked.LOCK_WARDEN)
             {
+                pawn.UpdateInspiration();
+
                 if (Tracked.index[id] != -1)
                     Tracked.Prisoners[Tracked.index[id]].Remove(id);
 

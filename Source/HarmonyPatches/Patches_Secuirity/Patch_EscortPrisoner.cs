@@ -20,6 +20,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_Secuirity
             if (!targetPawn.IsPrisonerOfColony || __instance.job.playerForced)
                 return true;
 
+            if (targetPawn.Downed)
+                return true;
+
             if (targetPawn.timetable.CurrentAssignment != TimeAssignmentDefOf.Work)
                 return true;
 
@@ -29,11 +32,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Secuirity
             var toils = new List<Toil>();
 
             toils.Add(MakeWatchToil(targetPawn));
-            for (var i = 0; i < 40; i++)
-                toils.Add(Toils_General.Wait(3));
-
-            toils.Add(MakeWatchToil(targetPawn));
-            for (var i = 0; i < 40; i++)
+            for (var i = 0; i < 20; i++)
                 toils.Add(Toils_General.Wait(3));
 
             __result = toils.AsEnumerable(); return false;

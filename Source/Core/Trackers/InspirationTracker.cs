@@ -8,16 +8,19 @@ namespace PrisonLabor.Core.Trackers
 {
     internal static class InspirationTracker
     {
-        private static Dictionary<Pawn, float> isWatched = new Dictionary<Pawn, float>();
+        private static Dictionary<Pawn, bool> isWatched = new Dictionary<Pawn, bool>();
+        private static Dictionary<Pawn, float> inspirationValue = new Dictionary<Pawn, float>();
 
-        public static bool IsWatched(this Pawn pawn)
+        public static void UpdateInspiration(this Pawn pawn)
         {
-            isWatched[pawn] = 0;
+            inspirationValue[pawn] = 0;
 
             var room = pawn.GetRoom();
 
             if (room == null)
-                return false;
+            {
+                isWatched[pawn] = false; return;
+            }
 
             var wardensCount = 0;
             var prisonersCount = 0;
@@ -30,40 +33,54 @@ namespace PrisonLabor.Core.Trackers
 
             if (prisonersCount == 0)
             {
-                isWatched[pawn] = 0.0f;
-                return false;
+                inspirationValue[pawn] = 0.0f;
+                isWatched[pawn] = false; return;
             }
 
             if (wardensCount == 0)
             {
-                isWatched[pawn] = -0.00425f;
-                return false;
+                inspirationValue[pawn] = -0.00425f;
+                isWatched[pawn] = false; return;
             }
 
             if (room.IsHuge)
             {
-                isWatched[pawn] = -0.005f;
-                return false;
+                inspirationValue[pawn] = -0.005f;
+                isWatched[pawn] = false; return;
             }
 
             if (prisonersCount / wardensCount > Prefs.MaxNumberOfPlayerSettlements)
             {
-                isWatched[pawn] = -0.04f;
-                return false;
+                inspirationValue[pawn] = -0.04f;
+                isWatched[pawn] = false; return;
             }
 
-            isWatched[pawn] = (wardensCount * (wardensCount + 1)) / prisonersCount * 0.005f;
-            return true;
+            isWatched[pawn] = true;
+            inspirationValue[pawn] = (wardensCount * (wardensCount + 1)) / prisonersCount * 0.005f;
+        }
+
+        public static bool IsWatched(this Pawn pawn, bool refresh = false)
+        {
+            if (refresh) { UpdateInspiration(pawn); }
+
+            if (!inspirationValue.ContainsKey(pawn))
+            {
+                isWatched[pawn] = false; return false;
+            }
+
+            return isWatched[pawn];
         }
 
         public static float GetInsiprationValue(Pawn pawn, bool refresh = false)
         {
-            if (!isWatched.ContainsKey(pawn))
-                return 0;
+            if (refresh) { UpdateInspiration(pawn); }
 
-            pawn.IsWatched();
+            if (!inspirationValue.ContainsKey(pawn))
+            {
+                inspirationValue[pawn] = 0f; return 0f;
+            }
 
-            return isWatched[pawn];
+            return inspirationValue[pawn];
         }
     }
 }
