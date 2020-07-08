@@ -8,7 +8,7 @@ using Verse.AI;
 
 namespace PrisonLabor.Core.AI.JobDrivers
 {
-    public class JobDriver_JalorDeliverFood : JobDriver_FoodDeliver
+    public class JobDriver_JailorDeliverFood : JobDriver_FoodDeliver
     {
 
         protected override IEnumerable<Toil> MakeNewToils()

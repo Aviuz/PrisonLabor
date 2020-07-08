@@ -187,7 +187,7 @@
         <Compile Include="Core\Other\FoodUtility.cs" />
         <Compile Include="Core\Components\zPartialPrisonerComp.cs" />
         <Compile Include="HarmonyPatches\Patches_Secuirity\Patch_EscortPrisoner.cs" />
-        <Compile Include="Core\AI\JobDrivers\JobDriver_JalorDeliverFood.cs" />
+        <Compile Include="Core\AI\JobDrivers\JobDriver_JailorDeliverFood.cs" />
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_FreeTime.cs" />
         <Compile Include="Core\AI\JobDrivers\JobDriver_FreePrisonerTime.cs" />
@@ -267,9 +267,6 @@
             <Link>Organizer\To-Do.md</Link>
         </None>
         <None Include="packages.config" />
-        <None Include="..\Patches\PrisonerComp.xml">
-          <Link>Patches\PrisonerComp.xml</Link>
-        </None>
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Core\Treatment\" />
