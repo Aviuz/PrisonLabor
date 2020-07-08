@@ -1,4 +1,8 @@
 Changelog:
+1.1.10
+- Fixes for construction job. Repairing, hauling resources to frame and blueprint, building frame, smoothing wall and floor should now work correctly.
+- Fix for disappearing work tab. Request from Simple slavery mod author. Simple slavery finally compatible?
+- Added option in menu to allow prisoners rest until fully healed.
 1.1.9
 - NPR fix for previus optimization
 1.1.8
