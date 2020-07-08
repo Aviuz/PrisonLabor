@@ -48,7 +48,6 @@ namespace PrisonLabor.Core.AI.WorkGivers
 
                     if (!PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner))
                     {
-                        //Log.Message("CheckFood");
 
                         if (FoodUtility.TryFindBestFoodSourceFor(pawn, prisoner, false, out Thing foodSource, out ThingDef thingDef))
                         {
