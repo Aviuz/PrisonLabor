@@ -88,10 +88,10 @@ namespace PrisonLabor.Core.Settings
             listing_options.CheckboxLabeled("PrisonLabor_MotivationMechanics".Translate(), ref enableMotivationMechanics,
                 "PrisonLabor_MotivationWarning".Translate());
 
-            listing_options.GapLine();
-
-            listing_options.CheckboxLabeled("PrisonLabor_MotivationIcons".Translate(), ref enableMotivationIcons,
-                "PrisonLabor_MotivationIconsDesc".Translate());
+            //listing_options.GapLine();
+            //
+            //listing_options.CheckboxLabeled("PrisonLabor_MotivationIcons".Translate(), ref enableMotivationIcons,
+            //    "PrisonLabor_MotivationIconsDesc".Translate());
 
             listing_options.GapLine();
 
@@ -105,11 +105,10 @@ namespace PrisonLabor.Core.Settings
 
             listing_options.GapLine();
 
-            listing_options.CheckboxLabeled("PrisonLabor_EnableFullHealRest".Translate(), ref enableFullHealRest,
-    "PrisonLabor_EnableFullHealRestDesc".Translate());
-
             listing_options.CheckboxLabeled("PrisonLabor_EnableSuicide".Translate(), ref enableSuicide,
                 "PrisonLabor_EnableSuicideDesc".Translate());
+
+            listing_options.GapLine();
 
             listing_options.CheckboxLabeled("PrisonLabor_EnableFullHealRest".Translate(), ref enableFullHealRest,
                 "PrisonLabor_EnableFullHealRestDesc".Translate());

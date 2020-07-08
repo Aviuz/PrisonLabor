@@ -123,8 +123,8 @@ namespace PrisonLabor.Core.Components
 
                     derefrenced = true;
 
-                    if (parent != null)
-                        parent.AllComps.RemoveAll(x => x == this);
+                    //if (parent != null)
+                    //    parent.AllComps.RemoveAll(x => x == this);
 
                     if (HugsLibController.Instance.DistributedTicker.IsRegistered(parent))
                         HugsLibController.Instance.DistributedTicker.UnregisterTickability(parent);
