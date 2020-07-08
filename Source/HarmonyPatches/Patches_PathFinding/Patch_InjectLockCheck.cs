@@ -33,7 +33,7 @@ namespace PrisonLabor.HarmonyPatches.PathFinding
     {
         public static bool Prefix(Building_Door __instance, Pawn p, ref bool __result)
         {
-            if (Locks.foundType || LocksDoorExpanded.foundType)
+            if (Locks.Found || LocksDoorExpanded.Found)
                 return true;
 
             if (p.IsPrisoner)
@@ -55,7 +55,7 @@ namespace PrisonLabor.HarmonyPatches.PathFinding
         {
             if (!Gen.IsHashIntervalTick(__instance, 512)) { return; }
 
-            if (Locks.foundType || LocksDoorExpanded.foundType) { return; }
+            if (Locks.Found || LocksDoorExpanded.Found) { return; }
 
             DoorRegistery.Update(__instance);
         }

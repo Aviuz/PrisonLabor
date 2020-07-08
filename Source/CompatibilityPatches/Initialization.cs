@@ -13,6 +13,7 @@ namespace PrisonLabor.CompatibilityPatches
             Quarry.Init();
             Locks.Init();
             LocksDoorExpanded.Init();
+            NoWaterNoLife.Init();
         }
     }
 }

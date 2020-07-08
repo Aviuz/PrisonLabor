@@ -15,18 +15,18 @@ namespace PrisonLabor.CompatibilityPatches
 {
     internal static class Locks
     {
-        public static bool foundType;
+        private static bool foundType;
+
+        public static bool Found => foundType;
+
         internal static void Init()
         {
             if (Check())
             {
-                Patch();
+                // TODO:
+                // Unpatch at runtime...
+                // Now only disble a by if/return
             }
-        }
-
-        private static void Patch()
-        {
-
         }
 
         private static bool Check()
