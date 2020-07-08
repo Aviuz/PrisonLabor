@@ -65,7 +65,7 @@ namespace PrisonLabor.Core.Trackers
 
             if (!inspirationValue.ContainsKey(pawn))
             {
-                isWatched[pawn] = false; return false;
+                isWatched[pawn] = false; inspirationValue[pawn] = 0f; return false;
             }
 
             return isWatched[pawn];
@@ -77,7 +77,7 @@ namespace PrisonLabor.Core.Trackers
 
             if (!inspirationValue.ContainsKey(pawn))
             {
-                inspirationValue[pawn] = 0f; return 0f;
+                inspirationValue[pawn] = 0f; isWatched[pawn] = false; return 0f;
             }
 
             return inspirationValue[pawn];
