@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using PrisonLabor.Core;
+using PrisonLabor.Core.Other;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,12 @@ namespace PrisonLabor.CompatibilityPatches
 {
     internal static class Quarry
     {
-        private static bool foundType;
+
+        private static ModSearcher modSeeker;
         internal static void Init()
         {
-            if (Check())
+            ModSearcher modSeeker = new ModSearcher("Quarry 1.1");
+            if (modSeeker.LookForMod())
             {
                 Patch();
             }
@@ -55,21 +58,6 @@ namespace PrisonLabor.CompatibilityPatches
         {    
             WorkGiverDef workDef = DefDatabase<WorkGiverDef>.GetNamed("QRY_MineQuarry");
             return workDef.giverClass.GetMethod("JobOnThing");            
-        }
-
-        private static bool Check()
-        {
-            try
-            {
-                var mod = LoadedModManager.RunningMods.First(m => m.Name == "Quarry 1.1");                
-                foundType = mod != null;
-                Verse.Log.Message($"[PL] Trying to find: {mod}, Result: {foundType}");               
-            }
-            catch
-            {
-                foundType = false;               
-            }
-            return foundType;
         }
     }
 }
