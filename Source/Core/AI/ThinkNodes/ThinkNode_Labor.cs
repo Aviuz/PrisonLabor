@@ -147,6 +147,7 @@ namespace PrisonLabor.Core.AI.ThinkNodes
                     if (t.IsForbidden(pawn) || !scanner.HasJobOnThing(pawn, t, false))
                         continue;
 
+                    // checl the reachabilty of the current thing in question
                     if (!pawn.CanReach(new LocalTargetInfo(t.Position), PathEndMode.Touch, Danger.Unspecified))
                         continue;
 
@@ -215,6 +216,9 @@ namespace PrisonLabor.Core.AI.ThinkNodes
             return cell;
         }
 
+        /*
+         * Used to emulate a return a job and seting the motivation
+         */
         private ThinkResult SetWorking(ThinkResult result, Need_Motivation motivation)
         {
             if (motivation != null && PrisonLaborPrefs.EnableMotivationMechanics)
@@ -222,6 +226,9 @@ namespace PrisonLabor.Core.AI.ThinkNodes
             return result;
         }
 
+        /*
+         * Used to emulate a return nojob and seting the motivation field 
+         */
         private ThinkResult SetNotWorking(Need_Motivation motivation)
         {
             if (motivation != null && PrisonLaborPrefs.EnableMotivationMechanics)
@@ -234,7 +241,7 @@ namespace PrisonLabor.Core.AI.ThinkNodes
             if (HealthAIUtility.ShouldHaveSurgeryDoneNow(pawn))
                 return true;
 
-            if (PrisonLaborPrefs.EnableFullHealRest && (pawn.health.HasHediffsNeedingTend()))
+            if (PrisonLaborPrefs.EnableFullHealRest && (pawn.health.HasHediffsNeedingTend() || HealthAIUtility.ShouldSeekMedicalRest(pawn)))
                 return true;
 
             return false;

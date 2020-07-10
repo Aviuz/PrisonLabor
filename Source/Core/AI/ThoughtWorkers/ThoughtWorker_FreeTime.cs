@@ -13,6 +13,10 @@ namespace PrisonLabor.Core.AI.ThoughtWorkers
         {
             if (!p.IsPrisoner)
                 return false;
+
+            if (HealthAIUtility.ShouldSeekMedicalRest(p))
+                return false;
+
             return p.timetable != null && p.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy;
         }
     }

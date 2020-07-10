@@ -18,7 +18,6 @@
                         <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_PickupWeapon" />
                         <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_Diet" />
                         <li Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_Labor" />
-                        <li Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_FreeTime" />
                     </subNodes>
                 </li>
             </subNodes>

@@ -7,12 +7,6 @@
         <alwaysShowWeapon>true</alwaysShowWeapon>
     </JobDef>
     <JobDef>
-        <defName>PrisonLabor_PrisonerDeliverFoodSupervise</defName>
-        <driverClass>PrisonLabor.Core.AI.JobDrivers.JobDriver_JailorDeliverFood</driverClass>
-        <reportString>Delivering shit to TargetB.</reportString>
-        <alwaysShowWeapon>true</alwaysShowWeapon>
-    </JobDef>
-    <JobDef>
         <defName>PrisonLabor_Arrest</defName>
         <driverClass>JobDriver_TakeToBed</driverClass>
         <reportString>detaining TargetA.</reportString>
@@ -29,11 +23,6 @@
         <defName>PrisonLabor_Harvest_Tweak</defName>
         <driverClass>PrisonLabor.Tweaks.JobDriver_PlantHarvest_Tweak</driverClass>
         <reportString>harvesting TargetA.</reportString>
-    </JobDef>
-    <JobDef>
-        <defName>PrisonLabor_FreePrisonerTime</defName>
-        <driverClass>PrisonLabor.Core.AI.JobDrivers.JobDriver_FreePrisonerTime</driverClass>
-        <reportString>Having some fun.</reportString>
     </JobDef>
     <JobDef>
         <defName>PrisonLabor_CutPlant_Tweak</defName>
