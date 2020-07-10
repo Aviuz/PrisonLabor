@@ -18,7 +18,8 @@ namespace PrisonLabor.Core.Trackers
         public static Dictionary<int, ThingComp> pawnComps = new Dictionary<int, ThingComp>();
     }
 
-
+    // TODO Move
+    // Used to inject prisonerComponent 
     [StaticConstructorOnStartup]
     public static class PrisonerRegistery
     {
@@ -32,6 +33,8 @@ namespace PrisonLabor.Core.Trackers
 
             var allThings = DefDatabase<ThingDef>.AllDefs;
 
+            // TODO Move 
+            // Adding the PrisonerComp selectivly menu
             foreach (var def in allThings)
             {
                 if (!(def.inspectorTabsResolved?.Any(tab => tab is ITab_Pawn_Needs) ?? false) ||

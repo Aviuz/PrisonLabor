@@ -7,7 +7,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace PrisonLabor.HarmonyPatches.Patches_Secuirity
+namespace PrisonLabor.HarmonyPatches.Patches_Warden
 {
     [HarmonyPatch(typeof(JobDriver_TakeToBed))]
     [HarmonyPatch("MakeNewToils")]

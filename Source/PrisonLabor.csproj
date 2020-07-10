@@ -179,7 +179,6 @@
         <Compile Include="Core\Components\PrisonerComp.cs" />
         <Compile Include="Core\Trackers\PrisonerTracker.cs" />
         <Compile Include="HarmonyPatches\Patches_Room\Patch_Room.cs" />
-        <Compile Include="Core\Components\PrisonerProperties.cs" />
         <Compile Include="HarmonyPatches\Patches_Factions\Patch_PawnCaptured.cs" />
         <Compile Include="HarmonyPatches\InjectCore.cs" />
         <Compile Include="HarmonyPatches\HSyncRegistery.cs" />
@@ -187,7 +186,6 @@
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_JobGiver_PickupWeapon.cs" />
         <Compile Include="Core\Other\FoodUtility.cs" />
         <Compile Include="Core\Components\zPartialPrisonerComp.cs" />
-        <Compile Include="HarmonyPatches\Patches_Secuirity\Patch_EscortPrisoner.cs" />
         <Compile Include="CompatibilityPatches\Locks.cs" />
         <Compile Include="CompatibilityPatches\LocksDoorExpanded.cs" />
         <Compile Include="CompatibilityPatches\Quarry.cs" />
@@ -199,6 +197,9 @@
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.old.cs" />
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
         <Compile Include="Core\Other\ModSearcher.cs" />
+        <Compile Include="HarmonyPatches\Patches_Warden\Patch_DeliverFood.cs" />
+        <Compile Include="Core\Properties\PrisonerProperties.cs" />
+        <Compile Include="HarmonyPatches\Patches_Warden\Patch_EscortPrisoner.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">
@@ -274,7 +275,8 @@
         <Folder Include="HarmonyPatches\Patches_Room\" />
         <Folder Include="HarmonyPatches\Patches_Factions\" />
         <Folder Include="HarmonyPatches\Patches_PathFinding\" />
-        <Folder Include="HarmonyPatches\Patches_Secuirity\" />
+        <Folder Include="HarmonyPatches\Patches_Warden\" />
+        <Folder Include="Core\Properties\" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Properties\Resources.resx">
