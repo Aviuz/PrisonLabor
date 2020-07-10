@@ -23,12 +23,15 @@ namespace PrisonLabor.Core.AI.ThinkNodes
         {
             var mneed = pawn.needs.TryGetNeed<Need_Motivation>();
 
+            // Check for medical needs
             if (HasMedicalNeed(pawn))
                 return SetNotWorking(mneed);
 
+            // Check the timetables in the worktab 
             if (!HasWorkTimeAssignment(pawn))
                 return SetNotWorking(mneed);
 
+            // Check if the motivation is enabled
             if (PrisonLaborPrefs.EnableMotivationMechanics && (mneed == null || mneed.IsLazy))
                 return SetNotWorking(mneed);
 
@@ -43,16 +46,19 @@ namespace PrisonLabor.Core.AI.ThinkNodes
                 pawn.playerSettings.AreaRestriction = pawn.Map.areaManager.Get<Area_Labor>();
             }
 
+            // Parssing the entier job list "those selected in work tab"
             var workList = pawn.workSettings.WorkGiversInOrderNormal;
             var targetInfo = TargetInfo.Invalid;
 
             Job job = null;
             WorkGiver_Scanner scanner = null;
 
+            // testing each job
             for (var j = 0; j < workList.Count; j++)
             {
                 var workGiver = workList[j];
 
+                // don't know what this does
                 if (!PawnCanUseWorkGiver(pawn, workGiver))
                     continue;
 
@@ -60,10 +66,15 @@ namespace PrisonLabor.Core.AI.ThinkNodes
 
                 try
                 {
+                    // 3 types of job exsists:
+                    // a. scan based
+                    // b. cell based
+                    // c. "nonScan"
                     job = workGiver.NonScanJob(pawn);
                     if (job != null)
                         return SetWorking(new ThinkResult(job, this, workList[j].def.tagToGive), mneed);
 
+                    //A workscanner can help with finding the possible job related things or cells thus the name scanner
                     scanner = workGiver as WorkGiver_Scanner;
                     if (scanner == null)
                         continue;
@@ -106,6 +117,10 @@ namespace PrisonLabor.Core.AI.ThinkNodes
             return SetNotWorking(mneed);
         }
 
+        /*
+         This is used to scan for possible job related things, by "approximating" the distance to the target.
+        example: Bills, haulling...
+         */
         private Thing ScanThings(WorkGiver_Scanner scanner, WorkGiver workGiver, Pawn pawn, ref TargetInfo targetInfo, ref bool found)
         {
             Thing thing = null;
@@ -128,6 +143,7 @@ namespace PrisonLabor.Core.AI.ThinkNodes
                     if (t == null)
                         continue;
 
+                    // check if the shit is forbiden or not or is a subject of an other job
                     if (t.IsForbidden(pawn) || !scanner.HasJobOnThing(pawn, t, false))
                         continue;
 
@@ -152,6 +168,10 @@ namespace PrisonLabor.Core.AI.ThinkNodes
             return thing;
         }
 
+        /*
+         This is used to scan for cells based jobs.
+        example: Cleaning, etc...
+         */
         private IntVec3 ScanCells(WorkGiver_Scanner scanner, WorkGiver workGiver, Pawn pawn, ref TargetInfo targetInfo, ref bool found)
         {
             IntVec3 cell = IntVec3.Zero;
