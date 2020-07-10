@@ -1,6 +1,7 @@
 ﻿
 using HarmonyLib;
 using PrisonLabor.Core;
+using PrisonLabor.Core.Other;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -15,33 +16,18 @@ namespace PrisonLabor.CompatibilityPatches
 {
     internal static class Locks
     {
-        private static bool foundType;
+        private static bool foundMod;
 
-        public static bool Found => foundType;
+        public static bool Found => foundMod;
 
+        private static ModSearcher modSeeker;
         internal static void Init()
         {
-            if (Check())
+            ModSearcher modSeeker = new ModSearcher("Locks");
+            if (modSeeker.LookForMod())
             {
-                // TODO:
-                // Unpatch at runtime...
-                // Now only disble a by if/return
+                foundMod = true;
             }
-        }
-
-        private static bool Check()
-        {
-            try
-            {
-                var mod = LoadedModManager.RunningMods.First(m => m.PackageId == "avius.locks");
-                foundType = mod != null;
-                Verse.Log.Message($"[PL] Trying to find: {mod}, Result: {foundType}");
-            }
-            catch
-            {
-                foundType = false;
-            }
-            return foundType;
         }
     }
 }

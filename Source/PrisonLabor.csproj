@@ -198,6 +198,7 @@
         <Compile Include="WorkUtils\ConstructionUtils.cs" />
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.old.cs" />
         <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
+        <Compile Include="Core\Other\ModSearcher.cs" />
     </ItemGroup>
     <ItemGroup>
         <Content Include="..\About\About.xml">
