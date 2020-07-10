@@ -43,6 +43,8 @@ namespace PrisonLaborDebug.UI
             if (roomID == -1)
                 return;
 
+            Text.Font = GameFont.Small;
+
             var yOffset = 10f;
             var tyOffset = yOffset;
 

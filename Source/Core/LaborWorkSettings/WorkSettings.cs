@@ -111,7 +111,7 @@ namespace PrisonLabor.Core.LaborWorkSettings
                 pawn.timetable = new Pawn_TimetableTracker(pawn);
 
             //Restrict areas
-            pawn.playerSettings.AreaRestriction = null;
+            //pawn.playerSettings.AreaRestriction = null;
         }
 
         public static bool WorkDisabled(WorkTypeDef wt)
