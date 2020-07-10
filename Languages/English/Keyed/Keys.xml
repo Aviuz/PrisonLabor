@@ -1,86 +1,76 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <PrisonLabor_PrisonerWork>Force to work</PrisonLabor_PrisonerWork>
-  <PrisonLabor_WorkAndRecruit>Work and recruit</PrisonLabor_WorkAndRecruit>
-  <PrisonLabor_LazyPrisonerMessage>Your prisoner stopped working!</PrisonLabor_LazyPrisonerMessage>
-  <PrisonLabor_WardenResponseThreshold>Warden response threshold</PrisonLabor_WardenResponseThreshold>
-  <PrisonLabor_StoppingWorkThreshold>Stopping work threshold</PrisonLabor_StoppingWorkThreshold>
-  <PrisonLabor_WorkTypeDisabled>Work type disabled for prisoners</PrisonLabor_WorkTypeDisabled>
-  <PrisonLabor_ShowNews>Show news</PrisonLabor_ShowNews>
-  <PrisonLabor_ShowNewsDesc>Showing news about changes in mod when prisoners detected.</PrisonLabor_ShowNewsDesc>
-  <PrisonLabor_DefaultInterMode>Default prisoner interaction mode</PrisonLabor_DefaultInterMode>
-  <PrisonLabor_AllowedWorkTypes>Allowed work types:</PrisonLabor_AllowedWorkTypes>
-  <PrisonLabor_AllowAll>allow all</PrisonLabor_AllowAll>
-  <PrisonLabor_AllowAllWorkTypes>allow all work types</PrisonLabor_AllowAllWorkTypes>
-  <PrisonLabor_AllowedWorkTypesL>allowed work types:</PrisonLabor_AllowedWorkTypesL>
-  <PrisonLabor_Browse>Browse</PrisonLabor_Browse>
-  <PrisonLabor_MotivationMechanics>Motivation mechanics (!)</PrisonLabor_MotivationMechanics>
-  <PrisonLabor_MotivationWarning>When checked prisoners need to be motivated.\n\nWARINING: Needs reloading save.</PrisonLabor_MotivationWarning>
-  <PrisonLabor_MotivationIcons>Inspiration/Motivation Icons</PrisonLabor_MotivationIcons>
-  <PrisonLabor_MotivationIconsDesc>When enabled icons will be displayed above prisoners heads. Blue icon for inspiration, and green icon for gaining motivation by other factors.</PrisonLabor_MotivationIconsDesc>
-  <PrisonLabor_CanGrowAdvanced>Prisoners can grow advanced plants</PrisonLabor_CanGrowAdvanced>
-  <PrisonLabor_CanGrowAdvancedDesc>When disabled prisoners can only grow plants that not require any skills.</PrisonLabor_CanGrowAdvancedDesc>
-  <PrisonLabor_Version>Version: </PrisonLabor_Version>
-  <PrisonLabor_Difficulty>Difficulty: </PrisonLabor_Difficulty>
-  <PrisonLabor_Defaults>Defaults</PrisonLabor_Defaults>
-  <PrisonLabor_DifficultyNormal>Normal</PrisonLabor_DifficultyNormal>
-  <PrisonLabor_DifficultyCasual>Casual</PrisonLabor_DifficultyCasual>
-  <PrisonLabor_DifficultyEasy>Easy</PrisonLabor_DifficultyEasy>
-  <PrisonLabor_DifficultyPeaceful>Peaceful</PrisonLabor_DifficultyPeaceful>
-  <PrisonLabor_DifficultyJoke>A joke</PrisonLabor_DifficultyJoke>
-  <PrisonLabor_LazyPrisonerAlert>Prisoners aren't working</PrisonLabor_LazyPrisonerAlert>
-  <PrisonLabor_LazyPrisonerExplanationDef>Prisoners are lazy. Try to motivate them.</PrisonLabor_LazyPrisonerExplanationDef>
-  <PrisonLabor_LazyPrisonerExplanation>Those prisoners are lazy:\n\n{0}\nTry to motivate them.</PrisonLabor_LazyPrisonerExplanation>
-  <PrisonLabor_StarvingPrisonerAlert>Prisoners are starving</PrisonLabor_StarvingPrisonerAlert>
-  <PrisonLabor_StarvingPrisonerExplanationDef>Prisoners are starving and won't work.</PrisonLabor_StarvingPrisonerExplanationDef>
-  <PrisonLabor_StarvingPrisonerExplanation>Those prisoners are starving and won't work:\n\n{0}</PrisonLabor_StarvingPrisonerExplanation>
-  <PrisonLabor_LaborArea>Prison Labor Area</PrisonLabor_LaborArea>
-  <PrisonLabor_LaborAreaDesc>Labor area is area where only prisoners can work. No colonist's work allowed here except warden type jobs.</PrisonLabor_LaborAreaDesc>
-  <PrisonLabor_ClearLaborArea>Clear Labor Area</PrisonLabor_ClearLaborArea>
-  <PrisonLabor_ExpandLaborArea>Expand Labor Area</PrisonLabor_ExpandLaborArea>
-
-  <PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
-  <PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
-  <PrisonLabor_LaborAreaWarning>Labor area isn't required to make prisoners work.\n\nThis area forbids colonists from working.\n\nIt's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</PrisonLabor_LaborAreaWarning>
-  <PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
-  <PrisonLabor_ShowTreatmentHappiness>Show treatment happiness</PrisonLabor_ShowTreatmentHappiness>
-  <PrisonLabor_ShowTreatmentHappinessDesc>When enabled treatment happiness will be shown in Needs tab.</PrisonLabor_ShowTreatmentHappinessDesc>
-
-  <PrisonLabor_ColonyOnlyShort>Everyone</PrisonLabor_ColonyOnlyShort>
-  <PrisonLabor_ColonistsOnlyShort>Colonists</PrisonLabor_ColonistsOnlyShort>
-  <PrisonLabor_PrisonersOnlyShort>Prisoners</PrisonLabor_PrisonersOnlyShort>
-
-  <PrisonLabor_ColonyOnly>For everyone</PrisonLabor_ColonyOnly>
-  <PrisonLabor_ColonistsOnly>Limit to colonists</PrisonLabor_ColonistsOnly>
-  <PrisonLabor_PrisonersOnly>Limit to prisoners</PrisonLabor_PrisonersOnly>
-
-  <!-- 0.10 -->
-  <PrisonLabor_RecruitButtonLabel>Recruit</PrisonLabor_RecruitButtonLabel>
-  <PrisonLabor_RecruitButtonDesc>Ready to join colony</PrisonLabor_RecruitButtonDesc>
-
-  <PrisonLabor_Alert_EscapingPrisoners_Title>Prisoners can escape</PrisonLabor_Alert_EscapingPrisoners_Title>
-  <PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>Prisoners can reach end of map and escape. They will run unless colonist will keep an eye on them.</PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>
-  <PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>Those prisoners can escape:\n\n{0}\nThey will run unless colonist will keep an eye on them.</PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>
-
-  <PrisonLabor_ButtonRemoveModFromSave>Select Save</PrisonLabor_ButtonRemoveModFromSave>
-  <PrisonLabor_ButtonRemoveModFromSaveDesc>Remove Prison Labor mod from save</PrisonLabor_ButtonRemoveModFromSaveDesc>
-  
-  <PrisonLabor_ButtonBackup>Backup</PrisonLabor_ButtonBackup>
-  <PrisonLabor_ButtonProceed>Proceed</PrisonLabor_ButtonProceed>
-  
-  <PrisonLabor_UpgradeSaveProcessMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveProcessMessage>
-  <PrisonLabor_UpgradeSaveDialogMessage>You are going to remove Prison Labor mod from save. After this operation you will be able to play without the mod.</PrisonLabor_UpgradeSaveDialogMessage>
-  <PrisonLabor_BackupSaveDialogMessage>Please backup your file with button below.</PrisonLabor_BackupSaveDialogMessage>
-
-  <PrisonLabor_ReplayTurorialsButton>Tutorials</PrisonLabor_ReplayTurorialsButton>
-  <PrisonLabor_ShowTutorialButton>Show</PrisonLabor_ShowTutorialButton>
-
-  <PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
-  <PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
-
-  <PrisonLabor_EnableSuicide>Enable prisoner suicide</PrisonLabor_EnableSuicide>
-  <PrisonLabor_EnableSuicideDesc>Enables suicide of prisoners when they aren't very happy</PrisonLabor_EnableSuicideDesc>
-
-  <PrisonLabor_EnableFullHealRest>Enable prisoner full heal rest</PrisonLabor_EnableFullHealRest>
-  <PrisonLabor_EnableFullHealRestDesc>Prisoner will stay in bed until fully healed</PrisonLabor_EnableFullHealRestDesc>
+    <PrisonLabor_PrisonerWork>Force to work</PrisonLabor_PrisonerWork>
+    <PrisonLabor_WorkAndRecruit>Work and recruit</PrisonLabor_WorkAndRecruit>
+    <PrisonLabor_LazyPrisonerMessage>Your prisoner stopped working!</PrisonLabor_LazyPrisonerMessage>
+    <PrisonLabor_WardenResponseThreshold>Warden response threshold</PrisonLabor_WardenResponseThreshold>
+    <PrisonLabor_StoppingWorkThreshold>Stopping work threshold</PrisonLabor_StoppingWorkThreshold>
+    <PrisonLabor_WorkTypeDisabled>Work type disabled for prisoners</PrisonLabor_WorkTypeDisabled>
+    <PrisonLabor_ShowNews>Show news</PrisonLabor_ShowNews>
+    <PrisonLabor_ShowNewsDesc>Showing news about changes in mod when prisoners detected.</PrisonLabor_ShowNewsDesc>
+    <PrisonLabor_DefaultInterMode>Default prisoner interaction mode</PrisonLabor_DefaultInterMode>
+    <PrisonLabor_AllowedWorkTypes>Allowed work types:</PrisonLabor_AllowedWorkTypes>
+    <PrisonLabor_AllowAll>allow all</PrisonLabor_AllowAll>
+    <PrisonLabor_AllowAllWorkTypes>allow all work types</PrisonLabor_AllowAllWorkTypes>
+    <PrisonLabor_AllowedWorkTypesL>allowed work types:</PrisonLabor_AllowedWorkTypesL>
+    <PrisonLabor_Browse>Browse</PrisonLabor_Browse>
+    <PrisonLabor_MotivationMechanics>Motivation mechanics (!)</PrisonLabor_MotivationMechanics>
+    <PrisonLabor_MotivationWarning>When checked prisoners need to be motivated.\n\nWARINING: Needs reloading save.</PrisonLabor_MotivationWarning>
+    <PrisonLabor_MotivationIcons>Inspiration/Motivation Icons</PrisonLabor_MotivationIcons>
+    <PrisonLabor_MotivationIconsDesc>When enabled icons will be displayed above prisoners heads. Blue icon for inspiration, and green icon for gaining motivation by other factors.</PrisonLabor_MotivationIconsDesc>
+    <PrisonLabor_CanGrowAdvanced>Prisoners can grow advanced plants</PrisonLabor_CanGrowAdvanced>
+    <PrisonLabor_CanGrowAdvancedDesc>When disabled prisoners can only grow plants that not require any skills.</PrisonLabor_CanGrowAdvancedDesc>
+    <PrisonLabor_Version>Version: </PrisonLabor_Version>
+    <PrisonLabor_Difficulty>Difficulty: </PrisonLabor_Difficulty>
+    <PrisonLabor_Defaults>Defaults</PrisonLabor_Defaults>
+    <PrisonLabor_DifficultyNormal>Normal</PrisonLabor_DifficultyNormal>
+    <PrisonLabor_DifficultyCasual>Casual</PrisonLabor_DifficultyCasual>
+    <PrisonLabor_DifficultyEasy>Easy</PrisonLabor_DifficultyEasy>
+    <PrisonLabor_DifficultyPeaceful>Peaceful</PrisonLabor_DifficultyPeaceful>
+    <PrisonLabor_DifficultyJoke>A joke</PrisonLabor_DifficultyJoke>
+    <PrisonLabor_LazyPrisonerAlert>Prisoners aren't working</PrisonLabor_LazyPrisonerAlert>
+    <PrisonLabor_LazyPrisonerExplanationDef>Prisoners are lazy. Try to motivate them.</PrisonLabor_LazyPrisonerExplanationDef>
+    <PrisonLabor_LazyPrisonerExplanation>Those prisoners are lazy:\n\n{0}\nTry to motivate them.</PrisonLabor_LazyPrisonerExplanation>
+    <PrisonLabor_StarvingPrisonerAlert>Prisoners are starving</PrisonLabor_StarvingPrisonerAlert>
+    <PrisonLabor_StarvingPrisonerExplanationDef>Prisoners are starving and won't work.</PrisonLabor_StarvingPrisonerExplanationDef>
+    <PrisonLabor_StarvingPrisonerExplanation>Those prisoners are starving and won't work:\n\n{0}</PrisonLabor_StarvingPrisonerExplanation>
+    <PrisonLabor_LaborArea>Prison Labor Area</PrisonLabor_LaborArea>
+    <PrisonLabor_LaborAreaDesc>Labor area is area where only prisoners can work. No colonist's work allowed here except warden type jobs.</PrisonLabor_LaborAreaDesc>
+    <PrisonLabor_ClearLaborArea>Clear Labor Area</PrisonLabor_ClearLaborArea>
+    <PrisonLabor_ExpandLaborArea>Expand Labor Area</PrisonLabor_ExpandLaborArea>
+    <PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
+    <PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
+    <PrisonLabor_LaborAreaWarning>Labor area isn't required to make prisoners work.\n\nThis area forbids colonists from working.\n\nIt's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</PrisonLabor_LaborAreaWarning>
+    <PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
+    <PrisonLabor_ShowTreatmentHappiness>Show treatment happiness</PrisonLabor_ShowTreatmentHappiness>
+    <PrisonLabor_ShowTreatmentHappinessDesc>When enabled treatment happiness will be shown in Needs tab.</PrisonLabor_ShowTreatmentHappinessDesc>
+    <PrisonLabor_ColonyOnlyShort>Everyone</PrisonLabor_ColonyOnlyShort>
+    <PrisonLabor_ColonistsOnlyShort>Colonists</PrisonLabor_ColonistsOnlyShort>
+    <PrisonLabor_PrisonersOnlyShort>Prisoners</PrisonLabor_PrisonersOnlyShort>
+    <PrisonLabor_ColonyOnly>For everyone</PrisonLabor_ColonyOnly>
+    <PrisonLabor_ColonistsOnly>Limit to colonists</PrisonLabor_ColonistsOnly>
+    <PrisonLabor_PrisonersOnly>Limit to prisoners</PrisonLabor_PrisonersOnly>
+    <!-- 0.10 -->
+    <PrisonLabor_RecruitButtonLabel>Recruit</PrisonLabor_RecruitButtonLabel>
+    <PrisonLabor_RecruitButtonDesc>Ready to join colony</PrisonLabor_RecruitButtonDesc>
+    <PrisonLabor_Alert_EscapingPrisoners_Title>Prisoners can escape</PrisonLabor_Alert_EscapingPrisoners_Title>
+    <PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>Prisoners can reach end of map and escape. They will run unless colonist will keep an eye on them.</PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>
+    <PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>Those prisoners can escape:\n\n{0}\nThey will run unless colonist will keep an eye on them.</PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>
+    <PrisonLabor_ButtonRemoveModFromSave>Select Save</PrisonLabor_ButtonRemoveModFromSave>
+    <PrisonLabor_ButtonRemoveModFromSaveDesc>Remove Prison Labor mod from save</PrisonLabor_ButtonRemoveModFromSaveDesc>
+    <PrisonLabor_ButtonBackup>Backup</PrisonLabor_ButtonBackup>
+    <PrisonLabor_ButtonProceed>Proceed</PrisonLabor_ButtonProceed>
+    <PrisonLabor_UpgradeSaveProcessMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveProcessMessage>
+    <PrisonLabor_UpgradeSaveDialogMessage>You are going to remove Prison Labor mod from save. After this operation you will be able to play without the mod.</PrisonLabor_UpgradeSaveDialogMessage>
+    <PrisonLabor_BackupSaveDialogMessage>Please backup your file with button below.</PrisonLabor_BackupSaveDialogMessage>
+    <PrisonLabor_ReplayTurorialsButton>Tutorials</PrisonLabor_ReplayTurorialsButton>
+    <PrisonLabor_ShowTutorialButton>Show</PrisonLabor_ShowTutorialButton>
+    <PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
+    <PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
+    <PrisonLabor_EnableSuicide>Enable prisoner suicide</PrisonLabor_EnableSuicide>
+    <PrisonLabor_EnableSuicideDesc>Enables suicide of prisoners when they aren't very happy</PrisonLabor_EnableSuicideDesc>
+    <PrisonLabor_EnableFullHealRest>Enable prisoner full heal rest</PrisonLabor_EnableFullHealRest>
+    <PrisonLabor_EnableFullHealRestDesc>Prisoner will stay in bed until fully healed</PrisonLabor_EnableFullHealRestDesc>
+    <!-- Dev -->
+    <PrisonLabor_MaxNumPrisoner>"Max number of prisoners per gaurd to start lossing motivation (become ineffective)"</PrisonLabor_MaxNumPrisoner>
 </LanguageData>

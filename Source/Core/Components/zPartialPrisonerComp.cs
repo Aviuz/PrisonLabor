@@ -55,30 +55,6 @@ namespace PrisonLabor.Core.Components
 
                         pawn.jobs.StartJob(nJob, resumeCurJobAfterwards: true); return;
                     }
-
-                    if (!pawn.CanReserve(prisoner, 1, -1, null, false))
-                        continue;
-
-                    if (comp.IsHungry == true)
-                    {
-                        if (!PrisonFoodUtility.FoodAvailableInRoomFor(room, prisoner))
-                        {
-                            if (FoodUtility.TryFindBestFoodSourceFor(pawn, prisoner, false, out Thing foodSource, out ThingDef thingDef))
-                            {
-                                Log.Message("dude");
-                                float nutrition = FoodUtility.GetNutrition(foodSource, thingDef);
-                                Job nJob = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerDeliverFoodSupervise"), foodSource, prisoner);
-
-                                nJob.count = FoodUtility.WillIngestStackCountOf(prisoner, thingDef, nutrition);
-                                if (!room.isPrisonCell)
-                                    nJob.targetC = RCellFinder.SpotToChewStandingNear(prisoner, foodSource);
-                                else
-                                    nJob.targetC = room.Cells.RandomElement();
-
-                                pawn.jobs.StartJob(nJob, resumeCurJobAfterwards: true); return;
-                            }
-                        }
-                    }
                 }
             }
         }

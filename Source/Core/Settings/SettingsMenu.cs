@@ -128,7 +128,7 @@ namespace PrisonLabor.Core.Settings
 
             listing_options.Gap();
             listing_options.Gap();
-            listing_options.Label("Max number of prisoners per gaurd to start lossing motivation (become ineffective)", -1f);
+            listing_options.Label("PrisonLabor_MaxNumPrisoner".Translate(), -1f);
             listing_options.TextFieldNumeric(ref maxNumberOfPrisonerForGaurd, ref maxNumberOfPrisonerForGaurdBuffer, min: 3.5f, max: 8f);
 
             listing_options.End();

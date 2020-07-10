@@ -19,6 +19,12 @@ namespace PrisonLabor.Core.AI.ThinkNodes
 
         public object Tutorials { get; private set; }
 
+        private readonly int jobsPerTick = 7;
+
+        private static TickManager manager = null;
+
+        private static Dictionary<Pawn, int> lastIndex = new Dictionary<Pawn, int>();
+
         public override ThinkResult TryIssueJobPackage(Pawn pawn, JobIssueParams jobParams)
         {
             var mneed = pawn.needs.TryGetNeed<Need_Motivation>();
@@ -34,6 +40,9 @@ namespace PrisonLabor.Core.AI.ThinkNodes
             // Check if the motivation is enabled
             if (PrisonLaborPrefs.EnableMotivationMechanics && (mneed == null || mneed.IsLazy))
                 return SetNotWorking(mneed);
+
+            // Setting the tickmanager
+            if (manager == null) { manager = Find.TickManager; }
 
             // TODO Remove this..
             // Work prisoners will do]
@@ -53,14 +62,19 @@ namespace PrisonLabor.Core.AI.ThinkNodes
             Job job = null;
             WorkGiver_Scanner scanner = null;
 
+            // Checking if the dict contain the last time this pawn ticked
+            if (!lastIndex.ContainsKey(pawn)) { lastIndex.Add(pawn, 0); }
+
+            if (lastIndex[pawn] >= workList.Count) { lastIndex[pawn] = 0; }
+
             // testing each job
-            for (var j = 0; j < workList.Count; j++)
+            var limit = lastIndex[pawn] + jobsPerTick;
+            for (var j = lastIndex[pawn]; j < workList.Count && j < limit; j++)
             {
                 var workGiver = workList[j];
 
                 // don't know what this does
-                if (!PawnCanUseWorkGiver(pawn, workGiver))
-                    continue;
+                if (!PawnCanUseWorkGiver(pawn, workGiver)) { lastIndex[pawn] = j + 1; continue; }
 
                 bool found = false;
 
@@ -76,8 +90,8 @@ namespace PrisonLabor.Core.AI.ThinkNodes
 
                     //A workscanner can help with finding the possible job related things or cells thus the name scanner
                     scanner = workGiver as WorkGiver_Scanner;
-                    if (scanner == null)
-                        continue;
+
+                    if (scanner == null) { lastIndex[pawn] = j + 1; continue; }
 
                     Thing thing = null;
                     if (workGiver.def.scanThings)
@@ -87,8 +101,7 @@ namespace PrisonLabor.Core.AI.ThinkNodes
                     if (workGiver.def.scanCells && thing == null)
                         cell = ScanCells(scanner, workGiver, pawn, ref targetInfo, ref found);
 
-                    if (!found)
-                        continue;
+                    if (!found) { lastIndex[pawn] = j + 1; continue; }
                 }
                 catch (Exception e)
                 {
@@ -100,6 +113,10 @@ namespace PrisonLabor.Core.AI.ThinkNodes
                     Log.Error(string.Concat(pawn, " threw exception in WorkGiver ", workGiver.def.defName, ": ",
                             e.ToString()));
                 }
+                finally
+                {
+                    lastIndex[pawn] = j + 1;
+                }
 
                 if (!targetInfo.IsValid)
                     continue;
@@ -110,9 +127,11 @@ namespace PrisonLabor.Core.AI.ThinkNodes
                     job = scanner.JobOnCell(pawn, targetInfo.Cell);
 
                 if (job != null)
+                {
+                    lastIndex[pawn] = 0;
                     return SetWorking(new ThinkResult(job, this, workList[j].def.tagToGive), mneed);
+                }
             }
-
 
             return SetNotWorking(mneed);
         }
