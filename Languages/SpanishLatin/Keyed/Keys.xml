@@ -52,9 +52,9 @@
 
   <PrisonLabor_UpgradeSaveMessage>Actualizando [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
 
-  <PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
-  <PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
+  <PrisonLabor_CommandBedSetOwnerLabel>Asignar prisionero</PrisonLabor_CommandBedSetOwnerLabel>
+  <PrisonLabor_CommandBedSetOwnerDesc>Asignar esta cama a un prisionero en específico</PrisonLabor_CommandBedSetOwnerDesc>
 
-  <PrisonLabor_EnableSuicide>Enable prisoner suicide</PrisonLabor_EnableSuicide>
-  <PrisonLabor_EnableSuicideDesc>Enables suicide of prisoners when they aren't very happy</PrisonLabor_EnableSuicideDesc>
+  <PrisonLabor_EnableSuicide>Activar suicidio prisionero</PrisonLabor_EnableSuicide>
+  <PrisonLabor_EnableSuicideDesc>Activa el suicidio prisionero para cuando ellos estén muy tristes</PrisonLabor_EnableSuicideDesc>
 </LanguageData>

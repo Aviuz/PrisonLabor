@@ -45,16 +45,16 @@
   <PrisonLabor_ColonistsOnly>Solo colonos</PrisonLabor_ColonistsOnly>
   <PrisonLabor_PrisonersOnly>Solo prisioneros</PrisonLabor_PrisonersOnly>
   <PrisonLabor_ColonyOnly>Solo colono</PrisonLabor_ColonyOnly>
-  <PrisonLabor_EnableRevolts>Enable revolts</PrisonLabor_EnableRevolts>
-  <PrisonLabor_EnableRevoltsDesc>When enabled revolts will sometimes occur instead of vanilla incidents</PrisonLabor_EnableRevoltsDesc>
-  <PrisonLabor_LaborAreaWarning>Labor area isn't required to make prisoners work.\n\nThis area forbids colonists from working.\n\nIt's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</PrisonLabor_LaborAreaWarning>
-  <PrisonLabor_DontShowAgain>Don't show again</PrisonLabor_DontShowAgain>
+  <PrisonLabor_EnableRevolts>Activar revueltas</PrisonLabor_EnableRevolts>
+  <PrisonLabor_EnableRevoltsDesc>Cuando está habilitado, a veces se producen revueltas en lugar de incidentes vanilla.</PrisonLabor_EnableRevoltsDesc>
+  <PrisonLabor_LaborAreaWarning>El área de trabajo no es requerida para hacer que los prisioneros trabajen.\n\nEsta área prohíbe a los colonos trabajar.\n\nEs para situaciones en las que no quieres que los colonos trabajen en una zona determinada. Los prisioneros trabajarán dondequiera que puedan entrar.</PrisonLabor_LaborAreaWarning>
+  <PrisonLabor_DontShowAgain>No volver a mostrarse</PrisonLabor_DontShowAgain>
 
-  <PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
+  <PrisonLabor_UpgradeSaveMessage>Actualizando [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>
 
-  <PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
-  <PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
+  <PrisonLabor_CommandBedSetOwnerLabel>Asignar prisionero</PrisonLabor_CommandBedSetOwnerLabel>
+  <PrisonLabor_CommandBedSetOwnerDesc>Asignar esta cama a un prisionero en específico</PrisonLabor_CommandBedSetOwnerDesc>
 
-  <PrisonLabor_EnableSuicide>Enable prisoner suicide</PrisonLabor_EnableSuicide>
-  <PrisonLabor_EnableSuicideDesc>Enables suicide of prisoners when they aren't very happy</PrisonLabor_EnableSuicideDesc>
+  <PrisonLabor_EnableSuicide>Activar suicidio prisionero</PrisonLabor_EnableSuicide>
+  <PrisonLabor_EnableSuicideDesc>Activa el suicidio prisionero para cuando ellos estén muy tristes</PrisonLabor_EnableSuicideDesc>
 </LanguageData>
