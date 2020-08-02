@@ -68,7 +68,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
             {
                 "Void PlayOneShotOnCamera(Verse.SoundDef, Verse.Map)",
                 "System.Reflection.Emit.Label",
-                "Verse.Listing_Standard (30)",
+                "Verse.Listing_Standard (31)",
             };
             var listing = HPatcher.FindOperandAfter(opCodes4, operands4, instr);
 
