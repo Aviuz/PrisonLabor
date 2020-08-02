@@ -1,4 +1,6 @@
 Changelog:
+1.2.0
+
 1.1.11
 - Another fixes for roof construction. Prisoners should not stuct in roof is outside their reach
 - Preparation to 1.2 rimworld version
