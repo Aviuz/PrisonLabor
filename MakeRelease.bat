@@ -31,6 +31,10 @@ xcopy "Textures\*.*" "%target_directory%\Textures" /e
 mkdir "%target_directory%\1.0"
 xcopy "1.0\*.*" "%target_directory%\1.0" /e
 
+:: 1.2
+mkdir "%target_directory%\1.2"
+xcopy "1.2\*.*" "%target_directory%\1.2" /e
+
 :: LoadFolders.xml
 copy "LoadFolders.xml" "%target_directory%\LoadFolders.xml"
 
