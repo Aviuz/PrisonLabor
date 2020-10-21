@@ -7,7 +7,7 @@
   <PrisonLabor_StoppingWorkThreshold>罷工門檻</PrisonLabor_StoppingWorkThreshold>
   <PrisonLabor_WorkTypeDisabled>囚犯不準做的事情</PrisonLabor_WorkTypeDisabled>
   <PrisonLabor_ShowNews>顯示更新內容</PrisonLabor_ShowNews>
-  <PrisonLabor_ShowNewsDesc>顯示MOD作者最近有更改過什麼內容</PrisonLabor_ShowNewsDesc>
+  <PrisonLabor_ShowNewsDesc>顯示MOD作者最近有更新什麼內容</PrisonLabor_ShowNewsDesc>
   <PrisonLabor_DefaultInterMode>默認囚犯互動模式</PrisonLabor_DefaultInterMode>
   <PrisonLabor_AllowedWorkTypes>允許的工作類型：</PrisonLabor_AllowedWorkTypes>
   <PrisonLabor_AllowAll>允許全部</PrisonLabor_AllowAll>
@@ -40,8 +40,8 @@
   <PrisonLabor_ExpandLaborArea>擴大勞動區域</PrisonLabor_ExpandLaborArea>
 
   <PrisonLabor_EnableRevolts>啟用反抗</PrisonLabor_EnableRevolts>
-  <PrisonLabor_EnableRevoltsDesc>啟用時，有時會發生額外反叛，而不是原版事件</PrisonLabor_EnableRevoltsDesc>
-  <PrisonLabor_LaborAreaWarning>勞動區不需要讓囚犯工作。\n \n該地區禁止殖民者工作。\n \n這是因為你不希望殖民者在某些地區工作。 囚犯可以在任何可以進入的地方工作。</PrisonLabor_LaborAreaWarning>
+  <PrisonLabor_EnableRevoltsDesc>啟用時，有時會發生額外反叛，而不是系統事件</PrisonLabor_EnableRevoltsDesc>
+  <PrisonLabor_LaborAreaWarning>不需要勞動區來讓囚犯工作。\n \n該地區禁止殖民者工作。\n \n這是因為你不希望殖民者在某些地區工作。囚犯可以在任何可以進入的地方工作。</PrisonLabor_LaborAreaWarning>
   <PrisonLabor_DontShowAgain>不要再顯示了</PrisonLabor_DontShowAgain>
   <PrisonLabor_ShowTreatmentHappiness>顯示待遇指數</PrisonLabor_ShowTreatmentHappiness>
   <PrisonLabor_ShowTreatmentHappinessDesc>啟用後,待遇指數將顯示在"需求"的選項頁中.</PrisonLabor_ShowTreatmentHappinessDesc>
@@ -68,7 +68,7 @@
   <PrisonLabor_ButtonBackup>備份</PrisonLabor_ButtonBackup>
   <PrisonLabor_ButtonProceed>繼續</PrisonLabor_ButtonProceed>
 
-  <PrisonLabor_UpgradeSaveProcessMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveProcessMessage>
+  <PrisonLabor_UpgradeSaveProcessMessage>升級 [PrisonLabor] mod中</PrisonLabor_UpgradeSaveProcessMessage>
   <PrisonLabor_UpgradeSaveDialogMessage>您將要從保存中刪除Prison Labor mod.完成此操作後，您將可以在沒有mod的情況下進行遊戲.</PrisonLabor_UpgradeSaveDialogMessage>
   <PrisonLabor_BackupSaveDialogMessage>請使用下面按鈕備份文件</PrisonLabor_BackupSaveDialogMessage>
 
@@ -81,9 +81,9 @@
   <!--<PrisonLabor_DisableModDesc>啟用後，保存的世界將轉換為“安全模式”，無需mod即可遊戲。</PrisonLabor_DisableModDesc>-->
   <!--<PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>-->
 
-  <PrisonLabor_CommandBedSetOwnerLabel>Assign Prisoner</PrisonLabor_CommandBedSetOwnerLabel>
-  <PrisonLabor_CommandBedSetOwnerDesc>Assign this bed to be used by a specific prisoner</PrisonLabor_CommandBedSetOwnerDesc>
+  <PrisonLabor_EnableSuicide>啟用囚犯自殺</PrisonLabor_EnableSuicide>
+  <PrisonLabor_EnableSuicideDesc>囚犯心情值過低時自殺</PrisonLabor_EnableSuicideDesc>
 
-  <PrisonLabor_EnableSuicide>Enable prisoner suicide</PrisonLabor_EnableSuicide>
-  <PrisonLabor_EnableSuicideDesc>Enables suicide of prisoners when they aren't very happy</PrisonLabor_EnableSuicideDesc>
+  <PrisonLabor_EnableFullHealRest>啟用囚犯充分休息</PrisonLabor_EnableFullHealRest>
+  <PrisonLabor_EnableFullHealRestDesc>囚犯將躺在床上直到完全康復</PrisonLabor_EnableFullHealRestDesc>
 </LanguageData>
