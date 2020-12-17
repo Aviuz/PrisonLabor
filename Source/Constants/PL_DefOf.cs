@@ -17,5 +17,11 @@ namespace PrisonLabor.Constants
 
         public static NeedDef PrisonLabor_Motivation;
         public static NeedDef PrisonLabor_Treatment;
+
+        public static HediffDef PrisonLabor_RemovedHandscuffs;
+        public static HediffDef PrisonLabor_RemovedLegscuffs;
+
+        public static JobDef PrisonLabor_HandlePrisonersHandChain;
+        public static JobDef PrisonLabor_HandlePrisonersLegChain;
     }
 }

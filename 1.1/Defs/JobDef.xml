@@ -29,16 +29,4 @@
     <driverClass>PrisonLabor.Tweaks.JobDriver_PlantCut_Tweak</driverClass>
     <reportString>cutting TargetA.</reportString>
   </JobDef>
-  <JobDef>
-    <defName>PrisonLabor_HandlePrisonersLegChain</defName>
-    <driverClass>PrisonLabor.Core.AI.JobDrivers.JobDriver_UnchainLegs</driverClass>
-    <reportString>handling legs chain of prisoner TargetA.</reportString>
-    <alwaysShowWeapon>true</alwaysShowWeapon>
-  </JobDef>
-  <JobDef>
-    <defName>PrisonLabor_HandlePrisonersHandChain</defName>
-    <driverClass>PrisonLabor.Core.AI.JobDrivers.JobDriver_UnchainHands</driverClass>
-    <reportString>handling hands chain of prisoner TargetA.</reportString>
-    <alwaysShowWeapon>true</alwaysShowWeapon>
-  </JobDef>
 </Defs>

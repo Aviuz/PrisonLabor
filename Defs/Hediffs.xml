@@ -10,9 +10,36 @@
         <becomeVisible>false</becomeVisible>
       </li>
         <li>
-          <label>active</label>
+          <label>unchained totaly unchained</label>
           <becomeVisible>false</becomeVisible>
           <minSeverity>0.01</minSeverity>
+        </li>
+        <li>
+          <label>unchained legs</label>
+          <becomeVisible>false</becomeVisible>
+          <minSeverity>0.60</minSeverity>
+          <capMods>
+            <li>
+              <capacity>Manipulation</capacity>
+              <offset>-0.3</offset>
+            </li>
+          </capMods>
+        </li>
+        <li>
+          <label>unchained hands</label>
+          <becomeVisible>false</becomeVisible>
+          <minSeverity>0.80</minSeverity>
+          <capMods>
+            <li>
+              <capacity>Moving</capacity>
+              <postFactor>0.5</postFactor>
+            </li>
+          </capMods>
+        </li>    
+        <li>
+          <label>active</label>
+          <becomeVisible>false</becomeVisible>
+          <minSeverity>0.90</minSeverity>
           <capMods>
             <li>
               <capacity>Manipulation</capacity>
@@ -23,6 +50,38 @@
               <postFactor>0.5</postFactor>
             </li>
           </capMods>
+        </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>PrisonLabor_RemovedHandscuffs</defName>
+    <description>Prisoner has removed handscuffs</description>
+    <label>Removed Handscuff</label>
+    <stages>
+      <li>
+        <label>not active</label>
+        <becomeVisible>false</becomeVisible>
+      </li>
+        <li>
+          <label>active</label>
+          <becomeVisible>true</becomeVisible>
+          <minSeverity>0.01</minSeverity>
+        </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>PrisonLabor_RemovedLegscuffs</defName>
+    <description>Prisoner has removed legscuffs</description>
+    <label>Removed legscuffs</label>
+    <stages>
+      <li>
+        <label>not active</label>
+        <becomeVisible>false</becomeVisible>
+      </li>
+        <li>
+          <label>active</label>
+          <becomeVisible>true</becomeVisible>
+          <minSeverity>0.01</minSeverity>
         </li>
     </stages>
   </HediffDef>

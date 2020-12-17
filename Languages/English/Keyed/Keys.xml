@@ -83,4 +83,8 @@
 
   <PrisonLabor_EnableFullHealRest>Enable prisoner full heal rest</PrisonLabor_EnableFullHealRest>
   <PrisonLabor_EnableFullHealRestDesc>Prisoner will stay in bed until fully healed</PrisonLabor_EnableFullHealRestDesc>
+
+
+  <PrisonLabor_ToggleHandscuffs>Remove/put handcuffs</PrisonLabor_ToggleHandscuffs>
+  <PrisonLabor_ToggleLegscuffs>Remove/put legscuffs</PrisonLabor_ToggleLegscuffs>
 </LanguageData>
