@@ -17,7 +17,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Assemblies\</OutputPath>
+    <OutputPath>..\1.2\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -67,6 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompatibilityPatches\Quarry.cs" />
+    <Compile Include="Core\AI\JobDrivers\JobDriver_Unchain.cs" />
+    <Compile Include="Core\AI\JobDrivers\JobDriver_UnchainLegs.cs" />
+    <Compile Include="Core\AI\JobDrivers\JobDriver_UnchainHands.cs" />
     <Compile Include="Core\Alerts\Alert_EscapingPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_LazyPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_StarvingPrisoners.cs" />
@@ -106,6 +109,8 @@
     <Compile Include="HarmonyPatches\Patches_Food\ReserveFoodForPrisonerAfterDropping.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_RestrictBillToPrisoner.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_RMB\Patch_RMB_Chains.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Labor_Thing.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Labor_Position.cs" />

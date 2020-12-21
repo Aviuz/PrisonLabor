@@ -47,5 +47,9 @@ namespace PrisonLabor.Constants
 
         public const float BeatenHit = -0.1f;
         #endregion
+
+        #region Chains
+        public const int Unchain_Ticks = 10;
+        #endregion
     }
 }
