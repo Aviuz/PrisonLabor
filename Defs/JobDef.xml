@@ -32,13 +32,13 @@
   <JobDef>
     <defName>PrisonLabor_HandlePrisonersLegChain</defName>
     <driverClass>PrisonLabor.Core.AI.JobDrivers.JobDriver_UnchainLegs</driverClass>
-    <reportString>handling legs chain of prisoner TargetA.</reportString>
+    <reportString>handling legcuffs of prisoner TargetA.</reportString>
     <alwaysShowWeapon>true</alwaysShowWeapon>
   </JobDef>
   <JobDef>
     <defName>PrisonLabor_HandlePrisonersHandChain</defName>
     <driverClass>PrisonLabor.Core.AI.JobDrivers.JobDriver_UnchainHands</driverClass>
-    <reportString>handling hands chain of prisoner TargetA.</reportString>
+    <reportString>handling handcuffs of prisoner TargetA.</reportString>
     <alwaysShowWeapon>true</alwaysShowWeapon>
   </JobDef>
 </Defs>

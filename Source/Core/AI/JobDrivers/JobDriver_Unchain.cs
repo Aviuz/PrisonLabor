@@ -21,8 +21,8 @@ namespace PrisonLabor.Core.AI.JobDrivers
 		protected IEnumerable<Toil> MakeNewToils(HediffDef hediffDef)
 		{
 			this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
-			this.FailOnDowned(TargetIndex.A);
-			this.FailOnNotCasualInterruptible(TargetIndex.A);
+			//this.FailOnDowned(TargetIndex.A);
+			this.FailOnAggroMentalState(TargetIndex.A);
 			yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
 			Toil wait = new Toil();
 			wait.initAction = delegate
