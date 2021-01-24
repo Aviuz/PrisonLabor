@@ -21,9 +21,10 @@ namespace PrisonLabor.Core.Incidents
 
             foreach (var pawn in map.mapPawns.PrisonersOfColony)
             {
-                if (pawn.IsColonist)
+                if (pawn.IsColonist || pawn.health.capacities.GetLevel(PawnCapacityDefOf.Manipulation) == 0f || pawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness) == 0f)
+                {
                     continue;
-
+                }
                 var need = pawn.needs.TryGetNeed<Need_Treatment>();
                 if (need == null)
                     continue;

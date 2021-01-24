@@ -5,6 +5,7 @@ using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
 {
@@ -12,38 +13,53 @@ namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
     /// This patch will remove prisoners in "Restrict" tab.
     /// They are there in first place, because of adding them to PawnTable in another patch.
     /// </summary>
+    /*  [HarmonyPatch(typeof(PawnColumnWorker_AllowedArea))]
+      [HarmonyPatch("DoCell")]
+      [HarmonyPatch(new[] {typeof(Rect), typeof(Pawn), typeof(PawnTable)})]
+      internal class DisableAreaRestrictionsForPrisoners
+      {
+          private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
+              IEnumerable<CodeInstruction> instr)
+          {
+              var jumpTo = gen.DefineLabel();
+              yield return new CodeInstruction(OpCodes.Ldarg_2);
+              yield return new CodeInstruction(OpCodes.Call,
+                  typeof(DisableAreaRestrictionsForPrisoners).GetMethod(nameof(isPrisoner)));
+              yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
+              yield return new CodeInstruction(OpCodes.Ret);
+
+              var first = true;
+              foreach (var ci in instr)
+              {
+                  if (first)
+                  {
+                      first = false;
+                      ci.labels.Add(jumpTo);
+                  }
+                  yield return ci;
+              }
+          }
+
+          public static bool isPrisoner(Pawn pawn)
+          {
+              if (pawn.IsPrisoner)
+                  return true;
+              return false;
+          }
+      }*/
+
     [HarmonyPatch(typeof(PawnColumnWorker_AllowedArea))]
     [HarmonyPatch("DoCell")]
-    [HarmonyPatch(new[] {typeof(Rect), typeof(Pawn), typeof(PawnTable)})]
-    internal class DisableAreaRestrictionsForPrisoners
+    class EnableAreaRestrictionsForPrisoners
     {
-        private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,
-            IEnumerable<CodeInstruction> instr)
+        static void Postfix(Rect rect, Pawn pawn, PawnTable table)
         {
-            var jumpTo = gen.DefineLabel();
-            yield return new CodeInstruction(OpCodes.Ldarg_2);
-            yield return new CodeInstruction(OpCodes.Call,
-                typeof(DisableAreaRestrictionsForPrisoners).GetMethod(nameof(isPrisoner)));
-            yield return new CodeInstruction(OpCodes.Brfalse, jumpTo);
-            yield return new CodeInstruction(OpCodes.Ret);
-
-            var first = true;
-            foreach (var ci in instr)
+            if (pawn.IsPrisonerOfColony)
             {
-                if (first)
-                {
-                    first = false;
-                    ci.labels.Add(jumpTo);
-                }
-                yield return ci;
+                //Log.Message($"Pawn {pawn.LabelShort} area: {pawn.playerSettings.AreaRestriction}, is MouseBlocked: {Mouse.IsInputBlockedNow}");
+                AreaAllowedGUI.DoAllowedAreaSelectors(rect, pawn);
             }
         }
-
-        public static bool isPrisoner(Pawn pawn)
-        {
-            if (pawn.IsPrisoner)
-                return true;
-            return false;
-        }
     }
+
 }

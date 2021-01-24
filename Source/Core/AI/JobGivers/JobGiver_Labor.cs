@@ -86,7 +86,7 @@ namespace PrisonLabor.Core.AI.JobGivers
                             if (workGiver.def.scanThings)
                             {
                                 Predicate<Thing> predicate = t =>
-                                    !t.IsForbidden(pawn) && scanner.HasJobOnThing(pawn, t, false);
+                                    !t.IsForbiddenForPrisoner(pawn) && scanner.HasJobOnThing(pawn, t, false);
                                 var enumerable = scanner.PotentialWorkThingsGlobal(pawn);
                                 Thing thing;
                                 if (scanner.Prioritized)

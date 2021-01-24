@@ -1,4 +1,10 @@
 Changelog:
+1.2.1
+- Cuffs hediff should be removed after recruitment
+- Prisoners can use allowed area. Remember to include their cell in allowed area!
+- Suicide event should not trigger now when pawn has 0 manipulation or consciousness
+- Prisoners should refuel stuff :)
+- Marked "Set Owner for Prisoner Beds" mod as incompatible
 1.2.0
 New features and bugfixes works only with Rimworld 1.2+. Should work fine on old saves but new game recommended. 
 - Added posibility to remove handcuffs and legscuffs. Those changes affects only moving and manipulation. More effects will be added in future.
