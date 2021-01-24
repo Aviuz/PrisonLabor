@@ -51,29 +51,10 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
          *  ret |  | no labels
          */
 
-        static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, IEnumerable<CodeInstruction> instructions)
-        {
-            OpCode[] opCodes =
-            {
-                    OpCodes.Ldarg_3,
-                    OpCodes.Brtrue_S,
-                };
-            string[] operands =
-            {
-                    "",
-                    "",
-                };
-            int step = 0;
 
-            foreach (var instr in instructions)
-            {
-                if (HPatcher.IsFragment(opCodes, operands, instr, ref step, nameof(FoodUtility_IsFoodSourceOnMapSociallyProper), false))
-                {
-                    yield return new CodeInstruction(OpCodes.Pop);
-                    instr.opcode = OpCodes.Br;
-                }
-                yield return instr;
-            }
+        static bool Postfix(bool __result)
+        {
+            return true;
         }
     }
 }
