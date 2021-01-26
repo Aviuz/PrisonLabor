@@ -87,7 +87,15 @@ namespace PrisonLabor.Core.GUI_Components
 
         public override void MapComponentTick()
         {
-            worldScale = Screen.height / (2 * Camera.current.orthographicSize);
+            if (Camera.current != null)
+            {
+                worldScale = Screen.height / (2 * Camera.current.orthographicSize);
+            }
+            else
+            {
+                worldScale = Screen.height / 8;
+                Log.ErrorOnce("PrisonLaborError: Camera.current null in MapComponentTick().", typeof(PawnIcons).GetHashCode());
+            }
         }
     }
 }
