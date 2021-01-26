@@ -1,4 +1,7 @@
 Changelog:
+1.2.2
+- NPE fix for drawning icon
+- Fix issue with animal taming
 1.2.1
 - Cuffs hediff should be removed after recruitment
 - Prisoners can use allowed area. Remember to include their cell in allowed area!

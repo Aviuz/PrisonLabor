@@ -17,8 +17,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
     class Patch_ResetWorktableWhenRecruited
     {
         private static void Prefix(Pawn __instance, Faction newFaction, Pawn recruiter)
-        {          
-            if (newFaction == Faction.OfPlayer)
+        {
+             if (__instance.RaceProps.Humanlike && newFaction == Faction.OfPlayer)
             {
                 __instance.workSettings = new Pawn_WorkSettings(__instance);
                 Hediff legs = __instance.health.hediffSet.GetFirstHediffOfDef(PL_DefOf.PrisonLabor_RemovedLegscuffs, false);
