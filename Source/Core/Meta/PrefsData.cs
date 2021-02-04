@@ -15,6 +15,7 @@ namespace PrisonLabor.Core.Meta
         public bool show_treatment_happiness = false;
         public bool enable_suicide = true;
         public bool enable_full_heal_rest = true;
+        public bool enable_debug_logging = false;
 
         public Version last_version = Version.v0_0;
         public bool show_news = true;

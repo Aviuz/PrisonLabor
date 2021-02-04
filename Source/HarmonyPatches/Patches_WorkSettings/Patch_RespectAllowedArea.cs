@@ -16,7 +16,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
         static bool Postfix(bool __result, Pawn_PlayerSettings __instance)
         {
             Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
-            if (!__result && pawn.IsPrisonerOfColony )
+            if (!__result && pawn != null && pawn.IsPrisonerOfColony )
             {
                 return true;
             }

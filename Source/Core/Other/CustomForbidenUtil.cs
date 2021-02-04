@@ -31,7 +31,11 @@ namespace PrisonLabor.Core.Other
 
 		public static bool IsFoodForbiden(this Thing t, Pawn pawn)
         {
-			return PrisonerFoodReservation.IsReserved(t) && !pawn.IsPrisoner;
+			if (pawn.IsPrisonerOfColony)
+			{
+				DebugLogger.debug($"[PL] Pawn {pawn.LabelShort} checking null object");
+			}
+			return t != null && PrisonerFoodReservation.IsReserved(t) && !pawn.IsPrisoner;
 		}
 
 		public static bool IsForbiddenForPrisoner(this Thing t, Pawn pawn)
@@ -45,7 +49,7 @@ namespace PrisonLabor.Core.Other
 			{
 				return false;
 			}
-			if (t.Spawned && t.Position.IsForbiddenForPrisoner(pawn))
+			if (t != null && t.Spawned && t.Position.IsForbiddenForPrisoner(pawn))
 			{
 				return true;
 			}

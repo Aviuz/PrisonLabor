@@ -58,8 +58,14 @@ namespace PrisonLabor.Core.Incidents
                 return false;
 
             Tutorials.Treatment();
-
-            SendStandardLetter(parms, prisoner, prisoner.Name.ToStringShort, prisoner.Faction.Name);
+            if (prisoner.Faction == null)
+            {
+                SendStandardLetter(parms, prisoner, prisoner.Name.ToStringShort);
+            }
+            else
+            {
+                SendStandardLetter(parms, prisoner, prisoner.Name.ToStringShort, prisoner.Faction.Name);
+            }
             return true;
         }
     }

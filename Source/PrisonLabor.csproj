@@ -91,7 +91,9 @@
     <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
     <Compile Include="Core\Meta\Version.cs" />
+    <Compile Include="Core\Other\CleanPrisonersStatus.cs" />
     <Compile Include="Core\Other\CustomForbidenUtil.cs" />
+    <Compile Include="Core\Other\DebugLogger.cs" />
     <Compile Include="Core\Other\ModSearcher.cs" />
     <Compile Include="Core\Other\NewsProvider.cs" />
     <Compile Include="Core\Other\TutorialProvider.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Core\Windows\TutorialWindow.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
     <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
+    <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_Bill_ProductionWithUft.cs" />
     <Compile Include="HarmonyPatches\Patches_Construction\EnableConstructionFinishFrames.cs" />
     <Compile Include="HarmonyPatches\Patches_Construction\Patch_BlueprintsForPlayerFaction.cs" />
     <Compile Include="HarmonyPatches\Patches_Construction\Patch_RoofReservation.cs" />
@@ -157,6 +160,7 @@
     <Compile Include="HarmonyPatches\Patches_Work\Patch_PlantWork.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_CleanFilth.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_Refuel.cs" />
+    <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_RescueDowned.cs" />
     <Compile Include="HarmonyPatches\Triggers.cs" />
     <Compile Include="Core\Hediffs\HediffGiver_PrisonersChains.cs" />
     <Compile Include="Core\Hediffs\HediffManager.cs" />

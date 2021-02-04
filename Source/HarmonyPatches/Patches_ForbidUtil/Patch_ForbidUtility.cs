@@ -18,13 +18,19 @@ namespace PrisonLabor.HarmonyPatches.Patches_ForbidUtil
         [HarmonyPatch(new[] { typeof(Thing), typeof(Pawn) })]
         static bool isForbidPostfix(bool __result, Thing t, Pawn pawn)
         {
+            if (pawn.IsPrisonerOfColony)
+            {
+                DebugLogger.debug($"Prisoner {pawn.LabelShort}, forbid result: {__result} for {t}");
+            }
             if (t.IsFoodForbiden(pawn))
             {
+                DebugLogger.debug($"Forbid postfix food return true for {t}");
                 return true;
             }
 
             if (pawn.IsPrisonerOfColony)
             {
+                DebugLogger.debug($"Forbid postfix return { t.IsForbiddenForPrisoner(pawn)} for {t}");
                 return t.IsForbiddenForPrisoner(pawn);
             }
 

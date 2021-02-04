@@ -33,6 +33,10 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
 
         public static bool CanHaulAndInPrisonCell(Pawn p, Thing t, bool forced)
         {
+            if (p.IsPrisonerOfColony)
+            {
+                DebugLogger.debug($"Prisoner {p.LabelShort} call: {t}");
+            }
             var unfinishedThing = t as UnfinishedThing;
             if (unfinishedThing != null && unfinishedThing.BoundBill != null)
                 return false;
