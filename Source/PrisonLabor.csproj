@@ -70,6 +70,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompatibilityPatches\Kajin2.cs" />
     <Compile Include="CompatibilityPatches\Quarry.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_Unchain.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_UnchainLegs.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled2.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_PawnTableSetDirtyFix.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_JobDriver_Mine.cs" />
+    <Compile Include="HarmonyPatches\Patches_Work\Patch_JobGiver_Repair.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_PlantWork.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_CleanFilth.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_Refuel.cs" />

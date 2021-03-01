@@ -12,6 +12,7 @@ namespace PrisonLabor.CompatibilityPatches
             //NoWaterNoLife.Init();
             WorkTab.Init();
             Quarry.Init();
+            Kajin2.Init();
         }
     }
 }

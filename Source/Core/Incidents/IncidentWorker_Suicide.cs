@@ -21,7 +21,7 @@ namespace PrisonLabor.Core.Incidents
 
             foreach (var pawn in map.mapPawns.PrisonersOfColony)
             {
-                if (pawn.IsColonist || pawn.health.capacities.GetLevel(PawnCapacityDefOf.Manipulation) == 0f || pawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness) == 0f)
+                if (pawn.IsColonist || !pawn.Spawned || pawn.health.capacities.GetLevel(PawnCapacityDefOf.Manipulation) == 0f || pawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness) == 0f)
                 {
                     continue;
                 }
@@ -42,7 +42,7 @@ namespace PrisonLabor.Core.Incidents
             var affectedPawns = new List<Pawn>(map.mapPawns.PrisonersOfColony);
             foreach (var pawn in map.mapPawns.PrisonersOfColony)
             {
-                if (pawn.IsColonist)
+                if (pawn.IsColonist || !pawn.Spawned || pawn.health.capacities.GetLevel(PawnCapacityDefOf.Manipulation) == 0f || pawn.health.capacities.GetLevel(PawnCapacityDefOf.Consciousness) == 0f)
                     continue;
 
                 var need = pawn.needs.TryGetNeed<Need_Treatment>();

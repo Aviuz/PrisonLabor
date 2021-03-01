@@ -12,7 +12,13 @@
               <li Class="JobGiver_SeekSafeTemperature"/>
             </subNodes>
           </li>
-      		<li Class="ThinkNode_Priority">
+           <li Class="ThinkNode_Tagger">
+              <tagToGive>ChangingApparel</tagToGive>
+              <subNodes>
+                <li Class="JobGiver_PrisonerGetDressed" />
+              </subNodes>
+           </li>
+      	   <li Class="ThinkNode_Priority">
       			<subNodes>
               <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_BedTime" />
               <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_PickupWeapon" />

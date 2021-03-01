@@ -19,6 +19,10 @@ namespace PrisonLabor.Core.AI.JobGivers
 
         public override float GetPriority(Pawn pawn)
         {
+            if (pawn.needs.rest == null)
+            {
+                return 0f;
+            }
             if (HealthAIUtility.ShouldHaveSurgeryDoneNow(pawn))
                 return 15f;
             if (pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Sleep)
@@ -28,6 +32,10 @@ namespace PrisonLabor.Core.AI.JobGivers
 
         protected override Job TryGiveJob(Pawn pawn)
         {
+            if(pawn.needs.rest == null)
+            {
+                return null;
+            }
             if (pawn.timetable == null || pawn.timetable.CurrentAssignment != TimeAssignmentDefOf.Sleep)
                 return null;
             if (RestUtility.DisturbancePreventsLyingDown(pawn))
