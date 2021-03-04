@@ -41,7 +41,7 @@
 
   <PrisonLabor_EnableRevolts>啟用反抗</PrisonLabor_EnableRevolts>
   <PrisonLabor_EnableRevoltsDesc>啟用時，有時會發生額外反叛，而不是系統事件</PrisonLabor_EnableRevoltsDesc>
-  <PrisonLabor_LaborAreaWarning>不需要勞動區來讓囚犯工作。\n \n該地區禁止殖民者工作。\n \n這是因為你不希望殖民者在某些地區工作。 囚犯可以在任何可以進入的地方工作。</PrisonLabor_LaborAreaWarning>
+  <PrisonLabor_LaborAreaWarning>不需要勞動區來讓囚犯工作。\n \n該地區禁止殖民者工作。\n \n這是因為你不希望殖民者在某些地區工作。 囚犯可以在任何許可進出的地方工作。</PrisonLabor_LaborAreaWarning>
   <PrisonLabor_DontShowAgain>不要再顯示了</PrisonLabor_DontShowAgain>
   <PrisonLabor_ShowTreatmentHappiness>顯示待遇指數</PrisonLabor_ShowTreatmentHappiness>
   <PrisonLabor_ShowTreatmentHappinessDesc>啟用後,待遇指數將顯示在"需求"的選項頁中.</PrisonLabor_ShowTreatmentHappinessDesc>
@@ -84,9 +84,12 @@
   <PrisonLabor_EnableFullHealRest>啟用囚犯充分休息</PrisonLabor_EnableFullHealRest>
   <PrisonLabor_EnableFullHealRestDesc>囚犯將躺在床上直到完全康復</PrisonLabor_EnableFullHealRestDesc>
 
-  <!--<PrisonLabor_RestartInfo>重新啟動然後重新保存您的遊戲。</PrisonLabor_RestartInfo>-->
-  <!--<PrisonLabor_RestartInfo2>完成此步驟後，您可以安全地禁用此mod。</PrisonLabor_RestartInfo2>-->
-  <!--<PrisonLabor_DisableMod>禁用mod</PrisonLabor_DisableMod>-->
-  <!--<PrisonLabor_DisableModDesc>啟用後，保存的世界將轉換為“安全模式”，無需mod即可遊戲。</PrisonLabor_DisableModDesc>-->
-  <!--<PrisonLabor_UpgradeSaveMessage>Upgrading [PrisonLabor] mod</PrisonLabor_UpgradeSaveMessage>-->
+  <PrisonLabor_HandcuffsPut>戴上手銬</PrisonLabor_HandcuffsPut>
+  <PrisonLabor_HandcuffsRemove>卸下手銬</PrisonLabor_HandcuffsRemove>
+  <PrisonLabor_LegcuffsPut>戴上腳銬</PrisonLabor_LegcuffsPut>
+  <PrisonLabor_LegcuffsRemove>卸下腳銬</PrisonLabor_LegcuffsRemove>
+
+  <PrisonLabor_ToggleHandscuffs>卸下/戴上手銬</PrisonLabor_ToggleHandscuffs>
+  <PrisonLabor_ToggleLegscuffs>卸下/戴上腳銬</PrisonLabor_ToggleLegscuffs>
+
 </LanguageData>
