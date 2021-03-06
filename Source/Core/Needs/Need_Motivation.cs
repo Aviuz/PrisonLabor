@@ -85,7 +85,11 @@ namespace PrisonLabor.Core.Needs
                             value -= BGP.Laziness_LazyRate;
                             if (HealthAIUtility.ShouldSeekMedicalRest(pawn))
                                 value -= BGP.Laziness_HealthRate;
-                            value -= (int)pawn.needs.food.CurCategory * BGP.Laziness_HungryRate;
+                            if (pawn.needs.food != null)
+                            {
+                                //warforged
+                                value -= (int)pawn.needs.food.CurCategory * BGP.Laziness_HungryRate;
+                            }
                             // Some pawns have no rest need (e.g. Pawns with Circadian Half Cycler or androids from other mods)
                             if (pawn.needs.rest != null)
                             {

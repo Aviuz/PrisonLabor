@@ -1,4 +1,14 @@
 Changelog:
+1.2.3
+- Fixing issue with faction set (animal and recruiting) from 1.2.1 and 1.2.2
+- Prisoners without food and/or sleep needs should work normally
+- Lots of null objects checks - it should reduce amount of errors
+- Suicide and resocialization event condition update. Those events should not trigger when a pawn is not spawned
+- Added logic for prisoners to search for appeal before work start. Put appeal in their cell and naked prisoners should wear it
+- Compatibility with "Kijin Race 2.0". Prisoners should drop hay when research is done, and they cut plants
+- More fixes for construction jobs. Pawn without faction should not spam errors
+- Improved continuation of unfinished bills. With that improvement mod human resources should be compatible
+- Update Chinese translation
 1.2.2
 - NPE fix for drawning icon
 - Fix issue with animal taming

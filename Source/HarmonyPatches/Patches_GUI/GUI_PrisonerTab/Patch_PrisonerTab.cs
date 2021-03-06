@@ -1,5 +1,7 @@
 using HarmonyLib;
+using PrisonLabor.Constants;
 using PrisonLabor.Core.Needs;
+using PrisonLabor.Core.Other;
 using PrisonLabor.Core.Trackers;
 using RimWorld;
 using System;
@@ -74,8 +76,10 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_PrisonerTab
             {
                 if (listingStandard.ButtonTextLabeled("PrisonLabor_RecruitButtonDesc".Translate(), "PrisonLabor_RecruitButtonLabel".Translate()))
                 {
+                    CleanPrisonersStatus.Clean(pawn);
                     pawn.guest.SetGuestStatus(null);
                     pawn.SetFaction(Faction.OfPlayer);
+                     
                 }
             }
         }

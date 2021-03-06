@@ -20,7 +20,7 @@ namespace PrisonLabor.WorkUtils
             {
                 return false;
             }
-            if (!pawn.Map.listerBuildingsRepairable.Contains(pawn.Faction, building))
+            if (!pawn.Map.listerBuildingsRepairable.Contains(Faction.OfPlayer, building))
             {
                 return false;
             }
@@ -36,7 +36,7 @@ namespace PrisonLabor.WorkUtils
             {
                 return false;
             }
-            if (pawn.Faction == Faction.OfPlayer && !pawn.Map.areaManager.Home[t.Position])
+            if (pawn.IsPrisonerOfColony && !pawn.Map.areaManager.Home[t.Position])
             {
                 JobFailReason.Is(WorkGiver_FixBrokenDownBuilding.NotInHomeAreaTrans);
                 return false;

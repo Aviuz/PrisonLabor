@@ -1,5 +1,6 @@
 using HarmonyLib;
 using PrisonLabor.Constants;
+using PrisonLabor.Core.Other;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -11,28 +12,20 @@ using Verse;
 
 namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
 {
-    [HarmonyPatch(typeof(Pawn))]
-    [HarmonyPatch("SetFaction")]
-    [HarmonyPatch(new[] { typeof(Faction), typeof(Pawn) })]
+    [HarmonyPatch(typeof(InteractionWorker_RecruitAttempt))]
+    [HarmonyPatch("DoRecruit")]
+    [HarmonyPatch(new Type[] { typeof(Pawn), typeof(Pawn), typeof(float), typeof(string), typeof(string), typeof(bool), typeof(bool) },
+        new ArgumentType[] { ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Out, ArgumentType.Out, ArgumentType.Normal, ArgumentType.Normal })]
     class Patch_ResetWorktableWhenRecruited
     {
-        private static void Prefix(Pawn __instance, Faction newFaction, Pawn recruiter)
-        {
-             if (__instance.RaceProps.Humanlike && newFaction == Faction.OfPlayer)
+        static void Prefix(Pawn recruiter, Pawn recruitee)
+        {            
+            if(recruitee != null && recruitee.IsPrisonerOfColony && recruiter != null && recruiter.Faction == Faction.OfPlayer)
             {
-                __instance.workSettings = new Pawn_WorkSettings(__instance);
-                Hediff legs = __instance.health.hediffSet.GetFirstHediffOfDef(PL_DefOf.PrisonLabor_RemovedLegscuffs, false);
-                if (legs != null)
-                {
-                    __instance.health.hediffSet.hediffs.Remove(legs);
-                }
-                Hediff hands = __instance.health.hediffSet.GetFirstHediffOfDef(PL_DefOf.PrisonLabor_RemovedHandscuffs, false);
-                if (hands != null)
-                {
-                    __instance.health.hediffSet.hediffs.Remove(hands);
-                }
-                __instance.playerSettings.AreaRestriction = null;
+                CleanPrisonersStatus.Clean(recruitee);
+                Log.Message($"[PrisonLabor] Removed prisoners effects from {recruitee.LabelShort}");
             }
         }
+
     }
 }

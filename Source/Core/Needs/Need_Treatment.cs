@@ -85,18 +85,21 @@ namespace PrisonLabor.Core.Needs
                 CurLevel += BGP.JoyRate;
 
             // Status
-            var hunger = pawn.needs.TryGetNeed<Need_Food>();
+            if (pawn.needs.food != null)
+            {
+                var hunger = pawn.needs.TryGetNeed<Need_Food>();
 
-            int statusScore = 0;
-            if (hunger.CurCategory < HungerCategory.UrgentlyHungry)
-                statusScore += 5;
-            if (hunger.CurCategory < HungerCategory.Hungry)
-                statusScore += 5;
-            statusScore -= (int)pawn.health.hediffSet.PainTotal / 10;
-            if (pawn.health.HasHediffsNeedingTend())
-                statusScore -= 7;
+                int statusScore = 0;
+                if (hunger.CurCategory < HungerCategory.UrgentlyHungry)
+                    statusScore += 5;
+                if (hunger.CurCategory < HungerCategory.Hungry)
+                    statusScore += 5;
+                statusScore -= (int)pawn.health.hediffSet.PainTotal / 10;
+                if (pawn.health.HasHediffsNeedingTend())
+                    statusScore -= 7;
 
-            CurLevel += statusScore * BGP.StatusMultiplier;
+                CurLevel += statusScore * BGP.StatusMultiplier;
+            }
 
 
             // Labor

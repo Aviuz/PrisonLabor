@@ -18,7 +18,7 @@ namespace PrisonLabor.Core.Incidents
 
             foreach (var pawn in map.mapPawns.PrisonersOfColony)
             {
-                if (pawn.IsColonist)
+                if (pawn.IsColonist || !pawn.Spawned)
                     continue;
 
                 var treatment = pawn.needs.TryGetNeed<Need_Treatment>();
@@ -39,7 +39,7 @@ namespace PrisonLabor.Core.Incidents
             var affectedPawns = new List<Pawn>(map.mapPawns.PrisonersOfColony);
             foreach (var pawn in map.mapPawns.PrisonersOfColony)
             {
-                if (pawn.IsColonist)
+                if (pawn.IsColonist || !pawn.Spawned)
                     continue;
 
                 var treatment = pawn.needs.TryGetNeed<Need_Treatment>();
@@ -58,8 +58,14 @@ namespace PrisonLabor.Core.Incidents
                 return false;
 
             Tutorials.Treatment();
-
-            SendStandardLetter(parms, prisoner, prisoner.Name.ToStringShort, prisoner.Faction.Name);
+            if (prisoner.Faction == null)
+            {
+                SendStandardLetter(parms, prisoner, prisoner.Name.ToStringShort);
+            }
+            else
+            {
+                SendStandardLetter(parms, prisoner, prisoner.Name.ToStringShort, prisoner.Faction.Name);
+            }
             return true;
         }
     }

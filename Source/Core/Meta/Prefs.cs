@@ -15,6 +15,18 @@ namespace PrisonLabor.Core.Meta
         private static readonly string prefsFilePath =
             Path.Combine(GenFilePaths.ConfigFolderPath, "PrisonLabor_Prefs.xml");
 
+        public static bool DebugLogs
+        {
+            get
+            {
+                return data.enable_debug_logging;
+            }
+            set
+            {
+                data.enable_debug_logging = value;
+                Apply();
+            }
+        }
         public static Version Version
         {
             get { return data.version; }
@@ -209,6 +221,7 @@ namespace PrisonLabor.Core.Meta
             data.version = version;
             data.last_version = last_version;
             data.tutorials_flags = tutorials;
+            data.enable_debug_logging = false;
 
             Apply();
         }

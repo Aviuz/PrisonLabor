@@ -91,4 +91,7 @@
   
   <PrisonLabor_ToggleHandscuffs>Remove/put handcuffs</PrisonLabor_ToggleHandscuffs>
   <PrisonLabor_ToggleLegscuffs>Remove/put legscuffs</PrisonLabor_ToggleLegscuffs>
+
+  <PrisonLabor_EnableDebugLogs>Enable Debug Logs</PrisonLabor_EnableDebugLogs>
+  <PrisonLabor_EnableDebugLogsDesc>Turning on this option may spam log</PrisonLabor_EnableDebugLogsDesc>
 </LanguageData>
