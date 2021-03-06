@@ -1,9 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <PrisonLabor_PrisonerChains.label>囚犯腳鏈</PrisonLabor_PrisonerChains.label>
+  <PrisonLabor_PrisonerChains.label>囚犯鎖銬</PrisonLabor_PrisonerChains.label>
+  <PrisonLabor_PrisonerChains.description>此角色有囚犯鎖銬。注意：這是默認的，但系統表現於狀態列</PrisonLabor_PrisonerChains.description>
   <PrisonLabor_PrisonerChains.stages.0.label>不使用</PrisonLabor_PrisonerChains.stages.0.label>
   <PrisonLabor_PrisonerChains.stages.1.label>使用</PrisonLabor_PrisonerChains.stages.1.label>
+  <PrisonLabor_PrisonerChains.stages.2.label>解除腳銬</PrisonLabor_PrisonerChains.stages.2.label>
+  <PrisonLabor_PrisonerChains.stages.3.label>解除手銬</PrisonLabor_PrisonerChains.stages.3.label>
+  <PrisonLabor_PrisonerChains.stages.4.label>啟用</PrisonLabor_PrisonerChains.stages.4.label>
+
+  <PrisonLabor_RemovedHandscuffs.label>拿掉手銬</PrisonLabor_RemovedHandscuffs.label>
+  <PrisonLabor_RemovedHandscuffs.description>囚犯已經摘下手銬</PrisonLabor_RemovedHandscuffs.description>
+  <PrisonLabor_RemovedHandscuffs.stages.0.label>不啟用</PrisonLabor_RemovedHandscuffs.stages.0.label>
+  <PrisonLabor_RemovedHandscuffs.stages.1.label>啟用</PrisonLabor_RemovedHandscuffs.stages.1.label>
+
+  <PrisonLabor_RemovedLegscuffs.label>移除腳銬</PrisonLabor_RemovedLegscuffs.label>
+  <PrisonLabor_RemovedLegscuffs.description>囚犯已移除腳銬</PrisonLabor_RemovedLegscuffs.description>
+  <PrisonLabor_RemovedLegscuffs.stages.0.label>不啟用</PrisonLabor_RemovedLegscuffs.stages.0.label>
+  <PrisonLabor_RemovedLegscuffs.stages.1.label>啟用</PrisonLabor_RemovedLegscuffs.stages.1.label>
 
 
 </LanguageData>
