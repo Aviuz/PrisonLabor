@@ -5,7 +5,7 @@
 	<supportedVersions>
 		<li>1.0</li>
 		<li>1.1</li>
-    <li>1.2</li>
+		<li>1.2</li>
 	</supportedVersions>
 	<packageId>avius.prisonlabor</packageId>
   <incompatibleWith>
@@ -23,7 +23,7 @@
 	</li>
 	</modDependencies>
 
-	<description>Version 1.2.3
+	<description>Version 1.2.4
 
 This mod force prisoners to work. To enable this feature prisoners must have "Force to work" option checked ("Prisoner" tab). Prison labor needs management that consist:
 - Motivation - prisoners need to be motivated by presence of colonists. Wardens have new job - supervising prisoners. Low motivation can lead to revolts.

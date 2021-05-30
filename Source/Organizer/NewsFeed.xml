@@ -4,6 +4,14 @@
   <!-- [img] ... [/img] for image (inside name of file) -->
   <!-- [gap] for gap -->
   <patches>
+      <patch version="1.2.4">
+          <title>Prison Labor v 1.2.4</title>
+          <items>
+              <item>[-]Changed adding designer for prisoner labor zone to more "common" way. It may fix missing designators as mod incompatibility</item>
+              <item>[-]Prisoners should respect their food restriction when motivation is more than 75%, or they are watched</item>
+              <item>[-]Prisoners should use ground penetration and long scanners</item>
+          </items>
+      </patch>
     <patch version="1.0.3" silent="true"/>
     <patch version="1.0.2" silent="true"/>
     <patch version="1.0.1" silent="true"/>
