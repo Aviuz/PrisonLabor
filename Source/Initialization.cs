@@ -24,7 +24,6 @@ namespace PrisonLabor
                 ClassInjector.Init();
                 SettingsMenu.Init();
                 VersionUtility.CheckVersion();
-                Designator_AreaLabor.Initialization();
                 CompatibilityPatches.Initialization.Run();
                 HediffManager.Init();
 

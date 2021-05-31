@@ -1,4 +1,8 @@
 Changelog:
+1.2.4
+- Changed adding designer for prisoner labor zone to more "common" way. It may fix missing designators as mod incompatibility
+- Prisoners should respects their food restriction when motivation is more than 75% or they are watched
+- Prisoners should use ground penetration and long scanners
 1.2.3
 - Fixing issue with faction set (animal and recruiting) from 1.2.1 and 1.2.2
 - Prisoners without food and/or sleep needs should work normally

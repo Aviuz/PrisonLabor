@@ -84,13 +84,5 @@ namespace PrisonLabor.Core.LaborArea
                 Map.areaManager.AllAreas.Add(new Area_Labor(Map.areaManager));
             Map.areaManager.Get<Area_Labor>().MarkForDraw();
         }
-
-        public static void Initialization()
-        {
-            DefDatabase<DesignationCategoryDef>.GetNamed("Zone").AllResolvedDesignators
-                .Add(new Designator_AreaLaborExpand());
-            DefDatabase<DesignationCategoryDef>.GetNamed("Zone").AllResolvedDesignators
-                .Add(new Designator_AreaLaborClear());
-        }
     }
 }
