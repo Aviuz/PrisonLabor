@@ -1,4 +1,5 @@
 using PrisonLabor.Core.Needs;
+using PrisonLabor.Core.Other;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -62,7 +63,7 @@ namespace PrisonLabor.Core.AI.JobGivers
                 var radius = i != 0 ? 12 : 4;
                 IntVec3 result;
                 if (CellFinder.TryRandomClosewalkCellNear(pawn.Position, map, radius, out result,
-                    x => !x.IsForbidden(pawn) && !x.GetTerrain(map).avoidWander))
+                    x => !x.IsForbiddenForPrisoner(pawn) && !x.GetTerrain(map).avoidWander))
                     return result;
             }
             return CellFinder.RandomClosewalkCellNearNotForbidden(pawn.Position, map, 4, pawn);

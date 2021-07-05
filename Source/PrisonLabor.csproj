@@ -78,6 +78,9 @@
     <Compile Include="Core\Alerts\Alert_EscapingPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_LazyPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_StarvingPrisoners.cs" />
+    <Compile Include="Core\Components\PrisonerComp.cs" />
+    <Compile Include="Core\Components\PrisonerCompProperties.cs" />
+    <Compile Include="Core\GUI_Components\TexturePool.cs" />
     <Compile Include="Core\GUI_Components\RichListing.cs" />
     <Compile Include="Core\GUI_Components\SImpleVideo.cs" />
     <Compile Include="Core\LaborArea\Area_Labor.cs" />
@@ -172,7 +175,6 @@
     <Compile Include="Core\AI\JobGivers\JobGiver_BedTime.cs" />
     <Compile Include="Core\AI\JobGivers\JobGiver_Diet.cs" />
     <Compile Include="Core\AI\JobGivers\JobGiver_PickupWeapon.cs" />
-    <Compile Include="Core\GUI_Components\PawnIcons.cs" />
     <Compile Include="Core\Trackers\InspirationTracker.cs" />
     <Compile Include="Core\Needs\Need_Treatment.cs" />
     <Compile Include="Core\Needs\Need_Motivation.cs" />

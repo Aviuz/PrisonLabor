@@ -1,4 +1,9 @@
 Changelog:
+1.2.5
+- Refactored rendering icons on prisoners. Instead of drawing textures, mesh is used. It may help with gray screen issue. Icons will be smaller now.
+- Various fixes to work patches which should reduce situations when prisoners stuck.
+
+Probably it is the last release for Rimworld version 1.2. Future updates will be pushed with version 1.3
 1.2.4
 - Changed adding designer for prisoner labor zone to more "common" way. It may fix missing designators as mod incompatibility
 - Prisoners should respects their food restriction when motivation is more than 75% or they are watched

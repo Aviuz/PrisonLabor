@@ -39,10 +39,6 @@ xcopy "1.1\*.*" "%target_directory%\1.1" /e
 mkdir "%target_directory%\1.2"
 xcopy "1.2\*.*" "%target_directory%\1.2" /e
 
-:: 1.2
-mkdir "%target_directory%\1.2"
-xcopy "1.2\*.*" "%target_directory%\1.2" /e
-
 :: LoadFolders.xml
 copy "LoadFolders.xml" "%target_directory%\LoadFolders.xml"
 

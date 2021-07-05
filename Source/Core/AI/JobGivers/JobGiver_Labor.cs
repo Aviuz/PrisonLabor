@@ -129,7 +129,7 @@ namespace PrisonLabor.Core.AI.JobGivers
                                     float num4 = (current - position).LengthHorizontalSquared;
                                     if (prioritized)
                                     {
-                                        if (!current.IsForbidden(pawn) && scanner.HasJobOnCell(pawn, current))
+                                        if (!current.IsForbiddenForPrisoner(pawn) && scanner.HasJobOnCell(pawn, current))
                                         {
                                             var priority = scanner.GetPriority(pawn, current);
                                             if (priority > num3 || priority == num3 && num4 < num2)
