@@ -40,8 +40,10 @@ namespace PrisonLabor.Core.GameSaves
             // Replace need classes
             xml.InnerXml = xml.InnerXml.Replace("PrisonLabor.Need_Treatment", typeof(Need_Treatment).FullName);
 
-            // Replace need classes
-            xml.InnerXml = xml.InnerXml.Replace("PrisonLabor.MapComponent_Icons", typeof(PawnIcons).FullName);
+            // Replace need classes   
+
+           // xml.InnerXml = xml.InnerXml.Replace("PrisonLabor.MapComponent_Icons", typeof(PawnIcons).FullName);
+            xml.InnerXml = xml.InnerXml.Replace("<li Class=\"PrisonLabor.Core.GUI_Components.PawnIcons\" />", "");
         }
     }
 }

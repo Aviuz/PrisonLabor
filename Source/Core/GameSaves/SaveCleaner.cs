@@ -151,8 +151,10 @@ namespace PrisonLabor.Core.GameSaves
                 removalBuffer.Clear();
                 foreach (XmlNode component in components)
                 {
-                    if (component.Attributes["Class"].Value == typeof(PawnIcons).FullName)
+                    if (component.Attributes["Class"].Value == "PrisonLabor.Core.GUI_Components.PawnIcons")
+                    {
                         removalBuffer.Add(component);
+                    }
                 }
                 foreach (var item in removalBuffer)
                     components.RemoveChild(item);

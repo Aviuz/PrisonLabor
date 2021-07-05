@@ -31,7 +31,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
 			{
 				return false;
 			}
-			if (t.IsForbiddenForPrisoner(pawn) || !pawn.CanReserve(t, 1, -1, null, forced))
+			if (t.IsForbiddenForPrisoner(pawn) || !pawn.CanReserveAndReach(t, PathEndMode.ClosestTouch, pawn.NormalMaxDanger(), 1, -1, null, forced))
 			{
 				return false;
 			}
