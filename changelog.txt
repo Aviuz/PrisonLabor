@@ -1,4 +1,17 @@
 Changelog:
+1.3.0
+- Update to Rimworld 1.3
+- Created menu for prisoners
+- Created tab in prisoners menu "Overview". In this tab interaction mode can be chosen, resocialization offer is moved here from pawn prisoner tab. Also, possibility to order removing/putting cuffs on prisoners are here. Motivation level is also displayed here.
+- Created tab in prisoner menu "Work". It was moved from the tab "Work" in the main tab.
+- Created tab in prisoner menu "Schedule". It was moved from the tab "Schedule" in the main tab.
+- Created tab in prisoner menu "Assign". Allows to assign diet and what kind of medicine should be used for prisoner.
+- Created tab in prisoner menu "Dev". For dev tools.
+- Moved restrict bill to group from drop down button to vanilla drop down pawn restriction in bill menu. Added new options to handle vanilla slaves.
+
+- Some tutorials are now out of date. Hope to fix them soon.
+
+Honestly don't know if it will work correctly, didn't have enough time to test it right. Please report any bugs and not working slaves.
 1.2.5
 - Refactored rendering icons on prisoners. Instead of drawing textures, mesh is used. It may help with gray screen issue. Icons will be smaller now.
 - Various fixes to work patches which should reduce situations when prisoners stuck.

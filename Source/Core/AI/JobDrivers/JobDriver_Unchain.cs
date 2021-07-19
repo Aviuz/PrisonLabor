@@ -1,4 +1,5 @@
 ﻿using PrisonLabor.Constants;
+using PrisonLabor.Core.Trackers;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,18 @@ namespace PrisonLabor.Core.AI.JobDrivers
 					else
 					{
 						pawn.health.hediffSet.hediffs.Remove(hediff);
+					}
+                    CuffsTracker cuffsTracker = pawn.Map.GetComponent<CuffsTracker>();
+					if (cuffsTracker != null)
+					{
+						if (hediffDef == PL_DefOf.PrisonLabor_RemovedHandscuffs)
+						{
+							cuffsTracker.handscuffTracker.Remove(pawn);
+						}
+						else
+						{
+							cuffsTracker.legscuffTracker.Remove(pawn);
+						}
 					}
 					if (pawn.CurJobDef == JobDefOf.Wait_MaintainPosture)
 					{

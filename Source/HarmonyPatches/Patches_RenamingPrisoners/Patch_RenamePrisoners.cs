@@ -123,9 +123,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_RenamingPrisoners
         [HarmonyPatch(nameof(Pawn_GuestTracker.SetGuestStatus))]
         static class RestoreOldName
         {
-            static bool Prefix(Pawn_GuestTracker __instance, Faction newHost, bool prisoner = false)
+            static bool Prefix(Pawn_GuestTracker __instance, Faction newHost, GuestStatus guestStatus)
             {
-                if (prisoner == false)
+                if (guestStatus == GuestStatus.Slave || guestStatus == GuestStatus.Guest)
                 {
                     var pawn = typeof(Pawn_GuestTracker).GetField("pawn", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(__instance) as Pawn;
                     if (oldNames.ContainsKey(pawn))

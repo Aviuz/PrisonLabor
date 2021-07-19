@@ -23,7 +23,7 @@ namespace PrisonLabor.Core.Other
                     bool flag = dest.HasThing && dest.Thing is Pawn && ((Pawn)dest.Thing).IsWildMan();
                     if (!pawn.Drafted || flag)
                     {
-                        if (!pawn.CanReach(dest, PathEndMode.OnCell, Danger.Deadly, false, TraverseMode.ByPawn))
+                        if (!pawn.CanReach(dest, PathEndMode.OnCell, Danger.Deadly, false, false, TraverseMode.ByPawn))
                         {
                             opts.Add(new FloatMenuOption("CannotArrest".Translate() + " (" + "NoPath".Translate() + ")", null, MenuOptionPriority.Default, null, null, 0f, null, null));
                         }
@@ -32,10 +32,10 @@ namespace PrisonLabor.Core.Other
                             Pawn pTarg = (Pawn)dest.Thing;
                             Action action = delegate
                             {
-                                Building_Bed building_Bed = RestUtility.FindBedFor(pTarg, pawn, true, false, false);
+                                Building_Bed building_Bed = RestUtility.FindBedFor(pTarg, pawn, false, false, GuestStatus.Prisoner);
                                 if (building_Bed == null)
                                 {
-                                    building_Bed = RestUtility.FindBedFor(pTarg, pawn, true, false, true);
+                                    building_Bed = RestUtility.FindBedFor(pTarg, pawn, false, true, GuestStatus.Prisoner);
                                 }
                                 if (building_Bed == null)
                                 {

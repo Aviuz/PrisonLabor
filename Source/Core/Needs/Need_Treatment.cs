@@ -120,8 +120,7 @@ namespace PrisonLabor.Core.Needs
             CurLevel += BGP.BeatenHit;
         }
 
-        public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f,
-            bool drawArrows = true, bool doTooltip = true)
+        public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true, Rect? rectForTooltip = null)
         {
             if (threshPercents == null)
             {
@@ -131,7 +130,7 @@ namespace PrisonLabor.Core.Needs
                 threshPercents.Add(PercentageThreshGood);
                 threshPercents.Add(PercentageThreshVeryGood);
             }
-            base.DrawOnGUI(rect, maxThresholdMarkers, customMargin, drawArrows, doTooltip);
+            base.DrawOnGUI(rect, maxThresholdMarkers, customMargin, drawArrows, doTooltip, rectForTooltip);
         }
 
         public override void ExposeData()

@@ -72,11 +72,26 @@ namespace PrisonLabor.HarmonyPatches.Patches_BillAssignation
         {
             var group = BillAssignationUtility.IsFor(bill);
             if (group == GroupMode.ColonyOnly)
+            {
                 return true;
-            if (group == GroupMode.ColonistsOnly && !pawn.IsPrisoner)
+            }
+            if (group == GroupMode.ColonistsOnly && !pawn.IsPrisoner && !pawn.IsSlave)
+            {
                 return true;
+            }
             if (group == GroupMode.PrisonersOnly && pawn.IsPrisoner)
+            {
                 return true;
+            }
+            if(group == GroupMode.SlavesOnly && bill.SlavesOnly &&  pawn.IsSlave)
+            {
+                return true;
+            }
+
+            if(group == GroupMode.CaptiveOnly && (pawn.IsPrisoner || (bill.SlavesOnly && pawn.IsSlave)))
+            {
+                return true;
+            }
             return false;
         }
     }

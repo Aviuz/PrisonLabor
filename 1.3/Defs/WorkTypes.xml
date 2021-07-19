@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <WorkTypeDef>
+    <defName>PrisonLabor_Jailor</defName>
+    <labelShort>Jailor</labelShort>
+    <pawnLabel>Jailor</pawnLabel>
+    <gerundLabel>watching prisoners</gerundLabel>
+    <description>Manage prisoners, which includes escort, watching, releasing, and execution of prisoners.</description>
+    <verb>Supervise</verb>
+    <naturalPriority>1099</naturalPriority>
+    <requireCapableColonist>true</requireCapableColonist>
+    <relevantSkills>
+      <li>Social</li>
+    </relevantSkills>
+    <workTags>
+      <li>Social</li>
+    </workTags>
+  </WorkTypeDef>
+</Defs>

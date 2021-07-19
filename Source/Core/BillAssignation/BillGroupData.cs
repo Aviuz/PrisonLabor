@@ -6,10 +6,12 @@ namespace PrisonLabor.Core.BillAssignation
     {
         ColonyOnly,
         PrisonersOnly,
-        ColonistsOnly
+        ColonistsOnly,
+        SlavesOnly,
+        CaptiveOnly
     }
 
-    internal class BillGroupData : IExposable
+    public class BillGroupData : IExposable
     {
         public GroupMode Mode;
 

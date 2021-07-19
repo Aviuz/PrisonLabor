@@ -47,14 +47,14 @@ namespace PrisonLabor.HarmonyPatches.Patches_AssignBed
     }
 
 
-    [HarmonyPatch(typeof(CompAssignableToPawn))]
+    [HarmonyPatch(typeof(CompAssignableToPawn_Bed))]
     [HarmonyPatch("get_" + nameof(CompAssignableToPawn.AssigningCandidates))]
     static class Patch_MakePrisonersCandidates
     {
         static bool Prefix(ref IEnumerable<Pawn> __result, CompAssignableToPawn __instance)
         {
             Building_Bed bed = __instance.parent as Building_Bed;
-            if (bed != null && __instance is CompAssignableToPawn_Bed && bed.ForPrisoners)
+            if (bed != null && bed.Spawned && __instance is CompAssignableToPawn_Bed && bed.ForPrisoners)
             {
                 __result = bed.Map.mapPawns.PrisonersOfColony;
                 return false;
@@ -91,11 +91,12 @@ namespace PrisonLabor.HarmonyPatches.Patches_AssignBed
         {
             OpCode[] opCodes1 =
 {
-                OpCodes.Ldarg_1,
-                OpCodes.Ldarg_1,
-                OpCodes.Ldc_I4_1,
+                OpCodes.Ldarg_0,
+                OpCodes.Ldarg_0,
                 OpCodes.Ldc_I4_1,
                 OpCodes.Ldc_I4_0,
+                OpCodes.Ldc_I4_1,
+                OpCodes.Newobj,
                 OpCodes.Call,
                 OpCodes.Brfalse_S,
             };
@@ -106,13 +107,13 @@ namespace PrisonLabor.HarmonyPatches.Patches_AssignBed
                 "",
                 "",
                 "",
-                "RimWorld.Building_Bed FindBedFor(Verse.Pawn, Verse.Pawn, Boolean, Boolean, Boolean)",
+                "Void .ctor(GuestStatus)",
+                "RimWorld.Building_Bed FindBedFor(Verse.Pawn, Verse.Pawn, Boolean, Boolean, System.Nullable`1[RimWorld.GuestStatus])",
                 "System.Reflection.Emit.Label",
             };
             int step1 = 0;
 
-            var label_OriginalBranch = gen.DefineLabel();
-
+            var label_OriginalBranch = gen.DefineLabel();            
             foreach (var instr in instructions)
             {
                 if (HPatcher.IsFragment(opCodes1, operands1, instr, ref step1, nameof(Patch_TakePrisonersToOwnedBed), true))

@@ -98,7 +98,7 @@ namespace PrisonLabor.Core.Incidents
                 foreach (Pawn pawn in affectedPawns)
                 {
                     pawn.ClearMind();
-                    pawn.guest.SetGuestStatus(null, false);
+                    pawn.guest.SetGuestStatus(null, GuestStatus.Guest);
                     pawn.SetFaction(parms.faction);
 
                     ThingWithComps weapon = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("MeleeWeapon_Knife"), ThingDefOf.WoodLog) as ThingWithComps;

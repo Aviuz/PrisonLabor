@@ -17,7 +17,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\1.2\Assemblies\</OutputPath>
+    <OutputPath>..\1.3\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -75,6 +75,7 @@
     <Compile Include="Core\AI\JobDrivers\JobDriver_Unchain.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_UnchainLegs.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_UnchainHands.cs" />
+    <Compile Include="Core\AI\WorkGivers\WorkGiver_HandleChains.cs" />
     <Compile Include="Core\Alerts\Alert_EscapingPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_LazyPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_StarvingPrisoners.cs" />
@@ -90,24 +91,42 @@
     <Compile Include="CompatibilityPatches\Initialization.cs" />
     <Compile Include="CompatibilityPatches\NoWaterNoLife.cs" />
     <Compile Include="CompatibilityPatches\OlderVersions.cs" />
-    <Compile Include="CompatibilityPatches\WorkTab.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLaborClear.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
+    <Compile Include="Core\MainButton_Window\ColumnWorker_HasHandscuffs.cs" />
+    <Compile Include="Core\MainButton_Window\ColumnWorker_HasLegcuffs.cs" />
+    <Compile Include="Core\MainButton_Window\ColumnWorker_Interaction.cs" />
+    <Compile Include="Core\MainButton_Window\ColumnWorker_Motivation.cs" />
+    <Compile Include="Core\MainButton_Window\ColumnWorker_Resocialization.cs" />
+    <Compile Include="Core\MainButton_Window\ColumnWorker_EscapeTracker.cs" />
+    <Compile Include="Core\MainButton_Window\CustomTabWindow.cs" />
+    <Compile Include="Core\MainButton_Window\MainTabWindow_Dev.cs" />
+    <Compile Include="Core\MainButton_Window\MainTabWindow_Assign.cs" />
+    <Compile Include="Core\MainButton_Window\MainTabWindow_Overview.cs" />
+    <Compile Include="Core\MainButton_Window\MainTabWindow_Schedule.cs" />
+    <Compile Include="Core\MainButton_Window\MainTabWindow_Labor.cs" />
+    <Compile Include="Core\MainButton_Window\PrisonerButtonWindow.cs" />
+    <Compile Include="Core\MainButton_Window\PrisonersTabDef.cs" />
+    <Compile Include="Core\MainButton_Window\UIDefsOf.cs" />
+    <Compile Include="Core\MainButton_Window\WindowNotifier.cs" />
     <Compile Include="Core\Meta\Version.cs" />
     <Compile Include="Core\Other\CleanPrisonersStatus.cs" />
     <Compile Include="Core\Other\CustomForbidenUtil.cs" />
     <Compile Include="Core\Other\DebugLogger.cs" />
     <Compile Include="Core\Other\ModSearcher.cs" />
     <Compile Include="Core\Other\NewsProvider.cs" />
+    <Compile Include="Core\Other\ScribeUtils.cs" />
     <Compile Include="Core\Other\TutorialProvider.cs" />
     <Compile Include="Core\Settings\CleanSaveDialog.cs" />
     <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
+    <Compile Include="Core\Trackers\CuffsTracker.cs" />
     <Compile Include="Core\Trackers\EscapeTracker.cs" />
     <Compile Include="Core\Windows\ReplayTutorialsWindow.cs" />
     <Compile Include="Core\Windows\TutorialWindow.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
     <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
+    <Compile Include="HarmonyPatches\Patches_BillAssignation\Bill_StartAnew_Patch.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_Bill_ProductionWithUft.cs" />
     <Compile Include="HarmonyPatches\Patches_Construction\EnableConstructionFinishFrames.cs" />
     <Compile Include="HarmonyPatches\Patches_Construction\Patch_BlueprintsForPlayerFaction.cs" />
@@ -122,6 +141,7 @@
     <Compile Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
     <Compile Include="HarmonyPatches\Patches_ForbidUtil\Patch_ForbidUtility.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_Bill_Assigment.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_RestrictBillToPrisoner.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_RMB\Patch_RMB_Chains.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
@@ -134,7 +154,6 @@
     <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
     <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_AddScrollToPrisonerTab.cs" />
-    <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_BillCheckbox.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_BillPrevention.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_ChangeWorkTabPrisonerLabelColor.cs" />
     <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_DefaultInteractionMode.cs" />
@@ -146,8 +165,6 @@
     <Compile Include="HarmonyPatches\HPatcher.cs" />
     <Compile Include="HarmonyPatches\Patches_SaveCompatibility\Patch_JailorTypeSaveCompatibility.cs" />
     <Compile Include="HarmonyPatches\Patches_Needs\Patch_NeedOnlyByPrisoners.cs" />
-    <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_PrisonerTab.cs" />
-    <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_PrisonInteractionLabel.cs" />
     <Compile Include="HarmonyPatches\Patches_TreatmentTinkering\Patch_ReduceChanceForMentalBreak.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_RemoveBillFromUtility.cs" />
     <Compile Include="HarmonyPatches\Patches_RenamingPrisoners\Patch_RenamePrisoners.cs" />
@@ -196,7 +213,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Tweaks\JobDriver_Mine_Tweak.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_Supervise.cs" />
     <Compile Include="Core\Meta\Prefs.cs" />
     <Compile Include="Core\Meta\PrefsData.cs" />
@@ -204,17 +220,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
     <Compile Include="Core\Other\Tutorials.cs" />
-    <Compile Include="Tweaks\JobDriver_PlantCut_Tweak.cs" />
-    <Compile Include="Tweaks\JobDriver_PlantHarvest_Tweak.cs" />
-    <Compile Include="Tweaks\JobDriver_PlantWork_Tweak.cs" />
     <Compile Include="Tweaks\ClassInjector.cs" />
-    <Compile Include="Tweaks\MainTabWindow_Restrict_Tweak.cs" />
-    <Compile Include="Tweaks\MainTabWindow_Dual.cs" />
-    <Compile Include="Tweaks\MainTabWindow_Work_Tweak.cs" />
     <Compile Include="Core\GameSaves\SaveCleaner.cs" />
     <Compile Include="Core\GameSaves\SaveUpgrader.cs" />
-    <Compile Include="Tweaks\WorkGiver_CleanFilth_Tweak.cs" />
-    <Compile Include="Tweaks\WorkGiver_GrowerSow_Tweak.cs" />
     <Compile Include="Initialization.cs" />
     <Compile Include="Core\Other\TreatmentUtility.cs" />
     <Compile Include="Core\Meta\VersionUtility.cs" />
@@ -224,43 +232,45 @@
     <Compile Include="WorkUtils\ConstructionUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\1.3\Defs\ConceptDef.xml">
+      <Link>Defs\ConceptDef.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Defs\Hediffs.xml">
+      <Link>Defs\Hediffs.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Defs\Incidents.xml">
+      <Link>Defs\Incidents.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Defs\JobDef.xml">
+      <Link>Defs\JobDef.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Defs\MainButton.xml">
+      <Link>Defs\MainButton.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Defs\Needs.xml">
+      <Link>Defs\Needs.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Defs\PrisonerInteractionModeDef.xml">
+      <Link>Defs\PrisonerInteractionModeDef.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Defs\ThinkTreeDef.xml">
+      <Link>Defs\ThinkTreeDef.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Defs\ThoughtsDef.xml">
+      <Link>Defs\ThoughtsDef.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Defs\WorkGiverDef.xml">
+      <Link>Defs\WorkGiverDef.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Defs\WorkTypes.xml">
+      <Link>Defs\WorkTypes.xml</Link>
+    </Content>
     <Content Include="..\About\About.xml">
       <Link>Organizer\About.xml</Link>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="..\changelog.txt">
       <Link>Organizer\changelog.txt</Link>
-    </Content>
-    <Content Include="..\Defs\ConceptDef.xml">
-      <Link>Defs\ConceptDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\Hediffs.xml">
-      <Link>Defs\Hediffs.xml</Link>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="..\Defs\Incidents.xml">
-      <Link>Defs\Incidents.xml</Link>
-    </Content>
-    <Content Include="..\Defs\JobDef.xml">
-      <Link>Defs\JobDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\Needs.xml">
-      <Link>Defs\Needs.xml</Link>
-    </Content>
-    <Content Include="..\Defs\PrisonerInteractionModeDef.xml">
-      <Link>Defs\PrisonerInteractionModeDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\ThinkTreeDef.xml">
-      <Link>Defs\ThinkTreeDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\ThoughtsDef.xml">
-      <Link>Defs\ThoughtsDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\WorkGiverDef.xml">
-      <Link>Defs\WorkGiverDef.xml</Link>
-    </Content>
-    <Content Include="..\Defs\WorkTypes.xml">
-      <Link>Defs\WorkTypes.xml</Link>
     </Content>
     <Content Include="..\Languages\English\Keyed\Keys.xml">
       <Link>Language\Keys.xml</Link>

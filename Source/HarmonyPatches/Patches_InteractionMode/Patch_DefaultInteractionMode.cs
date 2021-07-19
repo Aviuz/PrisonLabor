@@ -13,9 +13,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_InteractionMode
     [HarmonyPatch("SetGuestStatus")]
     public class Patch_DefaultInteractionMode
     {
-        private static void Postfix(Pawn_GuestTracker __instance, Faction newHost, bool prisoner)
+        private static void Postfix(Pawn_GuestTracker __instance, Faction newHost, GuestStatus guestStatus)
         {
-            if (prisoner == true)
+            if (guestStatus == GuestStatus.Prisoner)
             {
                 __instance.interactionMode = DefDatabase<PrisonerInteractionModeDef>.GetNamed(PrisonLaborPrefs.DefaultInteractionMode);
             }
