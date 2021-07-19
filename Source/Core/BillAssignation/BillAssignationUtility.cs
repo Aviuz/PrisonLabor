@@ -3,7 +3,7 @@ using RimWorld;
 
 namespace PrisonLabor.Core.BillAssignation
 {
-    internal class BillAssignationUtility
+    public class BillAssignationUtility
     {
         private static readonly Dictionary<Bill, BillGroupData> Map = new Dictionary<Bill, BillGroupData>();
 

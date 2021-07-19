@@ -16,8 +16,8 @@ xcopy "About\*.*" "%target_directory%\About" /e
 ::xcopy "Assemblies\*.*" "%target_directory%\Assemblies" /e
 
 :: Defs 
-mkdir "%target_directory%\Defs"
-xcopy "Defs\*.*" "%target_directory%\Defs" /e
+::mkdir "%target_directory%\Defs"
+::xcopy "Defs\*.*" "%target_directory%\Defs" /e
 
 :: Languages
 mkdir "%target_directory%\Languages"
@@ -38,6 +38,11 @@ xcopy "1.1\*.*" "%target_directory%\1.1" /e
 :: 1.2
 mkdir "%target_directory%\1.2"
 xcopy "1.2\*.*" "%target_directory%\1.2" /e
+
+:: 1.2
+mkdir "%target_directory%\1.3"
+xcopy "1.3\*.*" "%target_directory%\1.3" /e
+
 
 :: LoadFolders.xml
 copy "LoadFolders.xml" "%target_directory%\LoadFolders.xml"

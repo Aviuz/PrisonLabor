@@ -74,7 +74,7 @@ namespace PrisonLabor.Core.Needs
         {
             if (pawn.IsPrisoner && pawn.IsPrisonerOfColony)
             {
-                if (pawn.GetRoomGroup() != null)
+                if (pawn.GetDistrict() != null)
                 {
                     var value = InspirationTracker.GetInsiprationValue(pawn, true);
 
@@ -130,14 +130,14 @@ namespace PrisonLabor.Core.Needs
             return stringBuilder.ToString();
         }
 
-        public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true)
+        public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = int.MaxValue, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true, Rect? rectForTooltip = null)
         {
             if (threshPercents == null)
                 threshPercents = new List<float>();
             threshPercents.Clear();
             threshPercents.Add(PercentageThreshLazy);
             threshPercents.Add(PercentageThreshNeedInsipration);
-            base.DrawOnGUI(rect, maxThresholdMarkers, customMargin, drawArrows, doTooltip);
+            base.DrawOnGUI(rect, maxThresholdMarkers, customMargin, drawArrows, doTooltip, rectForTooltip);
         }
 
         public override void ExposeData()

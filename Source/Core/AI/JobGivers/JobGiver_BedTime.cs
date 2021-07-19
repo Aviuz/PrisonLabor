@@ -66,7 +66,7 @@ namespace PrisonLabor.Core.AI.JobGivers
                     x => !x.IsForbiddenForPrisoner(pawn) && !x.GetTerrain(map).avoidWander))
                     return result;
             }
-            return CellFinder.RandomClosewalkCellNearNotForbidden(pawn.Position, map, 4, pawn);
+            return CellFinder.RandomClosewalkCellNearNotForbidden(pawn, 4);
         }
     }
 }

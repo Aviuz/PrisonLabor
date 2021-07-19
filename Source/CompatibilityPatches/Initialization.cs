@@ -10,7 +10,6 @@ namespace PrisonLabor.CompatibilityPatches
         internal static void Run()
         {            
             //NoWaterNoLife.Init();
-            WorkTab.Init();
             Quarry.Init();
             Kajin2.Init();
         }

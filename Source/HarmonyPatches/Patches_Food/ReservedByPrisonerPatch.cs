@@ -40,7 +40,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
             var unfinishedThing = t as UnfinishedThing;
             if (unfinishedThing != null && unfinishedThing.BoundBill != null)
                 return false;
-            if (!p.CanReach(t, PathEndMode.ClosestTouch, p.NormalMaxDanger(), false, TraverseMode.ByPawn))
+            if (!p.CanReach(t, PathEndMode.ClosestTouch, p.NormalMaxDanger(), false, false, TraverseMode.ByPawn))
                 return false;
             if (!p.CanReserve(t, 1, -1, null, forced))
                 return false;

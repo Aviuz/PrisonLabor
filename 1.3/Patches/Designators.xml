@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationSequence">
+        <success>Always</success>
+        <operations>
+            <li Class="PatchOperationSequence">
+                <success>Always</success>
+                <operations>
+                    <li Class="PatchOperationTest">
+                        <xpath>/Defs/DesignationCategoryDef[defName = "Zone"]/specialDesignatorClasses[li = "PrisonLabor.Core.LaborArea.Designator_AreaLaborExpand"]</xpath>
+                        <success>Invert</success>
+                    </li>
+                    <li Class="PatchOperationAdd">
+                        <xpath>/Defs/DesignationCategoryDef[defName = "Zone"]/specialDesignatorClasses</xpath>
+                        <value>
+                            <li>PrisonLabor.Core.LaborArea.Designator_AreaLaborExpand</li>
+                        </value>
+                    </li>
+                </operations>
+            </li>
+            <li Class="PatchOperationSequence">
+                <success>Always</success>
+                <operations>
+                    <li Class="PatchOperationTest">
+                        <xpath>/Defs/DesignationCategoryDef[defName = "Zone"]/specialDesignatorClasses[li = "PrisonLabor.Core.LaborArea.Designator_AreaLaborClear"]</xpath>
+                        <success>Invert</success>
+                    </li>
+                    <li Class="PatchOperationAdd">
+                        <xpath>/Defs/DesignationCategoryDef[defName = "Zone"]/specialDesignatorClasses</xpath>
+                        <value>
+                            <li>PrisonLabor.Core.LaborArea.Designator_AreaLaborClear</li>
+                        </value>
+                    </li>
+                </operations>
+            </li>
+        </operations>
+    </Operation>
+</Patch>
