@@ -91,7 +91,6 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
         }
         public static string GetDropLabel(Dialog_BillConfig dialog)
         {
-            Log.Message("Get into patch");
             Bill_Production bill = Traverse.Create(dialog).Field("bill").GetValue<Bill_Production>();
             GroupMode groupMode = BillAssignationUtility.IsFor(bill);
             switch (groupMode)
