@@ -10,4 +10,9 @@
     <label>Work and recruit</label>
     <listOrder>6</listOrder>
   </PrisonerInteractionModeDef>
+  <PrisonerInteractionModeDef>
+    <defName>PrisonLabor_workAndConvertOption</defName>
+    <label>Work and convert</label>
+    <listOrder>7</listOrder>
+  </PrisonerInteractionModeDef>
 </Defs>
