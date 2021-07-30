@@ -37,35 +37,35 @@
       <HintPath>packages\Lib.Harmony.2.0.0.8\lib\net472\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\Gry\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\Gry\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\Gry\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath Condition="Exists('../../_RimWorldData/Managed/')">../../_RimWorldData/Managed/UnityEngine.CoreModule.dll</HintPath>
+      <HintPath Condition="Exists('..\..\..\Gry\Steam\')">..\..\..\Gry\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\..\Gry\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath Condition="Exists('../../_RimWorldData/Managed/')">../../_RimWorldData/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath Condition="Exists('..\..\..\Gry\Steam\')">..\..\..\Gry\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>..\..\..\Gry\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath Condition="Exists('../../_RimWorldData/Managed/')">../../_RimWorldData/Managed/UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath Condition="Exists('..\..\..\Gry\Steam\')">..\..\..\Gry\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\..\Gry\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath Condition="Exists('../../_RimWorldData/Managed/')">../../_RimWorldData/Managed/UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath Condition="Exists('..\..\..\Gry\Steam\')">..\..\..\Gry\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath Condition="Exists('../../_RimWorldData/Managed/')">../../_RimWorldData/Managed/Assembly-CSharp.dll</HintPath>
+      <HintPath Condition="Exists('..\..\..\Gry\Steam\')">..\..\..\Gry\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
