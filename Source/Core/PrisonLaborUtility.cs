@@ -14,7 +14,7 @@ namespace PrisonLabor.Core
         public static bool LaborEnabled(this Pawn pawn)
         {
             if (pawn.IsPrisoner)
-                if (pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workOption || pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndRecruitOption)
+                if (pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workOption || pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndRecruitOption || pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndConvertOption)
                     return true;
 
             return false;
@@ -23,6 +23,14 @@ namespace PrisonLabor.Core
         public static bool RecruitInLaborEnabled(Pawn pawn)
         {
             if (pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndRecruitOption && pawn.guest.ScheduledForInteraction && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
+                return true;
+
+            return false;
+        }
+
+        public static bool ConvertInLaborEnabled(Pawn pawn)
+        {
+            if (pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndConvertOption && pawn.guest.ScheduledForInteraction && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
                 return true;
 
             return false;
