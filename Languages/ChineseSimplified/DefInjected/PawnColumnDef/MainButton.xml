@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <PL_InteractionColumn.label>互动</PL_InteractionColumn.label>
+  <PL_InteractionColumn.headerTip>互动模式</PL_InteractionColumn.headerTip>
+  <PL_Resocialization.label>重返社会</PL_Resocialization.label>
+  <PL_Resocialization.headerTip>囚犯想加入你的殖民地</PL_Resocialization.headerTip>
+  <PL_HasLegcuffs.label>有脚铐</PL_HasLegcuffs.label>
+  <PL_HasHandcuffs.label>有手铐</PL_HasHandcuffs.label>
+  <PL_EscapeColumn.label>准备逃跑</PL_EscapeColumn.label>
+  <PL_MotivationColumn.label>积极性</PL_MotivationColumn.label>
+</LanguageData>

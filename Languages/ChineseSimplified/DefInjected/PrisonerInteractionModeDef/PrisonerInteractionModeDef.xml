@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
-  <PrisonLabor_workOption.label>强制工作</PrisonLabor_workOption.label>
-  <PrisonLabor_workAndRecruitOption.label>工作与招募</PrisonLabor_workAndRecruitOption.label>
-
-
+  <PrisonLabor_workOption.label>强迫劳作</PrisonLabor_workOption.label>
+  <PrisonLabor_workAndRecruitOption.label>劳作与招募</PrisonLabor_workAndRecruitOption.label>
+  <PrisonLabor_workAndConvertOption.label>劳作与转化</PrisonLabor_workAndConvertOption.label>
 </LanguageData>
