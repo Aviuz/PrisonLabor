@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <PL_Overview.label>概述</PL_Overview.label>
+  <PL_LaborWindow.label>劳作</PL_LaborWindow.label>
+  <PL_ScheduleWindow.label>时间表</PL_ScheduleWindow.label>
+  <PL_AssignWindow.label>分配</PL_AssignWindow.label>
+  <PL_DevWindow.label>拓展</PL_DevWindow.label>
+</LanguageData>
