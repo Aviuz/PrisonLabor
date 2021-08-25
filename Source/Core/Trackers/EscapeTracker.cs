@@ -17,9 +17,9 @@ namespace PrisonLabor.Core.Trackers
          *  This region is for ensuring that for every pawn there will be only one escape tracker.
          *  It is constructed in this way to prevent heavy modification of Pawn class (on external library).
          */
-        private static List<Pawn> prisonersReadyToEscape = new List<Pawn>();
+        private static HashSet<Pawn> prisonersReadyToEscape = new HashSet<Pawn>();
 
-        public static List<Pawn> PrisonersReadyToEscape
+        public static HashSet<Pawn> PrisonersReadyToEscape
         {
             get
             {
