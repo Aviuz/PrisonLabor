@@ -32,7 +32,7 @@ namespace PrisonLabor.Core.BaseClasses
         {
             if (_IsActive)
             {
-                Ticks++;
+                Ticks += 250; 
             }
         }
 

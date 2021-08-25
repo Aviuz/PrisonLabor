@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using PrisonLabor.Constants;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,10 @@ namespace PrisonLabor.Core.MainButton_Window
                     option = new FloatMenuOption(intertaction.LabelCap, delegate
                     {
                         pawn.guest.interactionMode = intertaction;
+                        if(intertaction == PrisonerInteractionModeDefOf.Convert || intertaction == PL_DefOf.PrisonLabor_workAndConvertOption)
+                        {
+                            pawn.guest.ideoForConversion = Faction.OfPlayer.ideos.PrimaryIdeo;
+                        }
                     }),
                     payload = intertaction
                 };

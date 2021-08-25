@@ -12,7 +12,12 @@ namespace PrisonLabor.Constants
     {
         public static PrisonerInteractionModeDef PrisonLabor_workOption;
         public static PrisonerInteractionModeDef PrisonLabor_workAndRecruitOption;
+
+        [MayRequireIdeology]
         public static PrisonerInteractionModeDef PrisonLabor_workAndConvertOption;
+
+        [MayRequireIdeology]
+        public static PrisonerInteractionModeDef PrisonLabor_workAndEnslaveOption;
 
         public static WorkTypeDef PrisonLabor_Jailor;
 

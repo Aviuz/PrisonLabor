@@ -56,14 +56,20 @@ namespace PrisonLabor.HarmonyPatches
         [DebugAction("Prison Labor Tools", "Turn into prisoner", actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void MakePrisoner(Pawn p)
         {
-            p.guest.SetGuestStatus(Faction.OfPlayer, GuestStatus.Prisoner);
+            if (p.RaceProps.Humanlike)
+            {
+                p.guest.SetGuestStatus(Faction.OfPlayer, GuestStatus.Prisoner);
+            }
         }
 
 
         [DebugAction("Prison Labor Tools", "Set free", actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void SetFree(Pawn p)
         {
-            p.guest.SetGuestStatus(null, GuestStatus.Guest);
+            if (p.RaceProps.Humanlike)
+            {
+                p.guest.SetGuestStatus(null, GuestStatus.Guest);
+            }
         }
 
 

@@ -166,7 +166,7 @@ namespace PrisonLabor.HarmonyPatches
             }
 
             // Jump back to begining of fragment
-            index -= operands.Length;
+            index -= operands.Length - 1;
 
             // If no fragment is found throw exception (or somehow begining of fragment is lower than 0)
             if (index < 0)
@@ -178,7 +178,7 @@ namespace PrisonLabor.HarmonyPatches
             instructions.RemoveRange(index, operands.Length);
 
             // Add fragment
-            instructions.InsertRange(index + 1, newFragment);
+            instructions.InsertRange(index, newFragment);
 
             return instructions;
         }

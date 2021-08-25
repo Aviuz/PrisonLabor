@@ -1,4 +1,5 @@
-﻿using PrisonLabor.Core.Trackers;
+﻿using PrisonLabor.Core.Components;
+using PrisonLabor.Core.Trackers;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -13,24 +14,23 @@ namespace PrisonLabor.Core.MainButton_Window
     {
         protected override string GetTextFor(Pawn pawn)
         {
-            
-            var escapeTracker = EscapeTracker.Of(pawn);
-            if(escapeTracker != null)
+            var prisonerComp = pawn.TryGetComp<PrisonerComp>();
+            if(prisonerComp != null)
             {
-                return (escapeTracker.ReadyToEscape ? "ready" : escapeTracker.ReadyToRunPercentage + " %");
+                return (prisonerComp.escapeTracker.ReadyToEscape ? "ready" : prisonerComp.escapeTracker.ReadyToRunPercentage + " %");
             }
 
-            return "0 %";
+            return null;
         }
 
         protected override string GetTip(Pawn pawn)
         {
-            var escapeTracker = EscapeTracker.Of(pawn);
-            if (escapeTracker != null)
+            var prisonerComp = pawn.TryGetComp<PrisonerComp>();
+            if (prisonerComp != null)
             {
-                return $"(Cap:{ escapeTracker.EscapeLevel})";
+                return $"(Cap:{ prisonerComp.escapeTracker.EscapeLevel})";
             }
-            return "";
+            return null;
         }
     }
 }

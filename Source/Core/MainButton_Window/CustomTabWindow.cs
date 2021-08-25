@@ -54,7 +54,7 @@ namespace PrisonLabor.Core.MainButton_Window
 				return requestedTabSize;
 			}
 		}
-		protected virtual IEnumerable<Pawn> Pawns => Find.CurrentMap.mapPawns.FreeColonists_NoHusks;
+		protected virtual IEnumerable<Pawn> Pawns => Find.CurrentMap.mapPawns.FreeColonists;
 
 		public override void PostOpen()
 		{

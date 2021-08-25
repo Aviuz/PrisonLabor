@@ -23,10 +23,7 @@ namespace PrisonLabor.Core.Alerts
         {
             get
             {
-                var maps = Find.Maps;
-                for (var i = 0; i < maps.Count; i++)
-                    foreach (var pawn in maps[i].mapPawns.AllPawns.Where(p=>p.IsPrisoner && EscapeTracker.Of(p, true).CanEscape))
-                            yield return pawn;
+                return EscapeTracker.PrisonersReadyToEscape;
             }
         }
 

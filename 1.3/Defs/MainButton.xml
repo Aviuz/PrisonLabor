@@ -5,6 +5,7 @@
     <label>Prisoners</label>
     <description>Manage your faction prisoners</description>
     <tabWindowClass>PrisonLabor.Core.MainButton_Window.PrisonerButtonWindow</tabWindowClass>
+    <iconPath>PL_TabIcon</iconPath>
     <order>35</order>
     <closesWorldView>true</closesWorldView>
   </MainButtonDef>

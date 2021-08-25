@@ -106,6 +106,7 @@ namespace PrisonLabor.Core.Needs
             var motivation = pawn.needs.TryGetNeed<Need_Motivation>();
             if (motivation != null && motivation.IsPrisonerWorking)
                 CurLevel += BGP.LaborRate;
+
         }
 
         public override string GetTipString()

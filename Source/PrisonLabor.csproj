@@ -133,7 +133,6 @@
     <Compile Include="HarmonyPatches\Patches_Construction\Patch_RoofReservation.cs" />
     <Compile Include="HarmonyPatches\Patches_Construction\Patch_Smoothing.cs" />
     <Compile Include="HarmonyPatches\Patches_DeepDrill\EnableDeepDrillsToPrisoners.cs" />
-    <Compile Include="HarmonyPatches\Patches_Escaping\Patch_EscapeTracker.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\DeliverEvenOutsidePrisonCell.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\FoodUtility_IsFoodSourceOnMapSociallyProper.cs" />
@@ -144,6 +143,7 @@
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_Bill_Assigment.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_RestrictBillToPrisoner.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_RMB\Patch_RMB_Chains.cs" />
+    <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_VisitorTab_TabDraw.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Labor_Thing.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Labor_Position.cs" />
@@ -183,6 +183,7 @@
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_CleanFilth.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_Refuel.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_RescueDowned.cs" />
+    <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_TakeToPen.cs" />
     <Compile Include="HarmonyPatches\Triggers.cs" />
     <Compile Include="Core\Hediffs\HediffGiver_PrisonersChains.cs" />
     <Compile Include="Core\Hediffs\HediffManager.cs" />
@@ -272,6 +273,9 @@
     <Content Include="..\changelog.txt">
       <Link>Organizer\changelog.txt</Link>
     </Content>
+    <Content Include="..\Ideology\Defs\PrisonersInteractionMode.xml">
+      <Link>Ideology\Defs\PrisonersInteractionMode.xml</Link>
+    </Content>
     <Content Include="..\Languages\English\Keyed\Keys.xml">
       <Link>Language\Keys.xml</Link>
       <SubType>Designer</SubType>
@@ -292,6 +296,9 @@
   <ItemGroup>
     <None Include="..\credits.md">
       <Link>Organizer\credits.md</Link>
+    </None>
+    <None Include="..\MakeRelease.bat">
+      <Link>MakeRelease.bat</Link>
     </None>
     <None Include="..\README.md">
       <Link>Organizer\README.md</Link>
