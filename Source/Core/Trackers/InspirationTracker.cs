@@ -53,7 +53,7 @@ namespace PrisonLabor.Core.Trackers
         {
             if (InspirationTracker.tickCounter >= InspirationTracker.updateInterval)
             {
-                if (map.mapPawns.PrisonersOfColonyCount == 0)
+                if (map.mapPawns.PrisonersOfColonySpawnedCount == 0)
                 {
                     return;
                 }
@@ -64,10 +64,10 @@ namespace PrisonLabor.Core.Trackers
                 {
 
                     var wardens = new List<Pawn>();
-                    wardens.AddRange(map.mapPawns.FreeColonists);
+                    wardens.AddRange(map.mapPawns.FreeColonistsSpawned);
 
                     var prisoners = new List<Pawn>();
-                    prisoners.AddRange(map.mapPawns.PrisonersOfColony);
+                    prisoners.AddRange(map.mapPawns.PrisonersOfColonySpawned);
 
                     if (wardens.Count == 0 || prisoners.Count == 0)
                     {

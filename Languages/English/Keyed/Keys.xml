@@ -3,6 +3,7 @@
   <PrisonLabor_PrisonerWork>Force to work</PrisonLabor_PrisonerWork>
   <PrisonLabor_WorkAndRecruit>Work and recruit</PrisonLabor_WorkAndRecruit>
   <PrisonLabor_WorkAndConvert>Work and convert</PrisonLabor_WorkAndConvert>
+  <PrisonLabor_WorkAndEnslave>Work and enslave</PrisonLabor_WorkAndEnslave>
   <PrisonLabor_LazyPrisonerMessage>Your prisoner stopped working!</PrisonLabor_LazyPrisonerMessage>
   <PrisonLabor_WardenResponseThreshold>Warden response threshold</PrisonLabor_WardenResponseThreshold>
   <PrisonLabor_StoppingWorkThreshold>Stopping work threshold</PrisonLabor_StoppingWorkThreshold>

@@ -19,8 +19,8 @@
         <giverClass>PrisonLabor.Core.AI.WorkGivers.WorkGiver_HandleChains</giverClass>
         <workType>PrisonLabor_Jailor</workType>
         <priorityInType>5</priorityInType>
-        <verb>>handle prisoner's chainsr</verb>
-        <gerund>>handling prisoner's chains</gerund>
+        <verb>handle prisoner's chains</verb>
+        <gerund>handling prisoner's chains</gerund>
         <requiredCapacities>
             <li>Manipulation</li>
         </requiredCapacities>

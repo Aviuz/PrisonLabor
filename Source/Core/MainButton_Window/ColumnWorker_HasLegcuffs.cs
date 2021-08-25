@@ -38,5 +38,10 @@ namespace PrisonLabor.Core.MainButton_Window
             }
             table.SetDirty();
         }
+
+        protected override bool HasCheckbox(Pawn pawn)
+        {
+            return pawn != null && pawn.health != null;
+        }
     }
 }

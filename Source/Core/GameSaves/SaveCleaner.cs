@@ -163,7 +163,7 @@ namespace PrisonLabor.Core.GameSaves
             // TODO bills
 
             // Interaction Mode
-            string[] interactions = { PL_DefOf.PrisonLabor_workOption.defName, PL_DefOf.PrisonLabor_workAndRecruitOption.defName, PL_DefOf.PrisonLabor_workAndConvertOption.defName };
+            string[] interactions = { PL_DefOf.PrisonLabor_workOption.defName, PL_DefOf.PrisonLabor_workAndRecruitOption.defName, PL_DefOf.PrisonLabor_workAndConvertOption.defName, PL_DefOf.PrisonLabor_workAndEnslaveOption.defName };
 
             foreach (var guestTracker in gameNode.GetEveryNode("guest"))
             {

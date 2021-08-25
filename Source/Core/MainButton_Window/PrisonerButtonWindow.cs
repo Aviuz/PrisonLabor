@@ -84,6 +84,7 @@ namespace PrisonLabor.Core.MainButton_Window
         {
            foreach(var def in DefDatabase<PrisonersTabDef>.AllDefs)
            {
+                Log.Message($"Def: {def.defName}, def.dev: {def.dev}, dev: {Prefs.DevMode}");
                 if(def.dev == false)
                 {
                     tabsView.Add(def, CreateWindow(def));
@@ -94,9 +95,9 @@ namespace PrisonLabor.Core.MainButton_Window
                 }
 
             }
-           DebugLogger.debug("Prisoners main windows constructed");
-            
+           DebugLogger.debug("Prisoners main windows constructed");            
         }
+
         public override void DoWindowContents(Rect inRect)
         {           
             
@@ -113,15 +114,16 @@ namespace PrisonLabor.Core.MainButton_Window
         {
             base.PostOpen();
             tabs.Clear();
-            foreach (PrisonersTabDef tabDef in DefDatabase<PrisonersTabDef>.AllDefs.OrderBy(def => def.order))
+            foreach (PrisonersTabDef tabDef in DefDatabase<PrisonersTabDef>.AllDefs.Where(def => !def.dev || def.dev == Prefs.DevMode).OrderBy(def => def.order))
             {                
                 tabs.Add(new PrisonerWindowTab(tabDef, tabDef.LabelCap, delegate
                 {
                     CurTab = tabDef;
                 }, () => CurTab == tabDef));
                 GetTable(tabDef);
+
             }
-            CurTab = tabs[0].def;
+            CurTab = tabs[1].def;
             foreach(var tab in tabsView.Values)
             {
                 tab.PostOpen();

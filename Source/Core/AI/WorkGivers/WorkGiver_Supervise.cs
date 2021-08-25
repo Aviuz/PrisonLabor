@@ -1,3 +1,4 @@
+using PrisonLabor.Core.Components;
 using PrisonLabor.Core.Needs;
 using PrisonLabor.Core.Trackers;
 using RimWorld;
@@ -20,14 +21,17 @@ namespace PrisonLabor.Core.AI.WorkGivers
                 return null;
             if (pawn.IsPrisoner)
                 return null;
-            var escapeTracker = EscapeTracker.Of(prisoner, true);
-            if (!PrisonLaborUtility.LaborEnabled(prisoner) && !escapeTracker.CanEscape)
+            var prisonerComp = prisoner.TryGetComp<PrisonerComp>(); ;
+            
+            if (!PrisonLaborUtility.LaborEnabled(prisoner) && prisonerComp != null && !prisonerComp.escapeTracker.CanEscape)
                 return null;
             if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))
                 return new Job(JobDefOf.PrisonerAttemptRecruit, t);
             if (PrisonLaborUtility.ConvertInLaborEnabled(prisoner))
                 return new Job(JobDefOf.PrisonerConvert, t);
-            if ((!PrisonLaborUtility.WorkTime(prisoner) || !need.ShouldBeMotivated) && !escapeTracker.CanEscape)
+            if (PrisonLaborUtility.EnslaveInLaborEnabled(prisoner))
+                return new Job(JobDefOf.PrisonerEnslave, t);
+            if ((!PrisonLaborUtility.WorkTime(prisoner) || !need.ShouldBeMotivated) && prisonerComp != null && !prisonerComp.escapeTracker.CanEscape)
                 return null;
 
             return new Job(DefDatabase<JobDef>.GetNamed("PrisonLabor_PrisonerSupervise"), prisoner);

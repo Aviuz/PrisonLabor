@@ -7,6 +7,7 @@ using Verse;
 using System;
 using System.IO;
 using PrisonLabor.Core.Trackers;
+using PrisonLabor.Core.Components;
 
 namespace PrisonLabor.HarmonyPatches.Patches_Escaping
 {
@@ -39,8 +40,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_Escaping
 
         public static bool IsReadyToEscape(Pawn pawn)
         {
-            var escapeTracker = EscapeTracker.Of(pawn, true);
-            if (escapeTracker.ReadyToEscape)
+            
+            var prisonerComp = pawn.TryGetComp<PrisonerComp>();
+            if (prisonerComp != null && prisonerComp.escapeTracker.ReadyToEscape)
                 return true;
             else
                 return false;

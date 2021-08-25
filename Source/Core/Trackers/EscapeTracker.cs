@@ -17,31 +17,32 @@ namespace PrisonLabor.Core.Trackers
          *  This region is for ensuring that for every pawn there will be only one escape tracker.
          *  It is constructed in this way to prevent heavy modification of Pawn class (on external library).
          */
-        private static Dictionary<Pawn, EscapeTracker> escapeTimers = new Dictionary<Pawn, EscapeTracker>();
+        private static HashSet<Pawn> prisonersReadyToEscape = new HashSet<Pawn>();
+
+        public static HashSet<Pawn> PrisonersReadyToEscape
+        {
+            get
+            {
+                return prisonersReadyToEscape;
+            }
+        }
+
+        private static void Register(Pawn pawn)
+        {
+            if (pawn.IsPrisoner)
+            {
+                prisonersReadyToEscape.Add(pawn);
+            }
+        }
+
+        private static void DeRegister(Pawn pawn)
+        {
+            prisonersReadyToEscape.Remove(pawn);
+        }
 
         /// <summary>
         /// Access EscapeTracker of Pawn
         /// </summary>
-        public static EscapeTracker Of(Pawn pawn, bool forced = false)
-        {
-            if(!pawn.IsPrisoner && !forced)
-            {
-                return null;
-            }
-            if (!escapeTimers.ContainsKey(pawn))
-            {
-                escapeTimers.Add(pawn, new EscapeTracker(pawn));
-            }
-            return escapeTimers[pawn];
-        }
-
-        public static void Save(Pawn pawn, EscapeTracker tracker)
-        {
-            if(pawn != null && tracker != null)
-            {
-                escapeTimers[pawn] = tracker;
-            }
-        }
         #endregion
 
         private SimpleTimer timer = new SimpleTimer();
@@ -120,12 +121,14 @@ namespace PrisonLabor.Core.Trackers
                 {
                     timer.ResetAndStop();
                     ReadyToEscape = false;
+                    DeRegister(Pawn);
                 }
             }
             // Check if timer should trigger escape
             else if (timer.Ticks >= EscapeLevel)
             {
                 ReadyToEscape = true;
+                Register(Pawn);
             }
 
             // Tick timer

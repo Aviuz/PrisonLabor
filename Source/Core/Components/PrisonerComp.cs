@@ -13,8 +13,10 @@ using Verse;
 namespace PrisonLabor.Core.Components
 {
 
-   public class PrisonerComp : ThingComp
+    public class PrisonerComp : ThingComp
     {
+        public EscapeTracker escapeTracker;
+
         private bool Active
         {
             get
@@ -24,6 +26,14 @@ namespace PrisonLabor.Core.Components
             }
         }
 
+        public override void Initialize(CompProperties props)
+        {
+            base.Initialize(props);
+            if (escapeTracker == null)
+            {
+                escapeTracker = new EscapeTracker(this.parent as Pawn);
+            }
+        }
         public override void PostDraw()
         {
             if (Active && PrisonLaborPrefs.EnableMotivationIcons)
@@ -43,8 +53,9 @@ namespace PrisonLabor.Core.Components
                     DrawIcon(TexturePool.lazyTexture);
                 }
             }
-            
+
         }
+
 
 
         private void DrawIcon(Material drawIcon)
@@ -61,6 +72,19 @@ namespace PrisonLabor.Core.Components
             num2 = 0.3f + (num2 * 0.7f);
             var material = FadedMaterialPool.FadedVersionOf(drawIcon, num2);
             Graphics.DrawMesh(MeshPool.plane05, drawPos, Quaternion.identity, material, 0);
+        }
+
+        public override void PostExposeData()
+        {
+            Scribe_Deep.Look(ref escapeTracker, "EscapeTracker", new object[] { this.parent as Pawn });
+        }
+
+        public override void CompTickRare()
+        {
+            if (Active)
+            {
+                escapeTracker?.Tick();
+            }
         }
     }
 }
