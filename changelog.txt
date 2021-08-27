@@ -9,6 +9,7 @@ Changelog:
 - Escape tracker is now checked after rare tick (~4s) refactored how alert is notified.
 - Added icon for new main table. Create by me, so it's not fancy.
 - Updated Chinese translation (https://github.com/Juijote)
+- Work tab in Prioners menu is default tab. 
 
 1.3.0
 - Update to Rimworld 1.3
