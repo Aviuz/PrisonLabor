@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Multiplayer.API;
 using PrisonLabor.Core.LaborWorkSettings;
 using RimWorld;
 using System;
@@ -80,8 +81,6 @@ namespace PrisonLabor.Core.MainButton_Window
 				UIHighlighter.HighlightOpportunity(rect, "ManualPriorities-Off");
 			}
 		}
-
-
 		public override void PostOpen()
         {
 			

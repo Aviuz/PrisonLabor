@@ -1,4 +1,5 @@
-﻿using PrisonLabor.Core.Needs;
+﻿using Multiplayer.API;
+using PrisonLabor.Core.Needs;
 using PrisonLabor.Core.Other;
 using RimWorld;
 using System;
@@ -20,12 +21,16 @@ namespace PrisonLabor.Core.MainButton_Window
             {
                 if(Widgets.ButtonText(rect, "PrisonLabor_RecruitButtonLabel".Translate()))
                 {
-                    CleanPrisonersStatus.Clean(pawn);
-                    pawn.guest.SetGuestStatus(null);
-                    pawn.SetFaction(Faction.OfPlayer);
+                    ConvertPrisoner(pawn);
                 }
 
             }
+        }
+        public void ConvertPrisoner(Pawn pawn)
+        {
+            CleanPrisonersStatus.Clean(pawn);
+            pawn.guest.SetGuestStatus(null);
+            pawn.SetFaction(Faction.OfPlayer);
         }
     }
 }

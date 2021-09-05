@@ -1,4 +1,5 @@
-﻿using PrisonLabor.Constants;
+using PrisonLabor.Constants;
+using Multiplayer.API;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -30,17 +31,21 @@ namespace PrisonLabor.Core.MainButton_Window
                 {
                     option = new FloatMenuOption(intertaction.LabelCap, delegate
                     {
-                        pawn.guest.interactionMode = intertaction;
-                        if(intertaction == PrisonerInteractionModeDefOf.Convert || intertaction == PL_DefOf.PrisonLabor_workAndConvertOption)
-                        {
-                            pawn.guest.ideoForConversion = Faction.OfPlayer.ideos.PrimaryIdeo;
-                        }
+                        SetInteractionMode(pawn, intertaction);
                     }),
                     payload = intertaction
                 };
             }
         }
-
+        public void SetInteractionMode(Pawn pawn, PrisonerInteractionModeDef intertaction)
+        {
+            pawn.guest.interactionMode = intertaction;
+            if(intertaction == PrisonerInteractionModeDefOf.Convert || intertaction == PL_DefOf.PrisonLabor_workAndConvertOption)
+            {
+                pawn.guest.ideoForConversion = Faction.OfPlayer.ideos.PrimaryIdeo;
+            }
+        }
+        
         public override int GetMinWidth(PawnTable table)
         {
             return Mathf.Max(base.GetMinWidth(table), Mathf.CeilToInt(194f));

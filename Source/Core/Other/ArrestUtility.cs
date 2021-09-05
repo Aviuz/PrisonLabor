@@ -1,3 +1,4 @@
+using Multiplayer.API;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -32,23 +33,7 @@ namespace PrisonLabor.Core.Other
                             Pawn pTarg = (Pawn)dest.Thing;
                             Action action = delegate
                             {
-                                Building_Bed building_Bed = RestUtility.FindBedFor(pTarg, pawn, false, false, GuestStatus.Prisoner);
-                                if (building_Bed == null)
-                                {
-                                    building_Bed = RestUtility.FindBedFor(pTarg, pawn, false, true, GuestStatus.Prisoner);
-                                }
-                                if (building_Bed == null)
-                                {
-                                    Messages.Message("CannotArrest".Translate() + ": " + "NoPrisonerBed".Translate(), pTarg, MessageTypeDefOf.RejectInput, false);
-                                    return;
-                                }
-                                Job job = new Job(JobDefOf.Arrest, pTarg, building_Bed);
-                                job.count = 1;
-                                pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-                                if (pTarg.Faction != null && pTarg.Faction != Faction.OfPlayer && !pTarg.Faction.def.hidden)
-                                {
-                                    TutorUtility.DoModalDialogIfNotKnown(ConceptDefOf.ArrestingCreatesEnemies);
-                                }
+                                ArrestUtility.ArrestPrisoner(pTarg, pawn);
                             };
                             string label = "TryToArrest".Translate(dest.Thing.LabelCap, dest.Thing);
                             Action action2 = action;
@@ -60,7 +45,28 @@ namespace PrisonLabor.Core.Other
                 }
             }
         }
-
+        //For Multiplayer Compatibility
+        public static void ArrestPrisoner(Pawn pTarg, Pawn pawn)
+        {
+            Building_Bed building_Bed = RestUtility.FindBedFor(pTarg, pawn, false, false, GuestStatus.Prisoner);
+            if (building_Bed == null)
+            {
+                building_Bed = RestUtility.FindBedFor(pTarg, pawn, false, true, GuestStatus.Prisoner);
+            }
+            if (building_Bed == null)
+            {
+                Messages.Message("CannotArrest".Translate() + ": " + "NoPrisonerBed".Translate(), pTarg, MessageTypeDefOf.RejectInput, false);
+                return;
+            }
+            Job job = new Job(JobDefOf.Arrest, pTarg, building_Bed);
+            job.count = 1;
+            pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+            if (pTarg.Faction != null && pTarg.Faction != Faction.OfPlayer && !pTarg.Faction.def.hidden)
+            {
+                TutorUtility.DoModalDialogIfNotKnown(ConceptDefOf.ArrestingCreatesEnemies);
+            }
+        }
+        
         public static TargetingParameters ForArrest(Pawn arrester)
         {
             return new TargetingParameters
