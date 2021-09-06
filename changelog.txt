@@ -1,4 +1,6 @@
 Changelog:
+1.3.2
+- Added Multiplayer mod compilability (https://github.com/Thomas107500)
 1.3.1
 - Added NPR checks for new table workers
 - Added Work and Convert option (https://github.com/samdeane)

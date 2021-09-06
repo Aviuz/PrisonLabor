@@ -3,7 +3,7 @@ SET target_directory=D:\Gry\Steam\steamapps\common\RimWorld\Mods\%mod_name%
 SET zip_directory=C:\Users\Hazzer\Desktop\%mod_name%.zip
 
 :: ========= Copy ==========
- 
+del "%zip_directory%"
 rd "%target_directory%" /s /q
 mkdir "%target_directory%"
 
