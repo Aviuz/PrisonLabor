@@ -79,7 +79,7 @@ namespace PrisonLabor.Core.Incidents
                         string msg = $"Prison Labor: Revolt blocking chance is currently equal to {chance * 100}% (overall treatment = {treatment}). Rolling ...";
                         Log.Message(msg);
                     }
-                    if (UnityEngine.Random.value > chance)
+                    if (Verse.Rand.Value > chance)
                         return false;
                 }
 
@@ -113,7 +113,7 @@ namespace PrisonLabor.Core.Incidents
                         // If combat extended is enabled
                         if (DefDatabase<ThingDef>.GetNamed("Weapon_GrenadeStickBomb", false) != null)
                         {
-                            if (UnityEngine.Random.value > 0.5f)
+                            if (Verse.Rand.Value > 0.5f)
                             {
                                 weapon = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Weapon_GrenadeStickBomb")) as ThingWithComps;
                                 ammo = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("Weapon_GrenadeStickBomb")) as ThingWithComps;

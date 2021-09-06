@@ -54,7 +54,7 @@ namespace PrisonLabor.Core.Incidents
                     // If treatment is only bad reduce chance by 50%
                     if (need.CurCategory == TreatmentCategory.Bad && !parms.forced)
                     {
-                        if (UnityEngine.Random.value < 0.5f)
+                        if (Verse.Rand.Value < 0.5f)
                             continue;
                     }
 

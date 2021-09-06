@@ -27,14 +27,7 @@ namespace PrisonLabor.Core.MainButton_Window
             CuffsTracker cuffsTracker = pawn.Map.GetComponent<CuffsTracker>();
             if(cuffsTracker != null)
             {
-                if( value == (pawn.health.hediffSet.GetFirstHediffOfDef(PL_DefOf.PrisonLabor_RemovedLegscuffs, false) == null))
-                {
-                    cuffsTracker.legscuffTracker.Remove(pawn);
-                }
-                else
-                {
-                    cuffsTracker.legscuffTracker.Add(pawn, value);
-                }
+                UpdateTracker(value,pawn,cuffsTracker);
             }
             table.SetDirty();
         }
@@ -42,6 +35,18 @@ namespace PrisonLabor.Core.MainButton_Window
         protected override bool HasCheckbox(Pawn pawn)
         {
             return pawn != null && pawn.health != null;
+        }
+    
+        public void UpdateTracker(bool value, Pawn pawn, CuffsTracker cuffsTracker)
+        {
+            if (value == (pawn.health.hediffSet.GetFirstHediffOfDef(PL_DefOf.PrisonLabor_RemovedLegscuffs, false) == null))
+            {
+                cuffsTracker.legscuffTracker.Remove(pawn);
+            }
+            else
+            {
+                cuffsTracker.legscuffTracker.Add(pawn, value);
+            }
         }
     }
 }
