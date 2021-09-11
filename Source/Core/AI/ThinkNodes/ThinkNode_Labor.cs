@@ -33,18 +33,25 @@ namespace PrisonLabor.Core.AI.ThinkNodes
 
                 // Prisoner will escape if get ready to run.
                 // If he can run he will start ticking impatient, once complete he will get ready.
-              
+
                 var prisonerComp = pawn.TryGetComp<PrisonerComp>();
-                if (pawn.guest.PrisonerIsSecure && RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
+                if (prisonerComp != null)
                 {
-                    if (prisonerComp.escapeTracker.ReadyToEscape)
-                        return false;
+                    if (pawn.guest.PrisonerIsSecure && RCellFinder.TryFindBestExitSpot(pawn, out c, TraverseMode.ByPawn))
+                    {
+                        if (prisonerComp.EscapeTracker.ReadyToEscape)
+                            return false;
+                        else
+                            prisonerComp.EscapeTracker.CanEscape = true;
+                    }
                     else
-                        prisonerComp.escapeTracker.CanEscape = true;
+                    {
+                        prisonerComp.EscapeTracker.CanEscape = false;
+                    }
                 }
                 else
                 {
-                    prisonerComp.escapeTracker.CanEscape = false;
+                    DebugLogger.warn($"Prisoner comp is null for {pawn.NameShortColored}");
                 }
 
 
