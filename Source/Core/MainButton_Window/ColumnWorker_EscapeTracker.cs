@@ -17,7 +17,7 @@ namespace PrisonLabor.Core.MainButton_Window
             var prisonerComp = pawn.TryGetComp<PrisonerComp>();
             if(prisonerComp != null)
             {
-                return (prisonerComp.escapeTracker.ReadyToEscape ? "ready" : prisonerComp.escapeTracker.ReadyToRunPercentage + " %");
+                return (prisonerComp.EscapeTracker.ReadyToEscape ? "ready" : prisonerComp.EscapeTracker.ReadyToRunPercentage + " %");
             }
 
             return null;
@@ -28,7 +28,7 @@ namespace PrisonLabor.Core.MainButton_Window
             var prisonerComp = pawn.TryGetComp<PrisonerComp>();
             if (prisonerComp != null)
             {
-                return $"(Cap:{ prisonerComp.escapeTracker.EscapeLevel})";
+                return $"(Cap:{ prisonerComp.EscapeTracker.EscapeLevel})";
             }
             return null;
         }

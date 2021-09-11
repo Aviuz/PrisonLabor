@@ -15,7 +15,19 @@ namespace PrisonLabor.Core.Components
 
     public class PrisonerComp : ThingComp
     {
-        public EscapeTracker escapeTracker;
+        private EscapeTracker escapeTracker;
+
+        public EscapeTracker EscapeTracker
+        {
+            get
+            {
+                if (escapeTracker == null)
+                {
+                    escapeTracker = new EscapeTracker(this.parent as Pawn);
+                }
+                return escapeTracker;
+            }
+        }
 
         private bool Active
         {
@@ -83,7 +95,7 @@ namespace PrisonLabor.Core.Components
         {
             if (Active)
             {
-                escapeTracker?.Tick();
+                EscapeTracker.Tick();
             }
         }
     }

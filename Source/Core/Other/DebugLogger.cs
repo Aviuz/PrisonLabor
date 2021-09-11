@@ -22,5 +22,10 @@ namespace PrisonLabor.Core.Other
         {
             Log.Message(msg);
         }
+
+        internal static void warn(string msg)
+        {
+            Log.Warning(msg);
+        }
     }
 }

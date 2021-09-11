@@ -42,7 +42,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Escaping
         {
             
             var prisonerComp = pawn.TryGetComp<PrisonerComp>();
-            if (prisonerComp != null && prisonerComp.escapeTracker.ReadyToEscape)
+            if (prisonerComp != null && prisonerComp.EscapeTracker.ReadyToEscape)
                 return true;
             else
                 return false;
