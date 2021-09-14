@@ -35,7 +35,7 @@ namespace PrisonLabor.Core.Trackers
             }
         }
 
-        private static void DeRegister(Pawn pawn)
+        public static void DeRegister(Pawn pawn)
         {
             prisonersReadyToEscape.Remove(pawn);
         }

@@ -97,4 +97,7 @@
 
   <PrisonLabor_EnableDebugLogs>Enable Debug Logs</PrisonLabor_EnableDebugLogs>
   <PrisonLabor_EnableDebugLogsDesc>Turning on this option may spam log</PrisonLabor_EnableDebugLogsDesc>
+
+  <PrisonLabor_CannotTakeToBed>Cannot take to bed</PrisonLabor_CannotTakeToBed>
+  <PrisonLabor_TakingToBed>Take {0} to bed</PrisonLabor_TakingToBed>
 </LanguageData>

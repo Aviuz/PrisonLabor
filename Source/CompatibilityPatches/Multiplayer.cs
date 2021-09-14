@@ -48,6 +48,7 @@ namespace PrisonLabor.CompatibilityPatches
             MP.RegisterSyncMethod(typeof(ColumnWorker_Resocialization), nameof(ColumnWorker_Resocialization.ConvertPrisoner)).CancelIfAnyArgNull();
 
             MP.RegisterSyncMethod(typeof(ArrestUtility), nameof(ArrestUtility.ArrestPrisoner)).SetContext(SyncContext.MapSelected);
+            MP.RegisterSyncMethod(typeof(ArrestUtility), nameof(ArrestUtility.TakePrisonerToBed)).SetContext(SyncContext.MapSelected);
         }
     
         /*
