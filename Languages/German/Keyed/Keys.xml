@@ -5,16 +5,16 @@
 	<PrisonLabor_WorkAndConvert>Zur Arbeit zwingen und Konvertierung</PrisonLabor_WorkAndConvert>
 	<PrisonLabor_WorkAndEnslave>Zur Arbeit zwingen und Versklaven</PrisonLabor_WorkAndEnslave>
 	<PrisonLabor_LazyPrisonerMessage>Dein Gefangener hat aufgehört zu arbeiten!</PrisonLabor_LazyPrisonerMessage>
-	<PrisonLabor_WardenResponseThreshold>Antwortschwelle des Aufsehers</PrisonLabor_WardenResponseThreshold>
-	<PrisonLabor_StoppingWorkThreshold>Arbeitsstopschwelle</PrisonLabor_StoppingWorkThreshold>
+	<PrisonLabor_WardenResponseThreshold>Auslastung des Aufsehers</PrisonLabor_WardenResponseThreshold>
+	<PrisonLabor_StoppingWorkThreshold>Auslastung</PrisonLabor_StoppingWorkThreshold>
 	<PrisonLabor_WorkTypeDisabled>Arbeit für Gefangene gesperrt</PrisonLabor_WorkTypeDisabled>
 	<PrisonLabor_ShowNews>Neuigkeiten anzeigen</PrisonLabor_ShowNews>
-	<PrisonLabor_ShowNewsDesc>Zeige Nachrichten über Änderungen im Mod an wenn Gefangene erkannt wurden.</PrisonLabor_ShowNewsDesc>
+	<PrisonLabor_ShowNewsDesc>Zeige Neuigkeiten über Änderungen im Mod an wenn Gefangene erkannt wurden.</PrisonLabor_ShowNewsDesc>
 	<PrisonLabor_DefaultInterMode>Standardinteraktion mit Gefangenen</PrisonLabor_DefaultInterMode>
-	<PrisonLabor_AllowedWorkTypes>Alle Arten von Arbeiten erlauben</PrisonLabor_AllowedWorkTypes>
+	<PrisonLabor_AllowedWorkTypes>Alle Arten von Arbeit erlauben</PrisonLabor_AllowedWorkTypes>
 	<PrisonLabor_AllowAll>Alles erlauben</PrisonLabor_AllowAll>
-	<PrisonLabor_AllowAllWorkTypes>Erlaube alle Arbeitstypen</PrisonLabor_AllowAllWorkTypes>
-	<PrisonLabor_AllowedWorkTypesL>Erlaubte Arbeitstypen:</PrisonLabor_AllowedWorkTypesL>
+	<PrisonLabor_AllowAllWorkTypes>Erlaube alle Arbeiten</PrisonLabor_AllowAllWorkTypes>
+	<PrisonLabor_AllowedWorkTypesL>Erlaubte Arbeiten:</PrisonLabor_AllowedWorkTypesL>
 	<PrisonLabor_Browse>Auswählen</PrisonLabor_Browse>
 	<PrisonLabor_MotivationMechanics>Motivationsmechanik (!)</PrisonLabor_MotivationMechanics>
 	<PrisonLabor_MotivationWarning>Wenn aktiviert, müssen Gefangene motiviert werden.\n\nWARNUNG: Benötigt neuladen des Spielstandes</PrisonLabor_MotivationWarning>

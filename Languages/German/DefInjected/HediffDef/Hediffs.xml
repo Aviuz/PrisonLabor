@@ -8,13 +8,13 @@
 	<PrisonLabor_PrisonerChains.stages.3.label>ungefesselte Hände</PrisonLabor_PrisonerChains.stages.3.label>
 	<PrisonLabor_PrisonerChains.stages.4.label>aktiv</PrisonLabor_PrisonerChains.stages.4.label>
 
-	<PrisonLabor_RemovedHandscuffs.label>Fandschellen entfernt</PrisonLabor_RemovedHandscuffs.label>
-	<PrisonLabor_RemovedHandscuffs.description>Der Gefangene hat die Handschellen entfernt.</PrisonLabor_RemovedHandscuffs.description>
+	<PrisonLabor_RemovedHandscuffs.label>Handschellen entfernt</PrisonLabor_RemovedHandscuffs.label>
+	<PrisonLabor_RemovedHandscuffs.description>Dem Gefangenen wurden die Handschellen entfernt.</PrisonLabor_RemovedHandscuffs.description>
 	<PrisonLabor_RemovedHandscuffs.stages.0.label>nicht aktiv</PrisonLabor_RemovedHandscuffs.stages.0.label>
 	<PrisonLabor_RemovedHandscuffs.stages.1.label>aktiv</PrisonLabor_RemovedHandscuffs.stages.1.label>
 
 	<PrisonLabor_RemovedLegscuffs.label>Fußfesseln entfernt</PrisonLabor_RemovedLegscuffs.label>
-	<PrisonLabor_RemovedLegscuffs.description>Der Gefangene hat die Fußfesseln entfernt.</PrisonLabor_RemovedLegscuffs.description>
+	<PrisonLabor_RemovedLegscuffs.description>Dem Gefangenen wurden die Fußfesseln abgenommen.</PrisonLabor_RemovedLegscuffs.description>
 	<PrisonLabor_RemovedLegscuffs.stages.0.label>nicht aktiv</PrisonLabor_RemovedLegscuffs.stages.0.label>
 	<PrisonLabor_RemovedLegscuffs.stages.1.label>aktiv</PrisonLabor_RemovedLegscuffs.stages.1.label>
 </LanguageData>
