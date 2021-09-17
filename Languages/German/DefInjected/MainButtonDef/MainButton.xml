@@ -2,19 +2,4 @@
 <LanguageData>
 	<PL_Prisoners_Menu.label>Gefangene</PL_Prisoners_Menu.label>
 	<PL_Prisoners_Menu.description>Verwalte die Gefangenen deiner Fraktion</PL_Prisoners_Menu.description>
-	
-	<PL_Overview.label>Übersicht</PL_Overview.label>
-	<PL_LaborWindow.label>Arbeit</PL_LaborWindow.label>
-	<PL_ScheduleWindow.label>Zeitplan</PL_ScheduleWindow.label>
-	<PL_AssignWindow.label>Zuweisung</PL_AssignWindow.label>
-	<PL_DevWindow.label>Dev</PL_DevWindow.label>
-	
-	<PL_InteractionColumn.label>Interaktion</PL_InteractionColumn.label>
-	<PL_InteractionColumn.headerTip>Interaktionsmodus</PL_InteractionColumn.headerTip>
-	<PL_Resocialization.label>Resozialisierung</PL_Resocialization.label>
-	<PL_Resocialization.headerTip>Gefangener will sich deiner Kolonie anschließen</PL_Resocialization.headerTip>
-	<PL_HasLegcuffs.label>Trägt Fußfesseln</PL_HasLegcuffs.label>
-	<PL_HasHandcuffs.label>Trägt Handschellen</PL_HasHandcuffs.label>
-	<PL_EscapeColumn.label>Bereit zu flüchten</PL_EscapeColumn.label>
-	<PL_MotivationColumn.label>Motivation</PL_MotivationColumn.label>
 </LanguageData>
