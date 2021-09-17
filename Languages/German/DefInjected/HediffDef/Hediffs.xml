@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-	<PrisonLabor_PrisonerChains.label>gefesselt<PrisonLabor_PrisonerChains.label>
+	<PrisonLabor_PrisonerChains.label>gefesselt</PrisonLabor_PrisonerChains.label>
 	<PrisonLabor_PrisonerChains.description>Dieser Kolonist ist gefesselt. Anmerkung: dies ist die normale Vanilla-Mechanik, aber als hediff angezeigt</PrisonLabor_PrisonerChains.description>
 	<PrisonLabor_PrisonerChains.stages.0.label>nicht aktiv</PrisonLabor_PrisonerChains.stages.0.label>
 	<PrisonLabor_PrisonerChains.stages.1.label>vollkommen ungefesselt</PrisonLabor_PrisonerChains.stages.1.label>
