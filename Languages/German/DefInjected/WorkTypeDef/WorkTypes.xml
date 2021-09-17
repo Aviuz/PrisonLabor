@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<PrisonLabor_Jailor.label>Gefängniswärter</PrisonLabor_Jailor.label>
+	<PrisonLabor_Jailor.description>Verwaltung von Gefangenen einschließlich Eskortierung, Überwachung, Freilassung und Hinrichtung von Gefangenen.</PrisonLabor_Jailor.description>
+	<PrisonLabor_Jailor.labelShort>Wärter</PrisonLabor_Jailor.labelShort>
+	<PrisonLabor_Jailor.pawnLabel>Gefängniswärter</PrisonLabor_Jailor.pawnLabel>
+	<PrisonLabor_Jailor.gerundLabel>überwache Gefangene</PrisonLabor_Jailor.gerundLabel>
+	<PrisonLabor_Jailor.verb>überwache</PrisonLabor_Jailor.verb>
+</LanguageData>

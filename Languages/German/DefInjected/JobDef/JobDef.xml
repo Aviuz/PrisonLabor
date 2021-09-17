@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<PrisonLabor_PrisonerSupervise.reportString>überwacht den Gefangenen TargetA.</PrisonLabor_PrisonerSupervise.reportString>
+	<PrisonLabor_Arrest.reportString>nimmt TargetA fest.</PrisonLabor_Arrest.reportString>
+	<PrisonLabor_HandlePrisonersLegChain.reportString>legt dem Gefangenen TargetA Fußfesseln an.</PrisonLabor_HandlePrisonersLegChain.reportString>
+	<PrisonLabor_HandlePrisonersHandChain.reportString>legt dem Gefangenen TargetA Handschellen an.</PrisonLabor_HandlePrisonersHandChain.reportString>
+</LanguageData>

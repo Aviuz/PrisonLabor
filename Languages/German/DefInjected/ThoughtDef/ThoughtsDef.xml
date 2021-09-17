@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<PrisonLabor_VeryGoodTreatment.stages.0.label>sehr gut behandelt</PrisonLabor_VeryGoodTreatment.stages.0.label>
+	<PrisonLabor_VeryGoodTreatment.stages.0.description>In diesem Gefängnis wurde ich sehr gut behandelt</PrisonLabor_VeryGoodTreatment.stages.0.description>
+
+	<PrisonLabor_LowMotivation.stages.0.label>nicht überwacht</PrisonLabor_LowMotivation.stages.0.label>
+	<PrisonLabor_LowMotivation.stages.0.description>Niemanden kümmert es ob ich arbeite oder nicht.</PrisonLabor_LowMotivation.stages.0.description>
+
+	<PrisonLabor_FreeTime.stages.0.label>Freizeit</PrisonLabor_FreeTime.stages.0.label>
+	<PrisonLabor_FreeTime.stages.0.description>Selbst wenn ich gefangen bin, kann ich noch etwas Freizeit haben.</PrisonLabor_FreeTime.stages.0.description>
+</LanguageData>

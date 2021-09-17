@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<PrisonLabor_SupervisePrisonLabor.label>überwache Gefangenen</PrisonLabor_SupervisePrisonLabor.label>
+	<PrisonLabor_SupervisePrisonLabor.verb>überwache Gefangenen</PrisonLabor_SupervisePrisonLabor.verb>
+	<PrisonLabor_SupervisePrisonLabor.gerund>überwache Gefangenen</PrisonLabor_SupervisePrisonLabor.gerund>
+	
+	<PrisonLabor_HandleChains.label>Fesseln des Gefangenen bearbeiten</PrisonLabor_HandleChains.label>
+	<PrisonLabor_HandleChains.verb>Fesseln des Gefangenen bearbeiten</PrisonLabor_HandleChains.verb>
+	<PrisonLabor_HandleChains.gerund>Fesseln des Gefangenen bearbeiten</PrisonLabor_HandleChains.gerund>
+</LanguageData>
