@@ -4,8 +4,8 @@
 	<PL_InteractionColumn.headerTip>Interaktionsmodus</PL_InteractionColumn.headerTip>
 	<PL_Resocialization.label>Resozialisierung</PL_Resocialization.label>
 	<PL_Resocialization.headerTip>Gefangener will sich deiner Kolonie anschließen</PL_Resocialization.headerTip>
-	<PL_HasLegcuffs.label>Trägt Fußfesseln</PL_HasLegcuffs.label>
-	<PL_HasHandcuffs.label>Trägt Handschellen</PL_HasHandcuffs.label>
+	<PL_HasLegcuffs.label>Fußfesseln</PL_HasLegcuffs.label>
+	<PL_HasHandcuffs.label>Handschellen</PL_HasHandcuffs.label>
 	<PL_EscapeColumn.label>Bereit zu flüchten</PL_EscapeColumn.label>
 	<PL_MotivationColumn.label>Motivation</PL_MotivationColumn.label>
 </LanguageData>
