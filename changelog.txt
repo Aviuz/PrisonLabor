@@ -1,4 +1,8 @@
 Changelog:
+1.3.4
+- Not spawned pawns should not appear in "Prisoner can escape" alert (e.g. escaped prisoner)
+- Added option to escort prisoner back to cell.
+- Fixes for option to arrest escaping prisoner without withdraw.
 1.3.3
 - NPR fixes for EscapeTracker
 1.3.2

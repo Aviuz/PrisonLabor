@@ -158,6 +158,7 @@
     <Compile Include="HarmonyPatches\Patches_Construction\Patch_WorkGiver_Repair.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Scanner_HasJob.cs" />
     <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
+    <Compile Include="HarmonyPatches\Patches_TakeToBed\Patch_AddTakeToBed.cs" />
     <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_AddScrollToPrisonerTab.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_BillPrevention.cs" />

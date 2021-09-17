@@ -97,6 +97,15 @@ namespace PrisonLabor.Core.Components
             {
                 EscapeTracker.Tick();
             }
+            else
+            {
+                EscapeTracker.DeRegister(this.parent as Pawn);
+            }
+        }
+
+        public override void PostDeSpawn(Map map)
+        {
+            EscapeTracker.DeRegister(this.parent as Pawn);
         }
     }
 }

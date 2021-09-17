@@ -16,29 +16,37 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_RMB
     [HarmonyPatch("AddHumanlikeOrders")]
     class Patch_RMB_Chains
     {
-		static void Postfix(Vector3 clickPos, Pawn pawn, List<FloatMenuOption> opts)
+        static void Postfix(Vector3 clickPos, Pawn pawn, List<FloatMenuOption> opts)
         {
             TargetingParameters targetParams = new TargetingParameters()
             {
                 canTargetHumans = true,
                 canTargetPawns = true,
-				mapObjectTargetsMustBeAutoAttackable = false,
-			};
+                mapObjectTargetsMustBeAutoAttackable = false,
+                validator = delegate (TargetInfo targ)
+                {
+                    if (!targ.HasThing)
+                    {
+                        return false;
+                    }
+                    return targ.Thing is Pawn targetPawn && targetPawn.IsPrisonerOfColony &&
+                    !targetPawn.InAggroMentalState  && !pawn.Downed;
+                }
+            };
 
-			var validtargets = GenUI.TargetsAt(clickPos, targetParams);
+            var validtargets = GenUI.TargetsAt(clickPos, targetParams);
 
             foreach (LocalTargetInfo target in validtargets)
             {
-                if(target.Pawn != null && target.Pawn.IsPrisonerOfColony && pawn.CanReach(target, PathEndMode.ClosestTouch, Danger.Deadly))
+                if (target.Pawn != null && pawn.CanReach(target, PathEndMode.ClosestTouch, Danger.Deadly))
                 {
-                    
-                    opts.AddDistinct(AddOption(pawn, target, labelSelect(target, PL_DefOf.PrisonLabor_RemovedLegscuffs, "PrisonLabor_LegcuffsPut", "PrisonLabor_LegcuffsRemove"), PL_DefOf.PrisonLabor_HandlePrisonersLegChain));
-                    opts.AddDistinct(AddOption(pawn, target, labelSelect(target, PL_DefOf.PrisonLabor_RemovedHandscuffs, "PrisonLabor_HandcuffsPut", "PrisonLabor_HandcuffsRemove"), PL_DefOf.PrisonLabor_HandlePrisonersHandChain));
+                    opts.AddDistinct(AddOption(pawn, target, LabelSelect(target, PL_DefOf.PrisonLabor_RemovedLegscuffs, "PrisonLabor_LegcuffsPut", "PrisonLabor_LegcuffsRemove"), PL_DefOf.PrisonLabor_HandlePrisonersLegChain));
+                    opts.AddDistinct(AddOption(pawn, target, LabelSelect(target, PL_DefOf.PrisonLabor_RemovedHandscuffs, "PrisonLabor_HandcuffsPut", "PrisonLabor_HandcuffsRemove"), PL_DefOf.PrisonLabor_HandlePrisonersHandChain));
                 }
             }
         }
 
-        private static string labelSelect(LocalTargetInfo target, HediffDef hediffDef, String labelA, String labelB)
+        private static string LabelSelect(LocalTargetInfo target, HediffDef hediffDef, String labelA, String labelB)
         {
             return target.Pawn.health.hediffSet.HasHediff(hediffDef, false) ? labelA : labelB;
         }
@@ -46,10 +54,10 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_RMB
 
         private static FloatMenuOption AddOption(Pawn pawn, LocalTargetInfo target, string keyname, JobDef jobdef)
         {
-           return FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption(keyname.Translate(), delegate ()
-            {
-                pawn.jobs.TryTakeOrderedJob(new Job(jobdef, target.Pawn));
-            }, MenuOptionPriority.High), pawn, target);
+            return FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption(keyname.Translate(), delegate ()
+             {
+                 pawn.jobs.TryTakeOrderedJob(new Job(jobdef, target.Pawn));
+             }, MenuOptionPriority.High), pawn, target);
         }
     }
 }
