@@ -1,4 +1,5 @@
 using Multiplayer.API;
+using PrisonLabor.Core.Components;
 using RimWorld;
 using RimWorld.Planet;
 using System;
@@ -36,12 +37,11 @@ namespace PrisonLabor.Core.Other
                         else
                         {
                             Pawn pTarg = (Pawn)dest.Thing;
-                            Action action = delegate
+                            string label = "TryToArrest".Translate(pTarg.LabelCap, pTarg, pTarg.GetAcceptArrestChance(pawn).ToStringPercent());
+                            Action action2 = delegate
                             {
                                 ArrestUtility.ArrestPrisoner(pTarg, pawn);
                             };
-                            string label = "TryToArrest".Translate(dest.Thing.LabelCap, dest.Thing);
-                            Action action2 = action;
                             MenuOptionPriority priority = MenuOptionPriority.High;
                             Thing thing = dest.Thing;
                             opts.Add(FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption(label, action2, priority, null, thing, 0f, null, null), pawn, pTarg, "ReservedBy"));
@@ -164,17 +164,18 @@ namespace PrisonLabor.Core.Other
         }
         private static bool CanBeTakenToBed(Pawn pawn, Pawn arrester)
         {
-            return !IsPawnFleeing(pawn) && pawn.IsPrisonerOfColony && !pawn.Position.IsInPrisonCell(pawn.Map);
+            return (!pawn.InAggroMentalState || !pawn.HostileTo((Thing)arrester)) && !IsPawnFleeing(pawn) && pawn.IsPrisonerOfColony && !pawn.Position.IsInPrisonCell(pawn.Map);
         }
 
         public static bool CanBeArrestedBy(Pawn pawn, Pawn arrester)
         {
-            return pawn.RaceProps.Humanlike && pawn.HostileTo(arrester.Faction) && IsPawnFleeing(pawn) && (!pawn.IsPrisonerOfColony || !pawn.Position.IsInPrisonCell(pawn.Map));
+            return pawn.RaceProps.Humanlike && (!pawn.InAggroMentalState || !pawn.HostileTo((Thing)arrester)) && IsPawnFleeing(pawn) && (!pawn.HostileTo(Faction.OfPlayer) && (!pawn.IsPrisonerOfColony || !pawn.Position.IsInPrisonCell(pawn.Map)));
         }
 
         private static bool IsPawnFleeing(Pawn pawn)
         {
-            return pawn.CurJob != null && pawn.CurJob.def == JobDefOf.Flee;
+            PrisonerComp prisonerComp = pawn.TryGetComp<PrisonerComp>();
+            return prisonerComp != null && prisonerComp.EscapeTracker.CanEscape && pawn.CurJob != null && pawn.CurJob.def == JobDefOf.Goto;
         }
     }
 }
