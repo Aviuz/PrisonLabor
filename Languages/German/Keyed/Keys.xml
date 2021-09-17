@@ -54,8 +54,8 @@
 
 	<PrisonLabor_ColonyOnly>Für jeden</PrisonLabor_ColonyOnly>
 	<PrisonLabor_ColonistsOnly>Auf Kolonisten beschränken</PrisonLabor_ColonistsOnly>
-	<PrisonLabor_PrisonersOnly>Jeder Gefangene</PrisonLabor_PrisonersOnly>
-	<PrisonLabor_PrisonersAndSlaveOnly>Jeder nicht-Kolonist</PrisonLabor_PrisonersAndSlaveOnly>
+	<PrisonLabor_PrisonersOnly>Nur Gefangene</PrisonLabor_PrisonersOnly>
+	<PrisonLabor_PrisonersAndSlaveOnly>Nur Gefangene oder Sklaven</PrisonLabor_PrisonersAndSlaveOnly>
 
 	<!-- 0.10 -->
 	<PrisonLabor_RecruitButtonLabel>Rekrutieren</PrisonLabor_RecruitButtonLabel>
