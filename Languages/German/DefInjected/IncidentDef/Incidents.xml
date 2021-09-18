@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<PrisonLabor_Revolt.label>Revolte</PrisonLabor_Revolt.label>
+	<PrisonLabor_Revolt.letterLabel>Revolte</PrisonLabor_Revolt.letterLabel>
+	<PrisonLabor_Revolt.letterText>Eine Revolte wurde gestartet von {0}. Die Gefangenen schlossen sich als Fraktion {1} zusammen, und beginnen einen Aufstand mit selbstgebauten Waffen.</PrisonLabor_Revolt.letterText>
+	
+	<PrisonLabor_ResocializationOffer.label>Resozialisierungsangebot</PrisonLabor_ResocializationOffer.label>
+	<PrisonLabor_ResocializationOffer.letterLabel>Resozialisierungsangebot</PrisonLabor_ResocializationOffer.letterLabel>
+	<PrisonLabor_ResocializationOffer.letterText>Resozialisierungsangebot von {0}</PrisonLabor_ResocializationOffer.letterText>
+	
+	<PrisonLabor_Suicide.label>Gefangenenselbstmord</PrisonLabor_Suicide.label>
+	<PrisonLabor_Suicide.letterLabel>Gefangenenselbstmord</PrisonLabor_Suicide.letterLabel>
+	<PrisonLabor_Suicide.letterText>{0} hat Selbstmord begangen aufgrund schlechter Behandlung.</PrisonLabor_Suicide.letterText>
+</LanguageData>

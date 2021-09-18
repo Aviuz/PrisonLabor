@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<PL_Overview.label>Übersicht</PL_Overview.label>
+	<PL_LaborWindow.label>Arbeit</PL_LaborWindow.label>
+	<PL_ScheduleWindow.label>Zeitplan</PL_ScheduleWindow.label>
+	<PL_AssignWindow.label>Zuweisung</PL_AssignWindow.label>
+	<PL_DevWindow.label>Entwickler</PL_DevWindow.label>
+</LanguageData>

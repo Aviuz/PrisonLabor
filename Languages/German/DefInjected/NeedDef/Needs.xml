@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<PrisonLabor_Motivation.label>Motivation</PrisonLabor_Motivation.label>
+	<PrisonLabor_Motivation.description>Die Motivation zeigt an, wie motiviert die Gefangenen sind. Die Motivation kann durch in der Nähe stehende Kolonisten verbessert werden.</PrisonLabor_Motivation.description>
+
+	<PrisonLabor_Treatment.label>Zufriedenheit</PrisonLabor_Treatment.label>
+	<PrisonLabor_Treatment.description>Die Zufriedenheit gibt an, wie zufrieden die Gefangenen mit der Behandlung in deiner Kolonie sind.</PrisonLabor_Treatment.description>
+</LanguageData>

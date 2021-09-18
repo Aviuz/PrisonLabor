@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<PrisonLabor_Indroduction.label>Zwangsarbeit für Gefangene</PrisonLabor_Indroduction.label>
+	<PrisonLabor_Indroduction.helpText>Du kannst Gefangene zum Arbeiten zwingen.\n\nUm dies zu tun, musst du "Zur Arbeit zwingen" im Bereich "Gefangene" auswählen.\n\nGefangene werden Aufgaben im erlaubten Gebiet erledigen. Stelle sicher dass die ihre Aufgaben erreichen können.\n\nSie können nur kochen, minern, Waldarbeiten erledigen, tragen, säubern oder Pflanzen anbauen die keine Fähigkeiten benötigen.\n\nGefangene verweigern manchmal die Arbeit. Die Gründe dafür können unterschiedlich sein. Sie können verwundet, hungrig, müde oder nicht ausreichend motiviert sein.\n\nTipp: Du kannst Arbeiten im "Arbeit"-Tab zuweisen.\n\Tipp: Wenn du eine Kochstelle in eine Gefängniszelle stellst, stelle sicher dass die rohe Nahrung erreichen können.\n\nTipp: Du kannst Gefangenen erlauben durch Türen zu gehen wenn du sie offen stehen lässt.</PrisonLabor_Indroduction.helpText>
+
+	<PrisonLabor_Motivation.label>Gefangene motivieren</PrisonLabor_Motivation.label>
+	<PrisonLabor_Motivation.helpText>Einer deiner Gefangenen hat aufgehört zu arbeiten.\nEr wird nicht mehr arbeiten bis er wieder motiviert wird.\n\nDu kannst den Motivationsstatus im "Bedürfnisse"-Tab überprüfen.\n\nStelle sicher das du genug Wächter hast oder drafte einen deiner Kolonisten und weise ihn an in der nähe deiner Gefangenen zu stehen.\n\nNiedrige Motivation deiner Gefangenen kann zu Revolten führen.</PrisonLabor_Motivation.helpText>
+
+	<PrisonLabor_Growing.label>Pflanzenanbau mit Gefangenen</PrisonLabor_Growing.label>
+	<PrisonLabor_Growing.helpText>Gefangene können nur Pflanzen anbauen, die keine besonderen Fähigkeiten erfordern, wie Kartoffeln oder Baumwolle. Ernten können sie allerdings alles wenn sie dazu angewiesen werden.</PrisonLabor_Growing.helpText>
+
+	<PrisonLabor_Management.label>Verwaltung von Gefängnisarbeit</PrisonLabor_Management.label>
+	<PrisonLabor_Management.helpText>Du kannst die Arbeit deiner Gefangenen auf verschiedene Arten verwalten.\n\nDu kannst den Gefangenen Arbeiten über das "Arbeit"-Tab zuweisen.\n\nDu kannst einstellen wann Gefangene arbeiten, sich ausruhen oder schlafen sollen mit dem "Zeitplan"-Tab.\n\nDu kannst Aufgaben auf "Nur Gefangene" beschränken. Für Arbeitsaufträge, die den Bereich abdecken, kannst du im Bereich "Architekt" - > "Aufträge" das Werkzeug "Arbeitsbereich für Gefangene" auswählen.</PrisonLabor_Management.helpText>
+
+	<PrisonLabor_Timetable.label>Zeitplanung für Gefangene</PrisonLabor_Timetable.label>
+	<PrisonLabor_Timetable.helpText>Du kannst einen Zeitplan für Gefangene festlegen.\n\n"Arbeit"-Zeit zwingt deine Gefangenen zu arbeiten, auch wenn die hungrig und müde sind.\n\nFreizeit lässt sie sich vom Job ausruhen und die Gefangenen erhalten einen Motivationsbonus.\n\n"Schlaf" zwingt Gefangene, in der Gefängniszelle zu bleiben.\n\n"Alles" ist die Standardeinstellung.</PrisonLabor_Timetable.helpText>
+	
+	<PrisonLabor_Treatment.label>Behandlungssystem</PrisonLabor_Treatment.label>
+	<PrisonLabor_Treatment.helpText>Bei der Gefängnisarbeit musst du dich um die Gefangenen kümmern. Eine gute Behandlung kann Revolten verhindern und Rekrutierungsvorschläge provozieren (ohne einen erneuten Prozess!).\n\nUm einen guten Behandlung aufrechtzuerhalten, musst du die Gefangenen regelmäßig füttern und etwas Freizeit einplanen, damit sie ihre Kraft regenerieren können.\nGute Behandlung führt zu:\n - Zufälligen Angeboten mit der Bitte, sich der Kolonie anzuschließen\n - Aufruhr verhindern\n - Selbstmord verhindern</PrisonLabor_Treatment.helpText>
+</LanguageData>

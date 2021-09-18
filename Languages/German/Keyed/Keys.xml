@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<PrisonLabor_PrisonerWork>Zum Arbeiten zwingen</PrisonLabor_PrisonerWork>
+	<PrisonLabor_WorkAndRecruit>Arbeiten und Rekrutieren</PrisonLabor_WorkAndRecruit>
+	<PrisonLabor_WorkAndConvert>Arbeiten und Bekehren</PrisonLabor_WorkAndConvert>
+	<PrisonLabor_WorkAndEnslave>Arbeiten und Versklaven</PrisonLabor_WorkAndEnslave>
+	<PrisonLabor_LazyPrisonerMessage>Dein Gefangener hat aufgehört zu arbeiten!</PrisonLabor_LazyPrisonerMessage>
+	<PrisonLabor_WardenResponseThreshold>Auslastung des Aufsehers</PrisonLabor_WardenResponseThreshold>
+	<PrisonLabor_StoppingWorkThreshold>Auslastung</PrisonLabor_StoppingWorkThreshold>
+	<PrisonLabor_WorkTypeDisabled>Arbeit für Gefangene gesperrt</PrisonLabor_WorkTypeDisabled>
+	<PrisonLabor_ShowNews>Neuigkeiten anzeigen</PrisonLabor_ShowNews>
+	<PrisonLabor_ShowNewsDesc>Zeige Neuigkeiten über Änderungen im Mod an wenn Gefangene erkannt wurden.</PrisonLabor_ShowNewsDesc>
+	<PrisonLabor_DefaultInterMode>Standardinteraktion mit Gefangenen</PrisonLabor_DefaultInterMode>
+	<PrisonLabor_AllowedWorkTypes>Alle Arten von Arbeit erlauben</PrisonLabor_AllowedWorkTypes>
+	<PrisonLabor_AllowAll>Alles erlauben</PrisonLabor_AllowAll>
+	<PrisonLabor_AllowAllWorkTypes>Erlaube alle Arbeiten</PrisonLabor_AllowAllWorkTypes>
+	<PrisonLabor_AllowedWorkTypesL>Erlaubte Arbeiten:</PrisonLabor_AllowedWorkTypesL>
+	<PrisonLabor_Browse>Auswählen</PrisonLabor_Browse>
+	<PrisonLabor_MotivationMechanics>Motivationsmechanik (!)</PrisonLabor_MotivationMechanics>
+	<PrisonLabor_MotivationWarning>Wenn aktiviert, müssen Gefangene motiviert werden.\n\nWARNUNG: Benötigt neuladen des Spielstandes</PrisonLabor_MotivationWarning>
+	<PrisonLabor_MotivationIcons>Inspirations-/Motivationssymbole</PrisonLabor_MotivationIcons>
+	<PrisonLabor_MotivationIconsDesc>Wenn diese Option aktiviert ist, werden Symbole über den Köpfen der Gefangenen angezeigt. Blaues Symbol für Inspiration und grünes Symbol für Motivation durch andere Faktoren.</PrisonLabor_MotivationIconsDesc>
+	<PrisonLabor_CanGrowAdvanced>Gefangene können fortschrittliche Pflanzen anbauen</PrisonLabor_CanGrowAdvanced>
+	<PrisonLabor_CanGrowAdvancedDesc>Wenn deaktiviert können Gefangene nur Pflanzen anbauen können, die keine Fähigkeiten erfordern.</PrisonLabor_CanGrowAdvancedDesc>
+	<PrisonLabor_Version>Version: </PrisonLabor_Version>
+	<PrisonLabor_Difficulty>Schwierigkeit: </PrisonLabor_Difficulty>
+	<PrisonLabor_Defaults>Standardeinstellungen</PrisonLabor_Defaults>
+	<PrisonLabor_DifficultyNormal>Normal</PrisonLabor_DifficultyNormal>
+	<PrisonLabor_DifficultyCasual>Entspannt</PrisonLabor_DifficultyCasual>
+	<PrisonLabor_DifficultyEasy>Einfach</PrisonLabor_DifficultyEasy>
+	<PrisonLabor_DifficultyPeaceful>Friedlich</PrisonLabor_DifficultyPeaceful>
+	<PrisonLabor_DifficultyJoke>Ein Witz</PrisonLabor_DifficultyJoke>
+	<PrisonLabor_LazyPrisonerAlert>Gefangene arbeiten nicht</PrisonLabor_LazyPrisonerAlert>
+	<PrisonLabor_LazyPrisonerExplanationDef>Gefangene sind faul. Versuche sie zu motivieren.</PrisonLabor_LazyPrisonerExplanationDef>
+	<PrisonLabor_LazyPrisonerExplanation>Diese Gefangenen sind faul:\n\n{0}\nVersuche sie zu motivieren.</PrisonLabor_LazyPrisonerExplanation>
+	<PrisonLabor_StarvingPrisonerAlert>Gefangene verhungern</PrisonLabor_StarvingPrisonerAlert>
+	<PrisonLabor_StarvingPrisonerExplanationDef>Gefangene verhungern und werden nicht arbeiten.</PrisonLabor_StarvingPrisonerExplanationDef>
+	<PrisonLabor_StarvingPrisonerExplanation>Diese Gefangenen verhungern und werden nicht arbeiten:\n\n{0}</PrisonLabor_StarvingPrisonerExplanation>
+	<PrisonLabor_LaborArea>Arbeitsgebiet für Gefangene</PrisonLabor_LaborArea>
+	<PrisonLabor_LaborAreaDesc>Das Arbeitsgebiet für Gefangene ist ein Bereich, in dem ausschließlich Gefangene arbeiten können. Hier ist keine Arbeit eines Kolonisten erlaubt, außer Jobs vom Typ eines Wärters.</PrisonLabor_LaborAreaDesc>
+	<PrisonLabor_ClearLaborArea>Arbeitsgebiet für Gefangene entfernen</PrisonLabor_ClearLaborArea>
+	<PrisonLabor_ExpandLaborArea>Arbeitsgebiet für Gefangene erweitern</PrisonLabor_ExpandLaborArea>
+
+	<PrisonLabor_EnableRevolts>Aktiviere Revolten</PrisonLabor_EnableRevolts>
+	<PrisonLabor_EnableRevoltsDesc>Wenn aktiviert, werden manchmal Revolten entstehen anstelle von Vanilla-Vorfällen.</PrisonLabor_EnableRevoltsDesc>
+	<PrisonLabor_LaborAreaWarning>Das Arbeitsgebiet für Gefangene ist nicht notwendig damit Gefangene arbeiten.\n\nDieser Bereich verbietet Kolonisten die Arbeit.\n\nEr ist für den Fall, dass Kolonisten in einem bestimmten bereich nicht arbeiten sollen. Gefangene werden überall arbeiten wo sie Zugang haben.</PrisonLabor_LaborAreaWarning>
+	<PrisonLabor_DontShowAgain>Nicht erneut anzeigen</PrisonLabor_DontShowAgain>
+	<PrisonLabor_ShowTreatmentHappiness>Zufriedenheit anzeigen</PrisonLabor_ShowTreatmentHappiness>
+	<PrisonLabor_ShowTreatmentHappinessDesc>Wenn aktiviert wird die Zufriedenheit im Bedürfnis-Tab angezeigt.</PrisonLabor_ShowTreatmentHappinessDesc>
+
+	<PrisonLabor_ColonyOnlyShort>Jeder</PrisonLabor_ColonyOnlyShort>
+	<PrisonLabor_ColonistsOnlyShort>Kolonisten</PrisonLabor_ColonistsOnlyShort>
+	<PrisonLabor_PrisonersOnlyShort>Gefangene</PrisonLabor_PrisonersOnlyShort>
+
+	<PrisonLabor_ColonyOnly>Für jeden</PrisonLabor_ColonyOnly>
+	<PrisonLabor_ColonistsOnly>Auf Kolonisten beschränken</PrisonLabor_ColonistsOnly>
+	<PrisonLabor_PrisonersOnly>Beliebiger Gefangene</PrisonLabor_PrisonersOnly>
+	<PrisonLabor_PrisonersAndSlaveOnly>Beliebiger Gefangener oder Sklave</PrisonLabor_PrisonersAndSlaveOnly>
+
+	<!-- 0.10 -->
+	<PrisonLabor_RecruitButtonLabel>Rekrutieren</PrisonLabor_RecruitButtonLabel>
+	<PrisonLabor_RecruitButtonDesc>Bereit der Kolonie beizutreten</PrisonLabor_RecruitButtonDesc>
+
+	<PrisonLabor_Alert_EscapingPrisoners_Title>Gefangene können entkommen</PrisonLabor_Alert_EscapingPrisoners_Title>
+	<PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>Gefangene können den Rand der Karte erreichen. Sie werden fliehen, es sei denn ein Kolonist hat ein Auge auf sie.</PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>
+	<PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>Diese Gefangenen können entkommen:\n\n{0}\nSie werden fliehen, es sei denn ein Kolonist hat ein Auge auf sie.</PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>
+
+	<PrisonLabor_ButtonRemoveModFromSave>Spielstand auswählen</PrisonLabor_ButtonRemoveModFromSave>
+	<PrisonLabor_ButtonRemoveModFromSaveDesc>Prison Labor Mod vom Spielstand entfernen</PrisonLabor_ButtonRemoveModFromSaveDesc>
+
+	<PrisonLabor_ButtonBackup>Sicherung</PrisonLabor_ButtonBackup>
+	<PrisonLabor_ButtonProceed>Fortfahren</PrisonLabor_ButtonProceed>
+
+	<PrisonLabor_UpgradeSaveProcessMessage>Upgrade von [PrisonLabor] Mod</PrisonLabor_UpgradeSaveProcessMessage>
+	<PrisonLabor_UpgradeSaveDialogMessage>Sie sind dabei Prison Labor Mod vom Spielstand zu entfernen. Nach diesem Vorgang ist es möglich ohne ohne den Mod zu spielen.</PrisonLabor_UpgradeSaveDialogMessage>
+	<PrisonLabor_BackupSaveDialogMessage>Bitte sichere deine Daten mit dem Button hierunter.</PrisonLabor_BackupSaveDialogMessage>
+
+	<PrisonLabor_ReplayTurorialsButton>Anleitungen</PrisonLabor_ReplayTurorialsButton>
+	<PrisonLabor_ShowTutorialButton>Anzeigen</PrisonLabor_ShowTutorialButton>
+
+	<PrisonLabor_CommandBedSetOwnerLabel>Gefangenen zuweisen</PrisonLabor_CommandBedSetOwnerLabel>
+	<PrisonLabor_CommandBedSetOwnerDesc>Weise dieses Bett einem bestimmten Gefangenen zu.</PrisonLabor_CommandBedSetOwnerDesc>
+
+	<PrisonLabor_EnableSuicide>Aktiviere Gefangenenselbstmord</PrisonLabor_EnableSuicide>
+	<PrisonLabor_EnableSuicideDesc>Ermöglicht den Selbstmord von Gefangenen wenn sie nicht Glücklich mit der Behandlung sind.</PrisonLabor_EnableSuicideDesc>
+
+	<PrisonLabor_EnableFullHealRest>Aktiviere ausruhen zum heilen</PrisonLabor_EnableFullHealRest>
+	<PrisonLabor_EnableFullHealRestDesc>Gefangene werden im Bett bleiben bis sie vollständig geheilt sind.</PrisonLabor_EnableFullHealRestDesc>
+
+	<PrisonLabor_HandcuffsPut>Handschellen anlegen</PrisonLabor_HandcuffsPut>
+	<PrisonLabor_HandcuffsRemove>Handschellen abnehmen</PrisonLabor_HandcuffsRemove>
+	<PrisonLabor_LegcuffsPut>Fußfesseln anlegen</PrisonLabor_LegcuffsPut>
+	<PrisonLabor_LegcuffsRemove>Fußfesseln abnehmen</PrisonLabor_LegcuffsRemove>
+
+	<PrisonLabor_ToggleHandscuffs>Handschellen ab-/anlegen</PrisonLabor_ToggleHandscuffs>
+	<PrisonLabor_ToggleLegscuffs>Fußfesseln ab-/anlegen</PrisonLabor_ToggleLegscuffs>
+
+	<PrisonLabor_EnableDebugLogs>Aktiviere Debug Logs</PrisonLabor_EnableDebugLogs>
+	<PrisonLabor_EnableDebugLogsDesc>Das aktivieren dieser Option kann viele Logeinträge verursachen.</PrisonLabor_EnableDebugLogsDesc>
+</LanguageData>
