@@ -62,7 +62,7 @@
 	<PrisonLabor_RecruitButtonDesc>Bereit der Kolonie beizutreten</PrisonLabor_RecruitButtonDesc>
 
 	<PrisonLabor_Alert_EscapingPrisoners_Title>Gefangene können entkommen</PrisonLabor_Alert_EscapingPrisoners_Title>
-	<PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>Gefangene können den Rand der Karte erreichen. Sie werden fliehen wenn sie kein Kolonist ein Auge auf sie hat.</PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>
+	<PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>Gefangene können den Rand der Karte erreichen. Sie werden fliehen, es sei denn ein Kolonist hat ein Auge auf sie.</PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>
 	<PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>Diese Gefangenen können entkommen:\n\n{0}\nSie werden fliehen, es sei denn ein Kolonist hat ein Auge auf sie.</PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>
 
 	<PrisonLabor_ButtonRemoveModFromSave>Spielstand auswählen</PrisonLabor_ButtonRemoveModFromSave>
