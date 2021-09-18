@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
-	<PrisonLabor_PrisonerWork>Zur Arbeit zwingen</PrisonLabor_PrisonerWork>
-	<PrisonLabor_WorkAndRecruit>Zur Arbeit zwingen und Rekrutierung</PrisonLabor_WorkAndRecruit>
-	<PrisonLabor_WorkAndConvert>Zur Arbeit zwingen und Konvertierung</PrisonLabor_WorkAndConvert>
-	<PrisonLabor_WorkAndEnslave>Zur Arbeit zwingen und Versklaven</PrisonLabor_WorkAndEnslave>
+	<PrisonLabor_PrisonerWork>Zum Arbeiten zwingen</PrisonLabor_PrisonerWork>
+	<PrisonLabor_WorkAndRecruit>Arbeiten und Rekrutieren</PrisonLabor_WorkAndRecruit>
+	<PrisonLabor_WorkAndConvert>Arbeiten und Bekehren</PrisonLabor_WorkAndConvert>
+	<PrisonLabor_WorkAndEnslave>Arbeiten und Versklaven</PrisonLabor_WorkAndEnslave>
 	<PrisonLabor_LazyPrisonerMessage>Dein Gefangener hat aufgehört zu arbeiten!</PrisonLabor_LazyPrisonerMessage>
 	<PrisonLabor_WardenResponseThreshold>Auslastung des Aufsehers</PrisonLabor_WardenResponseThreshold>
 	<PrisonLabor_StoppingWorkThreshold>Auslastung</PrisonLabor_StoppingWorkThreshold>
@@ -36,14 +36,14 @@
 	<PrisonLabor_StarvingPrisonerAlert>Gefangene verhungern</PrisonLabor_StarvingPrisonerAlert>
 	<PrisonLabor_StarvingPrisonerExplanationDef>Gefangene verhungern und werden nicht arbeiten.</PrisonLabor_StarvingPrisonerExplanationDef>
 	<PrisonLabor_StarvingPrisonerExplanation>Diese Gefangenen verhungern und werden nicht arbeiten:\n\n{0}</PrisonLabor_StarvingPrisonerExplanation>
-	<PrisonLabor_LaborArea>Arbeitsbereich für Gefangene</PrisonLabor_LaborArea>
-	<PrisonLabor_LaborAreaDesc>Der Arbeitsbereich für Gefangene ist ein Bereich, in dem ausschließlich Gefangene arbeiten können. Hier ist keine Arbeit eines Kolonisten erlaubt, außer Jobs vom Typ eines Aufsehers.</PrisonLabor_LaborAreaDesc>
-	<PrisonLabor_ClearLaborArea>Arbeitsbereich für Gefangene entfernen</PrisonLabor_ClearLaborArea>
-	<PrisonLabor_ExpandLaborArea>Arbeitsbereich für Gefangene erweitern</PrisonLabor_ExpandLaborArea>
+	<PrisonLabor_LaborArea>Arbeitsgebiet für Gefangene</PrisonLabor_LaborArea>
+	<PrisonLabor_LaborAreaDesc>Das Arbeitsgebiet für Gefangene ist ein Bereich, in dem ausschließlich Gefangene arbeiten können. Hier ist keine Arbeit eines Kolonisten erlaubt, außer Jobs vom Typ eines Wärters.</PrisonLabor_LaborAreaDesc>
+	<PrisonLabor_ClearLaborArea>Arbeitsgebiet für Gefangene entfernen</PrisonLabor_ClearLaborArea>
+	<PrisonLabor_ExpandLaborArea>Arbeitsgebiet für Gefangene erweitern</PrisonLabor_ExpandLaborArea>
 
 	<PrisonLabor_EnableRevolts>Aktiviere Revolten</PrisonLabor_EnableRevolts>
 	<PrisonLabor_EnableRevoltsDesc>Wenn aktiviert, werden manchmal Revolten entstehen anstelle von Vanilla-Vorfällen.</PrisonLabor_EnableRevoltsDesc>
-	<PrisonLabor_LaborAreaWarning>Der Gefängnisarbeitsbereich ist nicht notwendig damit Gefangene arbeiten.\n\nDieser Bereich verbietet Kolonisten die Arbeit.\n\nEr ist für den Fall, dass Kolonisten in einem bestimmten bereich nicht arbeiten sollen. Gefangene werden überall arbeiten wo sie Zugang haben.</PrisonLabor_LaborAreaWarning>
+	<PrisonLabor_LaborAreaWarning>Das Arbeitsgebiet für Gefangene ist nicht notwendig damit Gefangene arbeiten.\n\nDieser Bereich verbietet Kolonisten die Arbeit.\n\nEr ist für den Fall, dass Kolonisten in einem bestimmten bereich nicht arbeiten sollen. Gefangene werden überall arbeiten wo sie Zugang haben.</PrisonLabor_LaborAreaWarning>
 	<PrisonLabor_DontShowAgain>Nicht erneut anzeigen</PrisonLabor_DontShowAgain>
 	<PrisonLabor_ShowTreatmentHappiness>Zufriedenheit anzeigen</PrisonLabor_ShowTreatmentHappiness>
 	<PrisonLabor_ShowTreatmentHappinessDesc>Wenn aktiviert wird die Zufriedenheit im Bedürfnis-Tab angezeigt.</PrisonLabor_ShowTreatmentHappinessDesc>
@@ -54,8 +54,8 @@
 
 	<PrisonLabor_ColonyOnly>Für jeden</PrisonLabor_ColonyOnly>
 	<PrisonLabor_ColonistsOnly>Auf Kolonisten beschränken</PrisonLabor_ColonistsOnly>
-	<PrisonLabor_PrisonersOnly>Nur Gefangene</PrisonLabor_PrisonersOnly>
-	<PrisonLabor_PrisonersAndSlaveOnly>Nur Gefangene oder Sklaven</PrisonLabor_PrisonersAndSlaveOnly>
+	<PrisonLabor_PrisonersOnly>Beliebiger Gefangene</PrisonLabor_PrisonersOnly>
+	<PrisonLabor_PrisonersAndSlaveOnly>Beliebiger Gefangener oder Sklave</PrisonLabor_PrisonersAndSlaveOnly>
 
 	<!-- 0.10 -->
 	<PrisonLabor_RecruitButtonLabel>Rekrutieren</PrisonLabor_RecruitButtonLabel>
@@ -88,12 +88,12 @@
 	<PrisonLabor_EnableFullHealRestDesc>Gefangene werden im Bett bleiben bis sie vollständig geheilt sind.</PrisonLabor_EnableFullHealRestDesc>
 
 	<PrisonLabor_HandcuffsPut>Handschellen anlegen</PrisonLabor_HandcuffsPut>
-	<PrisonLabor_HandcuffsRemove>Handschellen entfernen</PrisonLabor_HandcuffsRemove>
+	<PrisonLabor_HandcuffsRemove>Handschellen abnehmen</PrisonLabor_HandcuffsRemove>
 	<PrisonLabor_LegcuffsPut>Fußfesseln anlegen</PrisonLabor_LegcuffsPut>
-	<PrisonLabor_LegcuffsRemove>Fußfesseln entfernen</PrisonLabor_LegcuffsRemove>
+	<PrisonLabor_LegcuffsRemove>Fußfesseln abnehmen</PrisonLabor_LegcuffsRemove>
 
-	<PrisonLabor_ToggleHandscuffs>Handschellen an-/ablegen</PrisonLabor_ToggleHandscuffs>
-	<PrisonLabor_ToggleLegscuffs>Fußfesseln an-/ablegen</PrisonLabor_ToggleLegscuffs>
+	<PrisonLabor_ToggleHandscuffs>Handschellen ab-/anlegen</PrisonLabor_ToggleHandscuffs>
+	<PrisonLabor_ToggleLegscuffs>Fußfesseln ab-/anlegen</PrisonLabor_ToggleLegscuffs>
 
 	<PrisonLabor_EnableDebugLogs>Aktiviere Debug Logs</PrisonLabor_EnableDebugLogs>
 	<PrisonLabor_EnableDebugLogsDesc>Das aktivieren dieser Option kann viele Logeinträge verursachen.</PrisonLabor_EnableDebugLogsDesc>

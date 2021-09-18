@@ -3,13 +3,13 @@
 	<PrisonLabor_PrisonerChains.label>gefesselt</PrisonLabor_PrisonerChains.label>
 	<PrisonLabor_PrisonerChains.description>Dieser Kolonist ist gefesselt. Anmerkung: dies ist die normale Vanilla-Mechanik, aber als hediff angezeigt</PrisonLabor_PrisonerChains.description>
 	<PrisonLabor_PrisonerChains.stages.0.label>nicht aktiv</PrisonLabor_PrisonerChains.stages.0.label>
-	<PrisonLabor_PrisonerChains.stages.1.label>vollkommen ungefesselt</PrisonLabor_PrisonerChains.stages.1.label>
-	<PrisonLabor_PrisonerChains.stages.2.label>ungefesselte Beine</PrisonLabor_PrisonerChains.stages.2.label>
-	<PrisonLabor_PrisonerChains.stages.3.label>ungefesselte Hände</PrisonLabor_PrisonerChains.stages.3.label>
+	<PrisonLabor_PrisonerChains.stages.1.label>ganz ungefesselt</PrisonLabor_PrisonerChains.stages.1.label>
+	<PrisonLabor_PrisonerChains.stages.2.label>Beine ungefesselt</PrisonLabor_PrisonerChains.stages.2.label>
+	<PrisonLabor_PrisonerChains.stages.3.label>Hände ungefesselt</PrisonLabor_PrisonerChains.stages.3.label>
 	<PrisonLabor_PrisonerChains.stages.4.label>aktiv</PrisonLabor_PrisonerChains.stages.4.label>
 
 	<PrisonLabor_RemovedHandscuffs.label>Handschellen entfernt</PrisonLabor_RemovedHandscuffs.label>
-	<PrisonLabor_RemovedHandscuffs.description>Dem Gefangenen wurden die Handschellen entfernt.</PrisonLabor_RemovedHandscuffs.description>
+	<PrisonLabor_RemovedHandscuffs.description>Dem Gefangenen wurden die Handschellen abgenommen.</PrisonLabor_RemovedHandscuffs.description>
 	<PrisonLabor_RemovedHandscuffs.stages.0.label>nicht aktiv</PrisonLabor_RemovedHandscuffs.stages.0.label>
 	<PrisonLabor_RemovedHandscuffs.stages.1.label>aktiv</PrisonLabor_RemovedHandscuffs.stages.1.label>
 
