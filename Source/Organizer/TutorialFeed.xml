@@ -11,7 +11,7 @@
         <item>The main goal of this mod is to make prisoners work, but managing prisoners is challenge on it's own, so let's go with tutorial ...</item>
         <item>[title]Enabling labor for prisoners</item>
         <item>There are two main things you need to do before prisoners start working:</item>
-        <item>[img]Tutorials/ForceToWork[/img]1. Firstly you need to enable labor in <b>Prisoner</b> tab</item>
+        <item>[img]Tutorials/ForceToWork[/img]1. Firstly, you need to enable labor in <b>Prisoner</b> tab</item>
         <item>[gap]</item>
         <item>[img]Tutorials/WorkTab[/img]2. Then you need to adjust work priorities in work tab. There is a special sub-tab in top of <b>Work</b> tab</item>
         <item>There are a limited number of available jobs for prisoners. Additionally, you can change that in setting menu, but not all jobs are well implemented and you can experience weird behaviour by doing so.</item>
