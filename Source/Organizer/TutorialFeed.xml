@@ -1,4 +1,4 @@
-﻿<TutorialFeed>
+<TutorialFeed>
   <!-- How to insert rich text: -->
   <!-- [subtitle] for subtitle -->
   <!-- [img] ... [/img] for image (inside name of file) -->
@@ -10,32 +10,31 @@
         <item>Are you new to Prison Labor Mod? Don't worry, in this tutorial you will learn how to use this mod.</item>
         <item>The main goal of this mod is to make prisoners work, but managing prisoners is challenge on it's own, so let's go with tutorial ...</item>
         <item>[title]Enabling labor for prisoners</item>
-        <item>There is two main things you need to do before prisoners starts working:</item>
-        <item>[img]Tutorials/ForceToWork[/img]1. Firstly you need to enable labor in <b>Prisoner</b> tab</item>
+        <item>There are two main things you need to do before prisoners start working:</item>
+        <item>[img]Tutorials/ForceToWork[/img]1. Firstly, you need to enable labor in <b>Prisoner</b> tab</item>
         <item>[gap]</item>
         <item>[img]Tutorials/WorkTab[/img]2. Then you need to adjust work priorities in work tab. There is a special sub-tab in top of <b>Work</b> tab</item>
-        <item>There is limited number of available jobs for prisoners. Additionaly you can change that in setting menu, but not all jobs are well implemented and you can experience weird behaviour by doing so.</item>
+        <item>There are a limited number of available jobs for prisoners. Additionally, you can change that in setting menu, but not all jobs are well implemented and you can experience weird behaviour by doing so.</item>
         <item>[title]Motivation</item>
         <item>Prisoners are not colonists and they do not want to work on their own. You need to motivate them and watch them constantly.</item>
-        <item>[img]Tutorials/InspirationPreview[/img]To watch prisoners colonists must be within 10-meters radius around prisoner (and vice-versa). Prisoners that are nearby colonists are working and gaining motivation. Additionaly prisoners do not escape if colonists is nearby, but they can take a chance when nobody is watching them. It is worth noting that watching prisoners need colonist and prisoner to be in same room.</item>
-        <item>Watching prisoners can be done manually (drafting colonists) or by enabling new work type <b>Jailor</b>.</item>
-        <item>[title]Desiging prison encampment</item>
-        <item>There is few thing that you should keep in mind while building prison:</item>
-        <item>[-]Walls: Prisoners want to escape, so make sure they cannot open doors to open spaces.</item>
-        <item>[-]Accessing resources: If you want prisoners to refine some materials like cooking, make sure they can access those materials like meat and potatoes.</item>
-        <item>[-]Accessing food: Prisoners should have access to food, like fridge or food stockpiles. In Prison Labor mod, prisoners can take care of themself and go for a food un if you let them</item>
-        <item>[-]Labor Areas: Those areas are optional, but in some cases you want to keep colonists away from working in prison. That where Labor area comes, it prevents colonists from working inside this area</item>
-        <item>[title]Icons</item>
-        <item>[img]Tutorials/Icons[/img]There is three icons in mod. Inspiration icon (blue one) - that indicates whenever prisoner is motivated by standing colonist, Lazy icon (red one) - that indicates whenever prisoner is to lazy to work, Freezing Icon - that indicates prisoner is working despite freezing temperature</item>
-        <item>[title]Locks mod</item>
-        <item>[img]NewsElement_Locks[/img]I highly recommend using <b>Locks</b> mod. It allows you to make doors passable by prisoners without making them force to open.</item>
-        <item><b>If you have any questions please visit FAQ first</b></item>
+        <item>[img]Tutorials/InspirationPreview[/img]To watch prisoners, colonists must be within a 10-meter radius of the prisoner (and vice-versa). Prisoners that are near colonists will work and gain motivation. Additionally, prisoners do not escape if colonists are nearby, but they can take a chance when nobody is watching them. It is worth noting that watching prisoners require the colonist and prisoner to be in same room.</item>
+        <item>Watching prisoners can be done manually (drafting colonists) or by enabling the new work type <b>Jailor</b>.</item>
+        <item>[title]Designing a Prison Encampment</item>
+        <item>There are few things that you should keep in mind while building a prison:</item>
+        <item>[-]Walls: Prisoners want to escape, so make sure they cannot open doors that lead into open spaces.</item>
+        <item>[-]Accessing resources: If you want prisoners to refine materials (e.g. cooking), make sure they can access the required materials (e.g. meat or potatoes).</item>
+        <item>[-]Accessing food: Prisoners should have access to food, like a fridge or food stockpiles. In Prison Labor mod, prisoners can take care of themselves and go for a food run if you let them.</item>
+        <item>[-]Labor Areas: These areas are optional, but in some cases you may want to keep colonists from working inside your prison. That's where Labor Areas comes in. They prevent colonists from working inside this area.</item>        <item>[title]Icons</item>
+        <item>[img]Tutorials/Icons[/img]There are three icons in mod. Inspiration icon (blue one) - that indicates whenever prisoner is motivated by a standing colonist, Lazy icon (red one) - that indicates whenever a prisoner is too lazy to work, Freezing Icon - that indicates prisoner is working despite freezing temperature.</item>
+        <item>[title]Locks Mod</item>
+        <item>[img]NewsElement_Locks[/img]I highly recommend using <b>Locks</b> mod. It allows you to make doors passable by prisoners without making them use force to open.</item>
+        <item><b>If you have any questions please visit the FAQ first</b></item>
       </items>
     </tutorial>
     <tutorial key ="LaborArea">
       <items>
-        <item>[title]Labor areas</item>
-        <item>Labor area isn't required to make prisoners work.</item>
+        <item>[title]Labor Areas</item>
+        <item>Labor Areas aren't required to make prisoners work.</item>
         <item>This area forbids colonists from working.</item>
         <item>It's for situations where you don't want colonists to work in certain area. Prisoners will work anywhere they can enter.</item>
       </items>
