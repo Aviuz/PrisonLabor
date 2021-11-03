@@ -3,6 +3,8 @@ Changelog:
 - Unlocked taking prisoners to their bed at any place
 - Removed default interaction NRE in UI
 - Added removing PL hediffs after enslaving prisoner
+- Corrected some spelling and grammatical errors on the tutorial. (https://github.com/marshyyyy)
+- German translation (https://github.com/thephluxer)
 1.3.4
 - Not spawned pawns should not appear in "Prisoner can escape" alert (e.g. escaped prisoner)
 - Added option to escort prisoner back to cell.
