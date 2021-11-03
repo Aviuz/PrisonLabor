@@ -164,7 +164,7 @@ namespace PrisonLabor.Core.Other
         }
         private static bool CanBeTakenToBed(Pawn pawn, Pawn arrester)
         {
-            return (!pawn.InAggroMentalState || !pawn.HostileTo((Thing)arrester)) && !IsPawnFleeing(pawn) && pawn.IsPrisonerOfColony && !pawn.Position.IsInPrisonCell(pawn.Map);
+            return (!pawn.InAggroMentalState || !pawn.HostileTo((Thing)arrester)) && !IsPawnFleeing(pawn) && pawn.IsPrisonerOfColony;
         }
 
         public static bool CanBeArrestedBy(Pawn pawn, Pawn arrester)
