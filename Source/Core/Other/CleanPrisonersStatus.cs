@@ -15,6 +15,12 @@ namespace PrisonLabor.Core.Other
         static public void Clean(Pawn prisoner)
         {
             prisoner.workSettings = new Pawn_WorkSettings(prisoner);
+            CleanHediffs(prisoner);
+            prisoner.playerSettings.AreaRestriction = null;
+        }
+
+        static public void CleanHediffs(Pawn prisoner)
+        {
             Hediff legs = prisoner.health.hediffSet.GetFirstHediffOfDef(PL_DefOf.PrisonLabor_RemovedLegscuffs, false);
             if (legs != null)
             {
@@ -25,7 +31,6 @@ namespace PrisonLabor.Core.Other
             {
                 prisoner.health.hediffSet.hediffs.Remove(hands);
             }
-            prisoner.playerSettings.AreaRestriction = null;
         }
     }
 }
