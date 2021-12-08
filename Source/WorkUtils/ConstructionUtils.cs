@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using PrisonLabor.Core;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -15,55 +16,35 @@ namespace PrisonLabor.WorkUtils
     {
         public static bool HasJobOnThingFixed(Pawn pawn, Thing t, bool forced)
         {
-            Building building = t as Building;
-            if (building == null)
+            if (!PawnCanRepairNow(pawn, t))
+                return false;
+            Building t1 = t as Building;
+            if (PrisonLaborUtility.GetPawnFaction(pawn) == Faction.OfPlayer && !pawn.Map.areaManager.Home[t.Position])
             {
+                JobFailReason.Is(WorkGiver_FixBrokenDownBuilding.NotInHomeAreaTrans, null);
                 return false;
             }
-            if (!pawn.Map.listerBuildingsRepairable.Contains(Faction.OfPlayer, building))
-            {
-                return false;
-            }
-            if (!building.def.building.repairable)
-            {
-                return false;
-            }
-            if (t.Faction != Faction.OfPlayer)
-            {
-                return false;
-            }
-            if (!t.def.useHitPoints || t.HitPoints == t.MaxHitPoints)
-            {
-                return false;
-            }
-            if (pawn.IsPrisonerOfColony && !pawn.Map.areaManager.Home[t.Position])
-            {
-                JobFailReason.Is(WorkGiver_FixBrokenDownBuilding.NotInHomeAreaTrans);
-                return false;
-            }
-            if (!pawn.CanReserveAndReach(building, PathEndMode.ClosestTouch, pawn.NormalMaxDanger(), 1, -1, null, forced))
-            {
-                return false;
-            }
-            if (building.Map.designationManager.DesignationOn(building, DesignationDefOf.Deconstruct) != null)
-            {
-                return false;
-            }
-            if (building.def.mineable && building.Map.designationManager.DesignationAt(building.Position, DesignationDefOf.Mine) != null)
-            {
-                return false;
-            }
-            if (building.IsBurning())
-            {
-                return false;
-            }
-            return true;
+            return pawn.CanReserveAndReach(t1, PathEndMode.ClosestTouch, pawn.NormalMaxDanger(), 1, -1, null, forced) &&
+                t1.Map.designationManager.DesignationOn(t1, DesignationDefOf.Deconstruct) == null &&
+                (!t1.def.mineable || t1.Map.designationManager.DesignationAt(t1.Position, DesignationDefOf.Mine) == null) &&
+                !t1.IsBurning();
+
         }
 
 
-        public static bool isPrisonerWork(Thing t, Pawn pawn)
+        public static bool IsPrisonerWork(Thing t, Pawn pawn)
         {
             return pawn.IsPrisonerOfColony && t.Faction == Faction.OfPlayer;
+        }
+
+        private static bool PawnCanRepairEver(Pawn pawn, Thing t)
+        {
+            return t is Building building && t.def.useHitPoints && (building.def.building.repairable && t.Faction == PrisonLaborUtility.GetPawnFaction(pawn));
+        }
+
+        private static bool PawnCanRepairNow(Pawn pawn, Thing t)
+        {
+            return PawnCanRepairEver(pawn, t) && pawn.Map.listerBuildingsRepairable.Contains(PrisonLaborUtility.GetPawnFaction(pawn), (Building)t) && t.HitPoints != t.MaxHitPoints;
         }
     }
 }

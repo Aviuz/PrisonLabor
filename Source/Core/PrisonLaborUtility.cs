@@ -9,7 +9,7 @@ using Verse;
 
 namespace PrisonLabor.Core
 {
-    internal static class PrisonLaborUtility
+    public static class PrisonLaborUtility
     {
         public static bool LaborEnabled(this Pawn pawn)
         {
@@ -83,7 +83,7 @@ namespace PrisonLabor.Core
             return false;
         }
 
-        public static bool canWorkHere(IntVec3 pos, Pawn pawn, WorkTypeDef workType)
+        public static bool CanWorkHere(IntVec3 pos, Pawn pawn, WorkTypeDef workType)
         {
             if (!pawn.IsPrisonerOfColony && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null &&
                 !WorkSettings.WorkDisabled(workType))
@@ -100,6 +100,11 @@ namespace PrisonLabor.Core
                 return result;
             }
             return true;
+        }
+
+        public static Faction GetPawnFaction(Pawn pawn)
+        {
+            return pawn.IsPrisonerOfColony ? Faction.OfPlayer : pawn.Faction;
         }
     }
 }

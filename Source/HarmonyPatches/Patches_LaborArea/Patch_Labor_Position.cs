@@ -39,7 +39,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
         {
             foreach (IntVec3 pos in __result)
             {
-                if (PrisonLaborUtility.canWorkHere(pos, pawn, __instance.def.workType))
+                if (PrisonLaborUtility.CanWorkHere(pos, pawn, __instance.def.workType))
                 {
                     yield return pos;
                 }

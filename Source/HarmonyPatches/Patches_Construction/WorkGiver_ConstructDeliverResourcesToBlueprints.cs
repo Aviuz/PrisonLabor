@@ -44,7 +44,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Construction
             //Add If(pawn.IsPrisonerOfColony) {jump next condition}
             yield return new CodeInstruction(OpCodes.Ldarg_2);
             yield return new CodeInstruction(OpCodes.Ldarg_1);
-            yield return new CodeInstruction(OpCodes.Call, typeof(ConstructionUtils).GetMethod("isPrisonerWork"));
+            yield return new CodeInstruction(OpCodes.Call, typeof(ConstructionUtils).GetMethod(nameof(ConstructionUtils.IsPrisonerWork)));
             yield return new CodeInstruction(OpCodes.Brtrue, label);
 
             foreach (var instr in instructions)

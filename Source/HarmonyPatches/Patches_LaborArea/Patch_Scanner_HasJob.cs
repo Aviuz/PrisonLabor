@@ -28,7 +28,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
         {
             if (__result && t != null )
             {
-                return PrisonLaborUtility.canWorkHere(t.Position, pawn, __instance.def.workType);
+                return PrisonLaborUtility.CanWorkHere(t.Position, pawn, __instance.def.workType);
             }
             return __result;
         }

@@ -9,11 +9,8 @@
     <verb>Supervise</verb>
     <naturalPriority>1099</naturalPriority>
     <requireCapableColonist>true</requireCapableColonist>
-    <relevantSkills>
-      <li>Social</li>
-    </relevantSkills>
     <workTags>
-      <li>Social</li>
+      <li>Violent</li>
     </workTags>
   </WorkTypeDef>
 </Defs>

@@ -3,7 +3,6 @@ using PrisonLabor.Core.LaborArea;
 using PrisonLabor.Core.Meta;
 using PrisonLabor.Core.Settings;
 using PrisonLabor.HarmonyPatches;
-using PrisonLabor.Tweaks;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -18,10 +17,9 @@ namespace PrisonLabor
         static Initialization()
         {
             try
-            {
+            {                   
                 PrisonLaborPrefs.Init();
                 HPatcher.Init();
-                ClassInjector.Init();
                 SettingsMenu.Init();
                 VersionUtility.CheckVersion();
                 CompatibilityPatches.Initialization.Run();

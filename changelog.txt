@@ -1,4 +1,9 @@
 Changelog:
+1.3.6
+- CashRegister compatibility patch
+- Jailor is now only responsible for supervising and executing prisoners
+- Warden is responsible for recruting, converting and providing food for prisoners
+- Various patches for workgiver regarding prisoners.
 1.3.5
 - Unlocked taking prisoners to their bed at any place
 - Removed default interaction NRE in UI

@@ -42,6 +42,10 @@
     <Reference Include="0MultiplayerAPI, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\RimWorld.MultiplayerAPI.0.3.0\lib\net472\0MultiplayerAPI.dll</HintPath>
     </Reference>
+    <Reference Include="CashRegister, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -75,12 +79,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompatibilityPatches\CashRegister.cs" />
     <Compile Include="CompatibilityPatches\Kajin2.cs" />
     <Compile Include="CompatibilityPatches\Multiplayer.cs" />
     <Compile Include="CompatibilityPatches\Quarry.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_Unchain.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_UnchainLegs.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_UnchainHands.cs" />
+    <Compile Include="Core\AI\WorkGivers\WorkGivers_ManipulatePrisoner.cs" />
     <Compile Include="Core\AI\WorkGivers\WorkGiver_HandleChains.cs" />
     <Compile Include="Core\Alerts\Alert_EscapingPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_LazyPrisoners.cs" />
@@ -136,8 +142,8 @@
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_Bill_ProductionWithUft.cs" />
     <Compile Include="HarmonyPatches\Patches_Construction\EnableConstructionFinishFrames.cs" />
     <Compile Include="HarmonyPatches\Patches_Construction\Patch_BlueprintsForPlayerFaction.cs" />
-    <Compile Include="HarmonyPatches\Patches_Construction\Patch_RoofReservation.cs" />
     <Compile Include="HarmonyPatches\Patches_Construction\Patch_Smoothing.cs" />
+    <Compile Include="HarmonyPatches\Patches_Construction\Patch_WorkGiver_Deconstruct.cs" />
     <Compile Include="HarmonyPatches\Patches_DeepDrill\EnableDeepDrillsToPrisoners.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\DeliverEvenOutsidePrisonCell.cs" />
@@ -186,12 +192,11 @@
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled2.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_PawnTableSetDirtyFix.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_JobDriver_Mine.cs" />
-    <Compile Include="HarmonyPatches\Patches_Work\Patch_JobGiver_Repair.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_PlantWork.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_CleanFilth.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_Refuel.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_RescueDowned.cs" />
-    <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_TakeToPen.cs" />
+    <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_PrisonerFaction.cs" />
     <Compile Include="HarmonyPatches\Triggers.cs" />
     <Compile Include="Core\Hediffs\HediffGiver_PrisonersChains.cs" />
     <Compile Include="Core\Hediffs\HediffManager.cs" />
@@ -229,7 +234,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\AI\ThinkNodes\ThinkNode_Labor.cs" />
     <Compile Include="Core\Other\Tutorials.cs" />
-    <Compile Include="Tweaks\ClassInjector.cs" />
     <Compile Include="Core\GameSaves\SaveCleaner.cs" />
     <Compile Include="Core\GameSaves\SaveUpgrader.cs" />
     <Compile Include="Initialization.cs" />
@@ -241,6 +245,9 @@
     <Compile Include="WorkUtils\ConstructionUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\Gry\Steam\steamapps\workshop\content\294100\2506046833\1.3\Assemblies\CashRegister.dll">
+      <Link>CashRegister.dll</Link>
+    </Content>
     <Content Include="..\1.3\Defs\ConceptDef.xml">
       <Link>Defs\ConceptDef.xml</Link>
     </Content>
@@ -274,6 +281,15 @@
     <Content Include="..\1.3\Defs\WorkTypes.xml">
       <Link>Defs\WorkTypes.xml</Link>
     </Content>
+    <Content Include="..\1.3\Patches\AddPrisonerComp.xml">
+      <Link>Patches\AddPrisonerComp.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Patches\Designators.xml">
+      <Link>Patches\Designators.xml</Link>
+    </Content>
+    <Content Include="..\1.3\Patches\SetJailorJobsPatch.xml">
+      <Link>Patches\SetJailorJobsPatch.xml</Link>
+    </Content>
     <Content Include="..\About\About.xml">
       <Link>Organizer\About.xml</Link>
       <SubType>Designer</SubType>
@@ -283,6 +299,9 @@
     </Content>
     <Content Include="..\Ideology\Defs\PrisonersInteractionMode.xml">
       <Link>Ideology\Defs\PrisonersInteractionMode.xml</Link>
+    </Content>
+    <Content Include="..\Ideology\Patches\JailorForSlavesPatch.xml">
+      <Link>Ideology\Patches\JailorForSlavesPatch.xml</Link>
     </Content>
     <Content Include="..\Languages\English\Keyed\Keys.xml">
       <Link>Language\Keys.xml</Link>
