@@ -10,29 +10,22 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using Verse;
-using Verse.AI;
 
 namespace PrisonLabor.HarmonyPatches.Patches_Work
 {
-
-    [HarmonyPatch(typeof(RestUtility), "FindBedFor", new Type[] { typeof(Pawn), typeof(Pawn), typeof(bool), typeof(bool), typeof(GuestStatus) } )]
-    class Patch_RestUtility
+    [HarmonyPatch]
+    class Patch_WorkGiver_PrisonerFaction
     {
-        //Don't try to take wounded to unreachable bed
-        static Building_Bed Postfix(Building_Bed __result, Pawn sleeper, Pawn traveler, bool checkSocialProperness, bool ignoreOtherReservations, GuestStatus? guestStatus)
+        static IEnumerable<MethodBase> TargetMethods()
         {
-            if(__result != null && traveler.IsPrisonerOfColony && !traveler.CanReach(__result, PathEndMode.ClosestTouch, traveler.NormalMaxDanger()))
-            {
-                return null;
-            }
-            return __result;
+            return Assembly.GetAssembly(typeof(WorkGiver_Scanner)).GetTypes()
+                        .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(WorkGiver_Scanner)))
+                        .SelectMany(type => type.GetMethods())
+                            .Where(method => method.Name.Equals("PotentialWorkThingsGlobal") || method.Name.Equals("ShouldSkip"))
+                            .Distinct()
+                            .Cast<MethodBase>();
         }
-    }
 
-
-    [HarmonyPatch(typeof(WorkGiver_RescueDowned), "HasJobOnThing")]
-    class Patch_WorkGiver_RescueDowned
-    {
         static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> inst)
         {
             var codes = new List<CodeInstruction>(inst);
@@ -40,7 +33,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
             {
                 if (i > 0 && ShouldPatch(codes[i], codes[i - 1]))
                 {
-                    DebugLogger.debug($"WorkGiver_RescueDowned patch: {mBase.ReflectedType.Name}.{mBase.Name}");
+                    DebugLogger.debug($"WorkThingsGlobal & ShouldSkip patch: {mBase.ReflectedType.Name}.{mBase.Name}");
                     yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod(nameof(PrisonLaborUtility.GetPawnFaction)));
                 }
                 else

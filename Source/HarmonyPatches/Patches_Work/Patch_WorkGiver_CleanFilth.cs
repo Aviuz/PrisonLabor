@@ -35,7 +35,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
                 return t is Filth filth && filth.Map.areaManager.Home[filth.Position]
                     && pawn.CanReserveAndReach(t, PathEndMode.ClosestTouch, pawn.NormalMaxDanger(), 1, -1, null, forced)
                     && filth.TicksSinceThickened >= MinTicksSinceThickened
-                    && PrisonLaborUtility.canWorkHere(filth.Position, pawn, workGiverDef.workType);
+                    && PrisonLaborUtility.CanWorkHere(filth.Position, pawn, workGiverDef.workType);
             }
             return __result;
         }

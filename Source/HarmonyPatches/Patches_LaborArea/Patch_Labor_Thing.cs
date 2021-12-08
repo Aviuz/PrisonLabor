@@ -16,13 +16,13 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
     {
         static IEnumerable<MethodBase> TargetMethods()
         {
-            foreach(var method in getBaseMethods())
+            foreach(var method in GetBaseMethods())
             {
                 yield return method;
             }
            // yield return getCleanMethod();
         }
-        static IEnumerable<MethodBase> getBaseMethods() {
+        static IEnumerable<MethodBase> GetBaseMethods() {
             return Assembly.GetAssembly(typeof(WorkGiver_Scanner)).GetTypes()
             .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(WorkGiver_Scanner)))
             .SelectMany(type => type.GetMethods())
@@ -41,7 +41,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
         {
             if (__result != null && __instance != null)
             {
-                return checkFields(__result, __instance, pawn);
+                return CheckFields(__result, __instance, pawn);
             }
             else
             {
@@ -49,12 +49,12 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
             }            
         }
 
-        private static IEnumerable<Thing> checkFields(IEnumerable<Thing> __result, WorkGiver_Scanner __instance, Pawn pawn)
+        private static IEnumerable<Thing> CheckFields(IEnumerable<Thing> __result, WorkGiver_Scanner __instance, Pawn pawn)
         {
             foreach (Thing thing in __result)
             {
                 //Log.Message($"Work type: { __instance.def.workType}, thing is {thing}, value: {PrisonLaborUtility.canWorkHere(thing.Position, pawn, __instance.def.workType)}");
-                if (thing != null && PrisonLaborUtility.canWorkHere(thing.Position, pawn, __instance.def.workType))
+                if (thing != null && PrisonLaborUtility.CanWorkHere(thing.Position, pawn, __instance.def.workType))
                 {
                    // Log.Message($"Work type { __instance.def.workType}, value: {PrisonLaborUtility.canWorkHere(thing.Position, pawn, __instance.def.workType)}");
                     yield return thing;

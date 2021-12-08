@@ -25,12 +25,6 @@ namespace PrisonLabor.Core.AI.WorkGivers
             
             if (!PrisonLaborUtility.LaborEnabled(prisoner) && prisonerComp != null && !prisonerComp.EscapeTracker.CanEscape)
                 return null;
-            if (PrisonLaborUtility.RecruitInLaborEnabled(prisoner))
-                return new Job(JobDefOf.PrisonerAttemptRecruit, t);
-            if (PrisonLaborUtility.ConvertInLaborEnabled(prisoner))
-                return new Job(JobDefOf.PrisonerConvert, t);
-            if (PrisonLaborUtility.EnslaveInLaborEnabled(prisoner))
-                return new Job(JobDefOf.PrisonerEnslave, t);
             if ((!PrisonLaborUtility.WorkTime(prisoner) || !need.ShouldBeMotivated) && prisonerComp != null && !prisonerComp.EscapeTracker.CanEscape)
                 return null;
 

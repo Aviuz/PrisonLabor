@@ -10,28 +10,11 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using Verse;
-using Verse.AI;
 
-namespace PrisonLabor.HarmonyPatches.Patches_Work
+namespace PrisonLabor.HarmonyPatches.Patches_Construction
 {
-
-    [HarmonyPatch(typeof(RestUtility), "FindBedFor", new Type[] { typeof(Pawn), typeof(Pawn), typeof(bool), typeof(bool), typeof(GuestStatus) } )]
-    class Patch_RestUtility
-    {
-        //Don't try to take wounded to unreachable bed
-        static Building_Bed Postfix(Building_Bed __result, Pawn sleeper, Pawn traveler, bool checkSocialProperness, bool ignoreOtherReservations, GuestStatus? guestStatus)
-        {
-            if(__result != null && traveler.IsPrisonerOfColony && !traveler.CanReach(__result, PathEndMode.ClosestTouch, traveler.NormalMaxDanger()))
-            {
-                return null;
-            }
-            return __result;
-        }
-    }
-
-
-    [HarmonyPatch(typeof(WorkGiver_RescueDowned), "HasJobOnThing")]
-    class Patch_WorkGiver_RescueDowned
+    [HarmonyPatch(typeof(WorkGiver_Deconstruct), "HasJobOnThing")]
+    class Patch_WorkGiver_Deconstruct
     {
         static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> inst)
         {
@@ -40,7 +23,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
             {
                 if (i > 0 && ShouldPatch(codes[i], codes[i - 1]))
                 {
-                    DebugLogger.debug($"WorkGiver_RescueDowned patch: {mBase.ReflectedType.Name}.{mBase.Name}");
+                    DebugLogger.debug($"Deconstruct HasJobOnThing patch: {mBase.ReflectedType.Name}.{mBase.Name}");
                     yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod(nameof(PrisonLaborUtility.GetPawnFaction)));
                 }
                 else

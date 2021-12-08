@@ -12,6 +12,7 @@ namespace PrisonLabor.CompatibilityPatches
             //NoWaterNoLife.Init();
             Quarry.Init();
             Kajin2.Init();
+            CashRegister.Init();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
 			{
 				if (counter == count)
 				{					
-					toil.AddFinishAction(createDelegate(__instance));
+					toil.AddFinishAction(CreateDelegate(__instance));
 				}
 				counter++;
 				yield return toil;
@@ -30,7 +30,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
 			
 		}
 
-		static private Action createDelegate(JobDriver_Mine __instance)
+		static private Action CreateDelegate(JobDriver_Mine __instance)
 		{
 			return delegate
 			{
