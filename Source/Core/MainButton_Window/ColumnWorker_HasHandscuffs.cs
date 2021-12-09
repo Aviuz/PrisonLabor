@@ -41,7 +41,7 @@ namespace PrisonLabor.Core.MainButton_Window
             {
                 UpdateTracker(value, pawn, cuffsTracker);
             }
-            table.SetDirty();
+            table?.SetDirty();
         }
 
         private CuffsTracker GetCuffsTracker(Pawn pawn)
