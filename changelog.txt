@@ -1,4 +1,6 @@
 Changelog:
+1.3.9
+- Prisoner labor area fixes
 1.3.8
 - Harmony patches for clean and remove snow
 - Drugs policy tracker enabled for prisoners

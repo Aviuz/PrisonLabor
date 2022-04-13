@@ -86,8 +86,7 @@ namespace PrisonLabor.Core
 
         public static bool CanWorkHere(IntVec3 pos, Pawn pawn, WorkTypeDef workType)
         {
-            if ((!pawn.IsPrisonerOfColony || !pawn.IsSlaveOfColony) && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null &&
-                !WorkSettings.WorkDisabled(workType))
+            if (pawn.IsFreeNonSlaveColonist && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null && !WorkSettings.WorkDisabled(workType))
             {
                 bool result = true;
                 try
