@@ -21,6 +21,15 @@ namespace PrisonLabor.HarmonyPatches.Patches_InteractionMode
                 Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
                 CleanPrisonersStatus.CleanHediffs(pawn);
             }
+
+            if(guestStatus == GuestStatus.Prisoner)
+            {
+                Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
+                if(pawn.drugs == null)
+                {
+                    pawn.drugs = new Pawn_DrugPolicyTracker(pawn);
+                }
+            }
         }
     }
 }

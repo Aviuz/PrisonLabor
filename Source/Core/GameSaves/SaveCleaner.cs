@@ -155,6 +155,11 @@ namespace PrisonLabor.Core.GameSaves
                     {
                         removalBuffer.Add(component);
                     }
+
+                    if (component.Attributes["Class"].Value == "PrisonLabor.Core.Trackers.CuffsTracker")
+                    {
+                        removalBuffer.Add(component);
+                    }
                 }
                 foreach (var item in removalBuffer)
                     components.RemoveChild(item);

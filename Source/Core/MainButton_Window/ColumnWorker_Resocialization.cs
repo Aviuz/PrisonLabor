@@ -22,6 +22,7 @@ namespace PrisonLabor.Core.MainButton_Window
                 if(Widgets.ButtonText(rect, "PrisonLabor_RecruitButtonLabel".Translate()))
                 {
                     ConvertPrisoner(pawn);
+                    WindowNotifier.NotifyPLWindows();
                 }
 
             }

@@ -4,6 +4,7 @@ using PrisonLabor.Constants;
 using PrisonLabor.Core.LaborArea;
 using PrisonLabor.Core.LaborWorkSettings;
 using PrisonLabor.Core.Meta;
+using PrisonLabor.Core.Other;
 using RimWorld;
 using Verse;
 
@@ -85,7 +86,7 @@ namespace PrisonLabor.Core
 
         public static bool CanWorkHere(IntVec3 pos, Pawn pawn, WorkTypeDef workType)
         {
-            if (!pawn.IsPrisonerOfColony && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null &&
+            if ((!pawn.IsPrisonerOfColony || !pawn.IsSlaveOfColony) && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null &&
                 !WorkSettings.WorkDisabled(workType))
             {
                 bool result = true;
@@ -95,7 +96,7 @@ namespace PrisonLabor.Core
                 }
                 catch (IndexOutOfRangeException e)
                 {
-                    Log.Message($"IndexOutOfRangeException for {workType.label} calling pos {pos}");
+                    DebugLogger.debug($"{pawn.NameShortColored} cause IndexOutOfRangeException for {workType.label} calling pos {pos}");
                 }
                 return result;
             }
