@@ -22,10 +22,10 @@ namespace PrisonLabor.HarmonyPatches.Patches_InteractionMode
                 CleanPrisonersStatus.CleanHediffs(pawn);
             }
 
-            if(guestStatus == GuestStatus.Prisoner)
+            if (guestStatus == GuestStatus.Prisoner)
             {
                 Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
-                if(pawn.drugs == null)
+                if (pawn.drugs == null)
                 {
                     pawn.drugs = new Pawn_DrugPolicyTracker(pawn);
                 }
