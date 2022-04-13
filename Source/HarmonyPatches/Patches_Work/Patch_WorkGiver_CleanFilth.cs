@@ -24,13 +24,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
         }
         static bool Postfix(bool __result,  Pawn pawn, Thing t, bool forced)
         {
-            if (!__result)
+            if (pawn.IsPrisonerOfColony)
             {
-                if (pawn.Faction != Faction.OfPlayer && !pawn.IsPrisonerOfColony)
-                {
-                    return __result;
-                }
-
                 WorkGiverDef workGiverDef = DefDatabase<WorkGiverDef>.GetNamed("CleanFilth");
                 return t is Filth filth && filth.Map.areaManager.Home[filth.Position]
                     && pawn.CanReserveAndReach(t, PathEndMode.ClosestTouch, pawn.NormalMaxDanger(), 1, -1, null, forced)
