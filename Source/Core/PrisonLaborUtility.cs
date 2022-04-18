@@ -26,25 +26,31 @@ namespace PrisonLabor.Core
 
         public static bool RecruitInLaborEnabled(Pawn pawn)
         {
-            if (pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndRecruitOption && pawn.guest.ScheduledForInteraction && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
+            if (pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndRecruitOption && pawn.guest.ScheduledForInteraction)
+            {
                 return true;
+            }
 
             return false;
         }
 
-        public static bool ConvertInLaborEnabled(Pawn pawn)
+        public static bool ConvertInLaborEnabled(Pawn doer, Pawn prisoner)
         {
-            if (pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndConvertOption && pawn.guest.ScheduledForInteraction && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
+            if (prisoner.guest.interactionMode == PL_DefOf.PrisonLabor_workAndConvertOption && prisoner.guest.ScheduledForInteraction 
+                && prisoner.Ideo != doer.Ideo && doer.Ideo == prisoner.guest.ideoForConversion)
+            {
                 return true;
-
+            }
             return false;
         }
 
-        public static bool EnslaveInLaborEnabled(Pawn pawn)
+        public static bool EnslaveInLaborEnabled(Pawn doer, Pawn prisoner)
         {
-            if (pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndEnslaveOption && pawn.guest.ScheduledForInteraction && pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
+            if (prisoner.guest.interactionMode == PL_DefOf.PrisonLabor_workAndEnslaveOption && prisoner.guest.ScheduledForInteraction
+                && new HistoryEvent(HistoryEventDefOf.EnslavedPrisoner, doer.Named(HistoryEventArgsNames.Doer)).Notify_PawnAboutToDo_Job())
+            {
                 return true;
-
+            }
             return false;
         }
         public static bool WorkTime(Pawn pawn)

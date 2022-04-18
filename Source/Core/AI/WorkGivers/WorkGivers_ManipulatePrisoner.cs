@@ -21,7 +21,7 @@ namespace PrisonLabor.Core.AI.WorkGivers
                 return null;
             if (prisoner.Downed || !pawn.CanReserve(t, 1, -1, null, false) || !prisoner.Awake())
                 return null;
-            if (pawn.IsPrisoner)
+            if (pawn.IsPrisoner || !pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
                 return null;
 
 
@@ -29,11 +29,11 @@ namespace PrisonLabor.Core.AI.WorkGivers
             {
                 return new Job(JobDefOf.PrisonerAttemptRecruit, t);
             }
-            if (PrisonLaborUtility.ConvertInLaborEnabled(prisoner))
+            if (PrisonLaborUtility.ConvertInLaborEnabled(pawn, prisoner))
             {
                 return new Job(JobDefOf.PrisonerConvert, t);
             }
-            if (PrisonLaborUtility.EnslaveInLaborEnabled(prisoner))
+            if (PrisonLaborUtility.EnslaveInLaborEnabled(pawn, prisoner))
             {
                 return new Job(JobDefOf.PrisonerEnslave, t);
             }

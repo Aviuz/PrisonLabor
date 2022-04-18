@@ -21,7 +21,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
             return Assembly.GetAssembly(typeof(WorkGiver_Scanner)).GetTypes()
                         .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(WorkGiver_Scanner)))
                         .SelectMany(type => type.GetMethods())
-                            .Where(method => method.Name.Equals("PotentialWorkThingsGlobal") || method.Name.Equals("ShouldSkip"))
+                            .Where(method => method.Name.Equals("PotentialWorkThingsGlobal") || method.Name.Equals("ShouldSkip") || method.Name.Equals("HasJobOnThing"))
                             .Distinct()
                             .Cast<MethodBase>();
         }
