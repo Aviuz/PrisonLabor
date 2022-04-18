@@ -150,6 +150,7 @@
     <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\DeliverEvenOutsidePrisonCell.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\FoodUtility_IsFoodSourceOnMapSociallyProper.cs" />
+    <Compile Include="HarmonyPatches\Patches_Food\Patch_EnableRespectingFoodPolicies.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\ReserveFoodForPrisonerAfterDropping.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\ReservedByPrisonerPatch.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\StopIfPrisonerCanGetFoodByHimself.cs" />
