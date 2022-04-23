@@ -17,7 +17,10 @@ namespace PrisonLabor.Core.Other
             prisoner.workSettings = new Pawn_WorkSettings(prisoner);
             CleanHediffs(prisoner);
             prisoner.playerSettings.AreaRestriction = null;
-            prisoner.drugs.CurrentPolicy = Current.Game.drugPolicyDatabase.DefaultDrugPolicy();
+            if (prisoner.drugs != null)
+            {
+                prisoner.drugs.CurrentPolicy = Current.Game.drugPolicyDatabase.DefaultDrugPolicy();
+            }
         }
 
         static public void CleanHediffs(Pawn prisoner)
