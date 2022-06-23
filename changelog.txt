@@ -1,4 +1,6 @@
 Changelog:
+1.3.12
+- Compatibility patch for CleaningArea patch
 1.3.11
 - Fixed recruitment error for not working prisoners
 1.3.10

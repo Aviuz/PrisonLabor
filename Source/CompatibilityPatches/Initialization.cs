@@ -13,6 +13,7 @@ namespace PrisonLabor.CompatibilityPatches
             Quarry.Init();
             Kajin2.Init();
             CashRegister.Init();
+            CleaningArea.Init();
         }
     }
 }

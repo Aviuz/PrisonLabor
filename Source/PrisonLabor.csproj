@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompatibilityPatches\CashRegister.cs" />
+    <Compile Include="CompatibilityPatches\CleaningArea.cs" />
     <Compile Include="CompatibilityPatches\Kajin2.cs" />
     <Compile Include="CompatibilityPatches\Multiplayer.cs" />
     <Compile Include="CompatibilityPatches\Quarry.cs" />
