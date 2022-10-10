@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
 using PrisonLabor.Constants;
+using PrisonLabor.Core.Meta;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -139,5 +140,7 @@ namespace PrisonLabor.Core.Needs
             base.ExposeData();
             Scribe_Values.Look<bool>(ref _resocializationReady, "PrisonLabor_resocialization_ready", false, false);
         }
+
+        public override bool ShowOnNeedList => pawn.IsPrisoner && ShowOnList;
     }
 }

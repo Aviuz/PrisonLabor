@@ -19,7 +19,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\1.3\Assemblies\</OutputPath>
+    <OutputPath>..\1.4\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,12 +35,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=2.0.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Lib.Harmony.2.0.0.8\lib\net472\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.2.2\lib\net472\0Harmony.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="0MultiplayerAPI, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\RimWorld.MultiplayerAPI.0.3.0\lib\net472\0MultiplayerAPI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="CashRegister, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
@@ -48,6 +49,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -79,15 +81,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompatibilityPatches\CashRegister.cs" />
-    <Compile Include="CompatibilityPatches\CleaningArea.cs" />
-    <Compile Include="CompatibilityPatches\Kajin2.cs" />
     <Compile Include="CompatibilityPatches\Multiplayer.cs" />
-    <Compile Include="CompatibilityPatches\Quarry.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_Unchain.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_UnchainLegs.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_UnchainHands.cs" />
     <Compile Include="Core\AI\ThinkNodes\ThinkNode_IsMotivated.cs" />
+    <Compile Include="Core\AI\JobGivers\JobGiver_PrisonersRecreation.cs" />
     <Compile Include="Core\AI\WorkGivers\WorkGivers_ManipulatePrisoner.cs" />
     <Compile Include="Core\AI\WorkGivers\WorkGiver_HandleChains.cs" />
     <Compile Include="Core\Alerts\Alert_EscapingPrisoners.cs" />
@@ -102,8 +101,6 @@
     <Compile Include="Constants\BGP.cs" />
     <Compile Include="Core\BillAssignation\BillGroupData.cs" />
     <Compile Include="Core\BillAssignation\BillAssignationUtility.cs" />
-    <Compile Include="CompatibilityPatches\Initialization.cs" />
-    <Compile Include="CompatibilityPatches\NoWaterNoLife.cs" />
     <Compile Include="CompatibilityPatches\OlderVersions.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLaborClear.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
@@ -111,6 +108,7 @@
     <Compile Include="Core\MainButton_Window\ColumnWorker_HasHandscuffs.cs" />
     <Compile Include="Core\MainButton_Window\ColumnWorker_HasLegcuffs.cs" />
     <Compile Include="Core\MainButton_Window\ColumnWorker_Interaction.cs" />
+    <Compile Include="Core\MainButton_Window\ColumnWorker_Treatment.cs" />
     <Compile Include="Core\MainButton_Window\ColumnWorker_Motivation.cs" />
     <Compile Include="Core\MainButton_Window\ColumnWorker_Resocialization.cs" />
     <Compile Include="Core\MainButton_Window\ColumnWorker_EscapeTracker.cs" />
@@ -133,6 +131,10 @@
     <Compile Include="Core\Other\NewsProvider.cs" />
     <Compile Include="Core\Other\ScribeUtils.cs" />
     <Compile Include="Core\Other\TutorialProvider.cs" />
+    <Compile Include="Core\Recreation\JobDriver_PrisonerRecrationWalking.cs" />
+    <Compile Include="Core\Recreation\JoyGiver_PrisonerRecrationWalking.cs" />
+    <Compile Include="Core\Recreation\PrisonerJoyDef.cs" />
+    <Compile Include="Core\Recreation\RecreationUtils.cs" />
     <Compile Include="Core\Settings\CleanSaveDialog.cs" />
     <Compile Include="Core\Settings\SelectSaveForCleaningDialog.cs" />
     <Compile Include="Core\Trackers\CuffsTracker.cs" />
@@ -169,6 +171,7 @@
     <Compile Include="HarmonyPatches\Patches_Construction\Patch_WorkGiver_Repair.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Scanner_HasJob.cs" />
     <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
+    <Compile Include="HarmonyPatches\Patches_Recreation\Patch_PrisonerGainTreatment.cs" />
     <Compile Include="HarmonyPatches\Patches_TakeToBed\Patch_AddTakeToBed.cs" />
     <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_PrisonerTab\Patch_AddScrollToPrisonerTab.cs" />
@@ -182,7 +185,6 @@
     <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop.cs" />
     <Compile Include="HarmonyPatches\HPatcher.cs" />
     <Compile Include="HarmonyPatches\Patches_SaveCompatibility\Patch_JailorTypeSaveCompatibility.cs" />
-    <Compile Include="HarmonyPatches\Patches_Needs\Patch_NeedOnlyByPrisoners.cs" />
     <Compile Include="HarmonyPatches\Patches_TreatmentTinkering\Patch_ReduceChanceForMentalBreak.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_RemoveBillFromUtility.cs" />
     <Compile Include="HarmonyPatches\Patches_RenamingPrisoners\Patch_RenamePrisoners.cs" />

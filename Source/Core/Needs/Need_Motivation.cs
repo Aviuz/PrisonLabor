@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
 using PrisonLabor.Constants;
+using PrisonLabor.Core.Meta;
 using PrisonLabor.Core.Trackers;
 using PrisonLabor.HarmonyPatches;
 using RimWorld;
@@ -52,8 +53,17 @@ namespace PrisonLabor.Core.Needs
             IsPrisonerWorking = false;
         }
 
+        protected override bool IsFrozen => !PrisonLaborPrefs.EnableMotivationMechanics || base.IsFrozen;
+
         public override void NeedInterval()
         {
+            if (IsFrozen)
+            {
+                ShouldBeMotivated = false;
+                IsLazy = false;
+                return;
+            }
+
             // Update value of need
             CurLevel += GetChangePoints();
 
@@ -72,7 +82,7 @@ namespace PrisonLabor.Core.Needs
 
         private float GetChangePoints()
         {
-            if (pawn.IsPrisoner && pawn.IsPrisonerOfColony)
+            if (pawn.IsPrisonerOfColony)
             {
                 if (pawn.GetDistrict() != null)
                 {
@@ -93,7 +103,7 @@ namespace PrisonLabor.Core.Needs
                             // Some pawns have no rest need (e.g. Pawns with Circadian Half Cycler or androids from other mods)
                             if (pawn.needs.rest != null)
                             {
-                                value -= (int) pawn.needs.rest.CurCategory * BGP.Laziness_TiredRate;
+                                value -= (int)pawn.needs.rest.CurCategory * BGP.Laziness_TiredRate;
                             }
                         }
                         else if (pawn.timetable != null && pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Joy)
@@ -144,5 +154,7 @@ namespace PrisonLabor.Core.Needs
         {
             base.ExposeData();
         }
+
+        public override bool ShowOnNeedList => pawn.IsPrisoner && PrisonLaborPrefs.EnableMotivationMechanics;
     }
 }

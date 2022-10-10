@@ -3,7 +3,7 @@ using PrisonLabor.Core.Windows;
 
 namespace PrisonLabor.Core.Meta
 {
-    class VersionUtility
+    public class VersionUtility
     {
         public const Version versionNumber = Version.v1_3_12;
         public const string versionString = "1.3.12";

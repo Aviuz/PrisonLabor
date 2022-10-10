@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PrisonLabor.Core.Recreation.PrisonerJoyDef/avaliableForPrisonersJoy</xpath>
+    <value>
+      <li>ReceiveTherapy</li>
+    </value>
+  </Operation>
+</Patch>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[thingClass = "Therapy.Building_Couch"]/comps</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[thingClass = "Therapy.Building_Couch"]/comps</xpath>
+      <value>
+        <li Class="PrisonLabor.Therapy.Comps.CompProperties_AssingPatients">
+          <drawAssignmentOverlay>false</drawAssignmentOverlay>
+          <maxAssignedPawnsCount>1000</maxAssignedPawnsCount>
+        </li>
+      </value>
+    </match>
+  </Operation>
+
+</Patch>

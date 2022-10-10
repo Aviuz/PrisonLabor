@@ -22,7 +22,6 @@ namespace PrisonLabor
                 HPatcher.Init();
                 SettingsMenu.Init();
                 VersionUtility.CheckVersion();
-                CompatibilityPatches.Initialization.Run();
                 HediffManager.Init();
 
                 Log.Message($"Enabled Prison Labor v{VersionUtility.versionString}");

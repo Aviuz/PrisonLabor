@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <MainButtonDef>
+        <defName>PL_Prisoners_Menu</defName>
+        <label>Prisoners</label>
+        <description>Manage your faction prisoners</description>
+        <tabWindowClass>PrisonLabor.Core.MainButton_Window.PrisonerButtonWindow</tabWindowClass>
+        <iconPath>PL_TabIcon</iconPath>
+        <order>35</order>
+        <closesWorldView>true</closesWorldView>
+    </MainButtonDef>
+
+    <!-- Tabs for main windows-->
+    <PrisonLabor.Core.MainButton_Window.PrisonersTabDef>
+        <defName>PL_Overview</defName>
+        <label>overview</label>
+        <workerClass>PrisonLabor.Core.MainButton_Window.MainTabWindow_Overview</workerClass>
+        <order>10</order>
+    </PrisonLabor.Core.MainButton_Window.PrisonersTabDef>
+
+    <PrisonLabor.Core.MainButton_Window.PrisonersTabDef>
+        <defName>PL_LaborWindow</defName>
+        <label>work</label>
+        <workerClass>PrisonLabor.Core.MainButton_Window.MainTabWindow_Labor</workerClass>
+        <order>20</order>
+    </PrisonLabor.Core.MainButton_Window.PrisonersTabDef>
+
+    <PrisonLabor.Core.MainButton_Window.PrisonersTabDef>
+        <defName>PL_ScheduleWindow</defName>
+        <label>Schedule</label>
+        <workerClass>PrisonLabor.Core.MainButton_Window.MainTabWindow_Schedule</workerClass>
+        <order>30</order>
+    </PrisonLabor.Core.MainButton_Window.PrisonersTabDef>
+
+    <PrisonLabor.Core.MainButton_Window.PrisonersTabDef>
+        <defName>PL_AssignWindow</defName>
+        <label>Assign</label>
+        <workerClass>PrisonLabor.Core.MainButton_Window.MainTabWindow_Assign</workerClass>
+        <order>40</order>
+    </PrisonLabor.Core.MainButton_Window.PrisonersTabDef>
+
+    <PrisonLabor.Core.MainButton_Window.PrisonersTabDef>
+        <defName>PL_DevWindow</defName>
+        <label>Dev</label>
+        <workerClass>PrisonLabor.Core.MainButton_Window.MainTabWindow_Dev</workerClass>
+        <dev>true</dev>
+        <order>100</order>
+    </PrisonLabor.Core.MainButton_Window.PrisonersTabDef>
+
+
+    <PawnTableDef>
+        <defName>PL_Assign</defName>
+        <workerClass>PawnTable_PlayerPawns</workerClass>
+        <columns>
+            <li>Label</li>
+            <li>MedicalCare</li>
+            <li>GapTiny</li>
+            <li>FoodRestriction</li>
+            <li>GapTiny</li>
+            <li>DrugPolicy</li>
+            <li>RemainingSpace</li>
+        </columns>
+    </PawnTableDef>
+
+    <PawnTableDef>
+        <defName>PL_Overview</defName>
+        <workerClass>PawnTable_PlayerPawns</workerClass>
+        <columns>
+            <li>Label</li>
+            <li>GapTiny</li>
+            <li>PL_InteractionColumn</li>
+            <li>GapTiny</li>
+            <li>PL_MotivationColumn</li>
+            <li>GapTiny</li>
+            <li>PL_HasLegcuffs</li>
+            <li>GapTiny</li>
+            <li>PL_HasHandcuffs</li>
+            <li>GapTiny</li>
+            <li>PL_Resocialization</li>
+            <li>RemainingSpace</li>
+        </columns>
+    </PawnTableDef>
+
+    <PawnTableDef>
+        <defName>PL_DevTable</defName>
+        <workerClass>PawnTable_PlayerPawns</workerClass>
+        <columns>
+            <li>Label</li>
+            <li>GapTiny</li>
+            <li>PL_EscapeColumn</li>
+            <li>GapTiny</li>
+            <li>PL_TreatmentColumn</li>
+            <li>RemainingSpace</li>
+        </columns>
+    </PawnTableDef>
+
+
+    <PawnColumnDef>
+        <defName>PL_InteractionColumn</defName>
+        <label>Interaction</label>
+        <headerTip>Interaction mode</headerTip>
+        <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_Interaction</workerClass>
+        <sortable>true</sortable>
+    </PawnColumnDef>
+
+    <PawnColumnDef>
+        <defName>PL_Resocialization</defName>
+        <label>Resocialization</label>
+        <headerTip>Prisoner wants to join to your colony</headerTip>
+        <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_Resocialization</workerClass>
+    </PawnColumnDef>
+
+    <PawnColumnDef>
+        <defName>PL_HasLegcuffs</defName>
+        <label>Has Legcuffs</label>
+        <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_HasLegcuffs</workerClass>
+        <sortable>true</sortable>
+    </PawnColumnDef>
+
+    <PawnColumnDef>
+        <defName>PL_HasHandcuffs</defName>
+        <label>Has Handcuffs</label>
+        <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_HasHandscuffs</workerClass>
+        <sortable>true</sortable>
+    </PawnColumnDef>
+
+    <PawnColumnDef>
+        <defName>PL_EscapeColumn</defName>
+        <label>Ready to escape</label>
+        <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_EscapeTracker</workerClass>
+    </PawnColumnDef>
+
+    <PawnColumnDef>
+        <defName>PL_MotivationColumn</defName>
+        <label>Motivation</label>
+        <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_Motivation</workerClass>
+        <sortable>true</sortable>
+    </PawnColumnDef>
+
+    <PawnColumnDef>
+        <defName>PL_TreatmentColumn</defName>
+        <label>Treatment</label>
+        <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_Treatment</workerClass>
+        <sortable>true</sortable>
+    </PawnColumnDef>
+
+</Defs>
