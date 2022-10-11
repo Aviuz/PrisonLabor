@@ -21,7 +21,7 @@ namespace PrisonLabor.Core.AI.JobGivers
             TimeAssignmentDef timeAssignmentDef = (pawn.timetable == null) ? TimeAssignmentDefOf.Anything : pawn.timetable.CurrentAssignment;
             if (pawn.IsPrisoner && timeAssignmentDef == TimeAssignmentDefOf.Joy)
             {
-                DebugLogger.info($"[PL] Prisoner {pawn.NameShortColored} joy piority: 10");
+                DebugLogger.debug($"[PL] Prisoner {pawn.NameShortColored} joy piority: 10");
                 return 10f;
             }
             return 0f;
@@ -30,29 +30,29 @@ namespace PrisonLabor.Core.AI.JobGivers
         {
             if (!CanDoDuringMedicalRest && pawn.InBed() && HealthAIUtility.ShouldSeekMedicalRest(pawn))
             {
-                DebugLogger.info($"[PL] Prisoner {pawn.NameShortColored} no joy because of medic needs");
+                DebugLogger.debug($"[PL] Prisoner {pawn.NameShortColored} no joy because of medic needs");
                 return ThinkResult.NoJob;
             }
             PrisonerJoyDef prisonerJoyDef = DefDatabase<PrisonerJoyDef>.GetNamed("PrisonLabor_PrisonersJoy");
             //JoyGiverDef result = prisonerJoyDef.avaliableForPrisonersJoy.RandomElement();
             if (prisonerJoyDef.avaliableForPrisonersJoy.TryRandomElementByWeight(def => def.Worker.GetChance(pawn), out JoyGiverDef result))
             {
-                DebugLogger.info($"[PL] Prisoner {pawn.NameShortColored} checking joy: {result.defName}.");
+                DebugLogger.debug($"[PL] Prisoner {pawn.NameShortColored} checking joy: {result.defName}.");
                 Job job = result.Worker?.TryGiveJob(pawn);
                 if (job != null)
                 {
-                    DebugLogger.info($"[PL] Prisoner {pawn.NameShortColored} joy from {result.defName}.");
+                    DebugLogger.debug($"[PL] Prisoner {pawn.NameShortColored} joy from {result.defName}.");
                     return new ThinkResult(job, this);
                 }
             }
-            DebugLogger.info($"[PL] Prisoner {pawn.NameShortColored} no joy found. Trying walk");
+            DebugLogger.debug($"[PL] Prisoner {pawn.NameShortColored} no joy found. Trying walk");
             Job walk = walkDef.Worker.TryGiveJob(pawn);
             if (walk != null)
             {
-                DebugLogger.info($"[PL] Prisoner {pawn.NameShortColored} going for a walk.");
+                DebugLogger.debug($"[PL] Prisoner {pawn.NameShortColored} going for a walk.");
                 return new ThinkResult(walk, this);
             }
-            DebugLogger.info($"[PL] Prisoner {pawn.NameShortColored} walk failed. Returning no job.");
+            DebugLogger.debug($"[PL] Prisoner {pawn.NameShortColored} walk failed. Returning no job.");
             return ThinkResult.NoJob;
         }
 

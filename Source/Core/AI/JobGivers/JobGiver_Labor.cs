@@ -28,15 +28,15 @@ namespace PrisonLabor.Core.AI.JobGivers
             TimeAssignmentDef timeAssignmentDef = (pawn.timetable == null) ? TimeAssignmentDefOf.Anything : pawn.timetable.CurrentAssignment;
             if (timeAssignmentDef == TimeAssignmentDefOf.Joy)
             {
-                DebugLogger.info($"[PL] Prisoner {pawn.NameShortColored} labor piority: 0");
+                DebugLogger.debug($"[PL] Prisoner {pawn.NameShortColored} labor piority: 0");
                 return 0f;
             }
             if (timeAssignmentDef == TimeAssignmentDefOf.Work)
             {
-                DebugLogger.info($"[PL] Prisoner {pawn.NameShortColored} labor piority: 10");
+                DebugLogger.debug($"[PL] Prisoner {pawn.NameShortColored} labor piority: 10");
                 return 10f;
             }
-            DebugLogger.info($"[PL] Prisoner {pawn.NameShortColored} labor piority: 8");
+            DebugLogger.debug($"[PL] Prisoner {pawn.NameShortColored} labor piority: 8");
             return 8f;
         }
 

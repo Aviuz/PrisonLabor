@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest>
+  <identifier>PrisonLabor</identifier>
+  <version>1.4.0</version>
+  <dependencies>
+    <li>brrainz.harmony</li>
+  </dependencies>
+  <incompatibleWith>
+    <li>automatic.prisonerbedsetowner</li>
+  </incompatibleWith>
+  <loadBefore>
+  </loadBefore>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>avius.locks</li>
+    <li>orion.therapy</li>
+    <li>ogliss.thewhitecrayon.quarry</li>
+    <li>ssulunge.kijinrace2</li>
+    <li>orion.cashregister</li>
+    <li>orion.hospitality</li>
+    <li>orion.gastronomy</li>
+    <li>hatti.cleaningarea</li>
+  </loadAfter>
+  <suggests>
+    <li>avius.locks</li>
+  </suggests>
+  <showCrossPromotions>true</showCrossPromotions>
+
+  <manifestUri>https://raw.githubusercontent.com/Aviuz/PrisonLabor/master/About/Manifest.xml</manifestUri>
+  <downloadUri>https://github.com/Aviuz/PrisonLabor/releases</downloadUri>
+</Manifest>

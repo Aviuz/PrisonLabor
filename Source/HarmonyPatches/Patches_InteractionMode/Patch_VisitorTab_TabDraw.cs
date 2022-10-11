@@ -12,11 +12,13 @@ using Verse;
 
 namespace PrisonLabor.HarmonyPatches.Patches_InteractionMode
 {
-    [HarmonyPatch(typeof(ITab_Pawn_Visitor), "FillTab")]
+    [HarmonyPatch(typeof(ITab_Pawn_Visitor))]
     class Patch_VisitorTab_TabDraw
     {
-        static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instructions)
-        {
+        [HarmonyPatch("FillTab")]
+        [HarmonyTranspiler]
+        static IEnumerable<CodeInstruction> FillTabTranspiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instructions)
+        {         
             OpCode[] opCodesToFind =
             {
                 OpCodes.Call,
@@ -57,40 +59,18 @@ namespace PrisonLabor.HarmonyPatches.Patches_InteractionMode
                new CodeInstruction(OpCodes.Call, typeof(Patch_VisitorTab_TabDraw).GetMethod(nameof(ShouldDisplayConvertIco))),
                new CodeInstruction(OpCodes.Brfalse, label)
             };
-            IEnumerable<CodeInstruction> result = HPatcher.ReplaceFragment(opCodesToReplace, operandsToReplace, instructions, replacment, nameof(ITab_Pawn_Visitor) + ": patch display ideo ico");
+            return HPatcher.ReplaceFragment(opCodesToReplace, operandsToReplace, instructions, replacment, nameof(ITab_Pawn_Visitor) + ": patch display ideo ico");
+        }
 
-            OpCode[] opCodesToFindForCustomConvert =
-{
-                OpCodes.Ldsfld,
-                OpCodes.Bne_Un_S,
-            };
-            string[] operandsToFindForCustomConvert =
+        [HarmonyPatch("InteractionModeChanged")]
+        [HarmonyPostfix]
+        static void PostfixInteractionModeChanged(ITab_Pawn_Visitor __instance, PrisonerInteractionModeDef oldMode, PrisonerInteractionModeDef newMode)
+        {
+            Pawn p = Traverse.Create(__instance).Property("SelPawn").GetValue<Pawn>();
+            if (newMode == PL_DefOf.PrisonLabor_workAndConvertOption && p.guest.ideoForConversion == null)
             {
-                "RimWorld.PrisonerInteractionModeDef Convert",
-                "System.Reflection.Emit.Label"
-            };
-            var labelCustomConvert = (Label)HPatcher.FindOperandAfter(opCodesToFindForCustomConvert, operandsToFindForCustomConvert, instructions);
-
-
-            OpCode[] opCodesToReplaceForCustomConvert =
-            {
-                OpCodes.Ldsfld,
-                OpCodes.Bne_Un_S,
-            };
-            string[] operandsToReplaceForCustomConvert =
-            {
-                "RimWorld.PrisonerInteractionModeDef Convert",
-                "System.Reflection.Emit.Label"
-            };
-
-            CodeInstruction[] replacmentForCustomConvert =
-{
-               new CodeInstruction(OpCodes.Call, typeof(Patch_VisitorTab_TabDraw).GetMethod(nameof(IsConvert))),
-               new CodeInstruction(OpCodes.Brfalse, labelCustomConvert)
-
-            };
-
-            return HPatcher.ReplaceFragment(opCodesToReplaceForCustomConvert, operandsToReplaceForCustomConvert, result, replacmentForCustomConvert, nameof(ITab_Pawn_Visitor) + ": patch prisoner tab window");
+                p.guest.ideoForConversion = Faction.OfPlayer.ideos.PrimaryIdeo;
+            }
         }
 
         public static bool ShouldDisplayConvertIco(ITab_Pawn_Visitor tab)
