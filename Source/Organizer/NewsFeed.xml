@@ -11,9 +11,9 @@
                 <item>[-] Compatibility patch for CleaningArea</item>
                 <item>[-] Compatibility patch for Hospitality. Prisoners will entertain guest.</item>
                 <item>[-] Compatibility patch for Therapy. Prisoners can get therapy now.</item>
-                <item>[-] Splited all compatibility patches into dll. Mod order is required for prison labor.</item>
-                <item>[-] Prisoners can use variant of joygiver building like poker table. Joy need is disable, free time improve mood of prisoner. It will happend only during recreation time assigment.</item>
-                <item>[-] Refactor of prisoners jobgiver. No new future here but with enabled prison labor debug loging more info what going on in prisoner mind going on.</item>
+                <item>[-] Split all compatibility patches into DLLs. Mod order is required for prison labor.</item>
+                <item>[-] Prisoners can use variant of joy giver building like poker table. Joy need is disabled, but during recreation time their mood will be improved. It will happen only during recreation time assignment.</item>
+                <item>[-] Refactor of prisoners job giver. No new future here, but with enabled prison labor debug logging more info what going on in prisoner mind going on.</item>
             </items>
         </patch>
         <patch version="1.3.11" silent="true"/>
