@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <PrisonLabor.Core.Recreation.PrisonerJoyDef>
+    <defName>PrisonLabor_PrisonersJoy</defName>
+    <avaliableForPrisonersJoy>
+      <li>ViewArt</li>
+      <li>Play_Horseshoes</li>
+      <li>Play_Hoopstone</li>
+      <li>Play_Billiards</li>
+      <li>Play_GameOfUr</li>
+      <li>Play_Chess</li>
+      <li>Play_Poker</li>
+      <li>WatchTelevision</li>
+      <li>UseTelescope</li>
+    </avaliableForPrisonersJoy>
+  </PrisonLabor.Core.Recreation.PrisonerJoyDef>
+
+  <JoyGiverDef>
+    <defName>PrisonerLabor_RecrationWalk</defName>
+    <giverClass>PrisonLabor.Core.Recreation.JoyGiver_PrisonerRecrationWalking</giverClass>
+    <baseChance>1</baseChance>
+    <jobDef>PrionLabor_PrisonerGoForWalk</jobDef>
+    <joyKind>Meditative</joyKind>
+  </JoyGiverDef>
+
+  <JobDef>
+    <defName>PrionLabor_PrisonerGoForWalk</defName>
+    <driverClass>PrisonLabor.Core.Recreation.JobDriver_PrisonerRecrationWalking</driverClass>
+    <reportString>going for a recreataion walk.</reportString>
+    <joyDuration>8000</joyDuration>
+    <joyKind>Meditative</joyKind>
+  </JobDef>
+</Defs>

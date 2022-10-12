@@ -11,9 +11,21 @@
     <li>/</li>
     <li>1.2</li>
   </v1.2>
-  <v1.3>
+   <v1.3>
     <li>/</li>
     <li>1.3</li>
-    <li IfModActive="Ludeon.Rimworld.Ideology">Ideology</li>
-  </v1.3>
+    <li IfModActive="Ludeon.Rimworld.Ideology">1.3/Ideology</li>
+  </v1.3> 
+
+  <v1.4>
+    <li>/</li>
+    <li>1.4</li>
+    <li IfModActive="Ludeon.Rimworld.Ideology">1.4/Ideology</li>
+    <li IfModActive="orion.therapy">1.4/Therapy</li>
+    <li IfModActive="orion.hospitality">1.4/Hospitality</li>
+    <li IfModActive="hatti.cleaningarea">1.4/CleaningArea</li>
+    <li IfModActive="orion.cashregister">1.4/CashRegistry</li>
+    <li IfModActive="ssulunge.kijinrace2">1.4/Kijin</li>
+    <li IfModActive="ogliss.thewhitecrayon.quarry">1.4/Quarry</li>
+  </v1.4>
 </loadFolders>

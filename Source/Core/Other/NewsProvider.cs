@@ -28,7 +28,7 @@ namespace PrisonLabor.Core.Other
                 int iterator = 0;
                 foreach (var notes in GetVersionNotesFromNewsFeed(Properties.Resources.NewsFeed))
                 {
-                    while (allVersionNotes[iterator].version != notes.version && iterator < allVersionNotes.Length)
+                    while (iterator < allVersionNotes.Length && allVersionNotes[iterator].version != notes.version)
                         iterator++;
 
                     if (iterator < allVersionNotes.Length)

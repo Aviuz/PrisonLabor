@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <!-- Couch -->
+  <CommandThingSetPrisonerPatientsLabel>Set prisoners patients</CommandThingSetPrisonerPatientsLabel>
+  <CommandBedSetPrisonerPatientsDesc>Assign this couch to specific prisoner. If any prisoner is assigned, colonist wont use this couch.</CommandBedSetPrisonerPatientsDesc>
+</LanguageData>

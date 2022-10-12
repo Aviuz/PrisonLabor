@@ -39,17 +39,15 @@ namespace PrisonLabor.HarmonyPatches.Patches_RenamingPrisoners
              */
 
             static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instructions)
-            {
+            {   
                 OpCode[] opCodes =
                 {
-                    OpCodes.Ldloc_1,
-                    OpCodes.Ldfld,
+                    OpCodes.Ldloc_0,
                     OpCodes.Ldfld,
                     OpCodes.Callvirt,
                 };
                 string[] operands =
                 {
-                    "",
 
                     // I wasn't sure here...'
                     "",
@@ -73,10 +71,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_RenamingPrisoners
 
             public static bool IsColonistOrPrisonerOfColony(Pawn pawn)
             {
-                if (pawn.IsColonist || pawn.IsPrisonerOfColony)
-                    return true;
-                else
-                    return false;
+                return pawn.IsColonist || pawn.IsPrisonerOfColony;
             }
         }
 

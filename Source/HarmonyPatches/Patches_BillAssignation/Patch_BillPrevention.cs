@@ -35,13 +35,13 @@ namespace PrisonLabor.HarmonyPatches.Patches_BillAssignation
             OpCode[] opCodes2 =
             {
                 OpCodes.Ldc_I4_0,
-                OpCodes.Stloc_0,
+                OpCodes.Stloc_1,
                 OpCodes.Br,
                 OpCodes.Ldarg_2,
                 OpCodes.Callvirt,
-                OpCodes.Ldloc_0,
+                OpCodes.Ldloc_1,
                 OpCodes.Callvirt,
-                OpCodes.Stloc_1,
+                OpCodes.Stloc_2,
             };
             String[] operands2 =
             {
@@ -61,7 +61,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_BillAssignation
                 if (HPatcher.IsFragment(opCodes2, operands2, ci, ref step, "Patch_BillPrevention"))
                 {
                     yield return new CodeInstruction(OpCodes.Ldarg_1);
-                    yield return new CodeInstruction(OpCodes.Ldloc_1);
+                    yield return new CodeInstruction(OpCodes.Ldloc_2);
                     yield return new CodeInstruction(OpCodes.Call, typeof(Patch_BillPrevention).GetMethod(nameof(IsForCertainGroup)));
                     yield return new CodeInstruction(OpCodes.Brfalse, label);
                 }

@@ -3,10 +3,10 @@ using PrisonLabor.Core.Windows;
 
 namespace PrisonLabor.Core.Meta
 {
-    class VersionUtility
+    public class VersionUtility
     {
-        public const Version versionNumber = Version.v1_3_11;
-        public const string versionString = "1.3.11";
+        public const Version versionNumber = Version.v1_4_0;
+        public const string versionString = "1.4.0";
 
         public static Version VersionOfSaveFile { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using MonoMod.Utils;
 using PrisonLabor.Core;
 using RimWorld;
 using System;
@@ -24,7 +25,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_LaborArea
         }
         static IEnumerable<MethodBase> GetBaseMethods() {
             return Assembly.GetAssembly(typeof(WorkGiver_Scanner)).GetTypes()
-            .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(WorkGiver_Scanner)))
+            .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(WorkGiver_Scanner)) && myType != typeof(WorkGiver_Teach))
             .SelectMany(type => type.GetMethods())
                 .Where(method => method.Name.Equals("PotentialWorkThingsGlobal"))
                 .Cast<MethodBase>();

@@ -14,7 +14,7 @@ using Verse;
 namespace PrisonLabor.HarmonyPatches.Patches_Work
 {
     [HarmonyPatch]
-    class Patch_WorkGiver_PrisonerFaction
+    public class Patch_WorkGiver_PrisonerFaction
     {
         static IEnumerable<MethodBase> TargetMethods()
         {
@@ -26,14 +26,14 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
                             .Cast<MethodBase>();
         }
 
-        static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> inst)
+        public static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> inst)
         {
             var codes = new List<CodeInstruction>(inst);
             for (int i = 0; i < codes.Count(); i++)
             {
                 if (i > 0 && ShouldPatch(codes[i], codes[i - 1]))
                 {
-                    DebugLogger.debug($"WorkThingsGlobal & ShouldSkip patch: {mBase.ReflectedType.Name}.{mBase.Name}");
+                    DebugLogger.debug($"WorkThingsGlobal & ShouldSkip patch: {mBase.ReflectedType.Assembly.GetName().Name}.{mBase.ReflectedType.Name}.{mBase.Name}");
                     yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod(nameof(PrisonLaborUtility.GetPawnFaction)));
                 }
                 else

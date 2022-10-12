@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThinkTreeDef>
+        <defName>PrisonLabor_WorkThinkTree</defName>
+        <insertTag>Humanlike_PostDuty</insertTag>
+        <insertPriority>80</insertPriority>
+        <thinkRoot Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_Labor">
+            <invert>false</invert>
+            <subNodes>
+                <li Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_SeekSafeTemperature">
+                    <subNodes>
+                        <li Class="JobGiver_SeekSafeTemperature"/>
+                    </subNodes>
+                </li>
+                <li Class="PrisonLabor.Core.AI.ThinkNodes.ThinkNode_IsMotivated">
+                    <subNodes>
+                        <li Class="JobGiver_TakeDrugsForDrugPolicy"/>
+                    </subNodes>
+                </li>
+                <li Class="ThinkNode_Tagger">
+                    <tagToGive>ChangingApparel</tagToGive>
+                    <subNodes>
+                        <li Class="JobGiver_PrisonerGetDressed" />
+                    </subNodes>
+                </li>
+                <li Class="ThinkNode_PrioritySorter">
+                    <subNodes>
+                        <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_BedTime" />
+                        <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_PickupWeapon" />
+                        <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_Diet" />
+                        <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_Labor" />
+                        <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_PrisonersRecreation" />
+                    </subNodes>
+                </li>
+            </subNodes>
+        </thinkRoot>
+    </ThinkTreeDef>
+</Defs>

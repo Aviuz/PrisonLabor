@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
 using PrisonLabor.Constants;
+using PrisonLabor.Core.Meta;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -121,7 +122,7 @@ namespace PrisonLabor.Core.Needs
             CurLevel += BGP.BeatenHit;
         }
 
-        public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true, Rect? rectForTooltip = null)
+        public override void DrawOnGUI(Rect rect, int maxThresholdMarkers = 2147483647, float customMargin = -1f, bool drawArrows = true, bool doTooltip = true, Rect? rectForTooltip = null, bool drawLabel = true)
         {
             if (threshPercents == null)
             {
@@ -139,5 +140,7 @@ namespace PrisonLabor.Core.Needs
             base.ExposeData();
             Scribe_Values.Look<bool>(ref _resocializationReady, "PrisonLabor_resocialization_ready", false, false);
         }
+
+        public override bool ShowOnNeedList => pawn.IsPrisoner && ShowOnList;
     }
 }
