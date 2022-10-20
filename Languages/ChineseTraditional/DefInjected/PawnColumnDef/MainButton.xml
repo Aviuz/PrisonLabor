@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Tabs for main windows -->
+
+  <PL_InteractionColumn.label>交互</PL_InteractionColumn.label>
+  <PL_InteractionColumn.headerTip>交互模式</PL_InteractionColumn.headerTip>
+
+  <PL_Resocialization.label>再社會化</PL_Resocialization.label>
+  <PL_Resocialization.headerTip>囚犯想加入你的殖民地</PL_Resocialization.headerTip>
+
+  <PL_HasLegcuffs.label>有腿銬</PL_HasLegcuffs.label>
+  <PL_HasHandcuffs.label>有手銬</PL_HasHandcuffs.label>
+  <PL_EscapeColumn.label>準備逃跑</PL_EscapeColumn.label>
+  <PL_MotivationColumn.label>動機</PL_MotivationColumn.label>
+  <PL_TreatmentColumn.label>治療</PL_TreatmentColumn.label>
+
+
+</LanguageData>

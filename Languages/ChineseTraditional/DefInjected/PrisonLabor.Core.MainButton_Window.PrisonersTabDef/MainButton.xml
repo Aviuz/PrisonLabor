@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Tabs for main windows -->
+
+  <PL_Overview.label>概述</PL_Overview.label>
+  <PL_LaborWindow.label>工作</PL_LaborWindow.label>
+  <PL_ScheduleWindow.label>計劃</PL_ScheduleWindow.label>
+  <PL_AssignWindow.label>分配</PL_AssignWindow.label>
+  <PL_DevWindow.label>開發</PL_DevWindow.label>
+
+
+</LanguageData>
