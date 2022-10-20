@@ -5,5 +5,13 @@
   <PrisonLabor_SupervisePrisonLabor.verb>看守囚犯</PrisonLabor_SupervisePrisonLabor.verb>
   <PrisonLabor_SupervisePrisonLabor.gerund>看守囚犯中</PrisonLabor_SupervisePrisonLabor.gerund>
 
+  <PrisonLabor_ChatWithPrisoner.label>與囚犯聊天</PrisonLabor_ChatWithPrisoner.label>
+  <PrisonLabor_ChatWithPrisoner.verb>聊天</PrisonLabor_ChatWithPrisoner.verb>
+  <PrisonLabor_ChatWithPrisoner.gerund>聊天</PrisonLabor_ChatWithPrisoner.gerund>
+
+  <PrisonLabor_HandleChains.label>處理囚犯的鏈條</PrisonLabor_HandleChains.label>
+  <PrisonLabor_HandleChains.verb>&gt;處理囚犯的鏈條</PrisonLabor_HandleChains.verb>
+  <PrisonLabor_HandleChains.gerund>&gt;處理囚犯的鏈條</PrisonLabor_HandleChains.gerund>
+
 
 </LanguageData>

@@ -2,12 +2,12 @@
 <LanguageData>
 
   <PrisonLabor_Revolt.label>暴動</PrisonLabor_Revolt.label>
-  <PrisonLabor_Revolt.letterText>叛亂已由{0}發起。 囚犯們開始團結起來{1}，並開始用自製武器造反</PrisonLabor_Revolt.letterText>
+  <PrisonLabor_Revolt.letterText>暴動已由{0}發起。 囚犯們開始團結起來{1}，並開始用自製武器造反</PrisonLabor_Revolt.letterText>
   <PrisonLabor_Revolt.letterLabel>暴動</PrisonLabor_Revolt.letterLabel>
 
-  <PrisonLabor_ResocializationOffer.label>請求加入</PrisonLabor_ResocializationOffer.label>
+  <PrisonLabor_ResocializationOffer.label>再社會化</PrisonLabor_ResocializationOffer.label>
   <PrisonLabor_ResocializationOffer.letterText>來自{0}的請求.</PrisonLabor_ResocializationOffer.letterText>
-  <PrisonLabor_ResocializationOffer.letterLabel>請求加入</PrisonLabor_ResocializationOffer.letterLabel>
+  <PrisonLabor_ResocializationOffer.letterLabel>再社會化</PrisonLabor_ResocializationOffer.letterLabel>
 
   <PrisonLabor_Suicide.label>囚犯自殺</PrisonLabor_Suicide.label>
   <PrisonLabor_Suicide.letterText>{0} 因惡劣待遇而自殺</PrisonLabor_Suicide.letterText>

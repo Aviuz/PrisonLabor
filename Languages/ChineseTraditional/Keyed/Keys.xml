@@ -2,6 +2,8 @@
 <LanguageData>
   <PrisonLabor_PrisonerWork>強迫工作</PrisonLabor_PrisonerWork>
   <PrisonLabor_WorkAndRecruit>工作與招募</PrisonLabor_WorkAndRecruit>
+  <PrisonLabor_WorkAndConvert>工作和轉換</PrisonLabor_WorkAndConvert>
+  <PrisonLabor_WorkAndEnslave>工作和奴役</PrisonLabor_WorkAndEnslave>
   <PrisonLabor_LazyPrisonerMessage>你的囚犯停止了工作！</PrisonLabor_LazyPrisonerMessage>
   <PrisonLabor_WardenResponseThreshold>獄卒看守門檻</PrisonLabor_WardenResponseThreshold>
   <PrisonLabor_StoppingWorkThreshold>罷工門檻</PrisonLabor_StoppingWorkThreshold>
@@ -53,6 +55,7 @@
   <PrisonLabor_ColonyOnly>只允許殖民地</PrisonLabor_ColonyOnly>
   <PrisonLabor_ColonistsOnly>只允許殖民者</PrisonLabor_ColonistsOnly>
   <PrisonLabor_PrisonersOnly>只允許囚犯</PrisonLabor_PrisonersOnly>
+  <PrisonLabor_PrisonersAndSlaveOnly>任何非殖民者</PrisonLabor_PrisonersAndSlaveOnly>
 
   <!-- 0.10 -->
   <PrisonLabor_RecruitButtonLabel>招募</PrisonLabor_RecruitButtonLabel>
@@ -91,5 +94,11 @@
 
   <PrisonLabor_ToggleHandscuffs>卸下/戴上手銬</PrisonLabor_ToggleHandscuffs>
   <PrisonLabor_ToggleLegscuffs>卸下/戴上腳銬</PrisonLabor_ToggleLegscuffs>
+
+  <PrisonLabor_EnableDebugLogs>啟用調試日誌</PrisonLabor_EnableDebugLogs>
+  <PrisonLabor_EnableDebugLogsDesc>打開此選項可能會發送垃圾郵件日誌</PrisonLabor_EnableDebugLogsDesc>
+
+  <PrisonLabor_CannotTakeToBed>無法帶回床上</PrisonLabor_CannotTakeToBed>
+  <PrisonLabor_TakingToBed>帶{0}回床上</PrisonLabor_TakingToBed>
 
 </LanguageData>

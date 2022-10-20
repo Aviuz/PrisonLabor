@@ -2,7 +2,7 @@
 <LanguageData>
 
   <PrisonLabor_Indroduction.label>監獄勞工</PrisonLabor_Indroduction.label>
-  <PrisonLabor_Indroduction.helpText>您可以強迫您的囚犯進行工作.\n\n為此,您必須從“囚犯”窗格中選擇“強制工作”選項\n\n囚犯們將處理允許區域內的工作. 確保囚犯能夠到達他們的工作.\n\n他們只能烹飪,採礦,砍伐植物,運輸,清潔或種植不需要特殊技能的植物.\n\n監獄有時會拒絕工作. 原因可能不同.他可能是受傷,飢餓,疲倦,或者沒有人盯著他.\n\n建議：您可以在"工作表"中分配工作類型.\n\n提示：如果您在監獄牢房中放置一個加工桌,請確保他們可以拿到原料.\n\n建議：你可以通過打開門來讓他們移動.</PrisonLabor_Indroduction.helpText>
+  <PrisonLabor_Indroduction.helpText>您可以強迫您的囚犯進行工作.\n\n為此,您必須從“囚犯”窗格中選擇“強制工作”選項\n\n囚犯們將處理允許區域內的工作. 確保囚犯能夠到達他們的工作.\n\n他們只能烹飪,採礦,砍伐植物,運輸,清潔或種植不需要特殊技能的植物.\n\n囚犯有時會拒絕工作. 原因可能不同.他可能是受傷,飢餓,疲倦,或者沒有人盯著他.\n\n建議：您可以在"工作表"中分配工作類型.\n\n提示：如果您在監獄牢房中放置一個加工桌,請確保他們可以拿到原料.\n\n建議：你可以通過打開門來讓他們移動.</PrisonLabor_Indroduction.helpText>
 
   <PrisonLabor_Motivation.label>監督囚犯</PrisonLabor_Motivation.label>
   <PrisonLabor_Motivation.helpText>你的一個囚犯偷懶了.\n他將不再工作,除非他被監督.\n\n你可以在“需要”標籤中檢查監督的狀態.\n\n確保你有足夠的看守（檢查工作表）,或者命令一個殖民者他站在囚犯周圍.\n\n監督囚犯可以降低叛亂風險.</PrisonLabor_Motivation.helpText>
