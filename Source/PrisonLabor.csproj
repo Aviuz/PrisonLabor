@@ -161,6 +161,8 @@
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_Bill_Assigment.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_RestrictBillToPrisoner.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_RMB\Patch_RMB_Chains.cs" />
+    <Compile Include="HarmonyPatches\Patches_InteractionMode\BloodFeedInteractionPatches.cs" />
+    <Compile Include="HarmonyPatches\Patches_InteractionMode\HemogenFarmInteractionPatch.cs" />
     <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_RemoveHediffsAfterStatusChange.cs" />
     <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_VisitorTab_TabDraw.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />

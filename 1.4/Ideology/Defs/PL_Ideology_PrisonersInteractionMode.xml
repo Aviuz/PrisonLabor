@@ -3,13 +3,16 @@
   <PrisonerInteractionModeDef>
     <defName>PrisonLabor_workAndConvertOption</defName>
     <label>Work and convert</label>
-    <listOrder>7</listOrder>
+    <allowInClassicIdeoMode>false</allowInClassicIdeoMode>
+    <hideIfNotRecruitable>true</hideIfNotRecruitable>    
+    <listOrder>6</listOrder>
   </PrisonerInteractionModeDef>
-  
+
   <PrisonerInteractionModeDef>
     <defName>PrisonLabor_workAndEnslaveOption</defName>
     <label>Work and enslave</label>
-    <listOrder>8</listOrder>
+    <allowOnWildMan>false</allowOnWildMan>
+    <listOrder>7</listOrder>
   </PrisonerInteractionModeDef>
-  
+
 </Defs>

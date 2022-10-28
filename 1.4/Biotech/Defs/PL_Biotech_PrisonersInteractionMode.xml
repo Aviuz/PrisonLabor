@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <PrisonerInteractionModeDef>
+    <defName>PrisonLabor_workAndBloodfeedOption</defName>
+    <label>Work and bloodfeed</label>
+    <description>Prioner will be forced to work and can be used by bloodfeeders.</description>
+    <hideIfNoBloodfeeders>true</hideIfNoBloodfeeders>
+    <hideOnHemogenicPawns>true</hideOnHemogenicPawns>
+    <mustBeAwake>false</mustBeAwake>
+    <listOrder>8</listOrder>
+  </PrisonerInteractionModeDef>
+
+  <PrisonerInteractionModeDef>
+    <defName>PrisonLabor_workAndHemogenFarmOption</defName>
+    <label>Work and hemogen farm</label>
+    <description>Force to work and extract blood from prisoner whenever it can be done without killing them.</description>
+    <listOrder>9</listOrder>
+    <hideOnHemogenicPawns>true</hideOnHemogenicPawns>
+    <mustBeAwake>false</mustBeAwake>
+  </PrisonerInteractionModeDef>
+</Defs>

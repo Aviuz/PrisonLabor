@@ -19,6 +19,12 @@ namespace PrisonLabor.Constants
         [MayRequireIdeology]
         public static PrisonerInteractionModeDef PrisonLabor_workAndEnslaveOption;
 
+        [MayRequireBiotech]
+        public static PrisonerInteractionModeDef PrisonLabor_workAndBloodfeedOption;
+
+        [MayRequireBiotech]
+        public static PrisonerInteractionModeDef PrisonLabor_workAndHemogenFarmOption;
+
         public static WorkTypeDef PrisonLabor_Jailor;
 
         public static NeedDef PrisonLabor_Motivation;
