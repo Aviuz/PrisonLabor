@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Verse.AI;
 using Verse;
 using PrisonLabor.Core.Needs;
+using PrisonLabor.Core.Other;
 
 namespace PrisonLabor.Core.Recreation
 {
@@ -28,18 +29,19 @@ namespace PrisonLabor.Core.Recreation
                 }
                 extraJoyGainFactor *= joySource.GetStatValue(StatDefOf.JoyGainFactor);
             }
-            Need need = GetPrisonerNeed(pawn);
-            if (need == null && !curJob.doUntilGatheringEnded)
+            Need treatment = pawn.needs.TryGetNeed<Need_Treatment>();
+
+            if (treatment == null && pawn.needs.joy == null && !curJob.doUntilGatheringEnded )
             {
                 pawn.jobs.curDriver.EndJobWith(JobCondition.InterruptForced);
+                DebugLogger.debug("[PL] Both need null. Returning false.");
                 return false;
             }
 
-            if (pawn.needs.joy != null && curJob.doUntilGatheringEnded)
-            {
-                //if somehow prisoner has joy need by other mods.
-                pawn.needs.joy?.GainJoy(extraJoyGainFactor * curJob.def.joyGainRate * 0.36f / 2500f, curJob.def.joyKind);
-            }
+
+            //if somehow prisoner has joy need by other mods.
+            pawn.needs.joy?.GainJoy(extraJoyGainFactor * curJob.def.joyGainRate * 0.36f / 2500f, curJob.def.joyKind);
+
 
 
             if (curJob.def.joySkill != null)
@@ -51,7 +53,7 @@ namespace PrisonLabor.Core.Recreation
                 pawn.jobs.curDriver.EndJobWith(JobCondition.InterruptForced);
                 return true;
             }
-            if (need.CurLevel > 0.9999f && !curJob.doUntilGatheringEnded)
+            if ((NeedLevelFull(treatment) || NeedLevelFull(pawn.needs.joy)) && !curJob.doUntilGatheringEnded)
             {
                 switch (fullJoyAction)
                 {
@@ -66,14 +68,9 @@ namespace PrisonLabor.Core.Recreation
             return false;
         }
 
-        private static Need GetPrisonerNeed(Pawn pawn)
+        private static bool NeedLevelFull(Need need)
         {
-            Need need = pawn.needs.TryGetNeed<Need_Treatment>();
-            if (need == null)
-            {
-                need = pawn.needs.TryGetNeed<Need_Joy>();
-            }
-            return need;
+            return need != null && need.CurLevel > 0.9999f;
         }
     }
 }
