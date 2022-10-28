@@ -45,9 +45,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_InteractionMode
         [HarmonyTranspiler]
         static IEnumerable<CodeInstruction> Alert_AwaitingMedicalOperationTranspiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> instructions)
         {
-            HPatcher.CreateDebugFileOnDesktop("Alert_AwaitingMedicalOperation", instructions);
+
             OpCode[] opCodesToFind =
-{
+            {
                 OpCodes.Ldfld,
                 OpCodes.Ldsfld,
                 OpCodes.Beq_S
