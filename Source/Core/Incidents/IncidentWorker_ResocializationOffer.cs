@@ -18,7 +18,7 @@ namespace PrisonLabor.Core.Incidents
 
             foreach (var pawn in map.mapPawns.PrisonersOfColony)
             {
-                if (pawn.IsColonist || !pawn.Spawned)
+                if (pawn.IsColonist || !pawn.Spawned || pawn.guest != null && !pawn.guest.Recruitable)
                     continue;
 
                 var treatment = pawn.needs.TryGetNeed<Need_Treatment>();
@@ -39,7 +39,7 @@ namespace PrisonLabor.Core.Incidents
             var affectedPawns = new List<Pawn>(map.mapPawns.PrisonersOfColony);
             foreach (var pawn in map.mapPawns.PrisonersOfColony)
             {
-                if (pawn.IsColonist || !pawn.Spawned)
+                if (pawn.IsColonist || !pawn.Spawned || pawn.guest != null && !pawn.guest.Recruitable)
                     continue;
 
                 var treatment = pawn.needs.TryGetNeed<Need_Treatment>();

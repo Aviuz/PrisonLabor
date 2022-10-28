@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using PrisonLabor.Core.Needs;
 using PrisonLabor.Core.Meta;
 using PrisonLabor.Core.Other;
+using System.Linq;
 
 namespace PrisonLabor.Core.Incidents
 {
@@ -53,7 +54,13 @@ namespace PrisonLabor.Core.Incidents
             {
                 Map map = (Map)parms.target;
                 Pawn t = null;
-                var affectedPawns = new List<Pawn>(map.mapPawns.PrisonersOfColony);
+                Gene _toForget;
+                var affectedPawns = new List<Pawn>(map.mapPawns.PrisonersOfColony.Where(prisoner => !PrisonBreakUtility.GenePreventsPrisonBreaking(prisoner, out _toForget)));
+                if (affectedPawns.Count == 0)
+                {
+                    DebugLogger.info("[PL] No prisoners enable to revolt");
+                    return false;
+                }
 
                 // Calculate chance for blocking incident if prisoners are treated good
                 float treatment = 0f;
@@ -76,8 +83,8 @@ namespace PrisonLabor.Core.Incidents
                 {
                     if (Prefs.DevMode)
                     {
-                        string msg = $"Prison Labor: Revolt blocking chance is currently equal to {chance * 100}% (overall treatment = {treatment}). Rolling ...";
-                        Log.Message(msg);
+                        string msg = $"[PL] revolt blocking chance is currently equal to {chance * 100}% (overall treatment = {treatment}). Rolling ...";
+                        DebugLogger.info(msg);
                     }
                     if (Verse.Rand.Value > chance)
                         return false;
@@ -169,7 +176,7 @@ namespace PrisonLabor.Core.Incidents
 
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Log.Error($"PrisonLabor: Erron on executing Revolt Incident: {e.ToString()}");
                 return false;
