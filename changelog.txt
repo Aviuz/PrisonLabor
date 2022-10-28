@@ -1,4 +1,6 @@
 Changelog:
+1.4.2
+- Recreation fixes
 1.4.1
 - Added Work and bloodfeed interaction for biotech dlc
 - Added Work and hemogen farm interaction for biotech dlc
