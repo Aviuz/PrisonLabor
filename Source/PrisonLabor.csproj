@@ -199,6 +199,7 @@
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_WorkDisabled2.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_PawnTableSetDirtyFix.cs" />
+    <Compile Include="HarmonyPatches\Patches_Work\Patch_CarryToBuilding.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_JobDriver_Mine.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_PlantWork.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_CleanFilth.cs" />

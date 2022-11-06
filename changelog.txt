@@ -1,4 +1,8 @@
 Changelog:
+1.4.3
+- Fix: game should not freeze when prisoner is seleted for gene extraction
+- Fix: machanoids should not work in prison labor area
+- Fix: game should not throw an error when prisoners is carred by pawn
 1.4.2
 - Recreation fixes
 1.4.1
