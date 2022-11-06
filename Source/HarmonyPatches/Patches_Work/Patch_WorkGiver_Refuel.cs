@@ -18,37 +18,37 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
         {
             if (!__result && pawn.IsPrisonerOfColony)
             {
-				return CanRefuel(pawn, t, forced);
-			}
+                return CanRefuel(pawn, t, forced);
+            }
             return __result;
         }
 
 
-		private static bool CanRefuel(Pawn pawn, Thing t, bool forced)
+        private static bool CanRefuel(Pawn pawn, Thing t, bool forced)
         {
-			CompRefuelable compRefuelable = t.TryGetComp<CompRefuelable>();
-			if (compRefuelable == null || compRefuelable.IsFull || !compRefuelable.allowAutoRefuel || !compRefuelable.ShouldAutoRefuelNow)
-			{
-				return false;
-			}
-			if (t.IsForbiddenForPrisoner(pawn) || !pawn.CanReserveAndReach(t, PathEndMode.ClosestTouch, pawn.NormalMaxDanger(), 1, -1, null, forced))
-			{
-				return false;
-			}
+            CompRefuelable compRefuelable = t.TryGetComp<CompRefuelable>();
+            if (compRefuelable == null || compRefuelable.IsFull || !compRefuelable.allowAutoRefuel || !compRefuelable.ShouldAutoRefuelNow)
+            {
+                return false;
+            }
+            if (t.IsForbiddenForPrisoner(pawn) || !pawn.CanReserveAndReach(t, PathEndMode.ClosestTouch, pawn.NormalMaxDanger(), 1, -1, null, forced))
+            {
+                return false;
+            }
 
-			if (Traverse.Create(typeof(RefuelWorkGiverUtility)).Method("FindBestFuel", new[] { pawn, t }).GetValue<Thing>() == null)
-			{
-				ThingFilter fuelFilter = t.TryGetComp<CompRefuelable>().Props.fuelFilter;
-				JobFailReason.Is("NoFuelToRefuel".Translate(fuelFilter.Summary));
-				return false;
-			}
-			if (t.TryGetComp<CompRefuelable>().Props.atomicFueling && Traverse.Create(typeof(RefuelWorkGiverUtility)).Method("FindAllFuel", new[] { pawn, t }).GetValue<List<Thing>>() == null)
-			{
-				ThingFilter fuelFilter2 = t.TryGetComp<CompRefuelable>().Props.fuelFilter;
-				JobFailReason.Is("NoFuelToRefuel".Translate(fuelFilter2.Summary));
-				return false;
-			}
-			return true;
-		}
+            if (Traverse.Create(typeof(RefuelWorkGiverUtility)).Method("FindBestFuel", new[] { pawn, t }).GetValue<Thing>() == null)
+            {
+                ThingFilter fuelFilter = t.TryGetComp<CompRefuelable>().Props.fuelFilter;
+                JobFailReason.Is("NoFuelToRefuel".Translate(fuelFilter.Summary));
+                return false;
+            }
+            if (t.TryGetComp<CompRefuelable>().Props.atomicFueling && Traverse.Create(typeof(RefuelWorkGiverUtility)).Method("FindAllFuel", new[] { pawn, t }).GetValue<List<Thing>>() == null)
+            {
+                ThingFilter fuelFilter2 = t.TryGetComp<CompRefuelable>().Props.fuelFilter;
+                JobFailReason.Is("NoFuelToRefuel".Translate(fuelFilter2.Summary));
+                return false;
+            }
+            return true;
+        }
     }
 }
