@@ -26,7 +26,8 @@
     <li IfModActive="orion.hospitality">1.4/Hospitality</li>
     <li IfModActive="hatti.cleaningarea">1.4/CleaningArea</li>
     <li IfModActive="orion.cashregister">1.4/CashRegistry</li>
-    <li IfModActive="ssulunge.kijinrace2">1.4/Kijin</li>
+    <li IfModActive="ssulunge.kijinrace2">1.4/Kijin2</li>
+    <li IfModActive="ssulunge.kijinrace3">1.4/Kijin</li>
     <li IfModActive="ogliss.thewhitecrayon.quarry">1.4/Quarry</li>
   </v1.4>
 </loadFolders>

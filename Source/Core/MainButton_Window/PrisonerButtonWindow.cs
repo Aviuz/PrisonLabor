@@ -84,7 +84,7 @@ namespace PrisonLabor.Core.MainButton_Window
         {
            foreach(var def in DefDatabase<PrisonersTabDef>.AllDefs)
            {
-                Log.Message($"Def: {def.defName}, def.dev: {def.dev}, dev: {Prefs.DevMode}");
+                DebugLogger.debug($"Def: {def.defName}, def.dev: {def.dev}, dev: {Prefs.DevMode}");
                 if(def.dev == false)
                 {
                     tabsView.Add(def, CreateWindow(def));

@@ -18,11 +18,11 @@ namespace KijinCompatibility
             try
             {
                 harmony.PatchAll(Assembly.GetExecutingAssembly());
-                Log.Message("[PL] Kijin Race 2.0 patched");
+                Log.Message("[PL] Kijin Race 3.0 patched");
             }
             catch (Exception e)
             {
-                Log.Error($"[PL] Patches for Kijin Race 2.0 failed: {e}");
+                Log.Error($"[PL] Patches for Kijin Race 3.0 failed: {e}");
             }
         }
     }

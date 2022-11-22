@@ -1,4 +1,9 @@
 Changelog:
+1.4.4
+- Fix: prisoner work window should be better displayed with greater number of prisoners
+- Harmony patches refactor
+- Compatibility patches for "Kijin Race 3.0"
+- Fixes for new Rimworld version.
 1.4.3
 - Fix: game should not freeze when prisoner is seleted for gene extraction
 - Fix: machanoids should not work in prison labor area
