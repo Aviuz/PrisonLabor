@@ -10,30 +10,39 @@ using System.Threading.Tasks;
 using Verse.AI;
 using Verse;
 using Verse.Noise;
+using System.Reflection.Emit;
+using PrisonLabor.HarmonyPatches;
 
 namespace KijinCompatibility.HarmonyPatches
 {
-    [HarmonyPatch]
-    class PrisonerHarvestResourcesPatch
+  [HarmonyPatch]
+  class PrisonerHarvestResourcesPatch
+  {
+    static MethodBase TargetMethod()
     {
-        static MethodBase TargetMethod()
-        {
-            return AccessTools.Method("Kijin2.Kijin2PlantCollectedPatch:GetFirstPawnNotDeadOrDowned");
-        }
-        static Pawn Postfix(Pawn __result, IntVec3 c, Map map)
-        {
-            if (__result == null)
-            {
-                foreach (Thing thing in GridsUtility.GetThingList(c, map))
-                {
-                    Pawn val = thing as Pawn;
-                    if (val != null && !val.Dead && !val.Downed && val.IsPrisonerOfColony)
-                    {
-                        return val;
-                    }
-                }
-            }
-            return __result;
-        }
+      return AccessTools.Method("Kijin3.Kijin3PlantCollectedPatch:GetFirstPawnNotDeadOrDowned");
     }
+
+    static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    {
+      var codes = new List<CodeInstruction>(instructions);
+      for (int i = 0; i < codes.Count(); i++)
+      {
+        if (i > 0 && ShouldPatch(codes[i], codes[i - 1]))
+        {
+          yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod(nameof(PrisonLaborUtility.GetPawnFaction)));
+        }
+        else
+        {
+          yield return codes[i];
+        }
+      }
+    }
+
+    private static bool ShouldPatch(CodeInstruction actual, CodeInstruction prev)
+    {
+      return prev.opcode == OpCodes.Ldloc_2 && actual.opcode == OpCodes.Callvirt && actual.operand != null && actual.operand.ToString().Contains("RimWorld.Faction get_Faction()");
+    }
+
+  }
 }

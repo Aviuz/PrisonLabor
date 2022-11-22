@@ -10,7 +10,7 @@ using System.Text;
 using Verse;
 using Verse.AI;
 
-namespace PrisonLabor.HarmonyPatches.Patches_DeepDrill
+namespace PrisonLabor.HarmonyPatches.Patches_Work
 {
     [HarmonyPatch(typeof(WorkGiver_DeepDrill))]
     static class EnableDeepDrillsToPrisoners

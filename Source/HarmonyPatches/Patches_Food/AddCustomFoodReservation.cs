@@ -12,7 +12,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
     /// Adds check if food is already reserved before trying to bring it
     /// </summary>
     [HarmonyPatch(typeof(FoodUtility))]
-    [HarmonyPatch(nameof(FoodUtility.BestFoodSourceOnMap))]
+    [HarmonyPatch(nameof(FoodUtility.BestFoodSourceOnMap_NewTemp))]
     static class AddCustomFoodReservation
     {
         /* === Orignal code Look-up===

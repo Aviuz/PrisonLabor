@@ -12,20 +12,20 @@ using Verse;
 
 namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
 {
-    [HarmonyPatch(typeof(InteractionWorker_RecruitAttempt))]
-    [HarmonyPatch("DoRecruit")]
-    [HarmonyPatch(new Type[] { typeof(Pawn), typeof(Pawn),  typeof(string), typeof(string), typeof(bool), typeof(bool) },
-        new ArgumentType[] { ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Out, ArgumentType.Out, ArgumentType.Normal, ArgumentType.Normal })]
-    class Patch_ResetWorktableWhenRecruited
+  [HarmonyPatch(typeof(InteractionWorker_RecruitAttempt))]
+  [HarmonyPatch("DoRecruit")]
+  [HarmonyPatch(new Type[] { typeof(Pawn), typeof(Pawn), typeof(string), typeof(string), typeof(bool), typeof(bool) },
+      new ArgumentType[] { ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Out, ArgumentType.Out, ArgumentType.Normal, ArgumentType.Normal })]
+  class Patch_ResetWorktableWhenRecruited
+  {
+    static void Prefix(Pawn recruiter, Pawn recruitee)
     {
-        static void Prefix(Pawn recruiter, Pawn recruitee)
-        {            
-            if(recruitee != null && recruitee.IsPrisonerOfColony && recruiter != null && recruiter.Faction == Faction.OfPlayer)
-            {
-                CleanPrisonersStatus.Clean(recruitee);
-                Log.Message($"[PrisonLabor] Removed prisoners effects from {recruitee.LabelShort}");
-            }
-        }
-
+      if (recruitee != null && recruitee.IsPrisonerOfColony && recruiter != null && recruiter.Faction == Faction.OfPlayer)
+      {
+        CleanPrisonersStatus.Clean(recruitee);
+        Log.Message($"[PrisonLabor] Removed prisoners effects from {recruitee.LabelShort}");
+      }
     }
+
+  }
 }
