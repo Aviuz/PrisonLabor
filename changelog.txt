@@ -1,4 +1,6 @@
 Changelog:
+1.4.5
+- Fix: need assigments for prisoners only
 1.4.4
 - Fix: prisoner work window should be better displayed with greater number of prisoners
 - Harmony patches refactor

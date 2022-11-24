@@ -4,6 +4,7 @@
     <!-- [img] ... [/img] for image (inside name of file) -->
     <!-- [gap] for gap -->
     <patches>
+      <patch version="1.4.5" silent="true"/>
       <patch version="1.4.4" silent="true"/>
       <patch version="1.4.3" silent="true"/>
       <patch version="1.4.2" silent="true"/>
