@@ -71,6 +71,23 @@ namespace PrisonLabor.HarmonyPatches.Patches_InteractionMode
             {
                 p.guest.ideoForConversion = Faction.OfPlayer.ideos.PrimaryIdeo;
             }
+
+            if (ModsConfig.BiotechActive)
+            {
+                Bill bill = p.BillStack?.Bills?.FirstOrDefault((Bill x) => x.recipe == RecipeDefOf.ExtractHemogenPack);
+                if (newMode == PL_DefOf.PrisonLabor_workAndHemogenFarmOption)
+                {
+                    if (bill == null)
+                    {
+                        HealthCardUtility.CreateSurgeryBill(p, RecipeDefOf.ExtractHemogenPack, null);
+                    }
+                }
+                else if (oldMode == PL_DefOf.PrisonLabor_workAndHemogenFarmOption && bill != null)
+                {
+                    p.BillStack.Bills.Remove(bill);
+                }
+            }
+
         }
 
         public static bool ShouldDisplayConvertIco(ITab_Pawn_Visitor tab)

@@ -12,16 +12,14 @@ namespace PrisonLabor.Core
 {
     public static class PrisonLaborUtility
     {
+        private static readonly List<PrisonerInteractionModeDef> workOptions = new List<PrisonerInteractionModeDef> {
+            PL_DefOf.PrisonLabor_workOption, PL_DefOf.PrisonLabor_workAndRecruitOption , PL_DefOf.PrisonLabor_workAndConvertOption,
+            PL_DefOf.PrisonLabor_workAndEnslaveOption, PL_DefOf.PrisonLabor_workAndBloodfeedOption, PL_DefOf.PrisonLabor_workAndHemogenFarmOption
+        };
+
         public static bool LaborEnabled(this Pawn pawn)
         {
-            if (pawn.IsPrisoner)
-                if (pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workOption || pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndRecruitOption
-                    || pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndConvertOption || pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndEnslaveOption)
-                {
-                    return true;
-                }
-
-            return false;
+            return pawn.IsPrisoner && workOptions.Contains(pawn.guest.interactionMode);
         }
 
         public static bool RecruitInLaborEnabled(Pawn pawn)
@@ -36,7 +34,7 @@ namespace PrisonLabor.Core
 
         public static bool ConvertInLaborEnabled(Pawn doer, Pawn prisoner)
         {
-            if (prisoner.guest.interactionMode == PL_DefOf.PrisonLabor_workAndConvertOption && prisoner.guest.ScheduledForInteraction 
+            if (prisoner.guest.interactionMode == PL_DefOf.PrisonLabor_workAndConvertOption && prisoner.guest.ScheduledForInteraction
                 && prisoner.Ideo != doer.Ideo && doer.Ideo == prisoner.guest.ideoForConversion)
             {
                 return true;
@@ -92,7 +90,7 @@ namespace PrisonLabor.Core
 
         public static bool CanWorkHere(IntVec3 pos, Pawn pawn, WorkTypeDef workType)
         {
-            if (pawn.IsFreeNonSlaveColonist && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null && !WorkSettings.WorkDisabled(workType))
+            if ((pawn.IsFreeNonSlaveColonist || pawn.IsColonyMech) && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null && !WorkSettings.WorkDisabled(workType))
             {
                 bool result = true;
                 try
@@ -111,6 +109,63 @@ namespace PrisonLabor.Core
         public static Faction GetPawnFaction(Pawn pawn)
         {
             return pawn.IsPrisonerOfColony ? Faction.OfPlayer : pawn.Faction;
+        }
+
+        public static bool CanUsePrisonerInteraction(this Pawn prisoner, PrisonerInteractionModeDef mode)
+        {
+            if (!prisoner.guest.Recruitable && mode.hideIfNotRecruitable)
+            {
+                return false;
+            }
+            if (prisoner.IsWildMan() && !mode.allowOnWildMan)
+            {
+                return false;
+            }
+            if (mode.hideIfNoBloodfeeders && prisoner.MapHeld != null && !ColonyHasAnyBloodfeeder(prisoner.MapHeld))
+            {
+                return false;
+            }
+            if (mode.hideOnHemogenicPawns && ModsConfig.BiotechActive && prisoner.genes != null && prisoner.genes.HasGene(GeneDefOf.Hemogenic))
+            {
+                return false;
+            }
+            if (!mode.allowInClassicIdeoMode && Find.IdeoManager.classicMode)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private static bool ColonyHasAnyBloodfeeder(Map map)
+        {
+            if (ModsConfig.BiotechActive)
+            {
+                foreach (Pawn item in map.mapPawns.FreeColonistsSpawned)
+                {
+                    if (item.IsBloodfeeder())
+                    {
+                        return true;
+                    }
+                }
+                foreach (Pawn item2 in map.mapPawns.PrisonersOfColony)
+                {
+                    if (item2.IsBloodfeeder())
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool HemogenFarmInteractionMode(PrisonerInteractionModeDef interaction)
+        {
+            return interaction == PrisonerInteractionModeDefOf.HemogenFarm || interaction == PL_DefOf.PrisonLabor_workAndHemogenFarmOption;
+        }
+
+        public static bool BloodFeedInteractionMode(PrisonerInteractionModeDef interaction)
+        {
+            return interaction == PrisonerInteractionModeDefOf.Bloodfeed || interaction == PL_DefOf.PrisonLabor_workAndBloodfeedOption;
         }
     }
 }

@@ -8,6 +8,8 @@
     <listPriority>90</listPriority>
     <major>false</major>
     <showForCaravanMembers>false</showForCaravanMembers>
+    <minIntelligence>Humanlike</minIntelligence>
+    <colonistAndPrisonersOnly>true</colonistAndPrisonersOnly>
   </NeedDef>
   <NeedDef>
     <defName>PrisonLabor_Treatment</defName>
@@ -18,5 +20,7 @@
     <major>false</major>
     <showForCaravanMembers>false</showForCaravanMembers>
     <showOnNeedList>false</showOnNeedList>
+    <minIntelligence>Humanlike</minIntelligence>
+    <colonistAndPrisonersOnly>true</colonistAndPrisonersOnly>
   </NeedDef>  
 </Defs>

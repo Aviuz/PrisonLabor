@@ -17,15 +17,15 @@ namespace PrisonLabor.Core.MainButton_Window
         {
             if (pawn.guest != null)
             {
-                List<PrisonerInteractionModeDef> lists = new List<PrisonerInteractionModeDef>();
                 Widgets.Dropdown(rect, pawn, (Pawn p) => p.guest.interactionMode, Button_GenerateMenu, pawn.guest.interactionMode.LabelCap.Truncate(rect.width), null, pawn.guest.interactionMode.LabelCap, null, null, paintable: true);
-                
             }
         }
 
         private IEnumerable<Widgets.DropdownMenuElement<PrisonerInteractionModeDef>> Button_GenerateMenu(Pawn pawn)
         {
-            foreach (PrisonerInteractionModeDef intertaction in DefDatabase<PrisonerInteractionModeDef>.AllDefs.OrderBy((PrisonerInteractionModeDef pim) => pim.listOrder))
+            foreach (PrisonerInteractionModeDef intertaction in DefDatabase<PrisonerInteractionModeDef>.AllDefs
+                .Where(def => pawn.CanUsePrisonerInteraction(def))
+                .OrderBy((PrisonerInteractionModeDef pim) => pim.listOrder))
             {
                 yield return new Widgets.DropdownMenuElement<PrisonerInteractionModeDef>
                 {
@@ -40,12 +40,12 @@ namespace PrisonLabor.Core.MainButton_Window
         public void SetInteractionMode(Pawn pawn, PrisonerInteractionModeDef intertaction)
         {
             pawn.guest.interactionMode = intertaction;
-            if(intertaction == PrisonerInteractionModeDefOf.Convert || intertaction == PL_DefOf.PrisonLabor_workAndConvertOption)
+            if (intertaction == PrisonerInteractionModeDefOf.Convert || intertaction == PL_DefOf.PrisonLabor_workAndConvertOption)
             {
                 pawn.guest.ideoForConversion = Faction.OfPlayer.ideos.PrimaryIdeo;
             }
         }
-        
+
         public override int GetMinWidth(PawnTable table)
         {
             return Mathf.Max(base.GetMinWidth(table), Mathf.CeilToInt(194f));

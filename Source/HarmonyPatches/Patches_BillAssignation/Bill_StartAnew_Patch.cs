@@ -34,9 +34,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_BillAssignation
                 {
                     return true;
                 }
-                if (__instance.recipe.workSkill != null)
+                if (__instance.recipe.workSkill != null && (p.skills != null || p.IsColonyMech))
                 {
-                    int level = p.skills.GetSkill(__instance.recipe.workSkill).Level;
+                    int level = (p.skills != null) ? p.skills.GetSkill(__instance.recipe.workSkill).Level : p.RaceProps.mechFixedSkillLevel;
                     if (level < __instance.allowedSkillRange.min)
                     {
                         JobFailReason.Is("UnderAllowedSkill".Translate(__instance.allowedSkillRange.min), __instance.Label);
@@ -48,6 +48,11 @@ namespace PrisonLabor.HarmonyPatches.Patches_BillAssignation
                         return false;
                     }
 
+                }
+                if (ModsConfig.BiotechActive && __instance.recipe.mechanitorOnlyRecipe && !MechanitorUtility.IsMechanitor(p))
+                {
+                    JobFailReason.Is("NotAMechanitor".Translate());
+                    return false;
                 }
                 if (group == GroupMode.ColonyOnly || (group == GroupMode.CaptiveOnly && p.IsPrisoner))
                 {

@@ -1,21 +1,24 @@
 ﻿using HarmonyLib;
 using PrisonLabor.Core;
-using PrisonLabor.Core.Other;
 using RimWorld;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using Verse;
 using Verse.AI;
 
 namespace PrisonLabor.HarmonyPatches.Patches_Work
 {
-  [HarmonyPatch(typeof(RefuelWorkGiverUtility), "CanRefuel")]
-  class Patch_WorkGiver_Refuel
+  [HarmonyPatch]
+  class Patch_RepairUtility
   {
+    static IEnumerable<MethodBase> TargetMethods()
+    {
+      yield return typeof(RepairUtility).GetMethod(nameof(RepairUtility.PawnCanRepairEver));
+      yield return typeof(RepairUtility).GetMethod(nameof(RepairUtility.PawnCanRepairNow));
+    }
+
     static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
       var codes = new List<CodeInstruction>(instructions);
@@ -36,6 +39,11 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
     {
       return prev.opcode == OpCodes.Ldarg_0 && actual.opcode == OpCodes.Callvirt && actual.operand != null && actual.operand.ToString().Contains("RimWorld.Faction get_Faction()");
     }
+  }
+
+  [HarmonyPatch(typeof(WorkGiver_Repair), "HasJobOnThing")]
+  class Patch_WorkGiver_Repair
+  {
     static bool Postfix(bool __result, Pawn pawn, Thing t, bool forced)
     {
       if (__result && pawn.IsPrisonerOfColony)

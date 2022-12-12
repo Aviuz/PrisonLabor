@@ -21,6 +21,19 @@ namespace PrisonLabor.Core.Other
             {
                 prisoner.drugs.CurrentPolicy = Current.Game.drugPolicyDatabase.DefaultDrugPolicy();
             }
+            if (ModsConfig.BiotechActive)
+            {
+                if(prisoner.guest != null)
+                {
+                    prisoner.guest.interactionMode = PrisonerInteractionModeDefOf.NoInteraction;
+                }
+                Bill bill = prisoner.BillStack?.Bills?.FirstOrDefault((Bill x) => x.recipe == RecipeDefOf.ExtractHemogenPack);
+                if (bill != null)
+                {
+                    prisoner.BillStack.Bills.Remove(bill);
+                }
+                
+            }
         }
 
         static public void CleanHediffs(Pawn prisoner)

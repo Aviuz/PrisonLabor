@@ -4,6 +4,23 @@
     <!-- [img] ... [/img] for image (inside name of file) -->
     <!-- [gap] for gap -->
     <patches>
+      <patch version="1.4.5" silent="true"/>
+      <patch version="1.4.4" silent="true"/>
+      <patch version="1.4.3" silent="true"/>
+      <patch version="1.4.2" silent="true"/>
+      <patch version="1.4.1" silent ="false">
+        <title>Prison Labor v 1.4.1</title>
+        <items>
+          <item>[-] Added Work and bloodfeed interaction for biotech dlc</item>
+          <item>[-] Added Work and hemogen farm interaction for biotech dlc</item>
+          <item>[-] Resocialization offer should not appear on pawn with Unwavering Loyalty</item>
+          <item>[-] Work and x interaction updated to have similar options to vanilla one</item>
+          <item>[-] Some interaction should be blocked due to Unwavering Loyalty</item>
+          <item>[-] Fix for mech gestator usage</item>
+          <item>[-] Recruited prisoners should have removed drain hemogen bill</item>
+          <item>[-] Prisoners should not be revolting if genes don't allow that</item>
+        </items>
+      </patch>
         <patch version="1.4.0" silent ="false">
             <title>Prison Labor v 1.4.0</title>
             <items>

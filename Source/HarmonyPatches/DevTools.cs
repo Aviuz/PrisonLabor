@@ -79,6 +79,23 @@ namespace PrisonLabor.HarmonyPatches
             logEscapeUtilityEnabled = !logEscapeUtilityEnabled;
         }
 
+        [DebugAction("Prison Labor Tools", "Remove hemogen bill", actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ClearBiil(Pawn p)
+        {
+            if (ModsConfig.BiotechActive)
+            {
+                Bill bill = p.BillStack?.Bills?.FirstOrDefault((Bill x) => x.recipe == RecipeDefOf.ExtractHemogenPack);
+                if (bill != null)
+                {
+                    p.BillStack.Bills.Remove(bill);
+                }
+            }
+            else
+            {
+                Log.Message("Biotech disabled");
+            }
+        }
+
         #region Utilities
         static void OffsetNeed(Pawn pawn, NeedDef nd, float offsetPct)
         {

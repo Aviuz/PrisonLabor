@@ -1,4 +1,26 @@
 Changelog:
+1.4.5
+- Fix: need assigments for prisoners only
+1.4.4
+- Fix: prisoner work window should be better displayed with greater number of prisoners
+- Harmony patches refactor
+- Compatibility patches for "Kijin Race 3.0"
+- Fixes for new Rimworld version.
+1.4.3
+- Fix: game should not freeze when prisoner is seleted for gene extraction
+- Fix: machanoids should not work in prison labor area
+- Fix: game should not throw an error when prisoners is carred by pawn
+1.4.2
+- Recreation fixes
+1.4.1
+- Added Work and bloodfeed interaction for biotech dlc
+- Added Work and hemogen farm interaction for biotech dlc
+- Resocialization offer should not appear on pawn with Unwavering Loyalty
+- Work and x interaction updated to have similar options to vanilla one
+- Some interaction should be blocked due to Unwavering Loyalty
+- Fix for mech gestator usage
+- Recruited prisoners should have removed drain hemogen bill
+- Prisoners should not be revolting if genes don't allow that
 1.4.0
 - Update for Rimworld 1.4. All listed features below will only work with game version 1.4.
 - Compatibility patch for CleaningArea

@@ -53,7 +53,7 @@ namespace PrisonLabor.Core.Needs
             IsPrisonerWorking = false;
         }
 
-        protected override bool IsFrozen => !PrisonLaborPrefs.EnableMotivationMechanics || base.IsFrozen;
+        protected override bool IsFrozen => !PrisonLaborPrefs.EnableMotivationMechanics || !pawn.IsPrisoner || base.IsFrozen || pawn.Map == null || pawn.Dead;
 
         public override void NeedInterval()
         {

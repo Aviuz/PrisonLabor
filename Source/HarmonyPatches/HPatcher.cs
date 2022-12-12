@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace PrisonLabor.HarmonyPatches
 {
-    internal static class HPatcher
+    public static class HPatcher
     {
         // For logging purposes, it stores whenever each fragment was completed
         private static Dictionary<string, bool> fragments;
