@@ -9,21 +9,43 @@ using System.Threading.Tasks;
 
 namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
 {
-    [HarmonyPatch(typeof(Bill))]
-    public class Patch_Bill_Assigment
+  [HarmonyPatch(typeof(Bill))]
+  public class Patch_Bill_Assigment
+  {
+    [HarmonyPostfix]
+    [HarmonyPatch("SetAnyPawnRestriction")]
+    static void ColonistPostFix(Bill __instance)
     {
-        [HarmonyPostfix]
-        [HarmonyPatch("SetAnyPawnRestriction")]
-        static void ColonistPostFix(Bill __instance)
-        {
-            BillAssignationUtility.SetFor(__instance, GroupMode.ColonistsOnly);
-        }
-
-        [HarmonyPostfix]
-        [HarmonyPatch("SetAnySlaveRestriction")]
-        static void SlavePostFix(Bill __instance)
-        {
-            BillAssignationUtility.SetFor(__instance, GroupMode.SlavesOnly);
-        }
+      if (__instance.recipe.mechanitorOnlyRecipe)
+      {
+        BillAssignationUtility.SetFor(__instance, GroupMode.MechanitorOnly);
+      }
+      else
+      {
+        BillAssignationUtility.SetFor(__instance, GroupMode.ColonistsOnly);
+      }
     }
+
+    [HarmonyPostfix]
+    [HarmonyPatch("SetAnyMechRestriction")]
+    static void MechPostFix(Bill __instance)
+    {
+      BillAssignationUtility.SetFor(__instance, GroupMode.MechsOnly);
+    }
+
+
+    [HarmonyPostfix]
+    [HarmonyPatch("SetAnyNonMechRestriction")]
+    static void OnlyHumanPostFix(Bill __instance)
+    {
+      BillAssignationUtility.SetFor(__instance, GroupMode.HumansOnly);
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPatch("SetAnySlaveRestriction")]
+    static void SlavePostFix(Bill __instance)
+    {
+      BillAssignationUtility.SetFor(__instance, GroupMode.SlavesOnly);
+    }
+  }
 }
