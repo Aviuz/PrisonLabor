@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LanguageData>
-  <PrisonLabor_workAndBloodfeedOption.label>工作與供血</PrisonLabor_workAndBloodfeedOption.label>  <PrisonLabor_workAndBloodfeedOption.description>強迫囚犯工作，血原需求者可無視囚犯心情直接對其進食。</PrisonLabor_workAndBloodfeedOption.description>
-  
-  <PrisonLabor_workAndHemogenFarmOption.label>工作和血包</PrisonLabor_workAndHemogenFarmOption.label>  <PrisonLabor_workAndHemogenFarmOption.description>強迫囚犯工作，以不造成死亡為原則，抽取血液。</PrisonLabor_workAndHemogenFarmOption.description>
-
-</LanguageData>

@@ -29,5 +29,6 @@
     <li IfModActive="ssulunge.kijinrace2">1.4/Kijin2</li>
     <li IfModActive="ssulunge.kijinrace3">1.4/Kijin</li>
     <li IfModActive="ogliss.thewhitecrayon.quarry">1.4/Quarry</li>
+    <li IfModActive="derekbickley.ltocolonygroupsfinal">1.4/ColonyGroups</li>
   </v1.4>
 </loadFolders>

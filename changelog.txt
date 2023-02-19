@@ -1,4 +1,9 @@
 Changelog:
+1.4.6
+- Chinese translation update (https://github.com/shiuanyue)
+- Mechanitor and Mechs should be assignable from bills menu
+- Prisoners should not deliver resources to forbidden frames and blueprints
+- Compatibility patches for [LTO] Colony Groups
 1.4.5
 - Fix: need assigments for prisoners only
 1.4.4

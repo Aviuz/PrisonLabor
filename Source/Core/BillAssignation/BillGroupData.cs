@@ -8,7 +8,11 @@ namespace PrisonLabor.Core.BillAssignation
         PrisonersOnly,
         ColonistsOnly,
         SlavesOnly,
-        CaptiveOnly
+        HumansOnly,
+        MechsOnly,
+        MechanitorOnly,
+        CaptiveOnly,
+        ColonyGroups
     }
 
     public class BillGroupData : IExposable

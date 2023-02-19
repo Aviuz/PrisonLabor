@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KijinCompatibility", "Compa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningAreaCompatibility", "CompatibilityProjects\CleaningAreaCompatibility\CleaningAreaCompatibility.csproj", "{B904E495-7C04-412A-AF45-B02EE0150087}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColonyGroupsCompatibility", "CompatibilityProjects\ColonyGroupsCompatibility\ColonyGroupsCompatibility.csproj", "{A77AE1EB-BA5D-4B3A-9D9B-A9580850FAAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{B904E495-7C04-412A-AF45-B02EE0150087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B904E495-7C04-412A-AF45-B02EE0150087}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B904E495-7C04-412A-AF45-B02EE0150087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A77AE1EB-BA5D-4B3A-9D9B-A9580850FAAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A77AE1EB-BA5D-4B3A-9D9B-A9580850FAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A77AE1EB-BA5D-4B3A-9D9B-A9580850FAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A77AE1EB-BA5D-4B3A-9D9B-A9580850FAAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
