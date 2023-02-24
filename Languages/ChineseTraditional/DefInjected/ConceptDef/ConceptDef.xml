@@ -2,7 +2,7 @@
 <LanguageData>
 
   <PrisonLabor_Indroduction.label>監獄勞工</PrisonLabor_Indroduction.label>
-  <PrisonLabor_Indroduction.helpText>您可以強迫囚犯進行工作。\n\n為此，您必須從[概述]中選擇{強制工作}\n\n囚犯在可以進出的房間工作。請確認房門設定。\n\n囚犯只允許烹飪、採礦、砍伐植物、運輸、清潔或種植無需等級的植物。\n\n囚犯有時拒絕工作。原因眾多。可能受傷、飢餓、疲倦或動力不足。\n\n提示：您可以在[工作]中分配職務。\n\n提示：如果你在牢房中放置一個加工桌,請確保可以拿到原料。\n\n提示：您可以讓門開著來讓他們移動。</PrisonLabor_Indroduction.helpText>
+  <PrisonLabor_Indroduction.helpText>您可以強迫囚犯進行工作。\n\n為此，您必須從[概述]中選擇{強制工作}\n\n囚犯在可以進出的房間工作。請確認房門設定。\n\n囚犯只允許烹飪、採礦、砍伐植物、運輸、清潔或種植無需等級的植物。\n\n囚犯有時拒絕工作。原因眾多。可能受傷、飢餓、疲倦或動力不足。\n\n提示：您可以在[工作]中分配職務。\n\n提示：如果你在牢房中放置一個加工桌,請確保可以拿到原料。\n\n提示：可以讓門大開方便囚犯進出，但記得看守。</PrisonLabor_Indroduction.helpText>
 
   <PrisonLabor_Motivation.label>監督囚犯</PrisonLabor_Motivation.label>
   <PrisonLabor_Motivation.helpText>你的囚犯停止了工作。\n他將不再工作，除非他有動力。\n\n可以在[需求]選項中查看動力值。\n\n確保你有足夠的看守（檢查殖民者[工作]選項），或者命令一個殖民者站在囚犯周圍。\n\n看守囚犯可以降低暴動風險。</PrisonLabor_Motivation.helpText>
