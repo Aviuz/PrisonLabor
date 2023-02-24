@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <PrisonLabor_Motivation.label>監督</PrisonLabor_Motivation.label>
-  <PrisonLabor_Motivation.description>要是沒人監督囚犯 他們可能會偷懶</PrisonLabor_Motivation.description>
+  <PrisonLabor_Motivation.label>動力值</PrisonLabor_Motivation.label>
+  <PrisonLabor_Motivation.description>代表囚犯的工作意願。可通過殖民者在一旁看守來提高動力值。</PrisonLabor_Motivation.description>
 
   <PrisonLabor_Treatment.label>待遇指數</PrisonLabor_Treatment.label>
-  <PrisonLabor_Treatment.description>待遇指數代表囚犯在殖民地中接受怎樣對待.</PrisonLabor_Treatment.description>
+  <PrisonLabor_Treatment.description>代表囚犯在殖民地接受怎樣對待.</PrisonLabor_Treatment.description>
 
 
 </LanguageData>
