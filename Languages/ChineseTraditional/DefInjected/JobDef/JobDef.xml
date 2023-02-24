@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <PrisonLabor_PrisonerSupervise.reportString>看著囚犯TargetA.</PrisonLabor_PrisonerSupervise.reportString>
+  <PrisonLabor_PrisonerSupervise.reportString>看守 TargetA.</PrisonLabor_PrisonerSupervise.reportString>
   <PrisonLabor_Arrest.reportString>逮捕 TargetA.</PrisonLabor_Arrest.reportString>
   <PrisonLabor_HandlePrisonersLegChain.reportString>處理TargetA的腳銬。</PrisonLabor_HandlePrisonersLegChain.reportString>
   <PrisonLabor_HandlePrisonersHandChain.reportString>處理TargetA的手銬。</PrisonLabor_HandlePrisonersHandChain.reportString>
