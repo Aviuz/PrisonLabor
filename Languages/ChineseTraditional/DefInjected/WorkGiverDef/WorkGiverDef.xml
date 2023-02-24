@@ -9,9 +9,9 @@
   <PrisonLabor_ChatWithPrisoner.verb>聊天</PrisonLabor_ChatWithPrisoner.verb>
   <PrisonLabor_ChatWithPrisoner.gerund>聊天</PrisonLabor_ChatWithPrisoner.gerund>
 
-  <PrisonLabor_HandleChains.label>處理囚犯的鏈條</PrisonLabor_HandleChains.label>
-  <PrisonLabor_HandleChains.verb>&gt;處理囚犯的鏈條</PrisonLabor_HandleChains.verb>
-  <PrisonLabor_HandleChains.gerund>&gt;處理囚犯的鏈條</PrisonLabor_HandleChains.gerund>
+  <PrisonLabor_HandleChains.label>處理囚犯枷鎖</PrisonLabor_HandleChains.label>
+  <PrisonLabor_HandleChains.verb>處理囚犯枷鎖</PrisonLabor_HandleChains.verb>
+  <PrisonLabor_HandleChains.gerund>處理囚犯枷鎖</PrisonLabor_HandleChains.gerund>
 
 
 </LanguageData>
