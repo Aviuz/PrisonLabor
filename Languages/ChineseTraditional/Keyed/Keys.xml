@@ -42,7 +42,7 @@
   <PrisonLabor_ExpandLaborArea>擴大勞動區域</PrisonLabor_ExpandLaborArea>
 
   <PrisonLabor_EnableRevolts>啟用暴動</PrisonLabor_EnableRevolts>
-  <PrisonLabor_EnableRevoltsDesc>啟用時，額外事件時會發生，而不是原版自帶</PrisonLabor_EnableRevoltsDesc>
+  <PrisonLabor_EnableRevoltsDesc>啟用時，會發生不是原版的額外事件</PrisonLabor_EnableRevoltsDesc>
   <PrisonLabor_LaborAreaWarning>勞動區不是囚犯工作的必要條件。\n\n該區域禁止殖民者工作。\n\n適用於你不希望殖民者在特定區域出現。囚犯能在可進出的任何房間工作。</PrisonLabor_LaborAreaWarning>
   <PrisonLabor_DontShowAgain>不再顯示</PrisonLabor_DontShowAgain>
   <PrisonLabor_ShowTreatmentHappiness>顯示待遇指數</PrisonLabor_ShowTreatmentHappiness>
