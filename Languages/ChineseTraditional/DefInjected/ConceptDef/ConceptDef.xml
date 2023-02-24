@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <PrisonLabor_Indroduction.label>監獄勞工</PrisonLabor_Indroduction.label>
+  <PrisonLabor_Indroduction.helpText>您可以強迫囚犯進行工作。\n\n為此，您必須從[概述]中選擇{強制工作}\n\n囚犯在可以進出的房間工作。請確認房門設定。\n\n囚犯只允許烹飪、採礦、砍伐植物、運輸、清潔或種植無需等級的植物。\n\n囚犯有時拒絕工作。原因眾多。可能受傷、飢餓、疲倦或動力不足。\n\n提示：您可以在[工作]中分配職務。\n\n提示：如果你在牢房中放置一個加工桌,請確保可以拿到原料。\n\n提示：您可以讓門開著來讓他們移動。</PrisonLabor_Indroduction.helpText>
+
+  <PrisonLabor_Motivation.label>監督囚犯</PrisonLabor_Motivation.label>
+  <PrisonLabor_Motivation.helpText>你的囚犯停止了工作。\n他將不再工作，除非他有動力。\n\n可以在[需求]選項中查看動力值。\n\n確保你有足夠的看守（檢查殖民者[工作]選項），或者命令一個殖民者站在囚犯周圍。\n\n看守囚犯可以降低暴動風險。</PrisonLabor_Motivation.helpText>
+
+  <PrisonLabor_Growing.label>囚犯種植</PrisonLabor_Growing.label>
+  <PrisonLabor_Growing.helpText>囚犯只能種植無需技能等級的植物，例如馬鈴薯或棉花。但允許採收任何標記【收獲】的植物。。</PrisonLabor_Growing.helpText>
+
+  <PrisonLabor_Management.label>監獄管理</PrisonLabor_Management.label>
+  <PrisonLabor_Management.helpText>您可以通過多種方式管理監獄勞工。\n\n[工作]選項為囚犯分配工作。\n\n[計劃]選項來規劃囚犯工作、休息或睡覺的時間。\n\n你可以限制某項工作只允许囚犯。從建築欄－區域選擇“囚犯勞動區”來規劃範圍。\n工作台增加［謹限囚犯］選項</PrisonLabor_Management.helpText>
+
+  <PrisonLabor_Timetable.label>囚犯時間限制</PrisonLabor_Timetable.label>
+  <PrisonLabor_Timetable.helpText>您可以為囚犯設置時間限制。\n\n“工作”時間迫使你的囚犯工作，即使他們又餓又累。\n\n“娛樂”時間允許放下工作放風並獲得動力值。\n\n“睡眠”時間強制讓囚犯回去牢房裡。\n\n“任何”是默認設置。</PrisonLabor_Timetable.helpText>
+
+  <PrisonLabor_Treatment.label>待遇系統</PrisonLabor_Treatment.label>
+  <PrisonLabor_Treatment.helpText>在監獄勞工中，您需要照顧囚犯。良好待遇能預防暴動並增加自願加入的可能（無需多費口舌！）。\n\n要保持良好評價，需準時餵飽囚犯並設置一些空閒時間，以便他們恢復體力\n\n如果你毆打、讓其挨餓或者在超時勞動剝削囚犯將降低評價。\n良好待遇將會有：\n - 隨機出現自願加入殖民地的事件\n - 防止暴動\n - 防止自殺</PrisonLabor_Treatment.helpText>
+
+
+</LanguageData>
