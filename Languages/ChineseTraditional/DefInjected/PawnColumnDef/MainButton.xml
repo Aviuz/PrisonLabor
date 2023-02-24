@@ -9,11 +9,11 @@
   <PL_Resocialization.label>再社會化</PL_Resocialization.label>
   <PL_Resocialization.headerTip>囚犯想加入你的殖民地</PL_Resocialization.headerTip>
 
-  <PL_HasLegcuffs.label>有腿銬</PL_HasLegcuffs.label>
-  <PL_HasHandcuffs.label>有手銬</PL_HasHandcuffs.label>
+  <PL_HasLegcuffs.label>腿銬</PL_HasLegcuffs.label>
+  <PL_HasHandcuffs.label>手銬</PL_HasHandcuffs.label>
   <PL_EscapeColumn.label>準備逃跑</PL_EscapeColumn.label>
   <PL_MotivationColumn.label>動機</PL_MotivationColumn.label>
-  <PL_TreatmentColumn.label>治療</PL_TreatmentColumn.label>
+  <PL_TreatmentColumn.label>待遇指數</PL_TreatmentColumn.label>
 
 
 </LanguageData>
