@@ -1,4 +1,6 @@
 Changelog:
+1.4.7
+- Fixes for Vultures from "Reinforced Mechanoid 2"
 1.4.6
 - Chinese translation update (https://github.com/shiuanyue)
 - Mechanitor and Mechs should be assignable from bills menu
