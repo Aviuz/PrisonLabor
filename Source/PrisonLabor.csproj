@@ -85,6 +85,7 @@
     <Compile Include="Core\AI\JobDrivers\JobDriver_Unchain.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_UnchainLegs.cs" />
     <Compile Include="Core\AI\JobDrivers\JobDriver_UnchainHands.cs" />
+    <Compile Include="Core\AI\JobGivers\JobGiver_Prisoner_OptimizeApparel.cs" />
     <Compile Include="Core\AI\ThinkNodes\ThinkNode_IsMotivated.cs" />
     <Compile Include="Core\AI\JobGivers\JobGiver_PrisonersRecreation.cs" />
     <Compile Include="Core\AI\WorkGivers\WorkGivers_ManipulatePrisoner.cs" />
@@ -97,6 +98,18 @@
     <Compile Include="Core\GUI_Components\TexturePool.cs" />
     <Compile Include="Core\GUI_Components\RichListing.cs" />
     <Compile Include="Core\GUI_Components\SImpleVideo.cs" />
+    <Compile Include="Core\Interrogation\Comp_Interrogation.cs" />
+    <Compile Include="Core\Interrogation\InterrogationDefsOf.cs" />
+    <Compile Include="Core\Interrogation\InterrogationQuestGenDef.cs" />
+    <Compile Include="Core\Interrogation\Ritual\JobDriver_Interrogate.cs" />
+    <Compile Include="Core\Interrogation\Ritual\JobGiver_Interrogate.cs" />
+    <Compile Include="Core\Interrogation\Ritual\NonColonyPrisonerRole.cs" />
+    <Compile Include="Core\Interrogation\Ritual\RitualBehaviorWorker_Interrogation.cs" />
+    <Compile Include="Core\Interrogation\Ritual\RitualObligationTargetWorker_Interrogation.cs" />
+    <Compile Include="Core\Interrogation\Ritual\RitualOutcomeEffectWorker_Interrogation.cs" />
+    <Compile Include="Core\Interrogation\Ritual\RitualPosition_ThingCenter.cs" />
+    <Compile Include="Core\Interrogation\Ritual\RitualSpectatorFilter_None.cs" />
+    <Compile Include="Core\Interrogation\RoomRoleWorker_InterrogationRoom.cs" />
     <Compile Include="Core\LaborArea\Area_Labor.cs" />
     <Compile Include="Constants\BGP.cs" />
     <Compile Include="Core\BillAssignation\BillGroupData.cs" />
@@ -106,6 +119,7 @@
     <Compile Include="Core\LaborArea\Designator_AreaLabor.cs" />
     <Compile Include="Core\LaborArea\Designator_AreaLaborExpand.cs" />
     <Compile Include="Core\MainButton_Window\ColumnWorker_HasHandscuffs.cs" />
+    <Compile Include="Core\MainButton_Window\ColumnWorker_HasIntel.cs" />
     <Compile Include="Core\MainButton_Window\ColumnWorker_HasLegcuffs.cs" />
     <Compile Include="Core\MainButton_Window\ColumnWorker_Interaction.cs" />
     <Compile Include="Core\MainButton_Window\ColumnWorker_Treatment.cs" />
@@ -142,10 +156,12 @@
     <Compile Include="Core\Windows\ReplayTutorialsWindow.cs" />
     <Compile Include="Core\Windows\TutorialWindow.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
+    <Compile Include="HarmonyPatches\Patches_Apparel\PrisonerRespectOutfits.cs" />
     <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Bill_StartAnew_Patch.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_Bill_ProductionWithUft.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_BlueprintsForPlayerFaction.cs" />
+    <Compile Include="HarmonyPatches\Patches_Work\Patch_Breastfeed.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_Smoothing.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\EnableDeepDrillsToPrisoners.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />

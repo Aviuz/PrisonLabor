@@ -20,7 +20,7 @@
                 <li Class="ThinkNode_Tagger">
                     <tagToGive>ChangingApparel</tagToGive>
                     <subNodes>
-                        <li Class="JobGiver_PrisonerGetDressed" />
+                        <li Class="PrisonLabor.Core.AI.JobGivers.JobGiver_Prisoner_OptimizeApparel" />
                     </subNodes>
                 </li>
                 <li Class="ThinkNode_PrioritySorter">

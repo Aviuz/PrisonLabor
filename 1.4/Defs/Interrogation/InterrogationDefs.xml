@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <PrisonLabor.Core.Interrogation.InterrogationQuestGenDef>
+    <defName>PL_GenQuest</defName>
+    <questScriptDefs>
+      <li>OpportunitySite_ItemStash</li>
+      <li>OpportunitySite_WorkSite</li>
+    </questScriptDefs>
+  </PrisonLabor.Core.Interrogation.InterrogationQuestGenDef>
+  <ThingDef ParentName="ArtableFurnitureBase">
+    <defName>PL_InterrogationChair</defName>
+    <label>interrogation chair</label>
+    <description>Not comfortable chair used to interrogate prisoners.</description>
+    <graphicData>
+      <texPath>Things/Building/Furniture/DiningChair</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <damageData>
+        <rectN>(0.25,0.234375,0.5,0.28125)</rectN>
+        <rectS>(0.25,0.234375,0.5,0.28125)</rectS>
+        <rectE>(0.28125,0.25,0.453125,0.25)</rectE>
+        <rectW>(0.28125,0.25,0.453125,0.25)</rectW>
+      </damageData>
+      <shadowData>
+        <volume>(0.23, 0.26, 0.23)</volume>
+      </shadowData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>8000</WorkToBuild>
+      <Mass>5</Mass>
+      <Flammability>1.0</Flammability>
+      <Beauty>1</Beauty>
+      <Comfort>0.30</Comfort>
+      <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">5</StyleDominance>
+    </statBases>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>45</costStuffCount>
+    <pathCost>30</pathCost>
+    <designationHotKey>Misc7</designationHotKey>
+    <fillPercent>0.35</fillPercent>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <uiOrder>2410</uiOrder>
+    <building>
+      <isSittable>true</isSittable>
+      <paintable>true</paintable>
+    </building>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Styleable"/>
+      <li Class="PrisonLabor.Core.Interrogation.CompPropertiesInterrogation"/>
+    </comps>
+  </ThingDef>
+  <RoomRoleDef>
+    <defName>PL_InterrogationRoom</defName>
+    <label>interrogation room</label>
+    <workerClass>PrisonLabor.Core.Interrogation.RoomRoleWorker_InterrogationRoom</workerClass>
+  </RoomRoleDef>
+</Defs>
