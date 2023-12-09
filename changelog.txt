@@ -1,7 +1,9 @@
 Changelog:
 1.4.8
 - Apparel policy can be assigned to motivated prisoner
-- Prisoner interrogation for single quest generation
+- Prisoner can be interrogated for single quest generation
+- Breastfeeding newborn by prisoner should be fixed
+- Fixes for alerts
 1.4.7
 - Fixes for Vultures from "Reinforced Mechanoid 2"
 1.4.6

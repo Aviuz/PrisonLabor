@@ -16,6 +16,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
   [HarmonyPatch]
   public class Patch_WorkGiver_PrisonerFaction
   {
+    static readonly MethodInfo expectedMethod = AccessTools.PropertyGetter(typeof(Pawn), nameof(Pawn.Faction));
     static IEnumerable<MethodBase> TargetMethods()
     {
       foreach (MethodBase mb in Assembly.GetAssembly(typeof(WorkGiver_Scanner)).GetTypes()
@@ -30,6 +31,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
       yield return typeof(WorkGiver_ConstructFinishFrames).GetMethod(nameof(WorkGiver_ConstructFinishFrames.JobOnThing));
       yield return typeof(WorkGiver_ConstructDeliverResourcesToFrames).GetMethod(nameof(WorkGiver_ConstructDeliverResourcesToFrames.JobOnThing));
       yield return typeof(WorkGiver_ConstructDeliverResourcesToBlueprints).GetMethod(nameof(WorkGiver_ConstructDeliverResourcesToBlueprints.JobOnThing));
+      yield return typeof(ChildcareUtility).GetMethod(nameof(ChildcareUtility.HasBreastfeedCompatibleFactions), new[] { typeof(Faction), typeof(Pawn) });
     }
 
     public static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> inst)
@@ -51,7 +53,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
 
     private static bool ShouldPatch(CodeInstruction actual, CodeInstruction prev)
     {             
-      return prev.opcode == OpCodes.Ldarg_1 && actual.opcode == OpCodes.Callvirt && actual.operand != null && actual.operand.ToString().Contains("RimWorld.Faction get_Faction()");
+      return prev.opcode == OpCodes.Ldarg_1 && actual.opcode == OpCodes.Callvirt && actual.OperandIs(expectedMethod);
     }
   }
 }

@@ -3,331 +3,339 @@
     <!-- [subtitle] for subtitle -->
     <!-- [img] ... [/img] for image (inside name of file) -->
     <!-- [gap] for gap -->
-    <patches>
-      <patch version="1.4.7" silent="true"/>
-      <patch version="1.4.6" silent="true"/>
-      <patch version="1.4.5" silent="true"/>
-      <patch version="1.4.4" silent="true"/>
-      <patch version="1.4.3" silent="true"/>
-      <patch version="1.4.2" silent="true"/>
-      <patch version="1.4.1" silent ="false">
-        <title>Prison Labor v 1.4.1</title>
-        <items>
-          <item>[-] Added Work and bloodfeed interaction for biotech dlc</item>
-          <item>[-] Added Work and hemogen farm interaction for biotech dlc</item>
-          <item>[-] Resocialization offer should not appear on pawn with Unwavering Loyalty</item>
-          <item>[-] Work and x interaction updated to have similar options to vanilla one</item>
-          <item>[-] Some interaction should be blocked due to Unwavering Loyalty</item>
-          <item>[-] Fix for mech gestator usage</item>
-          <item>[-] Recruited prisoners should have removed drain hemogen bill</item>
-          <item>[-] Prisoners should not be revolting if genes don't allow that</item>
-        </items>
-      </patch>
-        <patch version="1.4.0" silent ="false">
-            <title>Prison Labor v 1.4.0</title>
-            <items>
-                <item>[-] Update for Rimworld 1.4. All listed features below will only work with game version 1.4.</item>
-                <item>[-] Compatibility patch for CleaningArea</item>
-                <item>[-] Compatibility patch for Hospitality. Prisoners will entertain guest.</item>
-                <item>[-] Compatibility patch for Therapy. Prisoners can get therapy now.</item>
-                <item>[-] Split all compatibility patches into DLLs. Mod order is required for prison labor.</item>
-                <item>[-] Prisoners can use variant of joy giver building like poker table. Joy need is disabled, but during recreation time their mood will be improved. It will happen only during recreation time assignment.</item>
-                <item>[-] Refactor of prisoners job giver. No new future here, but with enabled prison labor debug logging more info what going on in prisoner mind going on.</item>
-            </items>
-        </patch>
-        <patch version="1.3.11" silent="true"/>
-        <patch version="1.3.10" silent="true"/>
-        <patch version="1.3.9" silent="true"/>
-        <patch version="1.3.8" silent="true"/>
-        <patch version="1.3.7" silent="true"/>
-        <patch version="1.3.6" silent="true"/>
-        <patch version="1.3.5" silent="true"/>
-        <patch version="1.3.4" silent="true"/>
-        <patch version="1.3.3" silent="true"/>
-        <patch version="1.3.2" silent="true"/>
-        <patch version="1.3.0" silent ="false">
-            <title>Prison Labor v 1.3.0</title>
-            <items>
-                <item>[-] Update to Rimworld 1.3</item>
-                <item>[-] Created menu for prisoners.</item>
-                <item>[-] Created tab in prisoners menu "Overview". In this tab interaction mode can be chosen, resocialization offer is moved here from pawn prisoner tab. Also, possibility to order removing/putting cuffs on prisoners are here. Motivation level is also displayed here.</item>
-                <item>[-] Created tab in prisoner menu "Work". It was moved from the tab "Work" in main tab.</item>
-                <item>[-] Created tab in prisoner menu "Schedule". It was moved from the tab "Schedule" in  main tab.</item>
-                <item>[-] Created tab in prisoner menu "Assign". Allows to assign diet and what kind of medicine should be used for prisoner.</item>
-                <item>[-] Created tab in prisoner menu "Dev". For dev tools.</item>
-                <item>[-] Moved restrict bill to group from drop down button to vanilla drop down pawn restriction in bill menu. Added new options to handle vanilla slaves.</item>
-                <item>[gap]</item>
-                <item>Some tutorials are now out of date. Hope to fix them soon.</item>
-                <item>[gap]</item>
-                <item>Honestly don't know if it will work correctly, didn't have enough time to test it right. Please report any bugs and not working slaves.</item>
-            </items>
-        </patch>
-        <patch version="1.2.5" silent ="false">
-            <title>Prison Labor v 1.2.5</title>
-            <items>
-                <item>[-]Refactored rendering icons on prisoners. Instead of drawing textures, mesh is used. It may help with gray screen issue. Icons will be smaller now.</item>
-                <item>[-]Various fixes to work patches which should reduce situations when prisoners stuck.</item>
-                <item>[gap]</item>
-                <item>Probably it is the last release for Rimworld version 1.2. Future updates will be pushed with version 1.3</item>
-            </items>
-        </patch>
-        <patch version="1.2.4">
-            <title>Prison Labor v 1.2.4</title>
-            <items>
-                <item>[-]Changed adding designer for prisoner labor zone to more "common" way. It may fix missing designators as mod incompatibility</item>
-                <item>[-]Prisoners should respect their food restriction when motivation is more than 75%, or they are watched</item>
-                <item>[-]Prisoners should use ground penetration and long scanners</item>
-            </items>
-        </patch>
-        <patch version="1.0.3" silent="true"/>
-        <patch version="1.0.2" silent="true"/>
-        <patch version="1.0.1" silent="true"/>
-        <patch version="1.0.0" silent="true"/>
-        <patch version="0.10.1" silent="false">
-            <title>Prison Labor v0.10.1</title>
-            <items>
-                <item>This patch contains a lot of changes, so there can be bugs. Please [b]report bugs[/b] so I can repair them ASAP</item>
-                <item>[gap]</item>
+  <patches>
+    <patch version="1.4.8" silent="false">
+      <title>Prison Labor v1.4.8</title>
+      <items>
+        <item>[-] Apparel policy can be assigned to motivated prisoner</item>
+        <item>[-] Prisoner can be interrogated for single quest generation</item>
+        <item>[-] Breastfeeding newborn by prisoner should be fixed</item>
+      </items>
+    </patch>
+    <patch version="1.4.7" silent="true"/>
+    <patch version="1.4.6" silent="true"/>
+    <patch version="1.4.5" silent="true"/>
+    <patch version="1.4.4" silent="true"/>
+    <patch version="1.4.3" silent="true"/>
+    <patch version="1.4.2" silent="true"/>
+    <patch version="1.4.1" silent ="false">
+      <title>Prison Labor v 1.4.1</title>
+      <items>
+        <item>[-] Added Work and bloodfeed interaction for biotech dlc</item>
+        <item>[-] Added Work and hemogen farm interaction for biotech dlc</item>
+        <item>[-] Resocialization offer should not appear on pawn with Unwavering Loyalty</item>
+        <item>[-] Work and x interaction updated to have similar options to vanilla one</item>
+        <item>[-] Some interaction should be blocked due to Unwavering Loyalty</item>
+        <item>[-] Fix for mech gestator usage</item>
+        <item>[-] Recruited prisoners should have removed drain hemogen bill</item>
+        <item>[-] Prisoners should not be revolting if genes don't allow that</item>
+      </items>
+    </patch>
+    <patch version="1.4.0" silent ="false">
+      <title>Prison Labor v 1.4.0</title>
+      <items>
+        <item>[-] Update for Rimworld 1.4. All listed features below will only work with game version 1.4.</item>
+        <item>[-] Compatibility patch for CleaningArea</item>
+        <item>[-] Compatibility patch for Hospitality. Prisoners will entertain guest.</item>
+        <item>[-] Compatibility patch for Therapy. Prisoners can get therapy now.</item>
+        <item>[-] Split all compatibility patches into DLLs. Mod order is required for prison labor.</item>
+        <item>[-] Prisoners can use variant of joy giver building like poker table. Joy need is disabled, but during recreation time their mood will be improved. It will happen only during recreation time assignment.</item>
+        <item>[-] Refactor of prisoners job giver. No new future here, but with enabled prison labor debug logging more info what going on in prisoner mind going on.</item>
+      </items>
+    </patch>
+    <patch version="1.3.11" silent="true"/>
+    <patch version="1.3.10" silent="true"/>
+    <patch version="1.3.9" silent="true"/>
+    <patch version="1.3.8" silent="true"/>
+    <patch version="1.3.7" silent="true"/>
+    <patch version="1.3.6" silent="true"/>
+    <patch version="1.3.5" silent="true"/>
+    <patch version="1.3.4" silent="true"/>
+    <patch version="1.3.3" silent="true"/>
+    <patch version="1.3.2" silent="true"/>
+    <patch version="1.3.0" silent ="false">
+      <title>Prison Labor v 1.3.0</title>
+      <items>
+        <item>[-] Update to Rimworld 1.3</item>
+        <item>[-] Created menu for prisoners.</item>
+        <item>[-] Created tab in prisoners menu "Overview". In this tab interaction mode can be chosen, resocialization offer is moved here from pawn prisoner tab. Also, possibility to order removing/putting cuffs on prisoners are here. Motivation level is also displayed here.</item>
+        <item>[-] Created tab in prisoner menu "Work". It was moved from the tab "Work" in main tab.</item>
+        <item>[-] Created tab in prisoner menu "Schedule". It was moved from the tab "Schedule" in  main tab.</item>
+        <item>[-] Created tab in prisoner menu "Assign". Allows to assign diet and what kind of medicine should be used for prisoner.</item>
+        <item>[-] Created tab in prisoner menu "Dev". For dev tools.</item>
+        <item>[-] Moved restrict bill to group from drop down button to vanilla drop down pawn restriction in bill menu. Added new options to handle vanilla slaves.</item>
+        <item>[gap]</item>
+        <item>Some tutorials are now out of date. Hope to fix them soon.</item>
+        <item>[gap]</item>
+        <item>Honestly don't know if it will work correctly, didn't have enough time to test it right. Please report any bugs and not working slaves.</item>
+      </items>
+    </patch>
+    <patch version="1.2.5" silent ="false">
+      <title>Prison Labor v 1.2.5</title>
+      <items>
+        <item>[-]Refactored rendering icons on prisoners. Instead of drawing textures, mesh is used. It may help with gray screen issue. Icons will be smaller now.</item>
+        <item>[-]Various fixes to work patches which should reduce situations when prisoners stuck.</item>
+        <item>[gap]</item>
+        <item>Probably it is the last release for Rimworld version 1.2. Future updates will be pushed with version 1.3</item>
+      </items>
+    </patch>
+    <patch version="1.2.4">
+      <title>Prison Labor v 1.2.4</title>
+      <items>
+        <item>[-]Changed adding designer for prisoner labor zone to more "common" way. It may fix missing designators as mod incompatibility</item>
+        <item>[-]Prisoners should respect their food restriction when motivation is more than 75%, or they are watched</item>
+        <item>[-]Prisoners should use ground penetration and long scanners</item>
+      </items>
+    </patch>
+    <patch version="1.0.3" silent="true"/>
+    <patch version="1.0.2" silent="true"/>
+    <patch version="1.0.1" silent="true"/>
+    <patch version="1.0.0" silent="true"/>
+    <patch version="0.10.1" silent="false">
+      <title>Prison Labor v0.10.1</title>
+      <items>
+        <item>This patch contains a lot of changes, so there can be bugs. Please [b]report bugs[/b] so I can repair them ASAP</item>
+        <item>[gap]</item>
 
-                <item>[b]Treatment system[/b]</item>
-                <item>[-]added new hidden need "Treatment" that indicates level of prison treatment towards prisoner</item>
-                <item>[-]prisoners will now give offer to join colony if treatment is good enough (random)</item>
-                <item>[-]prisoners now will pick up weapons if treated bad</item>
-                <item>[-]added +5 bonus to mood while prisoner have free time</item>
-                <item>[-]added +5 bonus to mood if prisoner is not supervised and got lazy</item>
-                <item>[-]added +15 bonus to mood if treatment is above 75%</item>
-                <item>[-]added prisoner suicides</item>
-                <item>[-]added blocking revolts (100%, 95%, 50%, 10%) if overall prisoner treatment is good enough</item>
-                <item>[-]added treatment drop when prisoner is being beaten</item>
-                <item>[-]increased base chance for Revolts</item>
-                <item>[-]added blocking mental breaks for prisoners with low treatment levels</item>
-                <item>[-]"Treatment happiness" will decrease if health conditions are bad, when prisoners are hungry, or they're working.</item>
+        <item>[b]Treatment system[/b]</item>
+        <item>[-]added new hidden need "Treatment" that indicates level of prison treatment towards prisoner</item>
+        <item>[-]prisoners will now give offer to join colony if treatment is good enough (random)</item>
+        <item>[-]prisoners now will pick up weapons if treated bad</item>
+        <item>[-]added +5 bonus to mood while prisoner have free time</item>
+        <item>[-]added +5 bonus to mood if prisoner is not supervised and got lazy</item>
+        <item>[-]added +15 bonus to mood if treatment is above 75%</item>
+        <item>[-]added prisoner suicides</item>
+        <item>[-]added blocking revolts (100%, 95%, 50%, 10%) if overall prisoner treatment is good enough</item>
+        <item>[-]added treatment drop when prisoner is being beaten</item>
+        <item>[-]increased base chance for Revolts</item>
+        <item>[-]added blocking mental breaks for prisoners with low treatment levels</item>
+        <item>[-]"Treatment happiness" will decrease if health conditions are bad, when prisoners are hungry, or they're working.</item>
 
-                <item>[b]Prisoners can do construction jobs now[/b]</item>
+        <item>[b]Prisoners can do construction jobs now[/b]</item>
 
-                <item>[b]Enchantments[/b]</item>
-                <item>[-]new system for removing mod from save (new button in mod menu)</item>
-                <item>[-]prisoners will now seek safe temperature when not supervised</item>
-                <item>[-]prisoners will respect forbidden items, if "inspired"</item>
-                <item>[-]prisoners will now work in cold only if "work" time is set</item>
-                <item>[-]added alert when prisoners can escape</item>
-                <item>[-]reworked news popup window</item>
-                <item>[-]wardens no longer deliver food if prisoners can get it from another room</item>
-                <item>[-]cosmetic changes to bill checkbox</item>
-                <item>[-]prisoners will now stay at bed if waiting for surgery</item>
+        <item>[b]Enchantments[/b]</item>
+        <item>[-]new system for removing mod from save (new button in mod menu)</item>
+        <item>[-]prisoners will now seek safe temperature when not supervised</item>
+        <item>[-]prisoners will respect forbidden items, if "inspired"</item>
+        <item>[-]prisoners will now work in cold only if "work" time is set</item>
+        <item>[-]added alert when prisoners can escape</item>
+        <item>[-]reworked news popup window</item>
+        <item>[-]wardens no longer deliver food if prisoners can get it from another room</item>
+        <item>[-]cosmetic changes to bill checkbox</item>
+        <item>[-]prisoners will now stay at bed if waiting for surgery</item>
 
-                <item>[b]Bugs[/b]</item>
-                <item>[-]fixed food reservation throwing errors</item>
-                <item>[-]fixed cutting some content of bill config in some languages</item>
-                <item>[-]now work settings reset after prisoner is recruited, so it should fix some issues</item>
-                <item>[-]finally fixed "OnGui()" error, big thanks to @notfood (https://github.com/notfood)</item>
-                <item>[-]fixed blurred effect on settings window</item>
-                <item>[-]fixed Revolts</item>
+        <item>[b]Bugs[/b]</item>
+        <item>[-]fixed food reservation throwing errors</item>
+        <item>[-]fixed cutting some content of bill config in some languages</item>
+        <item>[-]now work settings reset after prisoner is recruited, so it should fix some issues</item>
+        <item>[-]finally fixed "OnGui()" error, big thanks to @notfood (https://github.com/notfood)</item>
+        <item>[-]fixed blurred effect on settings window</item>
+        <item>[-]fixed Revolts</item>
 
-                <item>[gap]</item>
+        <item>[gap]</item>
 
-                <item>If you want to support the work I do, please consider small donation. Link to Ko-fi will be placed at steam page.</item>
-            </items>
-        </patch>
-        <patch version="0.9.11">
-            <title>Prison Labor Beta v0.9.11</title>
-            <items>
-                <item>[-]fixed compatibility with Fluffy's WorkTab (final)</item>
-            </items>
-        </patch>
-        <patch version="0.9.10">
-            <title>Prison Labor Beta v0.9.10</title>
-            <items>
-                <item>[-]hotfixed compatibility with Fluffy's WorkTab (still have some visual flaws)</item>
-            </items>
-        </patch>
-        <patch version="0.9.9">
-            <title>Prison Labor Beta v0.9.9</title>
-            <items>
-                <item>[-]added sub-tabs in \"Work\" Tab and \"Assign\" Tab for \"Colonists\" and \"Prisoners\"</item>
-                <item>[-]added renaming Prisoners for imprisonment time (pawns will restore old names after releasing)</item>
-            </items>
-        </patch>
-        <patch version="0.9.8">
-            <title>Prison Labor Beta v0.9.8</title>
-            <items>
-                <item>[-]fixed SeedsPlease compatibility</item>
-            </items>
-        </patch>
-        <patch version="0.9.7">
-            <title>Prison Labor Beta v0.9.7</title>
-            <items>
-                <item>[-]added warning message before placing labor area for the first time</item>
-            </items>
-        </patch>
-        <patch version="0.9.6">
-            <title>Prison Labor Beta v0.9.6</title>
-            <items>
-                <item>[-]updated to RimWorld 1.0</item>
-            </items>
-        </patch>
-        <patch version="0.9.5">
-            <title>Prison Labor Beta v0.9.5</title>
-            <items>
-                <item>[-]updated to RimWorld Beta 19</item>
-            </items>
-        </patch>
-        <patch version="0.9.4">
-            <title>Prison Labor Beta v0.9.4</title>
-            <items>
-                <item>[-]disabled Warden and Jailor types of work for prisoner labor, it should fix bug, where jailors do not warden inside labor area</item>
-            </items>
-        </patch>
-        <patch version="0.9.3">
-            <title>Prison Labor Beta v0.9.3</title>
-            <items>
-                <item>[-]fixed compatibility with No Water no Life</item>
-                <item>[-]fixed compatibility with Dubs Bad Hygiene Mod</item>
-                <item>[-]fixed error with loading old saves</item>
-            </items>
-        </patch>
-        <patch version="0.9.2">
-            <title>Prison Labor Beta v0.9.2</title>
-            <items>
-                <item>[-]fixed seeds please compatibility issue</item>
-                <item>[-]added option to disable revolts</item>
-            </items>
-        </patch>
-        <patch version="0.9.1">
-            <title>Prison Labor Beta v0.9.1</title>
-            <items>
-                <item>[-]changed max. skill required for non-advanced growing by prisoners to 6 instead of 0</item>
-                <item>[-]added new work type Jailor</item>
-                <item>[-]fixed drawing icons on world map</item>
-                <item>[-]fixed disabling mod from existing saves</item>
-                <item>[-]fixed incorrectly showing \"advanced growing by prisoners\" option</item>
-            </items>
-        </patch>
-        <patch version="0.9.0">
-            <title>Prison Labor Beta v0.9.0</title>
-            <items>
-                <item>[-]updated to RimWorld beta v18</item>
-                <item>[-]added option to disable icons above prisoners heads in mod menu</item>
-                <item>[-]fixed error \"null reference in onGui()\" when loading save</item>
-            </items>
-        </patch>
-        <patch version="0.8.8">
-            <title>Prison Labor Beta v0.8.8</title>
-            <items>
-                <item>[-]changed slow from prisoners chains to act as factor instead offset</item>
-                <item>[-]fixed compatibility issues with Seeds Please(again)</item>
-            </items>
-        </patch>
-        <patch version="0.8.7">
-            <title>Prison Labor Beta v0.8.7</title>
-            <items>
-                <item>[-]fixed bug with dropping motivation while in bed</item>
-                <item>[-]prisoners will now get different weapons when revolt triggers (molotovs, bows, or clubs)</item>
-                <item>[-]replaced orginal jobs with \"tweak\" jobs (instead of overriding them, this fix is for users who use \"WorkTab\" by Fluffy)</item>
-                <item>[-]removed warning message from logs</item>
-                <item>[-]prisoners will now have 50% of normal speed in chains (instead of 35%)</item>
-                <item>[-]prisoners will now break chains after some period of time instead of immadiately(matter in incidents, breakouts etc.)</item>
-                <item>[-]wardens will now try to motivate most prisoners at once, but with priority to motivate lowest motivation first</item>
-                <item>[-]fixed bug with animals do not respect reservations (and vice versa)</item>
-            </items>
-        </patch>
-        <patch version="0.8.6">
-            <title>Prison Labor Beta v0.8.6</title>
-            <items>
-                <item>[img]NewsElement_Locks[/img][b]Locks mod:[/b]\nIf you want to allow prisoners to pass by closed doors, please check out my other mod called [b]Locks[/b]</item>
-                <item>[gap]</item>
-                <item>[-]fixed bug that Sowing job do not comply to Labor Area</item>
-                <item>[-]fixed bug with JoyGiver debris (sorry about that)</item>
-                <item>[-]reduced number of null reference errors with OnGui() method (fixed in v 0.8.5)</item>
-                <item>[-]single warden will be able to maintain 7 prisoners, instead of 5 (because of laziness rate reduction) (changed in v 0.8.5)</item>
-                <item>[-]decreased laziness rate to 0.002, instead of 0.003 (prisoners will get lazy 1.5x slower) (changed in v 0.8.5)</item>
-                <item>[-]decreased manipulation to 70% (instead of 80%) (changed in v 0.8.5)</item>
-                <item>[-]fixed null reference exception at loading game (fixed in v 0.8.4)</item>
-            </items>
-        </patch>
-        <patch version="0.8.3">
-            <title>Prison Labor Beta v0.8.3</title>
-            <items>
-                <item>[-]fixed bugs with disabling mod(now you can safely disable mod again)</item>
-                <item>[-]fixed bug with prioritizing work</item>
-                <item>[-]fixed bug with rendering icons on world map</item>
-            </items>
-        </patch>
-        <patch version="0.8.1">
-            <title>Prison Labor Beta v0.8.1</title>
-            <items>
-                <item>[-]fixed bug with rendering icons on world map</item>
-                <item>[subtitle] If you encouter any bugs [b]please report it on github[/b]. I'm fixing most important ones every day. This is (recently) beta version and it has to consist some bugs. Thank you for understaning.</item>
-                <item>[subtitle] Also you can always [b]download old version[/b] via github, but I think this was last big update</item>
-                <item>[-]re-enabled button in Bills detail panel</item>
-                <item>[-]added slider to Bills (temporary fix)</item>
-                <item>[-]fixed Bill \"Prisoner only\" button (I think, let me know if you still experience errors)</item>
-                <item>[-]fixed prisoners aren't working when Motivation is disabled (via Settings)</item>
-                <item>[-]fixed null-reference error on some revolts incidents</item>
-            </items>
-        </patch>
-        <patch version="0.8.0">
-            <title>Prison Labor Beta v0.8.0</title>
-            <items>
-                <item>[subtitle][b]Now in Beta![/b] I would no longer add any more features. Instead I will focus on improving existing ones.</item>
-                <item>[gap]</item>
-                <item>[subtitle][b]Main changes:[/b]</item>
-                <item>[img]NewsElement_Revolt[/img][b]Revolts:[/b]\nPrisoners will now form organized group under self-elected leader if motivation of prisoners is low. They will try to inflict damage to your colony or they will attemp running to elected enemy faction</item>
-                <item>[img]NewsElement_InspirationReworked[/img][b]Insiration reworked:[/b]\nQuicker, better and more intuitive.\nYou can now send your prisoners to work outside your walls, but be carefull: they will try to escape if left alone. Prisoners will start thinking about escape after being left for some time.</item>
-                <item>[img]LaborAreaExpand[/img][b]Labor area:[/b]\nYou can now select area for labor only. Your colonists will no longer go mine with peasants.\nTo access this tool look into \"Architect->Zones\" panel.</item>
-                <item>[img]NewsElement_PrisonersOnly[/img][b]Prisoners Only button[/b]\nGo to Bill details to mark bills for prisoners only!</item>
-                <item>[img]NewsElement_WorkAndRecruit[/img][b]Work and recruit:[/b]\nThis feature has been mostly requested by community. I hope it will be well received.</item>
-                <item>[gap]</item>
-                <item>[subtitle][b]Other changes:[/b]</item>
-                <item>[-]added default prisoner interaction mode option to settings menu</item>
-                <item>[-]added icons above prisoners indicating whenever he's being motivated/inspired</item>
-                <item>[-]reduced manipulation capability of prisoners (now they have 80% of normal manipulation, down from 100%)</item>
-                <item>[-]added tutorials triggers (now all tutorials will be shown)</item>
-                <item>[-]added watched tutorials to properties (tutorials will no longer be shown after reenabling mod)</item>
-                <item>[-]fixed forbidden bug with harvesting plants (again)</item>
-                <item>[-]fixed Toil reservation bug (not respecting prisoners' job)</item>
-                <item>[-]fixed compatibility with Dubs Hygiene Mod</item>
-                <item>[-]fixed SeedsPlease compatibility</item>
-                <item>[-]excluded supervising from labor</item>
-                <item>[-]rewritten news dialog - now with images and stuff</item>
-                <item>[-]perfomance and code improvements</item>
-                <item>[-]translation improvements</item>
-                <item>[gap]</item>
-                <item>[subtitle]Also I want to annouce that I will start new mod called [b]Prison Expansion[/b] that would be PrisonExtensions remake.The aim of this mod would be improving Prison Labor experience, especially cell doors and fences.</item>
-            </items>
-        </patch>
-        <patch version="0.7">
-            <title>Prison Labor Alpha v0.7</title>
-            <items>
-                <item>[-]Added settings! You can now change almost any aspect of this mod, including:\n   * work types\n   * motivation mechanics\n   * prevention of planting advanced plants.</item>
-                <item>[-]Added \"uninstaller\" (\"disable\" option in settings), which will allow to disable this mod from existing saves.</item>
-                <item>[-]\"No more beeping!\". Changed way of informing player what's going on with prisoners. It should be less annoying and more insightful.</item>
-                <item>[-]Fixed bugs, including bug that prevents prisoners from cleaning and bug that causes warden to stuck in loop of delivering food to prisoner.</item>
-                <item>[-]\"No more watching while prisoner is sleeping.\"Wardens will no longer watch over not working prisoners.</item>
-                <item>[-]Prisoners will now stay in bed while waiting for operation</item>
-                <item>[-]Prisoners will now stop work when starving for default (\"Anything\" time), instead of hungry. They will still get minor debuff.</item>
-            </items>
-        </patch>
-        <patch version="0.6">
-            <title>Prison Labor Alpha v0.6</title>
-            <items>
-                <item>[-]Time restrictions - now you can manage your prisoners time for sleep, work and joy. You can now even force them to work when they're hungry!</item>
-                <item>[-]Getting food by prisoners - Now prisoners will look for food in much better way, and now (when they desperate enough) they will eat corpses!</item>
-                <item>[-]\"Laziness\" changed to \"Motivation\" and inverted.\n\n   ATTENTION: After PrisonLabor reaches beta all saves with PrisonLabor v0.5a or lower will be corrupted and unplayable. This version (0.6) is safe and converts all older saves.</item>
-            </items>
-        </patch>
-        <patch version="0.5">
-            <title>Prison Labor Alpha v0.5</title>
-            <items>
-                <item>[-]Prisoners can now grow, but only plants that not require any skills.</item>
-                <item>[-]You can now manage prisoners work types. Just check \"Work\" tab!</item>
-                <item>[-]Laziness now appear on \"Needs\" tab. Above 50% wardens will watch prisoners. Above 80% prisoners won't work unless supervised.</item>
-                <item>[-]Wardens will now bring food to prisoners that went too far from his bed.</item>
-                <item>[-]Prisoners won't gain laziness when not working anymore.</item>
-                <item>[-]Fixed many bugs</item>
-            </items>
-        </patch>
-    </patches>
+        <item>If you want to support the work I do, please consider small donation. Link to Ko-fi will be placed at steam page.</item>
+      </items>
+    </patch>
+    <patch version="0.9.11">
+      <title>Prison Labor Beta v0.9.11</title>
+      <items>
+        <item>[-]fixed compatibility with Fluffy's WorkTab (final)</item>
+      </items>
+    </patch>
+    <patch version="0.9.10">
+      <title>Prison Labor Beta v0.9.10</title>
+      <items>
+        <item>[-]hotfixed compatibility with Fluffy's WorkTab (still have some visual flaws)</item>
+      </items>
+    </patch>
+    <patch version="0.9.9">
+      <title>Prison Labor Beta v0.9.9</title>
+      <items>
+        <item>[-]added sub-tabs in \"Work\" Tab and \"Assign\" Tab for \"Colonists\" and \"Prisoners\"</item>
+        <item>[-]added renaming Prisoners for imprisonment time (pawns will restore old names after releasing)</item>
+      </items>
+    </patch>
+    <patch version="0.9.8">
+      <title>Prison Labor Beta v0.9.8</title>
+      <items>
+        <item>[-]fixed SeedsPlease compatibility</item>
+      </items>
+    </patch>
+    <patch version="0.9.7">
+      <title>Prison Labor Beta v0.9.7</title>
+      <items>
+        <item>[-]added warning message before placing labor area for the first time</item>
+      </items>
+    </patch>
+    <patch version="0.9.6">
+      <title>Prison Labor Beta v0.9.6</title>
+      <items>
+        <item>[-]updated to RimWorld 1.0</item>
+      </items>
+    </patch>
+    <patch version="0.9.5">
+      <title>Prison Labor Beta v0.9.5</title>
+      <items>
+        <item>[-]updated to RimWorld Beta 19</item>
+      </items>
+    </patch>
+    <patch version="0.9.4">
+      <title>Prison Labor Beta v0.9.4</title>
+      <items>
+        <item>[-]disabled Warden and Jailor types of work for prisoner labor, it should fix bug, where jailors do not warden inside labor area</item>
+      </items>
+    </patch>
+    <patch version="0.9.3">
+      <title>Prison Labor Beta v0.9.3</title>
+      <items>
+        <item>[-]fixed compatibility with No Water no Life</item>
+        <item>[-]fixed compatibility with Dubs Bad Hygiene Mod</item>
+        <item>[-]fixed error with loading old saves</item>
+      </items>
+    </patch>
+    <patch version="0.9.2">
+      <title>Prison Labor Beta v0.9.2</title>
+      <items>
+        <item>[-]fixed seeds please compatibility issue</item>
+        <item>[-]added option to disable revolts</item>
+      </items>
+    </patch>
+    <patch version="0.9.1">
+      <title>Prison Labor Beta v0.9.1</title>
+      <items>
+        <item>[-]changed max. skill required for non-advanced growing by prisoners to 6 instead of 0</item>
+        <item>[-]added new work type Jailor</item>
+        <item>[-]fixed drawing icons on world map</item>
+        <item>[-]fixed disabling mod from existing saves</item>
+        <item>[-]fixed incorrectly showing \"advanced growing by prisoners\" option</item>
+      </items>
+    </patch>
+    <patch version="0.9.0">
+      <title>Prison Labor Beta v0.9.0</title>
+      <items>
+        <item>[-]updated to RimWorld beta v18</item>
+        <item>[-]added option to disable icons above prisoners heads in mod menu</item>
+        <item>[-]fixed error \"null reference in onGui()\" when loading save</item>
+      </items>
+    </patch>
+    <patch version="0.8.8">
+      <title>Prison Labor Beta v0.8.8</title>
+      <items>
+        <item>[-]changed slow from prisoners chains to act as factor instead offset</item>
+        <item>[-]fixed compatibility issues with Seeds Please(again)</item>
+      </items>
+    </patch>
+    <patch version="0.8.7">
+      <title>Prison Labor Beta v0.8.7</title>
+      <items>
+        <item>[-]fixed bug with dropping motivation while in bed</item>
+        <item>[-]prisoners will now get different weapons when revolt triggers (molotovs, bows, or clubs)</item>
+        <item>[-]replaced orginal jobs with \"tweak\" jobs (instead of overriding them, this fix is for users who use \"WorkTab\" by Fluffy)</item>
+        <item>[-]removed warning message from logs</item>
+        <item>[-]prisoners will now have 50% of normal speed in chains (instead of 35%)</item>
+        <item>[-]prisoners will now break chains after some period of time instead of immadiately(matter in incidents, breakouts etc.)</item>
+        <item>[-]wardens will now try to motivate most prisoners at once, but with priority to motivate lowest motivation first</item>
+        <item>[-]fixed bug with animals do not respect reservations (and vice versa)</item>
+      </items>
+    </patch>
+    <patch version="0.8.6">
+      <title>Prison Labor Beta v0.8.6</title>
+      <items>
+        <item>[img]NewsElement_Locks[/img][b]Locks mod:[/b]\nIf you want to allow prisoners to pass by closed doors, please check out my other mod called [b]Locks[/b]</item>
+        <item>[gap]</item>
+        <item>[-]fixed bug that Sowing job do not comply to Labor Area</item>
+        <item>[-]fixed bug with JoyGiver debris (sorry about that)</item>
+        <item>[-]reduced number of null reference errors with OnGui() method (fixed in v 0.8.5)</item>
+        <item>[-]single warden will be able to maintain 7 prisoners, instead of 5 (because of laziness rate reduction) (changed in v 0.8.5)</item>
+        <item>[-]decreased laziness rate to 0.002, instead of 0.003 (prisoners will get lazy 1.5x slower) (changed in v 0.8.5)</item>
+        <item>[-]decreased manipulation to 70% (instead of 80%) (changed in v 0.8.5)</item>
+        <item>[-]fixed null reference exception at loading game (fixed in v 0.8.4)</item>
+      </items>
+    </patch>
+    <patch version="0.8.3">
+      <title>Prison Labor Beta v0.8.3</title>
+      <items>
+        <item>[-]fixed bugs with disabling mod(now you can safely disable mod again)</item>
+        <item>[-]fixed bug with prioritizing work</item>
+        <item>[-]fixed bug with rendering icons on world map</item>
+      </items>
+    </patch>
+    <patch version="0.8.1">
+      <title>Prison Labor Beta v0.8.1</title>
+      <items>
+        <item>[-]fixed bug with rendering icons on world map</item>
+        <item>[subtitle] If you encouter any bugs [b]please report it on github[/b]. I'm fixing most important ones every day. This is (recently) beta version and it has to consist some bugs. Thank you for understaning.</item>
+        <item>[subtitle] Also you can always [b]download old version[/b] via github, but I think this was last big update</item>
+        <item>[-]re-enabled button in Bills detail panel</item>
+        <item>[-]added slider to Bills (temporary fix)</item>
+        <item>[-]fixed Bill \"Prisoner only\" button (I think, let me know if you still experience errors)</item>
+        <item>[-]fixed prisoners aren't working when Motivation is disabled (via Settings)</item>
+        <item>[-]fixed null-reference error on some revolts incidents</item>
+      </items>
+    </patch>
+    <patch version="0.8.0">
+      <title>Prison Labor Beta v0.8.0</title>
+      <items>
+        <item>[subtitle][b]Now in Beta![/b] I would no longer add any more features. Instead I will focus on improving existing ones.</item>
+        <item>[gap]</item>
+        <item>[subtitle][b]Main changes:[/b]</item>
+        <item>[img]NewsElement_Revolt[/img][b]Revolts:[/b]\nPrisoners will now form organized group under self-elected leader if motivation of prisoners is low. They will try to inflict damage to your colony or they will attemp running to elected enemy faction</item>
+        <item>[img]NewsElement_InspirationReworked[/img][b]Insiration reworked:[/b]\nQuicker, better and more intuitive.\nYou can now send your prisoners to work outside your walls, but be carefull: they will try to escape if left alone. Prisoners will start thinking about escape after being left for some time.</item>
+        <item>[img]LaborAreaExpand[/img][b]Labor area:[/b]\nYou can now select area for labor only. Your colonists will no longer go mine with peasants.\nTo access this tool look into \"Architect->Zones\" panel.</item>
+        <item>[img]NewsElement_PrisonersOnly[/img][b]Prisoners Only button[/b]\nGo to Bill details to mark bills for prisoners only!</item>
+        <item>[img]NewsElement_WorkAndRecruit[/img][b]Work and recruit:[/b]\nThis feature has been mostly requested by community. I hope it will be well received.</item>
+        <item>[gap]</item>
+        <item>[subtitle][b]Other changes:[/b]</item>
+        <item>[-]added default prisoner interaction mode option to settings menu</item>
+        <item>[-]added icons above prisoners indicating whenever he's being motivated/inspired</item>
+        <item>[-]reduced manipulation capability of prisoners (now they have 80% of normal manipulation, down from 100%)</item>
+        <item>[-]added tutorials triggers (now all tutorials will be shown)</item>
+        <item>[-]added watched tutorials to properties (tutorials will no longer be shown after reenabling mod)</item>
+        <item>[-]fixed forbidden bug with harvesting plants (again)</item>
+        <item>[-]fixed Toil reservation bug (not respecting prisoners' job)</item>
+        <item>[-]fixed compatibility with Dubs Hygiene Mod</item>
+        <item>[-]fixed SeedsPlease compatibility</item>
+        <item>[-]excluded supervising from labor</item>
+        <item>[-]rewritten news dialog - now with images and stuff</item>
+        <item>[-]perfomance and code improvements</item>
+        <item>[-]translation improvements</item>
+        <item>[gap]</item>
+        <item>[subtitle]Also I want to annouce that I will start new mod called [b]Prison Expansion[/b] that would be PrisonExtensions remake.The aim of this mod would be improving Prison Labor experience, especially cell doors and fences.</item>
+      </items>
+    </patch>
+    <patch version="0.7">
+      <title>Prison Labor Alpha v0.7</title>
+      <items>
+        <item>[-]Added settings! You can now change almost any aspect of this mod, including:\n   * work types\n   * motivation mechanics\n   * prevention of planting advanced plants.</item>
+        <item>[-]Added \"uninstaller\" (\"disable\" option in settings), which will allow to disable this mod from existing saves.</item>
+        <item>[-]\"No more beeping!\". Changed way of informing player what's going on with prisoners. It should be less annoying and more insightful.</item>
+        <item>[-]Fixed bugs, including bug that prevents prisoners from cleaning and bug that causes warden to stuck in loop of delivering food to prisoner.</item>
+        <item>[-]\"No more watching while prisoner is sleeping.\"Wardens will no longer watch over not working prisoners.</item>
+        <item>[-]Prisoners will now stay in bed while waiting for operation</item>
+        <item>[-]Prisoners will now stop work when starving for default (\"Anything\" time), instead of hungry. They will still get minor debuff.</item>
+      </items>
+    </patch>
+    <patch version="0.6">
+      <title>Prison Labor Alpha v0.6</title>
+      <items>
+        <item>[-]Time restrictions - now you can manage your prisoners time for sleep, work and joy. You can now even force them to work when they're hungry!</item>
+        <item>[-]Getting food by prisoners - Now prisoners will look for food in much better way, and now (when they desperate enough) they will eat corpses!</item>
+        <item>[-]\"Laziness\" changed to \"Motivation\" and inverted.\n\n   ATTENTION: After PrisonLabor reaches beta all saves with PrisonLabor v0.5a or lower will be corrupted and unplayable. This version (0.6) is safe and converts all older saves.</item>
+      </items>
+    </patch>
+    <patch version="0.5">
+      <title>Prison Labor Alpha v0.5</title>
+      <items>
+        <item>[-]Prisoners can now grow, but only plants that not require any skills.</item>
+        <item>[-]You can now manage prisoners work types. Just check \"Work\" tab!</item>
+        <item>[-]Laziness now appear on \"Needs\" tab. Above 50% wardens will watch prisoners. Above 80% prisoners won't work unless supervised.</item>
+        <item>[-]Wardens will now bring food to prisoners that went too far from his bed.</item>
+        <item>[-]Prisoners won't gain laziness when not working anymore.</item>
+        <item>[-]Fixed many bugs</item>
+      </items>
+    </patch>
+  </patches>
 </NewsFeed>
 
 

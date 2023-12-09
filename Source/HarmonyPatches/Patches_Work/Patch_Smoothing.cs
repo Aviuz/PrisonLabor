@@ -16,8 +16,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_Construction
     {
         static IEnumerable<MethodBase> TargetMethods()
         {
-            yield return (MethodBase)typeof(WorkGiver_ConstructSmoothWall).GetMethod("HasJobOnCell");
-            yield return (MethodBase)typeof(WorkGiver_ConstructAffectFloor).GetMethod("HasJobOnCell");
+            yield return typeof(WorkGiver_ConstructSmoothWall).GetMethod("HasJobOnCell");
+            yield return typeof(WorkGiver_ConstructAffectFloor).GetMethod("HasJobOnCell");
         }
 
         public static bool Postfix(bool __result, Pawn pawn, IntVec3 c)

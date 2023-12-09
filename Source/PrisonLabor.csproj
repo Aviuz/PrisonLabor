@@ -160,6 +160,7 @@
     <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Bill_StartAnew_Patch.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_Bill_ProductionWithUft.cs" />
+    <Compile Include="HarmonyPatches\Patches_GUI\GUI_Feeding\Patch_ITAB_Pawn_Feeding.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_BlueprintsForPlayerFaction.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_Breastfeed.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_Smoothing.cs" />
