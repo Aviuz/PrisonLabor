@@ -12,9 +12,9 @@ namespace PrisonLabor.Core.Interrogation
     public override float GetScore(Room room)
     {
       List<Thing> containedAndAdjacentThings = room.ContainedAndAdjacentThings;
-      foreach(Thing thing in containedAndAdjacentThings)
+      foreach (Thing thing in containedAndAdjacentThings)
       {
-        if(thing.TryGetComp<CompInterrogation>() != null)
+        if (thing.TryGetComp<CompInterrogation>() != null)
         {
           return 100000f;
         }

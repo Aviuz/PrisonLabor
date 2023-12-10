@@ -53,7 +53,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Feeding
         else
         {
           yield return inst;
-        }    
+        }
       }
     }
 
@@ -61,7 +61,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Feeding
     {
       if (feeder.IsPrisonerOfColony)
       {
-        return "Prisoner " + feeder.LabelShortCap;
+        return "PrisonLabor_Prisoner".Translate(feeder.LabelShortCap);
       }
       return feeder.LabelShortCap;
     }

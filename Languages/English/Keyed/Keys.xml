@@ -105,4 +105,6 @@
   <PrisonLabor_NoIntel>{0} doesn't have any more intel.</PrisonLabor_NoIntel>
   <PrisonLabor_TooSoonInterrogation>{0} needs some time before next interrogation.</PrisonLabor_TooSoonInterrogation>
   <PrisonLabor_MissingComp>Something goes wrong, pawn is missing important component.</PrisonLabor_MissingComp>
+
+  <PrisonLabor_Prisoner>Prisoner {0}</PrisonLabor_Prisoner>
 </LanguageData>

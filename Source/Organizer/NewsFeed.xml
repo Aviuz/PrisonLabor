@@ -7,9 +7,15 @@
     <patch version="1.4.8" silent="false">
       <title>Prison Labor v1.4.8</title>
       <items>
-        <item>[-] Apparel policy can be assigned to motivated prisoner</item>
-        <item>[-] Prisoner can be interrogated for single quest generation</item>
-        <item>[-] Breastfeeding newborn by prisoner should be fixed</item>
+        <item>[-] Apparel policy can be assigned to prisoners</item>
+        <item>[-] Motivated prisoner will respect assigned apparel policy</item>
+        <item>[-] Interrogation added as new "ritual" that should not be count to ritual limits</item>
+        <item>[-] Warden can interrogate prisoners from non-player faction</item>
+        <item>[-] Interrogation can be performed in interrogation room</item>
+        <item>[-] Interrogation room needs new furniture "Interrogation chair" (comp from this item can be used in any other mod)</item>
+        <item>[-] Depends on wardens traits, skills and relation with prisoner interrogation can be different outcome</item>
+        <item>[-] Patches to allow prisoners to feed colony newborns</item>
+        <item>[-] Adjusted prisoner related alerts triggers</item>
       </items>
     </patch>
     <patch version="1.4.7" silent="true"/>

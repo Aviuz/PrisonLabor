@@ -13,6 +13,8 @@ namespace PrisonLabor.Core.Interrogation.Ritual
     private int ticksSinceLastInteraction = -1;
 
     public const int SocialInteractionIntervalTicks = 700;
+    private const string PrisonerRoleId = "prisoner";
+    private const string WardenRoleId = "warden";
 
     public RitualBehaviorWorker_Interrogation()
     {
@@ -25,7 +27,7 @@ namespace PrisonLabor.Core.Interrogation.Ritual
 
     public override void Cleanup(LordJob_Ritual ritual)
     {
-      Pawn pawn = ritual.PawnWithRole("prisoner");
+      Pawn pawn = ritual.PawnWithRole(PrisonerRoleId);
       if (pawn.IsPrisonerOfColony)
       {
         pawn.guest.WaitInsteadOfEscapingFor(2500);
@@ -34,8 +36,8 @@ namespace PrisonLabor.Core.Interrogation.Ritual
 
     public override void PostCleanup(LordJob_Ritual ritual)
     {
-      Pawn warden = ritual.PawnWithRole("warden");
-      Pawn prisoner = ritual.PawnWithRole("prisoner");
+      Pawn warden = ritual.PawnWithRole(WardenRoleId);
+      Pawn prisoner = ritual.PawnWithRole(PrisonerRoleId);
       if (prisoner.IsPrisonerOfColony)
       {
         WorkGiver_Warden_TakeToBed.TryTakePrisonerToBed(prisoner, warden);
@@ -53,8 +55,8 @@ namespace PrisonLabor.Core.Interrogation.Ritual
       if (ticksSinceLastInteraction == -1 || ticksSinceLastInteraction > SocialInteractionIntervalTicks)
       {
         ticksSinceLastInteraction = 0;
-        Pawn warden = ritual.PawnWithRole("warden");
-        Pawn prisoner = ritual.PawnWithRole("prisoner");
+        Pawn warden = ritual.PawnWithRole(WardenRoleId);
+        Pawn prisoner = ritual.PawnWithRole(PrisonerRoleId);
         if (Rand.Bool)
         {
           warden.interactions.TryInteractWith(prisoner, InterrogationDefsOf.PL_InterrogateInteraction);

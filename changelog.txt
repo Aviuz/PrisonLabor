@@ -1,9 +1,14 @@
 Changelog:
 1.4.8
-- Apparel policy can be assigned to motivated prisoner
-- Prisoner can be interrogated for single quest generation
-- Breastfeeding newborn by prisoner should be fixed
-- Fixes for alerts
+- Apparel policy can be assigned to prisoners
+- Motivated prisoner will respect assigned apparel policy
+- Interrogation added as new "ritual" that should not be count to ritual limits
+- Warden can interrogate prisoners from non-player faction
+- Interrogation can be performed in interrogation room
+- Interrogation room needs new furniture "Interrogation chair" (comp from this item can be used in any other mod)
+- Depends on wardens traits, skills and relation with prisoner interrogation can be different outcome
+- Patches to allow prisoners to feed colony newborns
+- Adjusted prisoner related alerts triggers
 1.4.7
 - Fixes for Vultures from "Reinforced Mechanoid 2"
 1.4.6
