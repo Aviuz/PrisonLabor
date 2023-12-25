@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using PrisonLabor.Core.Other;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace PrisonLabor.Core.Interrogation.Ritual
       Pawn prisoner = ritual.PawnWithRole(PrisonerRoleId);
       if (prisoner.IsPrisonerOfColony)
       {
-        WorkGiver_Warden_TakeToBed.TryTakePrisonerToBed(prisoner, warden);
+        ArrestUtility.TakePrisonerToBed(prisoner, warden);
         prisoner.guest.WaitInsteadOfEscapingFor(1250);
       }
     }
