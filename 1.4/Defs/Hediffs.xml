@@ -4,13 +4,14 @@
     <defName>PrisonLabor_PrisonerChains</defName>
     <description>This pawn has prisoners chains. Note: it is default Vanilla mechanics, but in hediff state</description>
     <label>prisoners chains</label>
+    <isBad>false</isBad>
     <stages>
       <li>
         <label>not active</label>
         <becomeVisible>false</becomeVisible>
       </li>
         <li>
-          <label>unchained totaly unchained</label>
+          <label>unchained totaly</label>
           <becomeVisible>false</becomeVisible>
           <minSeverity>0.01</minSeverity>
         </li>
@@ -57,6 +58,7 @@
     <defName>PrisonLabor_RemovedHandscuffs</defName>
     <description>Prisoner has removed handscuffs</description>
     <label>Removed Handscuff</label>
+    <isBad>false</isBad>
     <stages>
       <li>
         <label>not active</label>
@@ -73,6 +75,7 @@
     <defName>PrisonLabor_RemovedLegscuffs</defName>
     <description>Prisoner has removed legscuffs</description>
     <label>Removed legscuffs</label>
+    <isBad>false</isBad>
     <stages>
       <li>
         <label>not active</label>
