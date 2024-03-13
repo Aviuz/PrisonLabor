@@ -6,7 +6,7 @@ Changelog:
 - Warden can interrogate prisoners from non-player faction
 - Interrogation can be performed in interrogation room
 - Interrogation room needs new furniture "Interrogation chair" (comp from this item can be used in any other mod)
-- Depends on wardens traits, skills and relation with prisoner interrogation can be different outcome
+- Depends on wardens traits, skills and relation with prisoner interrogation can have different outcome
 - Patches to allow prisoners to feed colony newborns
 - Adjusted prisoner related alerts triggers
 1.4.7

@@ -13,9 +13,11 @@
         <item>[-] Warden can interrogate prisoners from non-player faction</item>
         <item>[-] Interrogation can be performed in interrogation room</item>
         <item>[-] Interrogation room needs new furniture "Interrogation chair" (comp from this item can be used in any other mod)</item>
-        <item>[-] Depends on wardens traits, skills and relation with prisoner interrogation can be different outcome</item>
+        <item>[-] Depends on wardens traits, skills and relation with prisoner interrogation can have different outcome</item>
         <item>[-] Patches to allow prisoners to feed colony newborns</item>
         <item>[-] Adjusted prisoner related alerts triggers</item>
+        <item>[gap]</item>
+        <item>There are a lot of new futures, so creating a backup save is recommended. Also, please do not exploit it too much ;)</item>
       </items>
     </patch>
     <patch version="1.4.7" silent="true"/>
