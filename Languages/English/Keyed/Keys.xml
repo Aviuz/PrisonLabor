@@ -107,4 +107,8 @@
   <PrisonLabor_MissingComp>Something goes wrong, pawn is missing important component.</PrisonLabor_MissingComp>
 
   <PrisonLabor_Prisoner>Prisoner {0}</PrisonLabor_Prisoner>
+
+  <PrisonLabor_MechWorksInLaborArea>Mech can work in prison area</PrisonLabor_MechWorksInLaborArea>
+  <PrisonLabor_MechWorksInLaborAreaDesc>When disabled mechs will not work in prison labor area</PrisonLabor_MechWorksInLaborAreaDesc>
+  
 </LanguageData>
