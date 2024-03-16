@@ -14,18 +14,18 @@ namespace PrisonLabor.Core.Other
         {
             if (PrisonLaborPrefs.DebugLogs)
             {
-                Log.Message(msg);
+                Log.Message("[PL] " + msg);
             }
         }
 
         public static void info(string msg)
         {
-            Log.Message(msg);
+            Log.Message("[PL] " + msg);
         }
 
         internal static void warn(string msg)
         {
-            Log.Warning(msg);
+            Log.Warning("[PL] " + msg);
         }
     }
 }

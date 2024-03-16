@@ -24,7 +24,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Construction
             {
                 if (i > 0 && ShouldPatch(codes[i], codes[i - 1]))
                 {
-                    DebugLogger.debug($"[PL] Therapy HasJobOnThing patch: {mBase.ReflectedType.Name}.{mBase.Name}");
+                    DebugLogger.debug($"Therapy HasJobOnThing patch: {mBase.ReflectedType.Name}.{mBase.Name}");
                     yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod(nameof(PrisonLaborUtility.GetPawnFaction)));
                 }
                 else

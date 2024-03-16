@@ -33,7 +33,7 @@ namespace PrisonLabor.Core.Other
     {
       if (pawn.IsPrisonerOfColony)
       {
-        DebugLogger.debug($"[PL] Pawn {pawn.LabelShort} checking null object");
+        DebugLogger.debug($"Pawn {pawn.LabelShort} checking null object");
       }
       return t != null && PrisonerFoodReservation.IsReserved(t) && !pawn.IsPrisoner;
     }

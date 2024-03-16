@@ -39,7 +39,7 @@ namespace PrisonLabor.Core.Recreation
         {
             if (!pawn.IsPrisonerOfColony)
             {
-                DebugLogger.debug($"[PL] Pawn {pawn.NameShortColored} is not prisoner {typeof(JoyGiver_PrisonerRecrationWalking).Name}. Return null");
+                DebugLogger.debug($"Pawn {pawn.NameShortColored} is not prisoner {typeof(JoyGiver_PrisonerRecrationWalking).Name}. Return null");
                 return null;
             }
 
@@ -59,7 +59,7 @@ namespace PrisonLabor.Core.Recreation
             if (!exactWanderDest.IsValid)
             {
                 pawn.mindState.nextMoveOrderIsWait = false;
-                DebugLogger.debug($"[PL] Pawn {pawn.NameShortColored} has not valid dest in {typeof(JoyGiver_PrisonerRecrationWalking).Name}. Return null");
+                DebugLogger.debug($"Pawn {pawn.NameShortColored} has not valid dest in {typeof(JoyGiver_PrisonerRecrationWalking).Name}. Return null");
                 return null;
             }
             LocomotionUrgency value = locomotionUrgency;

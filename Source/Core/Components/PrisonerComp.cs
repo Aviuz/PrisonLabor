@@ -13,99 +13,117 @@ using Verse;
 namespace PrisonLabor.Core.Components
 {
 
-    public class PrisonerComp : ThingComp
+  public class PrisonerComp : ThingComp
+  {
+    private EscapeTracker escapeTracker;
+    private bool hasIntel = true;
+    private int lastInterraction = 0;
+
+    public EscapeTracker EscapeTracker
     {
-        private EscapeTracker escapeTracker;
-
-        public EscapeTracker EscapeTracker
+      get
+      {
+        if (escapeTracker == null)
         {
-            get
-            {
-                if (escapeTracker == null)
-                {
-                    escapeTracker = new EscapeTracker(this.parent as Pawn);
-                }
-                return escapeTracker;
-            }
+          escapeTracker = new EscapeTracker(this.parent as Pawn);
         }
-
-        private bool Active
-        {
-            get
-            {
-                Pawn pawn = this.parent as Pawn;
-                return pawn != null && pawn.IsPrisonerOfColony && !pawn.Dead && pawn.Spawned && pawn.CarriedBy == null;
-            }
-        }
-
-        public override void Initialize(CompProperties props)
-        {
-            base.Initialize(props);
-            if (escapeTracker == null)
-            {
-                escapeTracker = new EscapeTracker(this.parent as Pawn);
-            }
-        }
-        public override void PostDraw()
-        {
-            if (Active && PrisonLaborPrefs.EnableMotivationIcons)
-            {
-                Pawn pawn = this.parent as Pawn;
-                var need = pawn.needs.TryGetNeed<Need_Motivation>();
-                if (pawn.health.hediffSet.HasTemperatureInjury(TemperatureInjuryStage.Serious) && PrisonLaborUtility.WorkTime(pawn))
-                {
-                    DrawIcon(TexturePool.freezingTexture);
-                }
-                else if (pawn.IsWatched())
-                {
-                    DrawIcon(TexturePool.watchedTexture);
-                }
-                else if (need != null && need.IsLazy && PrisonLaborUtility.LaborEnabled(pawn) && PrisonLaborUtility.WorkTime(pawn))
-                {
-                    DrawIcon(TexturePool.lazyTexture);
-                }
-            }
-
-        }
-
-
-
-        private void DrawIcon(Material drawIcon)
-        {
-            var drawPos = parent.DrawPos;
-            drawPos.y = AltitudeLayer.MetaOverlays.AltitudeFor() + 0.28125f;
-
-            drawPos.x += parent.def.size.x - 0.52f;
-            drawPos.z += parent.def.size.z - 0.45f;
-
-
-            var num = (Time.realtimeSinceStartup + (397f * (parent.thingIDNumber % 571))) * 4f;
-            var num2 = ((float)Math.Sin(num) + 1f) * 0.5f;
-            num2 = 0.3f + (num2 * 0.7f);
-            var material = FadedMaterialPool.FadedVersionOf(drawIcon, num2);
-            Graphics.DrawMesh(MeshPool.plane05, drawPos, Quaternion.identity, material, 0);
-        }
-
-        public override void PostExposeData()
-        {
-            Scribe_Deep.Look(ref escapeTracker, "EscapeTracker", new object[] { this.parent as Pawn });
-        }
-
-        public override void CompTickRare()
-        {
-            if (Active)
-            {
-                EscapeTracker.Tick();
-            }
-            else
-            {
-                EscapeTracker.DeRegister(this.parent as Pawn);
-            }
-        }
-
-        public override void PostDeSpawn(Map map)
-        {
-            EscapeTracker.DeRegister(this.parent as Pawn);
-        }
+        return escapeTracker;
+      }
     }
+    public bool HasIntel
+    {
+      get
+      {
+        return hasIntel;
+      }
+      set
+      {
+        hasIntel = value;
+      }
+    }
+
+    public int LastInteractionTick
+    {
+      get
+      {
+        return lastInterraction;
+      }
+      set
+      {
+        lastInterraction = value;
+      }
+    }
+
+    private bool Active
+    {
+      get
+      {
+        Pawn pawn = this.parent as Pawn;
+        return pawn != null && pawn.IsPrisonerOfColony && !pawn.Dead && pawn.Spawned && pawn.CarriedBy == null;
+      }
+    }
+
+    public override void Initialize(CompProperties props)
+    {
+      base.Initialize(props);
+      if (escapeTracker == null)
+      {
+        escapeTracker = new EscapeTracker(this.parent as Pawn);
+      }
+    }
+    public override void PostDraw()
+    {
+      if (Active && PrisonLaborPrefs.EnableMotivationIcons)
+      {
+        Pawn pawn = this.parent as Pawn;
+        var need = pawn.needs.TryGetNeed<Need_Motivation>();
+        if (pawn.health.hediffSet.HasTemperatureInjury(TemperatureInjuryStage.Serious) && PrisonLaborUtility.WorkTime(pawn))
+        {
+          DrawIcon(TexturePool.freezingTexture);
+        }
+        else if (pawn.IsWatched())
+        {
+          DrawIcon(TexturePool.watchedTexture);
+        }
+        else if (need != null && need.IsLazy && PrisonLaborUtility.LaborEnabled(pawn) && PrisonLaborUtility.WorkTime(pawn))
+        {
+          DrawIcon(TexturePool.lazyTexture);
+        }
+      }
+
+    }
+
+
+
+    private void DrawIcon(Material drawIcon)
+    {
+      var drawPos = parent.DrawPos;
+      drawPos.y = AltitudeLayer.MetaOverlays.AltitudeFor() + 0.28125f;
+
+      drawPos.x += parent.def.size.x - 0.52f;
+      drawPos.z += parent.def.size.z - 0.45f;
+
+
+      var num = (Time.realtimeSinceStartup + (397f * (parent.thingIDNumber % 571))) * 4f;
+      var num2 = ((float)Math.Sin(num) + 1f) * 0.5f;
+      num2 = 0.3f + (num2 * 0.7f);
+      var material = FadedMaterialPool.FadedVersionOf(drawIcon, num2);
+      Graphics.DrawMesh(MeshPool.plane05, drawPos, Quaternion.identity, material, 0);
+    }
+
+    public override void PostExposeData()
+    {
+      Scribe_Deep.Look(ref escapeTracker, "EscapeTracker", new object[] { this.parent as Pawn });
+      Scribe_Values.Look<bool>(ref hasIntel, "hasIntel", true);
+      Scribe_Values.Look<int>(ref lastInterraction, "lastInteractionTick", 0);
+    }
+
+    public override void CompTickRare()
+    {
+      if (Active)
+      {
+        EscapeTracker.Tick();
+      }
+    }
+  }
 }
