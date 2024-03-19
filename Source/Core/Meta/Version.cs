@@ -88,6 +88,7 @@ namespace PrisonLabor.Core.Meta
         v1_4_5,
         v1_4_6,
         v1_4_7,
-        v1_4_8
+        v1_4_8,
+        v1_4_9
     }
 }

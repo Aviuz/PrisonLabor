@@ -23,7 +23,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
       if (recruitee != null && recruitee.IsPrisonerOfColony && recruiter != null && recruiter.Faction == Faction.OfPlayer)
       {
         CleanPrisonersStatus.Clean(recruitee);
-        Log.Message($"[PrisonLabor] Removed prisoners effects from {recruitee.LabelShort}");
+        DebugLogger.debug($"Removed prisoners effects from {recruitee.LabelShort}");
       }
     }
 
