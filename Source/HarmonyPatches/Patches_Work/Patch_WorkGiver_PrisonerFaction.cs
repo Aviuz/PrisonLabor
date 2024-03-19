@@ -16,7 +16,6 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
   [HarmonyPatch]
   public class Patch_WorkGiver_PrisonerFaction
   {
-    static readonly MethodInfo expectedMethod = AccessTools.PropertyGetter(typeof(Pawn), nameof(Pawn.Faction));
     static IEnumerable<MethodBase> TargetMethods()
     {
       foreach (MethodBase mb in Assembly.GetAssembly(typeof(WorkGiver_Scanner)).GetTypes()
@@ -35,7 +34,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
     }
 
     public static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> inst)
-    {
+    {     
       var codes = new List<CodeInstruction>(inst);
       for (int i = 0; i < codes.Count(); i++)
       {
@@ -52,8 +51,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
     }
 
     private static bool ShouldPatch(CodeInstruction actual, CodeInstruction prev)
-    {             
-      return prev.opcode == OpCodes.Ldarg_1 && actual.opcode == OpCodes.Callvirt && actual.OperandIs(expectedMethod);
+    {
+      return prev.opcode == OpCodes.Ldarg_1 && HPatcher.IsGetFactionOperand(actual);
     }
   }
 }

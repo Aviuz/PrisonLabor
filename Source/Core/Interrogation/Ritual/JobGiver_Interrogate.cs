@@ -45,6 +45,7 @@ namespace PrisonLabor.Core.Interrogation.Ritual
       {
         job.interaction = lordToil_Ritual.stage.BehaviorForRole(lordJob_Ritual.RoleFor(pawn).id).speakerInteraction;
       }
+
       job.speechSoundMale = (soundDefMale ?? SoundDefOf.Speech_Leader_Male);
       job.speechSoundFemale = (soundDefFemale ?? SoundDefOf.Speech_Leader_Female);
       job.speechFaceSpectatorsIfPossible = faceSpectatorsIfPossible;

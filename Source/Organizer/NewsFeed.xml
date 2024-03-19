@@ -4,6 +4,16 @@
     <!-- [img] ... [/img] for image (inside name of file) -->
     <!-- [gap] for gap -->
   <patches>
+    <patch version="1.4.9" silent="false">
+      <title>Prison Labor v1.4.9</title>
+      <items>
+        <item>[-] Unfortunately interrogation requires Ideology DLC</item>
+        <item>[-] Interrogation Chair should load with Ideology DLC. If already placed in your game, one time error may occur.</item>
+        <item>[-] Some fixes and code refactor</item>
+        <item>[gap]</item>
+        <item>I was hoping that interrogation can be handled without Ideology DLC. Unfortunately, too many mechanisms are checked when DLC is installed. So... sorry for incontinence ;/</item>
+      </items>
+    </patch>
     <patch version="1.4.8" silent="false">
       <title>Prison Labor v1.4.8</title>
       <items>

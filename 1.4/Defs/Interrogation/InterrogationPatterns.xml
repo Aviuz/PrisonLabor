@@ -22,7 +22,7 @@
     <defName>PL_Interrogation</defName>
     <ritualOnlyForIdeoMembers>false</ritualOnlyForIdeoMembers>
     <ritualBehavior>PL_Interrogation</ritualBehavior>
-    <ritualTargetFilter>SelectedThing</ritualTargetFilter>
+    <ritualTargetFilter>PL_SelectedThing</ritualTargetFilter>
     <ritualObligationTargetFilter>PL_InterrogationRoom</ritualObligationTargetFilter>
     <ritualOutcomeEffect>PL_Interrogation</ritualOutcomeEffect>
     <playsIdeoMusic>false</playsIdeoMusic>
@@ -93,7 +93,7 @@
         <roleBehaviors>
           <li>
             <roleId>warden</roleId>
-            <dutyDef>DeliverPawnToCell</dutyDef>
+            <dutyDef>PL_DeliverPawnToCell</dutyDef>
             <customPositions>
               <li Class="PrisonLabor.Core.Interrogation.Ritual.RitualPosition_ThingCenter"/>
             </customPositions>
@@ -123,7 +123,7 @@
           </li>
           <li>
             <roleId>prisoner</roleId>
-            <dutyDef>StandOnCell</dutyDef>
+            <dutyDef>PL_StandOnCell</dutyDef>
           </li>
         </roleBehaviors>
       </li>
@@ -145,12 +145,43 @@
           </subNodes>
         </li>
         <li Class="PrisonLabor.Core.Interrogation.Ritual.JobGiver_Interrogate">
-          <soundDefMale>Speech_Ideoligious_Male</soundDefMale>
-          <soundDefFemale>Speech_Ideoligious_Female</soundDefFemale>
+          <soundDefMale MayRequire="Ludeon.RimWorld.Ideology">Speech_Ideoligious_Male</soundDefMale>
+          <soundDefFemale MayRequire="Ludeon.RimWorld.Ideology">Speech_Ideoligious_Female</soundDefFemale>
         </li>
       </subNodes>
     </thinkNode>
   </DutyDef>
+    <DutyDef>
+    <defName>PL_DeliverPawnToCell</defName>
+    <hook>HighPriority</hook>
+    <socialModeMax>Off</socialModeMax>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <!-- Goto pawn -->
+        <li Class="JobGiver_DeliverPawnToCell">
+          <exactCell>true</exactCell>
+          <locomotionUrgency>Jog</locomotionUrgency>
+        </li>
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+    <DutyDef>
+    <defName>PL_StandOnCell</defName>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+
+        <li Class="JobGiver_Idle">
+          <ticks>60</ticks>
+        </li>
+        
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+  
+  <RitualTargetFilterDef>
+    <defName>PL_SelectedThing</defName>
+    <workerClass>RitualTargetFilter_SelectedThing</workerClass>
+  </RitualTargetFilterDef>
   <JobDef>
     <defName>PL_Interrogate</defName>
     <driverClass>PrisonLabor.Core.Interrogation.Ritual.JobDriver_Interrogate</driverClass>

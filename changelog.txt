@@ -1,4 +1,8 @@
 Changelog:
+1.4.9
+- Unfortunately interrogation requires Ideology DLC
+- Interrogation Chair should load with Ideology DLC. If already placed in your game, one time error may occur.
+- Some fixes and code refactor
 1.4.8
 - Apparel policy can be assigned to prisoners
 - Motivated prisoner will respect assigned apparel policy

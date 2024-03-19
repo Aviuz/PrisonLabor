@@ -7,6 +7,8 @@ using System.Reflection.Emit;
 using System.Reflection;
 using Verse;
 using Verse.AI;
+using PrisonLabor.Core.Other;
+using static Verse.HediffCompProperties_RandomizeSeverityPhases;
 
 namespace PrisonLabor.HarmonyPatches.Patches_Work
 {
@@ -19,13 +21,14 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
       yield return typeof(RepairUtility).GetMethod(nameof(RepairUtility.PawnCanRepairNow));
     }
 
-    static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    static IEnumerable<CodeInstruction> Transpiler(MethodBase mBase, IEnumerable<CodeInstruction> instructions)
     {
       var codes = new List<CodeInstruction>(instructions);
       for (int i = 0; i < codes.Count(); i++)
       {
         if (i > 0 && ShouldPatch(codes[i], codes[i - 1]))
         {
+          DebugLogger.debug($"Patch_RepairUtility patch: {mBase.ReflectedType.Assembly.GetName().Name}.{mBase.ReflectedType.Name}.{mBase.Name}");
           yield return new CodeInstruction(OpCodes.Call, typeof(PrisonLaborUtility).GetMethod(nameof(PrisonLaborUtility.GetPawnFaction)));
         }
         else
@@ -37,7 +40,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
 
     private static bool ShouldPatch(CodeInstruction actual, CodeInstruction prev)
     {
-      return prev.opcode == OpCodes.Ldarg_0 && actual.opcode == OpCodes.Callvirt && actual.operand != null && actual.operand.ToString().Contains("RimWorld.Faction get_Faction()");
+      return prev.opcode == OpCodes.Ldarg_0 && HPatcher.IsGetFactionOperand(actual);
     }
   }
 

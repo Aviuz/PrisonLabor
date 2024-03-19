@@ -17,8 +17,6 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
   [HarmonyPatch(new[] { typeof(Pawn), typeof(Pawn) })]
   class Patch_BreastfeedCompatibleFactions
   {
-    static readonly MethodInfo expectedMethod = AccessTools.PropertyGetter(typeof(Pawn), nameof(Pawn.Faction));
-
     [HarmonyPatch("HasBreastfeedCompatibleFactions")]
     static bool Postfix(bool __result, Pawn mom, Pawn baby)
     {
