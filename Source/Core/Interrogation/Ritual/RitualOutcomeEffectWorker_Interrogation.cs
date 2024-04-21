@@ -127,13 +127,13 @@ namespace PrisonLabor.Core.Interrogation.Ritual
       {
         actualChance += 0.1f;
       }
-      if (HasTrait(prisoner, TraitDefOf.Tough))
+      if (HasTrait(prisoner, InterrogationDefsOf.Tough))
       {
         actualChance -= 0.3f;
       }
-      if (HasTrait(prisoner, TraitDefOf.Nerves))
+      if (HasTrait(prisoner, InterrogationDefsOf.Nerves))
       {
-        Trait nerves = GetTrait(prisoner, TraitDefOf.Nerves);
+        Trait nerves = GetTrait(prisoner, InterrogationDefsOf.Nerves);
         actualChance -= nerves.Degree * 0.1f;
       }
       if (HasTrait(prisoner, TraitDefOf.Wimp))
@@ -141,7 +141,7 @@ namespace PrisonLabor.Core.Interrogation.Ritual
         //Wimp can't handle beating
         actualChance = 1f;
       }
-      if (HasTrait(prisoner, TraitDefOf.Masochist))
+      if (HasTrait(prisoner, InterrogationDefsOf.Masochist))
       {
         //Prisoner likes pain...
         actualChance = 0f;
@@ -161,13 +161,13 @@ namespace PrisonLabor.Core.Interrogation.Ritual
       {
         actualChance -= 0.1f;
       }
-      if (HasTrait(warden, TraitDefOf.TooSmart))
+      if (HasTrait(warden, InterrogationDefsOf.TooSmart))
       {
         actualChance -= 0.1f;
       }
-      if (HasTrait(prisoner, TraitDefOf.Nerves))
+      if (HasTrait(prisoner, InterrogationDefsOf.Nerves))
       {
-        Trait nerves = GetTrait(prisoner, TraitDefOf.Nerves);
+        Trait nerves = GetTrait(prisoner, InterrogationDefsOf.Nerves);
         actualChance -= nerves.Degree * 0.1f;
       }
       actualChance += prisoner.relations.OpinionOf(warden) * 0.002f;

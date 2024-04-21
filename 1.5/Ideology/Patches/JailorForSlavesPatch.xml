@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationSequence">
+        <success>Normal</success>
+        <operations>
+            <li Class="PatchOperationReplace">
+                <xpath>*/WorkGiverDef[defName="ExecuteSlave"]/workType</xpath>
+                <value>
+                    <workType>PrisonLabor_Jailor</workType>
+                </value>
+            </li>
+        </operations>
+    </Operation>
+</Patch>

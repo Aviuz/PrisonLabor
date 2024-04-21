@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using HarmonyLib;
 using PrisonLabor.Constants;
 using PrisonLabor.Core.LaborArea;
 using PrisonLabor.Core.LaborWorkSettings;
@@ -12,45 +13,12 @@ namespace PrisonLabor.Core
 {
   public static class PrisonLaborUtility
   {
-    private static readonly List<PrisonerInteractionModeDef> workOptions = new List<PrisonerInteractionModeDef> {
-            PL_DefOf.PrisonLabor_workOption, PL_DefOf.PrisonLabor_workAndRecruitOption , PL_DefOf.PrisonLabor_workAndConvertOption,
-            PL_DefOf.PrisonLabor_workAndEnslaveOption, PL_DefOf.PrisonLabor_workAndBloodfeedOption, PL_DefOf.PrisonLabor_workAndHemogenFarmOption
-        };
-
+    private static readonly Traverse IsSutiableMethod = Traverse.Create<ITab_Pawn_Visitor>().Method("IsStudiable", new[] { typeof(Pawn) });
     public static bool LaborEnabled(this Pawn pawn)
     {
-      return pawn.IsPrisoner && workOptions.Contains(pawn.guest.interactionMode);
+      return pawn.IsPrisoner && pawn.guest.IsInteractionEnabled(PL_DefOf.PrisonLabor_workOption);
     }
 
-    public static bool RecruitInLaborEnabled(Pawn pawn)
-    {
-      if (pawn.guest.interactionMode == PL_DefOf.PrisonLabor_workAndRecruitOption && pawn.guest.ScheduledForInteraction)
-      {
-        return true;
-      }
-
-      return false;
-    }
-
-    public static bool ConvertInLaborEnabled(Pawn doer, Pawn prisoner)
-    {
-      if (prisoner.guest.interactionMode == PL_DefOf.PrisonLabor_workAndConvertOption && prisoner.guest.ScheduledForInteraction
-          && prisoner.Ideo != doer.Ideo && doer.Ideo == prisoner.guest.ideoForConversion)
-      {
-        return true;
-      }
-      return false;
-    }
-
-    public static bool EnslaveInLaborEnabled(Pawn doer, Pawn prisoner)
-    {
-      if (prisoner.guest.interactionMode == PL_DefOf.PrisonLabor_workAndEnslaveOption && prisoner.guest.ScheduledForInteraction
-          && new HistoryEvent(HistoryEventDefOf.EnslavedPrisoner, doer.Named(HistoryEventArgsNames.Doer)).Notify_PawnAboutToDo_Job())
-      {
-        return true;
-      }
-      return false;
-    }
     public static bool WorkTime(Pawn pawn)
     {
       if (pawn.timetable == null)
@@ -138,23 +106,27 @@ namespace PrisonLabor.Core
       {
         return false;
       }
+      if (ModsConfig.AnomalyActive)
+      {
+        if (mode.hideIfNotStudiableAsPrisoner && !IsSutiableMethod.GetValue<bool>(prisoner))
+        {
+          return false;
+        }
+        if (mode.hideIfGrayFleshNotAppeared && !Find.Anomaly.hasSeenGrayFlesh)
+        {
+          return false;
+        }
+      }
       return true;
     }
 
-    private static bool ColonyHasAnyBloodfeeder(Map map)
+    public static bool ColonyHasAnyBloodfeeder(Map map)
     {
       if (ModsConfig.BiotechActive)
       {
-        foreach (Pawn item in map.mapPawns.FreeColonistsSpawned)
+        foreach (Pawn item in map.mapPawns.FreeColonistsAndPrisonersSpawned)
         {
           if (item.IsBloodfeeder())
-          {
-            return true;
-          }
-        }
-        foreach (Pawn item2 in map.mapPawns.PrisonersOfColony)
-        {
-          if (item2.IsBloodfeeder())
           {
             return true;
           }
@@ -163,14 +135,28 @@ namespace PrisonLabor.Core
       return false;
     }
 
-    public static bool HemogenFarmInteractionMode(PrisonerInteractionModeDef interaction)
+    public static bool ColonyHasAnyWardenCapableOfViolence(Map map)
     {
-      return interaction == PrisonerInteractionModeDefOf.HemogenFarm || interaction == PL_DefOf.PrisonLabor_workAndHemogenFarmOption;
+      foreach (Pawn item in map.mapPawns.FreeColonistsSpawned)
+      {
+        if (item.workSettings.WorkIsActive(WorkTypeDefOf.Warden) && !item.WorkTagIsDisabled(WorkTags.Violent))
+        {
+          return true;
+        }
+      }
+      return false;
     }
 
-    public static bool BloodFeedInteractionMode(PrisonerInteractionModeDef interaction)
+    public static bool ColonyHasAnyWardenCapableOfEnslavement(Map map)
     {
-      return interaction == PrisonerInteractionModeDefOf.Bloodfeed || interaction == PL_DefOf.PrisonLabor_workAndBloodfeedOption;
+      foreach (Pawn item in map.mapPawns.FreeColonistsSpawned)
+      {
+        if (item.workSettings.WorkIsActive(WorkTypeDefOf.Warden) && new HistoryEvent(HistoryEventDefOf.EnslavedPrisoner, item.Named(HistoryEventArgsNames.Doer)).DoerWillingToDo())
+        {
+          return true;
+        }
+      }
+      return false;
     }
   }
 }

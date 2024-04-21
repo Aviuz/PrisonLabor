@@ -13,13 +13,13 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
     [HarmonyPatch("GetCurrentRespectedRestriction")]
     class Patch_EnableRespectingFoodPolicies
     {
-        static FoodRestriction Postfix(FoodRestriction __result, Pawn_FoodRestrictionTracker __instance, Pawn getter)
+    static FoodPolicy Postfix(FoodPolicy __result, Pawn_FoodRestrictionTracker __instance, Pawn getter)
         {
             if (__result == null)
             {
                 if (__instance.pawn.IsPrisonerOfColony && __instance.pawn == getter)
                 {
-                    return __instance.CurrentFoodRestriction;
+                    return __instance.CurrentFoodPolicy;
                 }
             }
             return __result;

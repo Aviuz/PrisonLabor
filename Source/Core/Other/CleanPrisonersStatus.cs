@@ -1,4 +1,5 @@
-﻿using PrisonLabor.Constants;
+﻿using HarmonyLib;
+using PrisonLabor.Constants;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,8 @@ namespace PrisonLabor.Core.Other
     static public void Clean(Pawn prisoner)
     {
       prisoner.workSettings = new Pawn_WorkSettings(prisoner);
-      CleanHediffs(prisoner);
-      prisoner.playerSettings.AreaRestriction = null;
+      CleanHediffs(prisoner);      
+      prisoner.playerSettings.AreaRestrictionInPawnCurrentMap = null;
       if (prisoner.drugs != null)
       {
         prisoner.drugs.CurrentPolicy = Current.Game.drugPolicyDatabase.DefaultDrugPolicy();
@@ -29,7 +30,7 @@ namespace PrisonLabor.Core.Other
       {
         if (prisoner.guest != null)
         {
-          prisoner.guest.interactionMode = PrisonerInteractionModeDefOf.NoInteraction;
+          prisoner.guest.SetNoInteraction();
         }
         Bill bill = prisoner.BillStack?.Bills?.FirstOrDefault((Bill x) => x.recipe == RecipeDefOf.ExtractHemogenPack);
         if (bill != null)

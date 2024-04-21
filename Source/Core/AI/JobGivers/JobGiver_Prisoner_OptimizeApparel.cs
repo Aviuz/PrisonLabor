@@ -45,7 +45,7 @@ namespace PrisonLabor.Core.AI.JobGivers
         debugSb.AppendLine($"Scanning for {pawn} at {pawn.Position}");
       }
 
-      Outfit currentOutfit = pawn.outfits.CurrentOutfit;
+      ApparelPolicy currentOutfit = pawn.outfits.CurrentApparelPolicy;
       List<Apparel> wornApparel = pawn.apparel.WornApparel;
 
       if (pawn.IsMotivated())

@@ -4,6 +4,18 @@
     <!-- [img] ... [/img] for image (inside name of file) -->
     <!-- [gap] for gap -->
   <patches>
+    <patch version="1.5.0" silent="false">
+      <title>Prison Labor v1.5.0</title>
+      <items>
+        <item>[-] Update for Rimworld 1.5</item>
+        <item>[-] Almost all of mod's prisoner interactions were removed</item>
+        <item>[-] Mod option to enable "Force to work" interaction by default on imprison</item>
+        <item>[-] May not be compatible with save from 1.4</item>
+        <item>[-] Future update will be only for Rimworld 1.5+ version</item>
+        <item>[gap]</item>
+        <item>Lots of code was removed/change during migration to 1.5. If bug appear, please share the whole game log!</item>
+      </items>
+    </patch>
     <patch version="1.4.9" silent="false">
       <title>Prison Labor v1.4.9</title>
       <items>

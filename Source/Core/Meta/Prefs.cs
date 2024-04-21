@@ -187,6 +187,19 @@ namespace PrisonLabor.Core.Meta
       }
     }
 
+    public static bool EnableWorkByDefault
+    {
+      get
+      {
+        return data.enable_work_by_default;
+      }
+      set
+      {
+        data.enable_work_by_default = value;
+        Apply();
+      }
+    }
+
     public static void Init()
     {
       var flag = !new FileInfo(prefsFilePath).Exists;

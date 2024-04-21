@@ -168,7 +168,7 @@ namespace PrisonLabor.Core.GameSaves
       // TODO bills
 
       // Interaction Mode
-      string[] interactions = { PL_DefOf.PrisonLabor_workOption.defName, PL_DefOf.PrisonLabor_workAndRecruitOption.defName, PL_DefOf.PrisonLabor_workAndConvertOption.defName, PL_DefOf.PrisonLabor_workAndEnslaveOption.defName };
+      string[] interactions = { PL_DefOf.PrisonLabor_workOption.defName, "PrisonLabor_workAndRecruitOption", "PrisonLabor_workAndConvertOption", "PrisonLabor_workAndEnslaveOption" };
 
       foreach (var guestTracker in gameNode.GetEveryNode("guest"))
       {
@@ -178,7 +178,7 @@ namespace PrisonLabor.Core.GameSaves
           foreach (string interaction in interactions)
           {
             if (interactionMode.InnerText == interaction)
-              interactionMode.InnerText = PrisonerInteractionModeDefOf.NoInteraction.defName;
+              interactionMode.InnerText = PrisonerInteractionModeDefOf.MaintainOnly.defName;
           }
         }
       }

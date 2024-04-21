@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <WorkGiverDef>
+        <defName>PrisonLabor_SupervisePrisonLabor</defName>
+        <label>watch prisoner</label>
+        <giverClass>PrisonLabor.Core.AI.WorkGivers.WorkGiver_Supervise</giverClass>
+        <workType>PrisonLabor_Jailor</workType>
+        <priorityInType>5</priorityInType>
+        <verb>watch prisoner</verb>
+        <gerund>watching prisoner</gerund>
+        <requiredCapacities>
+            <li>Manipulation</li>
+        </requiredCapacities>
+        <workTags>
+            <li>Violent</li>
+        </workTags>
+    </WorkGiverDef>
+
+    <WorkGiverDef>
+        <defName>PrisonLabor_HandleChains</defName>
+        <label>handling prisoner's chains</label>
+        <giverClass>PrisonLabor.Core.AI.WorkGivers.WorkGiver_HandleChains</giverClass>
+        <workType>PrisonLabor_Jailor</workType>
+        <priorityInType>5</priorityInType>
+        <verb>handle prisoner's chains</verb>
+        <gerund>handling prisoner's chains</gerund>
+        <requiredCapacities>
+            <li>Manipulation</li>
+        </requiredCapacities>
+    </WorkGiverDef>
+</Defs>

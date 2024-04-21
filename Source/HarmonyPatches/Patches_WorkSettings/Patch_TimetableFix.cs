@@ -9,44 +9,18 @@ using Verse;
 
 namespace PrisonLabor.HarmonyPatches.Patches_WorkSettings
 {
-    [HarmonyPatch(typeof(Pawn_TimetableTracker))]
-    [HarmonyPatch("get_CurrentAssignment")]
-    internal class Patch_TimetableFix
+  [HarmonyPatch(typeof(Pawn_TimetableTracker))]
+  [HarmonyPatch("get_CurrentAssignment")]
+  internal class Patch_TimetableFix
+  {
+    static TimeAssignmentDef Postfix(TimeAssignmentDef __result, Pawn_TimetableTracker __instance)
     {
-        private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, IEnumerable<CodeInstruction> instr)
-        {
-            var pawn = HPatcher.FindOperandAfter(new[] { OpCodes.Ldfld }, new[] { "Verse.Pawn pawn" }, instr);
-            var label = HPatcher.FindOperandAfter(new[] { OpCodes.Brtrue_S }, new[] { "System.Reflection.Emit.Label" }, instr);
-
-            // if (!pawn.IsColonist)
-            OpCode[] opCodes =
-            {
-                OpCodes.Ldarg_0,
-                OpCodes.Ldfld,
-                OpCodes.Callvirt,
-                OpCodes.Brtrue_S,
-            };
-            string[] operands =
-            {
-                "",
-                "Verse.Pawn pawn",
-                "Boolean get_IsColonist()",
-                "System.Reflection.Emit.Label",
-            };
-            int step = 0;
-
-            foreach (var ci in instr)
-            {
-                yield return ci;
-
-                if(HPatcher.IsFragment(opCodes, operands, ci, ref step, "Patch_TimetableFix"))
-                {
-                    yield return new CodeInstruction(OpCodes.Ldarg_0);
-                    yield return new CodeInstruction(OpCodes.Ldfld, pawn);
-                    yield return new CodeInstruction(OpCodes.Callvirt, typeof(Pawn).GetMethod("get_IsPrisonerOfColony"));
-                    yield return new CodeInstruction(OpCodes.Brtrue_S, label);
-                }
-            }
-        }
+      Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
+      if (pawn.IsPrisonerOfColony)
+      {
+        return __instance.times[GenLocalDate.HourOfDay(pawn)];
+      }
+      return __result;
     }
+  }
 }

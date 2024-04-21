@@ -11,19 +11,6 @@ namespace PrisonLabor.Constants
     public static class PL_DefOf
     {
         public static PrisonerInteractionModeDef PrisonLabor_workOption;
-        public static PrisonerInteractionModeDef PrisonLabor_workAndRecruitOption;
-
-        [MayRequireIdeology]
-        public static PrisonerInteractionModeDef PrisonLabor_workAndConvertOption;
-
-        [MayRequireIdeology]
-        public static PrisonerInteractionModeDef PrisonLabor_workAndEnslaveOption;
-
-        [MayRequireBiotech]
-        public static PrisonerInteractionModeDef PrisonLabor_workAndBloodfeedOption;
-
-        [MayRequireBiotech]
-        public static PrisonerInteractionModeDef PrisonLabor_workAndHemogenFarmOption;
 
         public static WorkTypeDef PrisonLabor_Jailor;
 
