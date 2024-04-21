@@ -30,7 +30,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Apparel
 
     private static Apparel PrisonerWillRespectOutfit(Apparel apparel, Pawn prisoner)
     {
-      if (apparel != null && IsMotivatedPrisoner(prisoner) && prisoner.outfits != null && !prisoner.outfits.CurrentOutfit.filter.Allows(apparel.def))
+      if (apparel != null && IsMotivatedPrisoner(prisoner) && prisoner.outfits != null && !prisoner.outfits.CurrentApparelPolicy.filter.Allows(apparel.def))
       {
         return null;
       }

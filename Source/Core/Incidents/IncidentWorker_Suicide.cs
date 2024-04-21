@@ -61,7 +61,7 @@ namespace PrisonLabor.Core.Incidents
                     SendStandardLetter(parms, new TargetInfo(pawn.Position, pawn.Map), pawn.Name.ToStringShort);
                     parms.faction = pawn.Faction;
 
-                    DamageInfo dinfo = new DamageInfo(DamageDefOf.Cut, 29, 0, 0, pawn, pawn.RaceProps.body.AllParts.Find(p => p.def == BodyPartDefOf.Neck));
+                    DamageInfo dinfo = new DamageInfo(DamageDefOf.Cut, 29, 0, 0, pawn, pawn.RaceProps.body.AllParts.Find(p => p.def == BodyPartDefOf.Head));
                     while (!pawn.Dead)
                         pawn.TakeDamage(dinfo);
 

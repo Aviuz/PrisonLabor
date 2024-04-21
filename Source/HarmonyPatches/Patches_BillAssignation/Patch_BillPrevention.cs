@@ -13,7 +13,6 @@ namespace PrisonLabor.HarmonyPatches.Patches_BillAssignation
 {
   [HarmonyPatch(typeof(WorkGiver_DoBill))]
   [HarmonyPatch("StartOrResumeBillJob")]
-  [HarmonyPatch(new[] { typeof(Pawn), typeof(IBillGiver) })]
   internal class Patch_BillPrevention
   {
     private static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase,

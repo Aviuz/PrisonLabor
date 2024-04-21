@@ -31,4 +31,17 @@
     <li IfModActive="ogliss.thewhitecrayon.quarry">1.4/Quarry</li>
     <li IfModActive="derekbickley.ltocolonygroupsfinal">1.4/ColonyGroups</li>
   </v1.4>
+  <v1.5>
+    <li>/</li>
+    <li>1.5</li>
+    <li IfModActive="Ludeon.Rimworld.Ideology">1.5/Ideology</li>
+    <li IfModActive="Ludeon.Rimworld.Biotech">1.5/Biotech</li>
+    <li IfModActive="orion.therapy">1.5/Therapy</li>
+    <li IfModActive="orion.hospitality">1.5/Hospitality</li>
+    <li IfModActive="hatti.cleaningarea">1.5/CleaningArea</li>
+    <li IfModActive="orion.cashregister">1.5/CashRegistry</li>
+    <li IfModActive="ssulunge.kijinrace3">1.5/Kijin</li>
+    <li IfModActive="ogliss.thewhitecrayon.quarry">1.5/Quarry</li>
+    <li IfModActive="derekbickley.ltocolonygroupsfinal">1.5/ColonyGroups</li>
+  </v1.5>
 </loadFolders>

@@ -50,7 +50,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
       {
                 new CodeInstruction(OpCodes.Ldarg_0),
                 new CodeInstruction(OpCodes.Call, typeof(Patch_RestrictBillToPrisoner).GetMethod(nameof(GetLabel))),
-                new CodeInstruction(OpCodes.Stloc_S, 25)
+                new CodeInstruction(OpCodes.Stloc_S, 22)
             };
       // return HPatcher.ReplaceFragment(opCodes, operands, instructions, replacement, "Patch_RestrictBillToPrisoner patch for DoWindowContents", false);
 
@@ -61,14 +61,14 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
       {
         if (instr[i].IsLdarg(0) && instr[i - 1].opcode == OpCodes.Stloc_S)
         {
-          if (instr[i - 1].operand is LocalBuilder lb1 && lb1.LocalIndex == 24)
+          if (instr[i - 1].operand is LocalBuilder lb1 && lb1.LocalIndex == 21)
           {
             start = i;
 
           }
         }
 
-        if (instr[i].IsStloc() && instr[i].operand is LocalBuilder lb && lb.LocalIndex == 25 && instr[i + 1].opcode == OpCodes.Ldloc_S)
+        if (instr[i].IsStloc() && instr[i].operand is LocalBuilder lb && lb.LocalIndex == 22 && instr[i + 1].opcode == OpCodes.Ldloc_S)
         {
           end = i;
         }

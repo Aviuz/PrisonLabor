@@ -1,0 +1,49 @@
+<Defs>
+  <IncidentDef>
+      <defName>PrisonLabor_Revolt</defName>
+      <label>revolt</label>
+      <targetTags>
+        <li>Map_PlayerHome</li>
+      </targetTags>
+      <workerClass>PrisonLabor.Core.Incidents.IncidentWorker_Revolt</workerClass>
+      <letterLabel>Revolt</letterLabel>
+      <letterText>Revolt has been started by {0}. The prisoners united under faction {1}, and began uprising with self-made weapons</letterText>
+      <letterDef>ThreatBig</letterDef>
+    <baseChance>5.4</baseChance>
+      <minRefireDays>20</minRefireDays>
+      <category>ThreatBig</category>
+      <pointsScaleable>true</pointsScaleable>
+      <minThreatPoints>200</minThreatPoints>
+    </IncidentDef>
+
+  <IncidentDef>
+    <defName>PrisonLabor_ResocializationOffer</defName>
+    <label>resocialization offer</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>PrisonLabor.Core.Incidents.IncidentWorker_ResocializationOffer</workerClass>
+    <letterLabel>Resocialization offer</letterLabel>
+    <letterText>Offer by {0}.</letterText>
+    <letterDef>PositiveEvent</letterDef>
+    <baseChance>10</baseChance>
+    <populationEffect>IncreaseEasy</populationEffect>
+  </IncidentDef>
+
+  <IncidentDef>
+    <defName>PrisonLabor_Suicide</defName>
+    <label>prisoner suicide</label>
+    <category>Misc</category>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <workerClass>PrisonLabor.Core.Incidents.IncidentWorker_Suicide</workerClass>
+    <letterLabel>Prisoner suicide</letterLabel>
+    <letterText>{0} has commited suicide, because of bad treatment.</letterText>
+    <letterDef>NegativeEvent</letterDef>
+    <baseChance>2</baseChance>
+    <minThreatPoints>500</minThreatPoints>
+    <pointsScaleable>false</pointsScaleable>
+  </IncidentDef>
+</Defs>

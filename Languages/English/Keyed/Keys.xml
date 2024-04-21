@@ -110,5 +110,7 @@
 
   <PrisonLabor_MechWorksInLaborArea>Mech can work in prison area</PrisonLabor_MechWorksInLaborArea>
   <PrisonLabor_MechWorksInLaborAreaDesc>When disabled mechs will not work in prison labor area</PrisonLabor_MechWorksInLaborAreaDesc>
-  
+
+  <PrisonLabor_EnableWorkByDefault>Enable 'Force to Work' by default:</PrisonLabor_EnableWorkByDefault>
+  <PrisonLabor_EnableWorkByDefaultDesc>When enabled all new prisoners will have enabled `Force to work` interaction mode</PrisonLabor_EnableWorkByDefaultDesc>
 </LanguageData>

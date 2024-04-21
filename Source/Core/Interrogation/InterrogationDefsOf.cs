@@ -28,5 +28,11 @@ namespace PrisonLabor.Core.Interrogation
     public static InteractionDef PL_InterrogateInteraction;
     [MayRequireIdeology]
     public static InteractionDef PL_BeIntrrogatedInteraction;
+
+    public static TraitDef Brawler;
+    public static TraitDef Masochist;
+    public static TraitDef TooSmart;
+    public static TraitDef Nerves;
+    public static TraitDef Tough;
   }
 }

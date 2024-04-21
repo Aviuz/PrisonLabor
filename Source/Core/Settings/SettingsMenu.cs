@@ -3,6 +3,7 @@ using PrisonLabor.Core.Meta;
 using PrisonLabor.Core.Windows;
 using RimWorld;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Verse;
 
@@ -24,6 +25,7 @@ namespace PrisonLabor.Core.Settings
     private static int defaultInteractionMode;
     private static bool enableDebbuging;
     private static bool mechsWorkInLaborZone;
+    private static bool workEnabledByDefault;
 
     private static List<PrisonerInteractionModeDef> interactionModeList;
 
@@ -44,8 +46,10 @@ namespace PrisonLabor.Core.Settings
       enableFullHealRest = PrisonLaborPrefs.EnableFullHealRest;
       enableDebbuging = PrisonLaborPrefs.DebugLogs;
       mechsWorkInLaborZone = PrisonLaborPrefs.MechsWorkInLaborZone;
+      workEnabledByDefault = PrisonLaborPrefs.EnableWorkByDefault;
 
-      interactionModeList = new List<PrisonerInteractionModeDef>(DefDatabase<PrisonerInteractionModeDef>.AllDefs);
+
+      interactionModeList = new List<PrisonerInteractionModeDef>(DefDatabase<PrisonerInteractionModeDef>.AllDefs.Where(interaction => !interaction.isNonExclusiveInteraction));
       defaultInteractionMode = interactionModeList.IndexOf(DefDatabase<PrisonerInteractionModeDef>.GetNamed(PrisonLaborPrefs.DefaultInteractionMode));
       if (defaultInteractionMode < 0 || defaultInteractionMode > interactionModeList.Count - 1)
         defaultInteractionMode = 0;
@@ -68,6 +72,7 @@ namespace PrisonLabor.Core.Settings
 
       if (listing_options.ButtonTextLabeled("PrisonLabor_DefaultInterMode".Translate(), interactionModeList[defaultInteractionMode].LabelCap))
         defaultInteractionMode = defaultInteractionMode < interactionModeList.Count - 1 ? defaultInteractionMode + 1 : 0;
+      listing_options.CheckboxLabeled("PrisonLabor_EnableWorkByDefault".Translate(), ref workEnabledByDefault, "PrisonLabor_EnableWorkByDefaultDesc".Translate());
 
       listing_options.GapLine();
 
@@ -189,6 +194,7 @@ namespace PrisonLabor.Core.Settings
       PrisonLaborPrefs.DefaultInteractionMode = interactionModeList[defaultInteractionMode].defName;
       PrisonLaborPrefs.DebugLogs = enableDebbuging;
       PrisonLaborPrefs.MechsWorkInLaborZone = mechsWorkInLaborZone;
+      PrisonLaborPrefs.EnableWorkByDefault = workEnabledByDefault;
       PrisonLaborPrefs.Save();
       Log.Message("Prison Labor settings saved");
     }

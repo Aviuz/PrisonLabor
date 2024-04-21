@@ -1,4 +1,10 @@
 Changelog:
+1.5.0
+- Update for Rimworld 1.5
+- Almost all of mod's prisoner interactions were removed
+- Mod option to enable "Force to work" interaction by default on imprison
+- May not be compatible with save from 1.4
+- Future update will be only for Rimworld 1.5+ version
 1.4.9
 - Unfortunately interrogation requires Ideology DLC
 - Interrogation Chair should load with Ideology DLC. If already placed in your game, one time error may occur.

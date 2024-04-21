@@ -17,6 +17,7 @@ namespace PrisonLabor.Core.Meta
     public bool enable_full_heal_rest = true;
     public bool enable_debug_logging = false;
     public bool mechs_work_in_labor_zone = false;
+    public bool enable_work_by_default = true;
 
     public Version last_version = Version.v0_0;
     public bool show_news = true;
