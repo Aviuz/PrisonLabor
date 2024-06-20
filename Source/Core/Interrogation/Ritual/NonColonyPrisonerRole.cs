@@ -17,7 +17,7 @@ namespace PrisonLabor.Core.Interrogation.Ritual
       {
         return false;
       }
-      if (p.IsPrisonerOfColony && !p.Faction.IsPlayer)
+      if (p.IsPrisonerOfColony && NonPlayerFaction(p))
       {
         PrisonerComp prisonerComp = p.TryGetComp<PrisonerComp>();
         if (prisonerComp == null)
@@ -41,6 +41,11 @@ namespace PrisonLabor.Core.Interrogation.Ritual
 
       PrepareReason("PrisonLabor_MustBePrisoner".Translate(base.LabelCap), skipReason, out reason);
       return false;
+    }
+
+    private bool NonPlayerFaction(Pawn p)
+    {
+      return p.Faction == null || !p.Faction.IsPlayer;
     }
 
     private void PrepareReason(string baseReason, bool skipReason, out string reason)
