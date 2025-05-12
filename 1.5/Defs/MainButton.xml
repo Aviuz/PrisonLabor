@@ -52,7 +52,7 @@
     <defName>PL_Assign</defName>
     <workerClass>PawnTable_PlayerPawns</workerClass>
     <columns>
-      <li>Label</li>
+      <li>LabelWithIcon</li>
       <li>MedicalCare</li>
       <li>GapTiny</li>
       <li>Outfit</li>
@@ -68,7 +68,7 @@
     <defName>PL_Overview</defName>
     <workerClass>PawnTable_PlayerPawns</workerClass>
     <columns>
-      <li>Label</li>
+      <li>LabelWithIcon</li>
       <li>GapTiny</li>
       <li>PL_InteractionColumn</li>
       <li>GapTiny</li>
@@ -91,7 +91,7 @@
     <defName>PL_DevTable</defName>
     <workerClass>PawnTable_PlayerPawns</workerClass>
     <columns>
-      <li>Label</li>
+      <li>LabelWithIcon</li>
       <li>GapTiny</li>
       <li>PL_EscapeColumn</li>
       <li>GapTiny</li>
