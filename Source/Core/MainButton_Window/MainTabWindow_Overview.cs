@@ -12,8 +12,5 @@ namespace PrisonLabor.Core.MainButton_Window
     {
         protected override PawnTableDef PawnTableDef => UIDefsOf.PL_Overview;
 
-        protected override IEnumerable<Pawn> Pawns => Find.CurrentMap.mapPawns.PrisonersOfColony;
-
-
     }
 }

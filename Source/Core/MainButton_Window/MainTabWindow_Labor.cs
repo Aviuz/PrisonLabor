@@ -23,7 +23,7 @@ namespace PrisonLabor.Core.MainButton_Window
     {
       get
       {
-        foreach (var pawn in Find.CurrentMap.mapPawns.PrisonersOfColony)
+        foreach (var pawn in base.Pawns)
         {
           if (PrisonLaborUtility.LaborEnabled(pawn))
           {
@@ -71,16 +71,12 @@ namespace PrisonLabor.Core.MainButton_Window
       }
       if (Current.Game.playSettings.useWorkPriorities)
       {
-        GUI.color = new Color(1f, 1f, 1f, 0.5f);
-        Text.Font = GameFont.Tiny;
-        Widgets.Label(new Rect(rect.x, rect.y + rect.height + 4f, rect.width, 60f), "PriorityOneDoneFirst".Translate());
-        Text.Font = GameFont.Small;
-        GUI.color = Color.white;
+        using (new TextBlock(new Color(1f, 1f, 1f, 0.5f)))
+          Widgets.Label(new Rect(rect.x, rect.yMax - 6f, rect.width, 60f), "PriorityOneDoneFirst".Translate());
       }
-      if (!Current.Game.playSettings.useWorkPriorities)
-      {
-        UIHighlighter.HighlightOpportunity(rect, "ManualPriorities-Off");
-      }
+      if (Current.Game.playSettings.useWorkPriorities)
+        return;
+      UIHighlighter.HighlightOpportunity(rect, "ManualPriorities-Off");
     }
     public override void PostOpen()
     {

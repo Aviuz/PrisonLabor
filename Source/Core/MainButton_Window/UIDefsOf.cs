@@ -18,4 +18,9 @@ namespace PrisonLabor.Core.MainButton_Window
             DefOfHelper.EnsureInitializedInCtor(typeof(UIDefsOf));
         }
     }
+
+    [DefOf]
+    public static class MainButtonDefOf {
+        public static MainButtonDef PL_Prisoners_Menu;
+    }
 }
