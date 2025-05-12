@@ -30,8 +30,8 @@ namespace PrisonLabor.Core.MainButton_Window
         {
             get
             {
-                Vector2 size = new Vector2(0, 0);
-                foreach(var tab in tabsView.Values)
+                var size = new Vector2(1230f, 155f);
+                foreach(var tab in tabsView.Where(kv => !kv.Key.dev || kv.Key.dev == Prefs.DevMode).Select(kv => kv.Value))
                 {                    
                     size.x = Math.Max(size.x, tab.RequestedTabSize.x);
                     size.y = Math.Max(size.y, tab.RequestedTabSize.y);
@@ -82,71 +82,59 @@ namespace PrisonLabor.Core.MainButton_Window
 
         public PrisonerButtonWindow() : base()
         {
-           foreach(var def in DefDatabase<PrisonersTabDef>.AllDefs)
+           foreach(var tabDef in DefDatabase<PrisonersTabDef>.AllDefs)
            {
-                DebugLogger.debug($"Def: {def.defName}, def.dev: {def.dev}, dev: {Prefs.DevMode}");
-                if(def.dev == false)
-                {
-                    tabsView.Add(def, CreateWindow(def));
-                }
-                if (def.dev == true && Prefs.DevMode)
-                {
-                    tabsView.Add(def, CreateWindow(def));
-                }
-
-            }
+                DebugLogger.debug($"Def: {tabDef.defName}, def.dev: {tabDef.dev}, dev: {Prefs.DevMode}");
+                tabsView[tabDef] = CreateWindow(tabDef);
+           }
            DebugLogger.debug("Prisoners main windows constructed");            
         }
 
         public override void DoWindowContents(Rect inRect)
         {           
-            
-            Text.Anchor = TextAnchor.UpperLeft;
-            Text.Font = GameFont.Small;   
-            
-            inRect.yMin += 32f;
+            inRect.yMin += TabDrawer.TabHeight;
             Widgets.DrawMenuSection(inRect);
             TabDrawer.DrawTabs(inRect, tabs);
-            inRect.yMin += TabDrawer.TabHeight;           
-            GetTable(CurTab).DoWindowContents(inRect);
+            inRect.yMin += Margin;           
+            if (Event.current.type != EventType.Layout)
+            {
+                GetTable(CurTab).DoWindowContents(inRect);
+            }
         }
         public override void PostOpen()
         {
             base.PostOpen();
             tabs.Clear();
-            foreach (PrisonersTabDef tabDef in DefDatabase<PrisonersTabDef>.AllDefs.Where(def => !def.dev || def.dev == Prefs.DevMode).OrderBy(def => def.order))
+            foreach (var tabDef in tabsView.Keys.Where(d => !d.dev || d.dev == Prefs.DevMode).OrderBy(d => d.order))
             {                
                 tabs.Add(new PrisonerWindowTab(tabDef, tabDef.LabelCap, delegate
                 {
+                    GetTable(tabDef).PostOpen();
                     CurTab = tabDef;
                 }, () => CurTab == tabDef));
-                GetTable(tabDef);
-
             }
-            CurTab = tabs[1].def;
-            foreach(var tab in tabsView.Values)
+
+            if (CurTab == null)
             {
-                tab.PostOpen();
+                CurTab = tabs[1].def;
             }
-
+            GetTable(CurTab).PostOpen();
         }
 
-        private CustomTabWindow GetTable(PrisonersTabDef def)
+        private CustomTabWindow GetTable(PrisonersTabDef tabDef)
         {
-
-            if (!tabsView.TryGetValue(def, out CustomTabWindow table))
+            if (tabsView.TryGetValue(tabDef, out var table))
             {
-                table = CreateWindow(def);
-                tabsView.Add(def, table);
-            }            
+                return table;
+            }
+            table = CreateWindow(tabDef);
+            tabsView.Add(tabDef, table);
             return table;
         }
 
-        private CustomTabWindow CreateWindow(PrisonersTabDef def)
+        private CustomTabWindow CreateWindow(PrisonersTabDef tabDef)
         {
-            CustomTabWindow window = (CustomTabWindow)Activator.CreateInstance(def.workerClass);
-            window.PostOpen();
-            return window;
+            return (CustomTabWindow)Activator.CreateInstance(tabDef.workerClass);
         }
         public void Notify_PawnsChanged()
         {
