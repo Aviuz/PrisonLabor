@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <PL_InteractionColumn.label>互动</PL_InteractionColumn.label>
-  <PL_InteractionColumn.headerTip>互动模式</PL_InteractionColumn.headerTip>
-  <PL_Resocialization.label>重返社会</PL_Resocialization.label>
-  <PL_Resocialization.headerTip>囚犯想加入你的殖民地</PL_Resocialization.headerTip>
-  <PL_HasLegcuffs.label>有脚铐</PL_HasLegcuffs.label>
-  <PL_HasHandcuffs.label>有手铐</PL_HasHandcuffs.label>
-  <PL_EscapeColumn.label>准备逃跑</PL_EscapeColumn.label>
+  <PL_InteractionColumn.label>互动模式</PL_InteractionColumn.label>
+  <PL_InteractionColumn.headerTip>给囚犯设置互动模式</PL_InteractionColumn.headerTip>
+  <PL_Resocialization.label>可招募</PL_Resocialization.label>
+  <PL_Resocialization.headerTip>当囚犯可招募时，会出现招募按钮，点击后囚犯会直接加入你的殖民地。\n\n译者注: 由事件触发。按钮显示的前提是囚犯是可招募的（抵抗为0），并且囚犯的待遇满意度要>=10%</PL_Resocialization.headerTip>
+  <PL_HasLegcuffs.label>佩戴脚铐</PL_HasLegcuffs.label>
+  <PL_HasHandcuffs.label>佩戴手铐</PL_HasHandcuffs.label>
+  <PL_EscapeColumn.label>逃跑概率</PL_EscapeColumn.label>
   <PL_MotivationColumn.label>积极性</PL_MotivationColumn.label>
+  <PL_TreatmentColumn.label>待遇满意度</PL_TreatmentColumn.label>
+  <PL_HasIntel.label>掌握情报</PL_HasIntel.label>
+  <PL_IsWorking.label>启用劳作</PL_IsWorking.label>
 </LanguageData>

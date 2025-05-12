@@ -2,6 +2,8 @@
 <LanguageData>
   <PrisonLabor_PrisonerWork>强迫劳作</PrisonLabor_PrisonerWork>
   <PrisonLabor_WorkAndRecruit>劳作与招募</PrisonLabor_WorkAndRecruit>
+  <PrisonLabor_WorkAndConvert>劳作与转化</PrisonLabor_WorkAndConvert>
+  <PrisonLabor_WorkAndEnslave>劳作与奴役</PrisonLabor_WorkAndEnslave>
   <PrisonLabor_LazyPrisonerMessage>你的囚犯停止劳作了！</PrisonLabor_LazyPrisonerMessage>
   <PrisonLabor_WardenResponseThreshold>监视者报告阙值</PrisonLabor_WardenResponseThreshold>
   <PrisonLabor_StoppingWorkThreshold>停止劳作阙值</PrisonLabor_StoppingWorkThreshold>
@@ -17,7 +19,7 @@
   <PrisonLabor_MotivationMechanics>激励技巧(!)</PrisonLabor_MotivationMechanics>
   <PrisonLabor_MotivationWarning>当选择时，囚犯将需要被激励\n\n警告：需要重新载入存档。</PrisonLabor_MotivationWarning>
   <PrisonLabor_MotivationIcons>灵感/积极图标</PrisonLabor_MotivationIcons>
-  <PrisonLabor_MotivationIconsDesc>When enabled above prisoners head will be displayed blue icon when they are inspired, and green icon when they gain motivation by other factors.</PrisonLabor_MotivationIconsDesc>
+  <PrisonLabor_MotivationIconsDesc>启用后，囚犯头顶将显示图标：蓝色图标表示受到鼓舞，绿色图标表示因其他因素获得激励。</PrisonLabor_MotivationIconsDesc>
   <PrisonLabor_CanGrowAdvanced>囚犯可以种植高级作物</PrisonLabor_CanGrowAdvanced>
   <PrisonLabor_CanGrowAdvancedDesc>当禁用时囚犯只能种不需要技能的植物。</PrisonLabor_CanGrowAdvancedDesc>
   <PrisonLabor_Version>版本: </PrisonLabor_Version>
@@ -38,46 +40,77 @@
   <PrisonLabor_LaborAreaDesc>囚犯劳作区域是只有囚犯才能劳作的区域。殖民者只能在此区域内执行监视劳作。</PrisonLabor_LaborAreaDesc>
   <PrisonLabor_ClearLaborArea>清除劳作区域</PrisonLabor_ClearLaborArea>
   <PrisonLabor_ExpandLaborArea>扩张劳作区域</PrisonLabor_ExpandLaborArea>
+
   <PrisonLabor_EnableRevolts>启用叛乱</PrisonLabor_EnableRevolts>
   <PrisonLabor_EnableRevoltsDesc>启用时，有时会用叛乱事件取代原版的越狱。</PrisonLabor_EnableRevoltsDesc>
   <PrisonLabor_LaborAreaWarning>劳作区不需要囚犯劳作。\n\n该区域禁止殖民者劳作。\n\n这是用于防止你的殖民者在这片区域劳作。囚犯会在他们可以到达的任意区域劳作。</PrisonLabor_LaborAreaWarning>
   <PrisonLabor_DontShowAgain>不再显示</PrisonLabor_DontShowAgain>
   <PrisonLabor_ShowTreatmentHappiness>显示待遇满意度</PrisonLabor_ShowTreatmentHappiness>
   <PrisonLabor_ShowTreatmentHappinessDesc>启用时，待遇满意度会显示在需求页中。</PrisonLabor_ShowTreatmentHappinessDesc>
-  <PrisonLabor_ColonyOnlyShort>只允许殖民地</PrisonLabor_ColonyOnlyShort>
-  <PrisonLabor_ColonistsOnlyShort>只允许殖民地</PrisonLabor_ColonistsOnlyShort>
-  <PrisonLabor_PrisonersOnlyShort>只允许囚犯</PrisonLabor_PrisonersOnlyShort>
-  <PrisonLabor_ColonyOnly>只允许殖民地</PrisonLabor_ColonyOnly>
+
+  <PrisonLabor_ColonyOnlyShort>任何人</PrisonLabor_ColonyOnlyShort>
+  <PrisonLabor_ColonistsOnlyShort>殖民者</PrisonLabor_ColonistsOnlyShort>
+  <PrisonLabor_PrisonersOnlyShort>囚犯</PrisonLabor_PrisonersOnlyShort>
+
+  <PrisonLabor_ColonyOnly>任何人</PrisonLabor_ColonyOnly>
   <PrisonLabor_ColonistsOnly>只允许殖民者</PrisonLabor_ColonistsOnly>
   <PrisonLabor_PrisonersOnly>只允许囚犯</PrisonLabor_PrisonersOnly>
   <PrisonLabor_PrisonersAndSlaveOnly>任何非殖民者</PrisonLabor_PrisonersAndSlaveOnly>
+
+  <!-- 0.10 -->
   <PrisonLabor_RecruitButtonLabel>招募</PrisonLabor_RecruitButtonLabel>
   <PrisonLabor_RecruitButtonDesc>准备加入殖民地</PrisonLabor_RecruitButtonDesc>
+
   <PrisonLabor_Alert_EscapingPrisoners_Title>囚犯可以逃脱</PrisonLabor_Alert_EscapingPrisoners_Title>
   <PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>囚犯可以到达地图边缘并逃脱。只要殖民者不密切关注，他们就会尝试逃跑。</PrisonLabor_Alert_EscapingPrisoners_DefaultExplanation>
   <PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>这些囚犯可以逃跑：\n\n{0}\n只要殖民者不密切关注，他们就会尝试逃跑。</PrisonLabor_Alert_EscapingPrisoners_ExplanationFormat>
+
   <PrisonLabor_ButtonRemoveModFromSave>选择存档</PrisonLabor_ButtonRemoveModFromSave>
-  <PrisonLabor_ButtonRemoveModFromSaveDesc>从存档中删除监狱劳力</PrisonLabor_ButtonRemoveModFromSaveDesc>
+  <PrisonLabor_ButtonRemoveModFromSaveDesc>从存档中移除Prison Labor模组</PrisonLabor_ButtonRemoveModFromSaveDesc>
+  
   <PrisonLabor_ButtonBackup>备份</PrisonLabor_ButtonBackup>
   <PrisonLabor_ButtonProceed>继续</PrisonLabor_ButtonProceed>
+  
   <PrisonLabor_UpgradeSaveProcessMessage>更新 [PrisonLabor] 模组</PrisonLabor_UpgradeSaveProcessMessage>
-  <PrisonLabor_UpgradeSaveDialogMessage>你正在从存档中移除监狱劳力模组。在这操作之后，你可以在没有该模组的情况下游玩。</PrisonLabor_UpgradeSaveDialogMessage>
+  <PrisonLabor_UpgradeSaveDialogMessage>你正在从存档中移除Prison Labor模组。在这操作之后，你可以在没有该模组的情况下游玩。</PrisonLabor_UpgradeSaveDialogMessage>
   <PrisonLabor_BackupSaveDialogMessage>请用下面的按钮备份文件</PrisonLabor_BackupSaveDialogMessage>
+
   <PrisonLabor_ReplayTurorialsButton>教程</PrisonLabor_ReplayTurorialsButton>
   <PrisonLabor_ShowTutorialButton>显示</PrisonLabor_ShowTutorialButton>
+
   <PrisonLabor_CommandBedSetOwnerLabel>分配囚犯</PrisonLabor_CommandBedSetOwnerLabel>
   <PrisonLabor_CommandBedSetOwnerDesc>把这张床分配给特定的囚犯使用</PrisonLabor_CommandBedSetOwnerDesc>
+
   <PrisonLabor_EnableSuicide>囚犯可以自杀</PrisonLabor_EnableSuicide>
   <PrisonLabor_EnableSuicideDesc>可以让囚犯在不开心的时候自杀</PrisonLabor_EnableSuicideDesc>
+
   <PrisonLabor_EnableFullHealRest>使囚犯得到充分的治疗休息</PrisonLabor_EnableFullHealRest>
   <PrisonLabor_EnableFullHealRestDesc>囚犯会一直卧床直到完全痊愈</PrisonLabor_EnableFullHealRestDesc>
+
   <PrisonLabor_HandcuffsPut>戴上手铐</PrisonLabor_HandcuffsPut>
   <PrisonLabor_HandcuffsRemove>摘除手铐</PrisonLabor_HandcuffsRemove>
   <PrisonLabor_LegcuffsPut>戴上脚铐</PrisonLabor_LegcuffsPut>
   <PrisonLabor_LegcuffsRemove>摘除脚铐</PrisonLabor_LegcuffsRemove>
+  
   <PrisonLabor_ToggleHandscuffs>摘除/戴上手铐</PrisonLabor_ToggleHandscuffs>
   <PrisonLabor_ToggleLegscuffs>摘除/戴上脚铐</PrisonLabor_ToggleLegscuffs>
+
   <PrisonLabor_EnableDebugLogs>启用调试日志</PrisonLabor_EnableDebugLogs>
   <PrisonLabor_EnableDebugLogsDesc>打开此选项可能会发送垃圾日志</PrisonLabor_EnableDebugLogsDesc>
-  <PrisonLabor_WorkAndConvert>劳作与转化</PrisonLabor_WorkAndConvert>
+
+  <PrisonLabor_CannotTakeToBed>无法带去床上</PrisonLabor_CannotTakeToBed>
+  <PrisonLabor_TakingToBed>将 {0} 带去床上</PrisonLabor_TakingToBed>
+
+  <PrisonLabor_MustBePrisoner>{0} 必须是非玩家派系的囚犯。</PrisonLabor_MustBePrisoner>
+  <PrisonLabor_NoIntel>{0} 没有更多情报了。</PrisonLabor_NoIntel>
+  <PrisonLabor_TooSoonInterrogation>{0} 需要在下次审讯前休息一段时间。</PrisonLabor_TooSoonInterrogation>
+  <PrisonLabor_MissingComp>出现错误，该角色缺少重要组件。</PrisonLabor_MissingComp>
+
+  <PrisonLabor_Prisoner>囚犯 {0}</PrisonLabor_Prisoner>
+
+  <PrisonLabor_MechWorksInLaborArea>机械体可以在囚犯劳作区域工作</PrisonLabor_MechWorksInLaborArea>
+  <PrisonLabor_MechWorksInLaborAreaDesc>禁用后机械体将不会在囚犯劳作区域工作</PrisonLabor_MechWorksInLaborAreaDesc>
+
+  <PrisonLabor_EnableWorkByDefault>默认启用“强迫劳作”：</PrisonLabor_EnableWorkByDefault>
+  <PrisonLabor_EnableWorkByDefaultDesc>启用后，所有新囚犯将默认启用“强迫劳作”互动模式</PrisonLabor_EnableWorkByDefaultDesc>
 </LanguageData>

@@ -2,6 +2,6 @@
 <LanguageData>
   <PrisonLabor_PrisonerSupervise.reportString>监视囚犯 TargetA.</PrisonLabor_PrisonerSupervise.reportString>
   <PrisonLabor_Arrest.reportString>逮捕 TargetA.</PrisonLabor_Arrest.reportString>
-  <PrisonLabor_HandlePrisonersLegChain.reportString>操作囚犯 TargetA 的腿铐。</PrisonLabor_HandlePrisonersLegChain.reportString>
+  <PrisonLabor_HandlePrisonersLegChain.reportString>操作囚犯 TargetA 的脚铐。</PrisonLabor_HandlePrisonersLegChain.reportString>
   <PrisonLabor_HandlePrisonersHandChain.reportString>操作囚犯 TargetA 的手铐。</PrisonLabor_HandlePrisonersHandChain.reportString>
 </LanguageData>
