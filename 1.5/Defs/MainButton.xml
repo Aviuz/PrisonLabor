@@ -107,6 +107,7 @@
     <headerTip>Interaction mode</headerTip>
     <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_Interaction</workerClass>
     <sortable>true</sortable>
+    <width>70</width>
   </PawnColumnDef>
 
   <PawnColumnDef>
@@ -114,6 +115,7 @@
     <label>Resocialization</label>
     <headerTip>Prisoner wants to join to your colony</headerTip>
     <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_Resocialization</workerClass>
+    <width>70</width>
   </PawnColumnDef>
 
   <PawnColumnDef>
@@ -121,6 +123,7 @@
     <label>Has Legcuffs</label>
     <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_HasLegcuffs</workerClass>
     <sortable>true</sortable>
+    <width>70</width>
   </PawnColumnDef>
 
   <PawnColumnDef>
@@ -128,12 +131,14 @@
     <label>Has Handcuffs</label>
     <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_HasHandscuffs</workerClass>
     <sortable>true</sortable>
+    <width>70</width>
   </PawnColumnDef>
 
   <PawnColumnDef>
     <defName>PL_EscapeColumn</defName>
     <label>Ready to escape</label>
     <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_EscapeTracker</workerClass>
+    <width>70</width>
   </PawnColumnDef>
 
   <PawnColumnDef>
@@ -141,6 +146,7 @@
     <label>Motivation</label>
     <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_Motivation</workerClass>
     <sortable>true</sortable>
+    <width>70</width>
   </PawnColumnDef>
 
   <PawnColumnDef>
@@ -148,6 +154,7 @@
     <label>Treatment</label>
     <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_Treatment</workerClass>
     <sortable>true</sortable>
+    <width>70</width>
   </PawnColumnDef>
   
   <PawnColumnDef>
@@ -155,12 +162,14 @@
     <label>Has intel</label>
     <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_HasIntel</workerClass>
     <sortable>true</sortable>
+    <width>70</width>
   </PawnColumnDef>
   <PawnColumnDef>
     <defName>PL_IsWorking</defName>
     <label>Is Working</label>
     <workerClass>PrisonLabor.Core.MainButton_Window.ColumnWorker_IsWorking</workerClass>
     <sortable>true</sortable>
+    <width>70</width>
   </PawnColumnDef>
 
 </Defs>
