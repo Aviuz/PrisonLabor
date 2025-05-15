@@ -72,10 +72,14 @@ namespace PrisonLabor.Core.MainButton_Window
       if (Current.Game.playSettings.useWorkPriorities)
       {
         using (new TextBlock(new Color(1f, 1f, 1f, 0.5f)))
+        {
           Widgets.Label(new Rect(rect.x, rect.yMax - 6f, rect.width, 60f), "PriorityOneDoneFirst".Translate());
+        }
       }
       if (Current.Game.playSettings.useWorkPriorities)
+      {
         return;
+      }
       UIHighlighter.HighlightOpportunity(rect, "ManualPriorities-Off");
     }
     public override void PostOpen()

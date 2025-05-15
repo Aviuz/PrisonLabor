@@ -15,7 +15,7 @@ namespace PrisonLabor.Core.MainButton_Window
 
     protected CustomTabWindow()
     {
-      def = MainButtonDefOf.PL_Prisoners_Menu;
+      def = UIDefsOf.PL_Prisoners_Menu;
     }
   }
 }

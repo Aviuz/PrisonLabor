@@ -31,7 +31,7 @@ namespace PrisonLabor.Core.MainButton_Window
             get
             {
                 var size = new Vector2(1230f, 155f);
-                foreach(var tab in tabsView.Where(kv => !kv.Key.dev || kv.Key.dev == Prefs.DevMode).Select(kv => kv.Value))
+                foreach(var tab in tabsView.Where(kv => ShouldShowTab(kv.Key)).Select(kv => kv.Value))
                 {                    
                     size.x = Math.Max(size.x, tab.RequestedTabSize.x);
                     size.y = Math.Max(size.y, tab.RequestedTabSize.y);
@@ -105,7 +105,7 @@ namespace PrisonLabor.Core.MainButton_Window
         {
             base.PostOpen();
             tabs.Clear();
-            foreach (var tabDef in tabsView.Keys.Where(d => !d.dev || d.dev == Prefs.DevMode).OrderBy(d => d.order))
+            foreach (var tabDef in tabsView.Keys.Where(ShouldShowTab).OrderBy(d => d.order))
             {                
                 tabs.Add(new PrisonerWindowTab(tabDef, tabDef.LabelCap, delegate
                 {
@@ -119,6 +119,11 @@ namespace PrisonLabor.Core.MainButton_Window
                 CurTab = tabs[1].def;
             }
             GetTable(CurTab).PostOpen();
+        }
+
+        private bool ShouldShowTab(PrisonersTabDef tabDef)
+        {
+            return !tabDef.dev || tabDef.dev == Prefs.DevMode;
         }
 
         private CustomTabWindow GetTable(PrisonersTabDef tabDef)
