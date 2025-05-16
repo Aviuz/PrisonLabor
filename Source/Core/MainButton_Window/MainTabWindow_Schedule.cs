@@ -22,7 +22,7 @@ namespace PrisonLabor.Core.MainButton_Window
 		{
 			get
 			{
-				foreach (var pawn in Find.CurrentMap.mapPawns.PrisonersOfColony)
+				foreach (var pawn in base.Pawns)
 				{
 					if (PrisonLaborUtility.LaborEnabled(pawn))
 					{

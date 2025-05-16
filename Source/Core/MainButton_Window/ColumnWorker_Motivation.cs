@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 
 namespace PrisonLabor.Core.MainButton_Window
 {
     public class ColumnWorker_Motivation : PawnColumnWorker_Text
     {
+        protected override TextAnchor Anchor => TextAnchor.MiddleCenter;
+
         protected override string GetTextFor(Pawn pawn)
         {
             Need_Motivation motivation = pawn.needs.TryGetNeed<Need_Motivation>();
