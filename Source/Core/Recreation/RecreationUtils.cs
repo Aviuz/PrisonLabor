@@ -53,7 +53,7 @@ namespace PrisonLabor.Core.Recreation
         pawn.jobs.curDriver.EndJobWith(JobCondition.InterruptForced);
         return true;
       }
-      if ((NeedLevelFull(treatment) || NeedLevelFull(pawn.needs.joy)) && !curJob.doUntilGatheringEnded)
+      if (NeedLevelFull(treatment) && NeedLevelFull(pawn.needs.joy) && !curJob.doUntilGatheringEnded)
       {
         switch (fullJoyAction)
         {
@@ -70,7 +70,7 @@ namespace PrisonLabor.Core.Recreation
 
     private static bool NeedLevelFull(Need need)
     {
-      return need != null && need.CurLevel > 0.9999f;
+      return need == null || need.CurLevel > 0.9999f;
     }
   }
 }

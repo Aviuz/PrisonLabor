@@ -39,7 +39,7 @@ namespace PrisonLabor.Core.Recreation
         {
             if (!pawn.IsPrisonerOfColony)
             {
-                DebugLogger.debug($"Pawn {pawn.NameShortColored} is not prisoner {typeof(JoyGiver_PrisonerRecrationWalking).Name}. Return null");
+                DebugLogger.debug($"Pawn {pawn.NameShortColored} is not prisoner {nameof(JoyGiver_PrisonerRecrationWalking)}. Return null");
                 return null;
             }
 
@@ -59,7 +59,7 @@ namespace PrisonLabor.Core.Recreation
             if (!exactWanderDest.IsValid)
             {
                 pawn.mindState.nextMoveOrderIsWait = false;
-                DebugLogger.debug($"Pawn {pawn.NameShortColored} has not valid dest in {typeof(JoyGiver_PrisonerRecrationWalking).Name}. Return null");
+                DebugLogger.debug($"Pawn {pawn.NameShortColored} has not valid dest in {nameof(JoyGiver_PrisonerRecrationWalking)}. Return null");
                 return null;
             }
             LocomotionUrgency value = locomotionUrgency;
@@ -80,7 +80,7 @@ namespace PrisonLabor.Core.Recreation
             IntVec3 wanderRoot = GetWanderRoot(pawn);
             float value = wanderRadius;
             PawnDuty duty = pawn.mindState.duty;
-            if (duty != null && duty.wanderRadius.HasValue)
+            if (duty?.wanderRadius != null)
             {
                 value = duty.wanderRadius.Value;
             }
@@ -92,7 +92,7 @@ namespace PrisonLabor.Core.Recreation
             return pawn.IsPrisonerOfColony && base.CanBeGivenTo(pawn);
         }
 
-        private IntVec3 GetWanderRoot(Pawn pawn)
+        private static IntVec3 GetWanderRoot(Pawn pawn)
         {
             return pawn.Position;
         }
