@@ -20,7 +20,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Construction
         static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> inst)
         {
             var codes = new List<CodeInstruction>(inst);
-            for (int i = 0; i < codes.Count(); i++)
+            for (int i = 0; i < codes.Count; i++)
             {
                 if (i > 0 && ShouldPatch(codes[i], codes[i - 1]))
                 {

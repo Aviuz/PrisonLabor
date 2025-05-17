@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using HarmonyLib;
 using PrisonLabor.Constants;
 using PrisonLabor.Core.LaborArea;
@@ -13,7 +14,9 @@ namespace PrisonLabor.Core
 {
   public static class PrisonLaborUtility
   {
-    private static readonly Traverse IsSutiableMethod = Traverse.Create<ITab_Pawn_Visitor>().Method("IsStudiable", new[] { typeof(Pawn) });
+    private static readonly Traverse IsSuitableMethod =
+      Traverse.Create<ITab_Pawn_Visitor>().Method("IsStudiable", new[] { typeof(Pawn) });
+
     public static bool LaborEnabled(this Pawn pawn)
     {
       return pawn.IsPrisoner && pawn.guest.IsInteractionEnabled(PL_DefOf.PrisonLabor_workOption);
@@ -27,25 +30,23 @@ namespace PrisonLabor.Core
         return true;
       if (pawn.timetable.CurrentAssignment == TimeAssignmentDefOf.Anything)
       {
-        if (HealthAIUtility.ShouldSeekMedicalRest(pawn) ||
-            pawn.health.hediffSet.HasTemperatureInjury(TemperatureInjuryStage.Serious) ||
-            CheckFoodNeed(pawn) ||
-            CheckRestNeed(pawn))
-          return false;
-        else
-          return true;
+        return !HealthAIUtility.ShouldSeekMedicalRest(pawn) &&
+               !pawn.health.hediffSet.HasTemperatureInjury(TemperatureInjuryStage.Serious) &&
+               !CheckFoodNeed(pawn) &&
+               !CheckRestNeed(pawn);
       }
+
       return false;
     }
 
     private static bool CheckFoodNeed(Pawn pawn)
     {
-      return pawn.needs != null && pawn.needs.food != null && pawn.needs.food.CurCategory > HungerCategory.Hungry;
+      return pawn.needs?.food != null && pawn.needs.food.CurCategory > HungerCategory.Hungry;
     }
 
     private static bool CheckRestNeed(Pawn pawn)
     {
-      return pawn.needs != null && pawn.needs.rest != null && pawn.needs.rest.CurCategory != RestCategory.Rested;
+      return pawn.needs?.rest != null && pawn.needs.rest.CurCategory != RestCategory.Rested;
     }
 
     public static bool IsDisabledByLabor(IntVec3 pos, Pawn pawn, WorkTypeDef workType)
@@ -58,7 +59,8 @@ namespace PrisonLabor.Core
 
     public static bool CanWorkHere(IntVec3 pos, Pawn pawn, WorkTypeDef workType)
     {
-      if (ShouldPawnBeConsidered(pawn) && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null && !WorkSettings.WorkDisabled(workType))
+      if (ShouldPawnBeConsidered(pawn) && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null &&
+          !WorkSettings.WorkDisabled(workType))
       {
         bool result = true;
         try
@@ -67,10 +69,13 @@ namespace PrisonLabor.Core
         }
         catch (IndexOutOfRangeException e)
         {
-          DebugLogger.debug($"{pawn.NameShortColored} cause IndexOutOfRangeException for {workType.label} calling pos {pos}");
+          DebugLogger.debug(
+            $"{pawn.NameShortColored} cause IndexOutOfRangeException for {workType.label} calling pos {pos}");
         }
+
         return result;
       }
+
       return true;
     }
 
@@ -90,72 +95,67 @@ namespace PrisonLabor.Core
       {
         return false;
       }
+
       if (prisoner.IsWildMan() && !mode.allowOnWildMan)
       {
         return false;
       }
+
       if (mode.hideIfNoBloodfeeders && prisoner.MapHeld != null && !ColonyHasAnyBloodfeeder(prisoner.MapHeld))
       {
         return false;
       }
-      if (mode.hideOnHemogenicPawns && ModsConfig.BiotechActive && prisoner.genes != null && prisoner.genes.HasGene(GeneDefOf.Hemogenic))
+
+      if (mode.hideOnHemogenicPawns && ModsConfig.BiotechActive && prisoner.genes != null &&
+          prisoner.genes.HasActiveGene(GeneDefOf.Hemogenic))
       {
         return false;
       }
+
       if (!mode.allowInClassicIdeoMode && Find.IdeoManager.classicMode)
       {
         return false;
       }
+
       if (ModsConfig.AnomalyActive)
       {
-        if (mode.hideIfNotStudiableAsPrisoner && !IsSutiableMethod.GetValue<bool>(prisoner))
+        if (mode.hideIfNotStudiableAsPrisoner && !IsSuitableMethod.GetValue<bool>(prisoner))
         {
           return false;
         }
+
         if (mode.hideIfGrayFleshNotAppeared && !Find.Anomaly.hasSeenGrayFlesh)
         {
           return false;
         }
       }
+
       return true;
     }
 
-    public static bool ColonyHasAnyBloodfeeder(Map map)
+    private static bool ColonyHasAnyBloodfeeder(Map map)
     {
-      if (ModsConfig.BiotechActive)
-      {
-        foreach (Pawn item in map.mapPawns.FreeColonistsAndPrisonersSpawned)
-        {
-          if (item.IsBloodfeeder())
-          {
-            return true;
-          }
-        }
-      }
-      return false;
+      return ModsConfig.BiotechActive && map.mapPawns.FreeAdultColonistsSpawned.Any(pawn => pawn.IsBloodfeeder());
     }
 
     public static bool ColonyHasAnyWardenCapableOfViolence(Map map)
     {
-      foreach (Pawn item in map.mapPawns.FreeColonistsSpawned)
-      {
-        if (item.workSettings.WorkIsActive(WorkTypeDefOf.Warden) && !item.WorkTagIsDisabled(WorkTags.Violent))
-        {
-          return true;
-        }
-      }
-      return false;
+      return map.mapPawns.FreeColonistsSpawned.Any(pawn =>
+        pawn.workSettings.WorkIsActive(WorkTypeDefOf.Warden) && !pawn.WorkTagIsDisabled(WorkTags.Violent));
     }
 
     public static bool ColonyHasAnyWardenCapableOfEnslavement(Map map)
     {
       foreach (Pawn item in map.mapPawns.FreeColonistsSpawned)
       {
-        if (item.workSettings.WorkIsActive(WorkTypeDefOf.Warden) && new HistoryEvent(HistoryEventDefOf.EnslavedPrisoner, item.Named(HistoryEventArgsNames.Doer)).DoerWillingToDo())
+        if (item.workSettings.WorkIsActive(WorkTypeDefOf.Warden) &&
+            new HistoryEvent(HistoryEventDefOf.EnslavedPrisoner, item.Named(HistoryEventArgsNames.Doer))
+              .DoerWillingToDo())
         {
           return true;
         }
       }
+
       return false;
     }
   }
