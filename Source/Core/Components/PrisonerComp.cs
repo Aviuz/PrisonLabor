@@ -17,19 +17,10 @@ namespace PrisonLabor.Core.Components
   {
     private EscapeTracker escapeTracker;
     private bool hasIntel = true;
-    private int lastInterraction = 0;
+    private int lastInteraction;
 
-    public EscapeTracker EscapeTracker
-    {
-      get
-      {
-        if (escapeTracker == null)
-        {
-          escapeTracker = new EscapeTracker(this.parent as Pawn);
-        }
-        return escapeTracker;
-      }
-    }
+    public EscapeTracker EscapeTracker => escapeTracker ?? (escapeTracker = new EscapeTracker(parent as Pawn));
+
     public bool HasIntel
     {
       get
@@ -46,11 +37,11 @@ namespace PrisonLabor.Core.Components
     {
       get
       {
-        return lastInterraction;
+        return lastInteraction;
       }
       set
       {
-        lastInterraction = value;
+        lastInteraction = value;
       }
     }
 
@@ -113,9 +104,9 @@ namespace PrisonLabor.Core.Components
 
     public override void PostExposeData()
     {
-      Scribe_Deep.Look(ref escapeTracker, "EscapeTracker", new object[] { this.parent as Pawn });
-      Scribe_Values.Look<bool>(ref hasIntel, "hasIntel", true);
-      Scribe_Values.Look<int>(ref lastInterraction, "lastInteractionTick", 0);
+      Scribe_Deep.Look(ref escapeTracker, "EscapeTracker", parent as Pawn);
+      Scribe_Values.Look(ref hasIntel, "hasIntel", true);
+      Scribe_Values.Look(ref lastInteraction, "lastInteractionTick");
     }
 
     public override void CompTickRare()

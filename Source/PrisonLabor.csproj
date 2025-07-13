@@ -19,7 +19,7 @@
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\1.5\Assemblies\</OutputPath>
+    <OutputPath>..\1.6\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -48,6 +48,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+	<Reference Include="System.Collections" />
+    <Reference Include="mscorlib" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -93,6 +95,8 @@
     <Compile Include="Core\Alerts\Alert_StarvingPrisoners.cs" />
     <Compile Include="Core\Components\PrisonerComp.cs" />
     <Compile Include="Core\Components\PrisonerCompProperties.cs" />
+    <Compile Include="Core\GUI_Components\FloatMenuOptions\FloatMenuOptionProvider_HandleChains.cs" />
+    <Compile Include="Core\GUI_Components\FloatMenuOptions\FloatMenuOptionProvider_TakePrisonerToBed.cs" />
     <Compile Include="Core\GUI_Components\TexturePool.cs" />
     <Compile Include="Core\GUI_Components\RichListing.cs" />
     <Compile Include="Core\GUI_Components\SImpleVideo.cs" />
@@ -156,6 +160,8 @@
     <Compile Include="Core\Windows\TutorialWindow.cs" />
     <Compile Include="HarmonyPatches\DevTools.cs" />
     <Compile Include="HarmonyPatches\Patches_Apparel\PrisonerRespectOutfits.cs" />
+    <Compile Include="HarmonyPatches\Patches_Arrest\Patch_ArrestLogic.cs" />
+    <Compile Include="HarmonyPatches\Patches_Arrest\Patch_FloatMenuOptionProvider_Arrest.cs" />
     <Compile Include="HarmonyPatches\Patches_AssignBed\Patch_AssignPrisonersToBed.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Bill_StartAnew_Patch.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_Bill_ProductionWithUft.cs" />
@@ -174,7 +180,6 @@
     <Compile Include="HarmonyPatches\Patches_ForbidUtil\Patch_ForbidUtility.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_Bill_Assigment.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_Bill\Patch_RestrictBillToPrisoner.cs" />
-    <Compile Include="HarmonyPatches\Patches_GUI\GUI_RMB\Patch_RMB_Chains.cs" />
     <Compile Include="HarmonyPatches\Patches_InteractionMode\Patch_RemoveHediffsAfterStatusChange.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_AddLaborArea.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Labor_Thing.cs" />
@@ -184,7 +189,6 @@
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Scanner_HasJob.cs" />
     <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
     <Compile Include="HarmonyPatches\Patches_Recreation\Patch_PrisonerGainTreatment.cs" />
-    <Compile Include="HarmonyPatches\Patches_TakeToBed\Patch_AddTakeToBed.cs" />
     <Compile Include="HarmonyPatches\Patches_Version\Patch_AddModVersionToFile.cs" />
     <Compile Include="HarmonyPatches\Patches_BillAssignation\Patch_BillPrevention.cs" />
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_WorkTab\Patch_ChangeWorkTabPrisonerLabelColor.cs" />
@@ -231,7 +235,6 @@
     <Compile Include="Core\Other\PrisonerFoodReservation.cs" />
     <Compile Include="Constants\PL_DefOf.cs" />
     <Compile Include="Core\PrisonLaborUtility.cs" />
-    <Compile Include="Core\PrisonLaborWidgets.cs" />
     <Compile Include="Core\Settings\SettingsMenu.cs" />
     <Compile Include="Core\Settings\SelectWorkTypesDialog.cs" />
     <Compile Include="Core\Windows\NewsWindow.cs" />
@@ -262,49 +265,49 @@
     <Compile Include="Core\LaborWorkSettings\WorkSettings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\1.5\Patches\AddPrisonerComp.xml">
+    <Content Include="..\1.6\Patches\AddPrisonerComp.xml">
       <Link>Patches\AddPrisonerComp.xml</Link>
     </Content>
-    <Content Include="..\1.5\Patches\Designators.xml">
+    <Content Include="..\1.6\Patches\Designators.xml">
       <Link>Patches\Designators.xml</Link>
     </Content>
-    <Content Include="..\1.5\Patches\SetJailorJobsPatch.xml">
+    <Content Include="..\1.6\Patches\SetJailorJobsPatch.xml">
       <Link>Patches\SetJailorJobsPatch.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\ConceptDef.xml">
+    <Content Include="..\1.6\Defs\ConceptDef.xml">
       <Link>Defs\ConceptDef.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\Hediffs.xml">
+    <Content Include="..\1.6\Defs\Hediffs.xml">
       <Link>Defs\Hediffs.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\Incidents.xml">
+    <Content Include="..\1.6\Defs\Incidents.xml">
       <Link>Defs\Incidents.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\JobDef.xml">
+    <Content Include="..\1.6\Defs\JobDef.xml">
       <Link>Defs\JobDef.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\MainButton.xml">
+    <Content Include="..\1.6\Defs\MainButton.xml">
       <Link>Defs\MainButton.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\Needs.xml">
+    <Content Include="..\1.6\Defs\Needs.xml">
       <Link>Defs\Needs.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\PrisonerInteractionModeDef.xml">
+    <Content Include="..\1.6\Defs\PrisonerInteractionModeDef.xml">
       <Link>Defs\PrisonerInteractionModeDef.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\PrisonerJoyGivers.xml">
+    <Content Include="..\1.6\Defs\PrisonerJoyGivers.xml">
       <Link>Defs\PrisonerJoyGivers.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\ThinkTreeDef.xml">
+    <Content Include="..\1.6\Defs\ThinkTreeDef.xml">
       <Link>Defs\ThinkTreeDef.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\ThoughtsDef.xml">
+    <Content Include="..\1.6\Defs\ThoughtsDef.xml">
       <Link>Defs\ThoughtsDef.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\WorkGiverDef.xml">
+    <Content Include="..\1.6\Defs\WorkGiverDef.xml">
       <Link>Defs\WorkGiverDef.xml</Link>
     </Content>
-    <Content Include="..\1.5\Defs\WorkTypes.xml">
+    <Content Include="..\1.6\Defs\WorkTypes.xml">
       <Link>Defs\WorkTypes.xml</Link>
     </Content>
     <Content Include="..\About\About.xml">

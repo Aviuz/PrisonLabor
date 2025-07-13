@@ -13,7 +13,7 @@ namespace PrisonLabor.Core.Interrogation.Ritual
   [StaticConstructorOnStartup]
   public class JobDriver_Interrogate : JobDriver
   {
-    public static readonly Texture2D moteIcon = ContentFinder<Texture2D>.Get("Things/Mote/SpeechSymbols/Speech");
+    private static readonly Texture2D MoteIcon = ContentFinder<Texture2D>.Get("Things/Mote/SpeechSymbols/Speech");
     public override bool TryMakePreToilReservations(bool errorOnFailed)
     {
       return true;
@@ -22,15 +22,15 @@ namespace PrisonLabor.Core.Interrogation.Ritual
     protected override IEnumerable<Toil> MakeNewToils()
     {
       this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
-      Toil toil = ToilMaker.MakeToil("MakeNewToils");
-      toil.tickAction = delegate
+      Toil toil = ToilMaker.MakeToil();
+      toil.tickIntervalAction = delegate(int delta)
       {
-        pawn.GainComfortFromCellIfPossible();
+        pawn.GainComfortFromCellIfPossible(delta);
         pawn.skills.Learn(SkillDefOf.Social, 0.01f);
         pawn.rotationTracker.FaceTarget(TargetB);
         Pawn prisoner = TargetThingB as Pawn;
         prisoner?.rotationTracker.FaceTarget(pawn.Position);
-        MoteMaker.MakeSpeechBubble(pawn, moteIcon);
+        MoteMaker.MakeSpeechBubble(pawn, MoteIcon);
       };
       if (ModsConfig.IdeologyActive)
       {

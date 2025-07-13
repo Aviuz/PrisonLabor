@@ -5,8 +5,8 @@ namespace PrisonLabor.Core.Meta
 {
     public class VersionUtility
     {
-        public const Version versionNumber = Version.v1_5_2;
-        public const string versionString = "1.5.2";
+        public const Version versionNumber = Version.v1_6_0;
+        public const string versionString = "1.6.0";
 
         public static Version VersionOfSaveFile { get; set; }
 

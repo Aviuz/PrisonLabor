@@ -22,10 +22,7 @@ namespace PrisonLabor.Core.LaborArea
             soundDragChanged = SoundDefOf.Designate_DragStandard_Changed;
             useMouseIcon = true;
             defaultLabel = "PrisonLabor_LaborArea".Translate();
-            //Initialization();
         }
-
-        public override int DraggableDimensions => 2;
 
         public override bool DragDrawMeasurements => true;
 
@@ -46,33 +43,44 @@ namespace PrisonLabor.Core.LaborArea
 
         public override void DesignateSingleCell(IntVec3 c)
         {
-            if (mode == DesignateMode.Add)
+            switch (mode)
             {
-                Map.areaManager.Get<Area_Labor>()[c] = true;
-                JustAddedCells.Add(c);
-            }
-            else if (mode == DesignateMode.Remove)
-            {
-                Map.areaManager.Get<Area_Labor>()[c] = false;
-                JustRemovedCells.Add(c);
+                case DesignateMode.Add:
+                    Map.areaManager.Get<Area_Labor>()[c] = true;
+                    JustAddedCells.Add(c);
+                    break;
+                case DesignateMode.Remove:
+                    Map.areaManager.Get<Area_Labor>()[c] = false;
+                    JustRemovedCells.Add(c);
+                    break;
             }
         }
 
         protected override void FinalizeDesignationSucceeded()
         {
             base.FinalizeDesignationSucceeded();
-            if (mode == DesignateMode.Add)
+            switch (mode)
             {
-                for (var i = 0; i < JustAddedCells.Count; i++)
-                    Map.areaManager.Get<Area_Labor>()[JustAddedCells[i]] = true;
-                JustAddedCells.Clear();
-            }
-            else if (mode == DesignateMode.Remove)
-            {
-                for (var j = 0; j < JustRemovedCells.Count; j++)
-                    Map.areaManager.Get<Area_Labor>()[JustRemovedCells[j]] = false;
-                JustRemovedCells.Clear();
-                RequestedRooms.Clear();
+                case DesignateMode.Add:
+                {
+                    foreach (var t in JustAddedCells)
+                    {
+                        Map.areaManager.Get<Area_Labor>()[t] = true;
+                    }
+                    JustAddedCells.Clear();
+                    break;
+                }
+                case DesignateMode.Remove:
+                {
+                    foreach (var t in JustRemovedCells)
+                    {
+                        Map.areaManager.Get<Area_Labor>()[t] = false;
+                    }
+
+                    JustRemovedCells.Clear();
+                    RequestedRooms.Clear();
+                    break;
+                }
             }
         }
 

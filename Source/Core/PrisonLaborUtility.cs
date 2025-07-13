@@ -51,7 +51,7 @@ namespace PrisonLabor.Core
 
     public static bool IsDisabledByLabor(IntVec3 pos, Pawn pawn, WorkTypeDef workType)
     {
-      if (pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null &&
+      if (pos.IsValid && pawn.Map.areaManager.Get<Area_Labor>() != null &&
           !WorkSettings.WorkDisabled(workType))
         return pawn.Map.areaManager.Get<Area_Labor>()[pos];
       return false;
@@ -59,7 +59,7 @@ namespace PrisonLabor.Core
 
     public static bool CanWorkHere(IntVec3 pos, Pawn pawn, WorkTypeDef workType)
     {
-      if (ShouldPawnBeConsidered(pawn) && pos != null && pawn.Map.areaManager.Get<Area_Labor>() != null &&
+      if (ShouldPawnBeConsidered(pawn) && pos.IsValid && pawn.Map.areaManager.Get<Area_Labor>() != null &&
           !WorkSettings.WorkDisabled(workType))
       {
         bool result = true;

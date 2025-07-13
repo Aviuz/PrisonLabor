@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Situation thoughts-->
+  <ThoughtDef>
+    <defName>PrisonLabor_VeryGoodTreatment</defName>
+    <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_VeryGoodTreatment</workerClass>
+    <stages>
+      <li>
+        <label>treated very good</label>
+        <description>In this prison I've been treated very well.</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>PrisonLabor_LowMotivation</defName>
+    <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_LowMotivation</workerClass>
+    <stages>
+      <li>
+        <label>not supervised</label>
+        <description>Nobody cares if I'm working or not.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>PrisonLabor_FreeTime</defName>
+    <workerClass>PrisonLabor.Core.AI.ThoughtWorkers.ThoughtWorker_FreeTime</workerClass>
+    <stages>
+      <li>
+        <label>free time</label>
+        <description>Even tough I'm prisoner, I can still have some free time.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

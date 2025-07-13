@@ -1,18 +1,11 @@
 ﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Verse;
 using RimWorld;
-using System.Reflection;
-using PrisonLabor.Core;
 using Verse.AI;
 
 namespace PrisonLabor.HarmonyPatches.Patches_Work
 {
-  [HarmonyPatch(typeof(WorkGiver_ClearSnow), "HasJobOnCell")]
+  [HarmonyPatch(typeof(WorkGiver_ClearSnowOrSand), "HasJobOnCell")]
   class Patch_WorkGiver_CleanSnow
   {
 
@@ -20,7 +13,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
     {
       if (__result && pawn.IsPrisonerOfColony)
       {
-        return __result && pawn.CanReach(c, PathEndMode.OnCell, pawn.NormalMaxDanger());
+        return pawn.CanReach(c, PathEndMode.OnCell, pawn.NormalMaxDanger());
       }
       return __result;
     }

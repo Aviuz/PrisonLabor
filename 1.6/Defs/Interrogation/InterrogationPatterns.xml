@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <PreceptDef>
+    <defName>PL_Interrogation</defName>
+    <label>prisoner interrogation</label>
+    <description>Initiate a prisoner interrogation. Warden will take prisoner and try to get usefull information. Depends on warden's traits and abilities prisoner may end up pretty beat up.</description>
+    <ritualPatternBase>PL_Interrogation</ritualPatternBase>
+    <iconPath>Things/Mote/SpeechSymbols/Speech</iconPath>
+    <issue>Ritual</issue>
+    <preceptClass>Precept_Ritual</preceptClass>
+    <visible>false</visible>
+    <classic>true</classic>
+    <countsTowardsPreceptLimit>false</countsTowardsPreceptLimit>
+    <selectionWeight>1.0</selectionWeight>
+    <ignoreNameUniqueness>true</ignoreNameUniqueness>
+    <usesIdeoVisualEffects>false</usesIdeoVisualEffects>
+    <mergeRitualGizmosFromAllIdeos>true</mergeRitualGizmosFromAllIdeos>
+    <useRepeatPenalty>false</useRepeatPenalty>
+    <showRitualFloatMenuOption>false</showRitualFloatMenuOption>
+  </PreceptDef>
+  <RitualPatternDef>
+    <defName>PL_Interrogation</defName>
+    <ritualOnlyForIdeoMembers>false</ritualOnlyForIdeoMembers>
+    <ritualBehavior>PL_Interrogation</ritualBehavior>
+    <ritualTargetFilter>PL_SelectedThing</ritualTargetFilter>
+    <ritualObligationTargetFilter>PL_InterrogationRoom</ritualObligationTargetFilter>
+    <ritualOutcomeEffect>PL_Interrogation</ritualOutcomeEffect>
+    <playsIdeoMusic>false</playsIdeoMusic>
+    <alwaysStartAnytime>true</alwaysStartAnytime>
+  </RitualPatternDef>
+  <RitualOutcomeEffectDef>
+    <defName>PL_Interrogation</defName>
+    <workerClass>PrisonLabor.Core.Interrogation.Ritual.RitualOutcomeEffectWorker_Interrogation</workerClass>
+    <warnOnLowQuality>false</warnOnLowQuality>
+    <givesDevelopmentPoints>false</givesDevelopmentPoints>
+    <comps>
+      <li Class="RitualOutcomeComp_Indoors"/>
+    </comps>
+  </RitualOutcomeEffectDef>
+  <RitualObligationTargetFilterDef>
+    <defName>PL_InterrogationRoom</defName>
+    <workerClass>PrisonLabor.Core.Interrogation.Ritual.RitualObligationTargetWorker_Interrogation</workerClass>
+  </RitualObligationTargetFilterDef>
+  <RitualBehaviorDef>
+    <defName>PL_Interrogation</defName>
+    <workerClass>PrisonLabor.Core.Interrogation.Ritual.RitualBehaviorWorker_Interrogation</workerClass>
+    <durationTicks>5000</durationTicks>
+    <spectatorFilter Class="PrisonLabor.Core.Interrogation.Ritual.RitualSpectatorFilter_None">
+      <description>Spectators are not needed</description>
+    </spectatorFilter>
+    <roles>
+      <li Class="RitualRoleWarden">
+        <label>warden</label>
+        <missingDesc>an warden</missingDesc>
+        <id>warden</id>
+        <maxCount>1</maxCount>
+        <required>True</required>
+        <countsAsParticipant>False</countsAsParticipant>
+        <allowChild>false</allowChild>
+        <mustBeAbleToReachTarget>True</mustBeAbleToReachTarget>
+      </li>
+      <li Class="PrisonLabor.Core.Interrogation.Ritual.NonColonyPrisonerRole">
+        <label>prisoner</label>
+        <missingDesc>a prisoner</missingDesc>
+        <id>prisoner</id>
+        <maxCount>1</maxCount>
+        <required>True</required>
+        <countsAsParticipant>False</countsAsParticipant>
+        <ignoreBleeding>false</ignoreBleeding>
+      </li>
+    </roles>
+    <stages>
+      <li Class="RitualStage_InteractWithPrisoner">
+        <spectatorsRequired>false</spectatorsRequired>
+        <failTriggers>
+          <li Class="StageFailTrigger_TargetPawnUnreachable">
+            <takerId>warden</takerId>
+            <takeeId>prisoner</takeeId>
+            <desc>Convicted prisoner is not reachable.</desc>
+          </li>
+          <li Class="StageFailTrigger_PawnAsleep">
+            <desc>escort asleep</desc>
+            <pawnId>warden</pawnId>
+          </li>
+        </failTriggers>
+        <endTriggers>
+          <li Class="StageEndTrigger_RolesArrived">
+            <roleIds>
+              <li>prisoner</li>
+            </roleIds>
+          </li>
+        </endTriggers>
+        <roleBehaviors>
+          <li>
+            <roleId>warden</roleId>
+            <dutyDef>PL_DeliverPawnToCell</dutyDef>
+            <customPositions>
+              <li Class="PrisonLabor.Core.Interrogation.Ritual.RitualPosition_ThingCenter"/>
+            </customPositions>
+          </li>
+          <li>
+            <roleId>prisoner</roleId>
+            <dutyDef>Idle</dutyDef>
+          </li>
+        </roleBehaviors>
+      </li>
+      <li>
+        <spectatorsRequired>false</spectatorsRequired>
+        <endTriggers>
+          <li Class="StageEndTrigger_DurationPercentage">
+            <percentage>1</percentage>
+          </li>
+        </endTriggers>
+        <roleBehaviors>
+          <li>
+            <roleId>warden</roleId>
+            <dutyDef>PL_Interrogate</dutyDef>
+            <customPositions>
+              <li Class="RitualPosition_InFrontThingCenter">
+                <highlight>false</highlight>
+              </li>
+            </customPositions>
+          </li>
+          <li>
+            <roleId>prisoner</roleId>
+            <dutyDef>PL_StandOnCell</dutyDef>
+          </li>
+        </roleBehaviors>
+      </li>
+    </stages>
+  </RitualBehaviorDef>
+  <DutyDef>
+    <defName>PL_Interrogate</defName>
+    <hook>HighPriority</hook>
+    <socialModeMax>Off</socialModeMax>
+    <ritualSpectateTarget>true</ritualSpectateTarget>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <li Class="ThinkNode_ConditionalRandom">
+          <chance>0.6</chance>
+          <subNodes>
+            <li Class="JobGiver_WanderInGatheringArea">
+              <ticksBetweenWandersRange>50~250</ticksBetweenWandersRange>
+            </li>
+          </subNodes>
+        </li>
+        <li Class="PrisonLabor.Core.Interrogation.Ritual.JobGiver_Interrogate">
+          <soundDefMale MayRequire="Ludeon.RimWorld.Ideology">Speech_Ideoligious_Male</soundDefMale>
+          <soundDefFemale MayRequire="Ludeon.RimWorld.Ideology">Speech_Ideoligious_Female</soundDefFemale>
+        </li>
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+    <DutyDef>
+    <defName>PL_DeliverPawnToCell</defName>
+    <hook>HighPriority</hook>
+    <socialModeMax>Off</socialModeMax>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+        <!-- Goto pawn -->
+        <li Class="JobGiver_DeliverPawnToCell">
+          <exactCell>true</exactCell>
+          <locomotionUrgency>Jog</locomotionUrgency>
+        </li>
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+    <DutyDef>
+    <defName>PL_StandOnCell</defName>
+    <thinkNode Class="ThinkNode_Priority">
+      <subNodes>
+
+        <li Class="JobGiver_Idle">
+          <ticks>60</ticks>
+        </li>
+        
+      </subNodes>
+    </thinkNode>
+  </DutyDef>
+  
+  <RitualTargetFilterDef>
+    <defName>PL_SelectedThing</defName>
+    <workerClass>RitualTargetFilter_SelectedThing</workerClass>
+  </RitualTargetFilterDef>
+  <JobDef>
+    <defName>PL_Interrogate</defName>
+    <driverClass>PrisonLabor.Core.Interrogation.Ritual.JobDriver_Interrogate</driverClass>
+    <reportString>talking.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+</Defs>
