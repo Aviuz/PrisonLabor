@@ -19,7 +19,7 @@ namespace PrisonLabor.Core.Recreation
         protected override IEnumerable<Toil> MakeNewToils()
         {
             Toil goToil = Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
-            goToil.tickAction = delegate
+            goToil.tickIntervalAction = delegate(int delta)
             {
                 if (Find.TickManager.TicksGame > startTick + job.def.joyDuration)
                 {
@@ -27,7 +27,7 @@ namespace PrisonLabor.Core.Recreation
                 }
                 else
                 {
-                    JoyUtility.JoyTickCheckEnd(pawn);
+                    JoyUtility.JoyTickCheckEnd(pawn, delta);
                 }
             };
             yield return goToil;

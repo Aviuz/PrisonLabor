@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <PrisonLabor.Core.Interrogation.InterrogationQuestGenDef>
+    <defName>PL_GenQuest</defName>
+    <questScriptDefs>
+      <li>OpportunitySite_ItemStash</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">OpportunitySite_WorkSite</li>
+    </questScriptDefs>
+  </PrisonLabor.Core.Interrogation.InterrogationQuestGenDef>
+  <RoomRoleDef>
+    <defName>PL_InterrogationRoom</defName>
+    <label>interrogation room</label>
+    <workerClass>PrisonLabor.Core.Interrogation.RoomRoleWorker_InterrogationRoom</workerClass>
+  </RoomRoleDef>
+</Defs>

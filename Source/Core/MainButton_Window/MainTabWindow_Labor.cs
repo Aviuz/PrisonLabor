@@ -25,7 +25,7 @@ namespace PrisonLabor.Core.MainButton_Window
       {
         foreach (var pawn in base.Pawns)
         {
-          if (PrisonLaborUtility.LaborEnabled(pawn))
+          if (pawn.LaborEnabled())
           {
             WorkSettings.InitWorkSettings(pawn);
             yield return pawn;

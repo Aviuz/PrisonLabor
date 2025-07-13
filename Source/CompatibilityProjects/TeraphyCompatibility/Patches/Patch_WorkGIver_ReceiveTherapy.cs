@@ -1,18 +1,12 @@
-﻿using HarmonyLib;
-using PrisonLabor.Core;
-using PrisonLabor.Core.Other;
-using RimWorld;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
+using HarmonyLib;
+using PrisonLabor.Core;
+using PrisonLabor.Core.Other;
 using Therapy;
-using Verse;
 
-namespace PrisonLabor.HarmonyPatches.Patches_Construction
+namespace PrisonLabor.Therapy.Patches
 {
     [HarmonyPatch(typeof(WorkGiver_ReceiveTherapy), "HasJobOnThing")]
     class Patch_WorkGiver_ReceiveTherapy

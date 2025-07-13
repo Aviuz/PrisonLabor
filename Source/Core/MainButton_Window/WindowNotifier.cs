@@ -9,7 +9,7 @@ namespace PrisonLabor.Core.MainButton_Window
 {
     public class WindowNotifier
     {
-        static public void NotifyPLWindows()
+        public static void NotifyPLWindows()
         {
             if (Find.WindowStack != null)
             {

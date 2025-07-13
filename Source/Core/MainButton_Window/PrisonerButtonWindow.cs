@@ -1,5 +1,4 @@
-﻿using PrisonLabor.Core.LaborWorkSettings;
-using PrisonLabor.Core.Other;
+﻿using PrisonLabor.Core.Other;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -37,25 +36,6 @@ namespace PrisonLabor.Core.MainButton_Window
                     size.y = Math.Max(size.y, tab.RequestedTabSize.y);
                 }
                 return new Vector2(size.x + Margin * 2f, size.y + ExtraBottomSpace + ExtraTopSpace + Margin * 2f);
-            }
-        }
-
-
-        protected IEnumerable<Pawn> AllColonyPrisoners => Find.CurrentMap.mapPawns.PrisonersOfColony;
- 
-
-        protected IEnumerable<Pawn> WorkingPrisoners
-        {
-            get
-            {
-                foreach (var pawn in AllColonyPrisoners)
-                {
-                    if (PrisonLaborUtility.LaborEnabled(pawn))
-                    {
-                        WorkSettings.InitWorkSettings(pawn);
-                        yield return pawn;
-                    }
-                }
             }
         }
 
@@ -121,7 +101,7 @@ namespace PrisonLabor.Core.MainButton_Window
             GetTable(CurTab).PostOpen();
         }
 
-        private bool ShouldShowTab(PrisonersTabDef tabDef)
+        private static bool ShouldShowTab(PrisonersTabDef tabDef)
         {
             return !tabDef.dev || tabDef.dev == Prefs.DevMode;
         }
@@ -137,7 +117,7 @@ namespace PrisonLabor.Core.MainButton_Window
             return table;
         }
 
-        private CustomTabWindow CreateWindow(PrisonersTabDef tabDef)
+        private static CustomTabWindow CreateWindow(PrisonersTabDef tabDef)
         {
             return (CustomTabWindow)Activator.CreateInstance(tabDef.workerClass);
         }

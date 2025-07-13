@@ -1,13 +1,10 @@
-﻿using HarmonyLib;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+using HarmonyLib;
 using PrisonLabor.Core;
 using PrisonLabor.Core.BillAssignation;
 using RimWorld;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 
@@ -16,18 +13,23 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
   [HarmonyPatch(typeof(Dialog_BillConfig))]
   public class Patch_RestrictBillToPrisoner
   {
-
     /// <summary>
-    /// Replace button label to allow select more element
-    /// Oryginal:
-    /// Widgets.Dropdown<Bill_Production, Pawn>(buttonLabel: (bill.PawnRestriction != null) ? bill.PawnRestriction.LabelShortCap : ((!ModsConfig.IdeologyActive || !bill.SlavesOnly) ? ((string)"AnyWorker".Translate()) : ((string)"AnySlave".Translate()))
+    ///   Replace button label to allow select more element
+    ///   Oryginal:
+    ///   Widgets.Dropdown(buttonLabel: (bill.PawnRestriction != null) ? bill.PawnRestriction.LabelShortCap :
+    ///   ((ModsConfig.IdeologyActive && bill.SlavesOnly) ? ((string)"AnySlave".Translate()) : ((ModsConfig.BiotechActive &&
+    ///   bill.recipe.mechanitorOnlyRecipe) ? ((string)"AnyMechanitor".Translate()) : ((ModsConfig.BiotechActive &&
+    ///   bill.MechsOnly) ? ((string)"AnyMech".Translate()) : ((!ModsConfig.BiotechActive || !bill.NonMechsOnly) ?
+    ///   ((string)"AnyWorker".Translate()) : ((string)"AnyNonMech".Translate()))))), rect: listing_Standard4.GetRect(30f),
+    ///   target: bill, getPayload: (Bill_Production b) => b.PawnRestriction, menuGenerator: (Bill_Production b) =>
+    ///   GeneratePawnRestrictionOptions());
     /// </summary>
     /// <param name="instructions"></param>
     /// <returns></returns>
     [HarmonyTranspiler]
     [HarmonyPatch("DoWindowContents")]
     [HarmonyPatch(new[] { typeof(Rect) })]
-    static IEnumerable<CodeInstruction> Transpiler_DoWindowContent(IEnumerable<CodeInstruction> instructions)
+    private static IEnumerable<CodeInstruction> Transpiler_DoWindowContent(IEnumerable<CodeInstruction> instructions)
     {
       /*
           call | Boolean get_IdeologyActive() | Label 39
@@ -46,53 +48,48 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
           call | System.String op_Implicit(Verse.TaggedString) | no labels
           stloc.s | System.String (25) | no labels
        */
+
       CodeInstruction[] replacement =
       {
-                new CodeInstruction(OpCodes.Ldarg_0),
-                new CodeInstruction(OpCodes.Call, typeof(Patch_RestrictBillToPrisoner).GetMethod(nameof(GetLabel))),
-                new CodeInstruction(OpCodes.Stloc_S, 22)
-            };
-      // return HPatcher.ReplaceFragment(opCodes, operands, instructions, replacement, "Patch_RestrictBillToPrisoner patch for DoWindowContents", false);
-
-      List<CodeInstruction> instr = instructions.ToList();
-      int start = 0;
-      int end = 0;
-      for (int i = 0; i < instr.Count(); i++)
+        new CodeInstruction(OpCodes.Ldarg_0),
+        new CodeInstruction(OpCodes.Call, typeof(Patch_RestrictBillToPrisoner).GetMethod(nameof(GetLabel))),
+        new CodeInstruction(OpCodes.Stloc_S, 24)
+      };
+      var instr = instructions.ToList();
+      var start = 0;
+      var end = 0;
+      for (var i = 0; i < instr.Count; i++)
       {
-        if (instr[i].IsLdarg(0) && instr[i - 1].opcode == OpCodes.Stloc_S)
+        if (instr[i].IsLdarg(0) && instr[i - 1].opcode == OpCodes.Stloc_S && 
+            instr[i - 1].operand is LocalBuilder lb1 && lb1.LocalIndex == 23)
         {
-          if (instr[i - 1].operand is LocalBuilder lb1 && lb1.LocalIndex == 21)
-          {
-            start = i;
-
-          }
+          start = i;
         }
 
-        if (instr[i].IsStloc() && instr[i].operand is LocalBuilder lb && lb.LocalIndex == 22 && instr[i + 1].opcode == OpCodes.Ldloc_S)
+        if (instr[i].IsStloc() && instr[i].operand is LocalBuilder lb && lb.LocalIndex == 24 &&
+            instr[i + 1].opcode == OpCodes.Ldloc_S)
         {
           end = i;
         }
       }
+
       instr.RemoveRange(start, end - start + 1);
       instr.InsertRange(start, replacement);
 
       return instr.AsEnumerable();
     }
+
     public static string GetLabel(Dialog_BillConfig dialog)
     {
-
-      Bill_Production bill = Traverse.Create(dialog).Field("bill").GetValue<Bill_Production>();
-      if (bill.PawnRestriction != null)
-      {
-        return bill.PawnRestriction.LabelShortCap;
-      }
+      var bill = Traverse.Create(dialog).Field("bill").GetValue<Bill_Production>();
+      if (bill.PawnRestriction != null) return bill.PawnRestriction.LabelShortCap;
       return GetDropLabel(dialog);
-
     }
+
     public static string GetDropLabel(Dialog_BillConfig dialog)
     {
-      Bill_Production bill = Traverse.Create(dialog).Field("bill").GetValue<Bill_Production>();
-      GroupMode groupMode = ExtractGroupMode(bill);
+      var bill = Traverse.Create(dialog).Field("bill").GetValue<Bill_Production>();
+      var groupMode = ExtractGroupMode(bill);
       switch (groupMode)
       {
         case GroupMode.ColonyOnly:
@@ -112,7 +109,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
         case GroupMode.HumansOnly:
           return "AnyNonMech".Translate();
         default:
-          return (!ModsConfig.IdeologyActive || !bill.SlavesOnly) ? ("AnyWorker".Translate()) : ("AnySlave".Translate());
+          return !ModsConfig.IdeologyActive || !bill.SlavesOnly ? "AnyWorker".Translate() : "AnySlave".Translate();
       }
     }
 
@@ -123,21 +120,20 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
 
     [HarmonyPostfix]
     [HarmonyPatch("GeneratePawnRestrictionOptions")]
-    static IEnumerable<Widgets.DropdownMenuElement<Pawn>> Postfix_GenerateFields(IEnumerable<Widgets.DropdownMenuElement<Pawn>> values, Dialog_BillConfig __instance)
+    private static IEnumerable<Widgets.DropdownMenuElement<Pawn>> Postfix_GenerateFields(
+      IEnumerable<Widgets.DropdownMenuElement<Pawn>> values, Dialog_BillConfig __instance)
     {
-      int check = ModsConfig.IdeologyActive ? 1 : 0;
-      int i = 0;
-      Bill_Production bill = Traverse.Create(__instance).Field("bill").GetValue<Bill_Production>();
+      var check = ModsConfig.IdeologyActive ? 1 : 0;
+      var i = 0;
+      var bill = Traverse.Create(__instance).Field("bill").GetValue<Bill_Production>();
 
       if (bill.recipe.mechanitorOnlyRecipe)
       {
-        foreach (Widgets.DropdownMenuElement<Pawn> value in values)
-        {
-          yield return value;
-        }
+        foreach (var value in values) yield return value;
         yield break;
       }
-      Widgets.DropdownMenuElement<Pawn> anyone = new Widgets.DropdownMenuElement<Pawn>
+
+      var anyone = new Widgets.DropdownMenuElement<Pawn>
       {
         option = new FloatMenuOption("PrisonLabor_ColonyOnly".Translate(), delegate
         {
@@ -148,12 +144,12 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
         payload = null
       };
       yield return anyone;
-      foreach (Widgets.DropdownMenuElement<Pawn> value in values)
+      foreach (var value in values)
       {
         yield return value;
         if (check == i)
         {
-          Widgets.DropdownMenuElement<Pawn> prisonerMenu = new Widgets.DropdownMenuElement<Pawn>
+          var prisonerMenu = new Widgets.DropdownMenuElement<Pawn>
           {
             option = new FloatMenuOption("PrisonLabor_PrisonersOnly".Translate(), delegate
             {
@@ -164,7 +160,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
           };
           yield return prisonerMenu;
 
-          Widgets.DropdownMenuElement<Pawn> anyCaptive = new Widgets.DropdownMenuElement<Pawn>
+          var anyCaptive = new Widgets.DropdownMenuElement<Pawn>
           {
             option = new FloatMenuOption("PrisonLabor_PrisonersAndSlaveOnly".Translate(), delegate
             {
@@ -175,35 +171,38 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
           };
           yield return anyCaptive;
         }
+
         i++;
       }
-      WorkGiverDef workGiver = bill.billStack.billGiver.GetWorkgiver();
-      SkillDef workSkill = bill.recipe.workSkill;
+
+      var workGiver = bill.billStack.billGiver.GetWorkgiver();
+      var workSkill = bill.recipe.workSkill;
       IEnumerable<Pawn> allPrisonersOfColony = PawnsFinder.AllMaps_PrisonersOfColony;
 
-      allPrisonersOfColony = allPrisonersOfColony.OrderBy((Pawn pawn) => pawn.LabelShortCap);
+      allPrisonersOfColony = allPrisonersOfColony.OrderBy(pawn => pawn.LabelShortCap);
       if (workSkill != null)
-      {
-        allPrisonersOfColony = allPrisonersOfColony.OrderByDescending((Pawn pawn) => pawn.skills.GetSkill(bill.recipe.workSkill).Level);
-      }
+        allPrisonersOfColony =
+          allPrisonersOfColony.OrderByDescending(pawn => pawn.skills.GetSkill(bill.recipe.workSkill).Level);
       if (workGiver == null)
       {
         Log.ErrorOnce("Generating pawn restrictions for a BillGiver without a Workgiver", 96455148);
         yield break;
       }
-      allPrisonersOfColony = allPrisonersOfColony.OrderByDescending((Pawn pawn) => pawn.workSettings.WorkIsActive(workGiver.workType));
-      allPrisonersOfColony = allPrisonersOfColony.OrderBy((Pawn pawn) => pawn.WorkTypeIsDisabled(workGiver.workType));
+
+      allPrisonersOfColony =
+        allPrisonersOfColony.OrderByDescending(pawn => pawn.workSettings.WorkIsActive(workGiver.workType));
+      allPrisonersOfColony = allPrisonersOfColony.OrderBy(pawn => pawn.WorkTypeIsDisabled(workGiver.workType));
 
       Widgets.DropdownMenuElement<Pawn> dropdownMenuElement;
-      foreach (Pawn pawn in allPrisonersOfColony)
-      {
-        if (PrisonLaborUtility.LaborEnabled(pawn))
+      foreach (var pawn in allPrisonersOfColony)
+        if (pawn.LaborEnabled())
         {
           if (pawn.WorkTypeIsDisabled(workGiver.workType))
           {
             dropdownMenuElement = new Widgets.DropdownMenuElement<Pawn>
             {
-              option = new FloatMenuOption(string.Format("P: {0} ({1})", pawn.LabelShortCap, "WillNever".Translate(workGiver.verb)), null),
+              option = new FloatMenuOption(
+                $"P: {pawn.LabelShortCap} ({"WillNever".Translate(workGiver.verb)})", null),
               payload = pawn
             };
             yield return dropdownMenuElement;
@@ -212,10 +211,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
           {
             dropdownMenuElement = new Widgets.DropdownMenuElement<Pawn>
             {
-              option = new FloatMenuOption(string.Format("P: {0} ({1} {2}, {3})", pawn.LabelShortCap, pawn.skills.GetSkill(bill.recipe.workSkill).Level, bill.recipe.workSkill.label, "NotAssigned".Translate()), delegate
-              {
-                bill.SetPawnRestriction(pawn);
-              }),
+              option = new FloatMenuOption(
+                $"P: {pawn.LabelShortCap} ({pawn.skills.GetSkill(bill.recipe.workSkill).Level} {bill.recipe.workSkill.label}, {"NotAssigned".Translate()})",
+                delegate { bill.SetPawnRestriction(pawn); }),
               payload = pawn
             };
             yield return dropdownMenuElement;
@@ -224,10 +222,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
           {
             dropdownMenuElement = new Widgets.DropdownMenuElement<Pawn>
             {
-              option = new FloatMenuOption(string.Format("P: {0} ({1})", pawn.LabelShortCap, "NotAssigned".Translate()), delegate
-              {
-                bill.SetPawnRestriction(pawn);
-              }),
+              option = new FloatMenuOption($"P: {pawn.LabelShortCap} ({"NotAssigned".Translate()})",
+                delegate { bill.SetPawnRestriction(pawn); }),
               payload = pawn
             };
             yield return dropdownMenuElement;
@@ -236,10 +232,9 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
           {
             dropdownMenuElement = new Widgets.DropdownMenuElement<Pawn>
             {
-              option = new FloatMenuOption($"P: {pawn.LabelShortCap} ({pawn.skills.GetSkill(bill.recipe.workSkill).Level} {bill.recipe.workSkill.label})", delegate
-              {
-                bill.SetPawnRestriction(pawn);
-              }),
+              option = new FloatMenuOption(
+                $"P: {pawn.LabelShortCap} ({pawn.skills.GetSkill(bill.recipe.workSkill).Level} {bill.recipe.workSkill.label})",
+                delegate { bill.SetPawnRestriction(pawn); }),
               payload = pawn
             };
             yield return dropdownMenuElement;
@@ -248,17 +243,12 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Bill
           {
             dropdownMenuElement = new Widgets.DropdownMenuElement<Pawn>
             {
-              option = new FloatMenuOption($"P: {pawn.LabelShortCap}", delegate
-              {
-                bill.SetPawnRestriction(pawn);
-              }),
+              option = new FloatMenuOption($"P: {pawn.LabelShortCap}", delegate { bill.SetPawnRestriction(pawn); }),
               payload = pawn
             };
             yield return dropdownMenuElement;
           }
         }
-      }
     }
   }
-
 }

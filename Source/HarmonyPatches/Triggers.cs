@@ -19,13 +19,6 @@ namespace PrisonLabor.HarmonyPatches
     /// </summary>
     static class Triggers
     {
-        [HarmonyPatch(typeof(FloatMenuMakerMap))]
-        [HarmonyPatch("AddHumanlikeOrders")]
-        [HarmonyPatch(new[] { typeof(Vector3), typeof(Pawn), typeof(List<FloatMenuOption>) })]
-        static class AddHumanlikeOrders
-        {
-            public static void Prefix(Vector3 clickPos, Pawn pawn, List<FloatMenuOption> opts) { ArrestUtility.AddArrestOrder(clickPos, pawn, opts); }
-        }
 
         [HarmonyPatch(typeof(Pawn_HealthTracker), "PreApplyDamage")]
         static class Trigger_PreApplyDamage

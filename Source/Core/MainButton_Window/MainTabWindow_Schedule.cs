@@ -10,33 +10,31 @@ using Verse;
 
 namespace PrisonLabor.Core.MainButton_Window
 {
-    public class MainTabWindow_Schedule : CustomTabWindow
+  public class MainTabWindow_Schedule : CustomTabWindow
+  {
+    private const int TimeAssignmentSelectorWidth = 191;
+
+    private const int TimeAssignmentSelectorHeight = 65;
+
+    protected override PawnTableDef PawnTableDef => PawnTableDefOf.Restrict;
+
+    protected override IEnumerable<Pawn> Pawns
     {
-		private const int TimeAssignmentSelectorWidth = 191;
+      get
+      {
+        foreach (var pawn in base.Pawns.Where(p => p.LaborEnabled()))
+        {
+          WorkSettings.InitWorkSettings(pawn);
+          yield return pawn;
+        }
+      }
+    }
 
-		private const int TimeAssignmentSelectorHeight = 65;
-
-		protected override PawnTableDef PawnTableDef => PawnTableDefOf.Restrict;
-
-		protected override IEnumerable<Pawn> Pawns
-		{
-			get
-			{
-				foreach (var pawn in base.Pawns)
-				{
-					if (PrisonLaborUtility.LaborEnabled(pawn))
-					{
-						WorkSettings.InitWorkSettings(pawn);
-						yield return pawn;
-					}
-				}
-			}
-		}
-
-		public override void DoWindowContents(Rect fillRect)
-		{
-			base.DoWindowContents(fillRect);
-			TimeAssignmentSelector.DrawTimeAssignmentSelectorGrid(new Rect(fillRect.x, fillRect.y, TimeAssignmentSelectorWidth, TimeAssignmentSelectorHeight));
-		}
-	}
+    public override void DoWindowContents(Rect fillRect)
+    {
+      base.DoWindowContents(fillRect);
+      TimeAssignmentSelector.DrawTimeAssignmentSelectorGrid(new Rect(fillRect.x, fillRect.y,
+        TimeAssignmentSelectorWidth, TimeAssignmentSelectorHeight));
+    }
+  }
 }

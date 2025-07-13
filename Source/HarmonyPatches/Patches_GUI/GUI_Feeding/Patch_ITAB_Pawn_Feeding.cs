@@ -22,7 +22,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Feeding
     [HarmonyTranspiler]
     static IEnumerable<CodeInstruction> FillTabTranspiler(ILGenerator gen, IEnumerable<CodeInstruction> instr)
     {
-      var expected = AccessTools.PropertyGetter(typeof(PawnsFinder), nameof(PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction));
+      var expected = AccessTools.PropertyGetter(typeof(PawnsFinder), nameof(PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_OfPlayerFaction));
       foreach (CodeInstruction inst in instr)
       {
         if (inst.OperandIs(expected))
@@ -68,8 +68,8 @@ namespace PrisonLabor.HarmonyPatches.Patches_GUI.GUI_Feeding
 
     public static List<Pawn> GetNewRange()
     {
-      List<Pawn> list = new List<Pawn>(PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_OfPlayerFaction);
-      list.AddRange(PawnsFinder.AllMapsCaravansAndTravelingTransportPods_Alive_PrisonersOfColony);
+      List<Pawn> list = new List<Pawn>(PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_OfPlayerFaction);
+      list.AddRange(PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_PrisonersOfColony);
       return list;
     }
   }

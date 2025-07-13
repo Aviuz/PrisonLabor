@@ -1,4 +1,6 @@
 Changelog:
+1.6.0
+- Update for Rimworld 1.6
 1.5.2
 - UI changes and chinese translation update by JiaRG (https://github.com/JiaRG)
 - Changed recreation use behavior. Prisoners will bounce from recreation objects when treatment and joy need are full
