@@ -10,8 +10,7 @@ namespace PrisonLabor.Core.LaborArea
         {
             defaultLabel = "PrisonLabor_ExpandLaborArea".Translate();
             defaultDesc = "PrisonLabor_LaborAreaDesc".Translate();
-            icon = ContentFinder<Texture2D>.Get("LaborAreaExpand", true);
-            //this.hotKey = KeyBindingDefOf.Misc5;
+            icon = ContentFinder<Texture2D>.Get("LaborAreaExpand");
             soundDragSustain = SoundDefOf.Designate_DragAreaAdd;
             soundDragChanged = null;
             soundSucceeded = SoundDefOf.Designate_ZoneAdd;
