@@ -10,8 +10,7 @@ namespace PrisonLabor.Core.LaborArea
         {
             defaultLabel = "PrisonLabor_ClearLaborArea".Translate();
             defaultDesc = "PrisonLabor_LaborAreaDesc".Translate();
-            icon = ContentFinder<Texture2D>.Get("LaborAreaClear", true);
-            //this.hotKey = KeyBindingDefOf.Misc6;
+            icon = ContentFinder<Texture2D>.Get("LaborAreaClear");
             soundDragSustain = SoundDefOf.Designate_DragAreaDelete;
             soundDragChanged = null;
             soundSucceeded = SoundDefOf.Designate_ZoneDelete;
