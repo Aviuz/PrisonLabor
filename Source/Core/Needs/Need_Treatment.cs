@@ -40,7 +40,7 @@ namespace PrisonLabor.Core.Needs
     public bool ResocializationReady
     {
       get => _resocializationReady;
-      set { _resocializationReady = value; }
+      set => _resocializationReady = value;
     }
 
     public TreatmentCategory CurCategory

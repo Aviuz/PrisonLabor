@@ -1,4 +1,7 @@
 Changelog:
+1.6.2
+- Fixes for resocialization offer NPE
+- Compatibility patches for CleaningAreaTmp
 1.6.1
 - Fix labor area selector
 1.6.0
