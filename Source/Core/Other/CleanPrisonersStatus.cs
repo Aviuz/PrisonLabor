@@ -13,7 +13,7 @@ namespace PrisonLabor.Core.Other
   public static class CleanPrisonersStatus
   {
 
-    static public void Clean(Pawn prisoner)
+    public static void Clean(Pawn prisoner)
     {
       prisoner.workSettings = new Pawn_WorkSettings(prisoner);
       CleanHediffs(prisoner);      
@@ -22,16 +22,10 @@ namespace PrisonLabor.Core.Other
       {
         prisoner.drugs.CurrentPolicy = Current.Game.drugPolicyDatabase.DefaultDrugPolicy();
       }
-      if (prisoner.outfits != null)
-      {
-        prisoner.outfits = null;
-      }
+      prisoner.outfits = null;
       if (ModsConfig.BiotechActive)
       {
-        if (prisoner.guest != null)
-        {
-          prisoner.guest.SetNoInteraction();
-        }
+        prisoner.guest?.SetNoInteraction();
         Bill bill = prisoner.BillStack?.Bills?.FirstOrDefault((Bill x) => x.recipe == RecipeDefOf.ExtractHemogenPack);
         if (bill != null)
         {
@@ -41,7 +35,7 @@ namespace PrisonLabor.Core.Other
       }
     }
 
-    static public void CleanHediffs(Pawn prisoner)
+    public static void CleanHediffs(Pawn prisoner)
     {
       Hediff legs = prisoner.health.hediffSet.GetFirstHediffOfDef(PL_DefOf.PrisonLabor_RemovedLegscuffs, false);
       if (legs != null)

@@ -17,7 +17,7 @@ namespace PrisonLabor.Core.MainButton_Window
         public override void DoCell(Rect rect, Pawn pawn, PawnTable table)
         {
             var need = pawn.needs.TryGetNeed<Need_Treatment>();
-            if (need != null && need.ResocializationReady)
+            if (need?.ResocializationReady ?? false)
             {
                 if(Widgets.ButtonText(rect, "PrisonLabor_RecruitButtonLabel".Translate()))
                 {
@@ -30,8 +30,7 @@ namespace PrisonLabor.Core.MainButton_Window
         public void ConvertPrisoner(Pawn pawn)
         {
             CleanPrisonersStatus.Clean(pawn);
-            pawn.guest.SetGuestStatus(null);
-            pawn.SetFaction(Faction.OfPlayer);
+            RecruitUtility.Recruit(pawn, Faction.OfPlayer);
         }
     }
 }

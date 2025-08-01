@@ -19,12 +19,13 @@ namespace CleaningAreaCompatibility.HarmonyPatches
     {
         static MethodBase TargetMethod()
         {
-            return AccessTools.Method("CleaningArea.WorkGiver_CleanFilth_CleaningArea:HasJobOnThing");
+            var modName = ModsConfig.IsActive("s1.cleaningareatemp") ? "CleaningAreaTemp" : "CleaningArea";
+            return AccessTools.Method($"{modName}.WorkGiver_CleanFilth_CleaningArea:HasJobOnThing");
         }
         public static IEnumerable<CodeInstruction> Transpiler(ILGenerator gen, MethodBase mBase, IEnumerable<CodeInstruction> inst)
         {
             var codes = new List<CodeInstruction>(inst);
-            for (int i = 0; i < codes.Count(); i++)
+            for (int i = 0; i < codes.Count; i++)
             {
                 if (i > 0 && ShouldPatch(codes[i], codes[i - 1]))
                 {

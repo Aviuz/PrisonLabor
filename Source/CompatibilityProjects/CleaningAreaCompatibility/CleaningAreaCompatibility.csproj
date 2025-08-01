@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HarmonyInit.cs" />
-    <Compile Include="HarmonyPatches\MineQuarryPatch.cs" />
+    <Compile Include="HarmonyPatches\CleanAreaPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

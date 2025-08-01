@@ -52,6 +52,7 @@
     <li IfModActive="orion.therapy">1.6/Therapy</li>
     <li IfModActive="orion.hospitality">1.6/Hospitality</li>
     <li IfModActive="hatti.cleaningarea">1.6/CleaningArea</li>
+    <li IfModActive="s1.cleaningareatemp">1.6/CleaningArea</li>    
     <li IfModActive="orion.cashregister">1.6/CashRegistry</li>
     <li IfModActive="ssulunge.kijinrace3">1.6/Kijin</li>
     <li IfModActive="ogliss.thewhitecrayon.quarry">1.6/Quarry</li>
