@@ -168,6 +168,7 @@
     <Compile Include="HarmonyPatches\Patches_GUI\GUI_Feeding\Patch_ITAB_Pawn_Feeding.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_BlueprintsForPlayerFaction.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_Breastfeed.cs" />
+    <Compile Include="HarmonyPatches\Patches_Work\Patch_Haul.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_Smoothing.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\EnableDeepDrillsToPrisoners.cs" />
     <Compile Include="HarmonyPatches\Patches_Food\AddCustomFoodReservation.cs" />

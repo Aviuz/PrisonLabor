@@ -27,6 +27,12 @@
                     <workType>PrisonLabor_Jailor</workType>
                 </value>
             </li>
+            <li Class="PatchOperationReplace">
+                <xpath>*/WorkGiverDef[defName="DeliverFoodToPrisoner"]/workType</xpath>
+                <value>
+                    <workType>PrisonLabor_Jailor</workType>
+                </value>
+            </li>
         </operations>
     </Operation>
 
