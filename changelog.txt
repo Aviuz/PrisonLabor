@@ -1,4 +1,8 @@
 Changelog:
+1.6.3
+- Fix for hauling to shelves
+- Prisoners should take care of their children
+- Jailors will handle food delivery for prisoners
 1.6.2
 - Fixes for resocialization offer NPE
 - Compatibility patches for CleaningAreaTmp
