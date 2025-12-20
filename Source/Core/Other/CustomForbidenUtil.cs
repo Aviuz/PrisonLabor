@@ -40,14 +40,14 @@ namespace PrisonLabor.Core.Other
 
     public static bool IsForbiddenForPrisoner(this Thing t, Pawn pawn)
     {
-      if ((t is Frame || t is Blueprint) && ForbidUtility.IsForbidden(t, Faction.OfPlayer))
+      if ((t is Frame || t is Blueprint) && t.IsForbidden(Faction.OfPlayer))
       {
         //Should prevent delivering resources for frames by prisoners when forbidden. 
         //Simpified solution, not worth to overthing about that.
         return true;
       }
 
-      if (pawn.IsWatched() && ForbidUtility.IsForbidden(t, Faction.OfPlayer))
+      if (pawn.IsWatched() && t.IsForbidden(Faction.OfPlayer))
       {
         return true;
       }

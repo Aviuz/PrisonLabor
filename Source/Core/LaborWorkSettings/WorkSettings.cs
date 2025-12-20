@@ -19,15 +19,17 @@ namespace PrisonLabor.Core.LaborWorkSettings
         {
             get
             {
-                if (_availableWorkTypes == null)
+                if (_availableWorkTypes != null)
                 {
-                    _availableWorkTypes = new List<WorkTypeDef>();
-                    foreach (var worktype in DefDatabase<WorkTypeDef>.AllDefs)
-                        _availableWorkTypes.Add(worktype);
-
-                    _availableWorkTypes.Remove(DefDatabase<WorkTypeDef>.GetNamed("Warden"));
-                    _availableWorkTypes.Remove(PL_DefOf.PrisonLabor_Jailor);
+                    return _availableWorkTypes;
                 }
+
+                _availableWorkTypes = new List<WorkTypeDef>();
+                foreach (var worktype in DefDatabase<WorkTypeDef>.AllDefs)
+                    _availableWorkTypes.Add(worktype);
+
+                _availableWorkTypes.Remove(DefDatabase<WorkTypeDef>.GetNamed("Warden"));
+                _availableWorkTypes.Remove(PL_DefOf.PrisonLabor_Jailor);
                 return _availableWorkTypes;
             }
         }

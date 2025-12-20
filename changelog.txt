@@ -1,4 +1,6 @@
 Changelog:
+1.6.4
+- New jobs for doctor prisoners: feed and rescue other prisoners
 1.6.3
 - Fix for hauling to shelves
 - Prisoners should take care of their children
