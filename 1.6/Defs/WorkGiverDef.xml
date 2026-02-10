@@ -28,4 +28,17 @@
             <li>Manipulation</li>
         </requiredCapacities>
     </WorkGiverDef>
+
+    <WorkGiverDef>
+        <defName>PrisonLabor_TakeInmateToBed</defName>
+        <label>taking to bed fellow prisoner</label>
+        <giverClass>PrisonLabor.Core.AI.WorkGivers.WorkGiver_TakeInmateToBed</giverClass>
+        <workType>Doctor</workType>
+        <priorityInType>5</priorityInType>
+        <verb>take to bed fellow prisoner</verb>
+        <gerund>taking to bed fellow prisoner</gerund>
+        <requiredCapacities>
+            <li>Manipulation</li>
+        </requiredCapacities>
+    </WorkGiverDef>    
 </Defs>

@@ -12,7 +12,7 @@ namespace PrisonLabor.Core.Trackers
     {
         public Dictionary<Pawn, bool> legscuffTracker = new Dictionary<Pawn, bool>();
         public Dictionary<Pawn, bool> handscuffTracker = new Dictionary<Pawn, bool>();
-        private readonly ScribeUtils<Pawn, bool> scribeUtil = new ScribeUtils<Pawn, bool>();
+        private readonly ScribeUtils scribeUtil = new ScribeUtils();
         public CuffsTracker(Map map) : base(map)
         {
         }

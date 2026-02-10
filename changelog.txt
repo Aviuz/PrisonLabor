@@ -1,4 +1,7 @@
 Changelog:
+1.6.4
+- Prisoners should be able to feed and be a doctor for other prisoners.
+- Fixes for potential load game errors (thanks to https://github.com/Alex-Blanes).
 1.6.3
 - Fix for hauling to shelves
 - Prisoners should take care of their children

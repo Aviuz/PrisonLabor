@@ -90,6 +90,7 @@
     <Compile Include="Core\AI\ThinkNodes\ThinkNode_IsMotivated.cs" />
     <Compile Include="Core\AI\JobGivers\JobGiver_PrisonersRecreation.cs" />
     <Compile Include="Core\AI\WorkGivers\WorkGiver_HandleChains.cs" />
+    <Compile Include="Core\AI\WorkGivers\WorkGiver_TakeInmateToBed.cs" />
     <Compile Include="Core\Alerts\Alert_EscapingPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_LazyPrisoners.cs" />
     <Compile Include="Core\Alerts\Alert_StarvingPrisoners.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Labor_Thing.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Labor_Position.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_CleanSnow.cs" />
+    <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_DeliverFood.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_Repair.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Scanner_HasJob.cs" />
     <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
