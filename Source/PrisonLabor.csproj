@@ -188,6 +188,7 @@
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Labor_Thing.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Labor_Position.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_CleanSnow.cs" />
+    <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_DeliverFood.cs" />
     <Compile Include="HarmonyPatches\Patches_Work\Patch_WorkGiver_Repair.cs" />
     <Compile Include="HarmonyPatches\Patches_LaborArea\Patch_Scanner_HasJob.cs" />
     <Compile Include="HarmonyPatches\Patches_PermissionFix\Patch_ForibiddenDrop2.cs" />
