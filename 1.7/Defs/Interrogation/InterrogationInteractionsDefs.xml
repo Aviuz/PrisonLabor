@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <InteractionDef>
+    <defName>PL_InterrogateInteraction</defName>
+    <label>interrogate</label>
+    <workerClass>InteractionWorker</workerClass>
+    <ignoreTimeSinceLastInteraction>True</ignoreTimeSinceLastInteraction>
+    <symbol>UI/Icons/Rituals/Trial</symbol>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] asked [RECIPIENT_nameDef] [askPart].</li>
+        <li>r_logentry->[INITIATOR_nameDef] ordered [RECIPIENT_nameDef] to told about [askPart].</li>
+        <li>askPart->where is the loot</li>
+        <li>askPart->why is Gamora</li>
+        <li>askPart->when finally starts talking</li>
+        <li>askPart->where is their base</li>
+      </rulesStrings>
+    </logRulesInitiator>
+  </InteractionDef>
+  <InteractionDef>
+    <defName>PL_BeIntrrogatedInteraction</defName>
+    <label>being interrogated</label>
+    <workerClass>InteractionWorker</workerClass>
+    <ignoreTimeSinceLastInteraction>True</ignoreTimeSinceLastInteraction>
+    <symbol>UI/Icons/Rituals/TrialDefend</symbol>
+    <logRulesInitiator>
+      <rulesStrings>
+        <li>r_logentry->[INITIATOR_nameDef] called for mercy.</li>
+        <li>r_logentry->[INITIATOR_nameDef] begged to spare the face.</li>
+        <li>r_logentry->[INITIATOR_nameDef] kept silence.</li>
+        <li>r_logentry->[INITIATOR_nameDef] has no idea.</li>
+        <li>r_logentry->[INITIATOR_nameDef] told everything.</li>
+      </rulesStrings>
+    </logRulesInitiator>
+  </InteractionDef>
+</Defs>

@@ -4,6 +4,7 @@ using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +13,16 @@ using Verse.AI;
 
 namespace PrisonLabor.HarmonyPatches.Patches_Work
 {
-    [HarmonyPatch(typeof(WorkGiver_OperateScanner))]
-    class Patch_WorkGiver_OperateScanner
+    [HarmonyPatch]
+    class Patch_WorkGiver_OperateScannerPostfix
     {
-        [HarmonyPatch("ShouldSkip")]
-        [HarmonyPostfix]
-        static bool ShouldSkipPostfix(bool __result, WorkGiver_OperateScanner __instance, Pawn pawn, bool forced)
+        static MethodBase TargetMethod()
+        {
+            Assembly asm = typeof(WorkGiver_OperateScanner).Assembly;
+            return asm.GetType("RimWorld.WorkGiver_OperateScanner").GetMethod("ShouldSkip");
+        }
+        
+        static bool Postfix(bool __result, WorkGiver_OperateScanner __instance, Pawn pawn, bool forced)
         {
             if (__result && pawn.IsPrisonerOfColony)
             {
@@ -25,7 +30,6 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
             }
             return __result;
         }
-
         private static bool CanOperate(Pawn pawn, WorkGiver_OperateScanner __instance)
         {
             List<Thing> list = pawn.Map.listerThings.ThingsOfDef(__instance.ScannerDef);
@@ -42,7 +46,10 @@ namespace PrisonLabor.HarmonyPatches.Patches_Work
             }
             return true;
         }
-
+    }
+    [HarmonyPatch(typeof(WorkGiver_OperateScanner))]
+    class Patch_WorkGiver_OperateScanner
+    {
         [HarmonyPatch("HasJobOnThing")]
         [HarmonyPostfix]
         static bool HasJobOnThingPostfix(bool __result, Pawn pawn, Thing t, bool forced)

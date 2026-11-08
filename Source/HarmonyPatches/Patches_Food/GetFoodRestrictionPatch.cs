@@ -15,14 +15,14 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
     [HarmonyPatch(nameof(Pawn_FoodRestrictionTracker.GetCurrentRespectedRestriction))]
     class GetFoodRestrictionPatch
     {
-        static FoodRestriction Postfix(FoodRestriction __result, Pawn_FoodRestrictionTracker __instance, Pawn getter)
+        static FoodPolicy Postfix(FoodPolicy __result, Pawn_FoodRestrictionTracker __instance, Pawn getter)
         {
             if(__result == null && __instance.pawn.IsPrisonerOfColony && !__instance.pawn.InMentalState)
             {
                 Need_Motivation motivation = __instance.pawn.needs.TryGetNeed<Need_Motivation>();
                 if(motivation != null && (motivation.CurLevel > 0.7 || __instance.pawn.IsWatched() ))
                 {
-                    return __instance.CurrentFoodRestriction;
+                    return __instance.GetCurrentRespectedRestriction();
                 }                
             }
             return __result;

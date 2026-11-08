@@ -45,7 +45,7 @@ namespace ColonyGroupsCompatibility.HarmonyPatches
     {
       int bill = -1;
       var codes = new List<CodeInstruction>(inst);
-      for (int i = 0; i < codes.Count(); i++)
+      for (int i = 0; i < codes.Count; i++)
       {
         yield return codes[i];
         if (ShouldCopy(codes[i]))

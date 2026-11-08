@@ -1,4 +1,6 @@
 Changelog:
+1.7.0
+- Update for Rimworld 1.7
 1.6.4
 - Prisoners should be able to feed and be a doctor for other prisoners.
 - Fixes for potential load game errors (thanks to https://github.com/Alex-Blanes).
