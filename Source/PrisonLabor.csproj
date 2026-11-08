@@ -18,7 +18,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0MultiplayerAPI">
-      <HintPath>..\_libs\0MultiplayerAPI.dll</HintPath>
+      <HintPath>Libraries\0MultiplayerAPI.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\Games\Steam\steamapps\common\RimWorld\Assembly-CSharp.dll</HintPath>
