@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>PrisonLabor_PrisonerSupervise</defName>
+    <driverClass>PrisonLabor.Core.AI.JobDrivers.JobDriver_Supervise</driverClass>
+    <reportString>watching prisoner TargetA.</reportString>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+  </JobDef>
+  <JobDef>
+    <defName>PrisonLabor_Arrest</defName>
+    <driverClass>JobDriver_TakeToBed</driverClass>
+    <reportString>arresting TargetA.</reportString>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <makeTargetPrisoner>true</makeTargetPrisoner>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+  <JobDef>
+    <defName>PrisonLabor_HandlePrisonersLegChain</defName>
+    <driverClass>PrisonLabor.Core.AI.JobDrivers.JobDriver_UnchainLegs</driverClass>
+    <reportString>handling legcuffs of prisoner TargetA.</reportString>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+  </JobDef>
+  <JobDef>
+    <defName>PrisonLabor_HandlePrisonersHandChain</defName>
+    <driverClass>PrisonLabor.Core.AI.JobDrivers.JobDriver_UnchainHands</driverClass>
+    <reportString>handling handcuffs of prisoner TargetA.</reportString>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+  </JobDef>
+</Defs>

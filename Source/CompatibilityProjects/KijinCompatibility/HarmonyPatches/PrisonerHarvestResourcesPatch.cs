@@ -26,7 +26,7 @@ namespace KijinCompatibility.HarmonyPatches
     static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
       var codes = new List<CodeInstruction>(instructions);
-      for (int i = 0; i < codes.Count(); i++)
+      for (int i = 0; i < codes.Count; i++)
       {
         if (i > 0 && ShouldPatch(codes[i], codes[i - 1]))
         {
