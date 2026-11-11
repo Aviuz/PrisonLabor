@@ -22,7 +22,7 @@ namespace PrisonLabor.HarmonyPatches.Patches_Food
                 Need_Motivation motivation = __instance.pawn.needs.TryGetNeed<Need_Motivation>();
                 if(motivation != null && (motivation.CurLevel > 0.7 || __instance.pawn.IsWatched() ))
                 {
-                    return __instance.GetCurrentRespectedRestriction();
+                    return __instance.CurrentFoodPolicy;
                 }                
             }
             return __result;

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <LangVersion>10</LangVersion>
+    <LangVersion>14</LangVersion>
     <TargetFramework>net10.0</TargetFramework>
     <OutputType>Library</OutputType>
     <RootNamespace>PrisonLabor.Therapy</RootNamespace>
@@ -35,9 +35,8 @@
       <HintPath>..\..\..\..\..\..\Games\Steam\steamapps\common\RimWorld\Waylith.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="Lib.Harmony" Version="3.0.0-rc.4" />
+    <PackageReference Include="Lib.Harmony" Version="3.0.0-rc.5" />
     <Reference Include="Waylith.UnityCompat">
       <HintPath>..\..\..\..\..\..\Games\Steam\steamapps\common\RimWorld\Waylith.UnityCompat.dll</HintPath>
       <Private>False</Private>
