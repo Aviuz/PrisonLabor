@@ -10,7 +10,7 @@ using Verse;
 namespace PrisonLabor.HarmonyPatches.Patches_Food
 {
   [HarmonyPatch(typeof(Pawn_FoodRestrictionTracker))]
-  [HarmonyPatch("GetCurrentRespectedRestriction")]
+  [HarmonyPatch(nameof(Pawn_FoodRestrictionTracker.GetCurrentRespectedRestriction))]
   class Patch_EnableRespectingFoodPolicies
   {
     static FoodPolicy Postfix(FoodPolicy __result, Pawn_FoodRestrictionTracker __instance, Pawn getter)

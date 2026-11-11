@@ -32,8 +32,7 @@
       <HintPath>..\..\..\..\Games\Steam\steamapps\common\RimWorld\Waylith.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <PackageReference Include="Lib.Harmony" Version="3.0.0-rc.4" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Lib.Harmony" Version="3.0.0-rc.5" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
     <Reference Include="Waylith.UnityCompat">
       <HintPath>..\..\..\..\Games\Steam\steamapps\common\RimWorld\Waylith.UnityCompat.dll</HintPath>

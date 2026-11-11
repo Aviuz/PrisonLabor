@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <LangVersion>10</LangVersion>
+    <LangVersion>14</LangVersion>
     <TargetFramework>net10.0</TargetFramework>
     <OutputType>Library</OutputType>
     <AssemblyName>PrisonLaborCashRegistryCompatibility</AssemblyName>
@@ -18,9 +18,8 @@
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
-    <PackageReference Include="Lib.Harmony" Version="3.0.0-rc.4" />
+    <PackageReference Include="Lib.Harmony" Version="3.0.0-rc.5" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\PrisonLabor.csproj">
